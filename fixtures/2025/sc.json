@@ -1085,6 +1085,33 @@
       }
     },
     {
+      "id": "mut.sc.sehi_loss_qbi",
+      "covers": [
+        "sc",
+        "f8995"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the qbi_has-false alternative of sc.qbi_se), predicted by hand before evaluating: stage14.sehi.loss, a $5,000 loss with $3,000 of health insurance under the business. Form 7206 line 14 is $0 (no net profit, line 4 zero), so no self-employed health insurance deduction reduces the business's qualified business income, nor does a deductible part of self-employment tax (no Schedule SE on a loss): QBI is the $5,000 loss (i8995, Qualified Business Income: \"you must consider all items that are attributable to the trade or business. This includes ... deductible part of self-employment tax, self-employment health insurance deduction\", here both $0), and with no other qualified business, Form 8995 line 16 carries a $5,000 qualified business loss to 2026 (\"Combine lines 2 and 3. If greater than zero, enter -0-\").",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line18": 500000,
+        "person[taxpayer].sc[b].hi_uses": true,
+        "person[taxpayer].sc[b].f7206_line1": 300000
+      },
+      "expect": {
+        "person[taxpayer].sc[b].qbi": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "f8995.qbi_loss_carryforward": {
+          "kind": "money",
+          "cents": -500000
+        }
+      }
+    },
+    {
       "id": "stage14.sc.distinct",
       "covers": [
         "sc"

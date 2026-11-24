@@ -77,6 +77,59 @@
       }
     },
     {
+      "id": "mut.rental.tax_personal.vacant_all_year",
+      "covers": [
+        "rental",
+        "rprop",
+        "sche",
+        "f8582",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before evaluating. Return x1sche.f1.profit with the house held for rent but vacant all of 2025: no rents, no day rented at a fair price, and no personal use (rental[a].personal_any false). Expenses of property held for rent while vacant are deductible (p527, Vacant rental property, \"you may be able to deduct your ordinary and necessary expenses ... while the property is vacant\"), and with no personal use nothing is divided between rental and personal use (p527, Dividing Expenses), so the whole $2,400 of taxes is on Schedule E line 16 and none of it is a personal tax for Schedule A (rental[a].tax_personal $0).",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 0,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 600000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 240000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 120000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 80000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 16000000,
+        "rental[a].days_fair": 0,
+        "rental[a].personal_any": false
+      },
+      "expect": {
+        "rental[a].line16": {
+          "kind": "money",
+          "cents": 240000
+        },
+        "rental[a].tax_personal": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
       "id": "x1sche.f2.small_loss_exception",
       "covers": [
         "rental",
@@ -2083,7 +2136,7 @@
         "sche"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 527 (2025) p. 26: 200 personal days is more than 14 and more than 10% of the 10 rental days, so it is used as a home; p. 28, Used as a home but rented less than 15 days: rented 10 days, so it is not reported on Schedule E and none of its rental income or expenses (property tax, depreciation of the 2019 house) is reported (i1040se p. 5, line 2, \"do not report the rental income and do not deduct any rental expenses\"). Line 3 0, line 21 0, line 22 0; Schedule E lines 23a and 23d 0. With line 21 0 the property has no loss, so the at-risk question (i1040se line 21, Form 6198) does not arise and is withheld, as the interview leaves it.",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 527 (2025) p. 26: 200 personal days is more than 14 and more than 10% of the 10 rental days, so it is used as a home; p. 28, Used as a home but rented less than 15 days: rented 10 days, so it is not reported on Schedule E and none of its rental income or expenses (property tax, depreciation of the 2019 house) is reported (i1040se p. 5, line 2, \"do not report the rental income and do not deduct any rental expenses\"). Line 3 0, line 21 0, line 22 0; Schedule E lines 23a and 23d 0. With line 21 0 the property has no loss, so the at-risk question (i1040se line 21, Form 6198) does not arise and is withheld, as the interview leaves it. The home is not reported on Schedule E (rented fewer than 15 days), so none of its taxes enters the sum of reported rentals' personal-use taxes for Schedule A (sa.rental_tax_sum $0): its real estate tax is a home's tax, asked by Schedule A line 5b itself (p527, Used as a home but rented less than 15 days); added by hand, predicted before evaluating.",
       "inputs": {
         "scope.rental": true,
         "$w2@person[taxpayer]": [
@@ -2142,6 +2195,10 @@
           "cents": 0
         },
         "sche.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.rental_tax_sum": {
           "kind": "money",
           "cents": 0
         }
@@ -3294,6 +3351,64 @@
         "rental[a].nondep_gain": {
           "kind": "money",
           "cents": 900000
+        }
+      }
+    },
+    {
+      "id": "mut.rental.nondep_land_prior_loss_covers_income",
+      "covers": [
+        "rental",
+        "f8582"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before evaluating. Return bfr.rental.nondep_land_income_refused (land rental a with line 21 $9,000; house b with a $10,000 loss; MAGI $160,000, so no special allowance and Form 8582 required), where a loss of $12,000 from rental a was held back on the 2024 Form 8582 (Part VII column (c)). Rental a's net result with the prior-year loss is a $3,000 loss, so it has no net passive income to recharacterize (p925 p. 16, Rental of Nondepreciable Property, applies to net passive income): rental[a].nondep_gain is $0 and nondep_income false, so line 22 is not refused. All of the $3,000 overall loss is unallowed (no passive income elsewhere, no special allowance), carried forward in Part VII column (c); the $9,000 of the prior-year loss that this year's income absorbs is allowed, so rental a's line 22 is -$9,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 16000000,
+        "person[taxpayer].w2[a].box3": 16000000,
+        "person[taxpayer].w2[a].box5": 16000000,
+        "$rental": [
+          "a",
+          "b"
+        ],
+        "$rprop@rental[a]": [],
+        "$rprop@rental[b]": [],
+        "rental[a].kind": "land",
+        "rental[a].days_fair": 365,
+        "rental[a].rents": 1000000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[b].kind": "sfr",
+        "rental[b].days_fair": 365,
+        "rental[b].rents": 1200000,
+        "rental[b].has_mortgage": true,
+        "rental[b].amt12": 1500000,
+        "rental[b].has_taxes": true,
+        "rental[b].amt16": 700000,
+        "rental[a].prior_any": true,
+        "rental[a].prior_amt": 1200000,
+        "rental[a].prior_ws51": false,
+        "rental[a].prior_not_active": false
+      },
+      "expect": {
+        "rental[a].nondep_gain": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rental[a].nondep_income": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[a].carryforward": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -900000
         }
       }
     },

@@ -52,8 +52,8 @@ Screening questions (answer No unless noted): Schedule 1 income, Schedule 1-A de
 | f1040.line11a | Subtract line 10 from line 9. This is your adjusted gross income |
 | f1040.line11b | Amount from line 11a (adjusted gross income) |
 | f1040.line12e | Standard deduction or itemized deductions (from Schedule A) |
-| f1040.line13a | Qualified business income deduction from Form 8995 or Form 8995-A |
-| f1040.line13b | Additional deductions from Schedule 1-A, line 38 |
+| f1040.qbi_deduction | Qualified business income deduction from Form 8995 or Form 8995-A |
+| f1040.s1a_deductions | Additional deductions from Schedule 1-A, line 38 |
 | f1040.line14 | Add lines 12e, 13a, and 13b |
 | f1040.line15 | Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income |
 | f1040.line16 | Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3 |

@@ -2084,20 +2084,30 @@ form:
         eligible individuals"; i8889 p. 7, Line 6, Step 4, "Determine any other contribution limits that apply for the tax
         year and add that amount to the result in Step 3"'
     ambiguity: amb.2025.hsa_split_spouse_eligible
-  - id: f8889.family_months_ok
+  - id: f8889.family_same
     printed: (helper)
-    label: 'The two spouses'' family months can be matched: the same family amount for both, one spouse treated as having
-      family coverage all year while the other had no eligible month of self-only coverage, or one spouse with no eligible
-      month at all'
+    label: The two spouses' family amounts are the same
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f8889.step1_total
+      - f8889.spouse_family_total
+    cite:
+      doc: i8889
+      locator: 'p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an
+        HDHP with family coverage, you both are treated as having only the family coverage plan"; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.family_other
+    printed: (helper)
+    label: 'The two spouses'' family months can be matched although their family amounts differ: one spouse treated as
+      having family coverage all year while the other had no eligible month of self-only coverage, or one spouse with no
+      eligible month at all'
     type: Bool
     expr:
       op: test
       any:
       - op: test
-        eq:
-        - f8889.step1_total
-        - f8889.spouse_family_total
-      - op: test
         all:
         - op: test
           eq:
@@ -2137,6 +2147,32 @@ form:
           eq:
           - f8889.step4_total
           - const: 0
+    cite:
+      doc: i8889
+      locator: 'p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an
+        HDHP with family coverage, you both are treated as having only the family coverage plan"; p969 p. 6, Rules for married people, "Caution: The rules for married people apply only if both spouses are eligible individuals"'
+    ambiguity: amb.2025.hsa_split_spouse_eligible
+  - id: f8889.family_months_ok
+    printed: (helper)
+    label: 'The two spouses'' family months can be matched: the same family amount for both, one spouse treated as having
+      family coverage all year while the other had no eligible month of self-only coverage, or one spouse with no eligible
+      month at all (the self-only amounts are looked at only once the family amounts are known to differ)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.family_same
+          - const: true
+        then: f8889.yes
+      - guard:
+          op: test
+          eq:
+          - f8889.family_same
+          - const: false
+        then: f8889.family_other
     cite:
       doc: i8889
       locator: 'p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an

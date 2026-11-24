@@ -53,7 +53,7 @@
         "s3"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 18 return P1: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted.",
+      "evidence_note": "Stage 18 return P1: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 19 values asserted here. Lines a predictor marked skipped or blank are not asserted. Line 11 columns (a) and (b) are used (show_annual_ab true): a single filer is not in the married-filing-separately rule that skips them (i8962 p. 16, Line 11, Not an applicable taxpayer); added by hand, predicted from that rule before evaluating.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -147,6 +147,10 @@
         "f8962.line3": {
           "kind": "money",
           "cents": 4000000
+        },
+        "f8962.show_annual_ab": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -854,7 +858,7 @@
         "s3"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 18 return P8: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 13 values asserted here. Lines a predictor marked skipped or blank are not asserted. Shown state (T-232, predicted from the forms before evaluating): with advance payments ($5,000) but line 5 of 79 and no Marketplace-estimate exception, the filer is not an applicable taxpayer, yet Form 8962 is completed (i8962 p. 10, \"However, if no APTC was paid for any individuals in your tax family, stop\"); line 10 is Yes, so line 11 is used without its calculation columns (i8962 p. 10, \"If APTC was paid ... skip lines 7 and 8\") and line 12 is not (i8962 p. 14, \"Check 'Yes' and continue to line 11\"); line 24 ($0) is less than line 25 ($5,000), so line 26 is blank (f8962 line 26, \"If line 25 is greater than line 24, leave this line blank and continue to line 27\").",
+      "evidence_note": "Stage 18 return P8: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 13 values asserted here. Lines a predictor marked skipped or blank are not asserted. Shown state (T-232, predicted from the forms before evaluating): with advance payments ($5,000) but line 5 of 79 and no Marketplace-estimate exception, the filer is not an applicable taxpayer, yet Form 8962 is completed (i8962 p. 10, \"However, if no APTC was paid for any individuals in your tax family, stop\"); line 10 is Yes, so line 11 is used without its calculation columns (i8962 p. 10, \"If APTC was paid ... skip lines 7 and 8\") and line 12 is not (i8962 p. 14, \"Check 'Yes' and continue to line 11\"); line 24 ($0) is less than line 25 ($5,000), so line 26 is blank (f8962 line 26, \"If line 25 is greater than line 24, leave this line blank and continue to line 27\"). Line 11 columns (a) and (b) are used (show_annual_ab true) although the calculation columns are not: only a married-filing-separately filer without Exception 2 skips columns (a) through (e) (i8962 p. 16, Line 11, Not an applicable taxpayer), and this filer is single; added by hand, predicted from that rule before evaluating.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -940,6 +944,10 @@
         "f8962.show_jan": {
           "kind": "bool",
           "value": false
+        },
+        "f8962.show_annual_ab": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -1297,7 +1305,7 @@
         "s3"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 18 return P10: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 87 values asserted here. Lines a predictor marked skipped or blank are not asserted. Shown state (T-232, predicted from the forms before evaluating): line 10 is No and every month has premiums in columns (a) and (b), so lines 12 through 23 are all used (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"), line 12's calculation columns too (line 5 of 366, an applicable taxpayer); line 25 ($6,300) is greater than line 24 ($5,064), so Part III is used (f8962 line 27, \"If line 25 is greater than line 24, subtract line 24 from line 25\"), line 26 is blank, and line 28 is used because line 5 is below 400 (i8962 p. 18, \"If your entry on Form 8962, line 5, is 400 or more, there is no repayment limitation\").",
+      "evidence_note": "Stage 18 return P10: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage18/); they agreed with each other and with the evaluator on all 87 values asserted here. Lines a predictor marked skipped or blank are not asserted. Shown state (T-232, predicted from the forms before evaluating): line 10 is No and every month has premiums in columns (a) and (b), so lines 12 through 23 are all used (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\"), line 12's calculation columns too (line 5 of 366, an applicable taxpayer); line 25 ($6,300) is greater than line 24 ($5,064), so Part III is used (f8962 line 27, \"If line 25 is greater than line 24, subtract line 24 from line 25\"), line 26 is blank, and line 28 is used because line 5 is below 400 (i8962 p. 18, \"If your entry on Form 8962, line 5, is 400 or more, there is no repayment limitation\"). Columns (a) and (b) of each of lines 12 through 23 are used (show_<month>_ab true): an applicable taxpayer filing jointly is not in the married-filing-separately rule that skips columns (a) through (e) (i8962 p. 16, Lines 12 Through 23); added by hand, predicted from that rule before evaluating.",
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
@@ -1784,6 +1792,54 @@
           "value": true
         },
         "f8962.show_dec": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jan_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_feb_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_mar_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_apr_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_may_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jun_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jul_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_aug_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_sep_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_oct_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_nov_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_dec_ab": {
           "kind": "bool",
           "value": true
         }
@@ -6763,6 +6819,304 @@
         "s3.line9": {
           "kind": "money",
           "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mut.f8962.show_ab.monthly_not_applicable",
+      "covers": [
+        "f8962",
+        "f1095a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before evaluating, to tell the display conditions of columns (a) and (b) apart from those of the calculation columns (c) to (e) on a monthly return of a filer who is not an applicable taxpayer for want of income, not for filing separately. Facts: return P8 of stage 18 (single, wages $12,000, line 5 of 79, advance payments and no Marketplace-estimate exception, so not an applicable taxpayer: i8962 p. 10, \"you are not an applicable taxpayer\") with a Form 1095-A whose premiums change in July (January to June A $450, B $430, C $400; July to December A $470, B $440, C $410), so line 10 is No (i8962 p. 14) and lines 12 through 23 are used. Each month: the line is used (show_<month> true); columns (a) and (b) are completed (show_<month>_ab true), since only a married-filing-separately filer without Exception 2 skips columns (a) through (e) (i8962 p. 16, Lines 12 Through 23); the calculation columns are not (show_<month>_calc false). Line 24 is $0 (no credit is allowed), line 25 is the sum of column (f), 6 x $400 + 6 x $410 = $4,860, column (f) of January is $400 and of July $410.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 74400,
+        "person[taxpayer].w2[emp_a].box5": 1200000,
+        "person[taxpayer].w2[emp_a].box6": 17400,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": false,
+        "f1095a[form_1].in_a_jan": 45000,
+        "f1095a[form_1].in_b_jan": 43000,
+        "f1095a[form_1].in_c_jan": 40000,
+        "f1095a[form_1].in_a_feb": 45000,
+        "f1095a[form_1].in_b_feb": 43000,
+        "f1095a[form_1].in_c_feb": 40000,
+        "f1095a[form_1].in_a_mar": 45000,
+        "f1095a[form_1].in_b_mar": 43000,
+        "f1095a[form_1].in_c_mar": 40000,
+        "f1095a[form_1].in_a_apr": 45000,
+        "f1095a[form_1].in_b_apr": 43000,
+        "f1095a[form_1].in_c_apr": 40000,
+        "f1095a[form_1].in_a_may": 45000,
+        "f1095a[form_1].in_b_may": 43000,
+        "f1095a[form_1].in_c_may": 40000,
+        "f1095a[form_1].in_a_jun": 45000,
+        "f1095a[form_1].in_b_jun": 43000,
+        "f1095a[form_1].in_c_jun": 40000,
+        "f1095a[form_1].in_a_jul": 47000,
+        "f1095a[form_1].in_b_jul": 44000,
+        "f1095a[form_1].in_c_jul": 41000,
+        "f1095a[form_1].in_a_aug": 47000,
+        "f1095a[form_1].in_b_aug": 44000,
+        "f1095a[form_1].in_c_aug": 41000,
+        "f1095a[form_1].in_a_sep": 47000,
+        "f1095a[form_1].in_b_sep": 44000,
+        "f1095a[form_1].in_c_sep": 41000,
+        "f1095a[form_1].in_a_oct": 47000,
+        "f1095a[form_1].in_b_oct": 44000,
+        "f1095a[form_1].in_c_oct": 41000,
+        "f1095a[form_1].in_a_nov": 47000,
+        "f1095a[form_1].in_b_nov": 44000,
+        "f1095a[form_1].in_c_nov": 41000,
+        "f1095a[form_1].in_a_dec": 47000,
+        "f1095a[form_1].in_b_dec": 44000,
+        "f1095a[form_1].in_c_dec": 41000
+      },
+      "expect": {
+        "f8962.line5": {
+          "kind": "count",
+          "value": 79
+        },
+        "f8962.line10": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.filing": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line25": {
+          "kind": "money",
+          "cents": 486000
+        },
+        "f8962.line12f": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8962.line18f": {
+          "kind": "money",
+          "cents": 41000
+        },
+        "f8962.show_jan": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jan_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_jan_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_feb": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_feb_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_feb_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_mar": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_mar_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_mar_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_apr": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_apr_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_apr_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_may": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_may_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_may_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jun": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jun_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_jun_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jul": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_jul_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_jul_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_aug": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_aug_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_aug_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_sep": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_sep_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_sep_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_oct": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_oct_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_oct_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_nov": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_nov_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_nov_ab": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_dec": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_dec_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_dec_ab": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "mut.f8962.show_ab.mfs_uniform",
+      "covers": [
+        "f8962",
+        "f1095a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before evaluating. Married filing separately without Exception 2 (so not an applicable taxpayer: i8962 p. 6, Married filing separately), wages $40,000, one Form 1095-A with the same premiums every month (A $500, B $450) and advance payments of $3,500 for the year. Line 10 is Yes, so line 11 is used and lines 12 through 23 are not (i8962 p. 14, \"Check 'Yes' and continue to line 11\"), whatever the monthly premiums: show_jan and show_jul false. On line 11 the filer skips columns (a) through (e) and completes only column (f) (i8962 p. 16, Line 11, Not an applicable taxpayer): show_annual true, show_annual_ab and show_annual_calc false. Line 24 is $0 and line 25 is line 11, column (f), $3,500 (the same paragraph).",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 50000,
+        "f1095a[form_1].mo_b": 45000,
+        "f1095a[form_1].c_total": 350000,
+        "f8962.mfs_exception": false
+      },
+      "expect": {
+        "f8962.line10": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.filing": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line25": {
+          "kind": "money",
+          "cents": 350000
+        },
+        "f8962.show_annual": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_annual_ab": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_annual_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_jan": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_jul": {
+          "kind": "bool",
+          "value": false
         }
       }
     }

@@ -23480,7 +23480,9 @@
         "s1.olympic": false,
         "ssb.any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it2[w0].state_whole": {

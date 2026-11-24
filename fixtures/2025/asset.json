@@ -198,6 +198,43 @@
       }
     },
     {
+      "id": "mut.asset.prior_bonus_assets.this_year_ignored",
+      "covers": [
+        "asset"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before evaluating. Return stage14.asset.bonus_100 (a $20,000 saw placed in service in 2025 taking the 100% special allowance) with a stray answer of $7,000 to the question about the special allowance claimed in an earlier year of placement. The earlier-year allowance that New York's IRC 168(k) test looks for (IT-225-I S-213: property placed in service before 2025) counts only assets placed in service before 2025, so it is $0 for this business; the 2025 allowance (Form 4562 line 14 plus line 25) is $20,000.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 2000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].after_jan19": true,
+        "person[taxpayer].sc[desk].asset[saw].bonus_same": true,
+        "person[taxpayer].sc[desk].asset[saw].prior_bonus": 700000
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].f14": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].sc[desk].prior_bonus_assets": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].bonus_all": {
+          "kind": "money",
+          "cents": 2000000
+        }
+      }
+    },
+    {
       "id": "stage14.asset.bonus_40_before",
       "covers": [
         "asset"
@@ -1184,7 +1221,7 @@
         "asset"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $2,000 computer (not listed; $500 section 179, 100% allowance on the rest $1,500) and $3,000 of listed photographic equipment used 80% (business cost $2,400; $400 section 179; 100% allowance on $2,000), both 2025: line 6 $500, line 14 $1,500, line 25 $2,000, line 29 $400, line 26(h) zero. Schedule C line 13: section 179 $900 (line 12) plus line 14 $1,500 and line 21 (line 28) $2,000: $4,400. Per asset (T-030): the camera's line 25 $2,000 and column (i) $400; the computer's column (c) $2,000 less $500 and $1,500, zero.",
+      "evidence_note": "Stage 14, predicted by hand from the archived instructions before recording: a $2,000 computer (not listed; $500 section 179, 100% allowance on the rest $1,500) and $3,000 of listed photographic equipment used 80% (business cost $2,400; $400 section 179; 100% allowance on $2,000), both 2025: line 6 $500, line 14 $1,500, line 25 $2,000, line 29 $400, line 26(h) zero. Schedule C line 13: section 179 $900 (line 12) plus line 14 $1,500 and line 21 (line 28) $2,000: $4,400. Per asset (T-030): the camera's line 25 $2,000 and column (i) $400; the computer's column (c) $2,000 less $500 and $1,500, zero. The special allowance of the business for New York's IRC 168(k) test (sc.bonus_all) is Form 4562 line 14 plus line 25, $1,500 + $2,000 = $3,500 (IT-225-I A-209 takes the federal special depreciation allowance); added by hand, predicted from the two lines before evaluating.",
       "inputs": {
         "$sc@person[taxpayer]": [
           "d"
@@ -1245,6 +1282,10 @@
         "person[taxpayer].sc[d].asset[pc].col19c": {
           "kind": "money",
           "cents": 0
+        },
+        "person[taxpayer].sc[d].bonus_all": {
+          "kind": "money",
+          "cents": 350000
         }
       }
     },

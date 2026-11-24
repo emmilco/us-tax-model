@@ -315,20 +315,20 @@ TAX_LIMITED_CREDIT_LINES = ["f2441.line11", "s3.line2", "f8863.line19", "s3.line
 # Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
 # every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
 PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|3|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
-                       r"|s8812\.|f2441\.line(9c|10|11)|f8863\.line19|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8863\.line19|f8880\.line(11|12)|f5695\.(rce_limit|rce_credit|line31|line32)|f8962\.)")
 PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
               "(Form 8962) the project figures on these returns")
 # Lines Form 8863 moves: its own lines, Schedule 3 line 3 and Form 1040 line 29, and through them every credit after the
 # education credits, the tax after credits, the payments and the refund.
 EDU_MOVED = re.compile(r"^(f1040\.line(19|2[0-2]|24|28|29|3[2-7]|35a)|s3\.line(3|4|5a|5b|8|15)|s8812\.(line(14|16a|17|27)|clw)"
-                       r"|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8863\.)")
+                       r"|f8880\.line(11|12)|f5695\.(rce_limit|rce_credit|line31|line32)|f8863\.)")
 EDU_NO_REFUND = ("the engine has no Form 8863 line 7 test: it makes 40% of the American opportunity credit refundable on every return, "
                  "where a filer under 24 who is not filing jointly and meets line 7 conditions 1 and 2 checks the line 7 box and has "
                  "no refundable part (i8863 p. 7, Line 7; 26 U.S.C. 25A(i)(6)); returns with the box checked are not compared on the "
                  "lines it moves")
 # Lines Schedule 2 line 8 (Form 5329) moves: Schedule 2 line 21, Form 1040 lines 23 and 24, the pre-credit total and the
 # refund or amount owed. An engine with no Form 5329 is not compared on them where the project has that tax.
-EARLY_MOVED = re.compile(r"^(f1040\.(line(23|24|34|35a|37)|tax_before_credits)|s2\.line(8|21)|person\[[^\]]+\]\.f5329\[)")
+EARLY_MOVED = re.compile(r"^(f1040\.(line(23|24|34|35a|37)|tax_before_credits)|s2\.(line21|tax_favored_accounts)|person\[[^\]]+\]\.f5329\[)")
 EARLY_REASON = ("the engine does not compute Form 5329: it has no input for the code of a Form 1099-R distribution and takes Schedule 2 "
                 "line 8 (if at all) as an entered amount, so on returns where the project figures the 10% (25% for a SIMPLE IRA in its "
                 "first 2 years) additional tax on early distributions, or the 6% tax on HSA excess contributions, its total tax omits it")

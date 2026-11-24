@@ -67,7 +67,7 @@ def gen_case(rng, i):
         "div.box9": 0, "div.box10": 0, "div.box13": 0, "div.basis_reconciled": True,
         "sd.other_forms": False, "sd.carryover": False,
         "qbi.unsupported": False,
-        "qbi.carryforward": 0,
+        "qbi.carryforward": 0, "qbi.unreported_loss": False,
         "f5695.part1_any": False, "f5695.part2_any": False,
         # Schedule 1 line 8 and line 24a: no other income, no gambling (so no losses) and no jury duty pay.
         "s1.line8_other": False, "s1.gambling_winnings": 0, "s1.gambling_pro": False, "s1.line8g": 0, "s1.line8h": 0,
@@ -596,7 +596,7 @@ def add_form_features(r, inputs, facts, features, ages, wages, age):
             part2["insulation"] = r.randint(50_000, 600_000)
         section_b = any(part2[k] for k in ("central_ac", "furnace", "heat_pump"))
         inputs.update({"f5695.part2_any": True, "f5695.business_use": False, "f5695.joint_occupancy": False,
-                       "f5695.separate_homes": False, "f5695.condo": False,
+                       "f5695.separate_homes": False, "f5695.condo": False, "f5695.reconstruct_later": False,
                        "f5695.line17a": True, "f5695.line17b": True, "f5695.line17c": True, "f5695.line17e": False,
                        "f5695.line18a": part2["insulation"], "f5695.line19a": part2["door1"], "f5695.line19d_i": part2["door2"],
                        "f5695.line19d_ii": 0, "f5695.line19e": 0, "f5695.qmid_doors": True,
@@ -680,7 +680,7 @@ def make_joint(case, j):
     return {"id": f"mfj-{j:05d}", "inputs": inputs, "facts": facts, "features": sorted(features)}
 
 
-SC_ZERO = ["line2", "line6", "line8", "line10", "line11", "line14", "line15", "line16a", "line16b", "line17", "line18", "line19",
+SC_ZERO = ["line2", "line6", "line8", "line10", "line11", "line14", "line15", "line16a", "interest_other", "line17", "line18", "line19",
            "rent_equipment", "line20b", "line21", "line22", "line23", "line24a", "meals_50", "meals_80", "meals_100", "line25", "line26", "line48",
            "line35", "line36", "line37", "line38", "line39", "line41"]
 
@@ -740,7 +740,8 @@ SCREENS_NO = {
     "scope.schedule1": ("scope.archer_msa", "scope.armed_forces", "scope.artist_official", "scope.attorney_fees",
                         "scope.business_before", "scope.church_exempt_wages", "scope.clergy", "scope.farm", "scope.k1",
                         "scope.military_move", "scope.nol", "scope.performer_expenses", "scope.recovery", "scope.reforestation",
-                        "scope.religious_work", "scope.rental", "scope.reservist_expenses", "scope.se_plan_other", "scope.w2_marks"),
+                        "scope.religious_work", "scope.remic", "scope.rental", "scope.reservist_expenses", "scope.se_plan_other",
+                        "scope.trade_act_repaid", "scope.w2_marks"),
     "scope.other_income": ("scope.adoption_benefits", "scope.care_benefits_other", "scope.chapter11", "scope.disaster_distribution",
                            "scope.excess_deferral", "scope.medicaid_waiver", "scope.noncitizen", "scope.nonresident", "scope.passive",
                            "scope.pay_no_w2", "scope.reservist_repaid", "scope.treaty"),

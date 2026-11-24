@@ -4656,7 +4656,9 @@
         "f1040.digital_assets": false,
         "sa.mortgage_over_limit_mfs": false,
         "household.mfs_living": "apart_last6",
-        "f8962.mfs_exception": false
+        "f8962.mfs_exception": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "f1095a[form_1].a_jan": {

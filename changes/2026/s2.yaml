@@ -93,8 +93,12 @@ changes:
     - set:
         line: s2.other_tax
         field: cite.locator
-        from: Schedule 2 (2025), lines 1y, 17h to 17m and 17z
-        to: Schedule 2 (2026), lines 1y, 13h to 13m and 13z (draft)
+        from: 'Schedule 2 (2025), lines 1y, 17h to 17m and 17z; p590b p. 26, Recapture tax for changes in distribution method
+          under equal payment exception, "Report the recapture tax (including the interest on the deferral periods) on line
+          4 of Form 5329"'
+        to: 'Schedule 2 (2026), lines 1y, 13h to 13m and 13z (draft); p590b p. 27 (draft), Recapture tax for changes in distribution
+          method under equal payment exception, "Report the recapture tax (including the interest on the deferral periods)
+          on line 4 of Form 5329"'
     - set:
         line: s2.niit
         field: printed

@@ -262,7 +262,7 @@ prepared, and the instruction behind it.
 
 **What it earns.** Every number traces to a cited place on an archived IRS page, pinned by content hash,
 usually with the governing sentence quoted. A
-citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,739 anchors and 8,531 quotes<!-- /figures:readme-citations -->,
+citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,746 anchors and 8,540 quotes<!-- /figures:readme-citations -->,
 with no finding left unruled.
 
 **Where it stops.** A citation proves that a line points at a page. It does not prove that the line
@@ -315,7 +315,7 @@ The build fills in each citation's document revision and content hash from the s
 are no user-defined functions, loops, variables, strings or recursion: the data is a list of
 lines like this one, plus year parameters, pinned tables (the Tax Table is stored cell by cell), refusal
 gates and the ambiguity register. The one escape hatch, `opaque`, a host-language function, is counted
-and published: <!-- figures:readme-opaque -->0 of 6,111 lines use it<!-- /figures:readme-opaque -->.
+and published: <!-- figures:readme-opaque -->0 of 6,115 lines use it<!-- /figures:readme-opaque -->.
 
 Two tools work this layer. The **checker** fails the build unless every reference resolves, the line
 graph has no cycles, every expression type-checks (cents, rates, counts and booleans never mix), every
@@ -366,7 +366,7 @@ are committed under [`reviews/2025/`](reviews/2025/).
 it. It opens with the **scoreboard**: the share of computed lines with at least one assertion from
 outside the Claude model family. Claude wrote most of the encoding, so a Claude reviewer is the reader
 most likely to share its misreadings; the scoreboard counts only evidence from somewhere else.
-<!-- figures:readme-scoreboard -->In the report committed with this page it reads **692 of 3,911 (17.7%)**: 583 lines backed by second-family hand-work (counting lines credited through exact copies of a worked line) and 223 by an outside engine, with overlap.<!-- /figures:readme-scoreboard -->
+<!-- figures:readme-scoreboard -->In the report committed with this page it reads **693 of 4,046 (17.1%)**: 584 lines backed by second-family hand-work (counting lines credited through exact copies of a worked line) and 223 by an outside engine, with overlap.<!-- /figures:readme-scoreboard -->
 
 **Where it stops.** Two models reading the same English can share a misreading. The second family
 reviewed every form, but only 64 of 136 paired reviews qualified when it was last compared; the rest

@@ -7,12 +7,12 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 888 |
-| Killed by the checker | 255 |
-| Killed by fixtures | 580 (3 only by class M cases) |
+| Mutants | 945 |
+| Killed by the checker | 265 |
+| Killed by fixtures | 627 (5 only by class M cases) |
 | Surviving | 53 (53 provably equivalent on every input; 0 equivalent on answered inputs only) |
 | Surviving on unobserved lines (among the provably equivalent) | 0 |
-| Mutation score (raw) | 94.0% |
+| Mutation score (raw) | 94.4% |
 | Mutation score (mutants provably equivalent on every input excluded) | 100.0% |
 | Mutation score (also excluding those equivalent on answered inputs only) | 100.0% |
 
@@ -23,6 +23,8 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 
 | Mutant | Kind | Location | First class M case killing it |
 | --- | --- | --- | --- |
+| operand.ny_it201.ny_it201.rental_re.zero.then1 | replace an operand | ny_it201.ny_it201.rental_re | classm.ny_it201.1.deepseek |
+| operand.ny_it201.ny_it201.line12.rental_re | replace an operand | ny_it201.ny_it201.line12 | classm.ny_it201.1.deepseek |
 | operand.ny_it201.ny_it201.gate.line29.no.then1 | replace an operand | ny_it201.ny_it201.gate.line29 | classm.ny_it201.1 |
 | boundary.ny_it201.ny_it201.estimated_payments_positive | replace strict greater-than with inclusive | ny_it201.ny_it201.estimated_payments_positive | classm.ny_it201.1.deepseek |
 | boundary.ny_it201.ny_it201.has_refund | replace strict greater-than with inclusive | ny_it201.ny_it201.has_refund | classm.ny_it201.1 |
@@ -112,49 +114,49 @@ Known-killed controls (one fixture-killed mutant per line): 7 of 7 rejected by t
 
 | Argument | Held to | Sets | Reaching it | Exercising it | Result |
 | --- | --- | --- | --- | --- | --- |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then0 | all sets | 2656 | 1577 | 935 | holds |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then2 | all sets | 2656 | 880 | 238 | holds |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then3 | all sets | 2656 | 1006 | 364 | holds |
-| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then4 | all sets | 2656 | 784 | 142 | holds |
-| operand.ny_it201.ny_it201.line54e.line54d | all sets | 2656 | 2644 | 0 | holds |
-| operand.ny_it201.ny_it201.line58.line55 | all sets | 2656 | 2195 | 0 | holds |
-| operand.ny_it201.ny_it201.line58.line56 | all sets | 2656 | 2195 | 0 | holds |
-| operand.ny_it201.ny_it201.line58.line57 | all sets | 2656 | 2195 | 0 | holds |
-| operand.ny_it201.ny_it201.est_penalty_balance.no.then1 | all sets | 2656 | 1744 | 0 | holds |
-| operand.ny_it201.ny_it201.line79.zero.then1 | all sets | 2656 | 1834 | 0 | holds |
-| operand.ny_it201.ny_it201.gate.line79_over.line79.gt.0 | all sets | 2656 | 2656 | 2631 | holds |
-| operand.ny_it201.ny_it201.line78.line79 | all sets | 2656 | 152 | 128 | holds |
-| param.ny.city.hoh.b1.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.hoh.b2.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.hoh.b3.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.mfj.b1.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.mfj.b2.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.mfj.b3.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.single.b1.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.single.b2.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.city.single.b3.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.mctmt.zone1.+1pt | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54a, which is ny.zero ($0) behind its refusal gate |
-| param.ny.mctmt.zone2.+1pt | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54b, which is ny.zero ($0) behind its refusal gate |
-| param.ny.rs.hoh.b1.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b2.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b3.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b4.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.hoh.b5.upper.$1 | all sets | 2656 | 3 | 3 | holds |
-| param.ny.rs.hoh.b6.upper.$1 | all sets | 2656 | 3 | 3 | holds |
-| param.ny.rs.hoh.b8.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b1.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b2.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b3.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.mfj.b4.upper.$1 | all sets | 2656 | 1 | 1 | holds |
-| param.ny.rs.mfj.b5.upper.$1 | all sets | 2656 | 3 | 3 | holds |
-| param.ny.rs.mfj.b6.upper.$1 | all sets | 2656 | 3 | 3 | holds |
-| param.ny.rs.mfj.b7.upper.$1 | all sets | 2656 | 3 | 3 | holds |
-| param.ny.rs.mfj.b8.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b1.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b2.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b3.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
-| param.ny.rs.single.b4.upper.$1 | all sets | 2656 | 1 | 1 | holds |
-| param.ny.rs.single.b5.upper.$1 | all sets | 2656 | 3 | 3 | holds |
-| param.ny.rs.single.b6.upper.$1 | all sets | 2656 | 3 | 3 | holds |
-| param.ny.rs.single.b8.upper.$1 | all sets | 2656 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then0 | all sets | 2728 | 1673 | 997 | holds |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then2 | all sets | 2728 | 919 | 243 | holds |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then3 | all sets | 2728 | 1028 | 352 | holds |
+| operand.ny_it201.ny_it201.gate.spouse_nonresident.no.then4 | all sets | 2728 | 812 | 136 | holds |
+| operand.ny_it201.ny_it201.line54e.line54d | all sets | 2728 | 2716 | 0 | holds |
+| operand.ny_it201.ny_it201.line58.line55 | all sets | 2728 | 2231 | 0 | holds |
+| operand.ny_it201.ny_it201.line58.line56 | all sets | 2728 | 2231 | 0 | holds |
+| operand.ny_it201.ny_it201.line58.line57 | all sets | 2728 | 2231 | 0 | holds |
+| operand.ny_it201.ny_it201.est_penalty_balance.no.then1 | all sets | 2728 | 1832 | 0 | holds |
+| operand.ny_it201.ny_it201.line79.zero.then1 | all sets | 2728 | 1922 | 0 | holds |
+| operand.ny_it201.ny_it201.gate.line79_over.line79.gt.0 | all sets | 2728 | 2728 | 2698 | holds |
+| operand.ny_it201.ny_it201.line78.line79 | all sets | 2728 | 159 | 130 | holds |
+| param.ny.city.hoh.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.hoh.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.hoh.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.mfj.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.mfj.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.mfj.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.single.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.single.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.city.single.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.mctmt.zone1.+1pt | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54a, which is ny.zero ($0) behind its refusal gate |
+| param.ny.mctmt.zone2.+1pt | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: the rate multiplies ny_it201.line54b, which is ny.zero ($0) behind its refusal gate |
+| param.ny.rs.hoh.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b4.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.hoh.b5.upper.$1 | all sets | 2728 | 3 | 3 | holds |
+| param.ny.rs.hoh.b6.upper.$1 | all sets | 2728 | 3 | 3 | holds |
+| param.ny.rs.hoh.b8.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.mfj.b4.upper.$1 | all sets | 2728 | 1 | 1 | holds |
+| param.ny.rs.mfj.b5.upper.$1 | all sets | 2728 | 3 | 3 | holds |
+| param.ny.rs.mfj.b6.upper.$1 | all sets | 2728 | 3 | 3 | holds |
+| param.ny.rs.mfj.b7.upper.$1 | all sets | 2728 | 3 | 3 | holds |
+| param.ny.rs.mfj.b8.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b1.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b2.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b3.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
+| param.ny.rs.single.b4.upper.$1 | all sets | 2728 | 1 | 1 | holds |
+| param.ny.rs.single.b5.upper.$1 | all sets | 2728 | 3 | 3 | holds |
+| param.ny.rs.single.b6.upper.$1 | all sets | 2728 | 3 | 3 | holds |
+| param.ny.rs.single.b8.upper.$1 | all sets | 2728 | 0 | 0 | holds; not reachable by a sample: only edge + $1 can differ, and the argument computes both bands' tax there |
 

@@ -596,6 +596,40 @@
           }
         }
       }
+    },
+    {
+      "id": "mut.f8582.mfs_together_roster_open",
+      "covers": [
+        "f8582"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the mfs_together operand of f8582.part2), predicted by hand from the archived sources before running the evaluator. Married filing separately, lived with the spouse during 2025 (household.mfs_living together_late), wages $50,000, Schedule E rentals in scope but the rental list not yet confirmed ($rental withheld). i8582 p. 10, Part II, Caution: a separate filer who lived with the spouse at any time is not eligible for the special allowance and does not complete Part II. Lines 1d and 3 are unknown while the rentals are not listed, but the married-filing-separately conjunct of f8582.part2 is a known false, which decides the test (spec 4.7.2), so part2 is false and line 4 is $0.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "f1040.status": "mfs",
+        "household.mfs_living": "together_late",
+        "$rental": null
+      },
+      "expect": {
+        "f8582.mfs_together": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8582.part2": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.line4": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

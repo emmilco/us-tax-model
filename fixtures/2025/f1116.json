@@ -575,7 +575,7 @@
         "ftc.carryover_no_tax"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending. Line 17 is $0, so line 18 is skipped (f1116 p. 2, line 17, \"If the result is zero or less, skip line 18 and enter -0- on line 19\"): f1116.line18_shown false; added by hand, predicted before evaluating.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "a"
@@ -601,6 +601,10 @@
             "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
             "tax_year": 2025
           }
+        },
+        "f1116.line18_shown": {
+          "kind": "bool",
+          "value": false
         }
       }
     },

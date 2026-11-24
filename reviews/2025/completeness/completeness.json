@@ -3778,7 +3778,7 @@
  },
  {
   "form": "f8889",
-  "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
+  "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
   "used": [
    {
     "doc": "i1040gi",
@@ -3842,17 +3842,25 @@
         "page": "i5329 p. 8"
        },
        {
+        "quote": "Note. If the amount on line 2 is less than the amount on line 12 and you have prior year excess contributions, see Prior Year Excess Contributions, later.",
+        "page": "i8889 p. 8"
+       },
+       {
         "quote": "If your current year contributions from line 2 are less than your current year maximum HSA contribution limit shown on line 12 and you have prior year excess contributions, see the Instructions for Form 5329, Part VII, line 43, for more information.",
         "page": "i8889 p. 8"
+       },
+       {
+        "quote": "You may be able to deduct excess contributions for previous years that are still in your HSA.",
+        "page": "p969 p. 8"
        },
        {
         "quote": "The excess contribution you can deduct for the current year is the lesser of the following two amounts.",
         "page": "p969 p. 8"
        }
       ],
-      "quote": "Also include on your 2025 Form 8889, line 13, the smaller of: • Form 5329, line 43; or • The excess, if any, of Form 5329, line 42, over Form 5329, line 44. / If your current year contributions from line 2 are less than your current year maximum HSA contribution limit shown on line 12 and you have prior year excess contributions, see the Instructions for Form 5329, Part VII, line 43, for more information. / The excess contribution you can deduct for the current year is the lesser of the following two amounts.",
+      "quote": "Also include on your 2025 Form 8889, line 13, the smaller of: • Form 5329, line 43; or • The excess, if any, of Form 5329, line 42, over Form 5329, line 44. / Note. If the amount on line 2 is less than the amount on line 12 and you have prior year excess contributions, see Prior Year Excess Contributions, later. / If your current year contributions from line 2 are less than your current year maximum HSA contribution limit shown on line 12 and you have prior year excess contributions, see the Instructions for Form 5329, Part VII, line 43, for more information. / You may be able to deduct excess contributions for previous years that are still in your HSA. / The excess contribution you can deduct for the current year is the lesser of the following two amounts.",
       "page": "i5329 p. 8; i8889 p. 8; p969 p. 8",
-      "why_uncovered": "Line 13 is figured only as the smaller of line 2 or line 12. No question asks about excess contributions from earlier years that are still in the HSA, and no refusal is triggered by them. A filer whose 2025 contributions are below the limit and who has a prior-year excess therefore loses the extra deduction the rule allows.",
+      "why_uncovered": "Line 13 is computed only as the smaller of line 2 or line 12. No question asks about excess contributions from earlier years still in the HSA, and no refusal fires for them. A filer whose 2025 contributions are under the limit therefore loses the added deduction for carried-over excess contributions.",
       "closest_item": "f8889.line13_figured",
       "effect": "amount"
      },
@@ -3860,62 +3868,30 @@
       "item": "f8889.line2",
       "sentences": [
        {
-        "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
+        "quote": "Contributions to an HSA must be made in cash.",
         "page": "p969 p. 5"
-       }
-      ],
-      "quote": "Contributions to an HSA must be made in cash. Contributions of stock or property aren't allowed.",
-      "page": "p969 p. 5",
-      "why_uncovered": "The line 2 question asks for the amount contributed. It never limits that amount to cash or excludes contributions of stock or property, and no refusal covers them.",
-      "closest_item": "f8889.line2",
-      "effect": "amount"
-     },
-     {
-      "item": "f8889.line9",
-      "sentences": [
+       },
+       {
+        "quote": "Contributions of stock or property aren't allowed.",
+        "page": "p969 p. 5"
+       },
        {
         "quote": "The partner, if an eligible individual as defined in section 223(c)(1), is entitled to deduct the amount of the contributions made to the partner’s HSA during the tax year as an adjustment to gross income on their federal income tax return.",
-        "page": "p969 p. 7"
+        "page": "p969 pp. 7-8"
        },
        {
-        "quote": "Contributions by a partnership to a partner’s HSA for services rendered to the partnership that are treated as guaranteed payments are deductible by the partnership and are includible in the partner’s gross income.",
+        "quote": "Contributions by an S corporation to a 2% shareholder-employee’s HSA for services rendered are treated as guaranteed payments and are deductible by the S corporation and includible in the shareholder-employee’s gross income.",
         "page": "p969 p. 8"
        },
        {
-        "quote": "Contributions by an S corporation to a 2% shareholder-employee’s HSA for services rendered are treated as guaranteed payments and are deductible by the S corporation and includible in the shareholder-employee’s gross income. The shareholder-employee can deduct the contribution made to the shareholder-employee’s HSA.",
-        "page": "p969 p. 8"
-       }
-      ],
-      "quote": "The partner, if an eligible individual as defined in section 223(c)(1), is entitled to deduct the amount of the contributions made to the partner’s HSA during the tax year as an adjustment to gross income on their federal income tax return. / Contributions by a partnership to a partner’s HSA for services rendered to the partnership that are treated as guaranteed payments are deductible by the partnership and are includible in the partner’s gross income. / Contributions by an S corporation to a 2% shareholder-employee’s HSA for services rendered are treated as guaranteed payments and are deductible by the S corporation and includible in the shareholder-employee’s gross income. The shareholder-employee can deduct the contribution made to the shareholder-employee’s HSA.",
-      "page": "p969 p. 7; p969 p. 8",
-      "why_uncovered": "The line 9 question sends all employer contributions, including W-2 box 12 code W amounts, to line 9, and the line 2 question excludes employer contributions. Neither question says that partnership contributions and contributions for a 2% S corporation shareholder are deductible by the person, so they belong on line 2. Nothing refuses these cases. As encoded, such contributions would cut the limit instead of being deducted.",
-      "closest_item": "f8889.line9",
-      "effect": "amount"
-     },
-     {
-      "item": "f8889.medical",
-      "sentences": [
-       {
-        "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.",
-        "page": "i8889 p. 8"
-       },
-       {
-        "quote": "However, the distribution of an excess contribution taken out after the due date, including extensions, of your return is subject to tax even if used for qualified medical expenses.",
-        "page": "p969 p. 9"
-       },
-       {
-        "quote": "The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually.",
-        "page": "p969 p. 9"
-       },
-       {
-        "quote": "An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.",
+        "quote": "The shareholder-employee can deduct the contribution made to the shareholder-employee’s HSA.",
         "page": "p969 p. 8"
        }
       ],
-      "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses. / However, the distribution of an excess contribution taken out after the due date, including extensions, of your return is subject to tax even if used for qualified medical expenses. / The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually. / An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.",
-      "page": "i8889 p. 8; p969 p. 9; p969 p. 8",
-      "why_uncovered": "The qualified-medical-expense questions (medical and medical_all) count long-term care insurance premiums with no age-based limit. They do not leave out excess contributions withdrawn after the due date. They also do not say that an HSA funded by a rollover counts as established when the earlier account was established. The excess_withdrawn refusal only covers withdrawals made by the due date. The code-2 refusal depends on how the trustee coded the distribution, not on when it was withdrawn.",
-      "closest_item": "f8889.medical",
+      "quote": "Contributions to an HSA must be made in cash. / Contributions of stock or property aren't allowed. / The partner, if an eligible individual as defined in section 223(c)(1), is entitled to deduct the amount of the contributions made to the partner’s HSA during the tax year as an adjustment to gross income on their federal income tax return. / Contributions by an S corporation to a 2% shareholder-employee’s HSA for services rendered are treated as guaranteed payments and are deductible by the S corporation and includible in the shareholder-employee’s gross income. / The shareholder-employee can deduct the contribution made to the shareholder-employee’s HSA.",
+      "page": "p969 p. 5; p969 pp. 7-8; p969 p. 8",
+      "why_uncovered": "The line 2 question tells the filer to leave out employer contributions. It does not say that contributions by a partnership to a partner, or by an S corporation to a 2% shareholder, are deductible by that person and so belong on line 2 rather than line 9. It also never says that only cash contributions are allowed. No refusal covers partnership or S-corporation HSA contributions or contributions of property.",
+      "closest_item": "f8889.line2",
       "effect": "amount"
      },
      {
@@ -3928,7 +3904,7 @@
       ],
       "quote": "Coverage during a grace period by a general purpose health FSA is allowed if the balance in the health FSA at the end of its prior-year plan is zero.",
       "page": "p969 p. 5",
-      "why_uncovered": "The FSA question counts coverage by a general-purpose health FSA at any time in 2025 and lists only limited-purpose, post-deductible, suspended and retiree-only arrangements as exceptions. A filer covered only during a grace period after a prior-year balance of zero would answer yes and be wrongly treated as not eligible.",
+      "why_uncovered": "The FSA/HRA question lists the arrangements to leave out (limited-purpose, post-deductible, suspended, retiree-only). It does not exclude grace-period coverage under a general-purpose health FSA whose prior-year balance was zero. Such a filer would answer yes and be wrongly moved off full-year eligibility. The months-eligible question does not explain this exception either.",
       "closest_item": "f8889.fsa",
       "effect": "eligibility"
      },
@@ -3940,32 +3916,22 @@
         "page": "p969 p. 4"
        },
        {
-        "quote": "Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
+        "quote": "Caution: Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
         "page": "p969 p. 5"
-       }
-      ],
-      "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs.",
-      "page": "p969 p. 4; p969 p. 5",
-      "why_uncovered": "The coverage questions ask whether the filer had a 'high-deductible health plan' but never give these disqualifying rules. One is a family plan whose per-member deductible is below the family minimum. The other is a plan whose coverage is substantially all disregarded coverage. Nothing asks about either case or refuses it.",
-      "closest_item": "f8889.coverage_year",
-      "effect": "eligibility"
-     },
-     {
-      "item": "f8889.clear_all_year",
-      "sentences": [
+       },
        {
         "quote": "If you can receive benefits before that deductible is met, you aren't an eligible individual.",
         "page": "p969 p. 5"
        }
       ],
-      "quote": "If you can receive benefits before that deductible is met, you aren't an eligible individual.",
-      "page": "p969 p. 5",
-      "why_uncovered": "The question about other health coverage lists the coverage the instructions disregard. It does not say that a prescription drug plan or rider paying benefits before the HDHP minimum deductible is met makes the filer ineligible. A filer could treat such a plan as part of the HDHP and answer yes.",
-      "closest_item": "f8889.clear_all_year",
+      "quote": "If either the deductible for the family as a whole or the deductible for an individual family member is less than the minimum annual deductible for family coverage, the plan doesn't qualify as an HDHP. / Caution: Plans in which substantially all of the coverage is through the items listed earlier aren't HDHPs. / If you can receive benefits before that deductible is met, you aren't an eligible individual.",
+      "page": "p969 p. 4; p969 p. 5",
+      "why_uncovered": "The coverage questions ask only whether the filer had a 'high-deductible health plan' and never give the tests that disqualify a plan. Those tests are: an embedded individual deductible below the family minimum; a plan made up substantially of disregarded coverage; and a prescription drug plan that pays benefits before the deductible is met. Nothing refuses these cases.",
+      "closest_item": "f8889.coverage_year",
       "effect": "eligibility"
      },
      {
-      "item": "f8889.dec_coverage",
+      "item": "f8889.coverage",
       "sentences": [
        {
         "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
@@ -3978,15 +3944,37 @@
       ],
       "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
       "page": "i8889 p. 4",
-      "why_uncovered": "No encoded item computes the line 1 coverage checkbox. The rules for which box to check are not implemented anywhere.",
-      "closest_item": "f8889.dec_coverage",
+      "why_uncovered": "No encoded item produces the line 1 coverage checkbox, so the rules for choosing which box to check are not implemented.",
+      "closest_item": "f8889.coverage",
       "effect": "presentation"
+     },
+     {
+      "item": "f8889.medical",
+      "sentences": [
+       {
+        "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.",
+        "page": "i8889 p. 8"
+       },
+       {
+        "quote": "An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.",
+        "page": "p969 p. 8"
+       },
+       {
+        "quote": "The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually.",
+        "page": "p969 p. 9"
+       }
+      ],
+      "quote": "Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses. / An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established. / The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually.",
+      "page": "i8889 p. 8; p969 p. 8; p969 p. 9",
+      "why_uncovered": "The qualified-medical-expense questions (medical and medical_all) leave out three rules. First, they do not exclude prior-year excess contributions withdrawn after the due date. The excess_withdrawn refusal covers only withdrawals of 2025 excess by the 2025 due date, and a late removal may carry code 1. Second, they do not say that an HSA funded by a rollover is treated as established on the prior account's date, which moves the 'incurred after established' cutoff. Third, they do not apply the age-based limit on long-term care premiums.",
+      "closest_item": "f8889.medical",
+      "effect": "amount"
      }
     ],
-    "cost": 0.37706399999999995,
+    "cost": 0.37286400000000003,
     "model": "claude-opus-5-5",
     "date": "2026-11-23",
-    "response": ".transcription/completeness/f8889.de85a46f1d1f.1.response.txt"
+    "response": ".transcription/completeness/f8889.0d732d087089.1.response.txt"
    }
   ]
  },

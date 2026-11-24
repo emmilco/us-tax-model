@@ -1543,6 +1543,89 @@
           }
         }
       }
+    },
+    {
+      "id": "mut.f8960.election_6013g_over_line16",
+      "covers": [
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the used operand of f8960.between), predicted by hand from the archived sources before running the evaluator. Inputs of mf.f8960.election_6013g_over_threshold: married filing jointly with a section 6013(g) election, wages $300,000, no digital assets (Schedule 1 line 8v $0), so adjusted gross income is $300,000, over the $250,000 joint threshold (i8960 p. 2): Form 8960 is filed (f8960.used true), f8960.between (over half the threshold but Form 8960 not otherwise filed) is false, and line 16's own election gate (f8960.election_between) does not refuse. Line 16 is then the smaller of lines 12 and 15, and line 12 reads line 8, which reads line 1, refused at the line 1 election gate (i8960 p. 3 and p. 7, Line 1): line 16 is line 1's refusal, at f8960.election_6013g_if_joint.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "scope.noncitizen": true,
+        "scope.nonresident": false,
+        "f8960.election_6013g": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 30000000,
+        "person[taxpayer].w2[emp_a].box2": 4500000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 30000000,
+        "person[taxpayer].w2[emp_a].box6": 525000
+      },
+      "expect": {
+        "f8960.between": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8960.line16": {
+          "kind": "refusal",
+          "gate": "f8960.election_6013g_if_joint",
+          "form": "Form 8960, line 1 checkboxes (section 6013(g) or 6013(h) election)",
+          "remedy": "A joint return made by choosing to treat a nonresident spouse as a U.S. resident needs a further choice for the net investment income tax (to apply that election to it, or to figure it as if filing separately); this is outside this tool.",
+          "cite": {
+            "doc": "i8960",
+            "locator": "p. 3, \"If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don’t elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you’ll be treated under the default method as married filing separately\"",
+            "revision": "2025; printed date 2026-02-04",
+            "snapshot": "b10fbb23ff4a053db197285497a00914c558e3ae0cdf5c956b7c0c7867376428",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mut.f8960.election_6013g_between_line9b",
+      "covers": [
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the no operand of f8960.bad_allocation), predicted by hand from the archived sources before running the evaluator. Inputs of f8960.refuse.election_6013g_between_thresholds: married filing jointly with a section 6013(g) election, wages $200,000, standard deduction (no itemizing). Line 9b is the state, local and foreign taxes attributable to net investment income (i8960, Line 9b), and a deduction counts for net investment income only if it is allowable in figuring taxable income (i8960, Line 9c, section 1411(c)(1)(B)); without itemized deductions none is, so line 9b is $0, and its gate f8960.bad_allocation (an allocation over the Schedule A tax deduction) is no. That holds although line 16 refuses at f8960.election_between on this return.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "scope.noncitizen": true,
+        "scope.nonresident": false,
+        "f8960.election_6013g": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 20000000,
+        "person[taxpayer].w2[emp_a].box2": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 1091820,
+        "person[taxpayer].w2[emp_a].box5": 20000000,
+        "person[taxpayer].w2[emp_a].box6": 290000
+      },
+      "expect": {
+        "f8960.bad_allocation": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8960.line9b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

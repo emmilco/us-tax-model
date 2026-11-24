@@ -178,7 +178,9 @@
         "sd.qof": false,
         "sd.carryover": false,
         "sli.any": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it2[w0].state_whole": {

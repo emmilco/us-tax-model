@@ -117,8 +117,9 @@ def workers():
 
 # The settings a check-all run (release mode above all) gives its own steps. A self-test sets up the cases it tests
 # and expects the tool's defaults otherwise, so they are not passed on: ENGINE_CACHE=verify makes the cache
-# self-tests miss every reuse they test, and AGENT_RUNS_FOLD=0 stops the fold the check_all_bg self-test expects.
-RUN_SETTINGS = ("ENGINE_CACHE", "AGENT_RUNS_FOLD", "CHECK_ALL_RELEASE", "CHECK_ALL_ALLOW_OPEN_BUGS")
+# self-tests miss every reuse they test, AGENT_RUNS_FOLD=0 stops the fold the check_all_bg self-test expects, and
+# CHECK_ALL_PREFLIGHT=done (which check_all_bg.sh exports) skips the stub preflight that self-test checks.
+RUN_SETTINGS = ("ENGINE_CACHE", "AGENT_RUNS_FOLD", "CHECK_ALL_RELEASE", "CHECK_ALL_ALLOW_OPEN_BUGS", "CHECK_ALL_PREFLIGHT")
 
 
 def run_one(test, year_args):

@@ -69663,7 +69663,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.line38": {
@@ -70028,7 +70030,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.line1": {
@@ -76596,7 +76600,9 @@
         "ny_it201.ask.apply_any": false,
         "ny_it201.ask.est_any": false,
         "sd.qof": false,
-        "f1040.digital_assets": false
+        "f1040.digital_assets": false,
+        "scope.trade_act_repaid": false,
+        "scope.remic": false
       },
       "expect": {
         "ny_it201.item_c": {

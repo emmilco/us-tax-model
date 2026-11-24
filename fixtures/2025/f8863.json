@@ -3057,6 +3057,69 @@
       }
     },
     {
+      "id": "mut.f8863.claimed_filer_llc_expenses",
+      "covers": [
+        "f8863",
+        "aqee",
+        "person",
+        "dependent"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before evaluating. Blind return E3 of stage 19 with its qualified expenses (the filer's $5,000 and the daughter's $7,200, both lifetime learning credit students, so line 10 would be $12,200 and line 11 the $10,000 cap), where the filer is claimed as a dependent on another return (person[taxpayer].sav_claimed true): i8863 p. 3, \"You cannot claim an education credit ... 1. You're claimed as a dependent on another person's tax return\". Form 8863 is not eligible, lines 10 and 11 are $0 although each student's line 31 is figured, and Form 1040 line 29 is $0.",
+      "inputs": {
+        "$dependent": [
+          "daughter"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "dependent[daughter].age": 22,
+        "dependent[daughter].edu": true,
+        "dependent[daughter].edu_1098t": true,
+        "dependent[daughter].edu_tin_issued": true,
+        "dependent[daughter].edu_inst": 720000,
+        "dependent[daughter].edu_line24": true,
+        "dependent[daughter].edu_line25": true,
+        "dependent[daughter].months": 12,
+        "dependent[daughter].student": true,
+        "f1040.status": "hoh",
+        "f8863.paid": true,
+        "household.home_cost": true,
+        "household.considered_unmarried": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_inst": 500000,
+        "person[taxpayer].w2[emp_a].box1": 6200000,
+        "person[taxpayer].w2[emp_a].box2": 496000,
+        "person[taxpayer].w2[emp_a].box4": 384400,
+        "person[taxpayer].w2[emp_a].box5": 6200000,
+        "person[taxpayer].w2[emp_a].box6": 89900,
+        "person[taxpayer].sav_claimed": true
+      },
+      "expect": {
+        "f8863.eligible": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8863.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8863.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8863.line19": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line29": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
       "id": "stage19.f8863.claimed_person_answer",
       "covers": [
         "f8863.claimed_count",

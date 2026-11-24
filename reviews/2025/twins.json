@@ -77,6 +77,10 @@
   "dependent.edu_tin_issued": {
    "reason": "dependent.tin counts a number applied for as well as one issued, so whether it was issued by the due date, which the lifetime learning credit needs, is asked separately; for a person on the return that is person.tin.",
    "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\"; p. 3, Table 1, \"Students must have been issued a TIN by the due date of their 2025 return (including extensions)\""
+  },
+  "person.edu_tin_missing": {
+   "reason": "The person's lifetime learning credit number test, the true branch of person.edu_llc_tin_refused (a choice, so person.tin is read only for a lifetime learning credit student); the dependent's gate tests dependent.edu_tin_issued directly in an all-test and needs no helper.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
   }
  },
  "differences": [
@@ -154,10 +158,122 @@
   },
   {
    "pair": "edu_llc_tin_refused",
+   "field": "expr.all[0].eq[0]",
+   "person": null,
+   "dependent": "dependent.edu_llc",
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.all[0].eq[1].const",
+   "person": null,
+   "dependent": true,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.all[0].op",
+   "person": null,
+   "dependent": "test",
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
    "field": "expr.all[1].eq[0]",
-   "person": "person.tin",
+   "person": null,
    "dependent": "dependent.edu_tin_issued",
-   "reason": "Whether the number was issued by the due date is person.tin itself for a person on the return; dependent.tin also counts a number applied for, so the dependent side asks issued separately (the dependent-only input dependent.edu_tin_issued).",
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.all[1].eq[1].const",
+   "person": null,
+   "dependent": false,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.all[1].op",
+   "person": null,
+   "dependent": "test",
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[0].guard.eq[0]",
+   "person": "person.edu_llc",
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[0].guard.eq[1].const",
+   "person": true,
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[0].guard.op",
+   "person": "test",
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[0].then",
+   "person": "person.edu_tin_missing",
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[1].guard.eq[0]",
+   "person": "person.edu_llc",
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[1].guard.eq[1].const",
+   "person": false,
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[1].guard.op",
+   "person": "test",
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.alternatives[1].then",
+   "person": "person.no",
+   "dependent": null,
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
+   "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
+  },
+  {
+   "pair": "edu_llc_tin_refused",
+   "field": "expr.op",
+   "person": "choose",
+   "dependent": "test",
+   "reason": "The person's gate became a choice on person.edu_llc (true: the helper person.edu_tin_missing, the test person.tin = false; false: person.no) under BUG-1214, whose interview-rules finding was that the all-test read person.tin before person.edu was answered. That finding named no reach of dependent.edu_tin_issued, so the dependent's gate was left an all-test on dependent.edu_llc and dependent.edu_tin_issued. The two forms give the same value wherever both operands are known.",
    "source": "i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).\""
   },
   {

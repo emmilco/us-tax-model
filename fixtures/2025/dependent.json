@@ -7450,6 +7450,49 @@
           "cents": 50000
         }
       }
+    },
+    {
+      "id": "mut.dependent.twin_not_younger",
+      "covers": [
+        "dependent.qc_age_younger",
+        "dependent.qc_age",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Mutation fixture (dependent.qc_age_younger's younger-false alternative). Single filer born in 2007 (18 at the end of 2025), wages $15,000, did not pay over half the cost of keeping up a home; lived all year with a twin brother of 18 (not younger than the filer, not disabled, not a student). i1040gi p. 17 and p. 41 (EIC Step 3): a qualifying child is under 19 \"and younger than you\", or any age and permanently and totally disabled; the twin is neither, so the filer has no EIC qualifying child. EIC Step 4, question 2: the filer is under 25, STOP. Line 27a $0 (with the twin counted as a qualifying child it would be $4,328).",
+      "inputs": {
+        "f1040.status": "single",
+        "household.home_cost": false,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750,
+        "$dependent": [
+          "twin"
+        ],
+        "dependent[twin].relationship": "sibling",
+        "dependent[twin].age": 18,
+        "dependent[twin].months": 12,
+        "dependent[twin].younger": false,
+        "dependent[twin].disabled": false,
+        "dependent[twin].student": false,
+        "person[taxpayer].birth_year": 2007,
+        "eic.lived_with_relative": true,
+        "eic.qc_of_another": false
+      },
+      "expect": {
+        "dependent[twin].qc_age": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

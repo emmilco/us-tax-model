@@ -4486,6 +4486,53 @@
           "cents": 104400
         }
       }
+    },
+    {
+      "id": "mut.f1040.split_exact",
+      "covers": [
+        "f1040.split_checked"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before the evaluator was run from i1040gi p. 65, Line 38, \"Lines 35a, 36, and 38 must equal line 34\". Return adlow.f1040.split_within (line 34 $1,054) with line 35a $554 and line 36 $500: together exactly line 34, which the instruction allows (line 38 is then $0), so no refusal: the check line is $1,054.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "person[taxpayer].w2[e0].box2": 1000000,
+        "f1040.line35a": 55400,
+        "f1040.line36": 50000
+      },
+      "expect": {
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 105400
+        },
+        "f1040.split_bad": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.split_checked": {
+          "kind": "money",
+          "cents": 105400
+        }
+      }
     }
   ]
 }

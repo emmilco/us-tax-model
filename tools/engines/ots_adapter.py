@@ -631,21 +631,21 @@ OTS_PASS_THROUGH = {"lines": [], "components": {
 # Lines a Form 1095-A moves: Schedule 3 line 9 and Schedule 2 line 1a, and through Form 1040 lines 17, 18 and 31 the tax,
 # every credit the tax limits, the payments and the refund. Engines given no Form 1095-A are not compared on them there.
 PTC_MOVED = re.compile(r"^(f1040\.line(1[7-9]|2[0-9]|3[0-9]|35a)|f1040\.tax_before_credits|s3\.line(2|3|4|5a|5b|8|9|15)|s2\.line(1a|1z|3|21)"
-                       r"|s8812\.|f2441\.line(9c|10|11)|f8863\.line19|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8962\.)")
+                       r"|s8812\.|f2441\.line(9c|10|11)|f8863\.line19|f8880\.line(11|12)|f5695\.(rce_limit|rce_credit|line31|line32)|f8962\.)")
 PTC_REASON = ("the engine is given no Form 1095-A, so its tax, credits and payments omit the premium tax credit reconciliation "
               "(Form 8962) the project figures on these returns")
 
 # Lines Form 8863 moves: its own lines, Schedule 3 line 3 and Form 1040 line 29, and through them every credit after the
 # education credits, the tax after credits, the payments and the refund.
 EDU_MOVED = re.compile(r"^(f1040\.line(19|2[0-2]|24|28|29|3[2-7]|35a)|s3\.line(3|4|5a|5b|8|15)|s8812\.(line(14|16a|17|27)|clw)"
-                       r"|f8880\.line(11|12)|f5695\.line(14|15|31|32)|f8863\.)")
+                       r"|f8880\.line(11|12)|f5695\.(rce_limit|rce_credit|line31|line32)|f8863\.)")
 EDU_REASON = ("OpenTaxSolver does not compute Form 8863: it reads Schedule 3 line 3 and Form 1040 line 29 as entered amounts, and the "
               "engine is given none, so its credits after the education credits, its tax after credits and its payments omit the "
               "education credits the project figures on these returns")
 
 # Lines Schedule 2 line 8 (Form 5329) moves: Schedule 2 line 21, Form 1040 lines 23 and 24, the pre-credit total and the
 # refund or amount owed.
-EARLY_MOVED = re.compile(r"^(f1040\.(line(23|24|34|35a|37)|tax_before_credits)|s2\.line(8|21)|person\[[^\]]+\]\.f5329\[)")
+EARLY_MOVED = re.compile(r"^(f1040\.(line(23|24|34|35a|37)|tax_before_credits)|s2\.(line21|tax_favored_accounts)|person\[[^\]]+\]\.f5329\[)")
 EARLY_REASON = ("OpenTaxSolver does not compute Form 5329: it reads Schedule 2 line 8 as an entered amount (S2_8, \"Additional tax on IRAs, "
                 "other qualified retirement plans, Form 5329\"), which could only echo a supplied figure, and the engine is given none, so "
                 "on returns where the project figures the additional tax on early distributions or on HSA excess contributions its "

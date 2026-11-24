@@ -343,41 +343,6 @@
    "subject_sha": "c019938396531fe42b811c81e90ec17c0fd48d30bc857144b201bed38cf80b77",
    "line": "person.sav_student"
   },
-  "unruled:f8889#1.1": {
-   "class": "out of scope",
-   "evidence": "i8889 p. 8; i5329 p. 8. A prior-year excess still in the HSA is asked of every person with an HSA by person.x_hsa_prior_excess ('was more put into your HSA than the limit for the year, with some of the extra still in the account at the start of 2025?') and refused, so the line 13 addition is never needed.",
-   "gate": "person.x_hsa_prior_excess",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:f8889#1.2": {
-   "class": "covered",
-   "evidence": "p969 p. 5. f8889.line2 help: 'Only money can be put in, not stock or other property.'",
-   "line": "f8889.line2",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:f8889#1.3": {
-   "class": "out of scope",
-   "evidence": "p969 pp. 7-8. A partner or an S corporation shareholder has a Schedule K-1, and scope.k1 ('Income or a loss from a partnership, S corporation, estate or trust ... A Yes ends the interview here') refuses the return; the 2% shareholder case stays recorded in BUG-0877 (1), open, low.",
-   "gate": "scope.k1",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:f8889#1.4": {
-   "class": "real gap",
-   "evidence": "p969 pp. 8-9; i8889 p. 8. f8889.medical counts long-term care premiums with no age-based limit and says costs must date 'from after you opened the HSA' without the rollover rule; the after-due-date excess distribution is reachable only through refusals. Already filed as BUG-0877 (open, low).",
-   "bug": "BUG-0877",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:f8889#1.5": {
-   "class": "covered",
-   "line": "f8889.fsa",
-   "evidence": "p969 p. 5, Health FSA grace period. f8889.fsa's help now says 'A 2024 health FSA's extra months in early 2025 count only if money was left in it at the end of 2024', so a grace period with a zero prior-year balance is answered No. (Carried from the earlier subject's ruling of the same claim, unruled:f8889#1.4; rechecked against the current encoding.)",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
-  },
   "unruled:f8919#1.1": {
    "class": "covered",
    "evidence": "f8919 p. 1, Who must file. scope.contractor_pay asks the three conditions together: 'did a firm pay you ... as an independent contractor, when you believe you were its employee, without taking out social security or Medicare tax?'; the firms are then listed in f8919firm, each with f8919firm.reason (codes A, C, G, H). The reason help says 'If none of these fits but you believe you were an employee, choose the third and send Form SS-8 to the IRS by the day you file. With the last one, do not send Form SS-8.' So eligibility, the code and the SS-8 rule are asked.",
@@ -1547,12 +1512,6 @@
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "gate": "scope.other_income"
   },
-  "unruled:f8889#1.8": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4, Line 1. The self-only/family checkbox is not encoded, but the amounts it would select are figured from the coverage answers: f8889.coverage_year (self-only all year, family all year, or changed, counted month by month) and f8889.dec_coverage for the last-month rule set line 3. The checkbox changes no amount. (Carried from the earlier subject's ruling of the same claim, unruled:f8889#1.5; rechecked against the current encoding.)",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
-  },
   "unruled:sd#1.2": {
    "class": "out of scope",
    "evidence": "i1040sd p. 10: a 2025 separate return after a 2024 joint return is a Yes to clcw.spouse_screen ('the 2024 return these figures come from was a joint return, and for 2025 you are not filing a joint return with the same spouse'), refused on clcw.line1; an excluded canceled debt (Form 982) is refused by s1.cod_refused. (Carried from the earlier subject's ruling of the same claim, unruled:sd#1.1; rechecked against the current encoding.)",
@@ -1565,20 +1524,6 @@
    "evidence": "f4952 p. 4: 'Once made, the election can be revoked only with IRS consent.' The f4952.line4g help shown with the question: 'Once made, it can be undone only with IRS consent.' The tool prepares a return making the election; it does not compute a revocation.",
    "line": "f4952.line4g",
    "subject_sha": "94fb3996f1653791b7a66972bbf3016fc73f1b15c1233a7b41af31c25c75e71f",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:f8889#1.6": {
-   "class": "covered",
-   "evidence": "p969 pp. 4-5. f8889.coverage_year help: 'A plan covering more than one person does not count if its deductible for any one person on it is below $3,300', and 'plan papers usually call such a plan “HSA-eligible” or “HDHP”', which a plan of substantially all disregarded coverage is not.",
-   "line": "f8889.coverage_year",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:f8889#1.7": {
-   "class": "covered",
-   "evidence": "p969 p. 5. f8889.clear_all_year help: 'Other health coverage means a second plan that pays medical bills before the high deductible is met'; a drug plan paying before the deductible is such coverage.",
-   "line": "f8889.clear_all_year",
-   "subject_sha": "de85a46f1d1fd1087f8b54475391812a61d622b11c07effb2963093f08d18d05",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:household#1.4": {
@@ -1625,6 +1570,47 @@
    "gate": "person.se_screen",
    "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+  },
+  "unruled:f8889#1.1": {
+   "class": "out of scope",
+   "evidence": "i5329 p. 8; i8889 p. 8; p969 p. 8. Line 13's addition for a prior year's excess still in the HSA arises only for a filer with such an excess. person.x_hsa_prior_excess asks it of every person who listed an HSA ('Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 ...'), and a Yes refuses through the Form 5329 gate person.x_other (any of the parts this tool does not prepare, including person.x_hsa_prior_excess_if_hsa). (Same claim as the earlier subject's f8889#1.1, rechecked against the current encoding.)",
+   "gate": "person.x_other",
+   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
+   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:f8889#1.2": {
+   "class": "real gap",
+   "evidence": "p969 p. 5: cash only is covered (f8889.line2 help: 'Only money can be put in, not stock or other property.'). p969 pp. 7-8 and p. 8: a partnership's contribution for a partner and an S corporation's for a 2% shareholder-employee are deductible on line 2; f8889.line2's help says to leave out what the employer put in, and BUG-0877 (1) records that a Schedule K-1 (Form 1120-S) filer is in scope (k1s), so the case is reached. Already filed, open, low.",
+   "bug": "BUG-0877",
+   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
+   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:f8889#1.3": {
+   "class": "covered",
+   "line": "f8889.fsa",
+   "evidence": "p969 p. 5, Health FSA grace period. The f8889.fsa help says a 2024 health FSA's 'extra months in early 2025 count only if money was left in it at the end of 2024', so grace-period coverage with a zero prior-year balance is answered No. (Same claim as the earlier subject's f8889#1.5, rechecked.)",
+   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
+   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:f8889#1.4": {
+   "class": "covered",
+   "line": "f8889.coverage_year",
+   "evidence": "p969 pp. 4-5. f8889.coverage_year help: 'A plan covering more than one person does not count if its deductible for any one person on it is below $3,300' (the embedded-deductible test) and 'plan papers usually call such a plan “HSA-eligible” or “HDHP”', which a plan of substantially all disregarded coverage is not; the prescription-drug sentence is answered by f8889.clear_all_year's help, 'Other health coverage means a second plan that pays medical bills before the high deductible is met'. (Same claims as the earlier subject's f8889#1.6 and #1.7, rechecked.)",
+   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
+   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:f8889#1.5": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4, Line 1. The self-only/family checkbox is not encoded; the amounts it would select are figured from f8889.coverage_year (month by month when it changed) and the last-month rule's December coverage. The checkbox changes no amount. (Same claim as the earlier subject's f8889#1.8, rechecked.)",
+   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
+   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:f8889#1.6": {
+   "class": "real gap",
+   "evidence": "p969 p. 9 (long-term care premiums limited by age) and p969 p. 8 (a rollover-funded HSA is established on the prior account's date): f8889.medical's help counts long-term care premiums with no age limit and says costs must 'date from after you opened the HSA' without the rollover rule; both are BUG-0877 (2) and (3), open, low. i8889 p. 8 (a prior year's excess withdrawn after the due date): a prior-year excess is refused at person.x_other. (Same claim as the earlier subject's f8889#1.4, rechecked.)",
+   "bug": "BUG-0877",
+   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
+   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   }
  },
  "baseline": {}

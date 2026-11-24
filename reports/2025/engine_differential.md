@@ -4,7 +4,7 @@ Cases: 1700 generated returns, single, head of household and married filing join
 
 `table-adjusted` means the engine equals the project's tax lines recomputed with every Tax Table lookup replaced by the rate schedule (engines compute from the schedule where the form prescribes the table), keeping the worksheet path and re-taking its smaller-of; an identified cause, not a tolerance. For Form 1040 line 27a, `table-adjusted` means the engine is within $1 of the project's Worksheet A path recomputed with each EIC Table lookup replaced by the credit at the exact amount (the engines compute from the formula where the instructions prescribe the table built at each $50 band's midpoint); the $1 allows for the engines' statutory percentages, which the archive does not hold, against the rates the Rev. Proc. 2024-40 amounts imply (at most about $0.20 apart over the table's range). `float` means the difference is within two units in the last place of the engine's floating-point representation (PolicyEngine-US computes in float32, Tax-Calculator in float64), a bound derived from the engine's precision. `unrounded` (OpenTaxSolver, which computes in doubles, rounds nothing and prints each program's lines to the cent) means the engine equals the project's own derivation of the line re-evaluated in exact arithmetic without the project's half-up cent rounding of products and ratios (amb.2025.multiplication_subcent), with each amount that passes between the engine's programs taken at the cent it prints and the result printed to the cent; where the exact value is within 1/1000 cent of a half cent either neighbouring cent is the print (an engine double stays within 1/10,000 cent of the exact value at these amounts). No difference is allowed beyond what that recomputation gives; a line the adapter supplies as an amount is recomputed only where the project's value is that amount, and a case whose exact values take another branch, test or table band than the project's is not recomputed. An identified cause, not a tolerance. OpenTaxSolver builds its tax from the Tax Table below $100,000 as the form does, so it has no `table-adjusted` reading. `table-midpoint` (UsTaxes, which emulates the Tax Table by applying the rate schedule at the midpoint of the band holding the whole-dollar amount, without the table's rounding to whole dollars, and rounds Form 8960 line 17 to whole dollars) means the engine equals the project's lines recomputed by those two methods along the project's own worksheet path: each Tax Table lookup replaced by the schedule at the band midpoint, Form 8960 line 17 by 3.8% of line 16 rounded half up to whole dollars, and the lines that follow (the worksheet's tax lines, Form 1040 lines 16 to 37, Schedule 8812 lines 14 to 27) re-taken; within the engine's `float` bound, it is an identified cause, not a tolerance. `contribution-unrounded` (PolicyEngine-US, which does not round the Form 8962 contribution) means the engine is within its `float` bound of the project's Form 8962 recomputed along its own annual path with line 8a taken as line 3 times line 7 exactly instead of rounded to whole dollars, and lines 11c to 11e and 26 re-taken; an identified cause, not a tolerance. `excluded` lines carry the engine limitation stated below; the features that trigger them are the generator's, those read off the project's values, and those the engine's adapter reports about its own run. Every other difference must be explained in fixtures/2025/differential/engine_investigations.json or the run fails.
 
-Not-computed floor: the run fails when the project left more than 5% of an engine's cases without a value on a mapped line (a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: f2441.line11 unknown where `f2441.care` is false (Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return); f2441.line9c unknown where `f2441.care` is false (Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return); f5695.line13 unknown where `energy_part1` is false (Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return); f5695.line15 unknown where `energy_part1` is false (Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return); f5695.line30 unknown where `energy_part2` is false (Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return); f5695.line32 unknown where `energy_part2` is false (Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return).
+Not-computed floor: the run fails when the project left more than 5% of an engine's cases without a value on a mapped line (a refusal, an unknown input, a non-money value), measured outside the allow-listed returns that do not file the form: f2441.line11 unknown where `f2441.care` is false (Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return); f2441.line9c unknown where `f2441.care` is false (Form 2441 is not filed without care expenses; Schedule 3 line 2 carries the zero and is compared on every return); f5695.line13 unknown where `energy_part1` is false (Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return); f5695.line30 unknown where `energy_part2` is false (Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return); f5695.line32 unknown where `energy_part2` is false (Form 5695 Part II is not filed without Part II costs; Schedule 3 line 5b carries the zero and is compared on every return); f5695.rce_credit unknown where `energy_part1` is false (Form 5695 Part I is not filed without Part I costs; Schedule 3 line 5a carries the zero and is compared on every return).
 
 ## PolicyEngine-US
 
@@ -14,8 +14,6 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | eic.line1 | 1401 | 0 | 0 | 299 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line10 | 1559 | 0 | 0 | 81 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
 | f1040.line11b | 1101 | 0 | 0 | 539 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
-| f1040.line13a | 1471 | 0 | 0 | 19 | 0 | 0 | 139 | 0 | 0 | 71 | 71 (4.2%) |
-| f1040.line13b | 1533 | 0 | 0 | 3 | 0 | 0 | 143 | 0 | 0 | 21 | 21 (1.2%) |
 | f1040.line15 | 934 | 0 | 0 | 448 | 0 | 0 | 256 | 2 | 0 | 60 | 60 (3.5%) |
 | f1040.line16 | 454 | 783 | 0 | 105 | 0 | 0 | 298 | 0 | 0 | 60 | 60 (3.5%) |
 | f1040.line19 | 776 | 96 | 0 | 0 | 0 | 0 | 788 | 0 | 0 | 40 | 40 (2.4%) |
@@ -23,13 +21,15 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | f1040.line28 | 823 | 59 | 0 | 1 | 0 | 0 | 788 | 0 | 0 | 29 | 29 (1.7%) |
 | f1040.line29 | 1529 | 0 | 0 | 0 | 0 | 0 | 164 | 0 | 0 | 7 | 7 (0.4%) |
 | f1040.line6b | 1636 | 0 | 0 | 30 | 0 | 0 | 19 | 0 | 0 | 15 | 15 (0.9%) |
-| f1040.tax_before_credits | 368 | 645 | 0 | 105 | 0 | 0 | 527 | 0 | 0 | 55 | 55 (3.2%) |
+| f1040.qbi_deduction | 1471 | 0 | 0 | 19 | 0 | 0 | 139 | 0 | 0 | 71 | 71 (4.2%) |
+| f1040.s1a_deductions | 1533 | 0 | 0 | 3 | 0 | 0 | 143 | 0 | 0 | 21 | 21 (1.2%) |
+| f1040.tax_before_credits | 374 | 649 | 0 | 106 | 0 | 0 | 515 | 0 | 0 | 56 | 56 (3.3%) |
 | f2441.line11 | 1226 | 13 | 0 | 0 | 0 | 0 | 404 | 0 | 0 | 57 | 9 (0.5%) |
 | f2441.line9c | 1511 | 0 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 5 (0.3%) |
 | f5695.line13 | 1678 | 0 | 0 | 3 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
-| f5695.line15 | 1183 | 41 | 0 | 1 | 0 | 0 | 418 | 0 | 0 | 57 | 4 (0.2%) |
 | f5695.line30 | 1634 | 0 | 0 | 7 | 0 | 0 | 59 | 0 | 0 | 0 | 0 (0.0%) |
 | f5695.line32 | 1241 | 6 | 0 | 5 | 0 | 0 | 445 | 0 | 0 | 3 | 3 (0.2%) |
+| f5695.rce_credit | 1183 | 41 | 0 | 1 | 0 | 0 | 418 | 0 | 0 | 57 | 4 (0.2%) |
 | f8863.line18 | 1625 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
 | f8863.line19 | 1204 | 21 | 0 | 0 | 0 | 0 | 418 | 0 | 0 | 57 | 57 (3.4%) |
 | f8863.line7 | 1625 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 41 | 41 (2.4%) |
@@ -48,10 +48,10 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | person[taxpayer].se_line13 | 1621 | 0 | 0 | 79 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | s1.line15 | 1621 | 0 | 0 | 79 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | s1.line20 | 1640 | 0 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 41 | 41 (2.4%) |
-| s1a.line13 | 1554 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 3 | 3 (0.2%) |
-| s1a.line21 | 1553 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 4 | 4 (0.2%) |
-| s1a.line30 | 1552 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 5 | 5 (0.3%) |
-| s1a.line37 | 1665 | 0 | 0 | 3 | 0 | 0 | 19 | 0 | 0 | 13 | 13 (0.8%) |
+| s1a.ot_deduction | 1553 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 4 | 4 (0.2%) |
+| s1a.senior_deduction | 1665 | 0 | 0 | 3 | 0 | 0 | 19 | 0 | 0 | 13 | 13 (0.8%) |
+| s1a.tips_deduction | 1554 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 3 | 3 (0.2%) |
+| s1a.vli_deduction | 1552 | 0 | 0 | 0 | 0 | 0 | 143 | 0 | 0 | 5 | 5 (0.3%) |
 | s2.line4 | 1655 | 0 | 0 | 45 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line2 | 1274 | 13 | 0 | 0 | 0 | 0 | 404 | 0 | 0 | 9 | 9 (0.5%) |
 | s3.line3 | 1252 | 21 | 0 | 0 | 0 | 0 | 418 | 0 | 0 | 9 | 9 (0.5%) |
@@ -59,8 +59,8 @@ Not-computed floor: the run fails when the project left more than 5% of an engin
 | s3.line5b | 1241 | 6 | 0 | 5 | 0 | 0 | 445 | 0 | 0 | 3 | 3 (0.2%) |
 | s8812.line12 | 1511 | 0 | 0 | 0 | 0 | 0 | 150 | 0 | 0 | 39 | 39 (2.3%) |
 | sa.deduction | 1509 | 0 | 0 | 4 | 0 | 0 | 172 | 0 | 0 | 15 | 15 (0.9%) |
-| sa.line17 | 1509 | 0 | 0 | 4 | 0 | 0 | 172 | 0 | 0 | 15 | 15 (0.9%) |
 | sa.standard | 1681 | 0 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.total_itemized | 1509 | 0 | 0 | 4 | 0 | 0 | 172 | 0 | 0 | 15 | 15 (0.9%) |
 
 Exclusions:
 
@@ -89,13 +89,13 @@ Project result lines not mapped:
 - f8962.line29: the engine has no reconciliation of advance payments (Form 8962 lines 25 to 29)
 - person[taxpayer].f8889[hsa].line13: health_savings_account_ald is an input with no formula; the engine does not compute Form 8889
 - ssb.line18: reached through Form 1040 line 6b, a copy of it
-- s1a.line38: reached through Form 1040 line 13b, a copy of it
+- s1a.total_deductions: reached through Form 1040 line 13b, a copy of it
 - s8812.line14: reached through Form 1040 line 19, a copy of it
 - s8812.line27: reached through Form 1040 line 28, a copy of it
 - eic.credit: reached through Form 1040 line 27a, a copy of it
 - f8863.line1: the engine has no variable for the American opportunity credit before the phase-out; line 7 is mapped
 - f8863.line12: the engine has no variable for the lifetime learning credit before the phase-out; line 18 is mapped
-- s2.line8: the engine has no Form 5329 variable: early_withdrawal_penalty is an input with no formula, the Schedule 1 line 18 penalty on early withdrawal of savings, and taxable_ira_distributions reaches income only (limitation early_distribution_tax)
+- s2.tax_favored_accounts: the engine has no Form 5329 variable: early_withdrawal_penalty is an input with no formula, the Schedule 1 line 18 penalty on early withdrawal of savings, and taxable_ira_distributions reaches income only (limitation early_distribution_tax)
 
 ## Tax-Calculator
 
@@ -105,18 +105,18 @@ Project result lines not mapped:
 | eic.line1 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line10 | 1302 | 0 | 0 | 68 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line11b | 1272 | 0 | 0 | 98 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13a | 1033 | 0 | 0 | 6 | 0 | 0 | 643 | 0 | 0 | 18 | 18 (1.1%) |
-| f1040.line13b | 1368 | 0 | 0 | 2 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line15 | 832 | 0 | 0 | 69 | 0 | 0 | 798 | 1 | 0 | 0 | 0 (0.0%) |
 | f1040.line16 | 350 | 506 | 0 | 55 | 0 | 0 | 772 | 0 | 0 | 17 | 17 (1.0%) |
 | f1040.line19 | 577 | 77 | 0 | 0 | 0 | 0 | 1046 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line20 | 535 | 317 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 8 | 8 (0.5%) |
-| f1040.line24 | 390 | 266 | 0 | 73 | 0 | 0 | 956 | 0 | 0 | 15 | 15 (0.9%) |
+| f1040.line24 | 397 | 270 | 0 | 73 | 0 | 0 | 944 | 0 | 0 | 16 | 16 (0.9%) |
 | f1040.line27a | 1070 | 190 | 0 | 0 | 0 | 0 | 440 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line28 | 606 | 48 | 0 | 0 | 0 | 0 | 1046 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line29 | 1258 | 0 | 0 | 0 | 0 | 0 | 442 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1343 | 0 | 0 | 27 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 275 | 418 | 0 | 65 | 0 | 0 | 927 | 0 | 0 | 15 | 15 (0.9%) |
+| f1040.qbi_deduction | 1033 | 0 | 0 | 6 | 0 | 0 | 643 | 0 | 0 | 18 | 18 (1.1%) |
+| f1040.s1a_deductions | 1368 | 0 | 0 | 2 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 282 | 422 | 0 | 65 | 0 | 0 | 915 | 0 | 0 | 16 | 16 (0.9%) |
 | f2441.line11 | 838 | 6 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 16 | 1 (0.1%) |
 | f8863.line19 | 830 | 14 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 16 | 16 (0.9%) |
 | f8863.line7 | 1368 | 0 | 0 | 0 | 0 | 0 | 332 | 0 | 0 | 0 | 0 (0.0%) |
@@ -127,15 +127,15 @@ Project result lines not mapped:
 | person[taxpayer].se_line12 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].se_line13 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | s1.line15 | 1624 | 0 | 0 | 76 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line13 | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line21 | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line30 | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line37 | 1368 | 0 | 0 | 2 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.ot_deduction | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_deduction | 1368 | 0 | 0 | 2 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_deduction | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.vli_deduction | 1370 | 0 | 0 | 0 | 0 | 0 | 330 | 0 | 0 | 0 | 0 (0.0%) |
 | s2.line4 | 1656 | 0 | 0 | 44 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line2 | 853 | 6 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 1 | 1 (0.1%) |
 | s3.line3 | 841 | 14 | 0 | 0 | 0 | 0 | 840 | 0 | 0 | 5 | 5 (0.3%) |
 | sa.deduction | 900 | 0 | 0 | 2 | 0 | 0 | 798 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line17 | 1188 | 0 | 0 | 2 | 0 | 0 | 510 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.total_itemized | 1188 | 0 | 0 | 2 | 0 | 0 | 510 | 0 | 0 | 0 | 0 (0.0%) |
 
 Exclusions:
 
@@ -162,20 +162,20 @@ Project result lines not mapped:
 - f8880.line10: e07240 (the Form 8880 credit) is an input; the engine computes only its tax limit (c07240)
 - f8880.line12: e07240 (the Form 8880 credit) is an input; the engine computes only its tax limit (c07240)
 - f5695.line13: e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts
-- f5695.line15: e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts
+- f5695.rce_credit: e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts
 - f5695.line30: e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts
 - f5695.line32: e07260 (the Form 5695 credits) is an input; the engine computes only its tax limit (c07260), after the child tax credit for both parts
 - f2441.line9c: F2441 computes line 9a but does not expose it; only c07180 (line 11) is an output
 - s8812.line12: ChildDepTaxCredit computes line 12 but does not expose it; c07220 and odc are line 14 split
 - ssb.line18: reached through Form 1040 line 6b, a copy of it
-- s1a.line38: reached through Form 1040 line 13b, a copy of it
+- s1a.total_deductions: reached through Form 1040 line 13b, a copy of it
 - s8812.line14: reached through Form 1040 line 19, a copy of it
 - s8812.line27: reached through Form 1040 line 28, a copy of it
 - eic.credit: reached through Form 1040 line 27a, a copy of it
 - f8863.line1: e87521 (Form 8863 line 1, the total of Part III line 30) is an input
 - f8863.line10: e87530 (Form 8863 line 10, the total of Part III line 31) is an input
 - f8863.line18: EducationTaxCredit computes line 18 but does not expose it; c07230 (line 19) is an output
-- s2.line8: e09900 (Schedule 2 line 8, the Form 5329 taxes) is an input; the engine does not compute Form 5329, so it could only echo the amount supplied (limitation early_distribution_tax)
+- s2.tax_favored_accounts: e09900 (Schedule 2 line 8, the Form 5329 taxes) is an input; the engine does not compute Form 5329, so it could only echo the amount supplied (limitation early_distribution_tax)
 
 ## OpenTaxSolver
 
@@ -197,8 +197,6 @@ Project result lines not mapped:
 | f1040.line10 | 1514 | 0 | 0 | 0 | 75 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line11b | 1485 | 0 | 0 | 0 | 104 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line12e | 1474 | 0 | 0 | 0 | 2 | 0 | 224 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13a | 370 | 0 | 0 | 0 | 17 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13b | 1435 | 0 | 0 | 0 | 2 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line14 | 1215 | 0 | 0 | 0 | 20 | 0 | 465 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line15 | 1149 | 0 | 0 | 0 | 86 | 0 | 465 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line16 | 1021 | 0 | 0 | 0 | 54 | 0 | 625 | 0 | 0 | 0 | 0 (0.0%) |
@@ -209,19 +207,21 @@ Project result lines not mapped:
 | f1040.line20 | 632 | 0 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line21 | 632 | 0 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line22 | 597 | 0 | 0 | 0 | 35 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line23 | 1223 | 0 | 0 | 0 | 41 | 0 | 436 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 541 | 0 | 0 | 0 | 46 | 0 | 1113 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line23 | 1237 | 0 | 0 | 0 | 41 | 0 | 421 | 0 | 0 | 1 | 1 (0.1%) |
+| f1040.line24 | 548 | 0 | 0 | 0 | 46 | 0 | 1105 | 0 | 0 | 1 | 1 (0.1%) |
 | f1040.line25d | 1567 | 0 | 0 | 0 | 0 | 0 | 133 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line28 | 232 | 0 | 0 | 0 | 1 | 0 | 737 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line32 | 475 | 0 | 0 | 0 | 1 | 0 | 1224 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line33 | 475 | 0 | 0 | 0 | 1 | 0 | 1224 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 421 | 0 | 0 | 0 | 17 | 0 | 1262 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 416 | 0 | 0 | 0 | 22 | 0 | 1262 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 427 | 0 | 0 | 0 | 17 | 0 | 1255 | 0 | 0 | 1 | 1 (0.1%) |
+| f1040.line37 | 422 | 0 | 0 | 0 | 22 | 0 | 1255 | 0 | 0 | 1 | 1 (0.1%) |
 | f1040.line6b | 1557 | 0 | 0 | 0 | 32 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line7a | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line8 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line9 | 1558 | 0 | 0 | 0 | 31 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 853 | 0 | 0 | 0 | 71 | 0 | 776 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.qbi_deduction | 370 | 0 | 0 | 0 | 17 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.s1a_deductions | 1435 | 0 | 0 | 0 | 2 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 864 | 0 | 0 | 0 | 71 | 0 | 764 | 0 | 0 | 1 | 1 (0.1%) |
 | f2441.line10 | 158 | 0 | 0 | 0 | 4 | 0 | 123 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line11 | 162 | 0 | 0 | 0 | 0 | 0 | 123 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line3 | 285 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -230,14 +230,14 @@ Project result lines not mapped:
 | f2441.line7 | 251 | 0 | 0 | 0 | 16 | 0 | 18 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line9a | 266 | 0 | 0 | 0 | 0 | 0 | 19 | 0 | 0 | 0 | 0 (0.0%) |
 | f2441.line9c | 250 | 0 | 0 | 0 | 0 | 0 | 35 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line13 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line17 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line18 | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line21 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line22 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line24 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line7 | 1699 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.rrta_tax | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.se_tax | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.tax | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.total_tax | 1695 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.line11 | 1540 | 0 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 39 | 39 (2.3%) |
 | f8960.line12 | 1540 | 0 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 39 | 39 (2.3%) |
 | f8960.line15 | 1575 | 0 | 0 | 0 | 14 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
@@ -246,7 +246,7 @@ Project result lines not mapped:
 | f8960.line8 | 1695 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 5 (0.3%) |
 | f8960.tax | 1477 | 0 | 0 | 0 | 1 | 0 | 222 | 0 | 0 | 0 | 0 (0.0%) |
 | f8995.line10 | 495 | 0 | 0 | 0 | 22 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| f8995.line11 | 292 | 0 | 0 | 0 | 64 | 0 | 130 | 31 | 0 | 0 | 0 (0.0%) |
+| f8995.line11 | 320 | 0 | 0 | 0 | 67 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
 | f8995.line13 | 324 | 0 | 0 | 0 | 63 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
 | f8995.line14 | 369 | 0 | 0 | 0 | 18 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
 | f8995.line15 | 370 | 0 | 0 | 0 | 17 | 0 | 130 | 0 | 0 | 0 | 0 (0.0%) |
@@ -295,12 +295,12 @@ Project result lines not mapped:
 | s1.line21 | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | s1.line26 | 1514 | 0 | 0 | 0 | 75 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | s1.line9 | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line13 | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line21 | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line30 | 1437 | 0 | 0 | 0 | 0 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line37 | 1587 | 0 | 0 | 0 | 2 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line38 | 1435 | 0 | 0 | 0 | 2 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line21 | 1223 | 0 | 0 | 0 | 41 | 0 | 436 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.ot_deduction | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_deduction | 1587 | 0 | 0 | 0 | 2 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_deduction | 1589 | 0 | 0 | 0 | 0 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.total_deductions | 1435 | 0 | 0 | 0 | 2 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.vli_deduction | 1437 | 0 | 0 | 0 | 0 | 0 | 263 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line21 | 1237 | 0 | 0 | 0 | 41 | 0 | 421 | 0 | 0 | 1 | 1 (0.1%) |
 | s3.line2 | 993 | 0 | 0 | 0 | 0 | 0 | 707 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line8 | 632 | 0 | 0 | 0 | 0 | 0 | 1068 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line10 | 829 | 0 | 0 | 0 | 0 | 0 | 141 | 0 | 0 | 0 | 0 (0.0%) |
@@ -317,9 +317,8 @@ Project result lines not mapped:
 | s8812.line7 | 889 | 0 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line8 | 889 | 0 | 0 | 0 | 0 | 0 | 81 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.deduction | 1474 | 0 | 0 | 0 | 2 | 0 | 224 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.gifts_deduction | 1697 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line10 | 1579 | 0 | 0 | 0 | 0 | 0 | 121 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line14 | 1697 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line17 | 1473 | 0 | 0 | 0 | 3 | 0 | 224 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line3 | 1557 | 0 | 0 | 0 | 29 | 0 | 111 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line4 | 1583 | 0 | 0 | 0 | 3 | 0 | 114 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line5d | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -327,6 +326,7 @@ Project result lines not mapped:
 | sa.line7 | 1659 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 41 (2.4%) |
 | sa.line8e | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.standard | 1700 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.total_itemized | 1473 | 0 | 0 | 0 | 3 | 0 | 224 | 0 | 0 | 0 | 0 (0.0%) |
 | sd.line13 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | sd.line14 | 260 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | sd.line15 | 1404 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
@@ -447,7 +447,7 @@ Project result lines not mapped:
 - f8880.line10: the saver's credit is an input (S3_4); OTS does not compute Form 8880
 - f8880.line12: the saver's credit is an input (S3_4); OTS does not compute Form 8880
 - f5695.line13: the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695
-- f5695.line15: the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695
+- f5695.rce_credit: the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695
 - f5695.line30: the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695
 - f5695.line32: the residential energy credits are inputs (S3_5a, S3_5b); OTS does not compute Form 5695
 - s3.line5a: the residential energy credits are inputs; the engine's zero would not be a computation
@@ -460,7 +460,7 @@ Project result lines not mapped:
 - f1040.line1z: mapped (sum of Forms W-2 box 1)
 - f8863.line19: OTS does not compute Form 8863; Schedule 3 line 3 and Form 1040 line 29 are entered amounts (limitation education)
 - f1040.line29: OTS does not compute Form 8863; Form 1040 line 29 is an entered amount (limitation education)
-- s2.line8: OTS does not compute Form 5329; Schedule 2 line 8 is an entered amount (S2_8, limitation early_distribution_tax)
+- s2.tax_favored_accounts: OTS does not compute Form 5329; Schedule 2 line 8 is an entered amount (S2_8, limitation early_distribution_tax)
 
 ## UsTaxes
 
@@ -470,8 +470,6 @@ Project result lines not mapped:
 | f1040.line11a | 1146 | 0 | 0 | 20 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line11b | 1146 | 0 | 0 | 20 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line12e | 1068 | 0 | 0 | 2 | 0 | 0 | 630 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13a | 828 | 0 | 0 | 0 | 0 | 0 | 872 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line13b | 827 | 0 | 0 | 1 | 0 | 0 | 872 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line14 | 826 | 0 | 0 | 2 | 0 | 0 | 872 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line15 | 807 | 0 | 0 | 21 | 0 | 0 | 872 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line16 | 416 | 0 | 269 | 40 | 0 | 0 | 975 | 0 | 0 | 0 | 0 (0.0%) |
@@ -483,8 +481,8 @@ Project result lines not mapped:
 | f1040.line20 | 378 | 0 | 0 | 0 | 0 | 0 | 1322 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line21 | 360 | 0 | 18 | 0 | 0 | 0 | 1322 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line22 | 240 | 0 | 113 | 25 | 0 | 0 | 1322 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line23 | 853 | 0 | 82 | 0 | 0 | 0 | 765 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line24 | 172 | 0 | 145 | 18 | 0 | 0 | 1365 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line23 | 848 | 0 | 81 | 0 | 0 | 0 | 771 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line24 | 171 | 0 | 144 | 18 | 0 | 0 | 1367 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line25a | 1330 | 0 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line25d | 1330 | 0 | 0 | 0 | 0 | 0 | 370 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line27a | 876 | 0 | 0 | 0 | 0 | 0 | 824 | 0 | 0 | 0 | 0 (0.0%) |
@@ -492,13 +490,15 @@ Project result lines not mapped:
 | f1040.line29 | 132 | 0 | 0 | 0 | 0 | 0 | 80 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line32 | 244 | 0 | 3 | 0 | 0 | 0 | 1453 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line33 | 242 | 0 | 3 | 0 | 0 | 0 | 1455 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line34 | 140 | 0 | 72 | 9 | 0 | 0 | 1479 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.line37 | 177 | 0 | 32 | 12 | 0 | 0 | 1479 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line34 | 138 | 0 | 72 | 9 | 0 | 0 | 1481 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.line37 | 176 | 0 | 31 | 12 | 0 | 0 | 1481 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line6b | 1145 | 0 | 0 | 21 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line7a | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line8 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f1040.line9 | 1146 | 0 | 0 | 20 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| f1040.tax_before_credits | 306 | 0 | 299 | 22 | 0 | 0 | 1073 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.qbi_deduction | 828 | 0 | 0 | 0 | 0 | 0 | 872 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.s1a_deductions | 827 | 0 | 0 | 1 | 0 | 0 | 872 | 0 | 0 | 0 | 0 (0.0%) |
+| f1040.tax_before_credits | 303 | 0 | 297 | 22 | 0 | 0 | 1078 | 0 | 0 | 0 | 0 (0.0%) |
 | f8863.line1 | 142 | 0 | 0 | 0 | 0 | 0 | 70 | 0 | 0 | 0 | 0 (0.0%) |
 | f8863.line12 | 142 | 0 | 0 | 0 | 0 | 0 | 70 | 0 | 0 | 0 | 0 (0.0%) |
 | f8863.line18 | 142 | 0 | 0 | 0 | 0 | 0 | 70 | 0 | 0 | 0 | 0 (0.0%) |
@@ -506,7 +506,6 @@ Project result lines not mapped:
 | f8863.line8 | 142 | 0 | 0 | 0 | 0 | 0 | 70 | 0 | 0 | 0 | 0 (0.0%) |
 | f8863.line9 | 142 | 0 | 0 | 0 | 0 | 0 | 70 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line1 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| f8959.line18 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line19 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line21 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line22 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
@@ -515,6 +514,7 @@ Project result lines not mapped:
 | f8959.line6 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.line7 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | f8959.tax | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| f8959.total_tax | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.line11 | 902 | 0 | 0 | 0 | 0 | 0 | 798 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.line12 | 902 | 0 | 0 | 0 | 0 | 0 | 798 | 0 | 0 | 0 | 0 (0.0%) |
 | f8960.line15 | 1164 | 0 | 0 | 2 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
@@ -530,8 +530,8 @@ Project result lines not mapped:
 | f8962.line26 | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
 | f8962.line29 | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
 | f8962.line8a | 36 | 0 | 0 | 0 | 0 | 0 | 73 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f5329[form].l1 | 1083 | 0 | 0 | 0 | 0 | 0 | 617 | 0 | 0 | 0 | 0 (0.0%) |
-| person[taxpayer].f5329[form].l4 | 1083 | 0 | 0 | 0 | 0 | 0 | 617 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f5329[form].l1 | 1080 | 0 | 0 | 0 | 0 | 0 | 620 | 0 | 0 | 0 | 0 (0.0%) |
+| person[taxpayer].f5329[form].l4 | 1080 | 0 | 0 | 0 | 0 | 0 | 620 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].f8889[hsa].line11 | 221 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].f8889[hsa].line12 | 125 | 0 | 0 | 0 | 0 | 0 | 96 | 0 | 0 | 0 | 0 (0.0%) |
 | person[taxpayer].f8889[hsa].line13 | 1331 | 0 | 0 | 0 | 0 | 0 | 369 | 0 | 0 | 0 | 0 (0.0%) |
@@ -569,32 +569,32 @@ Project result lines not mapped:
 | s1.line13 | 1331 | 0 | 0 | 0 | 0 | 0 | 369 | 0 | 0 | 0 | 0 (0.0%) |
 | s1.line21 | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | s1.line26 | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line12 | 138 | 0 | 0 | 0 | 0 | 0 | 21 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line13 | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line14c | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line15 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line16 | 125 | 0 | 0 | 1 | 0 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line20 | 126 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line21 | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line23 | 1266 | 0 | 0 | 0 | 0 | 0 | 434 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line24 | 1266 | 0 | 0 | 0 | 0 | 0 | 434 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line25 | 115 | 0 | 0 | 1 | 0 | 0 | 18 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line29 | 116 | 0 | 0 | 0 | 0 | 0 | 18 | 0 | 0 | 0 | 0 (0.0%) |
 | s1a.line3 | 1146 | 0 | 0 | 20 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line30 | 1050 | 0 | 0 | 0 | 0 | 0 | 650 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line31 | 183 | 0 | 0 | 4 | 0 | 0 | 49 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line34 | 185 | 0 | 0 | 2 | 0 | 0 | 49 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line35 | 185 | 0 | 0 | 2 | 0 | 0 | 49 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line36a | 1165 | 0 | 0 | 1 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line36b | 1165 | 0 | 0 | 1 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line37 | 1164 | 0 | 0 | 2 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line38 | 1074 | 0 | 0 | 2 | 0 | 0 | 624 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line4c | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line6 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line7 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| s1a.line8 | 136 | 0 | 0 | 2 | 0 | 0 | 21 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line21 | 853 | 0 | 82 | 0 | 0 | 0 | 765 | 0 | 0 | 0 | 0 (0.0%) |
-| s2.line8 | 1094 | 0 | 0 | 0 | 0 | 0 | 606 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.ot_capped | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.ot_deduction | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.ot_magi | 125 | 0 | 0 | 1 | 0 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.ot_reduction | 126 | 0 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.ot_total | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_deduction | 1164 | 0 | 0 | 2 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_magi | 183 | 0 | 0 | 4 | 0 | 0 | 49 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_phased | 185 | 0 | 0 | 2 | 0 | 0 | 49 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_reduction | 185 | 0 | 0 | 2 | 0 | 0 | 49 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_spouse | 1165 | 0 | 0 | 1 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.senior_you | 1165 | 0 | 0 | 1 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_capped | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_deduction | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_employee | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_magi | 136 | 0 | 0 | 2 | 0 | 0 | 21 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_reduction | 138 | 0 | 0 | 0 | 0 | 0 | 21 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.tips_total | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.total_deductions | 1074 | 0 | 0 | 2 | 0 | 0 | 624 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.vli_capped | 1050 | 0 | 0 | 0 | 0 | 0 | 650 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.vli_deduction | 1050 | 0 | 0 | 0 | 0 | 0 | 650 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.vli_magi | 115 | 0 | 0 | 1 | 0 | 0 | 18 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.vli_reduction | 116 | 0 | 0 | 0 | 0 | 0 | 18 | 0 | 0 | 0 | 0 (0.0%) |
+| s1a.vli_total | 1050 | 0 | 0 | 0 | 0 | 0 | 650 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.line21 | 848 | 0 | 81 | 0 | 0 | 0 | 771 | 0 | 0 | 0 | 0 (0.0%) |
+| s2.tax_favored_accounts | 1088 | 0 | 0 | 0 | 0 | 0 | 612 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line11 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line15 | 1288 | 0 | 0 | 0 | 0 | 0 | 412 | 0 | 0 | 0 | 0 (0.0%) |
 | s3.line3 | 96 | 0 | 0 | 0 | 0 | 0 | 116 | 0 | 0 | 0 | 0 (0.0%) |
@@ -621,9 +621,8 @@ Project result lines not mapped:
 | s8812.line7 | 737 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
 | s8812.line8 | 737 | 0 | 0 | 0 | 0 | 0 | 50 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.deduction | 1068 | 0 | 0 | 2 | 0 | 0 | 630 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.gifts_deduction | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line10 | 1070 | 0 | 0 | 0 | 0 | 0 | 630 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line14 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
-| sa.line17 | 1068 | 0 | 0 | 2 | 0 | 0 | 630 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line3 | 1145 | 0 | 0 | 21 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line4 | 1164 | 0 | 0 | 2 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line5d | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
@@ -631,6 +630,7 @@ Project result lines not mapped:
 | sa.line7 | 1166 | 0 | 0 | 0 | 0 | 0 | 534 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.line8e | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | sa.standard | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
+| sa.total_itemized | 1068 | 0 | 0 | 2 | 0 | 0 | 630 | 0 | 0 | 0 | 0 (0.0%) |
 | sb.line2 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | sb.line4 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
 | sd.line15 | 1400 | 0 | 0 | 0 | 0 | 0 | 300 | 0 | 0 | 0 | 0 (0.0%) |
@@ -716,7 +716,7 @@ Project result lines not mapped:
 - f8880.line12: Form 8880: the credit is computed without the tax limit and rounded to whole dollars, and reaches Form 1040 only when Schedule 3 is needed for another reason (see the limitations); the lines it moves are compared on returns without it
 - s3.line5a: Form 5695 Part I: the credit is computed without the tax limit and rounded to whole dollars, and reaches Form 1040 only when Schedule 3 is needed for another reason (see the limitations); the lines it moves are compared on returns without it
 - f5695.line13: Form 5695 Part I: 30% of the costs rounded to whole dollars (`l15`)
-- f5695.line15: Form 5695 Part I: the credit is computed without the tax limit and rounded to whole dollars, and reaches Form 1040 only when Schedule 3 is needed for another reason (see the limitations); the lines it moves are compared on returns without it
+- f5695.rce_credit: Form 5695 Part I: the credit is computed without the tax limit and rounded to whole dollars, and reaches Form 1040 only when Schedule 3 is needed for another reason (see the limitations); the lines it moves are compared on returns without it
 - s3.line5b: Form 5695 Part II is an input (the credit amount itself, CreditType.EnergyEfficientHomeImprovement)
 - f5695.line30: Form 5695 Part II is an input
 - f5695.line32: Form 5695 Part II is an input
@@ -733,8 +733,8 @@ Project result lines not mapped:
 - sli.line5: UsTaxes' phase-out start is the 2024 amount (data/federal.ts `studentLoanInterest`), a parameter, not a computation
 - sli.line6: the project carries the negative difference where the worksheet says to skip line 6; UsTaxes floors it at zero
 - sli.line7: a ratio, not a money line
-- s1a.line10: the project carries the negative difference where the form says to skip the phase-out; UsTaxes floors it at zero (likewise lines 18, 27 and 33); the part totals (lines 13, 21, 30, 37) are mapped
-- s1a.line9: the phase-out thresholds (lines 9, 17, 26, 32) are parameters
+- s1a.tips_over: the project carries the negative difference where the form says to skip the phase-out; UsTaxes floors it at zero (likewise lines 18, 27 and 33); the part totals (lines 13, 21, 30, 37) are mapped
+- s1a.tips_threshold: the phase-out thresholds (lines 9, 17, 26, 32) are parameters
 - person.se_line12: UsTaxes never builds Schedule C, so self-employed returns are not run
 - s2.line8_box: UsTaxes' Schedule 2 line 8 box is always unchecked (Schedule2.ts `l8box`: `false // TODO`); a Bool, not a money line
 - person.f5329.l2: UsTaxes' Form 5329 has no line 2 (exceptions are left out of `earlyWithdrawalAmount` by the user), so lines 2 and 3 are not computed; lines 1 and 4 (its `l8`) are mapped
@@ -745,37 +745,6 @@ Project result lines not mapped:
 - PolicyEngine-US se-00203 f1040.line15: project 3803775 engine 3803777 — Rounding of the half of self-employment tax plus float32: Schedule SE line 12 is $106.47 in both, and line 13, half of it, is $53.235; the project rounds half-up to $53.24 (amb.2025.multiplication_subcent), the engine takes $53.23, so line 10 and AGI are 1 cent apart ($61,802.82 against $61,802.81); the standard deduction and the QBI deduction ($140.06) agree exactly, and the engine's float32 subtraction to line 15 adds one more cent, for 2 cents where the bound at line 15's size is 1 cent. Investigated 2026-10-22 when IRA contributions entered the generated cases.
 - PolicyEngine-US se-00293 f1040.line15: project 3977437 engine 3977439 — Rounding of the half of self-employment tax plus float32: Schedule SE line 12 is $3,487.87 in both, and line 13, half of it, is $1,743.935; the project rounds half-up to $1,743.94 (amb.2025.multiplication_subcent), the engine takes $1,743.93, so line 10 is 1 cent apart; the engine's gross income is 1 cent above the project's (within float32 precision at $74,283.60), so AGI is 2 cents apart ($68,112.59 against $68,112.57); the standard deduction, the QBI deduction and line 13b agree exactly, and line 15 carries the 2 cents where the bound at its size is 1 cent. Investigated 2026-10-22 when IRA contributions entered the generated cases.
 - Tax-Calculator se-00075 f1040.line15: project 1971096 engine 1971098 — Rounding of the half of self-employment tax: Schedule SE line 12 is $822.51 in all three, and line 13, half of it, is $411.255; the project rounds half-up to $411.26 (amb.2025.multiplication_subcent), both engines take $411.25, so AGI is 1 cent apart; Schedule A, the QBI deduction and line 13b agree exactly, and Tax-Calculator's own float64 subtractions to taxable income give one more cent. Investigated 2026-10-19 when self-employment entered the generated cases.
-- OpenTaxSolver gen-00000 f8995.line11: project 0 engine -454298 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00064 f8995.line11: project 0 engine -402136 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00120 f8995.line11: project 0 engine -4849094 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00123 f8995.line11: project 0 engine -1871619 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00198 f8995.line11: project 0 engine -265018 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00203 f8995.line11: project 0 engine -3523823 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00291 f8995.line11: project 0 engine -380928 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00378 f8995.line11: project 0 engine -181064 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00622 f8995.line11: project 0 engine -150944 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver gen-00832 f8995.line11: project 0 engine -2192877 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver mfj-00071 f8995.line11: project 0 engine -1332223 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver mfj-00108 f8995.line11: project 0 engine -312706 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver mfj-00111 f8995.line11: project 0 engine -1102488 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver mfj-00389 f8995.line11: project 0 engine -67292 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00010 f8995.line11: project 0 engine -2185226 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00014 f8995.line11: project 0 engine -733386 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00019 f8995.line11: project 0 engine -1034658 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00079 f8995.line11: project 0 engine -2191191 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00101 f8995.line11: project 0 engine -118068 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00110 f8995.line11: project 0 engine -1888351 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00128 f8995.line11: project 0 engine -729203 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00142 f8995.line11: project 0 engine -337670 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00168 f8995.line11: project 0 engine -555644 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00175 f8995.line11: project 0 engine -178752 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00212 f8995.line11: project 0 engine -1807724 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00235 f8995.line11: project 0 engine -2288603 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00238 f8995.line11: project 0 engine -1058360 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00258 f8995.line11: project 0 engine -43077 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00266 f8995.line11: project 0 engine -29435 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00289 f8995.line11: project 0 engine -2630572 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
-- OpenTaxSolver se-00290 f8995.line11: project 0 engine -1440946 — Form 8995 line 11 on a return whose deductions exceed adjusted gross income: the project floors qbi.taxable_before at zero (subtract_floor0), OpenTaxSolver prints the signed difference (taxsolve_f8995: `L[11] = f1040i.L11a - f1040i.L12 - f1040i.L13b`). The instructions define the line as an arithmetic difference with no floor, so the engine's reading follows the text and the project's sign is a candidate defect; line 13 (line 11 less line 12, not below zero) is zero on both sides, so the deduction is unmoved.
 
 ## Unexplained differences
 

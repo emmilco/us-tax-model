@@ -4002,6 +4002,120 @@
           "cents": 31200
         }
       }
+    },
+    {
+      "id": "mut.eic.mfs_apart_child_without_ssn",
+      "covers": [
+        "eic.step3_qc",
+        "eic.step3_self_only",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Mutation fixture (eic.step3_qc's self-only alternative). Married filing separately, lived apart from the spouse from July 1, 2025 (apart_last6), wages $15,000, one child of 3 who lived with the filer all year and has no valid SSN; the filer was born in 1995 (30). p596 p. 5, Rule 3 (special rule for separated spouses: a qualifying child who lived with you more than half of 2025, and you lived apart for the last 6 months) is met; p596 p. 5 allows the self-only EIC \"if you are otherwise eligible\", and under the owner's reading of amb.2025.eic_self_only_age the filer then meets Rules 11 to 14 (age 30, U.S. home, not a dependent or qualifying child of another). Worksheet A at $15,000, no qualifying child with a valid SSN (p596 EIC table, $15,000 to $15,050, Single/HOH/QSS/MFS column, no children): $312.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "household.mfs_living": "apart_last6",
+        "household.home_cost": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "dependent[child].work_ssn": false,
+        "dependent[child].eic_ssn": false,
+        "person[taxpayer].birth_year": 1995
+      },
+      "expect": {
+        "eic.step3": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 31200
+        }
+      }
+    },
+    {
+      "id": "mut.eic.mfs_together_child_without_ssn",
+      "covers": [
+        "eic.step3_self_only",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Mutation fixture (eic.step3_self_only's step3-false alternative). As mut.eic.mfs_apart_child_without_ssn but the spouses lived together after July 1, 2025 (together_late) and are not legally separated. i1040gi p. 41, EIC Step 3, questions 3 and 4 Yes, question 5 No: STOP, you can't take the credit (p596 p. 5, Rule 3; Example 8). A child without a valid SSN does not open the self-only credit past that stop (p596 p. 5, \"if you are otherwise eligible\"). Line 27a $0.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "household.home_cost": false,
+        "eic.legally_separated": false,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 3,
+        "dependent[child].months": 12,
+        "dependent[child].work_ssn": false,
+        "dependent[child].eic_ssn": false,
+        "person[taxpayer].birth_year": 1995
+      },
+      "expect": {
+        "eic.step3": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mut.eic.mfs_apart_no_child",
+      "covers": [
+        "eic.step34",
+        "eic.step4",
+        "f1040.line27a"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Mutation fixture (eic.step34's no-qualifying-child alternative). Married filing separately, lived apart from the spouse from July 1, 2025 (apart_last6), no dependents, wages $15,000, filer 45. i1040gi p. 41, EIC Step 4, question 1, \"Are you a married taxpayer whose filing status is married filing separately or head of household? ... Yes. STOP You can't take the credit\"; p596 p. 5, Rule 3, the separated-spouse rule needs a qualifying child who lived with you. Line 27a $0, though Step 3's separated-spouse questions (4 and 5) would pass.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "household.mfs_living": "apart_last6",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750
+      },
+      "expect": {
+        "eic.step4": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

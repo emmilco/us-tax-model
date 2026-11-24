@@ -299,6 +299,21 @@ def load_lines():
     return lines, tables
 
 
+def current_names(engines, canonical_lines):
+    """The adapters name a line by its printed number (f"s1a.line{n}"); a number the year renamed to a year-free name
+    (tools/year_free_names.json) is translated to that name in each engine's values and limitations. Only an old id
+    that is no longer a line is translated, so a printed number that is a line again keeps its own meaning."""
+    renames = json.load(open(os.path.join(ROOT, "tools", "year_free_names.json")))["renames"]
+    cur = {old: e["to"] for old, e in renames.items() if old not in canonical_lines and e["to"] in canonical_lines}
+    if not cur:
+        return
+    name = lambda line: cur.get(line, line)
+    for eng in engines.values():
+        eng["lines"] = {cid: {name(l): v for l, v in ls.items()} for cid, ls in eng["lines"].items()}
+        for lim in eng.get("limitations", []):
+            lim["lines"] = [name(l) for l in lim["lines"]]
+
+
 def prints(x):
     """The cents a double near exact value x (cents) prints as with "%.2f": the nearer cent,
     or both neighbours when x is within the engine's slack of a half cent."""
@@ -648,6 +663,10 @@ def derived_features(case, values):
         feats.add("salt_exceeds_agi")
     if (m("f1040.line27a") or 0) > 0:
         feats.add("eic")
+    # An exception on Form 5329 line 2 the generator did not draw: a code 1 amount received at 59½ or older, which the
+    # project puts there itself (i5329 p. 5, line 2, exception 12); an engine without line 2 differs as for any exception.
+    if any((m(f"person[{p}].f5329[form].l2") or 0) > 0 for p in ("taxpayer", "spouse")):
+        feats.add("early_exception")
     if (m("f8960.line9a") or 0) > 0:
         feats.add("investment_interest_on_8960")
     # UsTaxes' Form 8962 is a flat 8.5% of AGI on the annual route: the form only at 400% of the poverty line or more,
@@ -867,6 +886,7 @@ def main():
     investigations = json.load(open(a.investigations))
     tables = load_tables()
     canonical_lines, canonical_tables = load_lines()
+    current_names(engines, canonical_lines)
 
     stats = defaultdict(Counter)          # (engine, line) -> category counts
     summary = defaultdict(Counter)        # (engine, line) -> compared / nonzero counts for the JSON summary

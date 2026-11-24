@@ -1373,6 +1373,47 @@
       }
     },
     {
+      "id": "mut.retirement.plan_rollover_spouse_beneficiary",
+      "covers": [
+        "retirement.sav_inherited",
+        "f1040.line4b"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Hand-predicted before evaluating. Return advfix.retirement.rollover_spouse_beneficiary with the $50,000 paid from an employer plan (code 4, death) instead of an IRA: the filer is the surviving spouse (rollover_nonspouse false) and rolled the whole distribution over within 60 days. A surviving spouse may roll over a distribution from a deceased spouse's plan (p575, Rollovers, Rollover by surviving spouse), so nothing is special about the rollover: Form 1040 line 5a $50,000, line 5b $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "plan",
+        "person[taxpayer].retirement[a].code": "death_4",
+        "person[taxpayer].retirement[a].box1": 5000000,
+        "person[taxpayer].retirement[a].rollover_any": true,
+        "person[taxpayer].retirement[a].rollover": 5000000,
+        "person[taxpayer].retirement[a].rollover_nonspouse": false
+      },
+      "expect": {
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].retirement[a].special": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
       "id": "advfix.retirement.ira_to_plan_rollover",
       "covers": [
         "retirement.rollover_second",
@@ -1438,6 +1479,39 @@
         "s2.tax_favored_accounts": {
           "kind": "money",
           "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mut.retirement.code1_born_1955_exception_named",
+      "covers": [
+        "retirement.miscoded",
+        "s2.tax_favored_accounts"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived source before evaluation",
+      "evidence_note": "Hand-predicted before evaluating. Return advland.retirement.code1_born_1955 (a filer 59 1/2 or older all through 2025, $20,000 from a traditional IRA coded 1) where the filer also names exception 05 (unreimbursed medical expenses). The distribution is not an early distribution at all: the whole $20,000 goes on Form 5329 line 2 as exception 12 (i5329 p. 5, exception 12, \"Distributions incorrectly indicated as early distributions by code 1, J, or S\"), so no other exception is applied (has_exception false) and nothing is left for the additional tax: line 4b $20,000, Schedule 2 line 8 $0.",
+      "inputs": {
+        "person[taxpayer].birth_year": 1955,
+        "$retirement@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].retirement[a].account": "traditional_ira",
+        "person[taxpayer].retirement[a].code": "early_1",
+        "person[taxpayer].retirement[a].box1": 2000000,
+        "person[taxpayer].retirement[a].exception": "e05"
+      },
+      "expect": {
+        "f1040.line4b": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "s2.tax_favored_accounts": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].retirement[a].has_exception": {
+          "kind": "bool",
+          "value": false
         }
       }
     },

@@ -4,20 +4,20 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 | Property | Statement | Cases | Applicable | Result |
 | --- | --- | --- | --- | --- |
-| sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 62 | holds |
-| tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 62 | holds |
-| deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 62 | holds |
-| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 61 | holds |
-| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 390 | holds |
-| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 318 | holds |
-| tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 61 | holds |
-| tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 61 | holds |
-| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 92 | holds |
+| sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 78 | holds |
+| tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 77 | holds |
+| deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 77 | holds |
+| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 76 | holds |
+| refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 389 | holds |
+| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards. | 400 | 324 | holds |
+| tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 77 | holds |
+| tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 78 | holds |
+| screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 100 | holds |
 
 ## sdtw_skip_rule
 
 - Rewritten lines (skip rule removed in the variant): 21 — 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43.
-- Cases where Form 1040 line 16 came from this worksheet: 62. Cases with lines 1 and 16 equal (lines 23–43 skipped): 40; lines 1 and 32 equal with lines 1 and 16 different (lines 33–43 skipped): 5; Schedule D line 19 zero after line 32 (lines 35–40 skipped): 15; lines 41–43 skipped after line 32: 2.
+- Cases where Form 1040 line 16 came from this worksheet: 77. Cases with lines 1 and 16 equal (lines 23–43 skipped): 52; lines 1 and 32 equal with lines 1 and 16 different (lines 33–43 skipped): 5; Schedule D line 19 zero after line 32 (lines 35–40 skipped): 17; lines 41–43 skipped after line 32: 4.
 
 ## deduction_choice
 
@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 297; cases with a choose stopped at an unknown guard: 399, of which 16 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 324; cases with a line that has both a refused and an unknown operand (the order this property guards): 292; cases with a choose stopped at an unknown guard: 400, of which 18 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -33,15 +33,15 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## tax_monotone_by_method
 
-- Cases compared: QDCG worksheet line 25 61, Schedule D Tax Worksheet line 47 61.
+- Cases compared: QDCG worksheet line 25 78, Schedule D Tax Worksheet line 47 78.
 
 ## screens_respected
 
-- Amounts found behind each screen answered No: f2441.benefits: f2441.line13, f2441.line14, f2441.other_care_expenses, f2441.plan_max, person[].w2[].box10; f2441.care: dependent[].dc_paid; f5695.any+f5695.audit+f5695.line26a: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.biomass: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.central_ac: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.doors: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.furnace: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.geothermal: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.heat_pump: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.hp_water_heater: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.insulation: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.line5a: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.panel+f5695.line25a: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.solar: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.solar_water: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.water_heater: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.wind: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.windows: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; person[].sc[].hi_uses: person[].sc[].f7206_line1; person[].sc[].scveh[].owned: person[].sc[].scveh[].cost, person[].sc[].scveh[].s179_elect; s3.prior_other_forms+f5695.carry: f5695.line12.
+- Amounts found behind each screen answered No: f2441.benefits: f2441.line13, f2441.line14, f2441.other_care_expenses, f2441.plan_max, person[].w2[].box10; f2441.care: dependent[].dc_paid; f5695.any+f5695.audit+f5695.line26a: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.biomass: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.central_ac: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.doors: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.furnace: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.geothermal: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.heat_pump: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.hp_water_heater: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.insulation: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.line5a: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.panel+f5695.line25a: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.solar: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.solar_water: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.water_heater: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.wind: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.any+f5695.windows: f5695.battery_cost, f5695.line1, f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line2, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b, f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line26b, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f, f5695.line3, f5695.line4; f5695.line17a+f5695.line17b+f5695.line17c: f5695.line18a, f5695.line19a, f5695.line19d_i, f5695.line19d_ii, f5695.line19e, f5695.line20a_i, f5695.line20a_ii, f5695.line20a_iii, f5695.line20a_iv, f5695.line20b; f5695.line21a+f5695.line21b: f5695.line22a, f5695.line22b, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line24a, f5695.line24b, f5695.line25c, f5695.line29a, f5695.line29b, f5695.line29c, f5695.line29d, f5695.line29e, f5695.line29f; person[].sc[].hi_uses: person[].sc[].f7206_line1; person[].sc[].scveh[].owned: person[].sc[].scveh[].cost, person[].sc[].scveh[].prior_179, person[].sc[].scveh[].s179_elect; s3.prior_other_forms+f5695.carry: f5695.carry_in.
 
 ## Branch coverage of the generated corpus
 
-5322 of 7755 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+5521 of 8025 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.qip_early:true
@@ -104,16 +104,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - asset.s179_bad_test2:true
 - asset.s179_bad_test2_test1:false
 - asset.s179_bad_test2_test1:true
-- carloan.vehicle:false
+- carloan.requirements:false
 - carloan.mixed_qualifying:floor
 - carloan.refi_whole:false
 - carloan.refi_nested:true
 - clcw.spouse_screen:true
 - clcw.bad:true
 - clcw_next_year.no:true
-- clcw_next_year.final_return_if_carryover:true
-- clcw_next_year.carries:false
-- clcw_next_year.final_notice:true
 - dcprov.household:true
 - dcprov.related:true
 - dcprov.see_statement:true
@@ -148,12 +145,16 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.edu_over:true
 - dependent.edu_over_if_adj:true
 - dependent.edu_over_refused:true
+- dependent.edu_line23:true
 - dependent.edu_line26:true
 - dependent.edu_no:true
+- dependent.edu_aoc23#1
 - dependent.edu_aoc26#1
 - dependent.edu_tin_issued:false
 - dependent.edu_llc_tin_refused:true
 - dependent.kidnapped_if_part_year:true
+- dependent.child_all_year#2
+- dependent.child_all_year#4
 - dependent.divorced_rule_screen:true
 - dependent.divorced_rule_if_parents_apart:true
 - dependent.married_screen_qc:true
@@ -184,9 +185,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.tiebreak_spouse_or_other#0
 - dependent.tiebreak_spouse_or_other:false
 - dependent.eic_tiebreak_unsettled#0
-- div.section1202:true
 - div.bad_special:true
 - div.no:true
+- div.other_boxes:false
 - eic.died_this_year:true
 - eic.step1_foreign:false
 - eic.step1_resident:false
@@ -203,6 +204,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f1040.line27b:true
 - f1040.separated_spouses:true
 - f1040.line28_box:true
+- f1040.split_bad:true
 - f1095a.void:true
 - f1095a.no:true
 - f1095a.b_blank:true
@@ -221,7 +223,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f1116.hmi_applies:true
 - f1116.asset_method:true
 - f1116.exception:true
-- f1116.adjust:true
 - f1116.income_over:false
 - f1116.income_over:true
 - f1116.tax_mismatch:false
@@ -234,6 +235,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f1116.high_taxed:false
 - f1116.high_taxed:true
 - f1116.line10#0
+- f1116.line18_shown:false
+- f1116.line18_shown:true
 - f1116.us_loss:false
 - f1116.us_loss:true
 - f1116.line24:left
@@ -351,7 +354,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f1116sb.prior_year_if_excess#1
 - f1116sb.carryback:false
 - f1116sb.carryback:true
-- f2441.line_a_home:true
 - f2441.line_a#0
 - f2441.line_a:true
 - f2441.provider_ineligible:true
@@ -367,12 +369,11 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f2441.limit#0
 - f2441.has_1e:true
 - f2441.attrib_gate:true
-- f2441.line6_345:right
+- f2441.line6:positive
 - f2441.line11_figured:right
 - f2441.line14_bad:true
 - f2441.employer_care_l16:true
 - f2441.mfs_spouse_deemed_if_married:true
-- f2441.line20_all:right
 - f2441.line20:positive
 - f2441.employer_care_gate:true
 - f2441.line21:left
@@ -382,16 +383,19 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f2441.line25:positive
 - f2441.line26:positive
 - f2441.line29:floor
+- f2441.line30:positive
+- f2441.line31:left
 - f4137.files:true
 - f4137.line4:positive
 - f4137.line5_over:true
 - f4137.line6:positive
 - f4137.line10:right
 - f4952.no:true
+- f4952.royalty_held:true
+- f4952.royalty_used:true
 - f5329.l3:positive
 - f5329.l3_s:positive
 - f5329.l3_other:positive
-- f5329.l49_base:right
 - f5695.carry:true
 - f5695.carry_if_prior#0
 - f5695.carry_if_prior:true
@@ -400,14 +404,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f5695.part2_any#1
 - f5695.line12_if_carry#0
 - f5695.no:true
-- f5695.line15:right
-- f5695.line16:positive
+- f5695.rce_credit:right
+- f5695.carry_out:positive
 - f5695.ins_capped:right
+- f5695.doors_no_qmid:true
 - f5695.windows_no_qmid:true
 - f5695.sec_b_new_home:true
-- f5695.ac_no_qmid:true
-- f5695.furnace_no_qmid:true
-- f5695.line25a_if_panel:true
+- f5695.wh_no_qmid:true
 - f5695.enabling_claimed:true
 - f5695.enabling_costs:true
 - f5695.enabling_no_qmid#0
@@ -415,9 +418,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f5695.enabling_capped:right
 - f5695.line25e#0
 - f5695.hp_no_qmid:true
-- f5695.separate_homes_joint:true
 - f5695.eehi_credit:right
-- f5695.line32b:true
 - f7203.no:false
 - f7203.no:true
 - f7203.required:false
@@ -468,6 +469,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f7203.e38:positive
 - f7203.cap_limited:false
 - f7203.cap_limited:true
+- f8582.no:true
 - f8582.loss1d:floor
 - f8582.loss1d:positive
 - f8582.loss3:floor
@@ -492,6 +494,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8582.deductions:true
 - f8582.required:false
 - f8582.required:true
+- f8582.has_prior:false
+- f8582.has_prior:true
+- f8582.prior_crd_if_prior#0
+- f8582.prior_crd_if_prior#1
+- f8582.prior_crd_if_prior:false
+- f8582.prior_crd_if_prior:true
 - f8606.files:true
 - f8606.dist:true
 - f8853c.no:false
@@ -555,6 +563,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8880.line3b_counted#1
 - f8889.no:true
 - f8889.yes:false
+- f8889.ira_transfer:true
 - f8889.mfs_ask:true
 - f8889.mfs_spouse_hsa_if_asked#0
 - f8889.mfs_spouse_hsa_if_asked:true
@@ -575,7 +584,10 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8889.former_spouse_family_if_asked:true
 - f8889.coverage_self_spouse#0
 - f8889.no_last_month:true
+- f8889.use_last_month:true
 - f8889.year_same:false
+- f8889.line3_part_year#0
+- f8889.line6#0
 - f8889.excess:true
 - f8889.ira_prior:true
 - f8889.ira_prior_if_asked:true
@@ -596,6 +608,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8889.dist_code:true
 - f8889.dist_code_if_dist#0
 - f8889.dist_code_if_dist:true
+- f8889.mistake_repaid:true
 - f8889.medical_all:true
 - f8889.medical_all_if_dist#0
 - f8889.medical_all_if_dist:true
@@ -614,11 +627,16 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8889.line17b#0
 - f8919.files:true
 - f8919.line10:right
-- f8959.line16:positive
+- f8919firm.code_g:false
+- f8919firm.code_g:true
+- f8959.rrta_excess:positive
 - f8960.prior_2i:true
 - f8960.carryforward_adj:true
+- f8960.joint_noncitizen:true
+- f8960.election_6013g_if_joint#0
 - f8960.election_6013g_if_joint:true
 - f8960.digital_nii:true
+- f8960.election_between:true
 - f8960.allocation_over_5e:true
 - f8960.no:true
 - f8960.bad_allocation:true
@@ -689,9 +707,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - household.community_property:true
 - household.spouse_cp_domicile:true
 - household.spouse_cp_domicile_if_asked:true
+- household.cp_spouse_or_retirement#0
 - household.cp_any#0
-- household.cp_any:true
-- household.hoh_cp_married:true
 - household.hoh_community_property:true
 - household.credit_disallowed:true
 - household.no:true
@@ -703,8 +720,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - household.hoh_absence_from_test2:true
 - household.any_test2_absence:true
 - household.hoh_absence:true
+- household.hoh_missed_mfs:true
+- household.hoh_missed_mfs_listed:true
+- household.hoh_missed_mfs_apart#0
+- household.hoh_missed_mfs_apart:true
 - household.qss_eligible:false
 - household.qss_fails:true
+- household.qss_child_conflict_if_claimed#1
 - household.rdp:true
 - household.spouse_died_this_year:true
 - household.spouse_died_this_year_if_ever_married#1
@@ -1429,6 +1451,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - oi8z.damages:true
 - oi8z.injury_if_damages#0
 - oi8z.injury_if_damages:true
+- otjob.special_rule:true
+- otjob.refused:true
 - otjob.figured#5
 - person.born_jan1:true
 - person.born_jan1_if_cut_year:true
@@ -1440,8 +1464,10 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.under16_at_year_end_if_open_year#0
 - person.under16_at_year_end_if_open_year:true
 - person.hsa_repeated:true
-- person.f8919_wages#0
 - person.f8919_any:true
+- person.f8919_ss8:true
+- person.f8919_ss8_any:false
+- person.f8919_ss8_any:true
 - person.f8919_line10#0
 - person.f8919_tax#0
 - person.f4137_under20_if_rows#0
@@ -1457,6 +1483,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.mw_1099_over:true
 - person.mw_business_if_1099#0
 - person.mw_business_if_1099:true
+- person.mw_paid:true
+- person.mw_earned_if_paid#0
 - person.mw_earned_if_paid:true
 - person.mw_other:positive
 - person.mw_other_1d#0
@@ -1472,7 +1500,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ne_comp:right
 - person.dc_1e_counted:true
 - person.dc_1e#0
-- person.sav_born:false
 - person.no:true
 - person.ira_has:true
 - person.ira_excess:true
@@ -1508,11 +1535,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.edu_over:true
 - person.edu_over_if_adj:true
 - person.edu_over_refused:true
+- person.edu_line25:true
 - person.edu_line26:true
 - person.edu_no:true
+- person.edu_aoc25#1
 - person.edu_aoc26#1
 - person.edu_llc_tin_refused:true
-- person.edu_kid_age#1
 - person.edu_kid:true
 - person.x_cap09:floor
 - person.x_c05#0
@@ -1555,6 +1583,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - qdcg.line17:right
 - qdcg.line25:right
 - rec.no:true
+- rec.joint_any:true
+- rec.two_returns_if_joint#0
+- rec.two_returns_if_joint:true
 - rec.path:true
 - rec.has_property_tax_if_path#0
 - rec.has_property_tax_if_path:true
@@ -1589,7 +1620,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - rec.line8:positive
 - rec.line9:right
 - rec.line11_negative:positive
-- rec.nol_negative:true
 - rec.line11_is_line3:false
 - rec.line_b#1
 - rec.line_c:positive
@@ -1690,6 +1720,16 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - rental.part_home:true
 - rental.held_for_sale:false
 - rental.held_for_sale:true
+- rental.business_incidental:false
+- rental.business_incidental:true
+- rental.is_land:false
+- rental.is_land:true
+- rental.land_heavy:false
+- rental.land_heavy:true
+- rental.land_heavy_if_built#0
+- rental.land_heavy_if_built#1
+- rental.land_heavy_if_built:false
+- rental.land_heavy_if_built:true
 - rental.vehicle:false
 - rental.vehicle:true
 - rental.active:false
@@ -1732,6 +1772,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - rental.amt12_if_any#1
 - rental.line12#0
 - rental.line12#1
+- rental.mortgage_excess:false
+- rental.mortgage_excess:true
+- rental.mortgage_excess_if_mortgage#0
+- rental.mortgage_excess_if_mortgage#1
+- rental.mortgage_excess_if_mortgage:false
+- rental.mortgage_excess_if_mortgage:true
 - rental.has_other_interest:false
 - rental.has_other_interest:true
 - rental.amt13_if_any#0
@@ -1756,6 +1802,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - rental.amt16_if_any#1
 - rental.line16#0
 - rental.line16#1
+- rental.tax_personal:floor
+- rental.tax_personal:positive
 - rental.has_utilities:false
 - rental.has_utilities:true
 - rental.amt17_if_any#0
@@ -1768,6 +1816,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - rental.amt19_if_any#1
 - rental.line19#0
 - rental.line19#1
+- rental.bought_lease:false
+- rental.bought_lease:true
 - rental.line18#0
 - rental.line18#1
 - rental.line3#0
@@ -1828,6 +1878,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - rental.not_at_risk_if_loss:true
 - rental.has_loss:false
 - rental.has_loss:true
+- rental.nondep:false
+- rental.nondep:true
+- rental.nondep_gain:floor
+- rental.nondep_gain:positive
+- rental.nondep_income:false
+- rental.nondep_income:true
 - rental.needs_4562:false
 - rental.needs_4562:true
 - retirement.no:true
@@ -1843,6 +1899,15 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.levy_returned:false
 - retirement.levy_returned:true
 - retirement.levy_returned_if_put_back:true
+- retirement.death_put_back:true
+- retirement.rollover_nonspouse:false
+- retirement.rollover_nonspouse:true
+- retirement.rollover_nonspouse_if_plan:true
+- retirement.rollover_nonspouse_if_death#0
+- retirement.rollover_nonspouse_if_death:true
+- retirement.rollover_second:false
+- retirement.rollover_second:true
+- retirement.rollover_second_if_ira:true
 - retirement.charity_hsa:false
 - retirement.charity_hsa:true
 - retirement.charity_hsa_if_ira:true
@@ -1932,6 +1997,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.sav_404k:true
 - retirement.sav_gross:floor
 - retirement.sav_gross:positive
+- retirement.age_open:true
+- retirement.after59:false
+- retirement.after59:true
+- retirement.ask_after59:true
+- retirement.after59_if_open#0
+- retirement.after59_if_open:true
+- retirement.miscoded:true
 - retirement.early_screen:true
 - retirement.under59:false
 - retirement.under59:true
@@ -1952,15 +2024,17 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.wrong_kind:true
 - retirement.exc_capped:left
 - retirement.exc_capped:right
+- retirement.l2#0
 - retirement.is_e05:true
 - retirement.l2_e05#0
+- retirement.is_e09:true
+- retirement.l2_e09#0
+- retirement.is_e19:true
+- retirement.l2_e19#0
 - retirement.is_e22:true
 - retirement.l2_e22#0
 - retirement.is_e23:true
 - retirement.l2_e23#0
-- retirement.is_s:true
-- retirement.l1_s#0
-- retirement.l2_s#0
 - rf4562.needed:false
 - rf4562.needed:true
 - royalty.business:false
@@ -1995,6 +2069,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - royalty.not_at_risk_if_loss#1
 - royalty.not_at_risk_if_loss:false
 - royalty.not_at_risk_if_loss:true
+- rprop.short_class:false
+- rprop.short_class:true
+- rprop.short_class_if_nonres#0
+- rprop.short_class_if_nonres#1
+- rprop.short_class_if_nonres#2
+- rprop.short_class_if_nonres:false
+- rprop.short_class_if_nonres:true
 - rprop.no:false
 - rprop.no:true
 - rprop.new_nonres:false
@@ -2087,7 +2168,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1.cod_joint_other:true
 - s1.cod_figured#0
 - s1.line8c#0
-- s1.nol_ebl_if_nol:true
 - s1.nol_not_married_if_joint:true
 - s1.nol_limit_test:true
 - s1.nol_limit:true
@@ -2101,12 +2181,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1.jury_over:true
 - s179.line4:positive
 - s179.line5_full:floor
-- s179.mfs:true
 - s179.over_limit:true
 - s179.line9:left
 - s179.show10:false
-- s179.prior_form_if_before:true
-- s179.carryover_if_prior_form#0
 - s179.no:true
 - s179.has179:true
 - s179.income_below5:false
@@ -2129,6 +2206,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1a.line10_pos:positive
 - s1a.line13_figured:positive
 - s1a.line13_amount#1
+- s1a.line15_calc:right
 - s1a.line18_over:true
 - s1a.line18_pos:positive
 - s1a.line21_figured:positive
@@ -2137,10 +2215,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1a.line27_pos:positive
 - s1a.line30_figured:positive
 - s1a.line30_amount#1
-- s1a.line33_over:true
-- s1a.line33_pos:positive
-- s1a.line35_figured:floor
-- s1a.line35_calc#1
 - s1a.died_before_65:true
 - s1a.senior_decedent:true
 - s1a.no:true
@@ -2184,6 +2258,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s2.credit_recapture:true
 - s2.lookback:true
 - s2.lookback_if_business:true
+- s2.ss8_notice:true
 - s2.e05_over:true
 - s2.line8_box:true
 - s3.no:true
@@ -2286,8 +2361,10 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - sa.no:true
 - sa.gift_carryover:true
 - sa.gift_carryover_if_no_gifts:true
+- sa.mfs_spouse_extra:true
 - sa.medical_premiums:true
 - sa.medical_premiums_if_not_large:true
+- sa.e05_claimed:true
 - sa.state_tax_other_any:true
 - sa.state_tax_other_if_any#0
 - sa.home_other:true
@@ -2309,11 +2386,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - sa.debt_instrument_loss:true
 - sa.pension_unrecovered:true
 - sa.impairment_work:true
-- sa.saltremaining:floor
 - sa.line16_gambling:right
-- sa.line16#0
+- sa.other_itemized#0
+- sa.charity_over_test:true
+- sa.charity_over_if_itemizing:true
+- sa.mfs_joint_paid_if_itemizing:true
 - sales.special:true
-- sales.bad_aggregate:true
 - sales.no:true
 - sb.nominee:true
 - sb.asset_any:true
@@ -2360,7 +2438,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - sc.s179_allowed#1
 - sc.hi_screen:true
 - sc.hi_screened:true
-- sc.f7206_min:right
 - sc.tips_ot:true
 - sche.no:true
 - sche.any_listed:false
@@ -2368,18 +2445,14 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - sche.any:true
 - scope.no:true
 - scope.has_w2:false
-- scope.reservist_expenses_if_armed_forces:true
-- scope.unearned_2700_if_under24:true
-- scope.f8615_if_unearned_2700#0
-- scope.f8615_if_unearned_2700:true
 - scope.adoption_benefits_if_adoption#0
 - scope.adoption_benefits_if_adoption:true
-- scope.contractor_pay_if_pay:true
+- scope.church_exempt_wages_if_religious_work:true
 - scope.w2_marks_if_w2#1
 - scope.artist_official_if_w2#1
-- scope.performer_expenses_if_artist_official:true
 - scope.care_benefits_other_if_benefits:true
 - scope.excess_deferral_if_w2#1
+- scope.passive_if_business_before:true
 - scope.ready_schedule1:false
 - scope.ready_other_income:false
 - scope.ready_other_line16:false
@@ -2439,10 +2512,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - scveh.too_old:true
 - scveh.no:true
 - sd.no:true
-- sd.installment_if_sold:true
 - sd.screen:true
 - sdtw.raw30:right
-- sdtw.raw39:positive
 - sdtw.line47:right
 - sli.no:true
 - sli.unqualified_any:true

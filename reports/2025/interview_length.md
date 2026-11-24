@@ -21,11 +21,11 @@ questions in the group that the order does not ask.
 
 | Returns | Complete | Refused | Not walkable | Static asked (mean) | Static max | Closed answers (mean, share) | Floor (mean) | Expected order (mean) | Saved at floor | Saved by expected |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Stage 5 whole returns | 9 | 3 | 0 | 142.8 | 171 | 123.4 (86%) | 142.8 | 142.8 | 0% | 0% |
-| generated returns | 3 | 8 | 1 | 183.3 | 211 | 155.0 (85%) | 183.3 | 183.3 | 0% | 0% |
-| minimal returns | 118 | 0 | 0 | 121.0 | 137 | 117.7 (97%) | 121.0 | 121.0 | 0% | 0% |
-| **full profile, Stage 5 and generated** | 12 | 11 | 1 | 152.9 | 211 | 131.3 (86%) | 152.9 | 152.9 | 0% | 0% |
-| **all** | 130 | 11 | 1 | 124.0 | 211 | 118.9 (96%) | 124.0 | 124.0 | 0% | 0% |
+| Stage 5 whole returns | 9 | 3 | 0 | 142.0 | 171 | 122.7 (86%) | 142.0 | 142.0 | 0% | 0% |
+| generated returns | 3 | 8 | 1 | 184.0 | 218 | 156.0 (85%) | 184.0 | 184.0 | 0% | 0% |
+| minimal returns | 118 | 0 | 0 | 120.0 | 136 | 116.7 (97%) | 120.0 | 120.0 | 0% | 0% |
+| **full profile, Stage 5 and generated** | 12 | 11 | 1 | 152.5 | 218 | 131.0 (86%) | 152.5 | 152.5 | 0% | 0% |
+| **all** | 130 | 11 | 1 | 123.0 | 218 | 118.0 (96%) | 123.0 | 123.0 | 0% | 0% |
 
 ## Closed answers no order avoids (missing-gate candidates)
 
@@ -35,7 +35,7 @@ Stage 5 and generated returns ask them closed (count of 118 complete minimal ret
 new gate in the formal model (one question whose no makes it unreachable) could hide it. *Share yes* is the situation's share of all
 returns in `gate_frequencies.yaml` where the file names the template (- where it does not).
 
-107 templates are asked and answered closed on every one of the 12 returns; 29 of them have a recorded share
+106 templates are asked and answered closed on every one of the 12 returns; 29 of them have a recorded share
 yes below the rare-situation cut (0.05).
 
 | Template | Kind | Share yes | Stage 5 and generated | Minimal |
@@ -52,7 +52,6 @@ yes below the rare-situation cut (0.05).
 | `person.inherited_account` | ungated | - | 12 | 118 |
 | `person.rrta` | ungated | 0.0015 | 12 | 118 |
 | `person.x_archer_excess` | ungated | - | 12 | 118 |
-| `qbi.coop_patron` | ungated | - | 12 | 118 |
 | `refund.any` | ungated | - | 12 | 118 |
 | `s1.cod_any` | ungated | 0.006 | 12 | 118 |
 | `s1.inmate_wages` | ungated | - | 12 | 118 |
@@ -155,10 +154,10 @@ yes below the rare-situation cut (0.05).
 | `sa.medical_premiums` | ungated | - | 8 | 118 |
 | `div.any` | gate guard | - | 8 | 117 |
 | `f4952.has_interest` | gate guard | 0.01 | 8 | 117 |
+| `sa.gifts` | gate guard | 0.4 | 8 | 117 |
 | `$interest` | ungated | 0.3441 | 7 | 118 |
 | `sa.home_other` | ungated | - | 7 | 118 |
 | `sa.home_owner` | ungated | - | 7 | 118 |
-| `sa.gifts` | gate guard | 0.4 | 7 | 117 |
 | `sa.state_tax_any` | gate guard | - | 7 | 117 |
 | `f1040.estimated_any` | gate guard | - | 6 | 117 |
 
@@ -177,157 +176,157 @@ better order (or a nested `choose`) would not ask. On the full profile these are
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| f1116.mint_line33_refused_line20_zero_line18 | refused | 163 | 136 | - | - |
-| stage5.return.owed | complete | 151 | 129 | 151 | 151 |
-| stage5.return.refund | complete | 132 | 120 | 132 | 132 |
+| f1116.mint_line33_refused_line20_zero_line18 | refused | 162 | 135 | - | - |
+| stage5.return.owed | complete | 150 | 128 | 150 | 150 |
+| stage5.return.refund | complete | 131 | 119 | 131 | 131 |
 | stage5.return.itemized | complete | 171 | 131 | 171 | 171 |
-| stage5.refuse.screens | refused | 100 | 94 | - | - |
+| stage5.refuse.screens | refused | 99 | 93 | - | - |
 | stage5.refuse.other_income | refused | 118 | 112 | - | - |
-| stage5.return.refund_f4952_screens_unused | complete | 132 | 120 | 132 | 132 |
-| stage5.return.refund_f8960_unsupported_unused | complete | 132 | 120 | 132 | 132 |
-| stage5.return.f8960_unsupported_agi_at_threshold | complete | 132 | 120 | 132 | 132 |
-| stage5.return.refund_f8960_refund_unused | complete | 132 | 120 | 132 | 132 |
-| stage5.return.refund_combat_pay_no_children | complete | 132 | 120 | 132 | 132 |
+| stage5.return.refund_f4952_screens_unused | complete | 131 | 119 | 131 | 131 |
+| stage5.return.refund_f8960_unsupported_unused | complete | 131 | 119 | 131 | 131 |
+| stage5.return.f8960_unsupported_agi_at_threshold | complete | 131 | 119 | 131 | 131 |
+| stage5.return.refund_f8960_refund_unused | complete | 131 | 119 | 131 | 131 |
+| stage5.return.refund_combat_pay_no_children | complete | 131 | 119 | 131 | 131 |
 | stage5.return.itemized_f8960_allocation_unused | complete | 171 | 131 | 171 | 171 |
 
 ### generated returns
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| generated.0 | complete | 174 | 153 | 174 | 174 |
-| generated.1 | refused | 199 | 152 | - | - |
-| generated.2 | refused | 143 | 109 | - | - |
-| generated.3 | refused | 187 | 149 | - | - |
-| generated.4 | complete | 211 | 166 | 211 | 211 |
-| generated.5 | refused | 167 | 121 | - | - |
-| generated.6 | complete | 165 | 146 | 165 | 165 |
-| generated.7 | refused | 195 | 144 | - | - |
-| generated.8 | refused | 200 | 153 | - | - |
-| generated.9 | refused | 151 | 112 | - | - |
-| generated.11 | refused | 216 | 161 | - | - |
+| generated.0 | complete | 173 | 152 | 173 | 173 |
+| generated.1 | refused | 273 | 204 | - | - |
+| generated.2 | refused | 131 | 101 | - | - |
+| generated.3 | refused | 198 | 155 | - | - |
+| generated.4 | complete | 218 | 172 | 218 | 218 |
+| generated.5 | refused | 177 | 125 | - | - |
+| generated.6 | complete | 161 | 144 | 161 | 161 |
+| generated.7 | refused | 193 | 138 | - | - |
+| generated.8 | refused | 207 | 159 | - | - |
+| generated.9 | refused | 170 | 131 | - | - |
+| generated.11 | refused | 200 | 151 | - | - |
 
 ### minimal returns
 
 | Return | Status | Static | Closed | Floor | Expected |
 |---|---|---|---|---|---|
-| every gate closed | complete | 120 | 117 | 120 | 120 |
-| asset.listed = true alone | complete | 120 | 117 | 120 | 120 |
-| asset.software = true alone | complete | 120 | 117 | 120 | 120 |
-| dependent.ever_married = true alone | complete | 120 | 117 | 120 | 120 |
-| dependent.lived_all_year = true alone | complete | 120 | 117 | 120 | 120 |
-| dependent.own_money = true alone | complete | 120 | 117 | 120 | 120 |
-| dependent.relationship = "sibling" alone | complete | 120 | 117 | 120 | 120 |
-| dependent.relationship = "sibling_descendant" alone | complete | 120 | 117 | 120 | 120 |
-| dependent.relationship = "parent" alone | complete | 120 | 117 | 120 | 120 |
-| dependent.relationship = "parent_relative" alone | complete | 120 | 117 | 120 | 120 |
-| dependent.relationship = "in_law" alone | complete | 120 | 117 | 120 | 120 |
-| dependent.relationship = "household_member" alone | complete | 120 | 117 | 120 | 120 |
-| dependent.relationship = "other" alone | complete | 120 | 117 | 120 | 120 |
-| div.any = true alone | complete | 125 | 121 | 125 | 125 |
-| eic.lived_with_relative = true alone | complete | 120 | 117 | 120 | 120 |
-| f1040.digital_assets = true alone | complete | 121 | 117 | 121 | 121 |
-| f1040.estimated_any = true alone | complete | 121 | 117 | 121 | 121 |
-| f1040.tax_exempt_any = true alone | complete | 121 | 117 | 121 | 121 |
-| f1040.withheld_other_any = true alone | complete | 122 | 118 | 122 | 122 |
-| f2441.benefits = true alone | complete | 131 | 127 | 131 | 131 |
-| f4952.has_interest = true alone | complete | 123 | 119 | 123 | 123 |
-| f5695.any = true alone | complete | 137 | 133 | 137 | 137 |
-| f5695.line17b = true alone | complete | 120 | 117 | 120 | 120 |
-| f5695.line21a = true alone | complete | 120 | 117 | 120 | 120 |
-| f8853c.periodic = true alone | complete | 120 | 117 | 120 | 120 |
-| f8889.coverage_year = "family" alone | complete | 120 | 117 | 120 | 120 |
-| f8889.coverage_year = "changed" alone | complete | 120 | 117 | 120 | 120 |
-| f8889.inherited_any = true alone | complete | 120 | 117 | 120 | 120 |
-| f8962.other_coverage = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b1 = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b14a = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b15o = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b18a = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b19 = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b2 = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b20z = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b3 = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b4a = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b5 = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b6a = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b8 = true alone | complete | 120 | 117 | 120 | 120 |
-| k1p.has_b9a = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box13o_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box16_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box17_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box1_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box2_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box3_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box4_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box5_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box7_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.box8_any = true alone | complete | 120 | 117 | 120 | 120 |
-| k1s.prior_any = true alone | complete | 120 | 117 | 120 | 120 |
-| ny_it201.ask.bought_untaxed = true alone | complete | 120 | 117 | 120 | 120 |
-| ny_it201.ask.city_resident = true alone | complete | 120 | 117 | 120 | 120 |
-| ny_it201.ask.est_any = true alone | complete | 120 | 117 | 120 | 120 |
-| person.eligible_educator = true alone | complete | 121 | 117 | 121 | 121 |
-| person.ira_owner = true alone | complete | 122 | 118 | 122 | 122 |
-| person.x_edu_account = true alone | complete | 122 | 118 | 122 | 122 |
-| qbi.prior_form = true alone | complete | 122 | 118 | 122 | 122 |
-| rental.has_advertising = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_cleaning = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_commissions = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_insurance = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_legal = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_management = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_mortgage = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_other = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_other_interest = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_repairs = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_supplies = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_taxes = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.has_utilities = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.prior_any = true alone | complete | 120 | 117 | 120 | 120 |
-| rental.short_stays = true alone | complete | 120 | 117 | 120 | 120 |
-| retirement.rollover_any = true alone | complete | 120 | 117 | 120 | 120 |
-| royalty.expenses_any = true alone | complete | 120 | 117 | 120 | 120 |
-| rprop.kind = "nonresidential" alone | complete | 120 | 117 | 120 | 120 |
-| rprop.kind = "personal" alone | complete | 120 | 117 | 120 | 120 |
-| s1.alaska_any = true alone | complete | 121 | 117 | 121 | 121 |
-| s1.alimony_any = true alone | complete | 121 | 117 | 121 | 121 |
-| s1.hobby_any = true alone | complete | 121 | 117 | 121 | 121 |
-| s1.jury_any = true alone | complete | 121 | 117 | 121 | 121 |
-| s1.scholarship_any = true alone | complete | 121 | 117 | 121 | 121 |
-| s1.uc_any = true alone | complete | 121 | 117 | 121 | 121 |
-| s1.winnings_any = true alone | complete | 123 | 119 | 123 | 123 |
-| s2.household_help = true alone | complete | 121 | 117 | 121 | 121 |
-| s2.options_any = true alone | complete | 122 | 118 | 122 | 122 |
-| s3.adoption_any = true alone | complete | 123 | 119 | 123 | 123 |
-| s3.ev = true alone | complete | 123 | 119 | 123 | 123 |
-| s3.farmland = true alone | complete | 121 | 117 | 121 | 121 |
-| s3.foreign_any = true alone | complete | 125 | 121 | 125 | 125 |
-| s3.kerosene = true alone | complete | 121 | 117 | 121 | 121 |
-| s3.prior_other_forms = true alone | complete | 124 | 120 | 124 | 124 |
-| sa.gifts = true alone | complete | 123 | 119 | 123 | 123 |
-| sa.personal_property_tax_any = true alone | complete | 121 | 117 | 121 | 121 |
-| sa.state_tax_any = true alone | complete | 121 | 117 | 121 | 121 |
-| sa.state_tax_other_any = true alone | complete | 121 | 117 | 121 | 121 |
-| sc.employees = true alone | complete | 120 | 117 | 120 | 120 |
-| sc.goods = true alone | complete | 120 | 117 | 120 | 120 |
-| sc.travel_meals = true alone | complete | 120 | 117 | 120 | 120 |
-| scope.armed_forces = true alone | complete | 123 | 119 | 123 | 123 |
-| scope.business_before = true alone | complete | 123 | 119 | 123 | 123 |
-| scope.foreign_shares = true alone | complete | 122 | 118 | 122 | 122 |
-| scope.medicaid_waiver = true alone | complete | 122 | 118 | 122 | 122 |
-| scope.nol = true alone | complete | 124 | 120 | 124 | 124 |
-| scope.noncitizen = true alone | complete | 121 | 117 | 121 | 121 |
-| scope.pay_no_w2 = true alone | complete | 125 | 121 | 125 | 125 |
-| scope.recovery = true alone | complete | 124 | 120 | 124 | 124 |
-| scope.religious_work = true alone | complete | 122 | 118 | 122 | 122 |
-| scope.rental = true alone | complete | 127 | 123 | 127 | 127 |
-| scveh.others_use = true alone | complete | 120 | 117 | 120 | 120 |
-| scveh.smr_always = true alone | complete | 120 | 117 | 120 | 120 |
-| sd.route_each = true alone | complete | 120 | 117 | 120 | 120 |
+| every gate closed | complete | 119 | 116 | 119 | 119 |
+| asset.listed = true alone | complete | 119 | 116 | 119 | 119 |
+| asset.software = true alone | complete | 119 | 116 | 119 | 119 |
+| dependent.ever_married = true alone | complete | 119 | 116 | 119 | 119 |
+| dependent.lived_all_year = true alone | complete | 119 | 116 | 119 | 119 |
+| dependent.own_money = true alone | complete | 119 | 116 | 119 | 119 |
+| dependent.relationship = "sibling" alone | complete | 119 | 116 | 119 | 119 |
+| dependent.relationship = "sibling_descendant" alone | complete | 119 | 116 | 119 | 119 |
+| dependent.relationship = "parent" alone | complete | 119 | 116 | 119 | 119 |
+| dependent.relationship = "parent_relative" alone | complete | 119 | 116 | 119 | 119 |
+| dependent.relationship = "in_law" alone | complete | 119 | 116 | 119 | 119 |
+| dependent.relationship = "household_member" alone | complete | 119 | 116 | 119 | 119 |
+| dependent.relationship = "other" alone | complete | 119 | 116 | 119 | 119 |
+| div.any = true alone | complete | 124 | 120 | 124 | 124 |
+| eic.lived_with_relative = true alone | complete | 119 | 116 | 119 | 119 |
+| f1040.digital_assets = true alone | complete | 120 | 116 | 120 | 120 |
+| f1040.estimated_any = true alone | complete | 120 | 116 | 120 | 120 |
+| f1040.tax_exempt_any = true alone | complete | 120 | 116 | 120 | 120 |
+| f1040.withheld_other_any = true alone | complete | 121 | 117 | 121 | 121 |
+| f2441.benefits = true alone | complete | 130 | 126 | 130 | 130 |
+| f4952.has_interest = true alone | complete | 122 | 118 | 122 | 122 |
+| f5695.any = true alone | complete | 136 | 132 | 136 | 136 |
+| f5695.line17b = true alone | complete | 119 | 116 | 119 | 119 |
+| f5695.line21a = true alone | complete | 119 | 116 | 119 | 119 |
+| f8853c.periodic = true alone | complete | 119 | 116 | 119 | 119 |
+| f8889.coverage_year = "family" alone | complete | 119 | 116 | 119 | 119 |
+| f8889.coverage_year = "changed" alone | complete | 119 | 116 | 119 | 119 |
+| f8889.inherited_any = true alone | complete | 119 | 116 | 119 | 119 |
+| f8962.other_coverage = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b1 = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b14a = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b15o = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b18a = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b19 = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b2 = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b20z = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b3 = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b4a = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b5 = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b6a = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b8 = true alone | complete | 119 | 116 | 119 | 119 |
+| k1p.has_b9a = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box13o_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box16_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box17_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box1_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box2_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box3_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box4_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box5_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box7_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.box8_any = true alone | complete | 119 | 116 | 119 | 119 |
+| k1s.prior_any = true alone | complete | 119 | 116 | 119 | 119 |
+| ny_it201.ask.bought_untaxed = true alone | complete | 119 | 116 | 119 | 119 |
+| ny_it201.ask.city_resident = true alone | complete | 119 | 116 | 119 | 119 |
+| ny_it201.ask.est_any = true alone | complete | 119 | 116 | 119 | 119 |
+| person.eligible_educator = true alone | complete | 120 | 116 | 120 | 120 |
+| person.ira_owner = true alone | complete | 121 | 117 | 121 | 121 |
+| person.x_edu_account = true alone | complete | 121 | 117 | 121 | 121 |
+| qbi.prior_form = true alone | complete | 121 | 117 | 121 | 121 |
+| rental.has_advertising = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_cleaning = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_commissions = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_insurance = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_legal = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_management = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_mortgage = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_other = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_other_interest = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_repairs = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_supplies = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_taxes = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.has_utilities = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.prior_any = true alone | complete | 119 | 116 | 119 | 119 |
+| rental.short_stays = true alone | complete | 119 | 116 | 119 | 119 |
+| retirement.rollover_any = true alone | complete | 119 | 116 | 119 | 119 |
+| royalty.expenses_any = true alone | complete | 119 | 116 | 119 | 119 |
+| rprop.kind = "nonresidential" alone | complete | 119 | 116 | 119 | 119 |
+| rprop.kind = "personal" alone | complete | 119 | 116 | 119 | 119 |
+| s1.alaska_any = true alone | complete | 120 | 116 | 120 | 120 |
+| s1.alimony_any = true alone | complete | 120 | 116 | 120 | 120 |
+| s1.hobby_any = true alone | complete | 120 | 116 | 120 | 120 |
+| s1.jury_any = true alone | complete | 120 | 116 | 120 | 120 |
+| s1.scholarship_any = true alone | complete | 120 | 116 | 120 | 120 |
+| s1.uc_any = true alone | complete | 120 | 116 | 120 | 120 |
+| s1.winnings_any = true alone | complete | 122 | 118 | 122 | 122 |
+| s2.household_help = true alone | complete | 120 | 116 | 120 | 120 |
+| s2.options_any = true alone | complete | 121 | 117 | 121 | 121 |
+| s3.adoption_any = true alone | complete | 122 | 118 | 122 | 122 |
+| s3.ev = true alone | complete | 122 | 118 | 122 | 122 |
+| s3.farmland = true alone | complete | 120 | 116 | 120 | 120 |
+| s3.foreign_any = true alone | complete | 124 | 120 | 124 | 124 |
+| s3.kerosene = true alone | complete | 120 | 116 | 120 | 120 |
+| s3.prior_other_forms = true alone | complete | 123 | 119 | 123 | 123 |
+| sa.gifts = true alone | complete | 122 | 118 | 122 | 122 |
+| sa.personal_property_tax_any = true alone | complete | 120 | 116 | 120 | 120 |
+| sa.state_tax_any = true alone | complete | 120 | 116 | 120 | 120 |
+| sa.state_tax_other_any = true alone | complete | 120 | 116 | 120 | 120 |
+| sc.employees = true alone | complete | 119 | 116 | 119 | 119 |
+| sc.goods = true alone | complete | 119 | 116 | 119 | 119 |
+| sc.travel_meals = true alone | complete | 119 | 116 | 119 | 119 |
+| scope.armed_forces = true alone | complete | 122 | 118 | 122 | 122 |
+| scope.business_before = true alone | complete | 122 | 118 | 122 | 122 |
+| scope.foreign_shares = true alone | complete | 121 | 117 | 121 | 121 |
+| scope.medicaid_waiver = true alone | complete | 121 | 117 | 121 | 121 |
+| scope.nol = true alone | complete | 123 | 119 | 123 | 123 |
+| scope.noncitizen = true alone | complete | 120 | 116 | 120 | 120 |
+| scope.pay_no_w2 = true alone | complete | 124 | 120 | 124 | 124 |
+| scope.recovery = true alone | complete | 123 | 119 | 123 | 123 |
+| scope.religious_work = true alone | complete | 121 | 117 | 121 | 121 |
+| scope.rental = true alone | complete | 126 | 122 | 126 | 126 |
+| scveh.others_use = true alone | complete | 119 | 116 | 119 | 119 |
+| scveh.smr_always = true alone | complete | 119 | 116 | 119 | 119 |
+| sd.route_each = true alone | complete | 119 | 116 | 119 | 119 |
 | sd.sold_other = true alone | complete | 123 | 119 | 123 | 123 |
-| ssb.any = true alone | complete | 121 | 117 | 121 | 121 |
-| ssb.prior_year_pay = true alone | complete | 120 | 117 | 120 | 120 |
-| tipjob.listed = true alone | complete | 120 | 117 | 120 | 120 |
+| ssb.any = true alone | complete | 122 | 118 | 122 | 122 |
+| ssb.prior_year_pay = true alone | complete | 119 | 116 | 119 | 119 |
+| tipjob.listed = true alone | complete | 119 | 116 | 119 | 119 |
 
 <!-- Hand-written findings below this line are kept when the tool rewrites the report. -->
 

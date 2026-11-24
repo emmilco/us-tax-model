@@ -723,6 +723,88 @@
       }
     },
     {
+      "id": "mut.f8889.self_only_spouse_all_year",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the self_only alternative of f8889.self_dec_year and the full_year-true alternative of f8889.self_in_family), predicted by hand before evaluating: stage13.refuse.hsa_family_one_spouse with each spouse answering coverage_year for the whole year, you family coverage all 12 months and your spouse a plan of their own covering only themselves all 12 months, so your spouse's month count of family coverage is never asked (null). Your family amount is the full family amount and your spouse's $0, and your spouse's self-only amount for the year stays in Step 4: the two family amounts differ and your spouse had eligible months of self-only coverage, so neither matchable pattern holds and both forms are refused at line 6 (f8889.family_months_bad), the spouse's form reached first on Schedule 1 line 13, as in stage13.refuse.hsa_family_one_spouse. Under i8889 p. 4 (\"you both are treated as having only the family coverage plan\") the year is matchable, but the tool holds the answer as given; the refusal's remedy asks the filer to count the months the same way for both.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 427500,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[spouse].f8889[hsa].line2": 430000,
+        "person[spouse].f8889[hsa].coverage_year": "self_only",
+        "person[spouse].f8889[hsa].months_family": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].family_months_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs whose months of family coverage differ",
+          "remedy": "Count the months treated as family coverage the same way for both of you (in a month you were both eligible individuals and either had family coverage, both are treated as having it). Months in which only one of you was an eligible individual are that spouse's alone; this tool can match them only when one of you was treated as having family coverage all year, or one of you was never an eligible individual in 2025. Other patterns are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, \"Caution: The rules for married people apply only if both spouses are eligible individuals\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "refusal",
+          "gate": "person[spouse].f8889[hsa].family_months_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs whose months of family coverage differ",
+          "remedy": "Count the months treated as family coverage the same way for both of you (in a month you were both eligible individuals and either had family coverage, both are treated as having it). Months in which only one of you was an eligible individual are that spouse's alone; this tool can match them only when one of you was treated as having family coverage all year, or one of you was never an eligible individual in 2025. Other patterns are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, \"Caution: The rules for married people apply only if both spouses are eligible individuals\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[spouse].f8889[hsa].family_months_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs whose months of family coverage differ",
+          "remedy": "Count the months treated as family coverage the same way for both of you (in a month you were both eligible individuals and either had family coverage, both are treated as having it). Months in which only one of you was an eligible individual are that spouse's alone; this tool can match them only when one of you was treated as having family coverage all year, or one of you was never an eligible individual in 2025. Other patterns are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, \"Caution: The rules for married people apply only if both spouses are eligible individuals\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
       "id": "stage13.hsa_part_year_family",
       "covers": [
         "f8889"
@@ -5383,6 +5465,257 @@
           "cite": {
             "doc": "i8889",
             "locator": "p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, \"Caution: The rules for married people apply only if both spouses are eligible individuals\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mut.f8889.spouse_never_eligible_you_part_family",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the spouse_self_total and step4_total operands of f8889.spouse_self_total, and the spouse_self_total operand of the third pattern of f8889.family_other), predicted by hand before evaluating: fxeduhsa.hsa_spouse_never_eligible with your coverage changed: eligible all twelve months, family coverage in six (January to June) and self-only in the other six, self-only on December 1, last-month rule not used, and $6,000 contributed. Your spouse has a Form 8889 but no eligible month. The spouse rule of line 6 does not apply (p969 p. 6, Caution: the rules for married people apply only if both spouses are eligible individuals), and one of you was never an eligible individual, so the months match and nothing is refused. Line 3 is (6 x $8,550 + 6 x $4,300) / 12 = $6,425 (i8889 p. 6, Line 3 Limitation Chart and Worksheet); line 6 is line 5, $6,425; line 13 is the smaller of line 2 ($6,000) and line 12 ($6,425), $6,000. Your spouse's line 6 is $0. Schedule 1 line 13 is $6,000.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 600000,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 12,
+        "person[taxpayer].f8889[hsa].months_family": 6,
+        "person[taxpayer].f8889[hsa].dec_coverage": "self_only",
+        "person[taxpayer].f8889[hsa].last_month": false,
+        "person[spouse].f8889[hsa].line2": 0,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 0,
+        "person[spouse].f8889[hsa].months_family": 0,
+        "person[spouse].f8889[hsa].dec_coverage": "none",
+        "person[taxpayer].birth_year": 1975,
+        "person[spouse].birth_year": 1972
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 642500
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "mut.f8889.self_only_you_family_spouse_part_year",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the no alternative of f8889.split), predicted by hand before evaluating: joint, both with a Form 8889 and eligible all year; you self-only HDHP coverage all year, your spouse family coverage in eight months (on December 1 among them) and self-only in four, last-month rule not used. The spouse allocation question is unanswered for both (it is asked only of spouses who split a family limit, and line 6 is refused before it is read). Your family amount is $0 and your spouse's is not, and you had eligible months of self-only coverage, so neither matchable pattern holds and both forms are refused at line 6 (f8889.family_months_bad; i8889 p. 4, How To Complete Part I, both treated as having family coverage in a month both were eligible and either had it, which the answers do not show). You were never treated as having family coverage, so you do not split a family limit (i8889 p. 7, Line 6, 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'): no form uses an agreed allocation, both Step 1 limits are $0 (the smaller of the two family amounts is $0), and the allocation check (f8889.allocation_bad) is false on both forms.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].allocation": null,
+        "person[spouse].f8889[hsa].line2": 400000,
+        "person[spouse].f8889[hsa].coverage_year": "changed",
+        "person[spouse].f8889[hsa].months_eligible": 12,
+        "person[spouse].f8889[hsa].months_family": 8,
+        "person[spouse].f8889[hsa].dec_coverage": "family",
+        "person[spouse].f8889[hsa].last_month": false,
+        "person[spouse].f8889[hsa].allocation": null,
+        "person[taxpayer].birth_year": 1975,
+        "person[spouse].birth_year": 1972
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].family_months_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs whose months of family coverage differ",
+          "remedy": "Count the months treated as family coverage the same way for both of you (in a month you were both eligible individuals and either had family coverage, both are treated as having it). Months in which only one of you was an eligible individual are that spouse's alone; this tool can match them only when one of you was treated as having family coverage all year, or one of you was never an eligible individual in 2025. Other patterns are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, \"Caution: The rules for married people apply only if both spouses are eligible individuals\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[spouse].f8889[hsa].line6": {
+          "kind": "refusal",
+          "gate": "person[spouse].f8889[hsa].family_months_bad",
+          "form": "Form 8889 line 6 for spouses with separate HSAs whose months of family coverage differ",
+          "remedy": "Count the months treated as family coverage the same way for both of you (in a month you were both eligible individuals and either had family coverage, both are treated as having it). Months in which only one of you was an eligible individual are that spouse's alone; this tool can match them only when one of you was treated as having family coverage all year, or one of you was never an eligible individual in 2025. Other patterns are outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, How To Complete Part I; p. 7, Line 6, Steps 1 to 4; p969 p. 6, Rules for married people, \"Caution: The rules for married people apply only if both spouses are eligible individuals\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f8889[hsa].allocation_bad": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[spouse].f8889[hsa].allocation_bad": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "mut.f8889.one_hsa_joint_coverage_unanswered",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the where-test of household.hsa_people), predicted by hand before evaluating: joint, only you have a Form 8889 (your spouse none), and your HDHP coverage question is not yet answered. Only one person on the return has a Form 8889, so the spouses' family months need no matching (i8889 p. 4, 'If married filing jointly and both you and your spouse have HSAs, complete a separate Form 8889 for each of you'; p. 7, Line 6, Spouses who have separate HSAs): the line 6 check f8889.family_months_bad is false whatever your coverage, while line 6 itself awaits the coverage answer (unknown).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 300000,
+        "person[taxpayer].f8889[hsa].coverage_year": null,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 5000000,
+        "person[spouse].w2[e0].box4": 310000,
+        "person[spouse].w2[e0].box5": 5000000,
+        "person[spouse].w2[e0].box6": 72500,
+        "$f8889@person[spouse]": [],
+        "person[taxpayer].birth_year": 1975,
+        "person[spouse].birth_year": 1972
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].family_months_bad": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "unknown",
+          "reason": "no input supplied for person[taxpayer].f8889[hsa].coverage_year",
+          "input": "person[taxpayer].f8889[hsa].coverage_year"
+        }
+      }
+    },
+    {
+      "id": "mut.f8889.two_forms_one_person_allocation_check",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (the where-test of person.hsa_step1), predicted by hand from the YAML before evaluating; it records the tool's current behaviour on a return refused at Schedule 1 line 13. Single filer with two Forms 8889 of their own, family HDHP coverage all year on each; the spouse allocation question is unanswered (it is asked only of spouses who split a family limit). A second Form 8889 for one person is refused at Schedule 1 line 13 (person.hsa_repeated; i8889 p. 3). Not married, so neither form uses the spouse rule of line 6 (f8889.split false): line 6 of the first form is line 5, $8,550. The allocation check on that form still compares twice its Step 1 limit (each form's family amount against the other's: $102,600 / 12 = $8,550, twice $17,100) with the Step 1 limits of the forms that split ($0) and reads the unanswered allocation question, so it is unknown. No allocation applies to a single filer; see BUG-NEW-lane-mutf-01 (f8889.allocation_bad reads the spouse sums on a form that does not split). If that is fixed this expectation becomes false.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa_a",
+          "hsa_b"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa_a].line2": 300000,
+        "person[taxpayer].f8889[hsa_a].coverage_year": "family",
+        "person[taxpayer].f8889[hsa_a].allocation": null,
+        "person[taxpayer].f8889[hsa_b].line2": 200000,
+        "person[taxpayer].f8889[hsa_b].coverage_year": "family",
+        "person[taxpayer].f8889[hsa_b].allocation": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa_a].line6": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa_a].allocation_bad": {
+          "kind": "unknown",
+          "reason": "no input supplied for person[taxpayer].f8889[hsa_a].allocation",
+          "input": "person[taxpayer].f8889[hsa_a].allocation"
+        },
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].hsa_repeated",
+          "form": "More than one Form 8889 for one person",
+          "remedy": "Enter one Form 8889 per person, combining all of that person's own HSAs on it. A separate Form 8889 for each HSA (with a controlling Form 8889) is required only for an inherited HSA, which is outside this tool.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 3, \"If, during the tax year, you are the beneficiary of two or more HSAs or you are a beneficiary of an HSA and you have your own HSA, you must complete a separate Form 8889 for each HSA\"",
             "revision": "2025",
             "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
             "tax_year": 2025

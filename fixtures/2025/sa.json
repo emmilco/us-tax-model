@@ -1647,6 +1647,48 @@
       }
     },
     {
+      "id": "mut.sa.home_other_not_owner",
+      "covers": [
+        "s1",
+        "oi8z",
+        "sa",
+        "f1040",
+        "eic",
+        "s8812"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating. Return stage16.other.o1 with the filer owning no home or real estate but paying $9,000 of interest on a loan secured by a mobile home with sleeping, cooking and toilet facilities (sa.home_other true), and no medical expenses. A home for home mortgage interest includes such a mobile home or boat (i1040sca, Line 8, Home Mortgage Interest, \"A home can be a house, condominium, cooperative, mobile home, boat, or similar property. It must provide basic living accommodations including sleeping space, toilet, and cooking facilities.\"), so the mortgage questions are asked (sa.home_asked true) and the $9,000 is on line 8a.",
+      "inputs": {
+        "sa.state_tax_any": true,
+        "sa.line5a": 400000,
+        "sa.home_owner": false,
+        "sa.mortgage_interest": 900000,
+        "f1040.estimated_any": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "s1.gambling_winnings": 500000,
+        "sa.gambling_losses": 700000,
+        "s1.winnings_any": true,
+        "sa.home_other": true
+      },
+      "expect": {
+        "sa.home_asked": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.line8a": {
+          "kind": "money",
+          "cents": 900000
+        }
+      }
+    },
+    {
       "id": "stage16.sa.decedent_spouse",
       "covers": [
         "sa.boxes_age65",
@@ -3110,6 +3152,35 @@
       }
     },
     {
+      "id": "mut.sa.charity_stock_just_over_limit",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating from p526 p. 25 (capital gain property to 50% limit organizations, 30% of AGI): single, AGI $100,000, listed stock given, deduction $30,500, more than the $30,000 limit and under the 60% limit, so the limit test is true.",
+      "inputs": {
+        "sa.gifts": true,
+        "sa.charity_limited": false,
+        "$gift": [
+          "stock"
+        ],
+        "gift[stock].deduction": 3050000,
+        "gift[stock].public_securities": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box5": 10000000,
+        "person[taxpayer].w2[a].box6": 145000
+      },
+      "expect": {
+        "sa.charity_over_test": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
       "id": "fxi.charity_cash_at_limit_itemizing",
       "covers": [
         "sa"
@@ -3135,6 +3206,64 @@
         "sa.deduction": {
           "kind": "money",
           "cents": 3000000
+        }
+      }
+    },
+    {
+      "id": "mut.sa.no_gifts_stray_gift_list",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating. AGI $50,000 and the answer that no charitable contribution was made in 2025 (sa.gifts false), with a gift list left over from an earlier answer (listed stock, $35,000). With no contribution there is nothing on lines 11 and 12, so nothing is over either limit (p526 p. 22 and p. 25): the limit test is false, whatever the stale list holds.",
+      "inputs": {
+        "sa.gifts": false,
+        "sa.charity_limited": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "person[taxpayer].w2[a].box6": 72500,
+        "$gift": [
+          "stock"
+        ],
+        "gift[stock].deduction": 3500000,
+        "gift[stock].public_securities": true
+      },
+      "expect": {
+        "sa.charity_over_test": {
+          "kind": "bool",
+          "value": false
+        },
+        "sa.line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mut.sa.charity_cash_just_over_limit",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating from p526 p. 22, Limits on Deductions (60% of AGI): AGI $50,000, cash gifts $30,250 (60.5% of AGI), more than the $30,000 limit, so the limit test is true (and the deduction is refused when itemizing, the owner's charity band decision of 2026-11-23).",
+      "inputs": {
+        "sa.gifts": true,
+        "sa.line11": 3025000,
+        "sa.charity_limited": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "person[taxpayer].w2[a].box6": 72500
+      },
+      "expect": {
+        "sa.charity_over_test": {
+          "kind": "bool",
+          "value": true
         }
       }
     },

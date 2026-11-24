@@ -3296,6 +3296,76 @@
       }
     },
     {
+      "id": "mut.s1a.senior_count.young_beneficiary_missed_rmd",
+      "covers": [
+        "s1a",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating. A single filer born in 1985 (not 65 or older at the end of 2025), with a valid SSN and wages of $40,000, who inherited an IRA and missed a required minimum distribution from it in 2025. The Schedule 1-A enhanced deduction for seniors needs a person 65 or older (f1040s1a Part V, line 36a, \"born before January 2, 1961\"): no one counts, so s1a.senior_count is 0 whatever the beneficiary's distribution.",
+      "inputs": {
+        "person[taxpayer].birth_year": 1985,
+        "person[taxpayer].inherited_account": true,
+        "person[taxpayer].rmd_missed": true,
+        "$w2@person[taxpayer]": [
+          "e"
+        ],
+        "person[taxpayer].w2[e].box1": 4000000,
+        "person[taxpayer].w2[e].box5": 4000000,
+        "person[taxpayer].w2[e].box6": 58000
+      },
+      "expect": {
+        "s1a.senior_count": {
+          "kind": "count",
+          "value": 0
+        }
+      }
+    },
+    {
+      "id": "mut.s1a.tips_over_box5_two_employers",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand before evaluating from f1040s1a line 4a (\"qualified tips included on Form W-2, box 7\"): return fxi.tips_over_box5_refused with a second tipped job (W-2 box 5 $5,000, tips $3,000). The person's qualified tips, $23,000, are more than the person's Medicare wages and tips of both Forms W-2, $15,000, which include them; the answers conflict whatever the number of employers, and line 4c is refused as in the base return.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e",
+          "f"
+        ],
+        "person[taxpayer].w2[e].box1": 1000000,
+        "person[taxpayer].w2[e].box5": 1000000,
+        "person[taxpayer].w2[e].box6": 14500,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "e",
+          "f"
+        ],
+        "person[taxpayer].tipjob[e].listed": true,
+        "person[taxpayer].tipjob[e].tips": 2000000,
+        "person[taxpayer].w2[f].box1": 500000,
+        "person[taxpayer].w2[f].box5": 500000,
+        "person[taxpayer].w2[f].box6": 7250,
+        "person[taxpayer].tipjob[f].listed": true,
+        "person[taxpayer].tipjob[f].tips": 300000
+      },
+      "expect": {
+        "s1a.tips_employee": {
+          "kind": "refusal",
+          "gate": "s1a.tips_over_wages",
+          "form": "Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them)",
+          "remedy": "The tips entered for a person are more than that person's Form W-2 box 5 Medicare wages and tips, which include them. Correct the tip amounts or the Forms W-2.",
+          "cite": {
+            "doc": "f1040s1a",
+            "locator": "p. 1, line 4a, \"Enter qualified tips included on Form W-2, box 7\"; fw2 p. 7, Box 6, \"all Medicare wages and tips shown in box 5\"",
+            "revision": "2025; created 2025-11-04",
+            "snapshot": "64f97b38ff4218e2f188fd55a8aab7043556687487c82bbefe0b6dd1a956ecd4",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
       "id": "fxi.tips_equal_box5",
       "covers": [
         "s1a"
