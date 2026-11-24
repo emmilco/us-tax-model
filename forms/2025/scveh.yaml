@@ -77,9 +77,11 @@ form:
     printed: 44c
     label: Other miles
     type: Count
+    ambiguity: amb.2025.vehicle_two_businesses
     expr:
       op: input
-      source: The other (personal) miles you drove this vehicle in 2025
+      source: The other (personal) miles you drove this vehicle in 2025, counting miles driven for another business of yours
+        (the vehicle is listed with that business too)
     cite:
       doc: f1040sc
       locator: Schedule C (2025), line 44c

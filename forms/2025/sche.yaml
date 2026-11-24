@@ -4,7 +4,7 @@ form:
   title: Schedule E, Part I — totals (rental real estate and royalties)
   tax_year: 2025
   note: 'Totals of Schedule E Part I over the rental and royalty entries; line 41 is line 26 (Parts II to IV are refused).
-    Refused: a real estate professional, rentals grouped as one activity, and a rental treated as a trade or business.'
+    Refused: a real estate professional, rentals grouped as one activity, and a rental that is a trade or business.'
   lines:
   - id: sche.no
     printed: (helper)
@@ -41,16 +41,21 @@ form:
         or business activity unless the activities being grouped together make up an appropriate economic unit"
   - id: sche.qbi_business
     printed: (helper)
-    label: A rental treated as a trade or business
+    label: A rental that is a trade or business
     type: Bool
     expr:
       op: input
-      source: Do you treat a rental as a business for the qualified business income deduction (for example, 250 hours or more
-        a year of rental services, with separate books)?
+      source: Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money
+        and being involved in it regularly and continuously (for example, 250 hours or more a year of rental services, with
+        separate books)?
     cite:
       doc: i8995
-      locator: p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated
-        as a trade or business for purposes of the QBI deduction"
+      locator: p. 1, Trade or business, "an activity qualifies as a trade or business if your primary purpose for engaging
+        in the activity is for income or profit and you’re involved in the activity with continuity and regularity", "Rental
+        real estate that doesn’t meet the requirements of the safe harbor may still be treated as a trade or business for
+        purposes of the QBI deduction if it’s a section 162 trade or business", and "provides a safe harbor under which a
+        rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction"
+    ambiguity: amb.2025.rental_not_qbi
   - id: sche.accrual
     printed: (helper)
     label: Rental books kept on the accrual method
@@ -255,7 +260,7 @@ form:
         locator: p. 1, Grouping of Activities
     - when: sche.qbi_business
       form: Form 8995 (rental real estate as a trade or business)
-      remedy: A rental treated as a trade or business is outside this tool.
+      remedy: A rental that is a trade or business is outside this tool.
       cite:
         doc: i8995
         locator: p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated

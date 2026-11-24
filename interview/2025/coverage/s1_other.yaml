@@ -130,6 +130,7 @@ rows:
   uses: [wages]
   answers:
     "scope.business_before": true
+    "s2.lookback": false
     "scope.passive": false
     "scope.f8978": false
     "s179.prior_form": false
@@ -191,6 +192,7 @@ rows:
   uses: [low_wages]
   answers:
     "scope.business_before": true
+    "s2.lookback": false
     "scope.passive": false
     "scope.f8978": false
     "s179.prior_form": false

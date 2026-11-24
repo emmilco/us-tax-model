@@ -1357,16 +1357,79 @@ form:
       cite:
         doc: i1040gi
         locator: p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
-    - id: s3.business_credit_any
-      printed: (gate)
+    - id: s3.rental_credit_count
+      printed: (helper)
+      type: Count
+      label: Number of reported rentals on the return that claim a general business credit (Form 3800)
+      expr:
+        op: sum_over
+        collection: rental
+        field: rental.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - rental.reported
+            - const: true
+          - op: test
+            eq:
+            - rental.business_credit
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 116, Lines 6a Through 6z, "The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property"
+    - id: s3.rental_credit_listed
+      printed: (helper)
       type: Bool
-      label: A business on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c
+      label: A listed rental claims a general business credit (Form 3800)
       expr:
         op: test
         gt:
-        - s3.business_credit_count
+        - s3.rental_credit_count
         - const: 0
           type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 116, Lines 6a Through 6z, "The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property"
+    - id: s3.rental_credit_if_rentals
+      printed: (gate)
+      type: Bool
+      label: A rental claims a general business credit, read only when the return has rentals (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.rental
+            - const: true
+          then: s3.rental_credit_listed
+        - guard:
+            op: test
+            eq:
+            - scope.rental
+            - const: false
+          then: s3.no
+      cite:
+        doc: i1040gi
+        locator: p. 116, Lines 6a Through 6z, "The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property"
+    - id: s3.business_credit_any
+      printed: (gate)
+      type: Bool
+      label: A business or rental on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c
+      expr:
+        op: test
+        any:
+        - op: test
+          gt:
+          - s3.business_credit_count
+          - const: 0
+            type: Count
+        - op: test
+          eq:
+          - s3.rental_credit_if_rentals
+          - const: true
       cite:
         doc: i1040gi
         locator: p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
@@ -1472,6 +1535,12 @@ form:
         cite:
           doc: i1040gi
           locator: p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
+      - when: scope.f8978_if_business_before
+        form: Form 8978 (partner's additional reporting year tax)
+        remedy: A Form 8986 from a partnership audit gives a Form 8978 amount (Schedule 3 line 6l when negative, Form 1040 line 16 when positive), which this tool does not prepare.
+        cite:
+          doc: i1040gi
+          locator: p. 116, Line 6l, "Enter the amount from Form 8978, line 14 (relating to partner’s audit liability under section 6226). If the amount on Form 8978, line 14, is negative, complete the following worksheet"
     - id: s3.line8
       printed: "8"
       type: Dollars

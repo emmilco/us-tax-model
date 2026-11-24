@@ -1,0 +1,42 @@
+{
+ "kind": "classm",
+ "form": "sche",
+ "rulings": [
+  {
+   "case": "classm.sche.1",
+   "printed": "25",
+   "project": "$-8,000.00",
+   "model": "$-6,000.00",
+   "ruling": "Ruling: model error; i1040se p. 7, Line 22, \"If you have an unallowed rental real estate loss from a prior year that after completing Form 8582 you can include this year, include that loss on line 22.\" Rental B (income $4,000, not actively managed) carries a $2,000 prior-year loss; Form 8582 allows all losses ($8,000 of losses against $4,000 of passive income plus a $4,000 special allowance), so B's line 22 is ($2,000) and line 25 is ($8,000), line 26 ($4,000), line 41 ($4,000), as the project computes. The model left B's allowed prior-year loss off line 22.",
+   "drop": true,
+   "context": "16d13ba4d43cd17c022bd4bc88a2bf17e4fc549509dcce075bce00c572f09189",
+   "date": "2026-11-24",
+   "run": "356b353e78cc433229db8e0d60653296f29d718e0e1ae804a9a53373012769d9",
+   "subject_key": "461637f7d1c0f8d3b7f051d7e3acb40a405dd11253bc79a6df354366300f3e7c"
+  },
+  {
+   "case": "classm.sche.1",
+   "printed": "26",
+   "project": "$-4,000.00",
+   "model": "$-2,000.00",
+   "ruling": "Ruling: model error; i1040se p. 7, Line 22, \"If you have an unallowed rental real estate loss from a prior year that after completing Form 8582 you can include this year, include that loss on line 22.\" Rental B (income $4,000, not actively managed) carries a $2,000 prior-year loss; Form 8582 allows all losses ($8,000 of losses against $4,000 of passive income plus a $4,000 special allowance), so B's line 22 is ($2,000) and line 25 is ($8,000), line 26 ($4,000), line 41 ($4,000), as the project computes. The model left B's allowed prior-year loss off line 22.",
+   "drop": true,
+   "context": "16d13ba4d43cd17c022bd4bc88a2bf17e4fc549509dcce075bce00c572f09189",
+   "date": "2026-11-24",
+   "run": "356b353e78cc433229db8e0d60653296f29d718e0e1ae804a9a53373012769d9",
+   "subject_key": "9edc0288fe095eec11573e4ce44222c958b9e63538b3a03b29c66b4a628c7a0b"
+  },
+  {
+   "case": "classm.sche.1",
+   "printed": "41",
+   "project": "$-4,000.00",
+   "model": "$-2,000.00",
+   "ruling": "Ruling: model error; i1040se p. 7, Line 22, \"If you have an unallowed rental real estate loss from a prior year that after completing Form 8582 you can include this year, include that loss on line 22.\" Rental B (income $4,000, not actively managed) carries a $2,000 prior-year loss; Form 8582 allows all losses ($8,000 of losses against $4,000 of passive income plus a $4,000 special allowance), so B's line 22 is ($2,000) and line 25 is ($8,000), line 26 ($4,000), line 41 ($4,000), as the project computes. The model left B's allowed prior-year loss off line 22.",
+   "drop": true,
+   "context": "16d13ba4d43cd17c022bd4bc88a2bf17e4fc549509dcce075bce00c572f09189",
+   "date": "2026-11-24",
+   "run": "356b353e78cc433229db8e0d60653296f29d718e0e1ae804a9a53373012769d9",
+   "subject_key": "02f7a3b67bf5ec4d7337cb2b9c56d8c0e504a40e178b376a4564104eb8275044"
+  }
+ ]
+}

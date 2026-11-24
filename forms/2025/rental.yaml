@@ -6,7 +6,7 @@ form:
   note: 'One entry per rental real estate property (Schedule E types 1 to 5). Its expenses, other than advertising and commissions, are divided
     by days when it had personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns
     (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays
-    of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, property held mainly for sale or offered in business hours, property incidental to the filer''s own business, car and travel expenses, mortgage interest beyond Form 1098, the cost of a bought leasehold, a home
+    of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, property held mainly for sale or offered in business hours, property incidental to the filer''s own business, Form 6198 on an earlier return, a general business credit, costs paid before it was first offered for rent in 2025, car and travel expenses, mortgage interest beyond Form 1098, the cost of a bought leasehold, a home
     used personally and rented 15 days or more, a held-back loss from a year without active participation, a loss with
     amounts not at risk, and net income from a rental of nondepreciable property when Form 8582 is required.'
   lines:
@@ -517,6 +517,45 @@ form:
           - const: true
         then: rental.no
     cite: *id017
+  - id: rental.at_risk_prior
+    printed: (helper)
+    label: At-risk history (Form 6198 filed for it, or a loss held back as not at risk, on an earlier return)
+    type: Bool
+    expr:
+      op: input
+      source: Was Form 6198 (at-risk limits) filed for it on any of your (or, on a joint return, your spouse's) earlier
+        returns, or was a loss from it held back on one because amounts were not at risk?
+    cite:
+      doc: p925
+      locator: p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction
+        from the same activity in the next tax year. If your losses from an at-risk activity are allowed, they’re subject
+        to recapture in later years if your amount at risk is reduced below zero."
+  - id: rental.business_credit
+    printed: (helper)
+    label: A general business credit (Form 3800) claimed for the rental
+    type: Bool
+    expr:
+      op: input
+      source: Do you (or, on a joint return, your spouse) claim a business tax credit for 2025 for it (Form 3800), such
+        as the low-income housing credit or the rehabilitation credit for an old building?
+    cite:
+      doc: i1040gi
+      locator: p. 116, Lines 6a Through 6z, "The general business credit consists of a number of credits that usually
+        apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental
+        property"
+  - id: rental.prerental
+    printed: (helper)
+    label: First offered for rent in 2025, with costs paid before then
+    type: Bool
+    expr:
+      op: input
+      source: Was it first offered for rent in 2025, and did you pay costs for it before then, to get it ready or find
+        tenants, or, for a place you bought to rent, its other costs?
+    cite:
+      doc: p527
+      locator: p. 5, Pre-rental expenses, "You can deduct your ordinary and necessary expenses for managing, conserving,
+        or maintaining rental property from the time you make it available for rent"
+    ambiguity: amb.2025.rental_prerental_costs
   - id: rental.vehicle
     printed: (helper)
     label: Car, truck or travel expenses for the rental (line 6)
@@ -1046,6 +1085,7 @@ form:
       op: input
       source: Did you pay more mortgage interest on it in 2025 than your Forms 1098 for it show in total?
     cite: *id018
+    ambiguity: amb.2025.rental_points_on_1098_loan
   - id: rental.mortgage_excess_if_mortgage
     printed: (gate)
     label: Mortgage interest beyond Form 1098, asked only when there was mortgage interest (false otherwise)
@@ -1684,6 +1724,31 @@ form:
       cite:
         doc: i8582
         locator: p. 3, Exceptions, "The rental of property is incidental to a trade or business activity if"
+    - when: rental.at_risk_prior
+      form: Form 6198 (at-risk limits, earlier year)
+      remedy: A rental with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can
+        carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198.
+      cite:
+        doc: p925
+        locator: p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction
+          from the same activity in the next tax year"
+    - when: rental.business_credit
+      form: Form 3800 (general business credit)
+      remedy: A business credit for a rental (Form 3800) goes on Schedule 3 line 6a; this tool does not prepare it. To go
+        on without the credit, answer No to that question.
+      cite:
+        doc: i1040gi
+        locator: p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
+    - when: rental.prerental
+      form: Costs paid before a rental was first offered for rent
+      remedy: Costs paid before a property is first offered for rent are not rental expenses of that time; depending on
+        what they are, they are added to its cost, amortized as start-up costs on Form 4562, or not deducted, which this
+        tool does not sort out.
+      cite:
+        doc: p527
+        locator: p. 5, Pre-rental expenses, "You can deduct your ordinary and necessary expenses for managing, conserving,
+          or maintaining rental property from the time you make it available for rent"; i4562 p. 18, Startup and
+          organizational costs, "Business startup costs (section 195)"
     - when: rental.vehicle
       form: Schedule E, line 6 (auto and travel)
       remedy: Car, truck and travel expenses of a rental are outside this tool.

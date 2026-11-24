@@ -56,17 +56,19 @@ form:
     - id: f8960.prior_2i
       printed: (gate)
       type: Bool
-      label: Was there an amount on line 2(i) of the Net Gains and Losses Worksheet (Form 8960 instructions) when you figured
-        your 2024 net investment income tax?
+      label: For 2024, was there (or, had you figured it, would there have been) an amount other than zero on line 2(i) of
+        the Net Gains and Losses Worksheet (Form 8960 instructions)?
       expr:
         op: input
-        source: When you figured your 2024 net investment income tax (Form 8960), was there an amount on line 2(i) of the Net
-          Gains and Losses Worksheet in the Form 8960 instructions (an adjustment to a capital loss carryforward for losses
-          excluded from net investment income)?
+        source: For 2024, was there (or, had you figured it, would there have been) an amount other than zero on line 2(i) of
+          the Net Gains and Losses Worksheet in the Form 8960 instructions (an adjustment to a capital loss carryforward for
+          losses excluded from net investment income)?
       cite:
         doc: i8960
         locator: p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet
-          from your prior tax year return calculations"; p. 9, "capital loss carryforwards must be adjusted"
+          from your prior tax year return calculations"; p. 9, Adjustments to your capital loss carryforwards, "Starting in
+          2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII
+          on lines 5b and 5c was a net loss"
     - id: f8960.carryforward_adj
       printed: (gate)
       type: Bool

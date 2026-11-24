@@ -1022,10 +1022,13 @@ form:
     expr:
       op: input
       source: The cost or other basis of the property (what you paid, including sales tax, delivery and installation; for
-        property converted from personal use, the smaller of its adjusted basis or its fair market value on the date of conversion)
+        property converted from personal use, the smaller of its adjusted basis or its fair market value on the date of conversion),
+        not reduced by depreciation taken in earlier years
     cite:
       doc: i4562
-      locator: p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis
+      locator: p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis; p946 p. 37, Figuring the
+        Unadjusted Basis of Your Property, "without reducing your original basis by any MACRS depreciation taken in earlier
+        years"
     refuses:
     - when: asset.screened
       form: Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in
@@ -1040,9 +1043,11 @@ form:
     printed: (helper)
     label: Business/investment use percentage (whole percent)
     type: Count
+    ambiguity: amb.2025.asset_business_pct
     expr:
       op: input
-      source: 'The percentage of this property''s use that is for this business (a whole number from 1 to 100). For listed
+      source: 'The percentage of this property''s use that is for this business (a whole number from 1 to 100; round a fraction of
+        a percent down). For listed
         property, measure the use by the time the property is actually used (rather than merely being available for use),
         in the most appropriate unit of time. For listed property you converted from personal use to business use during
         2025, figure the percentage only for the months you used it in the business, multiply it by the number of those months
@@ -1105,14 +1110,18 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Is this listed property: property used for entertainment or recreation (such as photographic, phonographic,
-        communication or video recording equipment) that is not used exclusively in your business or at your regular business
-        establishment, or a computer placed in service before 2018 that is not used exclusively at your regular business establishment?
-        A part of your home is your regular business establishment only if that part meets the requirements for deducting
+      source: 'Is this listed property: property of a type used for entertainment or recreation, including photographic,
+        phonographic, communication or video equipment unless used exclusively in your business or at your regular business
+        establishment; or a computer or peripheral equipment placed in service before 2018, unless used exclusively at a regular
+        business establishment that you operate? A part of your home is your regular business establishment only if that part meets the requirements for deducting
         expenses for the business use of a home.'
     cite:
       doc: i4562
-      locator: p. 3, Listed Property and its Exceptions, "a portion of the taxpayer’s home is treated as a regular business
+      locator: p. 3, Listed Property, "Any property used for entertainment or recreational purposes (such as photographic,
+        phonographic, communication, and video recording equipment)", and its Exceptions, "Photographic, phonographic,
+        communication, or video equipment used exclusively in a taxpayer’s trade or business or at the taxpayer’s regular
+        business establishment", "Any computer or peripheral equipment used exclusively at a regular business establishment
+        and owned or leased by the person operating the establishment", "a portion of the taxpayer’s home is treated as a regular business
         establishment only if that portion meets the requirements for deducting expenses attributable to the business use
         of a home"; p. 13, Part V
   - id: asset.half
@@ -1318,7 +1327,8 @@ form:
     expr:
       op: input
       source: 'The quarter of 2025 in which you placed this property in service: January to March, April to June, July to
-        September, or October to December'
+        September, or October to December (property converted from personal use is placed in service on the date of the
+        conversion)'
     cite:
       doc: p946
       locator: p. 41, Using the Applicable Convention, Mid-quarter convention, "A calendar year is divided into the following
@@ -1381,14 +1391,14 @@ form:
         - a land improvement (such as a swimming pool, paved parking area, wharf, dock, bridge or fence)
         - property held for investment
         - property you purchased and lease to others, unless you manufactured or produced it, or the lease term (including options to renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee your business deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income
-        - property used by a tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated trade or business income
+        - property used by a tax-exempt organization (other than a section 521 farmers' cooperative), unless used in connection with the production of income subject to the tax on unrelated trade or business income
         - property used by a governmental unit or a foreign person or entity, unless used under a lease with a term of less than 6 months
     cite:
       doc: p946
       locator: p. 17, What Property Does Not Qualify?, "Land and land improvements do not qualify as section 179 property",
         "Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179
         deduction for the following property" and Leased property; i4562 p. 2, "Property held for investment (section 212
-        property)"; i4562 p. 3, "for taxpayers other than a corporation, this election does not apply to any section 179
+        property)" and "Property used by a tax-exempt organization (other than a section 521 farmers’ cooperative)"; i4562 p. 3, "for taxpayers other than a corporation, this election does not apply to any section 179
         property you purchased and leased to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179
         property you placed in service during the tax year"
   - id: asset.s179_bad

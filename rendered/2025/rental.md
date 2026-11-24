@@ -2,7 +2,7 @@
 
 - Document: `rental` (form, tax year 2025)
 - Collection: keyed entries; [i1040se] p. 5, Line 1a (2025; sha256 ad71de35)
-- Note: One entry per rental real estate property (Schedule E types 1 to 5). Its expenses, other than advertising and commissions, are divided by days when it had personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, property held mainly for sale or offered in business hours, property incidental to the filer's own business, car and travel expenses, mortgage interest beyond Form 1098, the cost of a bought leasehold, a home used personally and rented 15 days or more, a held-back loss from a year without active participation, a loss with amounts not at risk, and net income from a rental of nondepreciable property when Form 8582 is required.
+- Note: One entry per rental real estate property (Schedule E types 1 to 5). Its expenses, other than advertising and commissions, are divided by days when it had personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, property held mainly for sale or offered in business hours, property incidental to the filer's own business, Form 6198 on an earlier return, a general business credit, costs paid before it was first offered for rent in 2025, car and travel expenses, mortgage interest beyond Form 1098, the cost of a bought leasehold, a home used personally and rented 15 days or more, a held-back loss from a year without active participation, a loss with amounts not at risk, and net income from a rental of nondepreciable property when Form 8582 is required.
 
 ## (helper) — `rental.zero`
 
@@ -279,6 +279,28 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["rental.is_land",{"const":false}],"op":"test"},"then":"rental.land_heavy"},{"guard":{"eq":["rental.is_land",{"const":true}],"op":"test"},"then":"rental.no"}],"op":"choose"}`
 - Cite: [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation" (2025; sha256 dda751f0)
 
+## (helper) — `rental.at_risk_prior`
+
+- **Authored helper label:** At-risk history (Form 6198 filed for it, or a loss held back as not at risk, on an earlier return)
+- **Encoded (Bool):** Input — Was Form 6198 (at-risk limits) filed for it on any of your (or, on a joint return, your spouse's) earlier returns, or was a loss from it held back on one because amounts were not at risk?
+- Expr: `{"op":"input","source":"Was Form 6198 (at-risk limits) filed for it on any of your (or, on a joint return, your spouse's) earlier returns, or was a loss from it held back on one because amounts were not at risk?"}`
+- Cite: [p925] p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year. If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero." (2025; sha256 dda751f0)
+
+## (helper) — `rental.business_credit`
+
+- **Authored helper label:** A general business credit (Form 3800) claimed for the rental
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) claim a business tax credit for 2025 for it (Form 3800), such as the low-income housing credit or the rehabilitation credit for an old building?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) claim a business tax credit for 2025 for it (Form 3800), such as the low-income housing credit or the rehabilitation credit for an old building?"}`
+- Cite: [i1040gi] p. 116, Lines 6a Through 6z, "The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `rental.prerental`
+
+- **Authored helper label:** First offered for rent in 2025, with costs paid before then
+- **Encoded (Bool):** Input — Was it first offered for rent in 2025, and did you pay costs for it before then, to get it ready or find tenants, or, for a place you bought to rent, its other costs?
+- Interpretation: amb.2025.rental_prerental_costs
+- Expr: `{"op":"input","source":"Was it first offered for rent in 2025, and did you pay costs for it before then, to get it ready or find tenants, or, for a place you bought to rent, its other costs?"}`
+- Cite: [p527] p. 5, Pre-rental expenses, "You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent" (2025; sha256 20c826e9)
+
 ## (helper) — `rental.vehicle`
 
 - **Authored helper label:** Car, truck or travel expenses for the rental (line 6)
@@ -543,6 +565,7 @@
 
 - **Authored helper label:** Mortgage interest paid beyond the amount shown on Form 1098
 - **Encoded (Bool):** Input — Did you pay more mortgage interest on it in 2025 than your Forms 1098 for it show in total?
+- Interpretation: amb.2025.rental_points_on_1098_loan
 - Expr: `{"op":"input","source":"Did you pay more mortgage interest on it in 2025 than your Forms 1098 for it show in total?"}`
 - Cite: [i1040se] p. 7, Line 12, "If you paid more mortgage interest than is shown on your Form 1098 or similar statement" (2025; sha256 ad71de35)
 
@@ -827,6 +850,9 @@
 - **Refusal:** when rental.part_home is true, cannot complete Schedule E, Part I (rental of part of a property you also live in). Renting out part of a home or building you also live in, such as a room, is outside this tool. Cite: [i1040se] p. 6, Renting out part of your home (2025; sha256 ad71de35)
 - **Refusal:** when rental.held_for_sale is true, cannot complete Form 8582 exceptions, or Schedule C (property held mainly for sale, or offered in business hours to many customers). Property held mainly to sell, as an investment or by a real estate dealer, and property offered during business hours to many customers may not be a rental activity, and are outside this tool. Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to an activity of holding property for investment"; i1040se p. 6, "Do not use Schedule E to report income and expenses from rentals of real estate you held for sale to customers in the ordinary course of your business as a real estate dealer" (2025; sha256 76787e11)
 - **Refusal:** when rental.business_incidental is true, cannot complete Form 8582 exceptions (rental incidental to a trade or business). Property mainly used in a business you or your spouse own, and rented for under 2% of its cost or value, is not a rental activity under the passive activity rules and is outside this tool. Cite: [i8582] p. 3, Exceptions, "The rental of property is incidental to a trade or business activity if" (2025; sha256 76787e11)
+- **Refusal:** when rental.at_risk_prior is true, cannot complete Form 6198 (at-risk limits, earlier year). A rental with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198. Cite: [p925] p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year" (2025; sha256 dda751f0)
+- **Refusal:** when rental.business_credit is true, cannot complete Form 3800 (general business credit). A business credit for a rental (Form 3800) goes on Schedule 3 line 6a; this tool does not prepare it. To go on without the credit, answer No to that question. Cite: [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when rental.prerental is true, cannot complete Costs paid before a rental was first offered for rent. Costs paid before a property is first offered for rent are not rental expenses of that time; depending on what they are, they are added to its cost, amortized as start-up costs on Form 4562, or not deducted, which this tool does not sort out. Cite: [p527] p. 5, Pre-rental expenses, "You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent"; i4562 p. 18, Startup and organizational costs, "Business startup costs (section 195)" (2025; sha256 20c826e9)
 - **Refusal:** when rental.vehicle is true, cannot complete Schedule E, line 6 (auto and travel). Car, truck and travel expenses of a rental are outside this tool. Cite: [i1040se] p. 4, Line 6 (2025; sha256 ad71de35)
 - **Refusal:** when rental.ws51 is true, cannot complete Pub. 527, Worksheet 5-1 (dwelling unit used as a home). A home you also lived in or used for more than the greater of 14 days or 10% of the days rented, and rented 15 days or more, is outside this tool. Cite: [p527] p. 28, Used as a home and rented 15 days or more (2025; sha256 20c826e9)
 - Expr: `{"from":"rental.rents","op":"subtract","take":"rental.line20"}`

@@ -1,7 +1,7 @@
 # Schedule E, Part I — totals (rental real estate and royalties)
 
 - Document: `sche` (form, tax year 2025)
-- Note: Totals of Schedule E Part I over the rental and royalty entries; line 41 is line 26 (Parts II to IV are refused). Refused: a real estate professional, rentals grouped as one activity, and a rental treated as a trade or business.
+- Note: Totals of Schedule E Part I over the rental and royalty entries; line 41 is line 26 (Parts II to IV are refused). Refused: a real estate professional, rentals grouped as one activity, and a rental that is a trade or business.
 
 ## (helper) — `sche.no`
 
@@ -26,10 +26,11 @@
 
 ## (helper) — `sche.qbi_business`
 
-- **Authored helper label:** A rental treated as a trade or business
-- **Encoded (Bool):** Input — Do you treat a rental as a business for the qualified business income deduction (for example, 250 hours or more a year of rental services, with separate books)?
-- Expr: `{"op":"input","source":"Do you treat a rental as a business for the qualified business income deduction (for example, 250 hours or more a year of rental services, with separate books)?"}`
-- Cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
+- **Authored helper label:** A rental that is a trade or business
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously (for example, 250 hours or more a year of rental services, with separate books)?
+- Interpretation: amb.2025.rental_not_qbi
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously (for example, 250 hours or more a year of rental services, with separate books)?"}`
+- Cite: [i8995] p. 1, Trade or business, "an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you’re involved in the activity with continuity and regularity", "Rental real estate that doesn’t meet the requirements of the safe harbor may still be treated as a trade or business for purposes of the QBI deduction if it’s a section 162 trade or business", and "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (helper) — `sche.accrual`
 
@@ -142,7 +143,7 @@
 - **Encoded (Dollars):** Add line 24 and line 25.
 - **Refusal:** when sche.re_pro is true, cannot complete Schedule E, line 43 (real estate professional). A real estate professional's rentals are outside this tool. Cite: [i1040se] p. 3, Real estate professionals (2025; sha256 ad71de35)
 - **Refusal:** when sche.grouped is true, cannot complete Form 8582 (activities grouped). Rentals treated as one activity are outside this tool. Cite: [i8582] p. 1, Grouping of Activities (2025; sha256 76787e11)
-- **Refusal:** when sche.qbi_business is true, cannot complete Form 8995 (rental real estate as a trade or business). A rental treated as a trade or business is outside this tool. Cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
+- **Refusal:** when sche.qbi_business is true, cannot complete Form 8995 (rental real estate as a trade or business). A rental that is a trade or business is outside this tool. Cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
 - **Refusal:** when sche.accrual is true, cannot complete Schedule E, Part I (accrual method). Rentals kept on the accrual method are outside this tool. Cite: [p527] p. 4, When To Deduct, "If you use the accrual method, see Pub. 538 for more information" (2025; sha256 20c826e9)
 - Expr: `{"of":["sche.line24","sche.line25"],"op":"sum"}`
 - Cite: [f1040se] Schedule E (2025), line 26 (2025; sha256 c5e2c8fa)

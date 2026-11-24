@@ -77,7 +77,7 @@ def gen_case(rng, i):
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
         "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True,
         "$f1095a": [], "s3.line10": 0,
-        "sa.sales_tax_wish": False, "sa.estate_tax_income": False, "sa.bond_premium": False, "sa.debt_instrument_loss": False, "sa.pension_unrecovered": False, "sa.impairment_work": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
+        "sa.sales_tax_wish": False, "sa.estate_tax_income": False, "sa.bond_premium": False, "sa.debt_instrument_loss": False, "sa.pension_unrecovered": False, "sa.impairment_work": False, "sa.gst_paid": False, "sa.foreign_tax_noncreditable": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
         "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
         "sa.personal_property_tax_any": False, "sa.line5c": 0, "sa.gift_carryover": False,
         "scope.schedule1": False, "scope.other_income": False,
@@ -164,14 +164,16 @@ def gen_case(rng, i):
         code = "none"; wash = 0
         if proceeds < basis and rng.random() < 0.25:
             code = "W"; wash = rng.randint(1, basis - proceeds); features.add("wash_sale")
-        inputs.update({f"{key}.box": box, f"{key}.route": "detail", f"{key}.code": code, f"{key}.special": False,
+        inputs.update({f"{key}.box": box, f"{key}.route": "detail", f"{key}.code": code,
                        f"{key}.aggregate_eligible": False, f"{key}.proceeds": proceeds,
                        f"{key}.reported_basis": basis, f"{key}.correct_basis": basis, f"{key}.wash_loss": wash})
         gain = proceeds - basis + wash
         if box in ("A", "B"): st_gain += gain
         else: lt_gain += gain
     facts.update(short_term_gain=st_gain, long_term_gain=lt_gain)
-    if n_sales: features.add("sales")
+    if n_sales:
+        features.add("sales")
+        inputs["sd.special_any"] = False
 
     # Itemized deductions, offered on about half the cases. Gifts stay well under the
     # income limits so the project's limitation screen does not fire.

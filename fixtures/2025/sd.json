@@ -1987,7 +1987,7 @@
         "$sales": [
           "a"
         ],
-        "sales[a].special": true,
+        "sd.special_any": true,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
@@ -6203,7 +6203,7 @@
         "sales"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special withheld (absent). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special withheld (absent). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. The special-sale answer is sd.special_any, one per return (sales[s1].special is derived from it); the case withholds that answer.",
       "inputs": {
         "div.any": true,
         "f1040.status": "mfj",
@@ -6278,33 +6278,33 @@
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].dec_coverage": "self_only",
         "person[spouse].x_hsa_value": 834100,
-        "sales[s1].special": null
+        "sd.special_any": null
       },
       "expect": {
         "sd.count": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "sd.screen": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "sd.line15": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "f1040.line7a": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "f1040.line16": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         }
       }
     },
@@ -6315,7 +6315,7 @@
         "sales"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special null (the interview's unknown answer). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "classm.f8889.1.deepseek with sales[s1].special null (the interview's unknown answer). Finding F1 (SCREEN-UNANSWERED-PASSES), .transcription/proposed/fixr2/sales.findings.md. sum_over kept the known entries as a lower bound for sd.count while an entry was held by its own refusal gate awaiting an answer, so sd.screen (sd.count < 0) was decided false and the return computed. The unanswered screen can become a refusal, so the count, the screen and the amounts they hold must stay unknown. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. The special-sale answer is sd.special_any, one per return (sales[s1].special is derived from it); the case withholds that answer.",
       "inputs": {
         "div.any": true,
         "f1040.status": "mfj",
@@ -6390,33 +6390,33 @@
         "person[spouse].f8889[hsa].months_eligible": 12,
         "person[spouse].f8889[hsa].dec_coverage": "self_only",
         "person[spouse].x_hsa_value": 834100,
-        "sales[s1].special": null
+        "sd.special_any": null
       },
       "expect": {
         "sd.count": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "sd.screen": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "sd.line15": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "f1040.line7a": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         },
         "f1040.line16": {
           "kind": "unknown",
-          "reason": "no input supplied for sales[s1].special",
-          "input": "sales[s1].special"
+          "reason": "no input supplied for sd.special_any",
+          "input": "sd.special_any"
         }
       }
     },
@@ -7667,6 +7667,77 @@
           "cents": 400000
         },
         "f1040.line7b_sd_not_required": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "capital.sales.special_once_two_sales",
+      "covers": [
+        "sd.special_any",
+        "sales.special"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Predicted from i1040sd pp. 11-12, lines 18 and 19 before recording; BUG-1127. Two sales and one Yes to the special-sale question, asked once for the return: each sale's sales.special is that answer, so both are true, and Form 1040 line 7a is refused at the first sale (key a), with the refusal sales.one gives a single special sale (case sales.refuse.special).",
+      "inputs": {
+        "$sales": [
+          "a",
+          "b"
+        ],
+        "sd.special_any": true,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.territory_w2": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "sales[a].special": {
+          "kind": "bool",
+          "value": true
+        },
+        "sales[b].special": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line7a": {
+          "kind": "refusal",
+          "form": "Schedule D special gains worksheets",
+          "remedy": "Sales of collectibles, section 1202 stock or section 1250 property, and sales of an interest in a partnership, S corporation or trust that holds collectibles or section 1250 property, are unsupported.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "pp. 11–12, lines 18 and 19",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          },
+          "gate": "sales[a].special"
+        }
+      }
+    },
+    {
+      "id": "capital.sales.special_once_two_sales_none",
+      "covers": [
+        "sd.special_any",
+        "sales.special"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand: the same two sales with a No to the special-sale question; each sale's sales.special is false.",
+      "inputs": {
+        "$sales": [
+          "a",
+          "b"
+        ],
+        "sd.special_any": false
+      },
+      "expect": {
+        "sales[a].special": {
+          "kind": "bool",
+          "value": false
+        },
+        "sales[b].special": {
           "kind": "bool",
           "value": false
         }

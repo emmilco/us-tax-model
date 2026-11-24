@@ -5,8 +5,8 @@
  "base": "93ca6dcd744eddd937958c370e52a49a534ec1ff7aae5d15deccfae3fb639120",
  "head_rows": {
   "lines judged": "66",
-  "match / mismatch / unclear / missing": "66 / 0 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "64 / 1 / 1 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -95,9 +95,10 @@
   },
   {
    "key": "4a",
-   "record": "93ca6dcd744eddd937958c370e52a49a534ec1ff7aae5d15deccfae3fb639120",
-   "status": "MATCH",
-   "subject_key": "a28c1d2d1d899a3c9b47a283668ddb707c18323b70e203d8109645e207e34eb4"
+   "record": "a3da0902f1ba221177a7287ab02a7bcac0f421e29af9a2a52cd23150866f3881",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.2025.line4a_several, decided by the coordinator under the owner's delegation of 2026-11-24: i1040gi p. 27, More than one distribution, \"Enter the total amount of those distributions on line 4a\" is read as every IRA distribution once any goes on line 4a. The tool still adds only the exception distributions (person.ira_amount_a); the change needs a per-person total of IRA box 1 in person.yaml and is handed off (BUG-1118, left open in part). Line 4b and the tax are the same under either reading.",
+   "subject_key": "1aff7059ec5302da809bd2aaf62b61d5531618ea4f2e5563c590da95e23bad61"
   },
   {
    "key": "4b",
@@ -269,9 +270,10 @@
   },
   {
    "key": "16",
-   "record": "93ca6dcd744eddd937958c370e52a49a534ec1ff7aae5d15deccfae3fb639120",
-   "status": "MATCH",
-   "subject_key": "82d7b0a6f325e58a8b82017a073472ca9f75b84ae2df611a2c6df5a641435544"
+   "record": "a3da0902f1ba221177a7287ab02a7bcac0f421e29af9a2a52cd23150866f3881",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; as the earlier ruling (Form 2555 refused by sa.excluded_income; Forms 8814 and 4972, Form 8615, education credit recapture, PFIC and CFC items refused through scope.other_line16). A triggered deferred net 965 tax liability (i1040gi p. 36, Triggering event under section 965(i)) arises only for a shareholder of an S corporation that elected the section 965(i) deferral (the statute is not archived; this is the section's text as known, not an archived quotation), and each triggering event (the corporation ceasing to be an S corporation, its liquidation or sale of substantially all its assets, or a transfer of the shares) falls in a year the shareholder receives a Schedule K-1 from the S corporation, which scope.k1, asked of every return, refuses through scope.schedule1. Rerun because f1040.gate.sdtw's rules moved to f1040.gate.sdtw_rules (BUG-0764); line 16 is unchanged in value.",
+   "subject_key": "d4ad72d3f465d8916360660b6bdb003cfa21e330c0e37521a2310812967b13c6"
   },
   {
    "key": "17",
@@ -457,7 +459,7 @@
   "2b": "48291acb502b02c2e8d526c1ea984748a53248240981b7cfac306b63033cca22",
   "3b": "747eeb072037cc1b34b72900a4247be3c419c015d581dc88da0d831bb8476af7",
   "3a": "7d8411340687ae709ceb0bbbfdc9f45b6a07103e6b7cd310b47712282a553b5d",
-  "4a": "05a3932cddc2a2f29c0d72e13ac268505324c3950c79f791aa31f8d54bbeeace",
+  "4a": "56fa215d2dfb05df46fa11b63713a478dfa962a1a4b82694350bc9ac32033e13",
   "4b": "56e420c34717b46f375797c738aef59393c202a9e02d59404e83eb8f0ec60318",
   "4c": "57c369639ec75e445e5ec501d1c30c3c6a0527a4256e616578db15459895b089",
   "5a": "d4c67777f053a9c053eeff48460d6e744c0f48631555ee68b5c34854418e9ffb",
@@ -480,7 +482,7 @@
   "13b": "8a3689081dbdb1f33082e6bc917aac5144430523c96c78c791aa71ba4fac3d29",
   "14": "f72c8c94d62ebad80de80c4fc3fce0f6f798191fcda7a7f74ab48d7f44edbc1b",
   "15": "0556cdec1b872beec7ad522dc4faa162546bce3de4c594420d037650d155cd94",
-  "16": "d824b4ae65a9dd1a487f826852ae985d574323b2ea87ee48ca92d20a1db5d683",
+  "16": "f442a532cbec83f8272ae0a528f9a9847941025dc3f140b21f7097d73d51cf89",
   "17": "28ea233a6bb93db2d5371ed426827b429860b05eb3ef8ceb5ca08f871edfc37d",
   "18": "8eb51b0b9ea4c3d13d6bfb4d05fedc53d6cbc0d13c450f90c3314e0ee431bbea",
   "19": "2acec0fabe27c85c4a2078c2b853eed218c07d0213990e32254404612600ba6a",

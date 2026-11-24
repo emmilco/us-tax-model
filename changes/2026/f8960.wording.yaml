@@ -69,9 +69,13 @@ changes:
         line: f8960.prior_2i
         field: cite.locator
         from: p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet
-          from your prior tax year return calculations"; p. 9, "capital loss carryforwards must be adjusted"
+          from your prior tax year return calculations"; p. 9, Adjustments to your capital loss carryforwards, "Starting in
+          2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII
+          on lines 5b and 5c was a net loss"
         to: p. 11, Net Gains and Losses Worksheet, line 2(h), "Enter the amount from line 2(i) of this worksheet as calculated
-          on your prior-year return."; p. 13, "capital loss carryforwards must be adjusted"
+          on your prior-year return."; p. 13, Adjustments to your capital loss carryforwards, "Starting in 2014, capital
+          loss carryforwards must be adjusted if the sum of all capital gain or loss amounts excluded from NII on lines 5b
+          and 5c was a net loss"
     - set:
         line: f8960.carryforward_adj
         field: cite.locator

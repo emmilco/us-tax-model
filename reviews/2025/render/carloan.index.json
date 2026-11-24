@@ -3,24 +3,27 @@
  "form": "carloan",
  "family": "claude",
  "base": "f818808e093603ec1a3edc73632cbb275e0790ba7df8d6fe63da5d94289c7f12",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "22(ii)",
-   "record": "f818808e093603ec1a3edc73632cbb275e0790ba7df8d6fe63da5d94289c7f12",
+   "record": "85736c2c31975cfcb98fc38996edc235922ef2ab71e75bf7b1d905731174a2af",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere; restatement accepted. i1040gi p. 110, Schedule 1-A, Line 22, column (ii), 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'. Schedule F is refused (scope.farm), and car, truck or travel costs of a rental are refused (rental.vehicle, on Schedule E line 6), so Schedule C is the only place the return can deduct this interest; the question asks for the part of this loan's interest deducted there. Same ruling as the earlier rounds; the form was re-reviewed because lane fx-itemized changed its note (entries named by the VIN).",
-   "subject_key": "61f0bef3da832918625d226bc014651273fdbcb74a45dca100168b64fa692ed4"
+   "ruling": "Ruling: scope; refusal located elsewhere; restatement accepted. i1040gi p. 110, Schedule 1-A, Line 22, column (ii), 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'. As in the earlier rulings on this line: Schedule F and Schedule E business or K-1 income are refused through the return's scope screens (scope.farm, scope.k1), and a rental's car or truck expenses are refused (rental.vehicle, Schedule E line 6, auto and travel), so Schedule C is the only place a supported return deducts this loan's interest.",
+   "subject_key": "9eb8e5e4a127d99d9e29df9eaeb89a1c1c23630f3d69381cad94f40d6cf34db4"
   },
   {
    "key": "22(iii)",
-   "record": "f818808e093603ec1a3edc73632cbb275e0790ba7df8d6fe63da5d94289c7f12",
+   "record": "85736c2c31975cfcb98fc38996edc235922ef2ab71e75bf7b1d905731174a2af",
    "status": "MATCH",
-   "subject_key": "01a2aec2b5140a1b2cc043c9c224ee50856204e62a961caae7423b4f934985c8"
+   "subject_key": "fd05b5a8d773143732ffc4154cea7f05c21232f1370e9f113b7bc7913993e8b1"
   }
  ],
  "subjects": {
-  "22(ii)": "0cd219f6186ad383e29e9aee1326beaa358ff907d873ae02399f4740e66848bc",
-  "22(iii)": "a82fd9efa6e4f9900414a3bc663f803bbe27ad2de072ab9631a4d98dbb548f9c"
+  "22(ii)": "719f241b11290dff6ad809591a3ecd85402bc87c6d7aa3432d7669a1bf03ed04",
+  "22(iii)": "ecf217bcf146719641100070f5aa17277197ebb018003613cfc014fd0e51a115"
  },
  "__rest__": "e39fba84f369f3f389953310b2ef313c58a44d58a1aa1117fcf7b623c5168bd2"
 }

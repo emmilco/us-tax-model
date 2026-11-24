@@ -12,7 +12,7 @@ form:
     - id: sa.unsupported
       printed: (helper)
       type: Bool
-      label: 'A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses'
+      label: 'A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction, foreign tax not allowed as a credit, or generation-skipping tax on a trust distribution (line 6); or a deduction from the Schedule A line 16 list other than gambling losses'
       expr:
         op: test
         any:
@@ -56,9 +56,17 @@ form:
             eq:
               - sa.impairment_work
               - const: true
+          - op: test
+            eq:
+              - sa.gst_paid
+              - const: true
+          - op: test
+            eq:
+              - sa.foreign_tax_noncreditable
+              - const: true
       cite:
         doc: i1040sca
-        locator: 'p. 8, Limits on home mortgage interest, "Your deduction for home mortgage interest is subject to a number of limits"; p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 3, Line 5a, "You can elect to deduct state and local general sales taxes instead of state and local income taxes"; p. 7, Other Taxes, "Include on this line income taxes you paid to a foreign country"; pp. 11–12, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16"'
+        locator: 'p. 8, Limits on home mortgage interest, "Your deduction for home mortgage interest is subject to a number of limits"; p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 3, Line 5a, "You can elect to deduct state and local general sales taxes instead of state and local income taxes"; p. 7, Line 6, "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions"; p514 p. 3, Exceptions for foreign taxes not allowed as a credit, "you can deduct any foreign tax that is not allowed as a credit"; pp. 11–12, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16"'
     - id: sa.gifts
       printed: (helper)
       type: Bool
@@ -318,13 +326,13 @@ form:
     - id: sa.medical_any
       printed: (helper)
       type: Bool
-      label: 'In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?'
+      label: 'In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your adjusted gross income (your income after adjustments such as IRA or HSA deductions)?'
       expr:
         op: input
-        source: 'In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income?'
+        source: 'In 2025, were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your adjusted gross income (your income after adjustments such as IRA or HSA deductions)?'
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b"'
     - id: sa.medical_premiums
       printed: (helper)
       type: Bool
@@ -800,10 +808,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: sa.property_tax_other_if_home
-      label: 'Does the real estate tax amount you entered include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?'
+      label: 'Does the real estate tax amount you entered, or the share of a rental''s taxes for the days you used it yourself, include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?'
       expr:
         op: input
-        source: 'Does the real estate tax amount you entered include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?'
+        source: 'Does the real estate tax amount you entered, or the share of a rental''s taxes for the days you used it yourself, include any amount that is not deductible: tax on real estate outside the United States, an itemized charge for services, a charge for an improvement, tax charged to the buyer on a sale, a refund or rebate of 2025 tax, or tax not assessed before 2026?'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
@@ -833,10 +841,10 @@ form:
       printed: (helper)
       type: NonNegDollars
       gated_by: sa.property_tax_leave_out_if_any
-      label: 'The part of the real estate tax amount that is not deductible'
+      label: 'The part of the real estate tax amount, and of the share of a rental''s taxes for the days you used it yourself, that is not deductible'
       expr:
         op: input
-        source: 'The part of the real estate tax amount that is not deductible'
+        source: 'The part of the real estate tax amount, and of the share of a rental''s taxes for the days you used it yourself, that is not deductible'
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
@@ -862,17 +870,6 @@ form:
       cite:
         doc: i1040sca
         locator: 'p. 6, Line 5b, "Don''t include the following amounts on line 5b", "Itemized charges for services to specific property or persons"'
-    - id: sa.line5b_net
-      printed: (helper)
-      type: NonNegDollars
-      label: Subtract sa.property_tax_leave_out_if_any from sa.line5b_if_home_owner; if zero or less, enter zero
-      expr:
-        op: subtract_floor0
-        from: sa.line5b_if_home_owner
-        take: sa.property_tax_leave_out_if_any
-      cite:
-        doc: i1040sca
-        locator: 'p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn''t used for business", "Don''t include the following amounts on line 5b"'
     - id: sa.rental_tax_sum
       printed: (helper)
       type: NonNegDollars
@@ -914,15 +911,39 @@ form:
         doc: p527
         locator: 'p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Some of your personal expenses may be
           deductible on Schedule A (Form 1040) if you itemize your deductions"'
-    - id: sa.line5b_total
-      printed: 5b
+    - id: sa.line5b_gross
+      printed: (helper)
       type: NonNegDollars
-      label: Add sa.line5b_net, sa.rental_tax_personal
+      label: Add sa.line5b_if_home_owner, sa.rental_tax_personal
       expr:
         op: sum
         of:
-          - sa.line5b_net
+          - sa.line5b_if_home_owner
           - sa.rental_tax_personal
+      cite:
+        doc: i1040sca
+        locator: 'p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn''t used
+          for business"; p527 p. 25, Personal Use of Dwelling Unit (Including Vacation Home), "Some of your personal expenses
+          may be deductible on Schedule A (Form 1040) if you itemize your deductions"'
+    - id: sa.line5b_net
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract sa.property_tax_leave_out_if_any from sa.line5b_gross; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.line5b_gross
+        take: sa.property_tax_leave_out_if_any
+      cite:
+        doc: i1040sca
+        locator: 'p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn''t used
+          for business", "Don''t include the following amounts on line 5b"'
+    - id: sa.line5b_total
+      printed: 5b
+      type: NonNegDollars
+      label: Amount from sa.line5b_net
+      expr:
+        op: copy
+        from: sa.line5b_net
       cite:
         doc: i1040sca
         locator: 'p. 6, Line 5b, "Enter on line 5b the state and local taxes you paid on real estate you own that wasn''t used
@@ -1318,6 +1339,26 @@ form:
       cite:
         doc: f1040sa
         locator: Schedule A (2025), lines 1–18
+    - id: sa.gst_paid
+      printed: (helper)
+      type: Bool
+      label: 'Did you (or, on a joint return, your spouse) pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))?'
+      expr:
+        op: input
+        source: 'Did you (or, on a joint return, your spouse) pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))?'
+      cite:
+        doc: i1040sca
+        locator: 'p. 7, Line 6, "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions"'
+    - id: sa.foreign_tax_noncreditable
+      printed: (helper)
+      type: Bool
+      label: 'Was foreign income tax withheld from your (or, on a joint return, your spouse''s) dividends, interest or other income that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments on positions in substantially similar or related property?'
+      expr:
+        op: input
+        source: 'Was foreign income tax withheld from your (or, on a joint return, your spouse''s) dividends, interest or other income that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments on positions in substantially similar or related property?'
+      cite:
+        doc: p514
+        locator: 'p. 3, Exceptions for foreign taxes not allowed as a credit, "Even if you claim a credit for other foreign taxes, you can deduct any foreign tax that is not allowed as a credit if you did any of the following", "You paid withholding tax on dividends from foreign corporations whose stock you did not hold for the required period of time", "You paid withholding tax on income or gain (other than dividends) from property you did not hold for the required period of time", "You paid withholding tax on income or gain to the extent you had to make related payments on positions in substantially similar or related property"'
     - id: sa.line11
       printed: (helper)
       type: NonNegDollars
@@ -1331,14 +1372,14 @@ form:
 
           Count only what you paid above the value of any benefit you received in return, and only gifts for which you keep a bank record or a written record from the charity (and, for a gift of $250 or more, the charity's written acknowledgment). Membership benefits received for an annual payment of $75 or less, and an item of token value that the charity says need not be subtracted, are not subtracted.
 
-          Leave out: the part of a gift for which you received a state or local tax credit; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; gifts to foreign organizations (a gift to a U.S. organization that transfers funds to a foreign charity is not left out); travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
+          Leave out: the part of a gift for which you received or expect a state or local tax credit, unless the credit is not more than 15% of the gift; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; gifts to foreign organizations (a gift to a U.S. organization that transfers funds to a foreign charity is not left out); travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
       cite:
         doc: i1040sca
         locator: 'p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to
           do volunteer work", "14 cents a mile", "But don''t deduct any amounts that were repaid to you", Gifts from which you
           benefit, "you can generally only deduct the amount that is more than the value of the benefit. But this rule doesn''t
           apply to certain membership benefits provided in return for an annual payment of $75 or less or to certain items or
-          benefits of token value", Gifts of $250 or more; p526 p. 5, Membership fees or dues, "Both you and the organization
+          benefits of token value", Gifts of $250 or more; p526 p. 5, State or local tax credit, "the amount treated as a charitable contribution deduction is reduced by the amount of the state or local tax credit you receive or expect to receive", Exception, "If the state or local tax credit you receive or expect to receive doesn’t exceed 15% of your payment amount or 15% of the FMV of the transferred property, then your charitable contribution deduction isn’t reduced"; p526 p. 5, Membership fees or dues, "Both you and the organization
           can disregard the following membership benefits if you get them in return for an annual payment of $75 or less";
           p526 p. 6, Token items, "You don’t have to reduce your contribution by the value of any benefit you receive if both
           of the following are true"; p. 10, Amounts You Can''t Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets",

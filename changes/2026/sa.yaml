@@ -95,11 +95,13 @@ changes:
         line: sa.unsupported
         field: label
         from: 'A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt
-          or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other
+          or use limits; the sales-tax election; a foreign tax deduction, foreign tax not allowed as a credit, or
+          generation-skipping tax on a trust distribution (line 6); or a deduction from the Schedule A line 16 list other
           than gambling losses'
         to: 'A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt
-          or use limits; mortgage insurance premiums; the sales-tax election; a foreign tax deduction; or a deduction from the
-          Schedule A lines 17b to 17k list other than gambling losses'
+          or use limits; mortgage insurance premiums; the sales-tax election; a foreign tax deduction, foreign tax not allowed
+          as a credit, or generation-skipping tax on a trust distribution (line 6); or a deduction from the Schedule A lines
+          17b to 17k list other than gambling losses'
     - set:
         line: sa.unsupported
         field: expr.any
@@ -154,6 +156,16 @@ changes:
           eq:
           - sa.impairment_work
           - const: true
+        - &id011
+          op: test
+          eq:
+          - sa.gst_paid
+          - const: true
+        - &id012
+          op: test
+          eq:
+          - sa.foreign_tax_noncreditable
+          - const: true
         to:
         - *id001
         - *id002
@@ -165,6 +177,8 @@ changes:
         - *id008
         - *id009
         - *id010
+        - *id011
+        - *id012
         - op: test
           eq:
           - sa.mortgage_insurance_if_interest

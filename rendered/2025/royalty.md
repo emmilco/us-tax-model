@@ -2,7 +2,7 @@
 
 - Document: `royalty` (form, tax year 2025)
 - Collection: keyed entries; [i1040se] p. 3, Line 4 (2025; sha256 ad71de35)
-- Note: One entry per royalty source (Schedule E type 6). Royalties are not passive and never go on Form 8582. Refused: royalties from the filer's own business or services or a working interest, a patent transfer or coal or iron ore, car and travel costs, depreciation, depletion, and a loss with amounts not at risk.
+- Note: One entry per royalty source (Schedule E type 6). Royalties are not passive and never go on Form 8582. Refused: royalties from the filer's own business or services or a working interest, a patent transfer or coal or iron ore, car and travel costs, depreciation, depletion, Form 6198 on an earlier return, and a loss with amounts not at risk.
 
 ## (helper) — `royalty.zero`
 
@@ -59,6 +59,13 @@
 - **Encoded (Bool):** Input — Do you depreciate or amortize anything for it, such as a copyright or patent you bought?
 - Expr: `{"op":"input","source":"Do you depreciate or amortize anything for it, such as a copyright or patent you bought?"}`
 - Cite: [f1040se] Schedule E (2025), line 18, "Depreciation expense or depletion" (2025; sha256 c5e2c8fa)
+
+## (helper) — `royalty.at_risk_prior`
+
+- **Authored helper label:** At-risk history (Form 6198 filed for it, or a loss held back as not at risk, on an earlier return)
+- **Encoded (Bool):** Input — Was Form 6198 (at-risk limits) filed for it on any of your (or, on a joint return, your spouse's) earlier returns, or was a loss from it held back on one because amounts were not at risk?
+- Expr: `{"op":"input","source":"Was Form 6198 (at-risk limits) filed for it on any of your (or, on a joint return, your spouse's) earlier returns, or was a loss from it held back on one because amounts were not at risk?"}`
+- Cite: [p925] p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year. If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero." (2025; sha256 dda751f0)
 
 ## (helper) — `royalty.expenses_any`
 
@@ -125,6 +132,7 @@
 - **Refusal:** when royalty.capital is true, cannot complete Form 4797 or Schedule D (patent transfer, or coal or iron ore). Royalties that may be treated as the sale of a capital asset (from a patent you transferred, or coal or iron ore you disposed of) are outside this tool. Cite: [i1040se] p. 6, "You may be able to treat amounts received as 'royalties' for the transfer of a patent or amounts received on the disposal of coal and iron ore as the sale of a capital asset" (2025; sha256 ad71de35)
 - **Refusal:** when royalty.vehicle is true, cannot complete Schedule E, line 6 (auto and travel). Car, truck and travel costs of a royalty are outside this tool. Cite: [i1040se] p. 4, Line 6 (2025; sha256 ad71de35)
 - **Refusal:** when royalty.depreciation is true, cannot complete Schedule E, line 18 (depreciation). Depreciation or amortization for a royalty is outside this tool. Cite: [f1040se] Schedule E (2025), line 18, "Depreciation expense or depletion" (2025; sha256 c5e2c8fa)
+- **Refusal:** when royalty.at_risk_prior is true, cannot complete Form 6198 (at-risk limits, earlier year). A royalty with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198. Cite: [p925] p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year" (2025; sha256 dda751f0)
 - Expr: `{"from":"royalty.line4","op":"subtract","take":"royalty.line20"}`
 - Cite: [f1040se] Schedule E (2025), line 21; i1040se p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss" (2025; sha256 c5e2c8fa)
 

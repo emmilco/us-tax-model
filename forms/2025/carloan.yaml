@@ -145,9 +145,11 @@ form:
     printed: (helper)
     label: Down payment
     type: NonNegDollars
+    ambiguity: amb.2025.carloan_rebate
     expr:
       op: input
-      source: Any down payment or other consideration you provided when you bought the vehicle (zero if none). For a
+      source: Any down payment or other consideration you provided when you bought the vehicle (zero if none; a rebate
+        from the maker or dealer is not counted). For a
         vehicle you traded in, count only its equity, its trade-in value less any loan on it paid off in the purchase,
         and zero if that loan was more than the trade-in value (the excess is the negative equity, which the trade-in
         value has already reduced)

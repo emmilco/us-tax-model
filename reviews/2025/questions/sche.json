@@ -1,0 +1,111 @@
+{
+ "form": "sche",
+ "reviews": {
+  "sche.grouped": {
+   "subject_sha": "91a73adb497c91ce1cf5533d25f778a2180e19c1676be432b65e9ceef8325619",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A partnership or S corporation groups a rental with another activity, and the filer, who made no grouping choice personally, answers No.",
+       "source_text": "i8582 p. 6: \"A partner or shareholder may not treat as separate activities those activities grouped together by the partnership or corporation.\"",
+       "why": "The question asks whether 'you' treat activities as one, so a filer whose grouping was imposed through a K-1 entity may truthfully say No. The refusal gate is then missed for rentals the filer must treat as grouped.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer whose 2024 Form 8582 showed a rental combined with other rentals regroups in 2025 under the NIIT fresh start election so the rental is now separate, but the help still tells them to answer Yes.",
+       "source_text": "Question help: \"Yes also if your 2024 Form 8582 shows a rental's loss only in one figure with other rentals.\" i8582 p. 6: \"Under the NIIT fresh start election, you may regroup for the first tax year you're subject to the NIIT ... that regrouping will apply to the tax year for which you regroup and all future tax years.\"",
+       "why": "The help relies on the prior year's grouping, but the text allows a regrouping that changes the current-year grouping. A Yes then refuses a filer whose 2025 rentals are not grouped.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "34b55c5517aff9f6a620f032afd7defaccd09be4b6a1d2c176ce8ff2a141f90c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.04636,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/sche.grouped.91a73adb497c.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      1,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Grouping of Activities",
+      "p. 1, Grouping of Activities; p. 6, Limitation on grouping certain activities, \"A rental activity with a trade or business activity unless the activities being grouped together make up an appropriate economic unit\""
+     ],
+     "cols_pages": [
+      1,
+      6
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "sche.qbi_business": {
+   "subject_sha": "ca72aa487b15c3da1c9e5d3df86c262d80d9277e38ff48a2f78732b230670383",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A landlord rents a property for profit and is involved with continuity and regularity, but spends under 250 hours a year on it and keeps no separate books, and answers No because the example reads as the bar to clear.",
+       "source_text": "i8995 p. 1: \"an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you're involved in the activity with continuity and regularity\"; \"The ownership and rental of real property may constitute a trade or business if it meets the standard described above.\"",
+       "why": "The example (250 hours of rental services, separate books) gives the Rev. Proc. 2019-38 safe harbor conditions, not the section 162 standard. A filer can meet the section 162 standard without meeting them, and the example leads that filer to answer No even though the rental is a trade or business and the line must refuse.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer listed a rental on a 2024 Form 8995 but in 2025 the rental no longer meets the section 162 standard or the safe harbor, and the help tells them to answer Yes anyway.",
+       "source_text": "Help: \"Yes also if your 2024 Form 8995 or 8995-A listed a rental\"; i8995 p. 1: \"Your 2025 taxable income before your QBI deduction...\" (the tests apply to the current year)",
+       "why": "Whether a rental is a trade or business is decided by the 2025 facts under the section 162 standard or the safe harbor. A listing on the prior-year form does not decide it, so this help brings in a Yes the 2025 text does not require.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "563cbe0c026bcf47c914a8402b8b827f34a6eb224fadd3956ac2ddd93938966c",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.041156,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/sche.qbi_business.ca72aa487b15.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i8995",
+     "revision": "2025; printed date 2026-01-26",
+     "text_sha256": "96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Trade or business, \"an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you’re involved in the activity with continuity and regularity\", \"Rental real estate that doesn’t meet the requirements of the safe harbor may still be treated as a trade or business for purposes of the QBI deduction if it’s a section 162 trade or business\", and \"provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction\"",
+      "p. 1, Trade or business, \"provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
+    }
+   ]
+  }
+ }
+}

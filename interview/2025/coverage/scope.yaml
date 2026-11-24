@@ -120,6 +120,7 @@ rows:
   uses: [one_w2]
   answers:
     "scope.business_before": true
+    "s2.lookback": false
     "scope.passive": false
     "scope.f8978": false
     "s179.prior_form": false
@@ -167,6 +168,9 @@ rows:
     "rental[house].part_home": false
     "rental[house].held_for_sale": false
     "rental[house].business_incidental": false
+    "rental[house].at_risk_prior": false
+    "rental[house].business_credit": false
+    "rental[house].prerental": false
     "rental[house].land_heavy": false
     "rental[house].active": true
     "rental[house].rents": 1800000
@@ -224,6 +228,7 @@ rows:
     "royalty[book].capital": false
     "royalty[book].vehicle": false
     "royalty[book].depreciation": false
+    "royalty[book].at_risk_prior": false
     "sche.re_pro": false
     "sche.grouped": false
     "sche.qbi_business": false

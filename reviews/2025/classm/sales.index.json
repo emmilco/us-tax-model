@@ -2,111 +2,106 @@
  "kind": "classm",
  "form": "sales",
  "family": "claude",
- "base": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+ "base": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
  "lines": [
   {
    "key": "case classm.sales.1",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": null
   },
   {
    "key": "classm.sales.1 — sales[s1].e",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s1].g",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s1].h",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s2].e",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s2].g",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s2].h",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s3].e",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s3].g",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.1 — sales[s3].h",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "case classm.sales.2",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": null
   },
   {
    "key": "classm.sales.2 — sales[s1].e",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.2 — sales[s1].g",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
    "key": "classm.sales.2 — sales[s1].h",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
-   "key": "case classm.sales.3",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
-   "status": null
-  },
-  {
-   "key": "classm.sales.3 — sales[s1].e",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "key": "classm.sales.2 — sales[s2].e",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
-   "key": "classm.sales.3 — sales[s1].g",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "key": "classm.sales.2 — sales[s2].g",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
-   "key": "classm.sales.3 — sales[s1].h",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "key": "classm.sales.2 — sales[s2].h",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
-   "key": "classm.sales.3 — sales[s2].e",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "key": "classm.sales.2 — sales[s3].e",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
-   "key": "classm.sales.3 — sales[s2].g",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "key": "classm.sales.2 — sales[s3].g",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   },
   {
-   "key": "classm.sales.3 — sales[s2].h",
-   "record": "038e203f54115f598834170a9a088d97b2fca41bc949a93613c88ad92f119131",
+   "key": "classm.sales.2 — sales[s3].h",
+   "record": "e0583d4f431ab26882d882eca3e363ed4b270a0d116044fe5bc328c170385734",
    "status": "AGREE"
   }
  ]

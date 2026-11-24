@@ -255,6 +255,122 @@
     }
    ]
   },
+  "gate:s2.lookback_ask": {
+   "subject_sha": "7a42249cab74d9ef1e5a774e4d81601f01cf8f2e727307f8666f0f63fa965a2f",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer with no Schedule C who first bought a partnership or S corporation interest in 2025. The entity finished a long-term contract in 2025 that it began in an earlier year, and its Schedule K-1 passes look-back information to owners.",
+       "why_no": "The scope helper asks whether they owned a share of a partnership or an S corporation 'in any year before 2025'. Their ownership began in 2025, so a truthful answer is no. With no Schedule C, the computed gate is false and the look-back question is never asked.",
+       "line": "s2.lookback_if_business (a missed refusal; Schedule 2 line 17n would be dropped)",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'; i6251 (2025) p. 7, Line 2p: 'you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted'",
+       "severity": "high",
+       "fix": "Widen the gate to cover any ownership in 2025 or earlier: 'In 2025 or any earlier year, did you (or your spouse) own a business, farm, rental, royalty property, or a share of a partnership, S corporation, estate or trust?' Better still, also open the gate whenever a Schedule K-1 is entered."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "An investor with no Schedule C who owns rights in a film, sound recording or book, held for the production of income. They report the royalties on Schedule E and depreciate the rights under the income forecast method, and 2025 is the 3rd or 10th recomputation year.",
+       "why_no": "The gate lists 'a business, a farm, a rental property, or a share of a partnership or an S corporation'. Royalty property held as an investment is none of these, so the investor truthfully answers no.",
+       "line": "s2.lookback_if_business (Form 8866 interest; a missed refusal)",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) ... from Form 8697 or 8866'",
+       "severity": "high",
+       "fix": "Add 'royalty property, or any property you depreciate' to the gate list, or open the gate whenever the return has Schedule E royalties or any depreciation."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder who passes the gate. The entity, not the filer, had a long-term contract that was completed or adjusted in 2025, or the entity uses the income forecast method. The owner must figure look-back interest at the owner level (Form 8697 Part II or Form 8866).",
+       "why_no": "The gated question asks 'Did you (or ... your spouse) have a contract' and 'do you depreciate a film'. Read literally, the contract and the property belong to the entity, not to the filer, so a truthful answer is no.",
+       "line": "s2.lookback_if_business (a missed refusal)",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'",
+       "severity": "high",
+       "fix": "Add: '..., directly or through a partnership, S corporation, estate or trust (check your Schedule K-1 for look-back or income forecast information)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A K-1 recipient or a small contractor who does not recognize the terms 'percentage of completion' or 'income forecast method' but whose K-1 or accountant reports look-back amounts.",
+       "why_no": "The help says 'If neither is familiar, answer No.' This invites a no based on whether the filer knows the term rather than on the facts.",
+       "line": "s2.lookback_if_business",
+       "irs_text": "i6251 (2025) p. 7, Line 2p: 'If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe or be entitled to a refund of interest'",
+       "severity": "medium",
+       "fix": "Replace that sentence with checkable facts: 'Answer Yes if a Schedule K-1, Form 8697, or Form 8866 mentions look-back interest, or if your business had a contract that took more than one year to finish.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A beneficiary of a trust or estate that carries on a contracting business or holds income-forecast property and passes look-back items through on a Schedule K-1.",
+       "why_no": "The gate names only partnerships and S corporations. A trust beneficiary does not 'own a share' of the trust, so they answer no.",
+       "line": "s2.lookback_if_business",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'",
+       "severity": "medium",
+       "fix": "Add 'or were a beneficiary of an estate or trust' to the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "An owner of income-forecast property who disposed of it or stopped depreciating it in 2025, in a year when a look-back recomputation is still due.",
+       "why_no": "The question uses the present tense, 'do you depreciate a film, book or similar property'. The filer no longer depreciates the property and so answers no.",
+       "line": "s2.lookback_if_business",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) ... from Form 8697 or 8866'",
+       "severity": "low",
+       "fix": "Change the wording to: 'did you depreciate, in 2025 or an earlier year, a film, book or similar property by the income it was expected to earn?'"
+      }
+     ],
+     "prompt_sha": "8bc2f3a834a89ca32dd5cc2e542cf1d4899062b6e35e67bc46597757fd83abc2",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10948,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_s2.lookback_ask.7a42249cab74.1.response.txt"
+    }
+   ],
+   "condition": "s2.lookback_ask",
+   "lines": [
+    "s2.lookback_if_business"
+   ],
+   "inputs": [
+    "s2.lookback"
+   ],
+   "used": [
+    {
+     "doc": "i6251",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "024ee22d5460db225e49e2c7d45d284472e0b81c8ac7a95847f50868b8801a99",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 2p, \"you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted\"; f1040s2 Schedule 2 (2025), line 17n, \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "a67c0bf9545d844d38c9381522baf62c51fc59813677029e87af8a01232e6c7f"
+    },
+    {
+     "doc": "f1040s2",
+     "revision": "2025; created 2025-05-08",
+     "text_sha256": "29e3a05ca4dca4b5316833984170cff8815045c2e3957d048cb713ad90cb728f",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 2 (2025), line 17n"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "129b2541cce9743c9bde3a48fdfcc2512767d88b7cbbbe562d7989b117232d62"
+    }
+   ]
+  },
   "gate:s2.options_any": {
    "subject_sha": "a280ef4334cfd9b682590e8687ce8b5d48ea8f1b7c2ee45fcf05bc80414872be",
    "samples": [

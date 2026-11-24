@@ -1,0 +1,50 @@
+{
+ "form": "royalty",
+ "reviews": {
+  "royalty.at_risk_prior": {
+   "subject_sha": "b6c3efa7ee69459c48b59e1c6f130c75a0da56b98c21dbaeb9600a08160463ef",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer deducted royalty losses in full on earlier returns without filing Form 6198, because their whole investment was at risk, and their amount at risk has now fallen below zero; they truthfully answer No.",
+       "source_text": "p925 p. 19, At-Risk Limits: \"If your losses from an at-risk activity are allowed, they're subject to recapture in later years if your amount at risk is reduced below zero.\" and \"File Form 6198 with your tax return if: a. You have a loss ... and b. You aren't at risk for some of your investment in the activity.\"",
+       "why": "The question only asks whether Form 6198 was filed or a loss was held back. Allowed prior losses with no Form 6198 filed can still be recaptured, and the refusal is meant to cover recapture of losses allowed before. Without a question about prior losses deducted from the royalty, that case passes the gate.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a81080fb025163432660bcbfcc1aebeff3025f72fc8c53924ef4fcaf9e14e76a",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.031612,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/royalty.at_risk_prior.b6c3efa7ee69.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p925",
+     "revision": "2025",
+     "text_sha256": "3b1ff7c5ced72cbd4ae594b07eea50189f0886c32e47a3349a7359f852d0b971",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, At-Risk Limits, \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year\"",
+      "p. 19, At-Risk Limits, \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year. If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "68baa3fca122caa06dfcadad5d675d530287f6d61aa9a18c1659ba11481498e5"
+    }
+   ]
+  }
+ }
+}

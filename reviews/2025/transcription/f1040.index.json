@@ -3,6 +3,11 @@
  "form": "f1040",
  "family": "claude",
  "base": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
+ "head_rows": {
+  "printed lines compared": "64",
+  "agree / disagree / missing": "53 / 11 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "f1040.tax_exempt_interest_if_any",
@@ -19,10 +24,17 @@
   },
   {
    "key": "f1040.gate.sdtw",
-   "record": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
+   "record": "b67856b6d4ff892df7c6733e34a84b0b2a2b3580d65d2cde9fc2d01ee1b7c567",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040sd p. 15, the same trigger and Exception. As the earlier ruling: the project conditions both worksheet branches on the shared trigger; the candidate's differences are refusals and unknowns on records the project refuses or that are incomplete. Triage executable-triage-v2 (2026-11-23): 3,148 of 3,510 agree; no completed return differs in value (13 candidate-unknown, 2 candidate-refuses). Project stands.",
-   "subject_key": "ff9bc51a5820f63c057d69968f4cf46b08a9dc9535eef1aa3ad35c65b63bee6a"
+   "ruling": "Ruling: representation; as the earlier ruling: i1040sd p. 15, \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g\", with its Exception (line 15 zero or less, or no gains and no qualified dividends). The project conditions the worksheet rules (now the helper f1040.gate.sdtw_rules, the same expression) on the shared trigger f1040.gate.qdcg_applies, which includes line 15 above zero, and reads the line 4g election as sd.investment_election (amb.2025.sd4952_selection); the reply states the exception directly. Executable triage (.transcription/triage/2025/f1040.json, this pass): 2,844/3,614 agree; 765 project-refuses, 4 candidate-unknown, all on refused returns, and 1 project-unknown on an incomplete record; no completed return differs. Rerun because the worksheet rules were split out to f1040.gate.sdtw_rules for the Form 6251 screen (BUG-0764); the gate's value is unchanged.",
+   "subject_key": "8032445e59110940e83abbe288bbb6630734d77805e57572a56b6de577cfa675"
+  },
+  {
+   "key": "f1040.gate.sdtw_rules",
+   "record": "b67856b6d4ff892df7c6733e34a84b0b2a2b3580d65d2cde9fc2d01ee1b7c567",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040sd p. 15, \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g\". The reply writes out \"lines 15 and 16 are gains\" (and Schedule D being filed) beside line 18 or 19 above zero; the project's lines 18 and 19 are zero unless Schedule D line 17 (both gains) is Yes, so the conjuncts are implied. The reply reads Form 4952 line 4g directly; the project reads it through f4952.has_interest (zero when no investment interest is entered, where line 4g is not asked). Executable triage (this pass): 3,602/3,614 agree; 8 project-refuses on refused returns, 4 project-unknown on incomplete records; no completed return differs.",
+   "subject_key": "49869c6d72b70e6d68b8f895d59fe01a6b3c52942c02c60a82ffbc294c4106e4"
   },
   {
    "key": "f1040.line3a_if_ordinary",
@@ -166,6 +178,12 @@
    "subject_key": "53cdb178f5fa30c9da0eea631215f620369467b367b2502a86718203b1448f05"
   },
   {
+   "key": "7b",
+   "record": "800c264a7bc1998444d3a23f55788f0d4a2bcbfb2aa77ecfd0aa75c0df8d8399",
+   "status": "AGREE",
+   "subject_key": "f948d9082a0abd369bb59b1d240e58ab8de2ebb770490376f88370d91a3a4ed1"
+  },
+  {
    "key": "8",
    "record": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
    "status": "AGREE",
@@ -259,10 +277,10 @@
   },
   {
    "key": "16",
-   "record": "1581f67bbf0a24b9b36d5b40b62148e4cc91ab97a0996d0a903d35b7894c5be5",
+   "record": "b67856b6d4ff892df7c6733e34a84b0b2a2b3580d65d2cde9fc2d01ee1b7c567",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 36, Line 16: the worksheet choice is the Schedule D Tax Worksheet first, else the Qualified Dividends and Capital Gain Tax Worksheet, else the tax on line 15 (amb.2025.sd4952_selection); the candidate's note lists the line 16 additions that are refused, as the project refuses them (scope.other_line16 and the retirement screens). As the earlier ruling, no value differs on any completed return: triage executable-triage-v2 (.transcription/triage/2025/f1040.json, 2026-11-23) has 2,584 of 3,510 agree, and on completed returns only candidate-unknown (344) and candidate-refuses (2), which come from the candidate's own transcription of the worksheet gates and their inputs. Project stands.",
-   "subject_key": "a0d3e51304b9eb79953ab52a0b87d51a73a46d2cfe16f5336123508da400ef88"
+   "ruling": "Ruling: model error; i1040gi p. 36, Line 16, the Qualified Dividends and Capital Gain Tax Worksheet applies if \"You don’t have to file Schedule D and you reported capital gain distributions on Form 1040 or 1040-SR, line 7a\" or \"You reported qualified dividends on Form 1040 or 1040-SR, line 3a\". The six completed value differences (qdcg.gate.cgd, sales.distribution, sales.line7b_distributions_only: distributions without Schedule D; stage4.qbi.capital_limit, stage4.sdtw.skip32 and generated return 398 of seed 20261026) are returns where the reply's own worksheet test (f1040.h_qdcg) is false and it taxes the whole of line 15 by the Tax Table or Tax Computation Worksheet, overstating line 16; the project uses the worksheet (f1040.gate.qdcg_applies). As the earlier rulings, the other line 16 amounts (Forms 8814 and 4972 and the rest) are refused through scope.other_line16. Executable triage (.transcription/triage/2025/f1040.json, this pass): 3,342/3,614 agree; completed {candidate-unknown 216, value 6}; refused {candidate-refuses 2, project-refuses 26}. Rerun because f1040.gate.sdtw's rules moved to f1040.gate.sdtw_rules (BUG-0764); line 16 is unchanged in value.",
+   "subject_key": "1e1039568315be657ec35654cacd7c607531c896ece31262a979186e2e5bb1de"
   },
   {
    "key": "17",
@@ -411,18 +429,13 @@
    "status": "DISAGREE",
    "ruling": "Ruling: representation; equivalent: Form 1040 line 37, \"Subtract line 33 from line 24. This is the amount you owe.\" The values are identical (line 24 less line 33, not below zero); the candidate adds a display condition (shown only when line 24 is more than line 33), while the project shows line 37 always, as $0 when nothing is owed. Line 38 is not figured (the standing notice), which the candidate's note also states. Triage executable-triage-v2 (2026-11-23): 2,996 of 3,510 agree and no completed return differs in value; differences as on line 34. Project stands.",
    "subject_key": "9915048a703f0c4560946a6ed6e1a55d4c4acea15a8216048ba8f3930dd4b760"
-  },
-  {
-   "key": "7b",
-   "record": "800c264a7bc1998444d3a23f55788f0d4a2bcbfb2aa77ecfd0aa75c0df8d8399",
-   "status": "AGREE",
-   "subject_key": "f948d9082a0abd369bb59b1d240e58ab8de2ebb770490376f88370d91a3a4ed1"
   }
  ],
  "subjects": {
   "f1040.tax_exempt_interest_if_any": "d2df72bd2d33510689f603e00fde1d1164460836f0d4d08110cb71258e7cf003",
   "f1040.gate.qdcg_applies": "45b80ecaeb9bc5ada06ed9dcfa1ca46aa3294eac2b24b7e9e6010b2cf271ce6a",
-  "f1040.gate.sdtw": "ccbbca2254ea05bf4171332a64d6f2c5b256b4762d240975898d083aa24de6bd",
+  "f1040.gate.sdtw": "9af244d4ea013e2e869abd0ba6c8e74a7ce004cc6a55c792a502fcc5c079cd42",
+  "f1040.gate.sdtw_rules": "8ece96c2dfe9be7dd8ad694bc475f817cf1074a40379537e15c4e83a5d43bb72",
   "f1040.line3a_if_ordinary": "a46a66f210d6feaf9e9dd9a02de1c8afb1e33320e6589ae6d342a833b8034374",
   "1a": "624e11d1defdcd660e47fe079c7826f8f5bb3b42ba24e451553b09c6cf924dcc",
   "1b": "cdcd411b2ce910007a33074e7085bf97e6f74ae33ceb50e351b3cbd785459e41",
@@ -446,6 +459,7 @@
   "6c": "717d56ea98d356c868e23a6a66503040122a0f05ffe9343bf3b03d158b178991",
   "6d": "05926f02e3e74953a6373db8cb60400f6f061c9f39d29f8a319e840e80efb096",
   "7a": "c2382d85dfbc2c7bce5f959fa407282803c22eeddc5da7c6843af089228a834a",
+  "7b": "be06d99d16101f4f22b4738b841e70a11571eabf56e99ec5d1defaa3beb9faa2",
   "8": "482e299852c8a42ec80fd05661fa60aa27ec8b58448e77ae9b7337a097859dfc",
   "9": "4a00120baf348ba5e60f8c7441ffd8c0144db25bcbdab3561b0318424d8da03e",
   "10": "756e100cb725da7f4f3229d4bff1971708cb3df121b350ac7aad7d6353d25a91",
@@ -457,7 +471,7 @@
   "13b": "1e62779ac546107c3f67ca8b8c8d9ec3b5290b62a6886997b356a4afd93ef46c",
   "14": "fbe32608165ae6ed017f940a6ae841e7919badbf6570cf29dc8a080005c42812",
   "15": "07a5425f740529b6d99f73260b329a7ac454c041a26ecd99e0400af6080bd6cc",
-  "16": "34b7715ac00f761c880b9271de3e166e6945882981c9755e7c879186e5f6eb6b",
+  "16": "92bdc35889bcc043664c4a5b2cedbc267be95033ea7f118b8f9c6fa61db54cf7",
   "17": "197fb0bb8c3ed1fcd417035ab7846c914a605bb956b3937c4e6b86ec87746a24",
   "18": "40b1e9ea8ea7ae6bdeff88b5360e565c7f01335932bd87913bdc97a3edbfb3e3",
   "19": "870d606f182413ca0a44422c1d503873819b19eece544a07c8e0dfc92447bdc0",
@@ -481,14 +495,14 @@
   "32": "2a0c0707e902998f704acf7e3574aee9fa0961bde3df0263cafa4a341e724ff5",
   "33": "47b04824eb89a1947a0680d8788ca85b8eafcfd99aa1157e60d7c322499c8c2c",
   "34": "da64209dec787ebfbe10f6f2e9f5cf30726d9fa4dbe45779405023f8fbc211ca",
-  "37": "1fbe79b60207f9761aaffb6e098ac77998fb7cd9e2c6befce0c174e791874434",
-  "7b": "be06d99d16101f4f22b4738b841e70a11571eabf56e99ec5d1defaa3beb9faa2"
+  "37": "1fbe79b60207f9761aaffb6e098ac77998fb7cd9e2c6befce0c174e791874434"
  },
  "__rest__": "e8cf778e9ae7c8363ed7e5f85314f01a68cf2f35dac8d2449b9664ccb42b3a78",
  "foreign": {
   "f1040.tax_exempt_interest_if_any": "1011e44494516a8c09fdbac7cd21050e605b243ed2e3a7ba2b0dfd366606d44e",
   "f1040.gate.qdcg_applies": "8852262cdfed635a35fb168f567ed68bb278f8ccb9c3b2b28f48ce1e8069ffc2",
   "f1040.gate.sdtw": "2d961074732462eb4461aee8bd8b5a3e4d9b6ccf2285d8647631dabe9edef5af",
+  "f1040.gate.sdtw_rules": "0c390eca12692cad1f099936b004afd524d4aa508ead077fa13803539d5db490",
   "f1040.line3a_if_ordinary": "a89991d373a0ef9cd22e2a905885c90ec4104aeb0ada89f31b2838188d12bc37",
   "1a": "3873886a8db962cca7ddb223a8a433bb01bd46673670da493619eacbbec93b76",
   "1b": "a75cf1fae84fdc3a6943c8dd64bc5ef63cc7ca156343a5a5f67d4f3e40e81607",
@@ -512,6 +526,7 @@
   "6c": "82047bad8384aab9d236dee4cad4f92c1ec470ef849f467db5e5960349a911e5",
   "6d": "7efd919c25b80ea8e444e8940382ed5545c3d81f9106472e10531f81d44b718a",
   "7a": "74855dd5461a6e6288bfd43b2607624c71bb54bc31278bc9dc036a2529de5579",
+  "7b": "fe1bfb5952d4ee4f7b2d2e3dc3363755804d490ff6018a62d3883b42d1d951ef",
   "8": "9d9b1244a6b31e9215f6785b64809b81e7260ab667b5133138b45f7154edb2f1",
   "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "10": "57406c7c4b1e374abe2e745a0821a7cd0956a4d1f47a1cfeabe6f28944b9c538",
@@ -547,12 +562,6 @@
   "32": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "33": "1011e44494516a8c09fdbac7cd21050e605b243ed2e3a7ba2b0dfd366606d44e",
   "34": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "37": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "7b": "fe1bfb5952d4ee4f7b2d2e3dc3363755804d490ff6018a62d3883b42d1d951ef"
- },
- "head_rows": {
-  "printed lines compared": "63",
-  "agree / disagree / missing": "53 / 10 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+  "37": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
 }

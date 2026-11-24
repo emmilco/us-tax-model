@@ -1149,6 +1149,27 @@ form:
       doc: i1116sb
       locator: p. 2, Line 6. Foreign tax carryover generated in current tax year, "line 6 is completed only if you have current
         year excess foreign taxes"
+  - id: f1116sb.prior_asked
+    printed: (gate)
+    type: Bool
+    label: A foreign tax carryover is generated in the current year, or foreign tax is carried into 2025 from an earlier year
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f1116sb.generated
+        - const: true
+      - op: test
+        eq:
+        - ftc.carryover_if_asked
+        - const: true
+    cite:
+      doc: i1116
+      locator: p. 19, Line 10, "You can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t
+        apply to or from any year for which you made the election", "However, you must reduce the amount of any carryback or
+        carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that
+        year"
   - id: f1116sb.prior_none
     printed: (helper)
     type: Enum(ftc_prior_year)
@@ -1189,20 +1210,20 @@ form:
     printed: (gate)
     type: Enum(ftc_prior_year)
     label: How the 2024 return treated foreign tax on passive income, asked only when a carryover is generated (line 6 above
-      zero); none otherwise
+      zero) or one is carried into 2025; none otherwise
     expr:
       op: choose
       alternatives:
       - guard:
           op: test
           eq:
-          - f1116sb.generated
+          - f1116sb.prior_asked
           - const: true
         then: f1116sb.prior_year
       - guard:
           op: test
           eq:
-          - f1116sb.generated
+          - f1116sb.prior_asked
           - const: false
         then: f1116sb.prior_none
     cite:
@@ -1220,15 +1241,21 @@ form:
       line 23) or foreign income with no credit taken
     expr:
       op: test
-      any:
+      all:
       - op: test
         eq:
-        - f1116sb.prior_year_if_excess
-        - const: form_room
+        - f1116sb.generated
+        - const: true
       - op: test
-        eq:
-        - f1116sb.prior_year_if_excess
-        - const: other
+        any:
+        - op: test
+          eq:
+          - f1116sb.prior_year_if_excess
+          - const: form_room
+        - op: test
+          eq:
+          - f1116sb.prior_year_if_excess
+          - const: other
     cite:
       doc: p514
       locator: p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the
@@ -1238,3 +1265,33 @@ form:
         can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t apply to or from any
         year for which you made the election."
     ambiguity: amb.2025.f1116_carryback
+  - id: f1116sb.carry_through_prior
+    printed: (gate)
+    type: Bool
+    label: Foreign tax is carried into 2025 through a 2024 return that had foreign income and deducted the foreign tax or took
+      no credit for it, and is neither changed since 2024 nor carried from another joint return (those are refused on Form
+      1116 line 35; a carryover through a 2024 election year or a year with no foreign income passes through unreduced)
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - ftc.carryover_if_asked
+        - const: true
+      - op: test
+        eq:
+        - f1116sb.changed_if_carry
+        - const: false
+      - op: test
+        eq:
+        - f1116sb.split_if_carry
+        - const: false
+      - op: test
+        eq:
+        - f1116sb.prior_year_if_excess
+        - const: other
+    cite:
+      doc: i1116
+      locator: p. 19, Line 10, "However, you must reduce the amount of any carryback or carryforward by the amount that you
+        would have used had you chosen to claim a credit rather than a deduction in that year", "Don’t reduce the carryback
+        or carryforward by the amount you would have used in the election year if you hadn’t made the election"

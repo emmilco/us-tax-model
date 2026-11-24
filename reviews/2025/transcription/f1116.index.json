@@ -5,7 +5,7 @@
  "base": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
  "head_rows": {
   "agree / disagree / missing": "17 / 13 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -79,14 +79,14 @@
   },
   {
    "key": "10",
-   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "record": "6bce7af12dd8b62dfab65d15d327fd957c4c9562f250e612c9e61471b9b468a4",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply enters Schedule B line 3 column (xiv) without the project's gate on ftc.carryover_if_asked (a carryover claimed). Where no carryover is claimed the $f1116sbyr roster is never asked and line 3 is empty, so the project's 0 is the value; the reply's only differences are candidate-unknown (86 completed, roster not confirmed) and 19 candidate-refuses on refused returns. Form 1116 line 10: 'Enter the sum of any carryover of foreign taxes (from Schedule B, line 3, column (xiv)) plus any carrybacks'.",
+   "ruling": "Ruling: representation; the reply enters Schedule B line 3 column (xiv) without the project's gate on ftc.carryover_if_asked (a carryover claimed). Where no carryover is claimed the $f1116sbyr roster is never asked and line 3 is empty, so the project's 0 is the value; the reply's only differences are candidate-unknown (86 completed, roster not confirmed) and 19 candidate-refuses on refused returns. Form 1116 line 10: 'Enter the sum of any carryover of foreign taxes (from Schedule B, line 3, column (xiv)) plus any carrybacks'. (carried over from reviews/2025/transcription/f1116.index.json at 7466debd, review of 2026-11-15)",
    "subject_key": "b64f4b832bace9d4b72ae9233c0eef78adcb5b1e2562426066b0e82b37ebe651"
   },
   {
    "key": "11",
-   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "record": "6bce7af12dd8b62dfab65d15d327fd957c4c9562f250e612c9e61471b9b468a4",
    "status": "AGREE",
    "subject_key": "27fdeca566772f969b47b1d8b08591923bdae4fdce8da638b6a1395ea7ffae31"
   },
@@ -205,17 +205,9 @@
   },
   {
    "key": "35",
-   "record": "aaddf62deaef33032913a108738cfaf907bebac1bd5ce2f55b0eab8f5e2a918c",
+   "record": "6bce7af12dd8b62dfab65d15d327fd957c4c9562f250e612c9e61471b9b468a4",
    "status": "AGREE",
-   "subject_key": "7916a1e477d1acfcb75e77cff5c03f2ff1ce869dd73b309b2bd1f302998e9546",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1a.line30": "s1a.vli_deduction"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "a7ac4c9808720415dd701abb4e3467a0677360a9c050d4f736ed1d1ac8038737"
-   }
+   "subject_key": "7916a1e477d1acfcb75e77cff5c03f2ff1ce869dd73b309b2bd1f302998e9546"
   }
  ],
  "subjects": {

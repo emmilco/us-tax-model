@@ -13,6 +13,16 @@
    "subject_key": "58122eaf38bd68bd6e6ff52cf90f16306d4fc5f2718a66564146ee69b810fdd3"
   },
   {
+   "printed": "10",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Legal and other professional fees, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Legal and other professional fees: the rental part (rental days over total days of use)\"]",
+   "model": "The text gives no allocation rule for these fees. The program divides them by days, but i1040se line 10 describes fees for 'tax forms related to your rental real estate', and Pub. 527 line 2d treats expenses 'directly related only to the rental activity' as undivided.",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_direct_expenses (owner's ruling C1, 2026-11-16): for a unit with personal use not used as a home, p527 p. 25, Dividing Expenses, divides expenses by days; only advertising (line 5) and commissions (line 8) are taken whole, and legal and other professional fees stay divided because the form does not ask which part is rental-only. Unchanged line; re-reviewed whole because the form note changed.",
+   "context": "5f0ba089a1ef493b0adf0bead7197b252c8b9cbb9eef215270c5e439161157ba",
+   "date": "2026-11-24",
+   "run": "ab41fd6082ff332ee2ce86ef40d73114491f5700b8cd5326784ab805bfebefea",
+   "subject_key": "023b75dea6d79a2e5a972453832ed830b7fcfacf7acd36733f62568bdb8e5638"
+  },
+  {
    "printed": "11",
    "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Management fees, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Management fees: the rental part (rental days over total days of use)\"]",
    "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
@@ -21,6 +31,16 @@
    "date": "2026-11-15",
    "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
    "subject_key": "e139b0f1f06e9f760495e780c21057f5c2b577ed4e4353ab915da50a11833419"
+  },
+  {
+   "printed": "11",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Management fees, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Management fees: the rental part (rental days over total days of use)\"]",
+   "model": "Pub. 527 Worksheet 5-1 line 2d lists 'rental agency fees' among expenses 'directly related only to the rental activity' that are not divided. The program prorates management fees by rental days over total days.",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_direct_expenses (owner's ruling C1, 2026-11-16): Worksheet 5-1 line 2d applies to a dwelling used as a home, which is refused (rental.ws51); for a unit not used as a home p527 p. 25 divides expenses by days, and management fees stay divided because they can also pay for the dwelling's upkeep. Unchanged line; re-reviewed whole because the form note changed.",
+   "context": "5f0ba089a1ef493b0adf0bead7197b252c8b9cbb9eef215270c5e439161157ba",
+   "date": "2026-11-24",
+   "run": "ab41fd6082ff332ee2ce86ef40d73114491f5700b8cd5326784ab805bfebefea",
+   "subject_key": "e21f3ba5a4d56d8c02293496570334d7512d71b0ec15ea2b3b897681c2554a20"
   },
   {
    "printed": "12",

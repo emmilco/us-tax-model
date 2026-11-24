@@ -558,9 +558,128 @@ rows:
     f1116sbyr[b].amount: 6000
     f1116sbyr[c].year: p8
     f1116sbyr[c].amount: 13000
+    f1116sb.prior_year: form_full
   expect:
     proceeds:
       f1116sbyr[c].amount: 13000
+- id: ftc1116.carryover_through_deduction_year
+  design: 'BUG-0827 (a carryover through a 2024 return that deducted foreign tax, refused)'
+  situation: A person carries foreign tax from 2015 to 2017 into 2025, and deducted the 2024 foreign tax on Schedule A instead of taking the credit.
+  answers:
+    $w2@person[taxpayer]:
+    - employer
+    person[taxpayer].w2[employer].box1: 10000000
+    person[taxpayer].w2[employer].box2: 1300000
+    person[taxpayer].w2[employer].box4: 620000
+    person[taxpayer].w2[employer].box5: 10000000
+    person[taxpayer].w2[employer].box6: 145000
+    scope.w2_marks: false
+    s2.w2_marks: false
+    s1.nqdc_pension: false
+    scope.artist_official: false
+    scope.excess_deferral: false
+    div.any: true
+    sb.ordinary_dividends: 1000000
+    f1040.line3a: 800000
+    qbi.dividends: 0
+    sd.distributions: 0
+    div.other_boxes: false
+    sd.f2439: false
+    sb.nominee: false
+    sb.bonds_any: false
+    s3.foreign_any: true
+    s3.section960c: false
+    s3.section965: false
+    s3.virgin_islands: false
+    ftc.carryover: true
+    ftc.all_passive: true
+    ftc.statements: true
+    ftc.eligible: true
+    ftc.taxes: 29946
+    $f1116col:
+    - ric
+    f1116col[ric].kind: dividends
+    f1116col[ric].div_income: 400000
+    f1116col[ric].tax_div: 29946
+    f1116.foreign_gain: false
+    f1116.redetermination: false
+    f1116.reduction: false
+    f1116.loss_accounts: false
+    f1116sb.changed: false
+    f1116sb.split: false
+    $f1116sbyr:
+    - a
+    - b
+    - c
+    f1116sbyr[a].year: p10
+    f1116sbyr[a].amount: 8000
+    f1116sbyr[b].year: p9
+    f1116sbyr[b].amount: 6000
+    f1116sbyr[c].year: p8
+    f1116sbyr[c].amount: 13000
+    f1116sb.prior_year: other
+  expect:
+    refused: f1116sb.carry_through_prior
+- id: ftc1116.carryover_through_election_year
+  design: 'BUG-0827 (a carryover through a 2024 election year passes through unreduced; the return goes on)'
+  situation: A person carries foreign tax from 2015 to 2017 into 2025, and the 2024 return took the foreign tax credit without Form 1116.
+  answers:
+    $w2@person[taxpayer]:
+    - employer
+    person[taxpayer].w2[employer].box1: 10000000
+    person[taxpayer].w2[employer].box2: 1300000
+    person[taxpayer].w2[employer].box4: 620000
+    person[taxpayer].w2[employer].box5: 10000000
+    person[taxpayer].w2[employer].box6: 145000
+    scope.w2_marks: false
+    s2.w2_marks: false
+    s1.nqdc_pension: false
+    scope.artist_official: false
+    scope.excess_deferral: false
+    div.any: true
+    sb.ordinary_dividends: 1000000
+    f1040.line3a: 800000
+    qbi.dividends: 0
+    sd.distributions: 0
+    div.other_boxes: false
+    sd.f2439: false
+    sb.nominee: false
+    sb.bonds_any: false
+    s3.foreign_any: true
+    s3.section960c: false
+    s3.section965: false
+    s3.virgin_islands: false
+    ftc.carryover: true
+    ftc.all_passive: true
+    ftc.statements: true
+    ftc.eligible: true
+    ftc.taxes: 29946
+    $f1116col:
+    - ric
+    f1116col[ric].kind: dividends
+    f1116col[ric].div_income: 400000
+    f1116col[ric].tax_div: 29946
+    f1116.foreign_gain: false
+    f1116.redetermination: false
+    f1116.reduction: false
+    f1116.loss_accounts: false
+    sa.foreign_tax_deduct: false
+    f1116sb.changed: false
+    f1116sb.split: false
+    $f1116sbyr:
+    - a
+    - b
+    - c
+    f1116sbyr[a].year: p10
+    f1116sbyr[a].amount: 8000
+    f1116sbyr[b].year: p9
+    f1116sbyr[b].amount: 6000
+    f1116sbyr[c].year: p8
+    f1116sbyr[c].amount: 13000
+    f1116sb.prior_year: election
+  expect:
+    proceeds:
+      f1116sb.prior_year: election
 - id: ftc1116.carryover_changed
   design: lane x1-f1116, second pass (Schedule B line 2 adjustment, refused)
   situation: A person carries foreign tax from 2024, and an IRS audit has since changed the amount carried.

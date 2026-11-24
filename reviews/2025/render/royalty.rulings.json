@@ -14,6 +14,16 @@
    "subject_key": "51ef46d23d9243ce98e4e41115bb84d716f077e5c64976ccfa3aee3599ef8c0e"
   },
   {
+   "printed": "10",
+   "restated": "Choose — [helper \"Any expenses for this royalty\" = true → helper \"Legal and other professional fees paid in 2025\"] [helper \"Any expenses for this royalty\" = false → helper \"Zero\"]",
+   "model": "The helper takes all legal and professional fees paid for the royalty. The instructions exclude some of them: 'Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees,' and no refusal or helper wording removes them.",
+   "ruling": "Ruling: model error; the reviewer read the label only. The bank help of royalty.amt10, shown with the question, says 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to its cost, not deducted now', which is i1040se Line 10's exclusion (the finding of 2026-11-15, BUG-0922, is fixed).",
+   "context": "29325f67099ba5615ccb6d7178ac370a3eaff0fd3ba6fd82df4e4fedc8f99e20",
+   "date": "2026-11-24",
+   "run": "e4574a9a90314038e4cdccaa2b86a6f2e2b7ec74eb739cd6fbd774d63fd6dbad",
+   "subject_key": "dc8a440baf5f6a8bc07623dc8cc63b9565a0a81e87e3c4e082ab70c665c3806f"
+  },
+  {
    "printed": "19",
    "restated": "Choose — [helper \"Any expenses for this royalty\" = true → helper \"Other paid in 2025\"] [helper \"Any expenses for this royalty\" = false → helper \"Zero\"]",
    "model": "Line 19 is 'Other (list)' for expenses not reported on lines 5–18. The helper takes any 'other costs of it (not depletion)', which can include amounts that belong on other lines. It also includes non-deductible items the IRS excludes: 'Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements.'",
@@ -23,6 +33,26 @@
    "run": "985bcd12fb53c0038cc4c501fa568c7014f31376a69d819011f5ca588f2fd502",
    "severity": "low",
    "subject_key": "ecc31922a4d1e27ee0f6a62c593b73597b10d1328733d92271af2efc4878ff4e"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Any expenses for this royalty\" = true → helper \"Other paid in 2025\"] [helper \"Any expenses for this royalty\" = false → helper \"Zero\"]",
+   "model": "The helper takes all 'Other costs of it (not depletion)', with only line 10 and line 16 broken out. The IRS limits line 19 to 'any ordinary and necessary expenses not listed on lines 5 through 18', so costs belonging on, for example, line 8 commissions, line 11 management fees, line 13 other interest or line 17 utilities would be put on line 19 instead of their own lines.",
+   "ruling": "Ruling: representation; as the ruling of 2026-11-15: folding the expenses of lines 5 to 18 other than 10 and 16 into line 19 leaves line 20 and line 21 unchanged. The exclusion of the filer's own labor and of capital items is in the bank help of royalty.amt19 ('Not the value of your own work, and not something that lasts more than a year'), BUG-0922 fixed.",
+   "context": "29325f67099ba5615ccb6d7178ac370a3eaff0fd3ba6fd82df4e4fedc8f99e20",
+   "date": "2026-11-24",
+   "run": "e4574a9a90314038e4cdccaa2b86a6f2e2b7ec74eb739cd6fbd774d63fd6dbad",
+   "subject_key": "6381d51bafb789757aea3945b82496be8b17b73f99fe3a8e68d969fe5a0c1f51"
+  },
+  {
+   "printed": "21",
+   "restated": "Subtract line 20 from line 4.",
+   "model": "The form says 'Subtract line 20 from line 3 (rents) and/or 4 (royalties). If result is a (loss), see instructions to find out if you must file Form 6198,' and the instructions say 'If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss. Enter that...'. The at_risk_prior refusal covers only Form 6198 history on earlier returns, so a 2025 loss with amounts not at risk is neither refused nor limited.",
+   "ruling": "Ruling: model error; a 2025 loss with amounts not at risk is refused on royalty.loss_abs (when royalty.not_at_risk_if_loss: 'A royalty loss with an amount not at risk is outside this tool'), which the reviewer did not read; royalty.at_risk_prior adds the earlier-year case (p925 p. 19).",
+   "context": "29325f67099ba5615ccb6d7178ac370a3eaff0fd3ba6fd82df4e4fedc8f99e20",
+   "date": "2026-11-24",
+   "run": "e4574a9a90314038e4cdccaa2b86a6f2e2b7ec74eb739cd6fbd774d63fd6dbad",
+   "subject_key": "ce9de14bcbcb08624f81937fa0a01f02a31ed236da0d634ce6e6972809822ece"
   },
   {
    "printed": "4",

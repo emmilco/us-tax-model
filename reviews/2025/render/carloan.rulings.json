@@ -5,6 +5,16 @@
   {
    "printed": "22(ii)",
    "restated": "Choose — [helper \"The loan and the vehicle qualify\" = false → helper \"Year parameter sales.zero\"] [helper \"The loan and the vehicle qualify\" = true → helper \"The QPVLI part of the Schedule C interest, by how you came to owe the loan\"]",
+   "model": "The IRS asks for QPVLI 'deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)', but the restatement counts only the qualifying part of interest deducted on Schedule C. No refusal excludes Schedule E or Schedule F, so interest deducted there is left out of column (ii).",
+   "ruling": "Ruling: scope; refusal located elsewhere; restatement accepted. i1040gi p. 110, Schedule 1-A, Line 22, column (ii), 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'. As in the earlier rulings on this line: Schedule F and Schedule E business or K-1 income are refused through the return's scope screens (scope.farm, scope.k1), and a rental's car or truck expenses are refused (rental.vehicle, Schedule E line 6, auto and travel), so Schedule C is the only place a supported return deducts this loan's interest.",
+   "context": "570078a955984b90a810a30eea4df37daf9807ec6fcaf413604bdcee87f814cf",
+   "date": "2026-11-24",
+   "run": "7abbe931f0e988370c45040570a39600ee711c1ee7b40bcf72ee66ebffd955ce",
+   "subject_key": "1dbaf387c6699d19a0d4de8e9e9077af7b5aa52a7e913e510c35aef111c688b9"
+  },
+  {
+   "printed": "22(ii)",
+   "restated": "Choose — [helper \"The loan and the vehicle qualify\" = false → helper \"Year parameter sales.zero\"] [helper \"The loan and the vehicle qualify\" = true → helper \"The QPVLI part of the Schedule C interest, by how you came to owe the loan\"]",
    "model": "The IRS line covers QPVLI deducted anywhere else on the return: \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F).\" The restatement counts only interest deducted on Schedule C, has no refusal for Schedule E or F, and so understates column (ii) when part of the interest is deducted there. The pro rata limit to the qualifying part of the loan is otherwise consistent with the column being an amount of QPVLI.",
    "ruling": "Ruling: scope; i1040gi p. 110, Schedule 1-A, line 22, column (ii), \"deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)\". Schedules E and F are outside the tool: rental and farm income are refused through scope.schedule1 (scope.rental, scope.farm), so on a completed return Schedule C is the only place QPVLI can be deducted elsewhere, and the English counts it. The model agrees that the pro rata limit to the qualifying part is consistent with the column. Same as the earlier rounds.",
    "context": "75c570e427740cb639c2135a2498760b34beb41211c78d630f81f6977c23dc96",

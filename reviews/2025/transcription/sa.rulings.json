@@ -83,6 +83,26 @@
    }
   },
   {
+   "printed": "1",
+   "project_expr_sha256": "ce4462ee0ed57e880897dfb6f31d81575b7aea52843b8b68ec9c323f44c7de7d",
+   "second_expr_sha256": "5acb694371f4f39e5deb5c199f0ccf1b4d098bb8484fdf3b03698e5ff0c9b540",
+   "ruling": "Ruling: model error; the reply opens sa.line1 only on sa.medical_any or after-tax premiums and leaves out the third condition, an exception 05 claimed on Form 5329 (person.x_e05 above zero, sa.e05_claimed), which needs the medical amount whether or not the floor is reached (i5329, exception 05: medical expenses above 7.5% of AGI). Values differ only on such returns; project right.",
+   "context": "e211869c61c37d41410430f6c6bcd53de6ff6bd1dc1eae771739e7730c8f60eb",
+   "date": "2026-11-24",
+   "run": "0bee1600411d362cb1b28173c12ba4f7442a5a83aa9dc2634cdcdbb4ca13af3a",
+   "subject_key": "202d903d259ea4b6aee1f351d1894860d0c15b8e794d9fa06420fbb08614b1f5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:advland.retirement.e05_medical_asked@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11",
    "project_expr_sha256": "e719d66f989d62958e14d074efffb9b18b4e03880eb28f2adf22fc82a18f58df",
    "second_expr_sha256": "3ed361586b12ed0853b962a744d9c9976692910c7427dc78d38d6ae1340c3805",
@@ -533,6 +553,40 @@
   },
   {
    "printed": "5b",
+   "project_expr_sha256": "017a516381b55b24d0ea01556b5efb3e3be4cfad48c3bc4f711199ec166cf6b4",
+   "second_expr_sha256": "bf118449f7f0ceca0782a873789c300502e8a86bf8f4144c59aed4909b5f3741",
+   "ruling": "Ruling: representation; both take the home's tax plus the rentals' personal-use tax shares less the part left out, floored at zero. The reply sums rental.tax_personal over every rental entry where the project sums only rentals reported on Schedule E (scope.rental, rental.reported: a rental used as a home is refused at rental.ws51 and one rented under 15 days is not reported), and opens the home's amount on sa.home_owner alone where the project also opens it after a boat or camper loan (sa.home_other), an amount of real estate tax that is zero for a filer who owns no real estate. No value differs on a computed return; project right (i1040sca p. 6, Line 5b; p527 p. 25).",
+   "context": "e211869c61c37d41410430f6c6bcd53de6ff6bd1dc1eae771739e7730c8f60eb",
+   "date": "2026-11-24",
+   "run": "0bee1600411d362cb1b28173c12ba4f7442a5a83aa9dc2634cdcdbb4ca13af3a",
+   "subject_key": "862c35748167ec756f5c67e0bba4737bbc1595c05050e6a24f1efc1b55dee21b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@sa",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sa",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sa",
+     "fixture:stage16.cleanup.refuse.scope_credits@sa",
+     "fixture:mexist.f8960.line5d.no_gains@sa",
+     "fixture:mrental.rental.excluded_home_with_costs@sa",
+     "fixture:ss.single.over@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5b",
    "project_expr_sha256": "2952dc45748c6c8f1d5c208ef68e54bb8b75e3d3107eb60e4212a4b50c769d38",
    "second_expr_sha256": "145dc9c13cad6d9a8dd09cff7cdd9ca7ae50972574ebfa73e184fc714808122f",
    "ruling": "Ruling: representation; triage 3,686/3,708 agree, no value difference; differences are project-unknown only (22, incomplete and refused returns: the project's line 5b is asked under sa.home_asked, whose parent questions were unanswered). The reply reads sa.home_owner and sa.property_tax_other_any directly; the project asks line 5b of an owner or of a filer who paid interest on a home in another's name (sa.home_other_if_not_owner) and the leave-out amount only of those (sa.property_tax_other_if_home). f1040sa line 5b, \"State and local real estate taxes\"; i1040sca p. 4, Line 5b.",
@@ -618,6 +672,38 @@
    "second_expr_sha256": "dba360cc7c5770a62f8b97e62bd9c96196147486643cd2cd267acf620b7869c7",
    "ruling": "Ruling: equivalent representation; project retained. The second transcription applies the State and Local Tax Deduction Worksheet only when modified AGI exceeds $500,000 or income was excluded, and otherwise takes the $40,000 base directly; the project computes the worksheet unconditionally, where the reduction is zero at or below the threshold and the excluded-income case is refused (`sa.excluded_income`). Same value within scope (i1040sca p. 7).",
    "subject_key": "2314662aa8e9ed503bb55ac98178ad1672ec8b38585caedce73a88ef4d82b00d"
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "85104d74ef9dcb0699cb4fa9beef42fca6bcb65757cdedf33e1d976f94fb8049",
+   "ruling": "Ruling: representation; the project refuses a foreign tax deduction (sa.foreign_tax_deduct, through sa.unsupported) instead of computing line 6; the reply computes it from ftc.taxes, which holds only creditable tax and so is not the whole deductible amount (p514 p. 3: tax not allowed as a credit is deductible too). Wherever the reply's line 6 is above zero the project refuses, and both refuse generation-skipping tax and non-creditable foreign tax. No value differs on a computed return; project right (i1040sca p. 7, Line 6).",
+   "context": "e211869c61c37d41410430f6c6bcd53de6ff6bd1dc1eae771739e7730c8f60eb",
+   "date": "2026-11-24",
+   "run": "0bee1600411d362cb1b28173c12ba4f7442a5a83aa9dc2634cdcdbb4ca13af3a",
+   "subject_key": "d1f05aafe51e6fab19d47196b11e82e4f5aa51997d2750507a8f43cd035b0e3b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@sa",
+     "fixture:classm.f8889.5.deepseek@sa",
+     "fixture:classm.clcw.4.deepseek@sa",
+     "fixture:classm.dependent.1.deepseek@sa",
+     "fixture:classm.dependent.2.deepseek@sa",
+     "fixture:classm.dependent.3.deepseek@sa",
+     "fixture:classm.dependent.4.deepseek@sa",
+     "fixture:classm.eic.6.deepseek@sa",
+     "fixture:classm.eic.7.deepseek@sa",
+     "fixture:classm.f5329.3.deepseek@sa",
+     "fixture:classm.dependent.5.deepseek@sa",
+     "fixture:classm.dcprov.1@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8a",

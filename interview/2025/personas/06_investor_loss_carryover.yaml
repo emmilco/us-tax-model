@@ -21,12 +21,11 @@ answers:
   sb.ordinary_dividends: 184000
   sd.distributions: 0
   sales[stock_a].box: A
-  sales[stock_a].special: false
+  sd.special_any: false
   sales[stock_a].code: none
   sales[stock_a].proceeds: 1240000
   sales[stock_a].reported_basis: 1490000
   sales[stock_b].box: D
-  sales[stock_b].special: false
   sales[stock_b].code: none
   sales[stock_b].proceeds: 3100000
   sales[stock_b].reported_basis: 2250000

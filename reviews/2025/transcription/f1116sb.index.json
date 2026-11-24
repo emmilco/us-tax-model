@@ -3,6 +3,11 @@
  "form": "f1116sb",
  "family": "claude",
  "base": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+ "head_rows": {
+  "printed lines compared": "55",
+  "agree / disagree / missing": "37 / 18 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "f1116sb.changed_if_carry",
@@ -20,10 +25,17 @@
   },
   {
    "key": "f1116sb.carryback",
-   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "record": "d47565d5d927df99800ac92f589a628f84741bd23df20a318c44c476570913f1",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the project asks f1116sb.prior_year only when line 6 (an excess generated) is above zero and takes prior_none otherwise; the reply reads the input with the same line 6 test inside its condition. Same refusal where both evaluate; differences are project-unknown (64 completed, 67 incomplete, 79 refused: returns off the Form 1116 path whose line 6 is not figured) and 2 candidate-refuses on already refused returns. i1116sb p. 2 and D1 (no carryback; a 2024 year with room refuses).",
-   "subject_key": "077bf787bcb9e22374edb519f49ca59e187c99039f0141f7a9afe2fb1e81a672"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carryback, chosen reading: the project refuses a carryback when a 2025 excess is generated and 2024 had room (Form 1116 line 24 less than line 23) or had foreign income with the tax deducted or no credit taken. The reply tests only 'form_room' and does not require a 2025 excess, so it would refuse a filer who brings a carryover in through a 2024 Form 1116 with room and has no excess to carry back (fixture f1116.carry_in_prior_room_no_excess: credit $549.46). For the deducted year, i1116 p. 19 forbids a credit carryback but requires the carryforward to be reduced by what that year would have used (Pub. 514 p. 38, absorption), which the tool does not figure, so refusing it is the safe side. Project right.",
+   "subject_key": "36494a2018ead4efa5151dbd8bed6065f7ba43ae27059150769c85ffd9c727b6"
+  },
+  {
+   "key": "f1116sb.carry_through_prior",
+   "record": "63e8d6e1fdbbfebfd1e97551132f55e3ddc5f9650782b5cb9ac1efd2deab89c3",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carry_no_schedule_b (decided under the owner's delegation of 2026-11-24). The reply again reads the interface inverted: the line is the refusal gate its label states (true for a carryover brought in through a 2024 return that deducted the foreign tax or took no credit, and false where f1116sb.changed_if_carry or f1116sb.split_if_carry already refuses on Form 1116 line 35), and the reply returns true for the complement ('form_full' or 'form_room' with no change and no split), which as a refusal would refuse every ordinary Form 1116 carryover. On 'election' and 'none' it repeats the point the register entry decides: i1116 p. 19 ('Don’t reduce the carryback or carryforward by the amount you would have used in the election year') and Pub. 514 p. 37 (no excess limit without foreign income) leave the carryover unreduced, entered from the latest Schedule B by year of origin. For 'other' both refuse. Project right on the interface.",
+   "subject_key": "b9fc7df7bd492477c3b71ddb07c5525c29b43796dd531dc0a9c7f221f2e2389d"
   },
   {
    "key": "1 (i)",
@@ -349,7 +361,8 @@
  "subjects": {
   "f1116sb.changed_if_carry": "7e888e0b617c916b86ac55b573c4ef0301bbea54ea31361fcdfe1b9b55affc57",
   "f1116sb.split_if_carry": "1d0a71bed341f88c88ff13349a18e12de6ff112511b2b3d4827202184380f659",
-  "f1116sb.carryback": "a12a93bc1b4a40cc8ffa926cb7b17b1128cb40985c300fb72ab1fa38a6d12696",
+  "f1116sb.carryback": "a0e337447eb6ae606b2feffe3a134aa1d7efe06dd246d52043b1da4622096245",
+  "f1116sb.carry_through_prior": "192ceea5bab345e7b63822e57bce6b53112276f2f22233a635daf9b7d09f8c08",
   "1 (i)": "6e79ef68f02d5a3a8ddfa388a0230cc5d740df29a63640f7f5fdfb04fedea9e6",
   "1 (ii)": "9cba85e4d465ff9da9d00a284240519181a1579a6b0f4476a93b8b06ce5da854",
   "1 (iii)": "c402c2a579499b244da974ff03bf21df72b54df9522347f913ac93de761cd07d",
@@ -406,7 +419,8 @@
  "foreign": {
   "f1116sb.changed_if_carry": "0f725f0873152f844adbe740f8b91bb43b3a1339b84abdb6e9cf42ec86009796",
   "f1116sb.split_if_carry": "0f725f0873152f844adbe740f8b91bb43b3a1339b84abdb6e9cf42ec86009796",
-  "f1116sb.carryback": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "f1116sb.carryback": "fe8568aae3ab455e6715fcdc6890e5c86598cbaa292f89731974bad0b1f4d7be",
+  "f1116sb.carry_through_prior": "0f725f0873152f844adbe740f8b91bb43b3a1339b84abdb6e9cf42ec86009796",
   "1 (i)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
   "1 (ii)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
   "1 (iii)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",

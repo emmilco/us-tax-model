@@ -5,7 +5,7 @@ form:
   tax_year: 2025
   note: 'One entry per royalty source (Schedule E type 6). Royalties are not passive and never go on Form 8582. Refused: royalties
     from the filer''s own business or services or a working interest, a patent transfer or coal or iron ore, car and travel
-    costs, depreciation, depletion, and a loss with amounts not at risk.'
+    costs, depreciation, depletion, Form 6198 on an earlier return, and a loss with amounts not at risk.'
   lines:
   - id: royalty.zero
     printed: (helper)
@@ -94,6 +94,19 @@ form:
     cite:
       doc: f1040se
       locator: Schedule E (2025), line 18, "Depreciation expense or depletion"
+  - id: royalty.at_risk_prior
+    printed: (helper)
+    label: At-risk history (Form 6198 filed for it, or a loss held back as not at risk, on an earlier return)
+    type: Bool
+    expr:
+      op: input
+      source: Was Form 6198 (at-risk limits) filed for it on any of your (or, on a joint return, your spouse's) earlier
+        returns, or was a loss from it held back on one because amounts were not at risk?
+    cite:
+      doc: p925
+      locator: p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction
+        from the same activity in the next tax year. If your losses from an at-risk activity are allowed, they’re subject
+        to recapture in later years if your amount at risk is reduced below zero."
   - id: royalty.expenses_any
     printed: (helper)
     label: Any expenses for this royalty
@@ -261,6 +274,14 @@ form:
       cite:
         doc: f1040se
         locator: Schedule E (2025), line 18, "Depreciation expense or depletion"
+    - when: royalty.at_risk_prior
+      form: Form 6198 (at-risk limits, earlier year)
+      remedy: A royalty with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can
+        carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198.
+      cite:
+        doc: p925
+        locator: p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction
+          from the same activity in the next tax year"
   - id: royalty.income
     printed: (helper)
     label: Royalty income (positive line 21)

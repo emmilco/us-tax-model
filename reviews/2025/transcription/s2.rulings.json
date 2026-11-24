@@ -180,6 +180,31 @@
   {
    "printed": "2",
    "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "b2ed9fda246c8cda48c9f33bacd6ff90ca2fd49e11aea9ae73fde7c466b0f313",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (s2.h_amt_l13: \"s2.s2.h_amt_l13: declared NonNegDollars but the expression does not prove non-negativity\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "b57e246f19568258c62f80b68bdf535adb55b7d93daad6f36c2eacf9d6c007be",
+   "date": "2026-11-24",
+   "run": "e5ca43f6f7310390b8be9c51d7b1dab965b6bbbd9cd73ff5e9a2530df8068bcf",
+   "subject_key": "af634b0ba3e6d1828b8c5f6894edc95ad4bb0c977af3b05b660c3b18da407c41",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s2",
+     "fixture:stage14.asset.mq_7yr@s2",
+     "fixture:stage14.asset.mq_mixed@s2",
+     "fixture:stage14.asset.mq_not@s2",
+     "fixture:stage14.asset.bonus_100@s2",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
    "second_expr_sha256": "cde94f99c56b69d8105d3a9d14179430d99e1c1375627e6d05437bbaa104b9ae",
    "ruling": "Ruling: scope; f1040s2 p. 112, Line 2, \"See the Instructions for Form 6251 to see if you must file the form\". The project refuses alternative minimum tax through the computed s2.amt screen and enters zero otherwise; the reply figures Form 6251 where the project refuses, and the differences are those refusals. Triage executable-triage-v2 (.transcription/triage/2025/s2.json): 2741 of 3472 comparisons agree, 1862 of 2290 in scope; completed {\"candidate-refuses\": 50, \"candidate-unknown\": 280}. Project stands.",
    "context": "0c79aab4a8d4e50021b8468fe26285cad41771b775e01fc8411e09ae4b31b0a2",
@@ -265,6 +290,52 @@
      "partial:stage14.asset.qip-s2.household_help@s2",
      "partial:stage14.asset.done-s2.household_help@s2",
      "partial:stage14.asset.refuse_class-s2.household_help@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s2.other",
+   "project_expr_sha256": "31d11df4564dc8b2a9d80f9bfa37f0a93019732015d2624c549e50481058e0bc",
+   "second_expr_sha256": "c385c56a09de7f199ff88278b8379aaf19cfe8bc25054913b1a9e61a11dce38f",
+   "ruling": "Ruling: model error; as the earlier rulings: s2.other is the project's screen ('Any amount on Schedule 2 other than the following?', the lines this tool figures), which the IRS pages do not define, as the reply says; its reading 'line 21 above zero' would refuse or flag every return with self-employment tax, Additional Medicare Tax or net investment income tax, which the tool computes (the 273 completed value differences of triage, for example stage14.asset.hy_5yr with line 21 $6,980 of SE tax). Executable triage (.transcription/triage/2025/s2.json, this pass): 2,035/3,645 agree. Rerun because the look-back operand s2.lookback_if_business now chooses on s2.lookback_ask (Schedule C or a business before 2025, BUG-1092).",
+   "context": "b57e246f19568258c62f80b68bdf535adb55b7d93daad6f36c2eacf9d6c007be",
+   "date": "2026-11-24",
+   "run": "e5ca43f6f7310390b8be9c51d7b1dab965b6bbbd9cd73ff5e9a2530df8068bcf",
+   "subject_key": "2476a387fe380dba702beb134fb2a4d2c3545496c77c5c275a225db2d21aa1b0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s2",
+     "fixture:stage14.asset.mq_7yr@s2",
+     "fixture:stage14.asset.mq_mixed@s2",
+     "fixture:stage14.asset.mq_not@s2",
+     "fixture:stage14.asset.bonus_100@s2",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@s2",
+     "fixture:stage14.asset.refuse_qip_2017@s2",
+     "fixture:stage14.asset.refuse_ads_past_gds@s2",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s2",
+     "fixture:stage14.asset.refuse_class@s2",
+     "fixture:stage14.asset.refuse_listed_low@s2",
+     "fixture:stage14.asset.refuse_s179_over@s2",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s2",
+     "fixture:classm.f8889.3.deepseek@s2",
+     "fixture:classm.f8889.4.deepseek@s2",
+     "fixture:classm.clcw_next_year.3.deepseek@s2",
+     "fixture:classm.s2.9.deepseek@s2",
+     "fixture:classm.f1095a.1.deepseek@s2",
+     "partial:stage14.asset.hy_5yr-s2.household_help@s2",
+     "partial:stage14.asset.hy_5yr-s2.hsa_testing@s2",
+     "partial:stage14.asset.hy_5yr-s2.lookback@s2",
+     "partial:stage14.asset.bonus_100-s2.household_help@s2",
+     "partial:stage14.asset.bonus_100-s2.hsa_testing@s2",
+     "partial:stage14.asset.bonus_100-s2.lookback@s2"
     ],
     "policy": "executable-triage-v2"
    }

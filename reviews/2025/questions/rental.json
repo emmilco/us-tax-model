@@ -1,0 +1,312 @@
+{
+ "form": "rental",
+ "reviews": {
+  "rental.amt12": {
+   "subject_sha": "6af60e55cdcd04563d2283db7f1c641f4e5d90983f3e4dbb7cdbefbc0a04daf8",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer paid a bank interest on this rental's mortgage but got no Form 1098, for example because the interest was below the reporting threshold.",
+       "source_text": "i1040se (2025) p. 6, Lines 12 and 13: \"to determine the interest expense allocable to your rental activities, you must have records to show how the proceeds of each debt were used\"; Line 12 label: \"Mortgage interest paid to banks, etc.\"",
+       "why": "Line 12 needs all mortgage interest paid to banks and similar lenders, but the question asks only for the amount 'shown on Form 1098 (box 1)'. A filer with no Form 1098 would truthfully enter zero.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer took out a mortgage or home-equity loan secured by another property, such as their main home, and spent the proceeds on this rental.",
+       "source_text": "i1040se (2025) p. 6, Lines 12 and 13: \"In general, you allocate interest on a loan the same way you allocate the loan proceeds. You allocate loan proceeds by tracing disbursements to specific uses.\"",
+       "why": "Under the tracing rules, interest on a loan whose proceeds went to this rental belongs to the rental. The question asks only for 'Mortgage interest on it' (on this property), so the filer leaves that interest out.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7adc41eb76d8a402c577e686da85743cb0a4c65f4d1f67989cb00f6d4f49d2b6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.047008,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rental.amt12.6af60e55cdcd.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 12 and 13"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "rental.at_risk_prior": {
+   "subject_sha": "023b367ed7002edf63ead6cefe5de91873b9555f9121733930b85bd3bcb96fe9",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer's rental losses were fully allowed on earlier returns without Form 6198 because the filer was fully at risk then, and this year the amount at risk drops below zero (for example, after cash-out borrowing that does not count as at risk), so the filer truthfully answers No even though recapture of those earlier allowed losses is now owed.",
+       "source_text": "p925 p. 19: \"If your losses from an at-risk activity are allowed, they're subject to recapture in later years if your amount at risk is reduced below zero.\" and \"File Form 6198 with your tax return if: a. You have a loss ... and b. You aren't at risk for some of your investment in the activity.\"",
+       "why": "The refusal covers owing recapture of losses allowed before. Recapture applies to any earlier allowed loss, including ones that never needed Form 6198 or a held-back loss, so the question's two triggers miss this case.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "48e343cabd75fbeed38e2696d24bbc8b846846fc864bfbc1da9ddafe9673e8f6",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.044648,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rental.at_risk_prior.023b367ed700.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p925",
+     "revision": "2025",
+     "text_sha256": "3b1ff7c5ced72cbd4ae594b07eea50189f0886c32e47a3349a7359f852d0b971",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, At-Risk Limits, \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year\"",
+      "p. 19, At-Risk Limits, \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year. If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero.\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "68baa3fca122caa06dfcadad5d675d530287f6d61aa9a18c1659ba11481498e5"
+    }
+   ]
+  },
+  "rental.business_credit": {
+   "subject_sha": "401167c93c6bcb2976ca21d905a3e2467eee26a2de9fac2579f24e9eea7ebb44",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer earned a low-income housing or rehabilitation credit for this rental in an earlier year and carries the unused part forward to the 2025 return on Form 3800, with no new credit arising in 2025.",
+       "source_text": "i1040gi 2025 p. 116, Line 6a: \"The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property. See Form 3800 or Pub. 334.\"",
+       "why": "\"Claim a business tax credit for 2025\" can mean a credit earned in 2025, so this filer could truthfully answer No. It can also mean a credit claimed on the 2025 return, which includes carryforwards; these go on Form 3800 and Schedule 3 line 6a, so the gate needs a Yes.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7334138edd580eab194912e891dbd107f2933981092091e6cfac0072d82d16e5",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.038384,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rental.business_credit.401167c93c6b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 2,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      116
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+      "p. 116, Lines 6a Through 6z, \"The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "rental.has_other_interest": {
+   "subject_sha": "1b4426ed03d038e9ac6e1d5d09422f1f533520dd6b0204a5aa8e9af63fd584f7",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer pays ordinary interest, not points or fees, on a loan with no Form 1098 in their name, such as a seller-financed note or a private loan used to buy or improve the rental; the help mentions only points and loan fees, so the filer may answer no.",
+       "source_text": "i1040se p. 6, Lines 12 and 13: \"to determine the interest expense allocable to your rental activities, you must have records to show how the proceeds of each debt were used\"",
+       "why": "Line 13 needs every interest amount allocable to the rental that is not reported on line 12. The question's only guidance points the filer to points and loan fees, not to regular interest.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "The filer borrowed against another asset, such as a home-equity line on their main home, a credit card or a personal loan, and used the money for this rental; they answer no because the loan is not 'a loan for it'.",
+       "source_text": "i1040se p. 6, Lines 12 and 13: \"In general, you allocate interest on a loan the same way you allocate the loan proceeds. You allocate loan proceeds by tracing disbursements to specific uses.\"",
+       "why": "Under the tracing rule, interest follows how the proceeds were used, not which property secures the loan. The wording 'a loan for it' suggests security or purpose of purchase and leaves out traced debt.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer did a cash-out refinance on this rental and spent part of the proceeds on personal items; they answer yes and report all the interest on a loan 'for it'.",
+       "source_text": "Question: \"Include this year's share of points or loan fees paid on a loan for it\"; i1040se p. 6: \"you allocate interest on a loan the same way you allocate the loan proceeds\"",
+       "why": "Only the interest traced to rental uses belongs on the rental. Interest on proceeds spent personally must not be included, and the wording gives no warning about this.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer has only mortgage interest reported to them on Form 1098 and reads 'Other interest' as 'any interest on this property', so they answer yes.",
+       "source_text": "Question: \"For this rental property — Other interest\"; i1040se p. 6: \"Enter your total expenses for mortgage interest (line 12)...\"",
+       "why": "The question never says 'other' means interest not reported to the filer on Form 1098 and not already on line 12, so the same interest could be counted twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "bba6931b47816b9bd83c1cd511c0ce0fd3758466dcf0a5a9ea682363ff4584ea",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.046672,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rental.has_other_interest.1b4426ed03d0.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 12 and 13"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "rental.mortgage_excess": {
+   "subject_sha": "3673c381950bf847b0db819bd6d1b555da4633a7adfe852ad452112622915b2a",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer paid mortgage interest on the rental to a bank but got no Form 1098 for it, for example because it was under $600 or the lender sent only a similar statement; the filer cannot tell whether to compare against a total of zero and answer Yes, or answer No because the comparison does not apply.",
+       "source_text": "i1040se p. 7: \"If you paid $600 or more in interest on a mortgage during 2025, the recipient should send you a Form 1098 or similar statement\"; \"If you paid more mortgage interest than is shown on your Form 1098 or similar statement ... Attach a statement\"; Note: \"or you did not receive a Form 1098 from the recipient, report your deductible mortgage interest on line 13.\"",
+       "why": "The question asks \"than your Forms 1098 for it show in total\" and does not cover a filer who has no Form 1098, or who has only a similar statement. The text sends a filer with no Form 1098 to line 13 rather than the line 12 excess rule, so one truthful filer answers Yes (more than zero, which ends the interview) and another answers No.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "af42f1733426a58a84cfabba832a6c50bf49290f22fb5002bfc0aa4c83ee1fce",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.043840000000000004,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rental.mortgage_excess.3673c381950b.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 12, \"If you paid more mortgage interest than is shown on your Form 1098 or similar statement\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "rental.prerental": {
+   "subject_sha": "11226c24933ab152effb70360110ffdaa8a2342abccbc2f609aee885990a805a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer bought or prepared a property in 2025 and paid repairs, cleaning, advertising, insurance, interest or taxes on it in 2025, but did not offer it for rent until 2026, so a truthful answer to 'Was it first offered for rent in 2025' is no.",
+       "source_text": "p527 p. 5: \"You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent.\"",
+       "why": "The 2025 costs were all paid before the property was made available for rent, which is the situation the refusal covers ('Costs paid before a property is first offered for rent are not rental expenses'). Because the question requires the first offer to fall in 2025, the No lets these costs flow into line 21 as current rental expenses.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "544ac6c26f2f54417b0a1f0e7f95086e7877ba1e2a3e227743bb1bca2cde4a3e",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.054372000000000004,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rental.prerental.11226c24933a.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p527",
+     "revision": "2025",
+     "text_sha256": "784f5076a80dabba2635fe12fc6f5de51b93f6c61b51a6f9300642946e012fab",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Pre-rental expenses, \"You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent\"",
+      "p. 5, Pre-rental expenses, \"You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent\"; , Startup and organizational costs, \"Business startup costs (section 195)\""
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "1285451b77d3992af764de367c32d071450efaddd92bdf78c4de412ea201cb33"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      18
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      18
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  }
+ }
+}

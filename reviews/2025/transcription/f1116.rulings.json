@@ -6,30 +6,25 @@
    "printed": "10",
    "project_expr_sha256": "286c32bc8aad9c08d677607d0fe795270c0a11ee15d61701f5ab08ca878e17e6",
    "second_expr_sha256": "b1a82d22baee46d8b9ab9c508de583c5a79d01a2ec272b9a0f0878056d0c8602",
-   "ruling": "Ruling: representation; the reply enters Schedule B line 3 column (xiv) without the project's gate on ftc.carryover_if_asked (a carryover claimed). Where no carryover is claimed the $f1116sbyr roster is never asked and line 3 is empty, so the project's 0 is the value; the reply's only differences are candidate-unknown (86 completed, roster not confirmed) and 19 candidate-refuses on refused returns. Form 1116 line 10: 'Enter the sum of any carryover of foreign taxes (from Schedule B, line 3, column (xiv)) plus any carrybacks'.",
-   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
-   "date": "2026-11-15",
-   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "ruling": "Ruling: representation; the reply enters Schedule B line 3 column (xiv) without the project's gate on ftc.carryover_if_asked (a carryover claimed). Where no carryover is claimed the $f1116sbyr roster is never asked and line 3 is empty, so the project's 0 is the value; the reply's only differences are candidate-unknown (86 completed, roster not confirmed) and 19 candidate-refuses on refused returns. Form 1116 line 10: 'Enter the sum of any carryover of foreign taxes (from Schedule B, line 3, column (xiv)) plus any carrybacks'. (carried over from reviews/2025/transcription/f1116.index.json at 7466debd, review of 2026-11-15)",
+   "context": "1aae4c2a0e2df12d246fd632323fea4073b72058f1a40f3107531cf4256bd115",
+   "date": "2026-11-24",
+   "run": "977d65e6e09a4498a7942ff1f8c416c0a67786797b0ba1fe132c1c88f3b6af81",
    "subject_key": "5c0a286e33d21aa1e738dbbfc4d7bc66887333d0dae457772512db19b0030b5e",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "candidate-refuses",
-     "candidate-unknown"
+     "candidate-unknown",
+     "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.f8889.1.deepseek@f1116",
-     "fixture:classm.f8889.5.deepseek@f1116",
-     "fixture:classm.f4952.3.deepseek@f1116",
-     "fixture:classm.f4952.4.deepseek@f1116",
-     "fixture:classm.f8960.2.deepseek@f1116",
-     "fixture:classm.dependent.1.deepseek@f1116",
-     "fixture:f1116.screen_redetermination@f1116",
-     "generated:20261026.1@f1116",
-     "generated:20261026.46@f1116",
-     "generated:20261026.68@f1116",
-     "generated:20261026.120@f1116",
-     "generated:20261026.122@f1116"
+     "fixture:classm.f2441.1.deepseek@f1116",
+     "fixture:classm.f2441.2.deepseek@f1116",
+     "fixture:classm.f2441.3.deepseek@f1116",
+     "fixture:classm.f2441.4.deepseek@f1116",
+     "fixture:classm.f2441.5.deepseek@f1116",
+     "fixture:classm.f2441.6.deepseek@f1116",
+     "fixture:f1116.m1116_carryover_unanswered_with_tax@f1116"
     ],
     "policy": "executable-triage-v2"
    }

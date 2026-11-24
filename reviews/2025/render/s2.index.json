@@ -4,8 +4,7 @@
  "family": "claude",
  "base": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
  "head_rows": {
-  "match / mismatch / unclear / missing": "13 / 2 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,33 +15,15 @@
   },
   {
    "key": "1z",
-   "record": "405b4d18c44da46c40fbff168d812cdafc129e171ea75ce29b8d66541db16f5e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; lines 1b and 1c arise only from a clean vehicle credit taken off the price by a dealer, which is refused before Schedule 2 (scope, s3.ev_dealer_if_ev: 'A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed'); lines 1d to 1f and 1y are asked by s2.credit_recapture ('a recapture or repayment of a business, investment, energy, low-income housing or vehicle refueling credit, or a penalty tied to one') and s2.other_tax, each refused through s2.other.",
-   "subject_key": "d50a873a555e5c6529f59a7bf721bbf6edd17be86a7cac9d38cab43dc8969f08"
+   "record": "b78cea891198fec1bcb100f4a1435e4ddce039d00089298ac4d5e0ced7904c86",
+   "status": "MATCH",
+   "subject_key": "9560beb0441fc3ac81bf890a99ce22ce15ce6ba7dd460dd3164a2bfa67019ce4"
   },
   {
    "key": "2",
-   "record": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
+   "record": "b78cea891198fec1bcb100f4a1435e4ddce039d00089298ac4d5e0ced7904c86",
    "status": "MATCH",
-   "subject_key": "0e9ae2a3d9af6ed95b9afe3f8eb8635d527c7924a4fe84f5b11e700e34146993",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1a.line37": "s1a.senior_deduction",
-     "s2.amt_h_mfs_quarter": "s2.amt_h_mfs_phaseout_part",
-     "s2.amt_mfs_quarter": "s2.amt_mfs_phaseout_part",
-     "s2.line12": "s2.niit",
-     "s2.line17c": "s2.hsa_distribution_tax",
-     "s2.line18": "s2.other_additional_total",
-     "s2.line5": "s2.tip_ss_tax",
-     "s2.line6": "s2.wage_ss_tax",
-     "s2.line7": "s2.ss_medicare_total",
-     "s2.line8": "s2.tax_favored_accounts"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "0ce2ff4a3150f75f43960a588da4c644eac72ea19db30f1eb0f37b71ce228762"
-   }
+   "subject_key": "5b6a686f2d2c20d25a91bd6ec84b2020fe4322cd0246f6ac6b38d293d3d53e51"
   },
   {
    "key": "3",
@@ -187,16 +168,15 @@
   },
   {
    "key": "21",
-   "record": "405b4d18c44da46c40fbff168d812cdafc129e171ea75ce29b8d66541db16f5e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; lines 14 and 15 arise only from installment sales (Form 6252 and section 453A), refused by sd.installment ('An installment sale is figured on Form 6252 ... a Yes ends the interview here') and, for a business, sc.special ('income you report under the installment method (including installment sales of timeshares or residential lots)'); the remaining lines 9, 10, 13, 16, 17 and 19 are refused by the Schedule 2 screens through s2.other.",
-   "subject_key": "8bbaa2c51870445e7e6643b7cd0764e537a61d2e3c867dc76e6dc43eec00bbbf"
+   "record": "b78cea891198fec1bcb100f4a1435e4ddce039d00089298ac4d5e0ced7904c86",
+   "status": "MATCH",
+   "subject_key": "5c9ce759f9d7602d57feedb262f5d28c4341626725e1bdf3d9e32555780f3550"
   }
  ],
  "subjects": {
   "1a": "948c5bdb2766ad5ed74cbb3ecc7e370cef081b3b5fc0e996e63782a1b301ec54",
-  "1z": "f41b9ffd0b6610d51ab84a9f082597bd5a5ac3bb4cd8789348d84f9aa815bcf3",
-  "2": "abd055490cec61c0eead8e08bb86f0137eecb936905626169912ba5a1a8a6e94",
+  "1z": "f58833d533fc98aca10d6810d2fd2ee5d24bd991cecfc8baf24400d94ec47378",
+  "2": "858c5741670d944da4a7a875a8da1b965f3723a58ab724abf4fbbe32acb85f5e",
   "3": "092dce3698e41b666202e25927d6d429a51b8315eb175bfae2cf9419b6e941ae",
   "4": "9cd8a4c296c43b06d436f6de558fe38ee0931e30d2d7f91c46bde228c1854ab2",
   "5": "3fcd980f822d4e1ef0c0630a46a0bf6a14c097c79d5091fc224e5abbd7fcf8e7",
@@ -208,7 +188,7 @@
   "12": "6dbad47708090452ab64badbfae748c2775653d7f1abc4bddc60b27e8667b8eb",
   "17c": "a634180d4d96db525cb16d296104480aba08fef9c4715e22d96515cb216272e5",
   "18": "fd1ecf75160d713065c2e2e6a006b979e93d58cd0f0d70a13fac86bc885396d9",
-  "21": "a643a3cbb95c0e9ffd5cc747e4ff659f2075c7f5362f450350d01f03de08b23c"
+  "21": "2e487761f3be65a4180d1c8073918d12f15d32db99489867b05eab51014ab8aa"
  },
  "__rest__": "62e1e78bc43403c82fc8dd83ac8b2f3e5535a2a722b2af4193ee0376b12e6cd6"
 }

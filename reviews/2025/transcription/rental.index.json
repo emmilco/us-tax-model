@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "36",
   "agree / disagree / missing": "6 / 30 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "6 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -21,6 +21,12 @@
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i1040se p. 5, Line 2, \"do not report the rental income and do not deduct any rental expenses\". The reply reads rental.personal_any as a separate operand where the project folds it into the personal-day count; executable triage .transcription/triage/2025/rental.json: 2666 of 2666 comparisons agree. Project stands.",
    "subject_key": "85eacb1289e62acc277bc0218733e5413f868bb18cac905e03b932443bd01dd8"
+  },
+  {
+   "key": "rental.tax_personal",
+   "record": "066237d3cf04ad62fddf7a69eb385e4f3113b95721a448d3af78b3d6ae1ed236",
+   "status": "AGREE",
+   "subject_key": "5c358b00e3144f17640f81b3e4523464bcb151cd9f30298fecad6153b59f3005"
   },
   {
    "key": "rental.part4",
@@ -204,10 +210,10 @@
   },
   {
    "key": "21",
-   "record": "4f46113da1047f8c2121d237ded400c792462c5af3634808c7e63ea4ed39d27c",
+   "record": "e2fa0695e4e91bc769b1ce9dddfd0dd2d8697fe774b6962a59e1e219231fdf67",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2. As the ruling of 2026-11-22: every completed difference is an input the reply reads ungated; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json, pass ebf7da51095d): 1597 of 1908 agree; {\"candidate-refuses\": 33, \"candidate-unknown\": 13, \"project-refuses\": 15, \"project-unknown\": 250}; completed {\"candidate-unknown\": 1}. Re-reviewed because the landing merged next's rental lines with advfix's. Project stands.",
-   "subject_key": "1f045888f4966702207b5e586068aeb88684a7054fc6a2a9570583d92e59ca5c"
+   "ruling": "Ruling: representation; i1040se p. 5, Line 2, as the rulings of 2026-11-22 and 2026-11-23: the project's line 21 is line 3 less line 20 with the personal-use and excluded-home branches the reply leaves to its inputs; the reply's own note confirms the refusals on rental.not_at_risk and the new rental.at_risk_prior (p925 p. 19). Executable triage .transcription/triage/2025/rental.json (pass a37bfaad4db5): 2275 of 2671 agree; completed returns differ only as candidate-unknown (37, the reply reading an input the project does not need); no completed value differs. Project stands.",
+   "subject_key": "965a0fda1b3cc4108a7d58c77ceae07fbc00d6bdb6f3b4ba2e0305145570eded"
   },
   {
    "key": "IV/V (a)",
@@ -285,17 +291,12 @@
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i8582 p. 13, Part VIII (BUG-0934, owner-approved 2026-11-22). As the ruling of 2026-11-22: the reply takes line 22 from Part VIII column (c) or hides it, so a fully allowed loss becomes $0 or is not shown (mrental.f8582.part5_income_and_loss, -$6,000.00 vs $0; classm.f8582.1, -$2,000.00 vs hidden), against hand-predicted fixtures. Triage executable-triage-v2 (.transcription/triage/2025/rental.json, pass ebf7da51095d): 1244 of 1908 agree; {\"candidate-hides-shown\": 230, \"candidate-refuses\": 20, \"candidate-unknown\": 85, \"project-refuses\": 18, \"project-unknown\": 306, \"value\": 5}; completed {\"candidate-hides-shown\": 103, \"candidate-unknown\": 1, \"project-refuses\": 1, \"value\": 4}. Re-reviewed because the landing merged next's rental lines with advfix's. Project stands.",
    "subject_key": "2f900c4c9b20520e21e1ecab61fa19ef2836295bd05ef6162b950669b8317f67"
-  },
-  {
-   "key": "rental.tax_personal",
-   "record": "066237d3cf04ad62fddf7a69eb385e4f3113b95721a448d3af78b3d6ae1ed236",
-   "status": "AGREE",
-   "subject_key": "5c358b00e3144f17640f81b3e4523464bcb151cd9f30298fecad6153b59f3005"
   }
  ],
  "subjects": {
   "rental.one": "b9fbcf21690af74a365df08559d059c5a568143e2b24006c78050121b625b76f",
   "rental.reported": "5208fba5bbc3bf4b1b0de458f948199feb51060b1a89cefca86d7fe4ff24fd20",
+  "rental.tax_personal": "f7591ef2802bbc5ceee037af3144e76695f3cd57932c278ea82a12840426507a",
   "rental.part4": "767d62f208383371b223e247021966ae8f19f32eacb16d87477e49fd2824c71d",
   "rental.dep_prior": "a73e3e95ba6633e7f5737757e904ce57de05ff1f6b90dcfcad3192f4c10ec7bf",
   "rental.dep_res25": "8c3c691e93bb972d9bb0f09a7b1337615809196a98688147f6ec6453fe961c67",
@@ -317,7 +318,7 @@
   "18": "a1b97d4550146a8a8ee9a3d0810fe4235963edf84ec631349d0131bcd95318a2",
   "20": "9fae51be2187c26a216a5c7f25f4886f757c37c8301449080edc18634736bb2c",
   "3": "39e05fc3687425f5b18a46a943afebdf19f27275182e60efb4726c3d61483f93",
-  "21": "5df902532fa785627549b4bead01132ac8b85edfe88604a29ad49b435930e1f4",
+  "21": "73e0553293fe4d315b88940dd10382d71e52fcba5e2b71f2120ef1575964bae7",
   "IV/V (a)": "542aa13d5e47f6d86293679a8be6aad914b6fcf4ab076669af13636e707b5e23",
   "IV/V (b)": "0b6dfeaf22871f8b93196a29ebbb94e8ea6c5abbe4a08c2fe45f64a927f7b329",
   "IV/V (c)": "2f02da88411e864e0c10ce01fdce4f8b4072b1dc5dbe576e11468edf39b99f5f",
@@ -328,13 +329,13 @@
   "VII (c)": "19ce1ac193efe6604091fe89d23df8a0bbdad91daa9031ddd2526162d8680912",
   "VIII (c)": "5ea4d10e2d3101facbde66aa224080d8e2b45f52aac0df83edd1a252c311e944",
   "VIII (b)": "1fe4a47bc248dbc9d1513a53c124a0a0544bc85c085c749bf044bd9de9ad7cec",
-  "22": "fd55e00761e7cbbf3189eb50ee8365cc43e9cf6abacc95281bb788eaad089d9b",
-  "rental.tax_personal": "f7591ef2802bbc5ceee037af3144e76695f3cd57932c278ea82a12840426507a"
+  "22": "fd55e00761e7cbbf3189eb50ee8365cc43e9cf6abacc95281bb788eaad089d9b"
  },
  "__rest__": "681b60bdc083dd78ae7323ddba5dff4f81f79a641a3270f0466ad5585a33a196",
  "foreign": {
   "rental.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "rental.reported": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "rental.tax_personal": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "rental.part4": "858402b2e9a4ecb21b1c743d0e0c4c20613b2a236486928f27dda116ed68ffa6",
   "rental.dep_prior": "bea1faacfa269c54b8d7ca3d2ae717487e8d93f34784f03b7ed33b4ce9a992fe",
   "rental.dep_res25": "cc8ac1cacccd75472f5c5301b319f53d71f3731c840cd8f895b75a2efb0cdfcb",
@@ -367,7 +368,6 @@
   "VII (c)": "6a4f6627f830623a208e2d7faf93ab4f53f699a037d2bfa9835b3853ee6c1454",
   "VIII (c)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "VIII (b)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "22": "6ecbee296dd7ba1374e6b9a7b89baf85ce2188b65537984bba677d0cf7aa3caa",
-  "rental.tax_personal": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+  "22": "6ecbee296dd7ba1374e6b9a7b89baf85ce2188b65537984bba677d0cf7aa3caa"
  }
 }

@@ -1448,6 +1448,114 @@
           "value": false
         }
       }
+    },
+    {
+      "id": "capital.s2.amt_l7_qd_zero_taxable_income",
+      "covers": [
+        "s2.amt_l7",
+        "s2.amt_part3",
+        "s2.amt_part3_form",
+        "s2.amt_tmt_over",
+        "s2.amt_l40"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the archived f6251 (2025) before recording; BUG-0764 (before the fix the screen took line 39 and refused). Single, $15,000 of ordinary dividends all qualified (Form 1040 line 3a/3b), no other income; $85,000 of tax-exempt interest, all from specified private activity bonds. Form 1040: line 11 $15,000, standard deduction $15,750, line 15 $0, line 16 $0. Form 6251: line 1 = line 11b less line 14 = -$750; line 2a $15,750; line 2g $85,000; line 4 $100,000; line 5 $88,100 (f6251 p. 1 table, under $626,350); line 6 $11,900. Line 7: qualified dividends are reported on Form 1040 line 3a, so 'complete Part III on the back and enter the amount from line 40' (f6251 p. 1, line 7, first bullet). Part III: line 12 $11,900; line 13 $15,000; line 16 smaller of 12 and 15 = $11,900; line 17 $0; line 18 $0; line 19 $48,350 (single); line 20 $0; line 21 $48,350; line 22 $11,900; line 23 $11,900 at 0%; line 38 $0; line 39 26% of line 6 = $3,094; line 40 smaller of 38 and 39 = $0. Line 7 $0; line 10 = Form 1040 line 16 $0 less Schedule 3 line 1 $0 = $0. Who Must File statement 1 (i6251 p. 1: line 7 greater than line 10) is false. No independent human review is claimed.",
+      "inputs": {
+        "div.any": true,
+        "sb.ordinary_dividends": 1500000,
+        "f1040.line3a": 1500000,
+        "f1040.tax_exempt_any": true,
+        "f1040.tax_exempt_interest": 8500000,
+        "s2.amt_pab": 8500000
+      },
+      "expect": {
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 1190000
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 309400
+        },
+        "s2.amt_l40": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_tmt_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt_part3": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "capital.s2.lookback_closed_business",
+      "covers": [
+        "s2.lookback_ask",
+        "s2.lookback_if_business"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Predicted from f1040s2 (2025) line 17n and i6251 p. 7, Line 2p ('the tax year the contract is completed or adjusted') before recording; BUG-1092. No Schedule C in 2025, a business owned before 2025, and look-back interest owed on a contract of that business adjusted in 2025: the look-back question is asked (s2.lookback_ask true through scope.business_before) and its Yes reaches Schedule 2's other-tax screen (s2.other true), which refuses.",
+      "inputs": {
+        "scope.business_before": true,
+        "s2.lookback": true
+      },
+      "expect": {
+        "s1.has_sc": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.lookback_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.lookback_if_business": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.other": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "capital.s2.lookback_closed_business_none",
+      "covers": [
+        "s2.lookback_ask",
+        "s2.lookback_if_business"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted by hand: the same filer answering No to the look-back question; nothing is added (s2.lookback_if_business false, s2.other false).",
+      "inputs": {
+        "scope.business_before": true,
+        "s2.lookback": false
+      },
+      "expect": {
+        "s2.lookback_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.lookback_if_business": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.other": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

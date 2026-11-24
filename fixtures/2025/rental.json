@@ -3557,6 +3557,143 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "rentals25.at_risk_prior_refused",
+      "covers": [
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane rentals (2026-11-24), predicted by hand before running the evaluator: a single-family rental with $12,000 rent and $1,000 property tax; every other screen answer takes its default (No), so the first refusal on the property's line 21 is an earlier return had Form 6198 for it (p925 p. 19: a loss disallowed by the at-risk limits carries to the next year; allowed losses can be recaptured).",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1200000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[a].at_risk_prior": true
+      },
+      "expect": {
+        "rental[a].line21": {
+          "kind": "refusal",
+          "gate": "rental[a].at_risk_prior",
+          "form": "Form 6198 (at-risk limits, earlier year)",
+          "remedy": "A rental with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198.",
+          "cite": {
+            "doc": "p925",
+            "locator": "p. 19, At-Risk Limits, \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year\"",
+            "revision": "2025",
+            "snapshot": "dda751f07a7059488659c18d3e81afaa1463528b0951b0f8351fa16137cda5d3",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "rentals25.prerental_refused",
+      "covers": [
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane rentals (2026-11-24), predicted by hand before running the evaluator: a single-family rental with $12,000 rent and $1,000 property tax; every other screen answer takes its default (No), so the first refusal on the property's line 21 is it was first offered for rent in 2025 after costs were paid (p527 p. 5: expenses are deductible from the time it is made available for rent).",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1200000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[a].prerental": true
+      },
+      "expect": {
+        "rental[a].line21": {
+          "kind": "refusal",
+          "gate": "rental[a].prerental",
+          "form": "Costs paid before a rental was first offered for rent",
+          "remedy": "Costs paid before a property is first offered for rent are not rental expenses of that time; depending on what they are, they are added to its cost, amortized as start-up costs on Form 4562, or not deducted, which this tool does not sort out.",
+          "cite": {
+            "doc": "p527",
+            "locator": "p. 5, Pre-rental expenses, \"You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent\"; i4562 p. 18, Startup and organizational costs, \"Business startup costs (section 195)\"",
+            "revision": "2025",
+            "snapshot": "20c826e98dce23d20f80ab89da7e668a8ee7162a2194f480ce417cff651201d6",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "rentals25.business_credit_refused",
+      "covers": [
+        "rental",
+        "sche",
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane rentals (2026-11-24), predicted by hand before running the evaluator: a single-family rental with $12,000 rent and $1,000 property tax; every other screen answer takes its default (No), so the first refusal on the property's line 21 is its general business credit (i1040gi p. 116, Lines 6a Through 6z: the credit applies to filers who have rental property); Schedule 3 line 7 also refuses, through s3.business_credit_any, which now counts rentals that claim the credit.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1200000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 100000,
+        "rental[a].business_credit": true
+      },
+      "expect": {
+        "rental[a].line21": {
+          "kind": "refusal",
+          "gate": "rental[a].business_credit",
+          "form": "Form 3800 (general business credit)",
+          "remedy": "A business credit for a rental (Form 3800) goes on Schedule 3 line 6a; this tool does not prepare it. To go on without the credit, answer No to that question.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "s3.business_credit_any",
+          "form": "Form 3800 (general business credit)",
+          "remedy": "A business credit (Form 3800) goes on line 6a; this tool does not prepare it.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

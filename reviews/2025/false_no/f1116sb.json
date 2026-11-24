@@ -1,21 +1,62 @@
 {
  "form": "f1116sb",
  "reviews": {
-  "gate:f1116sb.generated": {
-   "subject_sha": "f6cdd48330c5e79f6976619900151124145a3fcc5bea8e2d76960ad45d60998b",
+  "gate:f1116sb.prior_asked": {
+   "subject_sha": "c3e64c4d3435c38a69bcb6df59a7ecacaf8e46b3c64ec2231a18962d886fd860",
    "samples": [
     {
-     "verdict": "SOUND",
-     "findings": [],
-     "prompt_sha": "42615b653d4b8a86d6f329d9125305fb2b06a2a8a1a80e645116893c7872679d",
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer with an unused passive-category foreign tax carryforward from 2016–2023 who paid no foreign tax in 2025. Their 2025 passive income, for example from a no-tax jurisdiction, gives them room under the 2025 limit. Their 2024 return was Form 1040 with Schedules A/B only: they had no foreign income in 2024, or deducted the foreign tax on Schedule A.",
+       "why_no": "The carryover helper is reached only through 'paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules'. Each is a truthful no, so the helper defaults to false. No 2025 excess is generated either, so line 6 is zero and the gate is false.",
+       "line": "f1116sb.prior_year_if_excess (set to none instead of 'no foreign income' or 'tax deducted'; the deducted-year absorption that reduces the carryforward is lost, along with the carryover itself)",
+       "irs_text": "p514 p. 38: 'If you carry unused foreign taxes to a year in which you chose to deduct qualified foreign taxes, you must compute a foreign tax credit limit for the deduction year as if you had chosen to credit... you must treat the unused foreign taxes carried to the deduction year as absorbed'; i1116 p. 19, Line 10: 'Enter the unused foreign taxes ... from another tax year that are eligible to be carried forward'",
+       "severity": "medium",
+       "fix": "Add to the carryover helper's parent condition: 'Did any Form 1116 or Schedule B (Form 1116) you filed for 2015 through 2024 show unused foreign tax carried to a later year?' Ask it regardless of 2025 foreign tax paid or 2024 forms."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer whose earlier tax software or preparer filed Form 1116 and tracked an unused foreign tax carryforward on Schedule B (Form 1116), which the filer never looked at.",
+       "why_no": "'Whether a foreign tax credit carried from another year is claimed' is a legal classification. The filer does not know they hold a 'carryover', so they answer no and the gate is false.",
+       "line": "f1116sb.prior_year_if_excess",
+       "irs_text": "i1116 p. 19, Line 10: 'The amount of foreign taxes carried forward to the current tax year is the amount in column (xiv) of Schedule B (Form 1116), line 3'",
+       "severity": "medium",
+       "fix": "Ask a fact the filer can check: 'Does your 2024 Schedule B (Form 1116), or any Form 1116 from 2015–2024, show an amount in the carryover columns?' Then classify the answer."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose only foreign tax in 2025 is fund-level foreign tax shown in box 7 of Form 1099-DIV. The filer holds a prior-year carryover.",
+       "why_no": "They read 'paid income tax to a foreign country' as tax they paid themselves, not tax a fund withheld, and answer no. The carryover helper is never asked.",
+       "line": "f1116sb.prior_year_if_excess",
+       "irs_text": "i1116 p. 19: 'If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement...'",
+       "severity": "medium",
+       "fix": "Reword the parent: 'Did you pay, or did a Form 1099-DIV/1099-INT or Schedule K-1 show, foreign tax paid on your behalf?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Joint filers where only the spouse paid foreign tax or holds a carryover from the spouse's own earlier returns.",
+       "why_no": "The parent condition as described says 'a filer who has paid income tax to a foreign country' and does not mention a spouse. The primary filer answers for themselves only.",
+       "line": "f1116sb.prior_year_if_excess",
+       "irs_text": "p514 p. 38: 'For a tax year in which you and your spouse file a joint return, you must figure the unused foreign tax or excess limit ... on the basis of your combined income, deductions, taxes, and credits.'",
+       "severity": "medium",
+       "fix": "Say 'you or your spouse' in every parent condition and in the carryover question, including carryovers from a spouse's separate earlier returns."
+      }
+     ],
+     "prompt_sha": "09fa1bfaf5a55fba7093dc095b1d160443637dcc1ff8d857a242adddd261282c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.080812,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_f1116sb.generated.f6cdd48330c5.1.response.txt"
+     "cost": 0.12272799999999999,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_f1116sb.prior_asked.c3e64c4d3435.1.response.txt"
     }
    ],
-   "condition": "f1116sb.generated",
+   "condition": "f1116sb.prior_asked",
    "lines": [
     "f1116sb.prior_year_if_excess"
    ],
@@ -24,25 +65,20 @@
    ],
    "used": [
     {
-     "doc": "i1116sb",
-     "revision": "Rev. December 2022 (printed 'Instructions for Schedule B (Form 1116) (Rev. 12-2022)', Dec 29, 2022); current irs-pdf edition, not year-specific; the IRS had posted no 2025 edition",
-     "text_sha256": "90f1313e93bf416f2ee96a62d18d70f06016968268aca1055653869475205766",
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
      "pages": [
-      1,
-      2,
-      3,
-      4
+      19
      ],
-     "how": "whole document",
+     "how": "cited pages",
      "locators": [
-      "p. 2, Line 6. Foreign tax carryover generated in current tax year, \"line 6 is completed only if you have current year excess foreign taxes\""
+      "p. 19, Line 10, \"You can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t apply to or from any year for which you made the election\", \"However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that year\""
      ],
      "cols_pages": [
-      1,
-      2,
-      3
+      19
      ],
-     "cols_sha256": "4f7920df06efd2f3f67a5f5f7b3a83f7307e81fb9342cd91461ba433b47486fd"
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
     },
     {
      "doc": "p514",
@@ -61,20 +97,6 @@
       38
      ],
      "cols_sha256": "8ba7d10e464cb1323987bc176a435020718ff8bc7d1b9407fdc32f24a86c6e6a"
-    },
-    {
-     "doc": "i1116",
-     "revision": "2025; printed date 2025-12-23",
-     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
-     "pages": [
-      19
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [
-      19
-     ],
-     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
     }
    ]
   }

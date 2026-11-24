@@ -15,6 +15,16 @@
   {
    "printed": "41",
    "restated": "Enter the amount from line 26.",
+   "model": "The form says 'Combine lines 26, 32, 37, 39, and 40', but the restatement enters only line 26. No refusal names the partnership/S corporation, estate/trust, REMIC or farm rental (Form 4835) amounts it leaves out.",
+   "ruling": "Ruling: scope; f1040se line 41, as the rulings of 2026-11-15 and 2026-11-22: Parts II to IV and line 40 are refused by scope.k1, scope.remic and scope.farm through scope.schedule1, as the form's note says; line 41 is line 26 on every completed return. Unchanged line; re-reviewed whole because the form note changed.",
+   "context": "42662a2cfb678816ff2e60affa1c3b3e9e04fd6c29aac33caaf21b83863fa959",
+   "date": "2026-11-24",
+   "run": "be78ff05433cb9fdaed0bfa945e374da72d0390608a73b97c854033e5acc1508",
+   "subject_key": "a90b4b15a841a260088c04b47c38dbd580e0ce9ed107111641013b674a380c22"
+  },
+  {
+   "printed": "41",
+   "restated": "Enter the amount from line 26.",
    "model": "The form says 'Combine lines 26, 32, 37, 39, and 40.' The restatement enters only line 26, and no refusal excludes partnership, S corporation, estate, trust, REMIC or farm rental amounts.",
    "ruling": "Ruling: scope; sche's note: 'line 41 is line 26 (Parts II to IV are refused)': partnership, S corporation, estate and trust income is refused by scope.k1 (through scope.schedule1) and farm income by scope.farm, so lines 32, 37, 39 and 40 are zero on every completed return. (A REMIC residual interest, line 39, has no question of its own; it is cited by scope.schedule1's sources; pre-existing, not this lane's.)",
    "context": "6ce7f4c000f192e91e6c71398f4d97526ca271fb6ce88ef7c94953b59cc34570",

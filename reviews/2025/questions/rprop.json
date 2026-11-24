@@ -1,0 +1,144 @@
+{
+ "form": "rprop",
+ "reviews": {
+  "rprop.basis": {
+   "subject_sha": "907dca76ab8e3fa8d162d91564d156c8b0e1468bce9e65279b0ae851e1103a7a",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer who inherited, was given, or got the rental building in a like-kind exchange has no purchase cost, or a cost that differs from the basis the lines need, so a truthful answer to 'its cost' gives the wrong amount, possibly zero.",
+       "source_text": "i4562 p. 11, Column (c): \"multiply the cost or other basis of the property\"; i4562 p. 9: \"you must depreciate the carryover basis of property you acquire in a like-kind exchange\"",
+       "why": "Column (c) starts from cost OR other basis. The question and help speak only of cost and closing costs and never mention inherited (date-of-death value), gift, or exchange carryover basis, so these filers understate or misstate the basis.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who rents out one unit of a two-unit building they live in, or one room of their home, enters the full cost of the building because they own all of it.",
+       "source_text": "i4562 p. 11, Column (c): \"multiply the cost or other basis of the property by the percentage of business/investment use\"; i1040se p. 6: \"If you rent out only part of your home ... deduct the part of your expenses that applies to the rented part.\"",
+       "why": "The question asks for 'your share of its cost', which reads as ownership share. It never asks the filer to limit the amount to the rented or business-use percentage, so the personal-use part gets depreciated.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer who elected the up-to-$15,000 deduction for removing barriers to the disabled and elderly, or took the disabled access credit, a 179D deduction, or a special depreciation allowance on an improvement, enters cost without subtracting it.",
+       "source_text": "i4562 p. 11, Column (c): \"subtract any credits and deductions allocable to the property ... Deduction for removal of barriers to the disabled and the elderly. • Disabled access credit ... • Any special depreciation allowance\"; i1040se p. 6: \"elect to deduct up to $15,000 of qualified costs ... to remove architectural or transportation barriers\"",
+       "why": "The question lists only casualty insurance or deductions, easement payments, and energy credits or subsidies as reductions. Other allocable credits and deductions stay in the basis, so the same cost is recovered twice.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "dadcd155f21b1f25d87894511d462dead3bac7f2daca229c5e460c2119e8b062",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.083728,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rprop.basis.907dca76ab8e.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 18"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      9,
+      11,
+      12
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Column (f)—Method",
+      "p. 12, Column (g)—Depreciation deduction",
+      "p. 9, Lines 19a Through 19j"
+     ],
+     "cols_pages": [
+      9,
+      11,
+      12
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      74
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 74, Table A-7, \"Straight Line—31.5 Years\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "rprop.credit": {
+   "subject_sha": "c45eaf6622b793eff7b4be750d875b0479488de6d20542ebe63d0e64d2bfc648",
+   "samples": [
+    {
+     "verdict": "WIDE",
+     "findings": [
+      {
+       "kind": "WIDE",
+       "situation": "A filer who claims the low-income housing credit (section 42) on the building, which does not reduce depreciable basis, would truthfully answer Yes to 'a credit ... for part of its cost' and be screened out even though no basis reduction applies.",
+       "source_text": "i4562 p. 11, Column (c): \"From that result, subtract any credits and deductions allocable to the property. The following are examples of some credits and deductions that reduce the basis for depreciation.\"",
+       "why": "The question asks 'Did you take a credit or special deduction for part of its cost' without limiting it to credits that reduce the basis for depreciation. The line needs a Yes only for credits or deductions that reduce basis, so a cost-based credit that leaves basis unchanged produces a Yes the line must not have.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "7e8204d3ee2ce08955858c9c15835f62c6577f14edf35f4cd62d2ca9c300b4e9",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.042296,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rprop.credit.c45eaf6622b7.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Column (c)—Basis for depreciation, \"The following are examples of some credits and deductions that reduce the basis for depreciation\"",
+      "p. 11, Column (f)—Method"
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  }
+ }
+}

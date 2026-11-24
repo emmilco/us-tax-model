@@ -14,15 +14,15 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 320 of the 337 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 326 of the 343 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 85.9% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **390 refusal gates**: 337 tax situations the tool does not prepare, grouped by topic below, and 53 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **396 refusal gates**: 343 tax situations the tool does not prepare, grouped by topic below, and 53 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (69)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (71)
 - [Household and dependents](#household-and-dependents) (20)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (6)
@@ -30,7 +30,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
 - [Social Security](#social-security) (3)
 - [Self-employment](#self-employment) (31)
 - [State and local tax refunds](#state-and-local-tax-refunds) (9)
-- [Other income and alimony](#other-income-and-alimony) (47)
+- [Other income and alimony](#other-income-and-alimony) (51)
 - [IRA contributions](#ira-contributions) (12)
 - [Health savings accounts](#health-savings-accounts) (13)
 - [Itemized deductions](#itemized-deductions) (11)
@@ -298,6 +298,11 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *Not covered:* Schedule B (Form 1116), line 7 (carryback to 2024). Foreign tax above this year's limit is carried back first to 2024 when that year had room under its limit, on an amended 2024 return, which this tool does not prepare.
     *Source:* [p514] p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the first preceding tax year) up to the excess limit in that year"
   - *Refused at:* `f1116.line35`
+- **`f1116sb.carry_through_prior`**: Is foreign tax carried into 2025 through a 2024 return that deducted the foreign tax or took no credit?
+  - *The data asks or tests:* Foreign tax is carried into 2025 through a 2024 return that had foreign income and deducted the foreign tax or took no credit for it, and is neither changed since 2024 nor carried from another joint return (those are refused on Form 1116 line 35; a carryover through a 2024 election year or a year with no foreign income passes through unreduced) (`test`)
+  - *Not covered:* Schedule B (Form 1116), line 1 (carryover through a 2024 deduction year). Foreign tax carried through a 2024 return that deducted the foreign tax or took no credit for it is reduced by what a 2024 credit would have used, which this tool does not figure.
+    *Source:* [i1116] p. 19, Line 10, "However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that year"
+  - *Refused at:* `ftc.credit`
 - **`ftc.carryover_no_tax`**: Is foreign tax carried into 2025 with no foreign tax paid in 2025?
   - *The data asks or tests:* A foreign tax credit carried from another year is claimed, with no foreign tax paid in 2025 (`test`)
   - *Not covered:* Form 1116 (a carryover with no foreign tax in 2025). A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.
@@ -368,6 +373,12 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *Not covered:* Form 1040 line 16 additional tax forms. Prepare the applicable additional tax or alternative worksheet.
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
   - *Refused at:* `eic.step2_other`, `f1040.line16`, `scope.ready_other_line16`
+- **`scope.f8978_if_business_before`**: Did a partnership you were in send a Form 8986 about changes made by an audit?
+  - *The data asks or tests:* The answer to scope.f8978, asked only when the question scope.business_before is answered Yes (false otherwise) (`choose`)
+  - *Stops the return as:* Form 8978 (partner's additional reporting year tax)
+  - *Not covered:* Form 8978 (partner's additional reporting year tax). A Form 8986 from a partnership audit gives a Form 8978 amount (Schedule 3 line 6l when negative, Form 1040 line 16 when positive), which this tool does not prepare.
+    *Source:* [i1040gi] p. 116, Line 6l, "Enter the amount from Form 8978, line 14 (relating to partner’s audit liability under section 6226). If the amount on Form 8978, line 14, is negative, complete the following worksheet"
+  - *Refused at:* `s3.line7`
 - **`s3.adoption_if_any`**: Did an adoption become final in 2025, or did you pay adoption costs in 2025?
   - *The data asks or tests:* An adoption that can give the adoption credit for 2025: an adoption final in 2025, or 2025 expenses for an adoption final by then, of a child other than your spouse's child or of a child with special needs (false otherwise) (`test`)
   - *Stops the return as:* Form 8839 (adoption credit)
@@ -653,18 +664,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
 ### Sales and capital gains
 
 - **`sales.special`**: Did you sell collectibles (including an NFT of a collectible), qualified small business stock (section 1202), or depreciable real property?
-  - *The data asks or tests:* Does any of the following apply to this sale?
-
-    Does this sale involve:
-    - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
-    - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
-    - qualified small business stock with a section 1202 exclusion
-    - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
-    - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
-    - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
-    - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
-
-    Or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF? (`input`)
+  - *The data asks or tests:* This sale may be one of the special kinds: the answer to the special-sale question, asked once for all the sales (any sale of those kinds refuses the return, whichever sale it is) (`test`)
   - *Not covered:* Schedule D special gains worksheets. Sales of collectibles, section 1202 stock or section 1250 property, and sales of an interest in a partnership, S corporation or trust that holds collectibles or section 1250 property, are unsupported.
     *Source:* [i1040sd] pp. 11–12, lines 18 and 19
   - *Refused at:* `sales.one`
@@ -766,7 +766,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *Refused at:* `sc.line1`
   - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.business_credit_any`**: Does a business on the return claim a general business credit (Form 3800)? On Schedule 3 its credit goes on line 6a and its elective payment amount on line 13c.
-  - *The data asks or tests:* A business on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c (`test`)
+  - *The data asks or tests:* A business or rental on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c (`test`)
   - *Stops the return as:* Form 3800 (general business credit)
   - *Not covered:* Form 3800 (general business credit). A business credit (Form 3800) goes on line 6a; this tool does not prepare it.
     *Source:* [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
@@ -1051,6 +1051,21 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *Not covered:* Form 8582 exceptions (rental incidental to a trade or business). Property mainly used in a business you or your spouse own, and rented for under 2% of its cost or value, is not a rental activity under the passive activity rules and is outside this tool.
     *Source:* [i8582] p. 3, Exceptions, "The rental of property is incidental to a trade or business activity if"
   - *Refused at:* `rental.line21_full`
+- **`rental.at_risk_prior`**: Was Form 6198 (at-risk limits) filed for a rental on an earlier return, or a loss from it held back because amounts were not at risk?
+  - *The data asks or tests:* At-risk history (Form 6198 filed for it, or a loss held back as not at risk, on an earlier return) (`input`)
+  - *Not covered:* Form 6198 (at-risk limits, earlier year). A rental with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198.
+    *Source:* [p925] p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year"
+  - *Refused at:* `rental.line21_full`
+- **`rental.business_credit`**: Do you claim a business tax credit (Form 3800) for a rental, such as the low-income housing or rehabilitation credit?
+  - *The data asks or tests:* A general business credit (Form 3800) claimed for the rental (`input`)
+  - *Not covered:* Form 3800 (general business credit). A business credit for a rental (Form 3800) goes on Schedule 3 line 6a; this tool does not prepare it. To go on without the credit, answer No to that question.
+    *Source:* [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
+  - *Refused at:* `rental.line21_full`
+- **`rental.prerental`**: Was a rental first offered for rent in 2025, with costs paid for it before then?
+  - *The data asks or tests:* First offered for rent in 2025, with costs paid before then (`input`)
+  - *Not covered:* Costs paid before a rental was first offered for rent. Costs paid before a property is first offered for rent are not rental expenses of that time; depending on what they are, they are added to its cost, amortized as start-up costs on Form 4562, or not deducted, which this tool does not sort out.
+    *Source:* [p527] p. 5, Pre-rental expenses, "You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent"; i4562 p. 18, Startup and organizational costs, "Business startup costs (section 195)"
+  - *Refused at:* `rental.line21_full`
 - **`rental.mortgage_excess_if_mortgage`**: Was more mortgage interest paid on the rental than its Forms 1098 show?
   - *The data asks or tests:* Mortgage interest beyond Form 1098, asked only when there was mortgage interest (false otherwise) (`choose`)
   - *Not covered:* Schedule E, line 12 (mortgage interest beyond Form 1098, with a statement). Mortgage interest beyond what Form 1098 shows needs a statement explaining the difference and is outside this tool.
@@ -1116,6 +1131,11 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *Not covered:* Schedule E, line 18 (depreciation). Depreciation or amortization for a royalty is outside this tool.
     *Source:* [f1040se] Schedule E (2025), line 18, "Depreciation expense or depletion"
   - *Refused at:* `royalty.line21`
+- **`royalty.at_risk_prior`**: Was Form 6198 (at-risk limits) filed for a royalty on an earlier return, or a loss from it held back because amounts were not at risk?
+  - *The data asks or tests:* At-risk history (Form 6198 filed for it, or a loss held back as not at risk, on an earlier return) (`input`)
+  - *Not covered:* Form 6198 (at-risk limits, earlier year). A royalty with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198.
+    *Source:* [p925] p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year"
+  - *Refused at:* `royalty.line21`
 - **`royalty.not_at_risk_if_loss`**: Does a royalty have a loss with an investment not at risk (Form 6198)?
   - *The data asks or tests:* Asked only when the royalty has a loss (false otherwise) (`choose`)
   - *Not covered:* Form 6198 (at-risk limits). A royalty loss with an amount not at risk is outside this tool.
@@ -1132,8 +1152,8 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
     *Source:* [i8582] p. 1, Grouping of Activities
   - *Refused at:* `sche.line26`
 - **`sche.qbi_business`**: Do you treat a rental as a business for the qualified business income deduction?
-  - *The data asks or tests:* A rental treated as a trade or business (`input`)
-  - *Not covered:* Form 8995 (rental real estate as a trade or business). A rental treated as a trade or business is outside this tool.
+  - *The data asks or tests:* A rental that is a trade or business (`input`)
+  - *Not covered:* Form 8995 (rental real estate as a trade or business). A rental that is a trade or business is outside this tool.
     *Source:* [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction"
   - *Refused at:* `sche.line26`
 - **`sche.accrual`**: Do you keep the books for your rentals on the accrual method?
@@ -1357,8 +1377,8 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
 
 ### Itemized deductions
 
-- **`sa.unsupported`**: Do you have a casualty or theft loss, another miscellaneous deduction, a foreign tax deduction, mortgage interest not on Form 1098 or over the limits, or the sales tax election?
-  - *The data asks or tests:* A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses (`test`)
+- **`sa.unsupported`**: Do you have a casualty or theft loss, another miscellaneous deduction, a foreign tax deduction, foreign tax not allowed as a credit, generation-skipping tax on a trust distribution, mortgage interest not on Form 1098 or over the limits, or the sales tax election?
+  - *The data asks or tests:* A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction, foreign tax not allowed as a credit, or generation-skipping tax on a trust distribution (line 6); or a deduction from the Schedule A line 16 list other than gambling losses (`test`)
   - *Not covered:* Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.gift_carryover_amount`, `sa.casualty_loss`, `sa.other_itemized`, `sa.line12`, `sa.total_itemized`
@@ -1377,7 +1397,7 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
   - *Not covered:* Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope.
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.gift_carryover_amount`
-- **`gift.special`**: Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?
+- **`gift.special`**: Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory, property subject to a debt and similar)?
   - *The data asks or tests:* Does this group need an appraisal or other special treatment: any of the following?
 
     - a noncash contribution reaching you through a Schedule K-1
@@ -1391,7 +1411,8 @@ The data holds **390 refusal gates**: 337 tax situations the tool does not prepa
     - stock given to a private nonoperating foundation, where you and your family have contributed more than 10% of the value of the corporation's outstanding stock
     - taxidermy property that you prepared, stuffed or mounted, or paid to have prepared, stuffed or mounted
     - tangible personal property held more than 1 year and worth more than its cost or other basis, that the charity puts to an unrelated use
-    - a clothing or household item over $500 not in good used condition (`input`)
+    - a clothing or household item over $500 not in good used condition
+    - property subject to a debt, such as a mortgage (`input`)
   - *Not covered:* Form 8283 special treatment. This contribution requires unsupported appraisal or special-property treatment.
     *Source:* [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
   - *Refused at:* `gift.allowed`

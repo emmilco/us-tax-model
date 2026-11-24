@@ -36,6 +36,9 @@ sets:
       rental[house].part_home: false
       rental[house].held_for_sale: false
       rental[house].business_incidental: false
+      rental[house].at_risk_prior: false
+      rental[house].business_credit: false
+      rental[house].prerental: false
       rental[house].land_heavy: false
       rental[house].active: true
       rental[house].rents: 1800000
@@ -324,6 +327,9 @@ rows:
     rental[lot].part_home: false
     rental[lot].held_for_sale: false
     rental[lot].business_incidental: false
+    rental[lot].at_risk_prior: false
+    rental[lot].business_credit: false
+    rental[lot].prerental: false
     rental[lot].active: true
     rental[lot].rents: 1000000
     rental[lot].has_mortgage: false
@@ -372,6 +378,9 @@ rows:
     rental[lot].part_home: false
     rental[lot].held_for_sale: false
     rental[lot].business_incidental: false
+    rental[lot].at_risk_prior: false
+    rental[lot].business_credit: false
+    rental[lot].prerental: false
     rental[lot].active: true
     rental[lot].rents: 1000000
     rental[lot].has_mortgage: false
@@ -654,6 +663,7 @@ rows:
     royalty[book].capital: false
     royalty[book].vehicle: false
     royalty[book].depreciation: false
+    royalty[book].at_risk_prior: false
   expect:
     proceeds:
       royalty[book].line4: 240000
@@ -747,6 +757,7 @@ rows:
     royalty[lease].capital: false
     royalty[lease].vehicle: false
     royalty[lease].depreciation: false
+    royalty[lease].at_risk_prior: false
     royalty[lease].expenses_any: true
     royalty[lease].amt10: 0
     royalty[lease].amt16: 0

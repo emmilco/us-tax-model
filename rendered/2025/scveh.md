@@ -49,8 +49,9 @@
 ## 44c — `scveh.miles_other`
 
 - **IRS:** Other miles
-- **Encoded (Count):** Input — The other (personal) miles you drove this vehicle in 2025
-- Expr: `{"op":"input","source":"The other (personal) miles you drove this vehicle in 2025"}`
+- **Encoded (Count):** Input — The other (personal) miles you drove this vehicle in 2025, counting miles driven for another business of yours (the vehicle is listed with that business too)
+- Interpretation: amb.2025.vehicle_two_businesses
+- Expr: `{"op":"input","source":"The other (personal) miles you drove this vehicle in 2025, counting miles driven for another business of yours (the vehicle is listed with that business too)"}`
 - Cite: [f1040sc] Schedule C (2025), line 44c (2025; created 2025-04-03; sha256 ddf401db)
 
 ## (helper) — `scveh.cent`

@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "18",
   "agree / disagree / missing": "1 / 17 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -32,31 +32,31 @@
   },
   {
    "key": "asset.s179_this_year",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 4, line 6 column (c)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,854 agree, 1,232 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "d4e5a925313361a26331e7f3dbb398d6e9aeece58a369d2ddfffa68c83f5ffb8"
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen, so it is unknown or refuses where the project computes; where both evaluate the values agree (i4562 p. 4, line 6 column (c)). Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,192 of 3,008 agree; no value difference. The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings.",
+   "subject_key": "845e0e723fa524a205b5cfa9ad57ca3d5e1eccc23e3f2b7460f3ee686f1fd882"
   },
   {
    "key": "asset.mq_q4",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 10, mid-quarter convention). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,899 agree, 1,187 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "baae6d117b4855e60290bc4114f13230bcc720241c366d0efb74a4c633592c02"
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen, so it is unknown or refuses where the project computes; where both evaluate the values agree (Pub. 946 p. 41, fourth-quarter basis after the section 179 election). Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,338 of 3,008 agree; no value difference. The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings.",
+   "subject_key": "43c045ca930e22455e0c6e0901d742e1506417f22ba22374122595e9b9afca18"
   },
   {
    "key": "asset.mq_total",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 10, mid-quarter convention). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,140 agree, 946 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "852681bb581305e48205f5ab3335fa87ce968244d12309cd49f3ee29fa195d85"
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen, so it is unknown or refuses where the project computes; where both evaluate the values agree (Pub. 946 p. 34, the same test over the whole year). Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,664 of 3,008 agree; no value difference. The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings.",
+   "subject_key": "bee1b9a40fd826fccba6728bf582b8c040a485618b710bf88720ba2146db8e01"
   },
   {
    "key": "asset.cost179",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the reply counts the business cost of 2025 property used 50% or less in the business as section 179 property cost. i4562 p. 3, Part I: section 179 property must be \"used predominantly (more than 50%) in your trade or business\"; p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\". The reply's note shows it read the more-than-50% test as a condition of the election only. Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,045 agree, 1,041 differ; every value witness has asset.cost179_over_half $0 (stage18.mut.classm_f8962_4_nov_start item_2 $0 v. $2,482.83; generated 3, 25, 46, 177, 182, 269, 403).",
-   "subject_key": "3a635ddd2b650e2002e6ba87bfc1da027797af638dbfc46e3b96c4fcd6a6fce3"
+   "ruling": "Ruling: model error; the reply counts the business cost of 2025 property used 50% or less in the business as section 179 property cost. i4562 p. 3, Part I: section 179 property must be \"used predominantly (more than 50%) in your trade or business\"; p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\". Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,581 of 3,008 agree; the value witness is the one of the earlier rulings (stage18.mut.classm_f8962_4_nov_start, project $0.00, reply $2,482.83). The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings.",
+   "subject_key": "7cebd07668919fed43060ab360d97fea9d00fbd862d0b9a1b9a741ed81dc2f38"
   },
   {
    "key": "asset.dep_prior",
@@ -73,87 +73,87 @@
   },
   {
    "key": "(screen)",
-   "record": "f05c089c9872a5053b683b31aa8236e78c490f5e3d9b854b9be92283736a35c2",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i4562 pp. 8-12, Part III, and p. 8, Line 16. The IRS text defines no screen: the project's asset.screen is its aggregate of the item's refusal questions (now including asset.kind_excluded's intangibles, BUG-0984), and the reply chooses its own set (software spread past 2025, used property with a special allowance, the industry list only behind asset.industry). The two differ in which property is refused, not in any computed amount, as in the ruling of 2026-11-14; executable triage (.transcription/triage/2025/asset.json, this pass): 1,193/2,604 agree; differences {\"candidate-unknown\": 407, \"project-unknown\": 526, \"value\": 478}; on completed returns {\"candidate-unknown\": 22, \"value\": 138}. The completed value differences are returns the reply refuses and the project computes from hand-predicted fixtures (for example stage14.asset.hy_5yr, a 5-year half-year item).",
-   "subject_key": "e6134963f73b70ffc7e7bb37a7b71927de4c54da1b1e8e6a45b1fa93b5cb70cb"
+   "ruling": "Ruling: model error; The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings. The reply also refuses property acquired before September 28, 2017 only when placed in service in 2025, where the project refuses it in any year. Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,885 of 3,008 agree; 367 value differences, all the reply's screen true on property the project computes.",
+   "subject_key": "eb7b9896d83e09203ed760ce3c9fe6a8ebb3f2512de6c142999b26dbf2714ac8"
   },
   {
    "key": "(c)",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply's (c) is i4562's column (c) after the reductions (p. 11, Column (c), \"multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property\", the section 179 deduction among them, and the special allowance), which the project carries as 19(c); the project's (c) is the business-use cost before them, as its label says. Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,422 agree, 1,664 differ; every value witness is that difference (stage14.asset.bonus_100 $20,000 v. $0, bonus_40_before $10,000 v. $6,000, prior_179_full $10,000 v. $0, ...) and the reply's value equals the project's 19(c) where both are shown; the rest unknown or refusals.",
-   "subject_key": "ea453b228ca25da9acc6cf015f8ffdc5adb2548884170ff71cc1d0842e4d58ff"
+   "ruling": "Ruling: model error; i4562 p. 11, Column (c). The values are representation: the project shows at this marker the business basis before section 179 and the special allowance (its label) and the reduced basis at 19(c); the reply nets them here (stage14.asset.bonus_100, project $20,000.00, reply $0.00, fully expensed). The model error is the refusals and unknowns: The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings. Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,467 of 3,008 agree.",
+   "subject_key": "53e2850af383012ca98e65f06589715b0dbc0175630d899a48e369fbeb3a88f3"
   },
   {
    "key": "14",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 pp. 5-7, line 14). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,999 agree, 1,087 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "149a2afb05123973b89020f483ed32b719a0dd608e51d510ba5e4ac4aef09e99"
+   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen, so it is unknown or refuses where the project computes; where both evaluate the values agree (i4562 pp. 5-7, line 14). Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,669 of 3,008 agree; no value difference. The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings.",
+   "subject_key": "a30bed563299bb453387017cd2973b202508084ec1500c8d8e0d8d23f7b2dea4"
   },
   {
    "key": "25",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 15, line 25). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,869 agree, 1,217 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "ed7668e8b409f463282e793fab8926e3169fb1102ea1e7bb13c1c8d4eeca318c"
+   "ruling": "Ruling: representation; i4562 p. 13, Line 25. Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 2,924 of 3,008 agree; no value difference; the reply asks asset.listed or its gated inputs where the project does not (83 candidate-unknown, 1 candidate-refuses).",
+   "subject_key": "742fb02eda21c8b9b4998d8cd5590be1ae24f6a04fc4a9c470c894c87f8991f3"
   },
   {
    "key": "26(i)",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 15, line 26 column (i)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,841 agree, 1,245 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "284fc79b73930858819f280e8126ff8159ea52f6cf936289730362fa215a343f"
+   "ruling": "Ruling: representation; i4562 p. 5, Line 6, \"Enter the elected section 179 cost of listed property in column (i) of line 26\". Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 2,840 of 3,008 agree; no value difference; the only differences are records withholding an answer the reply reads unconditionally.",
+   "subject_key": "0f2fc9846ab6c8af206939dc79574bc5be85d7499d31aff789d85452c2a7f718"
   },
   {
    "key": "19(c)",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 11, column (c)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,142 agree, 944 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "b3df1e02065f40a6b5806b765b7380742c612b307492fb637a59a5d603c2f63c"
+   "ruling": "Ruling: model error; as the earlier rulings on this line: The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings. Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 2,138 of 3,008 agree; no value difference.",
+   "subject_key": "7cf2eab76a0c62effb8db013b927041dbbff4ab8a86ddfe0cf58aa3a966d5fc3"
   },
   {
    "key": "19(g)",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 pp. 9-12, column (g)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,008 agree, 1,078 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "aae518e1b49e3c870da1b67de2aa7a983478cad2c5418773f8e94192b79c0fce"
+   "ruling": "Ruling: representation; project retained. MACRS on 2025 property by the mid-quarter test (Pub. 946 p. 34) on the basis less the section 179 election and the special allowance on both sides. Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 2,280 of 3,008 agree; no value difference; the refusals and unknowns are the reply's screen (The reply's own screen refuses 2025 property whenever asset.bonus_same is false, including an election out (bonus_choice none), where i4562 p. 7, Election out, \"You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class\", makes the same-class question matter only where an allowance is claimed; every completed-return difference (81 candidate-refuses, e.g. stage14.asset.hy_5yr) is that refusal, as in the earlier rulings.)",
+   "subject_key": "a64b5c02523202611611a5cc0660a4d44afceebd0f4c4def8f89ce318053e01b"
   },
   {
    "key": "17",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 9, line 17). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 2,052 agree, 1,034 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "023a8ec3972fb3f10e24c9d1724c8921a16c56b203b67030b4ef8f47a7dc131d"
+   "ruling": "Ruling: representation; i4562 p. 9, Line 17. For property placed before 2025 and not listed the reply's amount is the project's. Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 1,546 of 3,008 agree; no value difference; the refusals are the reply's 2025 screen applied on the same returns.",
+   "subject_key": "174973ac30476bb6cf7cf1d7a04a110ca8e1939c5e74d06248652c3da37482e5"
   },
   {
    "key": "26(h)",
-   "record": "9a85135c7e45b449844063f2481e98a5a91b2d15077dcf198cf0181ded656d28",
+   "record": "239d939bca681b487510807d60d8391230e08d331c5ae15f4ad6ce480c60713e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply reads the gated inputs (bonus_same, use_changed, industry_item, software_spread and others) directly and declares its own refusal screen (asset.screen, asset.h_s179_over), so it is unknown or refuses where the project computes, and the reverse; it uses its own placed-in-service helper where the project reads keyed_lookup recovery_year. Where both evaluate the values agree (i4562 p. 15, column (h)). Triage .transcription/triage/2025/asset.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,853 agree, 1,233 differ, all candidate-unknown, candidate-refuses, project-unknown or project-refuses; no value witness.",
-   "subject_key": "f68060c223c25f17f3665ecb893bd6abc5bc6b6c82649096de00601c56e423d2"
+   "ruling": "Ruling: representation; i4562 p. 15, Column (h). Triage executable-triage-v2 (.transcription/triage/2025/asset.json, pass 5e41b3397541; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 2,986 of 3,008 agree; no value difference; only records withholding an answer.",
+   "subject_key": "c7b4373efdb190e1fc84b065b1c4b616d28d4a483a5a4757f888c5f831cecdda"
   }
  ],
  "subjects": {
   "asset.placed_this_year": "15fb96ab57c8060a8a155ccdc7fdfe551e175176006f367763e3164906073d4b",
   "asset.dep_this_year": "71be919257db7f6098670d3c6346f3a4e61bc98eb5e3da7c13b927273f74866a",
   "asset.bonus_this_year": "c84bfc44722dff490d24e3722a5c8f7db49ad9520023e94e5f971ff83787966e",
-  "asset.s179_this_year": "1d411ab12fa741b04ab078bfb14c0619f18b4f2cbbbf4777b2b67b1ebf66b99e",
-  "asset.mq_q4": "34ab1202a823713729648a7c8c99845fc79dfb6b9f546c6cca8107159a618409",
-  "asset.mq_total": "c2fe5fe1e4e974c7591d1a52cc87d909564e44058e4ac45f4157000b46b8d9f3",
-  "asset.cost179": "cf02a4740e1a9f3261da272802c143bb1fb0e0572bbdd6f3b7ed417f488307b9",
+  "asset.s179_this_year": "f5603abeba0527539a68c1951d5f326128a9ec03878b78afac0f640613cd68a1",
+  "asset.mq_q4": "a46c12be0d0e922e254d1670a67f8d78d780c5d1f7931e0a03bec3d19d18c20c",
+  "asset.mq_total": "a652ef3d680bd503d0fc0c1c93be5ea6f28c9f75b5d2b1c038ec3df9ab42c130",
+  "asset.cost179": "b944069c19d90d302a2556c555e6852cff08298100846ca937f03cbf24bd8f21",
   "asset.dep_prior": "f383611b55a64e9816255e0653f2ccf15f02306545e2567f5710a3a9d35513f0",
   "(d)": "bf97394c0e6baab938fcd0e3d20a43fbde9be75543375088439981eb869fffbd",
-  "(screen)": "3a93422e3df73e7dc5c00b79bbe2898b638dec3a4a2efff21df50df8665de503",
-  "(c)": "6ff36b8fb33aceadc547b5412f8bf6af1b23668ef1abfd7745392821e3f46fb2",
-  "14": "1bbc3f43f0741808b9bb08e13e03ef0fec195574f171ced2db439627c3689fbf",
-  "25": "1171a3e560ed67e8190adae492c7ea6bac72a16bec4c551d2fe8fd4a4910da12",
-  "26(i)": "739bf3e2b49073d125217c46d2014c69d067caba9ddf350626146d364272b254",
-  "19(c)": "21b375821cbb24213bed94bd86fb8d1d4a294a342344d5708b355bf3a813aba7",
-  "19(g)": "1c052f346852c3b34e9d39e8de273fabc4fb59823f58baba7541d228e93a0a0c",
-  "17": "06b9d803d34dca02a8ee6ad82076c0201387c70da022d2815015457cfbe6d866",
-  "26(h)": "6a72fbe7d6ae805c52575017b9e4f997eba48a7047151133448eb372e91032fc"
+  "(screen)": "2ed5bcfc31ac1fe61a00b1cf6f9c646d56074804e760c332e63fe24befe1a4b2",
+  "(c)": "829f7586bd4d88b61ec4bef3c15f579b053c4dd329fd1a9f1343e1cd72b79da4",
+  "14": "9b6b07ff70741feabd8721504340ce967b0d021d4bb2c11e5eb4b255dcc47572",
+  "25": "2dfc3d3166def0f969a6312f475bb93de78cec4b996d3799f56deb71e8d691f0",
+  "26(i)": "5bec7dea43ac060c5a5afebc358f12c5c0d12ae76a0cf70ee298e8c6a84fba58",
+  "19(c)": "d0e74eac480389dbd6f96c0d5b58dc389bcf4fd5bebaa80a7ea66b45f9c73e33",
+  "19(g)": "4c1cde3dcac5401bd61ae0c0cde2e308805bd7b38884e31abaa80ff02e92ce2c",
+  "17": "dca14bb2063c3ce677383cb5368d6bd68730e6a91daf5dc11ffb3c291c760573",
+  "26(h)": "57361ca3264948f77f133fc6ff4d9238ac63ede2adf955337e6778b96a79be98"
  },
  "__rest__": "c9708e5777e6b69e7558e632a0713a1496a425dc2a16eb800463caf770f116b1",
  "foreign": {

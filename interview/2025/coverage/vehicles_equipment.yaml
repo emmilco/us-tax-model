@@ -67,6 +67,7 @@ rows:
   uses: []
   answers:
     scope.business_before: true
+    s2.lookback: false
     scope.nol: false
     scope.passive: false
     scope.f8978: false

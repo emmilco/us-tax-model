@@ -3,19 +3,22 @@
  "form": "sales",
  "family": "claude",
  "base": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "(e)",
-   "record": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
+   "record": "ca7c347859b06ed5835505311aad1fa64c495ee1176134d950aeab51db9b9cb7",
    "status": "MATCH",
-   "subject_key": "0dd971f0270b5890a5cdb0c6690028aa6f45764fff2ecb8087c853b298d7cf5a"
+   "subject_key": "59604454635ce31bee6d6847ef16842fe86f35ef8d322039bab539f840915649"
   },
   {
    "key": "(g)",
-   "record": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
+   "record": "ca7c347859b06ed5835505311aad1fa64c495ee1176134d950aeab51db9b9cb7",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; as in the goal-1 and landing render rulings: an entry with any code other than none, B, W or BW (code E, D, O, N, L and the rest, the 'other' choice of sales.code) is refused at sales.one by sales.bad_code (\"Only applicable B and W adjustments are supported\"; i8949 pp. 7-11, columns (e) through (h)), so (g) never stands for an entry that needs another code's adjustment. The code B part (signed per the worksheet) and the code W part (i8949 p. 10, code W, \"enter the correct amount of the nondeductible loss as a positive number in column (g)\") match, as the reviewer says; this merge's change to (g) only added boxes G and J to the code B test. (carried over from reviews/2025/render/sales.index.json at deca6831, review of 2026-11-03)",
-   "subject_key": "0bbfe8b13bd8b5a8e72dbfe8a184c471b1fa7aeed4b6bd79c268b98168cf4b14"
+   "ruling": "Ruling: scope; i8949 p. 9 to 10, codes E, L, N, O and D: the project does not figure those adjustments; a filer choosing 'other' is refused at the sale by sales.bad_code on sales.one (coverage row sales.nominee_sale, refused: sales[a].bad_code), and the refusal reaches every Schedule D total and Form 1040 line 7a, so no return is completed with $0 where such an adjustment belongs. The code B part (boxes A, D, G and J) and code W part match, as the reviewer says. Rerun because the form's sales.special is now derived from sd.special_any (BUG-1127).",
+   "subject_key": "89410d4857950965fe3a51279d833734829baa33ba2448bcb0e867c8c30c0698"
   },
   {
    "key": "(h)",
@@ -25,8 +28,8 @@
   }
  ],
  "subjects": {
-  "(e)": "768c392ef3fe4beb1400037aa7e43e0a750d09cd0fca2206ef4f15eba28c5ffd",
-  "(g)": "bdf028fa87232c1aa4199f3d3df736991d72c132efc3e0225b81633211a648ea",
+  "(e)": "3b174dfb23fe4bb37e6944957580d70395a95162fc5730df2311c3cbb707addc",
+  "(g)": "ca28ae51b48be8223533cde78e6e479e8cbdf53e7e5061b71d70b8306885f656",
   "(h)": "8fc1a0f6840dd6fbd0024750b91bd7e2b3885a869d465a52a5b7a73c16dfffb4"
  },
  "__rest__": "173d9d26e48e7de243e42df8a66476933ccaf441a5d2d8dd3a5d3a9677bc158c"

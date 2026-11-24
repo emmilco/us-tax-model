@@ -145,6 +145,47 @@
   {
    "printed": "ftc.credit",
    "project_expr_sha256": "337b0682c817fc469669c8a3de565d2d5c74d6b52903418fb57bee504d5745d2",
+   "second_expr_sha256": "a77879e3032832c42f87b1ab061b975ee0ce641bef461f69c02db5d0db1944a8",
+   "ruling": "Ruling: representation; the reply inlines ftc.needs1116 and ftc.elect and reads f1116.line33 where the project reads f1116.line35, which is line 33 less line 34, and line 34 is zero on every prepared return (f1116.line34 copies f1116.zero; boycott reductions are refused with line 12). With no 2025 foreign tax the project gives zero where the reply reads line 33, a case refused at ftc.carryover_no_tax. The refusal on f1116sb.carry_through_prior is outside the compared expression. No value differs on a computed return; project right (i1116 pp. 1-2, election; f1116 p. 2, line 35).",
+   "context": "621ba436a65817ef1260a25af2cd51fdd76fa579d9792541edbf3a5bf5cf539b",
+   "date": "2026-11-24",
+   "run": "8bfc5fe545be91766fa6af73c351e14dc9597cd5f539f4d3f65a9323947dbde2",
+   "subject_key": "76dda4ac22072e60499028b8bc9ca358d37f2b08b5d006e27272872b0ab26600",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@ftc",
+     "fixture:stage14.asset.refuse_ads_past_gds@ftc",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@ftc",
+     "fixture:stage14.asset.refuse_class@ftc",
+     "fixture:stage14.asset.refuse_listed_low@ftc",
+     "fixture:stage14.asset.refuse_s179_over@ftc",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@ftc",
+     "fixture:classm.f2441.1.deepseek@ftc",
+     "fixture:classm.f2441.2.deepseek@ftc",
+     "fixture:classm.f2441.3.deepseek@ftc",
+     "fixture:classm.f2441.4.deepseek@ftc",
+     "fixture:classm.f2441.5.deepseek@ftc",
+     "fixture:classm.f8889.3.deepseek@ftc",
+     "fixture:classm.s179.3@ftc",
+     "fixture:classm.f1116.3@ftc",
+     "fixture:f1116.c2_prior_form_room@ftc",
+     "fixture:f1116.c2_prior_other@ftc",
+     "fixture:f1116.c5_carryover_no_tax@ftc",
+     "fixture:f1116.c5_changed@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.credit",
+   "project_expr_sha256": "337b0682c817fc469669c8a3de565d2d5c74d6b52903418fb57bee504d5745d2",
    "second_expr_sha256": "dfc8514da1ebfe1e9124954953ae4bfae4815a4b12239df4ed31b6e6b9fd7f10",
    "ruling": "Ruling: representation; i1116 p. 2, \"To make the election, just enter on the foreign tax credit line of your tax return (for example, Schedule 3 (Form 1040), Part I, line 1) the smaller of (a) your total foreign tax, or (b) your regular tax.\" The candidate figures the same smaller-of through its own election and Form 1116 helpers (ftc.h_election_credit, ftc.h_form_credit); where both evaluate, 2,766 of 3,036 in-scope comparisons agree. On completed returns its 221 differences are inputs the interview does not ask (ftc.taxes, ftc.carryover, ftc.any, household.home_cost): the project asks ftc.has_tax first and reads the tax through ftc.credit_tax. No value or refusal difference on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/ftc.json): 2,866 of 3,195 comparisons agree. Project stands.",
    "context": "d3b1f93262dc030ff667bd2bfb69d8425d0c2717ca2da202b3db916ef97c8807",

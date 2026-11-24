@@ -165,7 +165,7 @@ rows:
       $sales: [a]
       sd.route_each: false
       sales[a].box: A
-      sales[a].special: false
+      sd.special_any: false
       sales[a].code: none
       sales[a].proceeds: 500000
       sales[a].reported_basis: 400000
@@ -178,9 +178,7 @@ rows:
     situation: A person sold shares of a fund that holds gold.
     answers:
       $sales: [a]
-      sales[a].box: D
-      sales[a].special: true
-      sd.route_each: false
+      sd.special_any: true
       sd.trader_election: false
       sd.qof: false
     expect:
@@ -190,9 +188,7 @@ rows:
     situation: A person sold, at a loss, shares held eight months on which a qualified dividend of 12% of their cost was paid.
     answers:
       $sales: [a]
-      sales[a].box: A
-      sales[a].special: true
-      sd.route_each: false
+      sd.special_any: true
       sd.trader_election: false
       sd.qof: false
     expect:
@@ -202,9 +198,7 @@ rows:
     situation: A person closed, at a gain, a forward contract to buy shares of a real estate fund.
     answers:
       $sales: [a]
-      sales[a].box: D
-      sales[a].special: true
-      sd.route_each: false
+      sd.special_any: true
       sd.trader_election: false
       sd.qof: false
     expect:
@@ -215,7 +209,7 @@ rows:
     answers:
       $sales: [a]
       sales[a].box: A
-      sales[a].special: false
+      sd.special_any: false
       sd.route_each: false
       sales[a].proceeds: 500000
       sales[a].reported_basis: 400000
@@ -240,7 +234,7 @@ rows:
       $sales: [a]
       sales[a].box: G
       sd.route_each: false
-      sales[a].special: false
+      sd.special_any: false
       sales[a].proceeds: 100000
       sales[a].reported_basis: 60000
       sales[a].code: none
@@ -258,7 +252,7 @@ rows:
       $sales: [a]
       sales[a].box: L
       sd.route_each: false
-      sales[a].special: false
+      sd.special_any: false
       sales[a].proceeds: 300000
       sales[a].correct_basis: 100000
       sales[a].code: none
@@ -276,7 +270,7 @@ rows:
       $sales: [a]
       sales[a].box: H
       sd.route_each: false
-      sales[a].special: false
+      sd.special_any: false
       sales[a].proceeds: 420000
       sales[a].correct_basis: 300000
       sales[a].code: none
@@ -294,7 +288,7 @@ rows:
       $sales: [a]
       sales[a].box: I
       sd.route_each: false
-      sales[a].special: false
+      sd.special_any: false
       sales[a].proceeds: 100000
       sales[a].correct_basis: 50000
       sales[a].code: B
@@ -311,7 +305,7 @@ rows:
       $sales: [a]
       sales[a].box: G
       sd.route_each: false
-      sales[a].special: false
+      sd.special_any: false
       sales[a].proceeds: 100000
       sales[a].reported_basis: 50000
       sales[a].code: other
@@ -326,9 +320,7 @@ rows:
       f1040.digital_assets: true
       s1.digital_income: false
       $sales: [a]
-      sales[a].box: L
-      sales[a].special: true
-      sd.route_each: false
+      sd.special_any: true
       sd.trader_election: false
       sd.qof: false
     expect:
@@ -341,7 +333,7 @@ rows:
       $sales: [a]
       sales[a].box: H
       sd.route_each: false
-      sales[a].special: false
+      sd.special_any: false
       sales[a].proceeds: 100000
       sales[a].correct_basis: 50000
       sales[a].code: none
@@ -354,7 +346,7 @@ rows:
       $sales: [a]
       sd.route_each: true
       sales[a].box: A
-      sales[a].special: false
+      sd.special_any: false
       sales[a].code: none
       sales[a].route: aggregate
       sales[a].aggregate_eligible: true

@@ -1137,12 +1137,12 @@
 
 ## amb.2025.rental_not_qbi
 
-- Text at issue: A rental real estate activity is a trade or business for the qualified business income deduction only if it meets the safe harbor or is a section 162 trade or business.
-- Candidate readings: A rental is not a trade or business unless the filer says it is (then refused).
-- **Chosen:** The reading above (sche.qbi_business refuses).
-- Reason: Rev. Proc. 2019-38 is not archived; most single-property landlords do not meet it.
-- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
-- Cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
+- Text at issue: A rental real estate activity is a trade or business for the qualified business income deduction if it meets the safe harbor or is a section 162 trade or business. i8995 p. 1: "an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you're involved in the activity with continuity and regularity". Whether an ordinary landlord meets the standard is a question of fact the instructions do not settle.
+- Candidate readings: Ask the fact in the instructions' own terms (sche.qbi_business, "run any of your rentals as a business ... regularly and continuously", with the safe harbor as an example), and refuse a Yes. | Ask whether the filer claims the deduction for a rental, or treats it as a business (the earlier wordings), and compute QBI without rentals on a No.
+- **Chosen:** The first.
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane rentals, BUG-1148), replacing the reading of 2026-11-15 (a rental is not a trade or business unless the filer says it is). Trade or business status is a fact, not an election, and a rental that is one must be counted in QBI; under the second reading a filer who never claimed it answers No and a rental loss is left out of QBI, overstating the deduction (understating tax). The first refuses more landlords who think of their rental as a business. Rev. Proc. 2019-38 is not archived. To reverse: restore the claim wording of sche.qbi_business's source and bank entry.
+- Status: decided by the coordinator under the owner's delegation of 2026-11-24 (lane rentals, BUG-1148).
+- Cite: [i8995] p. 1, Trade or business, "an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you’re involved in the activity with continuity and regularity" and "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## amb.2025.rental_prior_depreciation_tables
 
@@ -1340,11 +1340,21 @@
 - Status: Lane x1-f1116 reading (scout reading A1 and decision D6), settled by the coordinator's delegation.
 - Cite: [i1116] p. 17, Lines 3d and 3e (2025; printed date 2025-12-23; sha256 6998cf8c)
 
+## amb.2025.f1116_carry_no_schedule_b
+
+- Text at issue: i1116sb p. 1, Line 1: "Enter on line 1 the amounts from the appropriate columns of line 8 of the prior year Schedule B." i1116 p. 19, Line 10, Restrictions: for an election year, "Don’t reduce the carryback or carryforward by the amount you would have used in the election year", and "The carryback-carryforward period isn’t extended"; p514 p. 37: a year with no foreign income has no excess limit to absorb a carryover. A 2024 return that took the credit without Form 1116, or had no foreign income, has no 2024 Schedule B line 8, and the text does not say where line 1 comes from.
+- Candidate readings: Compute the carryover through such a 2024 unreduced, entered from the latest Schedule B (Form 1116) by year of origin (a tax more than ten years old has expired and has no year to choose). | Refuse a carryover brought in through a 2024 election year or a 2024 with no foreign income.
+- **Chosen:** The first (f1116sb.carry_through_prior refuses only the answer 'the tax was deducted, or no credit was taken'; the $f1116sbyr help says to use the latest Schedule B and enter each amount under the year it came from).
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane L2 itemized). The amounts are fixed by the text: nothing is absorbed in an election year or a year without foreign income, so the latest Schedule B's line 8 columns are the 2025 line 1 amounts by year of origin; neither reading changes the tax on a correctly entered return, and the first computes a credit the law allows. The 'none' answer was already computed this way. To reverse: add the answers 'election' and 'none' to the test of f1116sb.carry_through_prior (forms/2025/f1116sb.yaml) and turn fixture f1116.carry_through_election_year and coverage row ftc1116.carryover_through_election_year into refusals.
+
+- Status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane L2 itemized).
+- Cite: [i1116] p. 19, Line 10, Restrictions (2025; printed date 2025-12-23; sha256 6998cf8c)
+
 ## amb.2025.f1116_carryback
 
 - Text at issue: Pub. 514 p. 37: unused foreign tax "first" is paid in the first preceding year "up to the excess limit in that year"; i1116sb line 7: "Actual or estimated amount of line 6 to be carried back", with a difference corrected on the next year's line 2a.
 - Candidate readings: The carryback is not elective; nothing is carried back by the tool, and a return whose 2024 passive limit had room (2024 Form 1116 line 24 less than line 23, or foreign income with no credit taken) is refused. | Enter zero on line 7 as an estimate in every case and let the next year's line 2a correct it. | Figure the carryback from the 2024 Form 1116 lines 23 and 14 and enter it on line 7.
-- **Chosen:** The first (f1116sb.l7_xiii zero; f1116sb.prior_year asked when line 6 is above zero; f1116sb.carryback refuses).
+- **Chosen:** The first (f1116sb.l7_xiii zero; f1116sb.prior_year asked when line 6 is above zero or a carryover is claimed; f1116sb.carryback refuses when line 6 is above zero).
 - Reason: Coordinator decision D1 settles that the tool never carries back. The second reading would state a carryover to 2026 that the law has already reduced, and leave the filer unaware of a 2024 refund; the third needs an amended 2024 return, outside the tool. A 2024 election year takes no carryback (i1116 p. 19), nor does a year without foreign income (Pub. 514 p. 37, Example 2).
 
 - Status: Lane x1-f1116 second pass under coordinator decision D1.
@@ -1431,3 +1441,66 @@
 - Reason: Decided by the owner for Pub. 596. The flowchart names the spouse and sends a Yes to "Nonresident aliens", which allows the credit only with the choice to be treated as residents; Pub. 596 Rule 4 says "If you were a nonresident alien for any part of the year, you can't claim the EIC unless your filing status is married filing jointly" and says nothing of a spouse. The statute (section 32(c)(1)(E)) is not archived. If the second reading is adopted, a question on the spouse's residence is needed for a married head of household (household.considered_unmarried) and a Yes refuses or stops the EIC.
 - Status: decided by the owner 2026-11-23 (scout adversarial-credits M3, recorded in lane advfix; behaviour unchanged).
 - Cite: [i1040gi] p. 40, Step 1, question 4, "Were you or your spouse a nonresident alien for any part of 2025?"; p. 44, Nonresident aliens, "If you checked the box in the Filing Status section to treat a nonresident alien or dual-status alien spouse as a U.S. resident for the entire year, go to Step 2. Otherwise, stop; you can't take the EIC"; p596 p. 6, Rule 4, "If you were a nonresident alien for any part of the year, you can't claim the EIC unless your filing status is married filing jointly" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.asset_business_pct
+
+- Text at issue: i4562 p. 11, Column (c)—Basis for depreciation, multiplies "the cost or other basis of the property by the percentage of business/investment use", and p. 14, Column (c), "Enter the percentage of business/investment use", with no precision. asset.pct takes a whole number from 1 to 100, so a filer whose use is, for example, 62.5% must round.
+- Candidate readings: A whole percent, a fraction of a percent rounded down. | The percentage to six decimal places, as the owner ruled for a vehicle's business miles over its total miles (amb.2025.vehicle_business_pct), or to hundredths. | A whole percent rounded to the nearest.
+- **Chosen:** The first (asset.pct, a Count from 1 to 100; its source and question say to round a fraction down).
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24. The source is silent on precision, so the reading that does not understate tax is taken: rounding down can only lower the depreciation, by less than one percent of the cost. The 50% test of listed property is asked on its own (asset.qbu_low), so the rounding cannot move an asset across it. The second reading is the exact one, but needs an input that accepts a fraction of a percent. To reverse: make asset.pct a fractional percentage (a type change of asset.pct, asset.pct_c, asset.pct_bad and of the fixtures that answer it), or drop "round a fraction down" from its source and question. Recorded from BUG-1119 item 4.
+- Status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane business, BUG-1119).
+- Cite: [i4562] p. 11, Column (c)—Basis for depreciation (business/investment use only), "multiply the cost or other basis of the property by the percentage of business/investment use" (2025; sha256 5c1c95b7)
+
+## amb.2025.f5695_door_ranking
+
+- Text at issue: i5695 p. 6, "Line 19a. Enter the amount you paid for the most expensive exterior door", and line 19c caps that door's credit at $250, while lines 19d and 19e (the other doors) have only the $500 total of line 19h. Costs are entered net of subsidies and rebates. The line does not say whether "most expensive" ranks the doors by their price or by the amount paid after rebates; when a rebate reorders them, the credit differs.
+- Candidate readings: Rank by the amount paid after rebates and subsidies (the amount entered), so the door with the largest credit carries the $250 cap of line 19c. | Rank by the price before rebates.
+- **Chosen:** The first (f5695.line19a's source, question and help rank the doors by their cost after rebates and subsidies).
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24. The source best supports the first: p. 3 states "A credit limit of $250 for any qualifying exterior door", and only the first reading keeps every door within it (with the second, a door with a large rebate can sit on line 19a while a door on line 19d earns more than $250: a $1,100 door with an $800 rebate ranked first and a $1,000 door second give $390 of credit, against $340 with the first reading). The first is also the smaller credit. To reverse: word f5695.line19a (source, question and help) to rank by the price before rebates. Recorded from BUG-0555.
+- Status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane business, BUG-0555).
+- Cite: [i5695] p. 6, Lines 19a Through 19h, "Line 19a. Enter the amount you paid for the most expensive exterior door that meets the Energy Star program requirements"; p. 3, "A credit limit of $250 for any qualifying exterior door and $500 total for all qualifying exterior doors" (2025; sha256 55113467)
+
+## amb.2025.carloan_rebate
+
+- Text at issue: Proposed § 1.163-16(d)(2)(iii)(B) applies "any down payment (or other consideration provided by the taxpayer at the time of the purchase transaction for an APV)" first against negative equity and other amounts not for the vehicle. It does not say whether a manufacturer's or dealer's rebate applied at the purchase is consideration provided by the taxpayer or a reduction of the price.
+- Candidate readings: The rebate reduces the price; it is not applied against the nonqualifying amounts. | The rebate is consideration provided by the taxpayer, applied first against the nonqualifying amounts, so more of the loan is a specified passenger vehicle loan.
+- **Chosen:** The first (carloan.down's source and help say not to count a rebate).
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24. The archived sources are silent; a rebate is paid by the maker or dealer, not provided by the taxpayer, and the first reading is the one that does not understate tax (the second moves more of the loan, and its interest, into the deduction). The readings differ only when the loan also paid for something other than the vehicle and its usual add-ons (carloan.mixed), by the interest on up to the amount of the rebate. To reverse: word carloan.down (source and help) to count a rebate applied at the purchase. Recorded from BUG-0515 (left open by BUG-0738).
+- Status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane business, BUG-0515).
+- Cite: [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative equity" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+
+## amb.2025.vehicle_two_businesses
+
+- Text at issue: Schedule C Part IV (lines 44a to 44c) asks a vehicle's business, commuting and other miles for the business the schedule reports, and line 9 deducts that business's car expenses. Neither i1040sc nor Pub. 463 says how a vehicle used in two of the filer's own businesses is reported: on which schedule, and where the other business's miles go.
+- Candidate readings: List the vehicle with each business; each schedule's business miles are that business's, and the other business's miles are counted among its other miles. | List the vehicle with one business only, with the miles of both businesses as its business miles.
+- **Chosen:** The first (scveh.miles_other's source and help).
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24. The sources are silent. The first keeps each business's expenses on its own schedule (i1040sc requires a separate Schedule C for each business) and its deductions add to the vehicle's whole business use; the test of more than 50% business use is then made on each business alone, which can only refuse a vehicle whose combined use passes it (a refusal, never a larger deduction), so it does not understate tax. To reverse: drop the help and source wording of scveh.miles_other and word scveh.miles_business to count both businesses. Recorded from BUG-0559.
+- Status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane business, BUG-0559).
+- Cite: [i1040sc] p. 15, Line 44b (2025; sha256 b5536db9)
+
+## amb.2025.rental_prerental_costs
+
+- Text at issue: p527 p. 5 says expenses of a rental are deductible "from the time you make it available for rent", and p. 9 that depreciation begins when it is ready and available for rent. Neither says what becomes of costs paid in the year before that time (repairs, cleaning, advertising, and the insurance, interest and taxes of a place bought to rent): added to its basis, amortized as section 195 start-up costs (i4562 p. 18) when the rental is a business, or not deducted.
+- Candidate readings: Refuse a rental first offered for rent in 2025 for which costs were paid before then (rental.prerental), costs of the filer's own home while lived in excepted. | Let the filer enter every 2025 cost, as before (pre-rental costs deducted in full). | Tell the filer to leave pre-rental costs out, with no refusal.
+- **Chosen:** The first.
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane rentals, BUG-1191). The source says pre-rental costs are not deductible as rental expenses of that time, so the second reading understates tax; it is silent on where they go instead, so the third may misstate the return either way (basis or amortization lost). The refusal costs coverage of new rentals with pre-listing costs. To reverse: drop rental.prerental from the rental_use screen and from rental.line21_full's refusals (and its default), or replace it with help on the cost questions once the treatment is encoded.
+- Status: decided by the coordinator under the owner's delegation of 2026-11-24 (lane rentals, BUG-1191).
+- Cite: [p527] p. 5, Pre-rental expenses, "You can deduct your ordinary and necessary expenses for managing, conserving, or maintaining rental property from the time you make it available for rent"; i4562 p. 18, Startup and organizational costs (2025; sha256 20c826e9)
+
+## amb.2025.rental_points_on_1098_loan
+
+- Text at issue: i1040se p. 7, Lines 12 and 13: points "charged only for the use of money must be deducted over the life of the loan"; line 12 takes interest paid to banks, and "If you paid more mortgage interest than is shown on your Form 1098 ... enter the entire deductible amount on line 12. Attach a statement". Form 1098 box 1 excludes points (i1098, Box 1). Where the yearly share of points on a loan with a Form 1098 goes is not said in so many words.
+- Candidate readings: It is mortgage interest beyond the Form 1098 (line 12 with a statement), so rental.mortgage_excess is answered Yes and the return is refused. | It is other interest (line 13), entered in rental.amt13 with no refusal.
+- **Chosen:** The first.
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane rentals, BUG-0925). Points paid to the lender are interest paid to it, which the instructions put on line 12 with a statement when beyond the form; the tool does not write the statement, so the case is refused. Total expenses are the same under either reading; the first refuses rentals amortizing points on a reported loan. To reverse: change the help of rental.mortgage_excess and rental.has_other_interest to send the share to other interest.
+- Status: decided by the coordinator under the owner's delegation of 2026-11-24 (lane rentals, BUG-0925).
+- Cite: [i1040se] p. 7, Lines 12 and 13, How to report (2025; sha256 ad71de35)
+
+## amb.2025.line4a_several
+
+- Text at issue: i1040gi pp. 26-27, Lines 4a and 4b, says a fully taxable IRA distribution goes on line 4b with no entry on line 4a, and each exception puts "the total distribution on line 4a"; p. 27, More than one distribution, says "figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b. Enter the total amount of those distributions on line 4a." With several IRA distributions, one under an exception and one fully taxable, it is not said in so many words whether line 4a holds only the exception distributions or all of them.
+- Candidate readings: Line 4a holds only the distributions under an exception (a fully taxable one is left off line 4a, as when it is the only distribution). | Once any IRA distribution of the return goes on line 4a, line 4a holds the total of every IRA distribution (those distributions of the More than one distribution paragraph are all the distributions received); with only fully taxable distributions line 4a stays empty.
+- **Chosen:** The second: line 4a is the total of every IRA distribution (box 1) of you and, on a joint return, your spouse once any of them goes on line 4a. Line 4b and the tax are the same under either reading; only the printed line 4a differs. Not yet in the tool: f1040.line4a still sums person.ira_amount_a (the exception distributions only); it needs a per-person total of IRA box 1 (person.yaml, a sum of retirement.box1 over the IRA entries) and line 4a choosing that total when the sum of person.ira_amount_a is more than zero. Reversing the decision: keep f1040.line4a as it is and change chosen to the first reading.
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24. The More than one distribution paragraph speaks of every distribution received ("If you (or your spouse if filing jointly) received more than one distribution, figure the taxable amount of each distribution"), and "those distributions" refers back to them, so the source best supports the second reading; the fully taxable rule ("don't make an entry on line 4a") is stated for a single distribution. No amount of tax turns on the choice.
+- Status: decided by the coordinator under the owner's delegation of 2026-11-24 (lane capital, BUG-1118); the change to line 4a waits on a person.yaml line (hand-off to the lane holding person).
+- Cite: [i1040gi] pp. 26-27, Lines 4a and 4b, "If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don’t make an entry on line 4a"; p. 27, More than one distribution, "Enter the total amount of those distributions on line 4a" (2025; printed date 2026-02-25; sha256 482e9c48)

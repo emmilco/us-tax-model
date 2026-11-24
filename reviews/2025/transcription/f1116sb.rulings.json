@@ -308,6 +308,125 @@
    }
   },
   {
+   "printed": "f1116sb.carry_through_prior",
+   "project_expr_sha256": "6c39c4392cc98e30887517af21afd4541a4c839b5fc4d80c0faa58d40d415f12",
+   "second_expr_sha256": "9b7c3576c3cac42ef4817fa85d29fc1c6f4a626af16181b51c9e4f8b539a43bc",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carry_no_schedule_b (decided under the owner's delegation of 2026-11-24). The reply again reads the interface inverted: the line is the refusal gate its label states (true for a carryover brought in through a 2024 return that deducted the foreign tax or took no credit, and false where f1116sb.changed_if_carry or f1116sb.split_if_carry already refuses on Form 1116 line 35), and the reply returns true for the complement ('form_full' or 'form_room' with no change and no split), which as a refusal would refuse every ordinary Form 1116 carryover. On 'election' and 'none' it repeats the point the register entry decides: i1116 p. 19 ('Don’t reduce the carryback or carryforward by the amount you would have used in the election year') and Pub. 514 p. 37 (no excess limit without foreign income) leave the carryover unreduced, entered from the latest Schedule B by year of origin. For 'other' both refuse. Project right on the interface.",
+   "context": "9790dedd6bc934273e2dd01720454aaf25a4e5857dac108534229948f856ee84",
+   "date": "2026-11-24",
+   "run": "2dfe8deda0f8774a37bc3c660d2996778ce83522bf62f0d5c3dae3e8459f2238",
+   "subject_key": "c4080b37f2909c3643d6789e156eabb0d41b29d60389d7c06e7250f32ef98226",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f1116sb",
+     "fixture:classm.f2441.2.deepseek@f1116sb",
+     "fixture:classm.f2441.3.deepseek@f1116sb",
+     "fixture:classm.f2441.4.deepseek@f1116sb",
+     "fixture:classm.f2441.5.deepseek@f1116sb",
+     "fixture:classm.f2441.6.deepseek@f1116sb",
+     "fixture:classm.dependent.2.deepseek@f1116sb",
+     "fixture:classm.s179.1@f1116sb",
+     "fixture:classm.s179.3@f1116sb",
+     "fixture:classm.s179.4@f1116sb",
+     "fixture:classm.tipjob.1@f1116sb",
+     "fixture:f1116.c2_prior_form_room@f1116sb",
+     "fixture:f1116.c2_prior_form_full@f1116sb",
+     "fixture:f1116.m1116_carryover_unanswered_with_tax@f1116sb",
+     "fixture:f1116.carry_through_deduction_year@f1116sb",
+     "fixture:f1116.carry_in_prior_room_no_excess@f1116sb",
+     "fixture:mutation.t2.mfj_no_overtime_part3@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116sb.carry_through_prior",
+   "project_expr_sha256": "c8b4793c99d72a8da141ed818a62adbc1f9a9dc73e775450f828b3ceeabb342c",
+   "second_expr_sha256": "8f96b8f46e6d4b8e2dd95e8f076ae44b06f7c051949013ff3f95df75c325c75b",
+   "ruling": "Ruling: real disagreement, project changed in this lane before ruling; i1116 p. 19, Line 10, Restrictions: 'Don’t reduce the carryback or carryforward by the amount you would have used in the election year if you hadn’t made the election', so a carryover through a 2024 election year passes through unreduced, as the reply says. The project's gate refused the election answer too; it now refuses only the deduction / no-credit answer ('However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit'), matching the reply. Fixture f1116.carry_through_election_year now computes (credit $549.46). Recorded in BUG-1311.",
+   "context": "568bd17fe515b03b2ac80647e7667230693d1e649cc4e152a856ba5ccc9d78d9",
+   "date": "2026-11-24",
+   "run": "8aa815dfb0b1b2bf3ffc47ecda37e3246698df25603355e7329d2f55d4f9f4ab",
+   "subject_key": "44ffb5d6f6a2c1bdce232d1b350426bc8ab9f286cfedd7887b1d483d4a932e44",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116sb",
+     "fixture:stage14.asset.mq_7yr@f1116sb",
+     "fixture:stage14.asset.mq_mixed@f1116sb",
+     "fixture:stage14.asset.mq_not@f1116sb",
+     "fixture:stage14.asset.bonus_100@f1116sb",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@f1116sb",
+     "fixture:classm.f2441.1.deepseek@f1116sb",
+     "fixture:classm.f2441.2.deepseek@f1116sb",
+     "fixture:classm.f2441.3.deepseek@f1116sb",
+     "fixture:classm.f2441.4.deepseek@f1116sb",
+     "fixture:classm.f2441.5.deepseek@f1116sb",
+     "fixture:classm.f2441.6.deepseek@f1116sb",
+     "fixture:classm.dependent.2.deepseek@f1116sb",
+     "fixture:classm.s179.1@f1116sb",
+     "fixture:classm.s179.3@f1116sb",
+     "fixture:classm.s179.4@f1116sb",
+     "fixture:classm.tipjob.1@f1116sb",
+     "fixture:f1116.m1116_carryover_unanswered_with_tax@f1116sb",
+     "fixture:mutation.t2.mfj_no_overtime_part3@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116sb.carry_through_prior",
+   "project_expr_sha256": "e94af40b3cc41ff5f94091c8e695f5c36b8a0d571c2555cfeaf7daa509d5adcb",
+   "second_expr_sha256": "9b7c3576c3cac42ef4817fa85d29fc1c6f4a626af16181b51c9e4f8b539a43bc",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carry_no_schedule_b (decided under the owner's delegation of 2026-11-24). The reply reads the interface inverted: the line is the refusal gate its label states (true for a carryover brought in through a 2024 return that deducted the foreign tax or took no credit), and the reply returns true for the complement set ('form_full' or 'form_room' with no change and no split), which would refuse every ordinary Form 1116 carryover; changes and splits are refused by their own gates (f1116sb.changed_if_carry, f1116sb.split_if_carry). Its point on 'election' and 'none' (no 2024 Schedule B line 8) is the register entry: i1116 p. 19 says the carryover is not reduced in an election year and Pub. 514 p. 37 that a year without foreign income absorbs nothing, so the project computes it from the latest Schedule B by year of origin, as the $f1116sbyr help now says. For 'other' both refuse. Project right on the interface.",
+   "context": "993780d79a53e2acd1db8eafe21275b2453d6b7dba21a00db923596fc872962c",
+   "date": "2026-11-24",
+   "run": "9aeaf27302d412a64cc17d32feedaa2ee4804ab50ba22267a13fc4ae6634babb",
+   "subject_key": "44ffb5d6f6a2c1bdce232d1b350426bc8ab9f286cfedd7887b1d483d4a932e44",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f1116sb",
+     "fixture:classm.f2441.2.deepseek@f1116sb",
+     "fixture:classm.f2441.3.deepseek@f1116sb",
+     "fixture:classm.f2441.4.deepseek@f1116sb",
+     "fixture:classm.f2441.5.deepseek@f1116sb",
+     "fixture:classm.f2441.6.deepseek@f1116sb",
+     "fixture:classm.dependent.2.deepseek@f1116sb",
+     "fixture:classm.s179.1@f1116sb",
+     "fixture:classm.s179.3@f1116sb",
+     "fixture:classm.s179.4@f1116sb",
+     "fixture:classm.tipjob.1@f1116sb",
+     "fixture:f1116.c2_prior_form_room@f1116sb",
+     "fixture:f1116.c2_prior_form_full@f1116sb",
+     "fixture:f1116.m1116_carryover_unanswered_with_tax@f1116sb",
+     "fixture:f1116.carry_through_deduction_year@f1116sb",
+     "fixture:f1116.carry_in_prior_room_no_excess@f1116sb",
+     "fixture:mutation.t2.mfj_no_overtime_part3@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1116sb.carryback",
    "project_expr_sha256": "e259dcad7f20f4264f5cd4ffe8542afde4478a05f38a38fa2e46a44b81ceaefc",
    "second_expr_sha256": "b01474fc0da6fb30bce68973268eb16b69793ef991d15437a3c22a9bfefec329",
@@ -331,6 +450,48 @@
      "fixture:t264.eic.show5_agi_open_married_child@f1116sb",
      "fixture:f1116.c5_changed@f1116sb",
      "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116sb.carryback",
+   "project_expr_sha256": "f4cf561e5361fda04e9a8bc9b5ebc5b1e5aaa667d98cfaafcd83e41db1982097",
+   "second_expr_sha256": "3651befee2475bec216fd0787d40e65aa3d103e9ac1afeb46e813af37bc4533b",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carryback, chosen reading: the project refuses a carryback when a 2025 excess is generated and 2024 had room (Form 1116 line 24 less than line 23) or had foreign income with the tax deducted or no credit taken. The reply tests only 'form_room' and does not require a 2025 excess, so it would refuse a filer who brings a carryover in through a 2024 Form 1116 with room and has no excess to carry back (fixture f1116.carry_in_prior_room_no_excess: credit $549.46). For the deducted year, i1116 p. 19 forbids a credit carryback but requires the carryforward to be reduced by what that year would have used (Pub. 514 p. 38, absorption), which the tool does not figure, so refusing it is the safe side. Project right.",
+   "context": "568bd17fe515b03b2ac80647e7667230693d1e649cc4e152a856ba5ccc9d78d9",
+   "date": "2026-11-24",
+   "run": "8aa815dfb0b1b2bf3ffc47ecda37e3246698df25603355e7329d2f55d4f9f4ab",
+   "subject_key": "3b6e7e695efc991812a9856e0ecfb1ec2fc1acd3da5eabc016f823a2738f34a6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f1116sb",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1116sb",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1116sb",
+     "fixture:stage14.asset.refuse_class@f1116sb",
+     "fixture:stage14.asset.refuse_listed_low@f1116sb",
+     "fixture:stage14.asset.refuse_s179_over@f1116sb",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f1116sb",
+     "fixture:classm.s2.5.deepseek@f1116sb",
+     "fixture:classm.s2.8.deepseek@f1116sb",
+     "fixture:classm.s2.9.deepseek@f1116sb",
+     "fixture:classm.f1040.3.deepseek@f1116sb",
+     "fixture:classm.f1040.6.deepseek@f1116sb",
+     "fixture:classm.f1040.7.deepseek@f1116sb",
+     "fixture:stage8.mut.hoh_child_months_unanswered_absence@f1116sb",
+     "fixture:stage9.eic.refuse.combat_pay@f1116sb",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@f1116sb",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f1116sb",
+     "fixture:t264.eic.show5_agi_open_married_child@f1116sb",
+     "fixture:f1116.c2_prior_other@f1116sb",
+     "fixture:f1116.carry_in_prior_room_no_excess@f1116sb"
     ],
     "policy": "executable-triage-v2"
    }

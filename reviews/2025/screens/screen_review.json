@@ -5336,42 +5336,42 @@
  },
  {
   "screen": "gate:asset.listed",
-  "subject_sha": "f63520391a58a4d20d669e805bf0ad333d1f6d672c957d5416027af0ffeafb1a",
+  "subject_sha": "5041402562fc4fcd25e192ac8ee39dec4f82335a9f3df08402fa1e9363e1fa19",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer has a passenger automobile weighing 6,000 pounds or less that is used partly for personal purposes and has qualified business use of 50% or less, but it is neither entertainment/recreation equipment nor a pre-2018 computer.",
-      "irs_text": "i4562 p. 3: 'Listed property generally includes ... Passenger automobiles weighing 6,000 pounds or less. ... Any other property used for transportation ...'",
-      "why": "The vehicle is listed property, so the qbu_low line must be determined; the gate's limited categories let the filer answer no and the line is zeroed."
+      "situation": "A filer depreciates a passenger car weighing 6,000 pounds or less, used 40% for business, so it is listed property with qualified business use of 50% or less, but the gate question asks only about photographic, communication, video, entertainment or recreation property and pre-2018 computers.",
+      "irs_text": "i4562 p. 3, Listed Property: \"Passenger automobiles weighing 6,000 pounds or less.\"; p. 14: \"Use line 27 to figure the depreciation for property used 50% or less in a qualified business use.\"",
+      "why": "A car owner truthfully answers no, so the 50%-or-less question is never asked. The line is treated as false, and the car keeps the section 179 deduction, special allowance and GDS method that the IRS text denies it."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer has a pre-2018 computer peripheral such as a printer used partly for personal purposes, but the gate asks only whether a computer was first used before 2018.",
-      "irs_text": "i4562 p. 14: 'Other listed property (computers and peripheral equipment placed in service before 2018, etc.)'; p. 3: 'Any computer or peripheral equipment used exclusively...'",
-      "why": "Peripheral equipment is listed property within Part V, but a filer with only a peripheral can truthfully answer no to the computer-only gate."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "An employee owns a computer used exclusively at the employer's regular business establishment, but the IRS exception does not apply because the establishment operator does not own or lease it.",
-      "irs_text": "i4562 p. 3: 'Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment.'",
-      "why": "The gate asks only whether it is not used only at the regular place of business; it omits the ownership/lease requirement, so it can be answered no even though the computer remains listed property."
+      "situation": "A filer depreciates a motorcycle, pickup truck, SUV or business aircraft that is not a qualified nonpersonal use vehicle and has partly personal use, so its qualified business use is 50% or less.",
+      "irs_text": "i4562 p. 3: \"Any other property used for transportation if the nature of the property lends itself to personal use, such as motorcycles, pickup trucks, SUVs, aircraft, etc.\"",
+      "why": "The gate question leaves out transportation property entirely. These filers answer no and skip the qualified-business-use test that sends the property to line 27."
      },
      {
       "kind": "SOURCE",
-      "situation": "A computer was placed in service before 2018 but was first used after 2018, so the gate's timing event differs from the cited timing event.",
-      "irs_text": "i4562 p. 14: 'computers and peripheral equipment placed in service before 2018'; gate: 'computer first used before 2018'",
-      "why": "The cited text uses placed-in-service timing, while the gate uses first-use timing, a different event and time frame."
+      "situation": "The cited text defines listed property to include vehicles and other transportation property, but the gate condition covers only the entertainment and recreation category and pre-2018 computers.",
+      "irs_text": "i4562 p. 3: \"Listed property generally includes the following. • Passenger automobiles weighing 6,000 pounds or less. ... • Any other property used for transportation ... • Any property used for entertainment or recreational purposes\"; gate: \"Is it photographic, sound, communication or video equipment ...; other property of a kind used for entertainment or recreation; or a computer or computer accessory first used in the business before 2018\"",
+      "why": "The gate is meant to be the cited listed-property condition, but it drops two of the three categories the IRS text names."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "An employee's camera used only at the employer's regular business establishment might be reported as listed if the employee does not see the employer's premises as \"your regular place of business\".",
+      "irs_text": "i4562 p. 3: \"for any property listed in (1) above, the regular business establishment of an employee is their employer’s regular business establishment.\"",
+      "why": "Neither the question nor its help says that an employee's place of business is the employer's establishment, so some employees will answer yes for property that is not listed. That error only adds questions."
      }
     ],
-    "prompt_sha": "2f88d3ffb04137aef63b85e4456df40b1831ba9eca318d30abad76f6eba2f80e",
+    "prompt_sha": "07a61a39cfbbeb2413330e0ea8bf03ead93b78362bfff235f77d09bd93e2f9b7",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_asset.listed.f63520391a58.1.response.txt"
+    "cost": 0.146068,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_asset.listed.5041402562fc.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -5401,7 +5401,7 @@
     ],
     "how": "cited pages",
     "locators": [
-     "p. 3, Listed Property and its Exceptions, \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
+     "p. 3, Listed Property, \"Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment)\", and its Exceptions, \"Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer’s trade or business or at the taxpayer’s regular business establishment\", \"Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment\", \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
     ],
     "cols_pages": [
@@ -7108,22 +7108,22 @@
   ]
  },
  {
-  "screen": "gate:f1116sb.generated",
-  "subject_sha": "f6cdd48330c5e79f6976619900151124145a3fcc5bea8e2d76960ad45d60998b",
+  "screen": "gate:f1116sb.prior_asked",
+  "subject_sha": "c3e64c4d3435c38a69bcb6df59a7ecacaf8e46b3c64ec2231a18962d886fd860",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [],
-    "prompt_sha": "bcd3df5b0ad8354a0e14ec9cfce0beda769922226c228ea28d6e2d05f7ec4274",
+    "prompt_sha": "680a58e86f1393720099e2e02fc04b0d4a15ac950e7f37a616eb3dae96858e57",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.082264,
+    "cost": 0.061551999999999996,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gate_f1116sb.generated.f6cdd48330c5.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_f1116sb.prior_asked.c3e64c4d3435.1.response.txt"
    }
   ],
   "kind": "gate",
-  "condition": "f1116sb.generated",
+  "condition": "f1116sb.prior_asked",
   "lines": [
    "f1116sb.prior_year_if_excess"
   ],
@@ -7132,25 +7132,20 @@
   ],
   "used": [
    {
-    "doc": "i1116sb",
-    "revision": "Rev. December 2022 (printed 'Instructions for Schedule B (Form 1116) (Rev. 12-2022)', Dec 29, 2022); current irs-pdf edition, not year-specific; the IRS had posted no 2025 edition",
-    "text_sha256": "90f1313e93bf416f2ee96a62d18d70f06016968268aca1055653869475205766",
+    "doc": "i1116",
+    "revision": "2025; printed date 2025-12-23",
+    "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
     "pages": [
-     1,
-     2,
-     3,
-     4
+     19
     ],
-    "how": "whole document",
+    "how": "cited pages",
     "locators": [
-     "p. 2, Line 6. Foreign tax carryover generated in current tax year, \"line 6 is completed only if you have current year excess foreign taxes\""
+     "p. 19, Line 10, \"You can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t apply to or from any year for which you made the election\", \"However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that year\""
     ],
     "cols_pages": [
-     1,
-     2,
-     3
+     19
     ],
-    "cols_sha256": "4f7920df06efd2f3f67a5f5f7b3a83f7307e81fb9342cd91461ba433b47486fd"
+    "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
    },
    {
     "doc": "p514",
@@ -7169,20 +7164,6 @@
      38
     ],
     "cols_sha256": "8ba7d10e464cb1323987bc176a435020718ff8bc7d1b9407fdc32f24a86c6e6a"
-   },
-   {
-    "doc": "i1116",
-    "revision": "2025; printed date 2025-12-23",
-    "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
-    "pages": [
-     19
-    ],
-    "how": "pages named by another document's citation",
-    "locators": [],
-    "cols_pages": [
-     19
-    ],
-    "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
    }
   ]
  },
@@ -7554,36 +7535,24 @@
  },
  {
   "screen": "gate:f5695.any",
-  "subject_sha": "7eb031f221b76f74d2e23374a02b964786acc060d6564905b46778730c653257",
+  "subject_sha": "a4417a6a3f9005fb551f6477dd0d6bc55632751fcc04e20fe428c37cd97051b1",
   "samples": [
    {
-    "verdict": "UNCLEAR",
+    "verdict": "COVERS",
     "findings": [
      {
-      "kind": "UNCLEAR",
-      "situation": "A filer whose only 2025 installation was a small wind turbine may answer no, because the question lists 'solar panels, a battery, insulation, windows, doors, or heating, cooling or hot-water equipment' after a colon, which reads as a complete list that leaves out wind.",
-      "irs_text": "i5695 p. 2: 'Qualified small wind energy property costs are costs for property that uses a wind turbine to generate electricity for use in connection with your home located in the United States.'",
-      "why": "The phrase 'saves or makes energy' covers a wind turbine, but the list after the colon omits it, so a filer who reads the list as exhaustive answers no and line f5695.wind_if_any is silently zero. Adding 'a wind turbine' to the list, or 'for example' before it, would close this."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "A filer who installed solar panels, a solar water heater, a wind turbine, a geothermal heat pump or a battery at a second or vacation home in 2025 may read 'at home' as meaning only their main residence and answer no.",
-      "irs_text": "i5695 p. 2: 'The home doesn't have to be your main home.' (solar electric, solar water heating, small wind, geothermal); p. 2: 'If you made energy saving improvements to more than one home that you used as a residence during 2025, enter the total of those costs'",
-      "why": "Part I credits allow any home the filer used as a residence, but 'at home' can be read as the filer's main home only. Saying 'at any home you lived in during 2025' would remove the ambiguity."
-     },
-     {
       "kind": "WIDE",
-      "situation": "The gate holds for installations that earn no credit, for example Part II items at a home that is not the filer's main home, items without the required energy-efficiency certification, or Part II work on a newly constructed home.",
-      "irs_text": "i5695 p. 3: 'Qualified energy efficiency improvements are the following building envelope components installed on or in your main home that you owned during 2025'; p. 1: 'The energy efficient home improvement credit (Part II) is only available for existing homes.'",
-      "why": "A yes to the gate in these cases only leads to follow-up questions and drops no amount, which is acceptable because gates lean to yes."
+      "situation": "A filer whose only 2025 work is equipment that cannot qualify answers yes and is asked the item questions for nothing; examples are a battery under 3 kWh, a non-certified solar water heater, or an improvement to a property they did not live in.",
+      "irs_text": "i5695 p. 2: \"has a capacity of at least 3 kilowatt hours\"; p. 1: \"A home is where you lived in 2025\"",
+      "why": "The gate asks about any energy-related installation, not qualifying property. This only costs extra questions, since gates lean to yes by design."
      }
     ],
-    "prompt_sha": "6ac4fcf53f60fba3c7345b047b697ed81b96ce31c5828251f651204aed604ddd",
+    "prompt_sha": "820f13099bd66397fddfc9257b91486163a4cea959453167725c7a8fdfd7b351",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.141136,
+    "cost": 0.130764,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gate_f5695.any.7eb031f221b7.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_f5695.any.a4417a6a3f90.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -7944,36 +7913,36 @@
  },
  {
   "screen": "gate:f5695.doors_if_any",
-  "subject_sha": "026b55169cffdd410f86d27c1ddc31a120a6c21daafda7e11045ebdb0b7baeb3",
+  "subject_sha": "2caffa1297cc72d8ef97808290d749f3bc8e5b841933044d80db2f76e93ff840",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "On a joint return, the spouse installed qualifying exterior doors at the spouse's separate main home, but the taxpayer did not install any at his or her own home.",
-      "irs_text": "i5695 p. 3: 'If both you and your spouse owned and lived apart in separate main homes ... If you are filing a joint return, figure your energy efficient home improvement credit as follows. 1. Complete lines 17a through 30 of a separate Form 5695 for each main home.'",
-      "why": "The IRS text requires accounting for the spouse's separate main home on the joint return, but the gate only asks 'Exterior doors were installed' without saying 'you or your spouse'; the taxpayer could answer no as to himself or herself and drop lines 19a, 19d, and 19e."
+      "situation": "A filer replaces a broken or worn exterior door in their main home in 2025 for security or appearance, and the new door happens to meet Energy Star requirements; they could truthfully answer no to a question about installing something 'to save or make energy'.",
+      "irs_text": "i5695 p. 6: 'Line 19a. Enter the amount you paid for the most expensive exterior door that meets the Energy Star program requirements'; p. 3: 'Qualified energy efficiency improvements are the following building envelope components installed on or in your main home ... • Exterior doors.'",
+      "why": "The IRS text turns on whether the door meets Energy Star requirements, not on why it was installed. Because the gate asks about the filer's purpose ('to save or make energy'), it can be answered no, which skips lines 19a, 19d and 19e and zeroes a creditable amount."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "Only one Energy Star exterior door was installed.",
-      "irs_text": "i5695 p. 6: 'Line 19a. Enter the amount you paid for the most expensive exterior door that meets the Energy Star program requirements.'",
-      "why": "The IRS line applies to one door, but the gate says plural 'Exterior doors were installed'; a filer with a single door could reasonably read the plural as not met."
+      "situation": "A condominium owner or cooperative tenant-stockholder whose association replaced exterior doors in 2025 may not see this as something installed 'at a home' of theirs, or as doors they installed.",
+      "irs_text": "i5695 p. 2: 'you are treated as having paid your proportionate share of any costs of such association or corporation.'",
+      "why": "The gate and the door question do not mention association or cooperative projects. A filer could reasonably read them as covering only work they arranged themselves, and so skip their proportionate share of door costs."
      },
      {
       "kind": "WIDE",
-      "situation": "A non-Energy Star exterior door, or an exterior door at a home that is not the taxpayer's main home, was installed.",
-      "irs_text": "i5695 p. 6: 'most expensive exterior door that meets the Energy Star program requirements'; i5695 p. 3: qualified energy efficiency improvements are 'installed on or in your main home that you owned during 2025'.",
-      "why": "The gate is only 'Exterior doors were installed,' so it can be true even though the IRS would give lines 19a, 19d, and 19e no amount."
+      "situation": "Exterior doors that do not meet Energy Star requirements, or that were installed at a second home rather than the main home, make the condition true even though every gated line stays zero.",
+      "irs_text": "i5695 p. 3: 'building envelope components installed on or in your main home ... the component meets certain energy standards.'",
+      "why": "The condition asks only whether doors were installed, not whether they qualify. The gated questions are reached but get zero answers."
      }
     ],
-    "prompt_sha": "aa3416353f45a42d58a5643a2cfd4bfff23796857aa702de8fa47262bb71e31d",
+    "prompt_sha": "aff47e36fc925fd82abc1843365882ed2e18fefc3a3270e86217dcb3b13d88e3",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_f5695.doors_if_any.026b55169cff.1.response.txt"
+    "cost": 0.078152,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_f5695.doors_if_any.2caffa1297cc.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -22260,30 +22229,30 @@
  },
  {
   "screen": "gate:sa.gifts",
-  "subject_sha": "4df8c56d0fa71d71de49dc0431a1d7880e9d9aea4b682606644aa97b7bb44169",
+  "subject_sha": "63bab6be8cea1d6ca4c11788424be707e8c2f6bb5e2489e496c876054c0fd68a",
   "samples": [
    {
-    "verdict": "NARROW",
+    "verdict": "COVERS",
     "findings": [
      {
-      "kind": "NARROW",
-      "situation": "A filer (or spouse) made no charitable gifts in 2025 but has a carryover of earlier-year contributions that is still more than this year's percentage limits.",
-      "irs_text": "i1040sca p. 11, Line 13: \"Generally, the same limits apply this year to your carryover amounts as applied to those amounts in the earlier year... After applying those limits, enter the amount of your carryover that you are allowed to deduct this year. See Pub. 526 for details.\"",
-      "why": "Income limits still reduce the 2025 deduction in this case, so the limited flag (whose Yes ends the interview) should be set. But a filer with only a carryover truthfully answers no to the gate's 2025-giving question, so the flag is forced to false and the limited carryover goes through without the referral to Pub. 526."
+      "kind": "WIDE",
+      "situation": "The filer's only 2025 gifts were to a foreign charity, were refunded, or are cash gifts with no bank record or written record from the charity, so the filer answers yes but line 11 is zero.",
+      "irs_text": "i1040sca p. 10: \"Gifts to foreign organizations\"; \"But don't deduct any amounts that were repaid to you\" (p. 9); \"you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity\"",
+      "why": "The gate counts any giving to a charity, so it holds even when every gift is nondeductible and both gated lines end up zero or no. This only costs extra questions."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer paid a charity only for something worth the full amount paid, such as an auction item bought at or below fair value or a benefit ticket priced at the established charge.",
-      "irs_text": "p526 p. 5: \"The amount you pay is no more than the fair rental value. You haven't made a deductible charitable contribution.\"",
-      "why": "The gate's help tells the filer to count payments that got something back, so the gate opens. Yet line 11 has nothing deductible and no limit can apply."
+      "situation": "The filer gave only property or only small cash gifts well under 20% of income, so the filer answers yes but the limit line is no and line 11 is zero.",
+      "irs_text": "i1040sca p. 10: \"Limit on the amount you can deduct. See Pub. 526 to figure the amount of your deduction if any of the following applies.\"",
+      "why": "Any gift opens both gated questions, even when neither line can take an amount. Gates are meant to lean toward yes."
      }
     ],
-    "prompt_sha": "bd79dfe8420e332c16971abca475bdb2f7db40136fd25a4b96a712d31780d650",
+    "prompt_sha": "fe3f914571cb51374287b716554a9548f0a4149a86c6a2f30cfeac8eb73d5ebc",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.08955199999999999,
+    "cost": 0.10036799999999999,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_sa.gifts.4df8c56d0fa7.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_sa.gifts.63bab6be8cea.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -22309,7 +22278,7 @@
     "how": "cited pages",
     "locators": [
      "p. 10, Limit on the amount you can deduct, \"See Pub. 526 to figure the amount of your deduction if any of the following applies\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\"",
-     "p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\", \"14 cents a mile\", \"But don't deduct any amounts that were repaid to you\", Gifts from which you benefit, \"you can generally only deduct the amount that is more than the value of the benefit. But this rule doesn't apply to certain membership benefits provided in return for an annual payment of $75 or less or to certain items or benefits of token value\", Gifts of $250 or more; , Membership fees or dues, \"Both you and the organization can disregard the following membership benefits if you get them in return for an annual payment of $75 or less\"; , Token items, \"You don’t have to reduce your contribution by the value of any benefit you receive if both of the following are true\"; p. 10, Amounts You Can't Deduct, \"Political contributions\", \"Cost of raffle, bingo, or lottery tickets\", \"Cost of tuition\", \"Value of your time or services\", \"Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities\"; Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\", Recordkeeping, \"you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity\"",
+     "p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\", \"14 cents a mile\", \"But don't deduct any amounts that were repaid to you\", Gifts from which you benefit, \"you can generally only deduct the amount that is more than the value of the benefit. But this rule doesn't apply to certain membership benefits provided in return for an annual payment of $75 or less or to certain items or benefits of token value\", Gifts of $250 or more; , State or local tax credit, \"the amount treated as a charitable contribution deduction is reduced by the amount of the state or local tax credit you receive or expect to receive\", Exception, \"If the state or local tax credit you receive or expect to receive doesn’t exceed 15% of your payment amount or 15% of the FMV of the transferred property, then your charitable contribution deduction isn’t reduced\"; , Membership fees or dues, \"Both you and the organization can disregard the following membership benefits if you get them in return for an annual payment of $75 or less\"; , Token items, \"You don’t have to reduce your contribution by the value of any benefit you receive if both of the following are true\"; p. 10, Amounts You Can't Deduct, \"Political contributions\", \"Cost of raffle, bingo, or lottery tickets\", \"Cost of tuition\", \"Value of your time or services\", \"Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities\"; Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\", Recordkeeping, \"you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity\"",
      "p. 9, Gifts to Charity, \"You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose\", \"Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities\" and \"Federal, state, and local governments if the gifts are solely for public purposes\"; p. 9, Gifts from which you benefit, \"If you made a gift and received a benefit in return\"; p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\""
     ],
     "cols_pages": [
@@ -22430,24 +22399,30 @@
  },
  {
   "screen": "gate:sa.home_asked",
-  "subject_sha": "1715e4f5782c1e87b791f7c7180e581791b2e3430ec4ec6cfa3524220e60a90c",
+  "subject_sha": "594fc1e8a1b14ee520fcfd7446d62e8668947f51ec77a050157c1322bae44244",
   "samples": [
    {
-    "verdict": "COVERS",
+    "verdict": "UNCLEAR",
     "findings": [
      {
+      "kind": "UNCLEAR",
+      "situation": "On a joint return, the filer and spouse own no real estate, and only the spouse pays interest on a loan secured by a boat or mobile home used as a home (or on a mortgage on a home titled in another person's name). The second helper's wording, unlike the first, does not mention the spouse, so the filer could answer no.",
+      "irs_text": "i1040sca p. 8, Line 8: \"A home can be a house, condominium, cooperative, mobile home, boat, or similar property\"; Line 8a: \"Enter on line 8a mortgage interest and points reported to you on Form 1098\"",
+      "why": "The spouse's interest belongs on line 8a, 8b or 8c of the joint return. The second helper reads \"Paid interest on a loan secured by a boat, camper or mobile home...\" with no \"(or, on a joint return, your spouse)\", so the computed condition could be false and the mortgage interest and unreported-interest questions would be skipped."
+     },
+     {
       "kind": "WIDE",
-      "situation": "A filer whose only real estate is a rental or other business property, with no home mortgage, makes the gate true, yet none of the gated lines gets an amount.",
-      "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"; p. 8, Line 8: \"A home mortgage is any loan that is secured by your main home or second home\"",
-      "why": "Owning any real estate makes the gate true, but taxes on business property are left off line 5b and interest on a rental is not home mortgage interest. This costs only extra questions."
+      "situation": "A filer whose only real estate in 2025 was used only for business and had no home mortgage still satisfies the condition, although none of the gated lines can have an amount.",
+      "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"",
+      "why": "Business-only real estate gives no amount on line 5b, 8a, 8b, 8c or Schedule 2 line 17b, yet the condition is true."
      }
     ],
-    "prompt_sha": "4176f0215e7597cc189e38161e8d074557533d23395223fb4ac4ee1408519105",
+    "prompt_sha": "097fb07be5299d456f5ab1df227de451ac2e95b9bcdf250c56cef6779894a740",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.12258,
+    "cost": 0.130152,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_sa.home_asked.1715e4f5782c.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_sa.home_asked.594fc1e8a1b1.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -22544,36 +22519,42 @@
  },
  {
   "screen": "gate:sa.medical_asked",
-  "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
+  "subject_sha": "70b77c815ad7a09f555f02b61b8be9157bbdf34d8ee3f952bb1e12fd4097d171",
   "samples": [
    {
-    "verdict": "UNCLEAR",
+    "verdict": "NARROW",
     "findings": [
      {
-      "kind": "UNCLEAR",
-      "situation": "A filer whose unreimbursed medical and dental costs exceed 7.5% of adjusted gross income but not 7.5% of gross or total income, and who paid no health insurance with after-tax money, could truthfully answer no to the first helper, so line 1 is never asked.",
-      "irs_text": "i1040sca p. 1: \"You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.\"",
-      "why": "The helper says \"7.5% of your income\" without saying adjusted gross income. A filer could compare costs to gross wages or total income, which is larger than AGI. That filer answers no even though Schedule A line 4 would be more than zero, and neither of the other two helpers catches the case."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "A filer may not count costs paid for dependents, for a child claimed by the other parent, or for a near-dependent, and may not count insurance premiums, when deciding whether \"the medical and dental costs you paid\" pass 7.5% of income.",
-      "irs_text": "i1040sca p. 2: \"You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them.\"",
-      "why": "The gate question does not say that costs for these other people and premiums count toward the 7.5% test. A filer who counts only their own care could truthfully answer no and lose the deduction. The second helper rescues only premiums paid with taxed money, not other people's medical bills."
+      "kind": "NARROW",
+      "situation": "A taxpayer died late in 2025 and the estate paid the decedent's large medical bills in early 2026 for the final return. No health insurance was paid with taxed money and no exception 05 is claimed.",
+      "irs_text": "i1040sca p. 1: \"Deceased taxpayer. Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return. See Pub. 502 for details.\"",
+      "why": "The first helper asks only about costs paid in 2025 by you or your spouse. Bills the estate paid after year-end can still go on the final 2025 line 1, but the person filing would truthfully answer no to every helper, so the amount is dropped."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer who paid any amount of health insurance with after-tax money is asked line 1 even when total costs are far below 7.5% of AGI, so the line 4 deduction is zero.",
+      "situation": "A filer paid health insurance premiums with after-tax money, but total medical costs including those premiums were not more than 7.5% of AGI.",
       "irs_text": "i1040sca p. 1: \"You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income\"",
-      "why": "The second helper does not depend on the amount, so it sends filers to line 1 even when line 1 cannot affect the deduction. This only costs extra questions."
+      "why": "The insurance helper turns the gate on even though the expenses cannot exceed the floor, so the medical deduction is zero. This costs only extra questions."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer who takes the standard deduction claims exception 05 on Form 5329.",
+      "irs_text": "i1040sca p. 1: \"If you itemize, you can deduct a part of your medical and dental expenses\"",
+      "why": "Schedule A line 1 has no effect on a non-itemizer's deduction, yet the gate holds. The amount may still be needed for the exception 05 computation."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer counts costs paid from a tax-free HSA or Archer MSA distribution when judging whether costs exceeded 7.5% of AGI.",
+      "irs_text": "p969 p. 9: \"You can't deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA.\"",
+      "why": "The gate question does not tell the filer to leave out HSA- or MSA-paid costs, so it may say yes when the net line 1 amount is below the floor. This only adds questions."
      }
     ],
-    "prompt_sha": "396372bfa0eff87524196ea443390b55e877cb138505969e56d4438b528fadaa",
+    "prompt_sha": "3c7997dd16e01fa30248713238f896a5153cf68c8fc02a754f1b0168d543167f",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.101468,
+    "cost": 0.121916,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_sa.medical_asked.41ec635c0a76.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_sa.medical_asked.70b77c815ad7.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -23079,48 +23060,36 @@
  },
  {
   "screen": "gate:sa.property_tax_other_if_home",
-  "subject_sha": "f3ee7ddc0662e20ae12dd13ee6258290d6b5ba02a82fdfbb4d7f04d87f4e675c",
+  "subject_sha": "8d38d4ce12104784f14c83defab29bb7614e4d3dbfa0c16e4fdc4e29a91016ad",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "The filer's real estate tax amount includes tax on property, or part of a home such as a home office or rented portion, used in a trade or business. The listed nondeductible items do not include business use, so the filer answers no and the business part stays in line 5b.",
-      "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"",
-      "why": "The gate question presents a closed list after a colon. Tax on business-use real estate is not deductible on line 5b but is not on that list, so a truthful filer can answer no while a nondeductible amount remains."
+      "situation": "An owner's real estate tax amount includes a levy that is not assessed uniformly at a like rate on all property in the community, or whose proceeds are not used for general community or governmental purposes (for example, a special-district levy that is not an itemized per-service charge or an improvement assessment).",
+      "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own ... but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes.\"",
+      "why": "The gate question lists the nondeductible amounts after a colon (foreign tax, service charges, improvements, buyer's share, 2025 refund, tax not assessed before 2026). A filer reading that list as complete would truthfully answer no, and the nondeductible part would be dropped from the gated line."
      },
      {
       "kind": "NARROW",
-      "situation": "The filer pays real estate tax through mortgage escrow and entered the amount paid into escrow. In 2025 the lender actually paid a different, smaller amount to the taxing authority, and the escrow excess is not one of the listed items.",
-      "irs_text": "i1040sca p. 6: \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.\"",
-      "why": "Escrowed amounts not remitted in 2025 are not deductible, but the question's list does not mention them, so the filer can truthfully answer no."
+      "situation": "An owner whose taxes are paid through mortgage escrow entered the amount paid into escrow, and the lender paid less than that to the taxing authority in 2025.",
+      "irs_text": "i1040sca p. 6, Line 5b: \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.\"",
+      "why": "The excess held in escrow is not deductible, but it is not among the items the gate question lists, so the filer could truthfully answer no. The gated line would then not remove that amount."
      },
      {
       "kind": "NARROW",
-      "situation": "The filer's real estate tax bill includes a levy that is not assessed uniformly at a like rate on all property in the community, or whose proceeds are not used for general community purposes, and that is neither a service charge nor an improvement charge.",
-      "irs_text": "i1040sca p. 6: \"but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes\"",
-      "why": "Such amounts are excluded from line 5b, but the enumerated list in the gate question does not cover them."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "A filer whose entered amount includes tax paid in 2024 or 2026 (not paid in 2025) may not see it on the list, which mentions only tax not assessed before 2026.",
-      "irs_text": "i1040sca p. 6: \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.\"",
-      "why": "The question names the assessment condition but not the year-of-payment condition. A filer could read the list as not reaching tax paid outside 2025."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer who only paid interest on a loan secured by a home but owns no real estate passes the outer condition, although line 5b and the gated line can have no amount.",
-      "irs_text": "i1040sca p. 6: \"taxes you paid on real estate you own\"",
-      "why": "The outer helper includes mortgage-interest payers who own no real estate. This costs only an extra question."
+      "situation": "An owner's real estate tax amount includes taxes on real estate used for business (other than the rental share the question already addresses).",
+      "irs_text": "i1040sca p. 6, Line 5b: \"state and local taxes you paid on real estate you own that wasn't used for business\"",
+      "why": "Taxes on business-use real estate are excluded from line 5b, but the gate question does not list them, so a filer could answer no and the amount would not be left out."
      }
     ],
-    "prompt_sha": "bfe73d4ba5fbe708b963ec04b0f17f8e30136f5eecd3bbdbf8d5ac3e1b8fb7ce",
+    "prompt_sha": "17c82224fc41816d4756621d1b2b70746cbc83b682f97b026c03b43cceb96087",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.06018,
+    "cost": 0.064244,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_sa.property_tax_other_if_home.f3ee7ddc0662.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_sa.property_tax_other_if_home.8d38d4ce1210.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -25958,36 +25927,42 @@
  },
  {
   "screen": "gate:sd.sold_other",
-  "subject_sha": "d6e501a3c2f95989579892856f86b74ef01ef7466ac0c811d0a09c287f447b42",
+  "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "Business or rental real property, or investment land held more than 1 year, is taken by condemnation or under threat of condemnation in 2025, and the filer does not think of this as having 'sold or traded' it.",
-      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 2. The involuntary conversion (other than from casualty or theft) of property used in a trade or business and capital assets held more than 1 year for business or profit.\"",
-      "why": "The gate and its help ask only whether the filer sold or traded property, and never mention a condemnation or other involuntary conversion. A filer could truthfully answer no, so the Form 4797 line (sd.business_property_if_sold) is never reached."
+      "situation": "A filer sold small business (section 1244) stock, or small business investment company (section 1242) stock, at a loss in 2025, sold no real estate or business property, and was paid in full that year.",
+      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 4. Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock. 5. Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.\"",
+      "why": "Stock is neither real estate nor business property, and the gate's help does not mention it, so the filer truthfully answers no. The Form 4797 question is never reached, and the gated question's 'held as an investment' wording would also exclude this stock."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer abandons, scraps or otherwise disposes of business equipment or another noncapital business asset without selling or trading it.",
-      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 3. The disposition of noncapital assets other than inventory or property held primarily for sale to customers in the ordinary course of your trade or business.\"",
-      "why": "The gate covers only a 'sell or trade', so a disposition that is not a sale or trade is not captured. The filer would answer no, and the Form 4797 question is skipped."
+      "situation": "A securities trader who made a mark-to-market election had ordinary gain or loss on trading-business securities in 2025 and sold no real estate or equipment.",
+      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 6. Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.\"",
+      "why": "The help defines business property as things like 'equipment, a vehicle or a building', so a trader could truthfully read securities as outside 'real estate or business property' and answer no. The Form 4797 question would then be skipped."
      },
      {
-      "kind": "UNCLEAR",
-      "situation": "A filer has a royalty interest in oil or gas, or uses a vehicle partly for business, and is unsure whether a sale of it counts as 'real estate or business property'.",
-      "irs_text": "i1040sd p. 1: \"c. Oil, gas, geothermal, or other mineral property\"; \"b. Depreciable and amortizable tangible property used in your trade or business\"",
-      "why": "The help text does say that mineral interests and business vehicles count. But the question itself uses only the words 'real estate or business property', so a filer who skips the help could read a royalty or a mixed-use vehicle as outside it."
+      "kind": "NARROW",
+      "situation": "A filer disposed of a noncapital asset that is not inventory, such as accounts or notes receivable from services, with no real estate or business property sale.",
+      "irs_text": "i1040sd p. 1: \"3. The disposition of noncapital assets other than inventory or property held primarily for sale to customers in the ordinary course of your trade or business.\"",
+      "why": "The gate names only real estate, business property and self-created works. A filer selling receivables could reasonably answer no, so this Form 4797 disposition is missed."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer sold a main home with no Form 1099-S and gain fully excludable, and no business, installment or exchange element.",
+      "irs_text": "i1040sd p. 2: \"You may not need to report the sale or exchange of your main home.\"",
+      "why": "The gate's help counts a home you lived in as real estate, so the filer answers yes even though no gated line gets an amount. This only costs extra questions."
      }
     ],
-    "prompt_sha": "4b3fa681b8b5f40f56251c2460864d49703559c91e198a2e1ad9f7477b4c046b",
+    "prompt_sha": "8e0a14d48c171c412ecca2a0694e7d2713320ceff86d42d16c8db96c10ff226d",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.084808,
+    "cost": 0.086492,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_sd.sold_other.d6e501a3c2f9.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gate_sd.sold_other.4b9a3c8b9b97.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -26456,57 +26431,63 @@
  },
  {
   "screen": "gift.special",
-  "subject_sha": "8a120f7cd940cb85f2c8a4d06e5532be02245873cf98b38c183a9407d5178e78",
+  "subject_sha": "29ee328150a532817ab741ba905348e3901077b2f5cdbd0263df4de865cd366a",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "The filer gives appreciated property held 1 year or less, such as stock held 5 months, or art or a manuscript the filer created, to a public charity, so no listed item applies and the filer truthfully answers NO.",
-      "irs_text": "Examples of ordinary income property are inventory, works of art created by the donor, manuscripts prepared by the donor, and capital assets ... held 1 year or less. ... The amount you can deduct ... is its FMV minus the amount that would be ordinary income or short-term capital gain (p526 2025, p. 19)",
-      "why": "The list only catches appreciation on belongings owned over a year that the charity won't use, and on inventory. If the tool does not apply this reduction to basis, short-term and self-created property would be deducted at full FMV."
+      "situation": "The filer gives appreciated property held one year or less, such as stock held 5 months or a painting bought 8 months ago, and none of the listed items applies.",
+      "irs_text": "Examples of ordinary income property are inventory, works of art created by the donor or gifted by the artist to the donor, and capital assets held for 1 year or less. The deduction for a gift of ordinary income property is limited to the FMV minus the amount that would be ordinary income or short-term capital gain if the property were sold. (i8283 p. 3)",
+      "why": "The question covers appreciated items only when owned over a year and only for unrelated use, so short-term appreciated property draws a NO. The deduction must still be cut to basis, a reduction the screen never flags."
      },
      {
       "kind": "NARROW",
-      "situation": "The filer gives business property whose gain would partly be ordinary income because of depreciation recapture, or a filer applies the 50% limit instead of the 30% limit to capital gain property, and neither case appears in the list.",
-      "irs_text": "to the extent of any gain from the property that must be recaptured as ordinary income under section 1245, section 1250 ... the property is treated as ordinary income property (i8283 Dec 2025, p. 3); you must reduce the FMV ... if: ... 2. You choose the 50%-limit instead of the 30% limit for capital gain property (p526 2025, p. 19)",
-      "why": "Both cases require reducing FMV by the gain, but no item in the question describes them. A filer would answer NO, and the tool would leave FMV unreduced."
+      "situation": "The filer gives a painting or manuscript they created themselves, or a work the artist gave them, and the charity uses it for its exempt purpose.",
+      "irs_text": "Examples of ordinary income property are inventory, works of art created by the donor or gifted by the artist to the donor (i8283 p. 3); ... works of art created by the donor, manuscripts prepared by the donor (p526 p. 19)",
+      "why": "Self-created art is not 'intellectual property, such as a patent or a copyright', and the art item only asks about related use. The filer answers NO, but the deduction is limited to basis."
      },
      {
       "kind": "NARROW",
-      "situation": "The filer gives property subject to a mortgage or other debt, or a bond, and none of the listed items applies.",
-      "irs_text": "If you contribute property subject to a debt (such as a mortgage), you must reduce the FMV of the property by: 1. Any allowable deduction for interest you paid (or will pay) that is attributable to any period after the contribution (p526 2025, p. 12)",
-      "why": "The question never asks about debt on the property, so the required reduction is never prompted and the tool would deduct FMV without it."
+      "situation": "The filer gives depreciable business property, such as equipment or a rental building, that has depreciation recapture.",
+      "irs_text": "However, to the extent of any gain from the property that must be recaptured as ordinary income under section 1245, section 1250, or any other code provision, the property is treated as ordinary income property. (i8283 p. 3)",
+      "why": "No listed item covers trade or business property that is not inventory. The filer answers NO, yet the FMV must be reduced by the recapture amount."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "The filer chooses the 50% limit instead of the 30% limit for capital gain property given to a 50% limit organization.",
+      "irs_text": "You must do this if: ... 2. You choose the 50%-limit instead of the 30% limit for capital gain property given to 50% limit organizations (p526 p. 19)",
+      "why": "The question never asks about this election. A filer who makes it answers NO, but the deduction must be reduced to basis."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "The filer gives tangible personal property claimed at over $5,000 that the charity intends to use, but the charity sells it in the same year without certifying exempt use.",
+      "irs_text": "Has a claimed value of more than $5,000 and is sold, traded, or otherwise disposed of by the qualified organization during the year in which you made the contribution, and the qualified organization hasn't made the required certification of exempt use (p526 p. 19)",
+      "why": "The art item asks whether the charity 'will not use' the property. A filer whose charity planned related use answers NO, yet the reduction to basis applies."
      },
      {
       "kind": "WIDE",
-      "situation": "The filer gives property worth less than its basis, or gives to a nonoperating private foundation that qualifies for the 50% limit. Either way the filer must answer YES even though no reduction applies.",
-      "irs_text": "Question: 'it went to a private foundation that is not an operating foundation, and it is not publicly traded stock'; IRS: 'The reduced deduction applies to contributions to all private nonoperating foundations other than those qualifying for the 50% limit' and the reduction is 'by any amount that would have been long-term capital gain' (p526 2025, p. 19)",
-      "why": "The reduction applies only to appreciated property given to nonoperating foundations that do not qualify for the 50% limit. The question also covers depreciated property and 50%-limit foundations, which the plain computation handles correctly."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "The filer gives restricted-use property, or an undivided part of the whole interest, with a deduction of $5,000 or less. The filer must answer YES, though the instructions put such gifts in Section A.",
-      "irs_text": "Question: 'the charity is restricted in how it may use it' / 'less than your whole interest in the property'; IRS: 'You must also file Form 8283, Section B, if conditions were placed on the use of the property or you gave less than an entire interest in a property and the contribution was for more than $5,000' (i8283 Dec 2025, p. 3)",
-      "why": "The appraisal and Section B requirement applies only above $5,000, and over-$5,000 groups are already checked from the amount entered. These items have no dollar threshold, so they also refuse small Section A gifts."
+      "situation": "The filer gives property worth less than they paid, such as used furniture, or gives to a private nonoperating foundation that qualifies for the 50% limit.",
+      "irs_text": "The reduced deduction applies to contributions to all private nonoperating foundations other than those qualifying for the 50% limit (p526 p. 19); If you contribute property with an FMV that is less than your basis in it, your deduction is limited to its FMV. (p526 p. 18)",
+      "why": "The question 'it went to a private foundation that is not an operating foundation, and it is not publicly traded stock' forces YES. No reduction applies when there is no appreciation or the foundation qualifies for the 50% limit, so the tool's FMV figure would be correct."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "A filer whose charity restricts use only in a general way, for example by earmarking the gift for a particular program, may not know whether the gift counts as 'restricted in how it may use it'.",
-      "irs_text": "or (3) Earmarks donated property for a particular use (26 CFR 1.170A-13, p. 3)",
-      "why": "The question does not say whether a restriction the donor sets, a restriction in the donee's own policy, or simple earmarking counts. Filers could reasonably read it either way."
+      "situation": "On a joint return, the spouse is the one who owned the item, had it prepared as taxidermy, or holds the family's stock in the company.",
+      "irs_text": "But stock in a corporation doesn't count as qualified appreciated stock to the extent you and your family contributed more than 10% of the value of all the outstanding stock in the corporation. (p526 p. 19)",
+      "why": "Items phrased with 'you' ('you owned over a year', 'you prepared, or paid to have prepared', 'you gave only the use of it') can be read as the filer alone. A filer could answer NO when only the spouse's facts trigger the rule."
      }
     ],
-    "prompt_sha": "b5fc189e033fcae9f94736ab6bf526858cba154e20352f3556658db3613fcdac",
+    "prompt_sha": "8047c919ef42fbf14cfbc0e506fbdac63c6b026a58c3fbc1c5e2d7ef27397c2f",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.154484,
+    "cost": 0.12519599999999997,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gift.special.8a120f7cd940.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/gift.special.29ee328150a5.1.response.txt"
    }
   ],
-  "question": "Is any of these true of this group?\n\n  - it reached you through a Schedule K-1\n  - it is a vehicle\n  - it is a share of a partnership, an S corporation or another pass-through business\n  - it is intellectual property, such as a patent or a copyright\n  - it is inventory of a business\n  - it is a conservation easement, or less than your whole interest in the property\n  - the charity is restricted in how it may use it\n  - it went to a private foundation that is not an operating foundation, and it is not publicly traded stock\n  - it is stock given to a private foundation that is not an operating foundation, and you and your family have given away more than 10% of the value of that company's stock\n  - it is a stuffed or mounted animal that you prepared, or paid to have prepared\n  - it is art or other belongings you owned over a year, now worth more than you paid, that the charity will not use for its charitable purpose\n  - you gave only the use of it, such as a stay in your vacation home\n  - it is a clothing or household item worth more than $500 that is not in good used condition",
+  "question": "Is any of these true of this group?\n\n  - it reached you through a Schedule K-1\n  - it is a vehicle\n  - it is a share of a partnership, an S corporation or another pass-through business\n  - it is intellectual property, such as a patent or a copyright\n  - it is inventory of a business\n  - it is a conservation easement, or less than your whole interest in the property\n  - the charity is restricted in how it may use it\n  - it went to a private foundation that is not an operating foundation, and it is not publicly traded stock\n  - it is stock given to a private foundation that is not an operating foundation, and you and your family have given away more than 10% of the value of that company's stock\n  - it is a stuffed or mounted animal that you prepared, or paid to have prepared\n  - it is art or other belongings you owned over a year, now worth more than you paid, that the charity will not use for its charitable purpose\n  - you gave only the use of it, such as a stay in your vacation home\n  - it is a clothing or household item worth more than $500 that is not in good used condition\n  - it had a mortgage or other debt on it",
   "lines": [
    "gift.allowed"
   ],
@@ -26524,7 +26505,7 @@
     "how": "cited pages",
     "locators": [
      "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A",
-     "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily\"; p. 1, \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283\"; p. 3, Section B, \"Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000\"; , Deductions in excess of $5,000 for certain charitable contributions of property, \"if the amount claimed or reported as a deduction under section 170 with respect to such item exceeds $5,000\" (a group over $5,000 is refused by gift.section_b from gift.deduction); , Capital Gain Property, \"Capital gain property includes capital assets held more than 1 year\", Exceptions, \"you must reduce the FMV by any amount that would have been long-term capital gain if you had sold the property for its FMV\", items 1, \"The property (other than qualified appreciated stock) is contributed to certain private nonoperating foundations\", and 5, \"tangible personal property (defined earlier) that: a. Is put to an unrelated use (defined later) by the charity\"; , Giving Property That Has Decreased in Value, \"your deduction is limited to its FMV\" and \"Common examples of property that decrease in value include clothing, furniture, appliances, and cars\" (no reduction is left to make on such property, so the unrelated-use item asks only of property held more than 1 year and worth more than its basis); , Contributions to private nonoperating foundations, \"stock in a corporation doesn’t count as qualified appreciated stock to the extent you and your family contributed more than 10% of the value of all the outstanding stock in the corporation\"; , Taxidermy Property, \"your deduction is limited to your basis in the property or its FMV, whichever is less. This applies if you prepared, stuffed, or mounted the property or paid or incurred the cost of preparing, stuffing, or mounting the property\""
+     "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily\"; p. 1, \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283\"; p. 3, Section B, \"Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000\"; , Deductions in excess of $5,000 for certain charitable contributions of property, \"if the amount claimed or reported as a deduction under section 170 with respect to such item exceeds $5,000\" (a group over $5,000 is refused by gift.section_b from gift.deduction); , Capital Gain Property, \"Capital gain property includes capital assets held more than 1 year\", Exceptions, \"you must reduce the FMV by any amount that would have been long-term capital gain if you had sold the property for its FMV\", items 1, \"The property (other than qualified appreciated stock) is contributed to certain private nonoperating foundations\", and 5, \"tangible personal property (defined earlier) that: a. Is put to an unrelated use (defined later) by the charity\"; , Giving Property That Has Decreased in Value, \"your deduction is limited to its FMV\" and \"Common examples of property that decrease in value include clothing, furniture, appliances, and cars\" (no reduction is left to make on such property, so the unrelated-use item asks only of property held more than 1 year and worth more than its basis); , Contributions to private nonoperating foundations, \"stock in a corporation doesn’t count as qualified appreciated stock to the extent you and your family contributed more than 10% of the value of all the outstanding stock in the corporation\"; , Taxidermy Property, \"your deduction is limited to your basis in the property or its FMV, whichever is less. This applies if you prepared, stuffed, or mounted the property or paid or incurred the cost of preparing, stuffing, or mounting the property\"; , Property Subject to a Debt, \"If you contribute property subject to a debt (such as a mortgage), you must reduce the FMV of the property by\""
     ],
     "cols_pages": [
      1,
@@ -48721,39 +48702,39 @@
  },
  {
   "screen": "sd.home_sale",
-  "subject_sha": "a2f6b98377f023841243813182c0254d541df39f6381e36e0f9d98e3ee02de48",
+  "subject_sha": "b6a8ba21f8a86f19ec7fc30afca6006376158db7b4eea674a10ef2ab8197bb36",
   "samples": [
    {
-    "verdict": "NARROW",
+    "verdict": "WIDE",
     "findings": [
      {
-      "kind": "NARROW",
-      "situation": "On a joint return, gain is between $250,000 and $500,000 and only one spouse lived in the home 2 of the 5 years. No Form 1099-S was issued, so the filer relies on the help's '$500,000 on a joint return' and answers NO.",
-      "irs_text": "i1040sd p. 2: \"If both you and your spouse meet these tests and you file a joint return, you can exclude up to $500,000 of gain (but only one spouse needs to meet the ownership requirement in Test 1).\"",
-      "why": "The help says the $500,000 limit applies to any joint return. The IRS allows it only if both spouses meet the use test, so the filer may wrongly believe the whole gain is excluded and answer NO."
+      "kind": "WIDE",
+      "situation": "A filer who sold a main home with no Form 1099-S fails the 2-of-5-year or 2-year test but moved because of a change in place of employment, health, or unforeseen circumstances, and the reduced exclusion covers the whole gain. The help leads the filer to answer YES.",
+      "irs_text": "i1040sd p. 2: \"Even if you don't meet one or both of the above two tests, you can still claim an exclusion if you sold or exchanged the home because of a change in place of employment, health, or certain unforeseen circumstances.\"",
+      "why": "The help names only the two full tests, so a filer who fails one concludes the gain cannot be excluded in full. In fact the whole gain is excludable and no Form 8949 is needed, so the tool's zero is correct."
      },
      {
-      "kind": "NARROW",
-      "situation": "The filer owned and lived in the home 2 of the 5 years but excluded gain on another main home within the 2 years before this sale, and has no Form 1099-S. Following the help, the filer treats the gain as excluded and answers NO.",
-      "irs_text": "i1040sd p. 2: \"Test 2 — You haven't excluded gain on the sale or exchange of another main home during the 2-year period ending on the date of the sale or exchange of your home.\"",
-      "why": "The help states only the ownership-and-use test as the condition for exclusion and leaves out Test 2. A filer who fails Test 2 can therefore truthfully believe the gain is fully excludable."
+      "kind": "WIDE",
+      "situation": "A surviving spouse filing a non-joint return sold the main home within 2 years of the spouse's death with no Form 1099-S and a gain between $250,000 and $500,000. The help tells them the $500,000 limit applies only on a joint return, so they answer YES.",
+      "irs_text": "i1040sd p. 2: \"Sale of home by surviving spouse. If your spouse died before the sale or exchange, you can still exclude up to $500,000 of gain if: • The sale or exchange is no later than 2 years after your spouse's death; ...\"",
+      "why": "The help says \"$500,000 on a joint return only,\" which misstates the surviving-spouse rule. The filer believes part of the gain is taxable when all of it is excludable and the sale need not be reported."
      },
      {
-      "kind": "UNCLEAR",
-      "situation": "On a joint return, the spouse sold a home that was the spouse's main home but never the filer's, such as a home the spouse owned before the marriage.",
-      "irs_text": "i1040sd p. 2: \"Report the sale or exchange of your main home on Form 8949 if: • You can't exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange.\"",
-      "why": "The question asks only whether it was 'your main home' and does not mention the spouse, unlike the gate question. A filer could read it as asking only about the filer's own main home and answer NO for the spouse's sale."
+      "kind": "WIDE",
+      "situation": "A filer serving as a Peace Corps volunteer, or on qualified official extended duty in the uniformed services, Foreign Service, or intelligence community, elects to suspend the 5-year test period and so meets Test 1, with no Form 1099-S. The help tells them they fail the test, so they answer YES.",
+      "irs_text": "i1040sd p. 2: \"You can choose to have the 5-year test period for ownership and use in Test 1 suspended during any period you or your spouse serves outside the United States as a Peace Corps volunteer or serves on qualified official extended duty...\"",
+      "why": "The help states the 5-year window without the suspension election. Such a filer would think the exclusion is unavailable even though the full gain is excludable and no Form 8949 is required."
      }
     ],
-    "prompt_sha": "8f58a5249486ac5d491af6574b6552d4d4cbfe279f458654aa7b3de7e0bf06d4",
+    "prompt_sha": "5ad50da9eb17afac608deeca8633a2fc59f87a38cb1d2d5e146dbd64258b3240",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.06654,
+    "cost": 0.071432,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/sd.home_sale.a2f6b98377f0.1.response.txt"
+    "date": "2026-11-24",
+    "response": ".transcription/screens/sd.home_sale.b6a8ba21f8a8.1.response.txt"
    }
   ],
-  "question": "Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?",
+  "question": "Was any of it your (or, on a joint return, your spouse's) main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?",
   "lines": [
    "sd.count"
   ],

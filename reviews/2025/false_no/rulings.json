@@ -268,7 +268,8 @@
    "bugs": []
   },
   "unruled:gate:sa.gifts#1": {
-   "reason": "Carryovers and K-1 gifts are handled; hosting is BUG-1090.",
+   "reason": "Carryovers and K-1 gifts are handled; the rest are low wording points.",
+   "class": "no gate defect",
    "findings": [
     {
      "n": 0,
@@ -287,41 +288,35 @@
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Hosting a student: BUG-1090 (open); not filed again.",
-     "bugs": [
-      "BUG-1090"
-     ]
+     "class": "presentation",
+     "evidence": "Money put into a donor-advised fund is named in the encoded sa.gifts source but not in the interview's help. Low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "A foster child placed by a charity: BUG-1090 (open); not filed again.",
-     "bugs": [
-      "BUG-1090"
-     ]
+     "class": "presentation",
+     "evidence": "A payment that earns a state tax credit is named in the encoded sa.gifts source; the sa.line11 help now states the 15% rule. Low.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Membership perks are handled in sa.line11's help, as ruled on the earlier subject; a membership paid to a charity is a payment that got something back, which the gate's help counts.",
+     "evidence": "A membership paid to a charity is a payment that got something back, which the gate's help counts; perks for $75 or less are in the sa.line11 help.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Payroll gifts are named in the sa.line11 help; a filer who forgets them; low.",
+     "evidence": "A foster child placed by a government agency: the help counts governments taking gifts for public use; the prompt's 'it placed' may read narrower. Low.",
      "bugs": []
     }
    ],
-   "subject_sha": "4df8c56d0fa71d71de49dc0431a1d7880e9d9aea4b682606644aa97b7bb44169",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bugs": [
-    "BUG-1090"
-   ]
+   "subject_sha": "63bab6be8cea1d6ca4c11788424be707e8c2f6bb5e2489e496c876054c0fd68a",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:s179.wc_ask#1": {
    "class": "no gate defect; one finding designed out, one wording point accepted (low)",
@@ -7514,66 +7509,69 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:sa.medical_asked#1": {
-   "reason": "The 7.5%-of-income wording is BUG-1087 (open, low); estate-paid costs and premiums are covered by the help and the premium question.",
+   "reason": "Estate costs, premiums and the AGI basis are in the gate's wording or help; the rest are low wording points.",
+   "class": "no gate defect",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040sca p. 1, '7.5% of the amount of your adjusted gross income'. The tick reads '7.5% of your income': BUG-1087 (open, low), not filed again; the help adds 'If not sure, answer Yes'.",
-     "bugs": [
-      "BUG-1087"
-     ]
+     "class": "covered",
+     "evidence": "sa.medical_any help (shown with the gate): 'Count costs an estate paid within a year of a death.'",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "sa.medical_any help: 'For someone who died in 2025, count costs their estate paid within a year of the death.'",
+     "evidence": "sa.medical_premiums asks about insurance paid other than from pay before tax and its help names Medicare premiums taken from social security (Form SSA-1099).",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'the medical and dental costs you ... paid' does not limit the person cared for; sa.line1 asks for all care paid. Low.",
+     "evidence": "'the medical and dental costs you ... paid' does not limit the person cared for; sa.line1 lists whose costs count. Low.",
      "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "'paid in 2025' is the question's own frame; card charges and old bills paid in 2025 are payments of 2025. Low.",
+     "evidence": "Travel, special schooling and similar costs are medical care (p502); the gate names doctors, dentists, hospitals, prescriptions and insurance. Low.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Netting a 2025 reimbursement of 2024 bills (i1040sca p. 2, 'don't reduce your 2025 expenses by this amount') is a misreading the help does not invite; low.",
+     "class": "accepted residual",
+     "evidence": "Excess advance premium tax credit repaid with the return counts as premiums (p502 p. 12); rare beside the floor. Low.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Special schooling and similar costs are medical care (p502); Medicare premiums withheld from social security are named in sa.medical_premiums help ('Form SSA-1099 shows them'). Low.",
+     "evidence": "Netting a 2025 reimbursement of 2024 bills is a misreading the help does not invite. Low.",
      "bugs": []
     },
     {
      "n": 6,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "sa.medical_premiums: 'did you ... pay for health insurance yourselves, other than from pay before tax'; a self-employed filer paid the premiums. A 2% S corporation shareholder has a K-1, refused by scope.k1.",
+     "evidence": "sa.medical_premiums: 'did you ... pay for health insurance yourselves, other than from pay before tax'; a self-employed filer paid the premiums.",
+     "bugs": []
+    },
+    {
+     "n": 7,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The gate now says 'income after adjustments' and glosses it (BUG-1087 fixed in this lane); the help adds 'If not sure, answer Yes'.",
      "bugs": []
     }
    ],
-   "bugs": [
-    "BUG-1087"
-   ],
-   "class": "no gate defect beyond BUG-1087 (low)",
-   "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "70b77c815ad7a09f555f02b61b8be9157bbdf34d8ee3f952bb1e12fd4097d171",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:sa.mfs_spouse_not_itemizing#1": {
    "reason": "The gate is computed from sa.mfs and the spouse-itemizes answer, which the MFS filer is asked directly.",
@@ -7831,104 +7829,106 @@
    "subject_sha": "63d2a608f113889b8fd8dbea9e06324c16529b612c68ba928ad194f8b49e5fef"
   },
   "unruled:gate:sa.property_tax_other_if_home#1": {
-   "class": "no gate defect; business, unowned and escrow cases are excluded by the line 5b amount question",
-   "reason": "Findings 0 to 3 covered by the sa.line5b question and help and the leave-out list. Finding 4 is a model error: sa.home_owner asks about 'you (or, on a joint return, your spouse)'. Findings 5 and 6 are presentation residuals (the help equates billing with assessment; the buyer's payment of the seller's share at closing is a Pub. 530 rule not in the archived instructions); no defect filed.",
+   "reason": "Spouse title, escrow, business use and co-ops are covered by the heading, the line 5b question and help and the home-owner help; refund and sale timing are low wording points.",
+   "class": "no gate defect",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "i1040sca p. 6, Line 5b, 'real estate you own that wasn't used for business'. sa.line5b asks 'How much property tax did you (or, on a joint return, your spouse) pay in 2025 on your home and on any other real estate you own that is not used for business?'; tax on a rental or business part is not asked into the amount."
+     "class": "model error",
+     "evidence": "The tick group heading is 'In 2025, did you (or, on a joint return, your spouse) do any of these?' and its tick is 'Owned a home, condo or land at any time in the year'.",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "i1040sca p. 6, 'assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes'. The leave-out list names 'a special tax charged only on some properties' and 'a charge for a service, such as trash collection or water'."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The list names '2025 tax that was refunded to you' and the leave-out help says 'For a refund or rebate of 2025 tax, give what came back'. Low.",
+     "bugs": []
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "i1040sca p. 6, 'taxes you paid on real estate you own'. sa.line5b asks 'How much property tax did you (or, on a joint return, your spouse) pay in 2025 on your home and on any other real estate you own that is not used for business?'; tax on another person's property is outside the amount asked."
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The list names 'tax a buyer was charged when you sold' and the leave-out help points to the settlement statement and Form 1099-S box 6. Low.",
+     "bugs": []
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "i1040sca p. 6, 'you can include only the amount the mortgage company actually paid to the taxing authority in 2025'. sa.line5b help: 'If your lender pays the tax for you, box 10 of Form 1098 or the lender's year-end statement shows what it paid in 2025.'"
+     "evidence": "sa.line5b asks what was paid in 2025, and its help gives the lender's actual 2025 payment for escrow.",
+     "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "sa.home_owner asks 'At any time in 2025, did you (or, on a joint return, your spouse) own a home or other real estate?'; the reviewer saw only the gate's label. The spouse's real estate is counted."
+     "class": "covered",
+     "evidence": "sa.line5b asks for tax on real estate 'you own that is not used for business'; the list names 'a special tax charged only on some properties'.",
+     "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "i1040sca p. 6, 'State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed'. The list item '2026 tax paid before it was billed' with the help 'Tax is billed when it is assessed under state or local law' carries the rule through billing; an early bill issued before legal assessment is rare. Low; the help could say 'when state or local law makes you liable for it'."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "i1040sca p. 6 says only 'Any real estate taxes you paid at closing should be shown on your settlement statement'; the rule that a buyer's payment of the seller's share is not the buyer's deduction is in Pub. 530, not archived. The amount question asks tax on 'real estate you own'. Low; no defect filed."
+     "class": "covered",
+     "evidence": "sa.home_owner help counts a co-op and a home bought on a land contract.",
+     "bugs": []
     }
    ],
-   "subject_sha": "f3ee7ddc0662e20ae12dd13ee6258290d6b5ba02a82fdfbb4d7f04d87f4e675c"
+   "subject_sha": "8d38d4ce12104784f14c83defab29bb7614e4d3dbfa0c16e4fdc4e29a91016ad",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:sa.home_asked#1": {
-   "reason": "The home-owner help names co-ops, mobile homes, land contracts and sold homes; trust title and life estates are rare wording lows.",
+   "reason": "The home-owner help names co-ops, land contracts and sold homes; the heading names the spouse; the rest are low wording points.",
+   "class": "no gate defect",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "sa.home_owner help: 'Count a house, condo, co-op, mobile home, vacation home or land'.",
-     "bugs": []
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A home in one's own revocable trust or disregarded LLC is owned by the filer for tax purposes; the help does not say so. Low.",
-     "bugs": []
-    },
-    {
-     "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
      "evidence": "sa.home_owner help: 'and a home you are buying on a land contract while the seller holds the deed'.",
      "bugs": []
     },
     {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "sa.home_owner help: 'Count a house, condo, co-op, mobile home, vacation home or land'.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A deeded timeshare is real estate ('own a home or other real estate'). Low.",
+     "bugs": []
+    },
+    {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "A deeded timeshare is real estate ('own a home or other real estate'); low wording point.",
+     "evidence": "A home in one's own revocable trust or disregarded LLC is owned by the filer for tax purposes; the help does not say so. Low.",
      "bugs": []
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "A life tenant who pays the tax: rare; the help does not name it. Low.",
+     "evidence": "Tax paid in 2025 on a home sold in 2024 (a supplemental bill): rare. Low.",
      "bugs": []
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "sa.home_owner help counts a 'mobile home ... even if sold during the year', so s2.mortgage_subsidy is asked.",
+     "class": "model error",
+     "evidence": "The tick group heading is 'Do any of these apply to you (or, on a joint return, your spouse) for 2025?'.",
      "bugs": []
     }
    ],
-   "bugs": [],
-   "class": "no gate defect",
-   "subject_sha": "1715e4f5782c1e87b791f7c7180e581791b2e3430ec4ec6cfa3524220e60a90c",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "594fc1e8a1b14ee520fcfd7446d62e8668947f51ec77a050157c1322bae44244",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:oi8z.damages#1": {
    "class": "defect (low): medical care for non-physical emotional distress and pre-September-1995 agreements (BUG-0804); the kind gate itself is sound",
@@ -8525,83 +8525,60 @@
    "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516"
   },
   "unruled:gate:sd.sold_other#1": {
-   "reason": "Condemnations, small-business stock and trader elections are asked outside the gate; K-1 sales are refused; one rare related-party exchange gap filed (low).",
+   "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
+   "adjudication": "lane capital, wave 2026-11-24 (claude-opus-5-5, judgment; RUBRIC2)",
+   "class": "gate defect (low), fixed in wording; the rest covered or residual",
+   "reason": "Self-created patents and inventions were missing from the help (now named); the other cases are asked by sibling questions or refused elsewhere.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "sd.condemned, asked of every filer outside this gate: 'Had business or investment property taken by a government' (refused).",
-     "bugs": []
+     "class": "model error",
+     "evidence": "sd.small_business_stock, a box of the same screen asked of every return, asks section 1244 and 1242 losses (worthlessness included: 'Lost money on small-company stock')."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "sd.small_business_stock, asked outside the gate: 'Lost money on small-company stock and claim it as an ordinary loss' (refused).",
-     "bugs": []
+     "class": "finding (low), fixed",
+     "evidence": "i1040sd p. 2, Capital Asset: a patent, invention, model or design or a secret formula created by your personal efforts, or received from its creator, is not a capital asset. The sd.sold_other and sd.business_property help now name 'a copyright, patent, invention, manuscript or work of art you created yourself or were given by its creator'; a Yes is refused with Form 4797."
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1040sd p. 1, item 3, and the capital-asset exclusion of a copyright or composition 'Created by your personal efforts': such a sale outside a business is neither asked nor refused. Already filed as BUG-1091 (open, low); not filed again.",
-     "bugs": [
-      "BUG-1091"
-     ]
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "sd.trader_election, a box of the same screen, asks a mark-to-market trader."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "sd.trader_election, asked outside the gate: 'Trade securities as a business under a mark-to-market election' (refused).",
-     "bugs": []
+     "class": "out of scope",
+     "evidence": "Livestock held for draft, breeding or dairy is farm property; scope.farm, asked of every return, refuses farming through scope.schedule1."
     },
     {
      "n": 4,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "A section 1231 gain on a K-1 is refused by scope.k1.",
-     "bugs": []
+     "kind": "FALSE_NO",
+     "class": "model error",
+     "evidence": "sd.casualty, asked of every return: 'property damaged, destroyed or stolen, leaving a loss ... or an insurance payment above what the property cost', refuses."
     },
     {
      "n": 5,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A foreclosure is a sale for tax purposes; a filer reading 'sell' as voluntary is a wording point; a gain beyond the exclusion is rare. Low.",
-     "bugs": []
+     "kind": "FALSE_NO",
+     "class": "finding (low), fixed",
+     "evidence": "Payments on an inherited installment note, or one received in a divorce, are reported on Form 6252; the help now counts 'a payment in 2025 ... on a note you inherited or received in a divorce'."
     },
     {
      "n": 6,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help: 'Real estate includes a home you lived in'; a co-op unit or mobile home lived in is that home.",
-     "bugs": []
+     "kind": "FALSE_NO",
+     "class": "accepted residual",
+     "evidence": "Section 179 or listed-property recapture without a disposition is not a sale; it belongs to the business's assets, not to this gate. Recorded."
     },
     {
      "n": 7,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i8824 p. 1: 'Also file Form 8824 for the 2 years following the year of a related party exchange'; Line 7: a disposition within 2 years makes the deferred gain reportable 'on your tax return for the year of disposition'. The gate asks only about 2025 sales or trades, so a 2023 or 2024 related-party exchange with a 2025 disposition is neither asked nor refused. Rare; low.",
-     "bugs": [
-      "BUG-1285"
-     ]
-    },
-    {
-     "n": 8,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help: 'Real estate includes ... an oil, gas or mineral interest such as a royalty.'",
-     "bugs": []
+     "class": "model error",
+     "evidence": "The help now says 'A government taking, a foreclosure or an abandonment counts as a sale', and a home with a Form 1099-S is a Yes to sd.home_sale, which refuses."
     }
-   ],
-   "bugs": [
-    "BUG-1091",
-    "BUG-1285"
-   ],
-   "class": "defect (low): related-party exchange of an earlier year (BUG-1285)",
-   "subject_sha": "d6e501a3c2f95989579892856f86b74ef01ef7466ac0c811d0a09c287f447b42",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   ]
   },
   "unruled:gate:f8853c.has_line17#1": {
    "class": "no gate defect; the box 4 and box 3 readings follow the payee statement the line instructions name; low wording points",
@@ -10271,6 +10248,87 @@
    "subject_sha": "84ff7fb7e399ab38ee4d8a97310d6a99f89d092aaeb6e3eb8553f5dd23a3e9bc",
    "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
    "bugs": []
+  },
+  "unruled:gate:f1116sb.prior_asked#1": {
+   "reason": "A carryover holder once filed Form 1116, which the foreign-tax question counts, and a carryover with no 2025 tax is refused; the rest are low.",
+   "class": "no gate defect",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "s3.foreign_any asks whether the filer has ever paid income tax to another country (help: count fund tax 'only if you once filed Form 1116 for it'); a carryforward exists only from a year of Form 1116, so ftc.carryover is asked. With no 2025 foreign tax, the carryover is refused at ftc.carryover_no_tax.",
+     "bugs": []
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A filer unaware of a carryover tracked by a preparer: the ftc.carryover help points to line 8 of the 2024 Schedule B (Form 1116). An unclaimed carryover only understates the credit. Low.",
+     "bugs": []
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "s3.foreign_any help: 'Count foreign tax a fund paid for you (Form 1099-DIV box 7) only if you once filed Form 1116 for it.'",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "s3.foreign_any and ftc.carryover both name the spouse ('you (or, on a joint return, your spouse)').",
+     "bugs": []
+    }
+   ],
+   "subject_sha": "c3e64c4d3435c38a69bcb6df59a7ecacaf8e46b3c64ec2231a18962d886fd860",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
+  },
+  "unruled:gate:s2.lookback_ask#1": {
+   "subject_sha": "7a42249cab74d9ef1e5a774e4d81601f01cf8f2e727307f8666f0f63fa965a2f",
+   "adjudication": "lane capital, wave 2026-11-24 (claude-opus-5-5, judgment; RUBRIC2)",
+   "class": "one gate gap filed (BUG-1332); the rest refused by scope.k1",
+   "reason": "Every partnership, S corporation, estate or trust case is refused by scope.k1; the income-forecast royalty investor is filed.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "scope.k1, asked of every return ('income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it'), refuses through scope.schedule1."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "defect (low), filed: BUG-1332",
+     "evidence": "f1040s2 line 17n (Form 8866): an investor with income-forecast royalty rights and no business is not asked. Widening the gate with the royalty roster is left to that entry."
+    },
+    {
+     "n": 2,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Entity-level contracts reach the owner only through a Schedule K-1: scope.k1 refuses."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope / accepted residual",
+     "evidence": "K-1 recipients are refused by scope.k1; a contractor is asked in plain words ('a contract over more than one tax year, with its income figured as the work went on'), with the AMT-only case in the help."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A trust or estate beneficiary receives a Schedule K-1; scope.k1 names estates and trusts."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Property disposed of in 2025 was still depreciated in 2025; the prompt's 'do you depreciate' is read so. Rare; recorded."
+    }
+   ]
   }
  },
  "baseline": {}

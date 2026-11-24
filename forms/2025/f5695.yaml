@@ -661,7 +661,7 @@ form:
     gated_by: f5695.water_heater_if_any
     expr:
       op: input
-      source: "Did that include a water heater that runs on natural gas, propane or oil?"
+      source: "Did that include a water heater that runs on natural gas, propane or oil (other than a heat pump water heater)?"
     cite:
       doc: i5695
       locator: p. 2, Energy Efficient Home Improvement Credit (Part II), "You may be able to take a credit equal to 30% of
@@ -2276,11 +2276,12 @@ form:
     label: Enter the cost of the most expensive door you bought
     type: NonNegDollars
     gated_by: f5695.line19a_if_doors
+    ambiguity: amb.2025.f5695_door_ranking
     expr:
       op: input
       source: The cost of the most expensive exterior door you (or, on a joint return, your spouse) bought that meets
-        the applicable Energy Star requirements, not counting labor (net of subsidies and rebates; see help; zero if
-        none)
+        the applicable Energy Star requirements, not counting labor (net of subsidies and rebates, which also rank the
+        doors; see help; zero if none)
     cite:
       doc: i5695
       locator: p. 6, Lines 19a Through 19h, "Line 19a. Enter the amount you paid for the most expensive exterior door that

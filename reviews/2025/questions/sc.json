@@ -2,25 +2,46 @@
  "form": "sc",
  "reviews": {
   "sc.at_risk": {
-   "subject_sha": "8eb6780e5301bcf641a73150d524a9ce6c0727cb8fb4a28142fc7997f22a60d8",
+   "subject_sha": "c8ffb5bf26864a5b0cc1649c7b50a479733bd3682746650f0b66b1e65353cb17",
    "samples": [
     {
-     "verdict": "WIDE",
+     "verdict": "NARROW",
      "findings": [
       {
-       "kind": "WIDE",
-       "situation": "A filer whose only nonrecourse loan is qualified nonrecourse financing borrowed to hold real property would answer no, so box 32b gets checked even though the instructions treat that financing as an exception.",
-       "source_text": "Question: 'Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property ... and that you are not personally responsible to repay'. i1040sc pp. 14-15: 'However, there is an exception for certain nonrecourse financing borrowed by you in connection with holding real property. See the Instructions for Form 6198 and Pub. 925.'",
-       "why": "The question leaves out the exception for qualified nonrecourse financing on real property. Because of that, a truthful answer would mark amounts as not at risk when the at-risk rules count them as at risk, and the 32b line would be set when it should not be.",
+       "kind": "NARROW",
+       "situation": "A filer holding real estate has a nonrecourse mortgage from a lender related to them, on commercially reasonable terms the same as loans to unrelated persons; the help says such a lender must be 'not related to you', so the filer answers No although the financing is at risk.",
+       "source_text": "p925 p. 23: \"However, a person related to you may be a qualified person if the nonrecourse financing is commercially reasonable and on the same terms as loans involving unrelated persons.\"",
+       "why": "The help excludes every related lender, but the text allows a related lender on arm's-length terms. The filer is pushed to No and refused when box 32a applies.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer holding real estate has a nonrecourse mortgage from a regular private lender that is guaranteed by a federal, state or local government, and the lender would not otherwise qualify; the help covers only a mortgage 'from a government'.",
+       "source_text": "p925 p. 23: \"Loaned from or guaranteed by any federal, state, or local government, or borrowed by you from a qualified person.\"",
+       "why": "Government-guaranteed financing is qualified nonrecourse financing, but the help mentions only loans made by a government. The filer answers No when all investment is at risk.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer's real-estate mortgage is also secured by incidental property, or by other property worth less than 10% of all the collateral; the help says the mortgage must be secured 'only by that real estate'.",
+       "source_text": "p925 p. 23: \"disregard property that is incidental to the activity of holding real property. Also, disregard other property if the total gross fair market value of that property is less than 10% of the total gross fair market value of all the property securing the financing.\"",
+       "why": "Read literally, 'secured only by that real estate' makes the filer treat this financing as not at risk and answer No, although the text counts it as qualified nonrecourse financing.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer borrowed from an unrelated bank and is personally bound to repay, and wonders whether the bank is 'someone with a stake in the business' because it has a stake in being repaid.",
+       "source_text": "i1040sc p. 15: \"Amounts borrowed for use in the business from a person who has an interest in the business other than as a creditor\"; question: \"nothing lent by someone with a stake in the business\"",
+       "why": "The question leaves out 'other than as a creditor', so a filer could count any lender as having a stake and answer No. The text would put this loan at risk.",
        "bound": ""
       }
      ],
-     "prompt_sha": "cfbbf27e831057d62e66e43a82af57bc66516a7deb55a3876affc51780887d4a",
+     "prompt_sha": "08e86dea848ba9297f431ae6ae6c0cc26b0b73f7e9e5ae686352a143d9df3407",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.059292,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/sc.at_risk.8eb6780e5301.1.response.txt"
+     "cost": 0.073156,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/sc.at_risk.c8ffb5bf2686.1.response.txt"
     }
    ],
    "type": "Bool",
@@ -38,13 +59,27 @@
      "how": "cited pages",
      "locators": [
       "p. 15, Line 32, Some investment is not at risk",
-      "pp. 14-15, Line 32, At-risk rules and Figuring your loss"
+      "pp. 14-15, Line 32, At-risk rules (\"there is an exception for certain nonrecourse\") and Figuring your loss; , \"you’re considered at risk for qualified nonrecourse financing secured by real property used in an activity of holding real property\""
      ],
      "cols_pages": [
       14,
       15
      ],
      "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "p925",
+     "revision": "2025",
+     "text_sha256": "3b1ff7c5ced72cbd4ae594b07eea50189f0886c32e47a3349a7359f852d0b971",
+     "pages": [
+      23
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "68baa3fca122caa06dfcadad5d675d530287f6d61aa9a18c1659ba11481498e5"
     }
    ]
   },
@@ -2905,25 +2940,17 @@
    ]
   },
   "sc.special": {
-   "subject_sha": "4da2b6aaa83f923b0611f2e90289ef027c2070f571d5bb7559f3f6d269f33cf4",
+   "subject_sha": "96519232b8447790380b15c18852642f52840828a4a713ce75f9f61ae414c41e",
    "samples": [
     {
-     "verdict": "WIDE",
-     "findings": [
-      {
-       "kind": "WIDE",
-       "situation": "The filer's business is a creditor in a customer's chapter 11 case, or the filer's own chapter 11 case closed before 2025, and the filer answers yes to 'a chapter 11 bankruptcy case.'",
-       "source_text": "i1040sc 2025 p. 5, Part I: \"If you were a debtor in a chapter 11 bankruptcy case during 2025, see Chapter 11 Bankruptcy Cases in the Instructions for Form 1040\"",
-       "why": "The special rule applies only when the filer was the debtor and only during 2025. The question's 'a chapter 11 bankruptcy case' leaves out both limits, so a creditor or someone with a past case can truthfully answer yes and be screened out without need.",
-       "bound": ""
-      }
-     ],
-     "prompt_sha": "3b8fab0880dfe1e8eda3b874da4cd88143d6c97e538f4e633dc13f5b38b03fd1",
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "3573aaaec3bd5db0ab10f288caaba34823228887261f4f1ceaace7109b3cb332",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.199836,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/sc.special.4da2b6aaa83f.1.response.txt"
+     "cost": 0.2386,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/sc.special.96519232b844.1.response.txt"
     }
    ],
    "type": "Bool",
@@ -2949,11 +2976,12 @@
       12,
       13,
       14,
-      15
+      15,
+      16
      ],
      "how": "cited pages",
      "locators": [
-      "p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p. 6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 1, Qualified sound recording productions; p. 2, \"a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business\" and \"unless you have elected to treat the domestic LLC as a corporation\"; p. 6, Line 6, recapture; p. 14, Line 31, \"prior year unallowed passive activity losses\"; p. 6, Installment sales, \"If you use the installment method, attach a statement to your return\"; p. 9, Line 23, \"But some licenses, such as liquor licenses, may have to be amortized\"; p. 9, Line 24a, \"Other rules apply to luxury water travel\"; , Luxury Water Travel, \"there is a daily limit on the amount you can deduct\"; , \"If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period\"; , \"there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee\", and p. 3, Determining if information reported on your Form 1099-PATR is included in QBI",
+      "p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p. 6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 1, Qualified sound recording productions; p. 2, \"a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business\" and \"unless you have elected to treat the domestic LLC as a corporation\"; p. 6, Line 6, recapture; p. 14, Line 31, \"prior year unallowed passive activity losses\"; p. 6, Installment sales, \"If you use the installment method, attach a statement to your return\"; p. 9, Line 23, \"But some licenses, such as liquor licenses, may have to be amortized\"; p. 9, Line 24a, \"Other rules apply to luxury water travel\"; , Luxury Water Travel, \"there is a daily limit on the amount you can deduct\"; , \"QBI doesn’t include any of the following\", \"Income that isn’t effectively connected with the conduct of a trade or business within the United States\"; , \"Foreign source income generally includes\", \"Compensation for services performed outside the United States\"; , \"If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period\"; , \"there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee\", and p. 3, Determining if information reported on your Form 1099-PATR is included in QBI; i1040sc p. 16, Business startup costs, \"If your business began in 2025, you can elect to deduct up to $5,000 of certain business startup costs\", \"Your remaining startup costs can be amortized over a 180-month period\", \"For amortization that begins in 2025, complete and attach Form 4562\"",
       "pp. 2-15, the items named in the screens of this Schedule C"
      ],
      "cols_pages": [
@@ -2969,7 +2997,8 @@
       10,
       13,
       14,
-      15
+      15,
+      16
      ],
      "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
     },
@@ -2988,18 +3017,6 @@
      "cols_sha256": "a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326"
     },
     {
-     "doc": "i4562",
-     "revision": "2025",
-     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
-     "pages": [
-      4
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [],
-     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
-    },
-    {
      "doc": "i8995",
      "revision": "2025; printed date 2026-01-26",
      "text_sha256": "96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2",
@@ -3012,6 +3029,32 @@
       2
      ],
      "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
+    },
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    },
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      4
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
     }
    ]
   },

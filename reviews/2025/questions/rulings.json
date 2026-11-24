@@ -896,20 +896,35 @@
    ]
   },
   "unruled:sc.at_risk#1": {
-   "subject_sha": "8eb6780e5301bcf641a73150d524a9ce6c0727cb8fb4a28142fc7997f22a60d8",
-   "reason": "Low: qualified nonrecourse real property financing answers No and is refused.",
+   "subject_sha": "c8ffb5bf26864a5b0cc1649c7b50a479733bd3682746650f0b66b1e65353cb17",
+   "reason": "Each case only refuses a return the tool could compute (box 32a); no amount is wrong.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
-     "class": "real, low",
-     "evidence": "i1040sc pp. 14-15, exception for nonrecourse financing for holding real property. A No makes sc.not_at_risk true, which refuses sc.loss_allowed (Form 6198) only when there is a loss. Over-refusal.",
-     "bug": "BUG-0530"
+     "kind": "NARROW",
+     "class": "accepted (over-refusal)",
+     "evidence": "p925 p. 23 allows a related lender on commercially reasonable terms; the help names only unrelated lenders, the side that refuses rather than lets a limited loss through (the coordinator's rule under the owner's delegation of 2026-11-24: where unsure, do not understate tax). A related lender's nonrecourse mortgage is refused (Form 6198)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "accepted (over-refusal)",
+     "evidence": "p925 p. 23, financing 'loaned from or guaranteed by any federal, state, or local government': a privately made, government-guaranteed mortgage from a lender that is not a regular lender is refused, never computed wrongly. Rare."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "accepted (over-refusal)",
+     "evidence": "p925 p. 23 disregards incidental property and other property under 10% of the collateral; 'secured only by that real estate' refuses such a mortgage. Over-refusal only."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The prompt's 'nothing lent by someone with a stake in the business' and the help's related-lender sentence follow i1040sc p. 15, 'a person who has an interest in the business other than as a creditor'; a filer who reads a bank as having a stake answers No and is refused, never computed wrongly."
     }
    ],
-   "bugs": [
-    "BUG-0530"
-   ]
+   "bugs": []
   },
   "unruled:sc.f7206_line1#1": {
    "subject_sha": "c777293e550deb2289c81d26e7e42bb372f38052831ead15d5ed51bd15019619",
@@ -4633,27 +4648,17 @@
    "bugs": []
   },
   "unruled:f5695.line19a#1": {
-   "subject_sha": "a1cd39a6bb98ceb1350ad5275d9a36c35cc180fba4e0b6ee82ff6f82cbd6c42a",
-   "reason": "Finding 0 is refused; finding 1 is a rare ranking low.",
+   "subject_sha": "89c929789d25b77aa41d34629967ef454e825b5558917276cde6456072d5760a",
+   "reason": "The door tick sits under the 2025 parent; doors finished in another year are not entered.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
-     "class": "covered",
-     "evidence": "Construction-related Section A improvements are refused (line 17e Yes).",
-     "line": "f5695.sec_a_new_home (refusal on f5695.line30, \"Form 5695 Part II, Section A, with improvements related to the construction of the main home (line 17e Yes)\")"
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "real, low",
-     "evidence": "f5695 line 19a, \"the cost of the most expensive door you bought\", has the same gross-or-net ambiguity. The two readings swap which door is capped at $250 on line 19c; the total differs only when one door's 30% exceeds $250 and the $500 door limit does not bind. Rare and small.",
-     "bug": "BUG-0555"
+     "class": "wrong",
+     "evidence": "f5695.any, the parent the door tick sits under, says 'Count work finished in 2025', and f5695.line19a's help names Energy Star doors; i5695 p. 1, Costs, treats costs as paid when installation is completed. A door finished in 2024 or 2026 is not among the work the filer is listing."
     }
    ],
-   "bugs": [
-    "BUG-0555"
-   ]
+   "bugs": []
   },
   "unruled:f5695.line19d_i#1": {
    "subject_sha": "cbad5502df8c84ab8b6620f24c3dd645545b634858fb6d2d94ed54834386c059",
@@ -5456,27 +5461,17 @@
    ]
   },
   "unruled:scveh.miles_other#1": {
-   "subject_sha": "efe212699f6c8b9e6304f6fcb90fdd1ddd9b67078b84c29d68144f89136c6120",
-   "reason": "Finding 0 is the same two-business low; finding 1 is screened.",
+   "subject_sha": "ba0fb044947f9653bfe16c58a3ae3a74f7043e69538e4fd7d224f08010f9a8ef",
+   "reason": "A vehicle converted in 2025 is refused.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "Line 44c must hold every mile not on 44a or 44b; '(personal)' leaves out another business's miles (investment use is screened). Same two-business gap as scveh.miles_business.",
-     "bug": "BUG-0559"
-    },
-    {
-     "n": 1,
      "kind": "WIDE",
      "class": "covered",
-     "evidence": "scveh.screen lists \"you converted it from personal use to business use during 2025\" (and the reverse).",
-     "line": "scveh.screen (refusal on scveh.cost via scveh.screened)"
+     "evidence": "scveh.converted ('During 2025, did this vehicle change between personal and business use') refuses a vehicle converted in 2025, so the whole-year miles are the right denominator on every computed return."
     }
    ],
-   "bugs": [
-    "BUG-0559"
-   ]
+   "bugs": []
   },
   "unruled:scveh.passenger#1": {
    "subject_sha": "13fa9d1acfa82df0db1fa93cf4f87eec047cbfabaf8e01a9b65a69b621f437bd",
@@ -5735,157 +5730,98 @@
    "bugs": []
   },
   "unruled:asset.cost#1": {
-   "subject_sha": "b032dfc0bbd007b21e339db5cad4a7e96243abd2ef99fb5f11cfd09575690fb2",
-   "reason": "One low (adjusted vs unadjusted basis); vehicles and trade-ins are refused.",
+   "subject_sha": "a254fcb481d55c7d0bf02a658edaee0d78f72e7da72732ecce12b68e4f51db3a",
+   "reason": "All three cases are refused by the asset screens before the cost is used.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
+     "kind": "NARROW",
      "class": "covered",
-     "evidence": "Vehicles are refused by asset.screen (\"it is a car, truck or other vehicle (enter vehicles separately)\") and so is \"its basis is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance\".",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
+     "evidence": "asset.got_other refuses property got with a trade-in, in an exchange, as a replacement for property destroyed, stolen or condemned, from a relative or a controlled business, or as a gift or inheritance (forms/2025/asset.yaml, asset.got_other)."
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
+     "kind": "WIDE",
      "class": "covered",
-     "evidence": "asset.screen: \"you acquired it in a like-kind exchange or an involuntary conversion, with a trade-in\".",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
+     "evidence": "asset.basis_changed refuses property whose cost was changed by a casualty loss, tax credit or special deduction (its help names the disabled access, refueling, childcare and investment credits and the 179D deduction); vehicles are not entered as assets (asset.kind_excluded)."
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "real, low",
-     "evidence": "i4562 p. 14 column (d) \"unadjusted for prior years' depreciation\". The question's parenthetical \"what you paid, including sales tax, delivery and installation\" anchors cost, so few filers would enter a depreciated figure; the word \"unadjusted\" is missing. Presentation.",
-     "bug": "BUG-0565"
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "asset.basis_changed (anything but depreciation changed its cost: a casualty loss) refuses it; amortizable property is excluded by asset.kind_excluded (a license, contract right, franchise, patent or copyright)."
     }
    ],
-   "bugs": [
-    "BUG-0565"
-   ]
+   "bugs": []
   },
   "unruled:asset.listed#1": {
-   "subject_sha": "ccebabfec06d600cf430f82d491881584eb9d2715c1829d8462e9e096509fbba",
-   "reason": "Lows: the listed-property definition is incomplete, but the omitted cases have no 2025 depreciation or change only the line they are reported on.",
+   "subject_sha": "cb01602e577add9198c3f1d833570eeb6b0390979cad77e1def5b5d2ecb1002f",
+   "reason": "Vehicles and other transportation property are not entered as assets.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "Pre-2018 computers and peripherals are 5-year property (class 00.12) fully depreciated by 2022, and those acquired before September 28, 2017 are screened; a No sends no 2025 amount anywhere.",
-     "bug": "BUG-0565"
-    },
-    {
-     "n": 1,
-     "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "Same as finding 0: the employer-establishment nuance concerns only pre-2018 computers, which carry no 2025 depreciation.",
-     "bug": "BUG-0565"
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "Other entertainment property used only in the business is 100% business use, so GDS depreciation, section 179 and the allowance are the same; only the line (19/14/6 vs 26/25/29) differs. Presentation.",
-     "bug": "BUG-0565"
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "real, low",
-     "evidence": "The parenthetical \"(such as photographic, phonographic, communication or video recording equipment)\" names the camera as an example, so most filers answer Yes; the other reading matters only at 50% or less business use (ADS). Rare.",
-     "bug": "BUG-0565"
+     "class": "covered",
+     "evidence": "asset.kind_excluded (the tick 'A building, land, vehicle, boat, aircraft, film, recording, patent or copyright', help 'A car, truck or van is entered with the business's vehicles, not here') refuses a vehicle, motorcycle or aircraft entered as an asset; cars, trucks and vans go to scveh, whose own listed-property test (scveh.low_use) applies."
     }
    ],
-   "bugs": [
-    "BUG-0565"
-   ]
+   "bugs": []
   },
   "unruled:asset.not179#1": {
-   "subject_sha": "2a1b978d3218b2cc03302e0bd27d4d371903955968470d73bac5e329ee24960c",
-   "reason": "One rare low (section 521 cooperative); the rest are refused or misread.",
+   "subject_sha": "a0e5a89efca1f20f2f42a1eb24c2a39e1ba43ebbaa95156c3fca58d1f8ff2a97",
+   "reason": "Both cases are outside the question's reach.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "asset.screen: \"it is used predominantly outside the United States\".",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
+     "evidence": "asset.outside_use ('Used mostly abroad; leased to a charity, government or foreigner; or bond-financed') refuses property used mainly outside the United States before the section 179 question matters."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "asset.screen: acquired \"from a related person, or by gift or inheritance\".",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "asset.screen: \"it is real property ... or land\".",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
-    },
-    {
-     "n": 3,
      "kind": "WIDE",
-     "class": "wrong",
-     "evidence": "The return is a Form 1040; the filer is never a corporation, so the non-corporate lessor rule always applies."
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "real, low",
-     "evidence": "i4562 p. 2 excepts a section 521 farmers' cooperative; a Yes only removes the cost from s179.line2 and refuses an election (asset.s179_bad). Vanishingly rare.",
-     "bug": "BUG-0565"
+     "class": "out of scope",
+     "evidence": "The tool prepares individual returns (Schedule C of Form 1040); no corporate filer answers it."
     }
    ],
-   "bugs": [
-    "BUG-0565"
-   ]
+   "bugs": []
   },
   "unruled:asset.pct#1": {
-   "subject_sha": "20bfb2c6e64baf49a86c22af191d2b3bbb578c4d8177f2756d6dfd6bc236afba",
-   "reason": "One low (whole percent); the other cases are refused or misread.",
+   "subject_sha": "7ec9f7bddfeb0f201176516d02bf7574cfca4908832dd4e080170c9bd6898119",
+   "reason": "Vehicles are not assets here; a change of use is refused; investment use of a business asset is an accepted residual on the safe side.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "wrong",
-     "evidence": "The asset entries are depreciation of a Schedule C business (sc.f6, sc.f19_* sum them into that business's Form 4562); investment-use depreciation is not a Schedule C expense, so \"for this business\" is the right percentage."
+     "class": "accepted residual",
+     "evidence": "i4562 p. 14, Column (c), business/investment use: a Schedule C asset also used to produce income outside the business is rare, and leaving that use out lowers the depreciation (it cannot understate tax)."
     },
     {
      "n": 1,
-     "kind": "NARROW",
+     "kind": "WRONG_FIGURE",
      "class": "covered",
-     "evidence": "asset.screen: \"converted it to personal use in 2025\" and \"its business use percentage has changed since you placed it in service\".",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
+     "evidence": "Cars, trucks and vans are entered with the business's vehicles (scveh, by miles), not as assets: asset.kind_excluded refuses a vehicle."
     },
     {
      "n": 2,
-     "kind": "NARROW",
+     "kind": "WIDE",
      "class": "covered",
-     "evidence": "Vehicles are refused by asset.screen (\"enter vehicles separately\"); the employee-vehicle rule never reaches this question.",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
+     "evidence": "As finding 1: vehicles are not entered here, and scveh.miles_business says not to count commuting."
     },
     {
      "n": 3,
-     "kind": "WRONG_FIGURE",
+     "kind": "NARROW",
      "class": "covered",
-     "evidence": "Same: vehicles are scveh entries, refused here by asset.screen.",
-     "line": "asset.screen (refusal on asset.cost, \"Form 4562 property outside this tool\")"
+     "evidence": "An employer's vehicle is a vehicle (asset.kind_excluded); not entered here."
     },
     {
      "n": 4,
-     "kind": "TYPE",
-     "class": "real, low",
-     "evidence": "The input is a whole percent (form source \"a whole number from 1 to 100\"); a fractional percentage rounds by at most half a percent of basis. Deliberate type; small.",
-     "bug": "BUG-0565"
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "asset.use_changed ('The business share of its use has changed') refuses an asset whose business use changed, and asset.ended_this_year one taken for personal use in 2025."
     }
    ],
-   "bugs": [
-    "BUG-0565"
-   ]
+   "bugs": []
   },
   "unruled:asset.placed#1": {
    "subject_sha": "e31a1bd344fc8791fd1b279ada29f929206051c3423a6d7ea4a0be51958ffa45",
@@ -5945,26 +5881,18 @@
    "bugs": []
   },
   "unruled:asset.quarter#1": {
-   "subject_sha": "7738d4426546cd96664d457006b51d7d7ce7d80f8e4a7537b1bfb9ab648e40c7",
-   "reason": "Lows: the fiscal-year case and a conversion date given by reference.",
+   "subject_sha": "12c909d0cc6f42df8013d068ea8aac23dbecd429d42779142ea0908623b86036",
+   "reason": "The fiscal year is a return-wide scope gap, filed as BUG-1313; a short year is refused.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "real, low",
-     "evidence": "Same as asset.placed#1: an individual on a fiscal year is vanishingly rare.",
-     "bug": "BUG-0565"
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "real, low",
-     "evidence": "asset.placed, asked just before for the same property, says \"property you converted from personal use to use in the business is placed in service on the date of the conversion\"; the quarter question does not repeat it. Presentation.",
-     "bug": "BUG-0565"
+     "evidence": "p946 p. 41: quarters count from the first day of the tax year. No question refuses a fiscal-year return; filed as BUG-1313 (low, scope). A short tax year is refused by asset.short_year."
     }
    ],
    "bugs": [
-    "BUG-0565"
+    "BUG-1313"
    ]
   },
   "unruled:asset.s179#1": {
@@ -7947,6 +7875,214 @@
    ],
    "bugs": [
     "BUG-1263"
+   ]
+  },
+  "unruled:f5695.water_heater#1": {
+   "subject_sha": "62a50e95873d28e94f08ec56921ef2524f107d4b173a7be073251e0008c5038c",
+   "reason": "Both cases are handled downstream: a new home is refused, a heater below the tier gets no amount.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "f5695.b_new_home asks whether any of the equipment was installed as part of building a new home and refuses a Yes."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "The tick is a gate; f5695.line23a_i's help says the heater counts only at the highest CEE efficiency tier, so a heater below it is entered as zero. Extra questions only."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:rental.amt12#1": {
+   "subject_sha": "6af60e55cdcd04563d2283db7f1c641f4e5d90983f3e4dbb7cdbefbc0a04daf8",
+   "reason": "Both cases have a place on the cost screen.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A bank loan with no Form 1098 in the filer's name goes to other interest: rental.has_other_interest and rental.amt13's source, 'such as a home equity loan on another home or a loan with no Form 1098 in your name'."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Interest on a loan secured by another property and spent on the rental: rental.amt13's source, 'money borrowed and spent on it ... such as a home equity loan on another home'."
+    }
+   ]
+  },
+  "unruled:rental.at_risk_prior#1": {
+   "subject_sha": "023b367ed7002edf63ead6cefe5de91873b9555f9121733930b85bd3bcb96fe9",
+   "reason": "One low residual, filed.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "p925 p. 19: allowed losses are recaptured when the amount at risk falls below zero. With no Form 6198 history and income this year, rental.not_at_risk (asked only on a loss) does not reach it. BUG-1341."
+    }
+   ],
+   "bugs": [
+    "BUG-1341"
+   ]
+  },
+  "unruled:royalty.at_risk_prior#1": {
+   "subject_sha": "b6c3efa7ee69459c48b59e1c6f130c75a0da56b98c21dbaeb9600a08160463ef",
+   "reason": "One low residual, filed.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "As for rental.at_risk_prior: recapture without Form 6198 history in a year without a loss is not reached (p925 p. 19). BUG-1341."
+    }
+   ],
+   "bugs": [
+    "BUG-1341"
+   ]
+  },
+  "unruled:rental.business_credit#1": {
+   "subject_sha": "401167c93c6bcb2976ca21d905a3e2467eee26a2de9fac2579f24e9eea7ebb44",
+   "reason": "A carried-forward credit is refused elsewhere.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A credit carried from an earlier year is asked by s3.prior_forms and refused on s3.line7 ('A credit carried over from an earlier year is outside this tool', i3800 p. 3)."
+    }
+   ]
+  },
+  "unruled:rental.has_other_interest#1": {
+   "subject_sha": "1b4426ed03d038e9ac6e1d5d09422f1f533520dd6b0204a5aa8e9af63fd584f7",
+   "reason": "The tick and amt13's source cover each case.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "wrong",
+     "evidence": "The tick itself reads 'Other interest on money borrowed for it, even a home equity loan'; the help only adds the points share. Ordinary interest on a seller note or private loan is what the tick names."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Traced debt: the tick names a home equity loan, and rental.amt13's source 'money borrowed and spent on it ... such as a home equity loan on another home'."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "rental.amt13 asks interest on money 'borrowed and spent on it', and rental.amt12 leaves out 'interest on any part of the loan spent on something else'."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The tick sits beside 'Mortgage interest on a Form 1098' on the same screen, and rental.amt13's source names 'a loan with no Form 1098 in your name'."
+    }
+   ]
+  },
+  "unruled:rental.mortgage_excess#1": {
+   "subject_sha": "3673c381950bf847b0db819bd6d1b555da4633a7adfe852ad452112622915b2a",
+   "reason": "Not asked of a filer without a Form 1098.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "wrong",
+     "evidence": "rental.mortgage_excess is asked only behind rental.has_mortgage ('Mortgage interest on a Form 1098'), so a filer with no Form 1098 never sees it; such interest goes to other interest."
+    }
+   ]
+  },
+  "unruled:rental.prerental#1": {
+   "subject_sha": "11226c24933ab152effb70360110ffdaa8a2342abccbc2f609aee885990a805a",
+   "reason": "The case is not a rental of 2025.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "wrong",
+     "evidence": "A property not offered for rent until 2026 is not listed: $rental asks for property 'rented out, offered for rent or received rent for in 2025', so its 2025 costs never reach line 21."
+    }
+   ]
+  },
+  "unruled:sche.grouped#1": {
+   "subject_sha": "91a73adb497c91ce1cf5533d25f778a2180e19c1676be432b65e9ceef8325619",
+   "reason": "One out of scope, one accepted over-refusal.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Grouping by a partnership or S corporation comes with a Schedule K-1, refused by scope.k1."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A regrouping under the NIIT fresh start election in 2025 is rare; the help's Yes refuses, which leaves every amount right."
+    }
+   ]
+  },
+  "unruled:sche.qbi_business#1": {
+   "subject_sha": "ca72aa487b15c3da1c9e5d3df86c262d80d9277e38ff48a2f78732b230670383",
+   "reason": "One low residual, filed; one accepted over-refusal.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "The safe-harbor example can read as the bar (i8995 p. 1, a section 162 trade or business qualifies without the safe harbor). BUG-1342."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A rental listed on a 2024 Form 8995 that is no longer a trade or business is refused; the refusal leaves every amount right."
+    }
+   ],
+   "bugs": [
+    "BUG-1342"
+   ]
+  },
+  "unruled:rprop.basis#1": {
+   "subject_sha": "907dca76ab8e3fa8d162d91564d156c8b0e1468bce9e65279b0ae851e1103a7a",
+   "reason": "Each case is refused by a sibling question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "A building inherited, received as a gift or in an exchange is refused by rprop.exchanged ('in a trade (a like-kind or 1031 exchange) ... as a gift or an inheritance')."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "Part of a building the filer lives in is refused by rental.part_home."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "Other credits or deductions taken for part of its cost are refused by rprop.credit, and bonus depreciation or section 179 by rprop.fast."
+    }
+   ]
+  },
+  "unruled:rprop.credit#1": {
+   "subject_sha": "c45eaf6622b793eff7b4be750d875b0479488de6d20542ebe63d0e64d2bfc648",
+   "reason": "Accepted over-refusal.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A low-income housing credit claimed for 2025 is refused anyway by rental.business_credit (Form 3800); a Yes here also only refuses, leaving every amount right."
+    }
    ]
   }
  },

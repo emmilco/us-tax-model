@@ -250,39 +250,39 @@
    ]
   },
   "asset.cost": {
-   "subject_sha": "b032dfc0bbd007b21e339db5cad4a7e96243abd2ef99fb5f11cfd09575690fb2",
+   "subject_sha": "a254fcb481d55c7d0bf02a658edaee0d78f72e7da72732ecce12b68e4f51db3a",
    "samples": [
     {
-     "verdict": "WIDE",
+     "verdict": "NARROW",
      "findings": [
       {
+       "kind": "NARROW",
+       "situation": "The filer received the property in a trade-in (like-kind exchange or involuntary conversion), by gift, or by inheritance, so its basis is not what the filer paid for it.",
+       "source_text": "i4562 p. 14, Column (d): \"Enter the property's actual cost (including sales tax) or other basis ... If you traded in old property, see Property acquired in a like-kind exchange\"; p946 p. 37: \"If you trade property, your unadjusted basis in the property received is the cash paid plus the adjusted basis of the property traded\"",
+       "why": "The question asks only what the property cost, and its help covers only property converted from personal use. A truthful filer enters the price or cash paid, not the carryover or other basis the lines need.",
+       "bound": ""
+      },
+      {
        "kind": "WIDE",
-       "situation": "A filer bought a vehicle for which an alternative motor vehicle credit was allowed (or a pre-2007 qualified electric vehicle credit was claimed) and enters the full purchase price including sales tax, as the question directs.",
-       "source_text": "i4562 p. 14, Column (d): \"For a vehicle, reduce your basis by any qualified electric vehicle credit you claimed for property placed in service before January 1, 2007, or by any alternative motor vehicle credit allowed.\"",
-       "why": "The question says only \"what you paid, including sales tax, delivery and installation\" and never mentions the vehicle credit reduction. A truthful answer therefore overstates the cost that feeds asset.basis, the bonus figure, MACRS depreciation and scveh.line19.",
+       "situation": "The filer claimed an alternative motor vehicle credit on a vehicle, or a credit that reduces basis (disabled access credit, section 50(c) investment credit, section 48D credit, section 179D deduction, childcare facilities credit) on the property.",
+       "source_text": "i4562 p. 14, Column (d): \"For a vehicle, reduce your basis by ... any alternative motor vehicle credit allowed\"; i4562 p. 11, Column (c): \"From that result, subtract any credits and deductions allocable to the property ... Disabled access credit ... Any basis adjustment for investment credit property\"",
+       "why": "The question \"What did it cost, including sales tax, delivery and installation?\" yields the gross cost. The downstream lines subtract only section 179 and the special allowance, so these credit reductions are never taken and the basis is overstated.",
        "bound": ""
       },
       {
-       "kind": "UNCLEAR",
-       "situation": "A filer traded in old property toward the new asset, or acquired it in an involuntary conversion, and could enter either the full contract price or only the cash or other amount actually paid.",
-       "source_text": "i4562 p. 14, Column (d): \"If you traded in old property, see Property acquired in a like-kind exchange or involuntary conversion\"; p. 9: \"you must depreciate the carryover basis ... The depreciable basis of the new property is the adjusted basis of the exchanged or involuntarily converted property plus any additional amount paid for it.\"",
-       "why": "The phrase \"what you paid\" can be read as the sticker price or as the cash paid. Neither reading is the carryover basis plus any additional amount paid, and the question gives no guidance for trade-ins.",
-       "bound": ""
-      },
-      {
-       "kind": "UNCLEAR",
-       "situation": "For property placed in service before 2025 (used by asset.macrs_prior), a filer could read \"other basis\" as the current adjusted basis after depreciation already taken and enter that net figure.",
-       "source_text": "i4562 p. 14, Column (d): \"Enter the property's actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation).\"",
-       "why": "The question never says the amount is unadjusted for prior depreciation. A filer reading \"other basis\" as adjusted basis would understate the basis, and prior depreciation would then be subtracted a second time.",
+       "kind": "WIDE",
+       "situation": "For property placed in service in an earlier year, the filer took amortization on it or reduced its basis for a casualty loss.",
+       "source_text": "p946 p. 37: \"you do reduce your original basis by other amounts, including ... Any amortization taken on the property\"; \"If you reduce the basis of your property because of a casualty ... you must figure the depreciation yourself using the property's adjusted basis\"",
+       "why": "Original cost leaves out these basis reductions. Lines 17 and 19 would then figure depreciation on more than the allowable basis.",
        "bound": ""
       }
      ],
-     "prompt_sha": "d30301f3774e7a3b4771950156ca9d1f4df0f0c545fcabee0ee722af8e15c2bb",
+     "prompt_sha": "3e332562e1f3da5337ae5d50d550d74d6c96f6dc2da461c7cfe551e9adb8cc20",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.095556,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/asset.cost.b032dfc0bbd0.1.response.txt"
+     "cost": 0.112732,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/asset.cost.a254fcb481d5.1.response.txt"
     }
    ],
    "type": "NonNegDollars",
@@ -305,7 +305,7 @@
      "how": "cited pages",
      "locators": [
       "p. 11, Column (c)—Basis for depreciation",
-      "p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis",
+      "p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis; , Figuring the Unadjusted Basis of Your Property, \"without reducing your original basis by any MACRS depreciation taken in earlier years\"",
       "p. 14, Lines 26 and 27; p. 15, Column (f)—Recovery period, \"For property placed in service after 1986 and used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period\"",
       "pp. 8-12, Part III, and Pub. 946 Appendix B"
      ],
@@ -319,54 +319,47 @@
       15
      ],
      "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
     }
    ]
   },
   "asset.listed": {
-   "subject_sha": "ccebabfec06d600cf430f82d491881584eb9d2715c1829d8462e9e096509fbba",
+   "subject_sha": "cb01602e577add9198c3f1d833570eeb6b0390979cad77e1def5b5d2ecb1002f",
    "samples": [
     {
      "verdict": "NARROW",
      "findings": [
       {
        "kind": "NARROW",
-       "situation": "A filer owns a printer, scanner or other peripheral placed in service before 2018 that is not used only at their regular business establishment.",
-       "source_text": "i4562 p. 3: \"Any computer or peripheral equipment used exclusively at a regular business establishment\"; p. 14: \"Other listed property (computers and peripheral equipment placed in service before 2018, etc.)\"",
-       "why": "The question names only \"a computer placed in service before 2018\". A filer with a pre-2018 peripheral that is listed property would truthfully answer no, which sends it to lines 6, 14, 17 or 19 instead of Part V.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "An employee (or other user) owns a pre-2018 computer used only at an establishment that is run by someone else, such as the employer's office.",
-       "source_text": "i4562 p. 3: \"used exclusively at a regular business establishment and owned or leased by the person operating the establishment\"; \"for any property listed in (1) above, the regular business establishment of an employee is their employer's regular business establishment\"",
-       "why": "For computers, the exception applies only if the owner operates the establishment. The employer-establishment rule covers only item (1) equipment. A filer who uses the computer only at the employer's office would call that their regular business establishment and answer no, although the computer remains listed property.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "A filer owns entertainment or recreational property that is not photographic, phonographic, communication or video equipment and uses it only in the business.",
-       "source_text": "i4562 p. 3: \"Any property used for entertainment or recreational purposes\"; Exceptions: \"1. Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer's trade or business\"",
-       "why": "The question applies the exclusive-business-use carve-out to all entertainment or recreation property. The text excepts only the four named equipment types, so other such property stays listed even when used only in the business, yet the filer would answer no.",
-       "bound": ""
-      },
-      {
-       "kind": "UNCLEAR",
-       "situation": "A filer has a camera or communication device used partly for business and partly personally, and does not regard it as used \"for entertainment or recreation\".",
-       "source_text": "Question: \"property used for entertainment or recreation (such as photographic, phonographic, communication or video recording equipment) that is not used exclusively in your business\"; i4562 p. 3 Exceptions item 1",
-       "why": "One reading treats any such equipment that is not used exclusively in the business as listed (answer yes). Another reading requires actual entertainment use (answer no). The two readings send the asset to Part V or to Parts II and III.",
+       "situation": "A filer enters as an asset a passenger automobile of 6,000 pounds or less, or a motorcycle, pickup truck, SUV or aircraft used partly for personal purposes, and truthfully answers no because none of the three listed categories covers it.",
+       "source_text": "i4562 p. 3, Listed Property: \"Passenger automobiles weighing 6,000 pounds or less\" and \"Any other property used for transportation if the nature of the property lends itself to personal use, such as motorcycles, pickup trucks, SUVs, aircraft, etc.\"; p. 10: \"except for automobiles and other listed property (which are reported in Part V)\"; p. 5: \"Do not include any listed property on line 6\"",
+       "why": "The question lists only entertainment or recreation equipment and pre-2018 computers and leaves out transportation property. A vehicle entered on this asset roster would get a no, and its section 179, special allowance and MACRS would go to lines 6, 14, 17 and 19 instead of Part V, unless the tool keeps vehicles off this roster in some way not stated here.",
        "bound": ""
       }
      ],
-     "prompt_sha": "f4c5e02065626b2114f231df15432f137cf684bf3e447e024520114fd3eb7197",
+     "prompt_sha": "5a36b30431d065400ad175a12e2f28cbf6ee9c14ce8a003687ed84e83909ad00",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.130188,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/asset.listed.ccebabfec06d.1.response.txt"
+     "cost": 0.171216,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/asset.listed.cb01602e577a.1.response.txt"
     }
    ],
    "type": "Bool",
-   "readers": 18,
+   "readers": 19,
    "brief": false,
    "used": [
     {
@@ -376,8 +369,13 @@
      "pages": [
       3,
       5,
+      6,
+      7,
+      8,
       9,
       10,
+      11,
+      12,
       13,
       14,
       15,
@@ -391,74 +389,77 @@
       "p. 15, Column (h)",
       "p. 15, Column (h)—Depreciation deduction, \"For property used more than 50% in a qualified business use (line 26) ... figure column (h) by following the instructions for line 19, column (g)\"",
       "p. 16, Column (i)",
-      "p. 3, Listed Property and its Exceptions, \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
+      "p. 3, Listed Property, \"Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment)\", and its Exceptions, \"Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer’s trade or business or at the taxpayer’s regular business establishment\", \"Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment\", \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
       "p. 5, Line 14",
       "p. 5, Line 6",
       "p. 5, Line 6, \"Do not include any listed property on line 6\"; p. 9, Lines 19a Through 19j, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\"",
       "p. 9, Line 17",
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\"",
       "pp. 9-10, Lines 19a Through 19j, Column (a)—Classification of property"
      ],
      "cols_pages": [
       3,
       5,
+      6,
+      7,
+      8,
       9,
       10,
+      11,
+      12,
       13,
       14,
       15
      ],
      "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
     }
    ]
   },
   "asset.not179": {
-   "subject_sha": "2a1b978d3218b2cc03302e0bd27d4d371903955968470d73bac5e329ee24960c",
+   "subject_sha": "a0e5a89efca1f20f2f42a1eb24c2a39e1ba43ebbaa95156c3fca58d1f8ff2a97",
    "samples": [
     {
      "verdict": "NARROW",
      "findings": [
       {
        "kind": "NARROW",
-       "situation": "The property is used predominantly outside the United States, and it is not property described in section 168(g)(4).",
-       "source_text": "p946 p. 17: \"Property used predominantly outside the United States, except property described in section 168(g)(4)\"; i4562 p. 2: \"Property used mainly outside the United States (except for property described in section 168(g)(4))\"",
-       "why": "The list leaves out this excepted category, so a truthful filer answers no. The lines then count the property as section 179 property and include it in s179.line2, and the gate does not flag an election on it.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "The filer bought the asset from a related person, such as a parent, or otherwise did not acquire it by purchase.",
-       "source_text": "p946 p. 17: \"They do not qualify as section 179 property because you and your father are related persons\"; i4562 p. 2: \"Section 179 property is property that you acquire by purchase\"",
-       "why": "The label says \"This property is not section 179 property\", but the question only asks about the listed exclusions. Property that fails the purchase requirement under What Property Qualifies? gets a no answer and is treated as section 179 property.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "The asset is land itself rather than a land improvement.",
-       "source_text": "p946 p. 17: \"Land and land improvements do not qualify as section 179 property\"",
-       "why": "The bullet names only \"a land improvement\", so a filer entering land as an asset may answer no.",
+       "situation": "A filer has business equipment that is used mainly outside the United States and is not property described in section 168(g)(4).",
+       "source_text": "i4562 p. 2: \"Section 179 property does not include ... Property used mainly outside the United States (except for property described in section 168(g)(4))\"; p946 p. 17: \"Property used predominantly outside the United States, except property described in section 168(g)(4)\"",
+       "why": "Neither the question nor its help mentions foreign use, so a truthful filer answers No. The property is then treated as section 179 property and its cost is counted on line 2.",
        "bound": ""
       },
       {
        "kind": "WIDE",
-       "situation": "A corporation buys property and leases it to others without meeting the manufacture test or the lease-term and 15% test.",
-       "source_text": "Question: \"property you purchased and lease to others, unless you manufactured or produced it, or the lease term ...\"; p946 p. 17: \"Certain property you lease to others (if you are a non-corporate lessor)\" and \"This rule does not apply to corporations\"",
-       "why": "The leasing exclusion applies only to non-corporate lessors. A corporate filer answering truthfully says yes, and its property is wrongly excluded from line 2 and its election is flagged.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "The property is used by a section 521 farmers' cooperative.",
-       "source_text": "Question: \"property used by a tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated trade or business income\"; i4562 p. 2: \"Property used by a tax-exempt organization (other than a section 521 farmers' cooperative)\"",
-       "why": "The question covers every tax-exempt user, but the instructions carve out section 521 farmers' cooperatives. A yes answer wrongly excludes that property.",
+       "situation": "A corporate filer bought property and leases it to others, and neither the manufacture exception nor the short-lease exception applies.",
+       "source_text": "Question: \"property you bought and lease to others\"; p946 p. 17: \"Certain property you lease to others (if you are a non-corporate lessor)\" and \"This rule does not apply to corporations\"; i4562 p. 3: \"for taxpayers other than a corporation, this election does not apply\"",
+       "why": "The leased-property exclusion applies only to non-corporate lessors, but the question has no corporation carve-out. A truthful corporate filer would answer Yes and wrongly drop qualifying property from line 2.",
        "bound": ""
       }
      ],
-     "prompt_sha": "8233fd3daf58bfacc1ebed195582fbe39f59883f954a8e786e5325a3002cdaf2",
+     "prompt_sha": "25fb52ec428e218073838b10942fe0b634652884d2c666dd66c370b572f93605",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.07686,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/asset.not179.2a1b978d3218.1.response.txt"
+     "cost": 0.07094400000000001,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/asset.not179.a0e5a89efca1.1.response.txt"
     }
    ],
    "type": "Bool",
@@ -474,7 +475,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 17, What Property Does Not Qualify?, \"Land and land improvements do not qualify as section 179 property\", \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\" and Leased property; , \"Property held for investment (section 212 property)\"; , \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; , Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\""
+      "p. 17, What Property Does Not Qualify?, \"Land and land improvements do not qualify as section 179 property\", \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\" and Leased property; , \"Property held for investment (section 212 property)\" and \"Property used by a tax-exempt organization (other than a section 521 farmers’ cooperative)\"; , \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; , Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\""
      ],
      "cols_pages": [
       17
@@ -506,53 +507,53 @@
    ]
   },
   "asset.pct": {
-   "subject_sha": "20bfb2c6e64baf49a86c22af191d2b3bbb578c4d8177f2756d6dfd6bc236afba",
+   "subject_sha": "7ec9f7bddfeb0f201176516d02bf7574cfca4908832dd4e080170c9bd6898119",
    "samples": [
     {
      "verdict": "NARROW",
      "findings": [
       {
        "kind": "NARROW",
-       "situation": "A filer uses the property partly for investment or the production of income, such as a computer used to manage personal investments, and reports only the share used 'for this business.'",
-       "source_text": "i4562 p. 11, Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use'; p. 14: 'used ... for trade or business purposes or for the production of income'",
-       "why": "The lines need the combined business and investment percentage. The question asks only for use 'for this business', so a truthful filer leaves out investment use and understates the basis.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "A filer converts listed property from business use to personal use partway through 2025.",
-       "source_text": "i4562 p. 14, Column (c): 'If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage ... only for the number of months you use the property in your business'",
-       "why": "The question gives the month-proration rule only for conversion from personal to business use. It leaves out the 'vice versa' case, so a filer converting the other way would not prorate by months.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "An employer's vehicle is driven by employees for personal trips, and the value of that personal use is included in the employees' wages or the employees reimburse it.",
-       "source_text": "i4562 p. 14, Column (c): 'Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees' gross income, or the employees reimburse the employer for the personal use.'",
-       "why": "The lines need 100% here. A filer who truthfully measures actual business use would enter a lower figure, because the question does not mention this rule.",
+       "situation": "A filer uses the property partly in a trade or business and partly to produce income, such as investment property, and reports only the share for 'this business.'",
+       "source_text": "i4562 p. 14, Column (c): \"dividing the number of miles the vehicle is driven for trade or business purposes or for the production of income\"; p. 11, Column (c): \"multiply the cost or other basis of the property by the percentage of business/investment use\"",
+       "why": "The lines need the combined business/investment use percentage. The question asks only for use 'for this business,' so a truthful filer leaves out production-of-income use and understates the basis.",
        "bound": ""
       },
       {
        "kind": "WRONG_FIGURE",
-       "situation": "A filer reports a car or other vehicle that is listed property.",
-       "source_text": "Question: 'For listed property, measure the use by the time the property is actually used ... in the most appropriate unit of time.' i4562 p. 14: 'For automobiles and other vehicles, determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... (not to include any commuting mileage) by the total number of miles'",
-       "why": "For vehicles the text requires a mileage ratio that excludes commuting miles, not a time-based allocation. The question tells the filer to use time for all listed property, which gives a different percentage, and it never says to exclude commuting.",
+       "situation": "A filer whose listed property is a car follows the help and measures use by time instead of by miles.",
+       "source_text": "i4562 p. 14, Column (c): \"For automobiles and other vehicles, determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"; time-based allocation applies only \"For other listed property\"",
+       "why": "The help says 'For listed property, measure the use by the time the property is actually used.' Vehicles are listed property, so the help sends vehicle owners to time when the text requires a mileage ratio. That gives a different figure, which feeds scveh.line19.",
        "bound": ""
       },
       {
-       "kind": "TYPE",
-       "situation": "A filer's percentage is fractional, for example 100% business use for 7 of 12 months after conversion (58.33%), or 6,250 business miles out of 10,000 (62.5%).",
-       "source_text": "i4562 p. 14, Column (c): 'Multiply that percentage by the number of months ... and divide the result by 12.'",
-       "why": "The text's computations produce fractional percentages. The accepted answer is a whole-number count, so the filer must round, which changes the basis for depreciation.",
-       "bound": "A percentage from 0 to 100, which may be fractional"
+       "kind": "WIDE",
+       "situation": "A vehicle owner counts commuting miles as business use because neither the question nor the help says to exclude them.",
+       "source_text": "i4562 p. 14, Column (c): \"(not to include any commuting mileage)\"",
+       "why": "The question asks what percentage of use is for the business and never mentions commuting, so a filer may count commuting as business driving. The text requires commuting to be excluded, so this overstates the percentage.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "An employer's vehicle is used personally by employees, and the value of that use is included in the employees' wages or the employees reimburse it.",
+       "source_text": "i4562 p. 14, Column (c): \"Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees' gross income, or the employees reimburse the employer\"",
+       "why": "The lines need 100% here, but a truthful filer would report the actual business share, which is below 100%.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "Listed property used in business is converted to personal use during 2025.",
+       "source_text": "i4562 p. 14, Column (c): \"If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage ... only for the number of months you use the property in your business ... and divide the result by 12\"",
+       "why": "The help gives the month-weighted proration only for conversions from personal to business use. A filer converting from business to personal use is not told to prorate by the months of business use over 12, so the percentage would be overstated.",
+       "bound": ""
       }
      ],
-     "prompt_sha": "f6e89632d33e552402a5e5e5bc4ff2bcb90e92a929468840780a33d9209bf2fa",
+     "prompt_sha": "fbbd22da1aa986bc5c66c5feaba6d431bcaba2456276b9534d04d82ef50f8f4f",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.063532,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/asset.pct.20bfb2c6e64b.1.response.txt"
+     "cost": 0.06602,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/asset.pct.7ec9f7bddfeb.1.response.txt"
     }
    ],
    "type": "Count",
@@ -819,32 +820,25 @@
    ]
   },
   "asset.quarter": {
-   "subject_sha": "7738d4426546cd96664d457006b51d7d7ce7d80f8e4a7537b1bfb9ab648e40c7",
+   "subject_sha": "12c909d0cc6f42df8013d068ea8aac23dbecd429d42779142ea0908623b86036",
    "samples": [
     {
      "verdict": "NARROW",
      "findings": [
       {
        "kind": "NARROW",
-       "situation": "A filer on a fiscal tax year (for example July 2025 to June 2026) places property in service in May 2026, which is the fourth quarter of that tax year.",
-       "source_text": "p946 p. 41: \"The first quarter in a year begins on the first day of the tax year... The fourth quarter begins on the first day of the tenth month of the tax year. A calendar year is divided into the following quarters.\"; p946 p. 34: \"placed in service during the last 3 months of the tax year\"",
-       "why": "The lines need the quarter of the filer's tax year. The question fixes calendar months of 2025, so this filer would answer April to June (q2), or could not answer for a 2026 date. The lines then leave the basis out of the last-3-months test and apply the wrong mid-quarter percentage.",
-       "bound": ""
-      },
-      {
-       "kind": "UNCLEAR",
-       "situation": "A filer bought property for personal use in 2023 and converted it to business use in November 2025.",
-       "source_text": "i4562 p. 11, Column (b): \"If you converted property held for personal use to use in a trade or business or for the production of income, treat the property as being placed in service on the conversion date.\"",
-       "why": "Neither the question nor its help defines \"placed this property in service.\" An ordinary filer could reasonably give the purchase date instead of the conversion date, which changes the quarter and whether the basis counts toward the fourth-quarter 40% test.",
+       "situation": "A filer with a fiscal tax year (for example, July 2025 to June 2026) or a short tax year puts property in service in a month that falls in a different quarter of their tax year than of the calendar year, so their truthful answer picks the wrong quarter.",
+       "source_text": "p946 p. 41, Mid-quarter convention: \"The first quarter in a year begins on the first day of the tax year. ... The fourth quarter begins on the first day of the tenth month of the tax year.\"; p946 p. 34: \"placed in service during the last 3 months of the tax year\"",
+       "why": "The lines need the quarter of the filer's tax year. The question asks only about fixed calendar months of 2025 (January to March, and so on), which matches the tax year only for calendar-year filers. A fiscal-year filer's choice therefore drives the wrong mid-quarter percentage and the wrong mid-quarter test basis.",
        "bound": ""
       }
      ],
-     "prompt_sha": "9fa39dfe76159dd0c961a5f28f7a7043acd2b60d3339d458caa28bb215179ccf",
+     "prompt_sha": "4c8707e3524b377d771695e4d5cdd9c3918913ec93f8d2a940fab0d85361d532",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.048128,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/asset.quarter.7738d4426546.1.response.txt"
+     "cost": 0.050460000000000005,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/asset.quarter.12c909d0cc6f.1.response.txt"
     }
    ],
    "type": "Enum(quarter)",

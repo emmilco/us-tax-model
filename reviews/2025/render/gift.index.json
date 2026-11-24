@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "3b24a2b3c121502e88387f78623120c3a31a7293adbcc0fd8f6410cbe75f866c",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -21,9 +21,9 @@
   },
   {
    "key": "special",
-   "record": "ddc17b6c08ef40bef0780cd29c5711a2045cfbc70d395c6564bc0ac4d7015780",
+   "record": "c947ffd654a036c5e111c7fb114cdb6367925dbcfa1a7838ffff9514b0d8b0e7",
    "status": "MATCH",
-   "subject_key": "988cd80f9d10974110af65cecc706b50236ff40531be85e2de5672639348d76b"
+   "subject_key": "12f17ccfc361bd37c34067788fbd215e3ee26a047ab5741724f989e239d5d301"
   },
   {
    "key": "over_5000",
@@ -51,20 +51,20 @@
   },
   {
    "key": "allowed",
-   "record": "ddc17b6c08ef40bef0780cd29c5711a2045cfbc70d395c6564bc0ac4d7015780",
+   "record": "c947ffd654a036c5e111c7fb114cdb6367925dbcfa1a7838ffff9514b0d8b0e7",
    "status": "MATCH",
-   "subject_key": "4f9f39f5b9df91fbb2ff9e5acacf1459f896a04aeb253d9bc7ccc7a676e6d9d4"
+   "subject_key": "6dfdefe7310bce2b958850c56e0202924c37c23257551f64b5e03fbf0d87b77d"
   }
  ],
  "subjects": {
   "deduction": "2c743be67b29b3d1bc72955e6d9df9a4cf4ff957f8e03656f34f2f1651dd1275",
   "public_securities": "17f17e84d2bcbc542b4af54ddb38130ce7724cccbfe18c2382a7faccf59270be",
-  "special": "d91893ddb5a63a08517335197506bfc1c64295435d609a7b94795c58112d0d16",
+  "special": "f6e22bca1d8ce481750e6f1ad2f9cd2fa9aae9613b6d3dd0af4bca620e50b457",
   "over_5000": "cf86d4f8648cf4a6b9897d576176959c24abb6eb3885764b787b94bf3c4e8a9c",
   "not_public": "60e4c07dae802b69ef7ea8b0603b80ade9cbf7602927aba7940de56036119a57",
   "no": "d9fa15f532ffe8528369f1a894ea723d018c837730f4432559a9eef822bb07ab",
   "section_b": "41faadbceda9c3c8ee5d88f29ba0785cea9242aa59052f66a5be178e843372f7",
-  "allowed": "e595d90103a0fba3088fbca023a00fdba676296600acbab03d2c41c576cb135f"
+  "allowed": "cb592a528d63694e29cd49643608b4fcdcf6913b06461eee5f7b826bbc80e9b5"
  },
  "__rest__": "453167e36426ad055796eee7ca39439492a94ba8c947ab84ce7cc052e0dd764e"
 }

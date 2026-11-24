@@ -5,8 +5,8 @@
  "base": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
  "head_rows": {
   "printed lines compared": "57",
-  "agree / disagree / missing": "25 / 32 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-23); see Line-scoped reviews"
+  "agree / disagree / missing": "23 / 34 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -44,10 +44,10 @@
   },
   {
    "key": "sd.filed",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1: Schedule D is not required with no capital losses, only box 2a capital gain distributions and no amount in box 2b, 2c or 2d. As the earlier ruling of this line: the project files Schedule D for a sale, a box 2b or 2d amount, or a carryover loss on line 6 or 14; box 2c is refused (div.section1202) and a QOF investment and the amounts of lines 4, 5, 11 and 12 are refused through sd.other_forms (and sd.f2439), so the reply's extra terms never fire on a computed return, while its div.other_boxes term (boxes 3, 9, 10, 13) would file Schedule D the exception does not require and its sd.carryover term would file it for a carryover answered Yes with no loss carried. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "5eb6278b786e7858254331d39626bd255ca0013ac05fd5785140123f8233a9c6"
+   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1 (Schedule D not required when there are no capital losses and only box 2a capital gain distributions). The three completed value differences (classm.f4952.2, stage20.line21_at_both_bounds, stage20.mut.line21_below_limit) are returns answering sd.carryover Yes whose Capital Loss Carryover Worksheet carries nothing (sd.line6 and sd.line14 $0; i1040sd p. 10, \"Otherwise, you don't have any carryovers\"): the reply files Schedule D on the answer alone, the project on a carryover amount, so with no loss carried in and no sale there is no Schedule D. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,281/3,719 agree; on completed returns 279 candidate-unknown and 3 value. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "a01c0b6786d428618b953b8fbfc4f24b8712bc9a199b13875287eea34ce31330"
   },
   {
    "key": "sd.zero",
@@ -84,215 +84,217 @@
   },
   {
    "key": "1a(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "8ef660647aac6a1d1d9fd83dedb0e55d456cb64be126f5975a21683f3e04f441"
+   "subject_key": "908262c2b120362bfb2c50791565f43ad1c8548b3da3b45d5bdb6c0989450bd9"
   },
   {
    "key": "1a(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "9395767a5c0d27594276d849796561a9b6e326ab228911b2abdac0238ff3feb9"
+   "subject_key": "d8698481c10623ab54ef78f4e9ae6ed7f370f89556c3964239a7ad3180706eb2"
   },
   {
    "key": "1a(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
-   "status": "AGREE",
-   "subject_key": "7dab8c5a401a882f29c5151264f6b7a39438797d710b28fb16b8c72cf6b69884"
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 1a. As the landing-round ruling: the reply holds the line without the Schedule D screen; the project sums it behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital), special sales (sales.special), unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,278 of 3,719 agree; 107 project-refuses and 334 project-unknown, all on refused or incomplete returns (partial records withholding screen answers the interview asks before any total); no value differs and no completed return differs. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "6533f2e6796119613abd00b61a889405e07765b94a799f8c5e63c85f043d1d7b"
   },
   {
    "key": "1a(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 1a, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales, which is the same total. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "7f7e812095a472eac8a49b128abefc66ee3d80eefb76e3638153af537d76cdd1"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 1a, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "05dba2e71fc6e0d58004048a8ae987b5e8db57469401ddaf926cf699754d7acf"
   },
   {
    "key": "1b(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "771b8797be91d29e154175559fc4336c84ad849bb8574fae1b216d613f00f105"
+   "subject_key": "8402539c07ea27358bab7cb955c819d3d29cf462641a336bb49cb57cf572e020"
   },
   {
    "key": "1b(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "b33c1495748db642c5a5993b362ac09e8d8bddae6059d7310bedab43b496187c"
+   "subject_key": "0e3aa99307dcddfbf7d169ce65b38534027d7858fa9499e0a86db18eacd6e4aa"
   },
   {
    "key": "1b(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "a5776445ba912c7a510cf5963b0f174a8224da52c35afb6fc43ae76fcb90e89e"
+   "subject_key": "78b59e77755c435f3f147d6f3af73e6305c8936805b440291093e35535e3fe84"
   },
   {
    "key": "1b(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 1b, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales, which is the same total. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "d5c5b614d99f1b8a4dd035ad940787eb10fceae631a785219d8544a2dc584356"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 1b, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "95dcd0c8501ad994b6b66a36437249a9d82b78d2f2f5dddc0716908ce3afa2e1"
   },
   {
    "key": "2(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2 (Form 8949 box B or H), column (d). The reply sums boxes B and H without the project's detail-route test; a sale under box B or H has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box B or H is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "0d953a2f0e8c5c986868b717653e3a2d7294e2649ad4bb1053334f0235a738e8"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (d). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "2d66c5f9df7b54efe3fe48b4e94819f649e8e1ff756316e822a0ebfddb49ad67"
   },
   {
    "key": "2(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2 (Form 8949 box B or H), column (e). The reply sums boxes B and H without the project's detail-route test; a sale under box B or H has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box B or H is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "be21825a65cb21231fd30806758b6716389d98994f919fea5edf5c555d492f03"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (e). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "a340db2293009b7e7cda75fce62bf690a9e6fec397e4aa6cb2edd564228f44c9"
   },
   {
    "key": "2(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2 (Form 8949 box B or H), column (g). The reply sums boxes B and H without the project's detail-route test; a sale under box B or H has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box B or H is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "73eab89da9cb26c3234c11866d50ee2765037b86de7c4b72e5c287ab512c832f"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (g). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "bb94db403591d3e53da8d9e99d2c49a224af63b2fbd158341a7bda5cb3ea032b"
   },
   {
    "key": "2(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 2, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each detail-route sale in box B or H (sales.h), the same total (the route test is moot, as for columns (d), (e) and (g) of this line). Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "d4de4399b651f290ffc17fcbcb8abdd4bf2f6b2f753dd13a9c7688845b450053"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 2, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "1d6622a51b6beae513f1fe0dba87cb4dacc68db9af889420155eb91143c13eba"
   },
   {
    "key": "3(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3 (Form 8949 box C or I), column (d). The reply sums boxes C and I without the project's detail-route test; a sale under box C or I has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box C or I is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "83607ec6216d11771c1856853fc79029a9565a77a160ab4996a3bdd90ed261e7"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (d). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "b3d1c41aaf6bab3335abf302cfe25b3b7f8b1f723454932dea3681dc49695ccd"
   },
   {
    "key": "3(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3 (Form 8949 box C or I), column (e). The reply sums boxes C and I without the project's detail-route test; a sale under box C or I has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box C or I is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "fdb3b29d75052ddc8e3e021d79fb27696a54b2c2293ebc607cf640ee0b9a8ce4"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (e). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "c9f7a4f4a65cdeb6b93ed27d1ae50f940e0cd15d3be485c4dcb421df107f5507"
   },
   {
    "key": "3(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3 (Form 8949 box C or I), column (g). The reply sums boxes C and I without the project's detail-route test; a sale under box C or I has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box C or I is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "2688efa1cb8ea565c702f85511cb4cb0498e78c10571b80c34a5731353c9205c"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (g). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "9b1b6363f17302971b8844df936f2e783bf10d86219649bf25dc1adfdebf7636"
   },
   {
    "key": "3(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 3, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each detail-route sale in box C or I (sales.h), the same total (the route test is moot, as for columns (d), (e) and (g) of this line). Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "aaadfc4550ce528529313bdffbc3bfef47ab79cd0c34d2baaeee61c3ef43762a"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 3, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "78550ee404eceb6938cfcf51ad15d3e76630761a5bce34ab006e3f12fff4728c"
   },
   {
    "key": "8a(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "183d4653abcb14314e4e67877990415d4017bf8bcc3b70e4d9d14fa372b889c5"
+   "subject_key": "d80702cec28befa5ee11359563b90cbe29c58e4b1b5730ce06e8dbbf20a512ff"
   },
   {
    "key": "8a(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "12cbb2793b4650c1a20ad6836a4e4ca61f104a48c36ad86b5061180ee3031685"
+   "subject_key": "29874a32e8d5ac66d1a5da152b6ddc13e09bd5d1584d45512e97312d8927a0dc"
   },
   {
    "key": "8a(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
-   "status": "AGREE",
-   "subject_key": "2f42ac2cc25170130e3edd1eb3881d7e29a7f7030942cc3c0fdb2e50b788cf24"
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; f1040sd p. 1, line 8a. As the landing-round ruling: the reply holds the line without the Schedule D screen; the project sums it behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital), special sales (sales.special), unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,278 of 3,719 agree; 107 project-refuses and 334 project-unknown, all on refused or incomplete returns (partial records withholding screen answers the interview asks before any total); no value differs and no completed return differs. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "b5a82066b59bcabb19e688e63cec51431ff16ed5b0074af7b30296fec9b0ab8c"
   },
   {
    "key": "8a(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 8a, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales, which is the same total. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "64c7cc23c58cfeb4b5a0fd9b5475bc8bd7f6f88740893e1adef0d73af994fb14"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 8a, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "4a75b7b6221d3e14cbaa1c411731b812baea501ff7d738d4a01241b6c93c760e"
   },
   {
    "key": "8b(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "9136c4a9f5155cd9d20facc42ec91578185353825654ecc3552d6f4fbde519ec"
+   "subject_key": "d622c0a837e91e4208b03e030a46ff5946da3acfa3c38e056670da12b8c1eeb0"
   },
   {
    "key": "8b(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "cd63c2c61602b734e0b0f718ad273ad4ae44c261bd3f859a416800519f3b7b6d"
+   "subject_key": "eaeaa58fff9880273311511eae2f7c167a9ffd46276575e44660b99c38bd23a1"
   },
   {
    "key": "8b(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "AGREE",
-   "subject_key": "703ab11029de73632f528458d17a4e1369cfdd29bc11884ebd468f7cdb0fe2cc"
+   "subject_key": "23e36958ff9e4fe28d2c53340fad7ec672a6f7435a5067d0f009f7a43f6c6d99"
   },
   {
    "key": "8b(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 8b, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales, which is the same total. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "ffd26cbbf57d889373db1561d68b4142725cdbb7914d971086ebc1d5db458265"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 8b, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "3ef852f3a1e1202c53a8fe8e10cd42e72962bee7409b58ac6669b039b777baa5"
   },
   {
    "key": "9(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9 (Form 8949 box E or K), column (d). The reply sums boxes E and K without the project's detail-route test; a sale under box E or K has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box E or K is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "cd3a360458daf03626cc98a1a7499ce1192f78ad0b7c974461010b9d8957ee90"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (d). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "5e507f968e5298c7c08d6c7458e61b4d49fe2e1d5f2cbdcc77f55317d0d18e5d"
   },
   {
    "key": "9(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9 (Form 8949 box E or K), column (e). The reply sums boxes E and K without the project's detail-route test; a sale under box E or K has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box E or K is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "6bf0a60647b88ae43f638ef4149cb8b214ec6609fa3560ca68a7c2360ce7f3e7"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (e). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "6197b72719dc0136c1a01a591573e4c213f86e5d4a13c93450088aa823b2be1b"
   },
   {
    "key": "9(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9 (Form 8949 box E or K), column (g). The reply sums boxes E and K without the project's detail-route test; a sale under box E or K has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box E or K is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "b12c4bb0af82b3347e9ad7250264b4dbc625df62ab555bbc23663c29ab671c4a"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (g). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "5a4b0cd49efa824ef587a7d5ed3bc9c6a51e6ee2adb166fbc8a19447cb6ad8cb"
   },
   {
    "key": "9(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 9, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each detail-route sale in box E or K (sales.h), the same total (the route test is moot, as for columns (d), (e) and (g) of this line). Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "4752d36f012bf755d1d2c97b7aa484d6d407798a13836da291753d48f89a9ff7"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 9, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "12362bb4aab29b84056835768412f3d2280e830681a5d3fda07906dd061dd5d5"
   },
   {
    "key": "10(d)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10 (Form 8949 box F or L), column (d). The reply sums boxes F and L without the project's detail-route test; a sale under box F or L has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box F or L is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "8ba3f5b2d8e969e4b282bf01e8160295d28e486b1717ac27172f133691477fff"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (d). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "ea7a8bb62766e413d440902521503409b3d0e2b4d9288d172afbc1d0f931db93"
   },
   {
    "key": "10(e)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10 (Form 8949 box F or L), column (e). The reply sums boxes F and L without the project's detail-route test; a sale under box F or L has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box F or L is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "d5e488f12ff164cc4415b8bdf99a955281c160105fcbe224a5d4e177982a00fb"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (e). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "66f098bdc53076374830ed49114c4648a6330ace781b30fe409470798e7fb621"
   },
   {
    "key": "10(g)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10 (Form 8949 box F or L), column (g). The reply sums boxes F and L without the project's detail-route test; a sale under box F or L has no basis reported to the IRS (sales.covered false), so the aggregate route refuses it (sales.bad_aggregate through sales.aggregate_fails), and every sale the project computes in box F or L is on the detail route: the totals agree. As the earlier rulings of this line. Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "6a25068bf469735fbe03a16bc0b42d31167a5e70c1925ff50989217041817195"
+   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (g). As the earlier ruling on 2(d): the reply sums the line's sales (adding the digital-asset boxes) without the Schedule D screen; the project sums them behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms. Executable triage (.transcription/triage/2025/sd.json, this pass): 3,280 of 3,719 agree; 107 project-refuses and 332 project-unknown, all on refused or incomplete returns; no value differs on any completed return. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "1e31b318e942a441fa9b09a14deb3515d529e8fa1cad0fb91dca15245e968277"
   },
   {
    "key": "10(h)",
-   "record": "e40a45976a22a6e5c35b6170cf90bff5127dc9cb58a58433d8253afd6d702302",
+   "record": "fc82005a1c579af513d72d9d8a98cc643cf4d35b4f8d27d290f0c370a73dbc35",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sd p. 1, line 10, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each detail-route sale in box F or L (sales.h), the same total (the route test is moot, as for columns (d), (e) and (g) of this line). Rerun only because the line reads sd.count, whose refusals gained sd.home_sale_if_sold (BUG-1129); the line itself is unchanged.",
-   "subject_key": "d2561511d86f8b74218c9dabc466cfaab0b932ee34a6b098c72ce3ffe0753ec2"
+   "ruling": "Ruling: representation; f1040sd p. 1, line 10, column (h): \"Subtract column (e) from column (d) and combine the result with column (g)\". The reply figures the total from the line's (d), (e) and (g) totals; the project sums column (h) of each sale (sales.h, its (d) less (e) plus (g)) over the same sales behind sd.screen, the same total where both are known. Executable triage (this pass): no value differs on any completed return; the differences are project refusals (107) and project-unknown on refused or incomplete returns. Rerun because the line reads sales.one, whose gate sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "subject_key": "ac41b6ff758e4e5944b5eb95844d40d28a8ad81e50dac2601c745a14c6882e9f"
   },
   {
    "key": "4",
@@ -390,44 +392,44 @@
   "sd.line19": "b653bf85615a8a9a33689a866188bc4740382a75c6c28c008f27bbd7bf9181a4",
   "sd.filing4952": "c463919a506118918868fb38826faafbd33315376d7f29963f6e818120502b75",
   "sd.investment_election": "a3d91ae14f27d51f584ab503205e59279759a061e193355b00ebdf9732585be4",
-  "sd.filed": "695d5e8561a51db9372c88e85a2ecf1e184c5fe1b783ee002ca725f14a5d82bc",
+  "sd.filed": "695952d42ae511cc6d92f707affd91a0b7a8e984a98cace9cb0a8e868b6c2121",
   "sd.zero": "ce16c7c938fea13ef80d3f7cf152cea6dd84d856dea677c44b6e24fbc5cc60fd",
   "sd.has_loss": "1e2c8c7df8ec4dc8a21e5ed72420311c4ae2a7b2895ded86e2213151661ada7f",
   "sd.to1040": "c6be714faee43a2731a8e84b3fdbc9673314f85a90a3ddff50bd1fcc4a556678",
   "sd.net_gain": "9975d7415b27cc117455a94113d2867f95c94c61be4bc016b9faae8e92704ab9",
   "sd.distributions_if_dividends": "e298b33df964936239e1aa4a899b76c8308e3041094d52235a155aab067750ae",
-  "1a(d)": "8b265805bac4f5c14b10a231d86ebb4cc2f94105ab00b031d34a53462a55b86f",
-  "1a(e)": "3b2b876f860780d9c413ac702be5627a870533f5a0f9c2508ac96d540685425a",
-  "1a(g)": "09ba8b3313d939a49f4569712d59c0bd5d9843b9766db31c6fb771f23a068ba1",
-  "1a(h)": "b0377dd050bda8406e26afcec1778b7a6151f77f2ba891ed06288976bb9f4bd3",
-  "1b(d)": "44ed201215ce2eb7f5ea21a297ca641e2e0dddecf39c861b25b1a734814c25d7",
-  "1b(e)": "8498a5bce69c858d5173d542065db83cd91c40fcdb1e0b216c5a4140f0566f87",
-  "1b(g)": "60ee0b404bd3adcfa20d65d462bd3bfb99e1dbb906a240afd9242ea1cd9092d6",
-  "1b(h)": "7f74828ea8aaf6f7766e339bb30738d55a5e1e750baf1d8d41ed850b91f9b1a2",
-  "2(d)": "a2a9d9823aebbdb485ae747fbc89a00d5cd4d83f20a847c92deb776e0f5808ce",
-  "2(e)": "06a6978188abb9591572a7ba9992c2df3d42e1f32017b37723109f65f4746dcb",
-  "2(g)": "374ddf0d745d5353b5e83c231744214fd16ba108f4d1e4c054d64b15bf4d4e4a",
-  "2(h)": "fb703e0edc7923f564e01b1068348bf52b65f37dcc23f63f9bfbbf8d898bc04f",
-  "3(d)": "440493b78b62156d7bfff5c6b38b148a1c55ed6836cc6d372637efde864c6154",
-  "3(e)": "5d9af1186081f7637e71141cf67dbe235eb73163bf310f989f4612ce3795d66a",
-  "3(g)": "7584bf87c38dd1b25aa93484411396aa46c5ef6ceb7053968d35acc8bc30d73c",
-  "3(h)": "c1aac6469f43670ce222c8d242c0035b18e6f9d01f70eb644752f27bb99b5c07",
-  "8a(d)": "3b16b40ff21fbbf9c96bd4cf271840ff71aeee603409bf22340f8e946df60bcb",
-  "8a(e)": "92800ea20d5b1aa1ecac8187bf4f34662773f8b78d5e3ed4beff78e135fef569",
-  "8a(g)": "0acb3556373c4b487830d190e738e2ae392688d82f3e88f066095b31e837aa1c",
-  "8a(h)": "15646720800634ea3f0dda12817f7a37e11f822448d8b147be18d0eca0ac6044",
-  "8b(d)": "92d8c1d582db85f9fd8d7493afad3574f375f9d9f4503327f18ceb6bb9b1f5b6",
-  "8b(e)": "6799a69ae1d22dcf2ba947c37815764bf8324e606668c028a87e665f2a27c073",
-  "8b(g)": "3d70484b9a5616246cf0b7247127165c4414a8b7d41c6bddb2ed8fd118e584d7",
-  "8b(h)": "0f7f78911ba23aa8bf36edb2fc2f5b03ac40ae41fb736e285d8a58d0232c505d",
-  "9(d)": "bd20fff5026abd5353fa21d98e782a079c156202460e50aa884291a0be40752f",
-  "9(e)": "caf11d5a727af85a0476478e8c3c13b9d7e234b02f469de971b4f4b351385937",
-  "9(g)": "42073e9126b2c10a658c6e8f6a02587cb02a45246ca630a47abe8ad862bf4ac3",
-  "9(h)": "a4ed6ceb192a7702422a7ab400b1966178af7d5a07a7b30c3f588d26e8d8da36",
-  "10(d)": "0164cc3ce61224dc98b4b378fe3726a629fdb176f0cbbe4dcd1e0488014e9685",
-  "10(e)": "d7c1466709d74ade4ec6c91117116d3e08938de4e70972ca0a9568b1910273af",
-  "10(g)": "99691df3c0f7f9a38c43d1415d76fa0382e0cf13ea4803917c1806fce85a249a",
-  "10(h)": "8b7fed5ca2bda14bf4ade1415fa74e926054efb183cf5af65f9023280dd992e8",
+  "1a(d)": "7478cdc7d834c1ba768ff7ee48d021953c18ecb5154f9ddc30768d074715ae87",
+  "1a(e)": "0342a056961fac83626f2479f19b47a3e9237fe53855b83c96e033da16fb402e",
+  "1a(g)": "d5e81b148de0d16274c9ec75b0ae6b9481a8d55962433080b1d5f270d300c15b",
+  "1a(h)": "e25f682b0764a80e49ce8315371dc6adbac17a1b8e5f03c9b9812d3e0b6ce774",
+  "1b(d)": "bddf09390fe7bfe94b1d1bb426d50f1d32c2ab458497d4f823d2bb6f98bce769",
+  "1b(e)": "4599c44f04104e32c439f43fe4cb4cf6fa1a6e0633b74e137f41f03d6a0490e5",
+  "1b(g)": "c786ff2356ef777c6972327cfe05fa61387d67c0e1d480085827c8fad0f8a795",
+  "1b(h)": "29d10d784ef1008de91f33c2c441e1d57f94f96995716ad07ae1f4d1f198c1d9",
+  "2(d)": "0b6e8e76b230d38024d3cc417e82f04dc83cc514abf6e1fb2142fb458e4462a0",
+  "2(e)": "e93f2e290a8bacaa3fc96bee09fb60b30ab89e0742b884ad6259038d78a14cfd",
+  "2(g)": "15b731e84143fef78651244c2c69c996f5116c795c8dfbed568f64bc1e1c53ff",
+  "2(h)": "5d4a3b5c5bbba105678ac869e895c81d0724971a65d349f2e30c373309f8e823",
+  "3(d)": "93b8670e9c51a1ace991426b311b43c9d4de24cbe38e5ba2822a2251621d7aa4",
+  "3(e)": "46c565b25eb11ed5dcb77eb7f18a312612515aa536a8402dac7696ceaaf49a83",
+  "3(g)": "4f83ffa51dd532e41272d189b64b631e2c67df5fb5d91c50fa681eef926b032e",
+  "3(h)": "30f02230b475d4fcec5350004b34fc71aa8697be40869fdff7669d2fa5f12d82",
+  "8a(d)": "7cb34a1559ce020423fa647441e1493a5f8e8337b064a370211d2fb576bc803a",
+  "8a(e)": "a36a1516acd47eef3215f796e859f419ea8784a8afc57a720bdd35f82a0c5fc2",
+  "8a(g)": "935ad5c6ef3b9adab951b170d751e0dee06e3581e4b336b751b144a2e231841a",
+  "8a(h)": "dfa1dcefb4513e76daae9eaf4f2fdb681d382a4571906823c64901f622768ece",
+  "8b(d)": "33d7ebac566110896624e01ad05ad5a419cc8265a8a8c24a0b5d5edf2cb676e3",
+  "8b(e)": "fcfd84823558fed73a1b9f1a60c209ae0513cb8f7c426242491403698bb995e9",
+  "8b(g)": "f72275b9789872d0d060be734900ea7bc50b8736d1ed846c4b93a82af2710889",
+  "8b(h)": "5a57f88db6d3ffc96b822c456d648bc156594ffd18b34d0ae34ef21d03fd19fc",
+  "9(d)": "e0ce94ecd286f76a2dff20ea6d7a15e029aff03873691493a6c2a490544c76e8",
+  "9(e)": "1bff59bd79514f22663d202d6dbdc7053c390735cbc1db3976c0b04190726e83",
+  "9(g)": "fa8fa8d8e9a6ce32f02d1492cefb3372c1cf76e11782fc59c111932f0da81452",
+  "9(h)": "ab1ceb5273bccdcd06fa052fcbcb87896755c8b31aa500ebe4094aa2cf685d91",
+  "10(d)": "288bde3ae50b1fafe01141c362866337f30b40bf4a7db8d0765e0d93299cfdbf",
+  "10(e)": "709dcdbbdb54678a1688a9b67a1e3188c7e403ce0f7d0febea5d733e8ab84810",
+  "10(g)": "9d8bbed9e04e61b7bc60aa2c64268a6d7a1d58560ea06a71a9d72a4d17301aed",
+  "10(h)": "ede4b96c6ee1a2ef142f28dcc5c3fe4f9311893b63387d64ea1bdfcbfc991999",
   "4": "c7bd63acfd833e64d6e9c0920d6b47c070d7887e3bce6097f173a07c1e5ca911",
   "5": "f5e8385cceab7746e80aa4c9d590c2a530712814896d9662fc8bcb99c8142c0b",
   "6": "3aca8f14bccb65211b408b2ad0c5f0f569da1a7c5b2de28b2c9ac0f4e0b64e3c",
@@ -449,38 +451,38 @@
   "sd.filing4952": "c405707b740da3bf0125426dc18b58e2ef543b6ec4effa8f0989c54d79b6c596",
   "sd.filed": "3861c85c115e2d2b190d5b4330169571ab6bbfbc3eb467138aeae101a7764066",
   "sd.distributions_if_dividends": "c62fb3f15c4520b8a8b6f83704bc3dedcda9ab409919eff46b0f3f4d2bcaf8be",
-  "1a(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "1a(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "1a(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "1a(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
-  "1b(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "1b(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "1b(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "1b(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
-  "2(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "2(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "2(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "2(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
-  "3(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "3(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "3(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "3(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
-  "8a(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "8a(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "8a(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "8a(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
-  "8b(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "8b(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "8b(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "8b(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
-  "9(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "9(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "9(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "9(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
-  "10(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
-  "10(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
-  "10(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
-  "10(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "1a(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "1a(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "1a(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "1a(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
+  "1b(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "1b(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "1b(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "1b(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
+  "2(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "2(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "2(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "2(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
+  "3(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "3(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "3(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "3(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
+  "8a(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "8a(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "8a(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "8a(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
+  "8b(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "8b(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "8b(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "8b(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
+  "9(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "9(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "9(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "9(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
+  "10(d)": "5eaef5d3e4d430cab3bd3dcdedd645c806e42500983c886b4eacb43ed2a5d5c2",
+  "10(e)": "e410c4fefe5e96d2a109b59aef0fa572644aa2d0dbc224da1d5576f2dca44875",
+  "10(g)": "09e577222f42451c3660d425d380336b62aa3692403056569dad194682b94357",
+  "10(h)": "ac21677c81815a273ba8ba6746ebf63717e37132d24d16d7b8eb7444b01a51d1",
   "4": "9894f3d525be7ead0bf33acb3b4d70ced11a0d04927229d4b766e2c83ce212bc",
   "5": "9894f3d525be7ead0bf33acb3b4d70ced11a0d04927229d4b766e2c83ce212bc",
   "6": "384ca1c3382438288c5e0efa556f857c22f2aafc7a3ae7efee42f66b28f3082b",

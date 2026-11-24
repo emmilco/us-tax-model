@@ -2,7 +2,7 @@
  "form": "sa",
  "reviews": {
   "gate:sa.gifts": {
-   "subject_sha": "4df8c56d0fa71d71de49dc0431a1d7880e9d9aea4b682606644aa97b7bb44169",
+   "subject_sha": "63bab6be8cea1d6ca4c11788424be707e8c2f6bb5e2489e496c876054c0fd68a",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,70 +10,70 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer who gave cash above the income limits in 2022–2024 and still has an unused charitable carryover, but gave nothing to charity in 2025.",
-       "why_no": "The gate asks only whether they gave or spent money 'In 2025'. Truthfully they did not, so it never asks whether income limits reduce the deduction, even though the carryover is still subject to those limits in 2025.",
-       "line": "sa.charity_limited_if_gifts",
-       "irs_text": "i1040sca p. 11, Line 13: \"Generally, the same limits apply this year to your carryover amounts as applied to those amounts in the earlier year... After applying those limits, enter the amount of your carryover that you are allowed to deduct this year.\"",
-       "severity": "medium",
-       "fix": "Widen the gate (or add a parallel gate for the limit line): 'In 2025, did you or your spouse give to charity, or do you have charitable gifts from 2020–2024 that you couldn't fully deduct because of income limits?' Also make the limited-deduction question cover carryovers."
+       "who": "A filer, or a joint filer's spouse, who gave far more than the AGI limits in 2023 or 2024 and gave nothing in 2025. They now deduct only an unused carryover on line 13.",
+       "why_no": "The gate asks 'In 2025, did you ... give money or things to a charity'. Nothing was given in 2025, so a truthful no sets sa.charity_limited to false. Yet the carryover is still subject to the percentage limits and may exceed them.",
+       "line": "sa.charity_limited_if_gifts (the limit refusal is missed)",
+       "irs_text": "i1040sca p. 11, Line 13: \"Generally, the same limits apply this year to your carryover amounts as applied to those amounts in the earlier year ... After applying those limits, enter the amount of your carryover that you are allowed to deduct this year.\"",
+       "severity": "high",
+       "fix": "Broaden the gate: 'In 2025, did you (or your spouse) give ..., or do you have charitable gifts from 2020–2024 that you could not fully deduct (a carryover)?' Alternatively, ask the limit question whenever line 13 is non-zero, and word it to include carryovers."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A partner in a partnership or a shareholder in an S corporation whose entity made cash gifts to charity in 2025. The filer's share appears on the K-1 as a charitable contribution, but the filer wrote no check personally.",
-       "why_no": "The question 'did you ... give money or things to a charity' is about the filer's own acts. The entity gave, so the truthful answer is no, yet the filer's share of the entity's cash gifts belongs on line 11.",
-       "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 10, Line 11: \"Enter on line 11 the total value of gifts you made in cash or by check\". A pass-through entity's contributions are treated as made by its owners (Pub. 526).",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder whose 2025 Schedule K-1 (box 13, code A, or box 12, code A) passes through cash contributions the entity made. The filer personally gave nothing.",
+       "why_no": "The words 'did you ... give money ... to a charity' describe the filer's own act. A passive investor truthfully answers no, although their share of the entity's gifts is treated as their own and belongs on Schedule A.",
+       "line": "sa.line11_if_gifts; also sa.charity_limited_if_gifts if the flow-through gifts are large",
+       "irs_text": "i1040sca p. 10, Line 11: \"Enter on line 11 the total value of gifts you made in cash or by check\". The flow-through treatment comes from the Partner's/Shareholder's Instructions for Schedule K-1, which are not in the excerpts supplied.",
        "severity": "high",
-       "fix": "Add to the gate: '...or does a Schedule K-1 you or your spouse received show a charitable contribution?'"
+       "fix": "Add to the gate: '..., or does a 2025 Schedule K-1 you (or your spouse) received show charitable contributions?' Alternatively, compute the gate as true whenever a K-1 contribution entry is non-zero."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A household that hosts a high-school exchange student under a written agreement with a qualified organization and pays for the student's food, clothing and other costs.",
-       "why_no": "They see this as hosting a student, not 'giving money to a charity' or 'volunteer work', and the help text does not mention it.",
-       "line": "sa.line11_if_gifts",
-       "irs_text": "p526 p. 6, Expenses Paid for Student Living With You: \"You may be able to deduct some expenses of having a student live with you... You can deduct up to $50 a month for each full calendar month the student lives with you.\"",
+       "who": "A filer who moved cash into a donor-advised fund at a sponsor such as Fidelity Charitable or Schwab Charitable in 2025. They made no grants out of the fund that year.",
+       "why_no": "They think of the transfer as funding their own 'giving account' at a financial firm, not as giving money to a charity. In their view the 'charity' is whoever later receives grants from the fund.",
+       "line": "sa.line11_if_gifts; also sa.charity_limited_if_gifts",
+       "irs_text": "i1040sca p. 9: \"You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose\"",
        "severity": "medium",
-       "fix": "Add to the gate help: 'Count unreimbursed costs of hosting a student under a program with a charity, and a foster parent's unreimbursed costs.'"
+       "fix": "Add to the help: 'Count money you put into a donor-advised fund in 2025, even if the fund has not yet granted it out.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A foster parent placed by a nonprofit or government agency who pays some of the foster child's costs out of pocket without reimbursement.",
-       "why_no": "They see this as caring for a child in their home, not as 'volunteer work for' a charity.",
+       "who": "A filer who made a state tax-credit contribution, such as to a scholarship-granting organization or a neighborhood assistance program. The credit is less than the full payment (for example 50–70%) or 15% or less.",
+       "why_no": "They regard the payment as a way of paying state tax or 'redirecting' it, not as a gift to a charity, so they answer no. Part or all of the payment remains a deductible contribution.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 9: \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\". p526 p. 6 refers to \"Foster parents under Out-of-Pocket Expenses in Giving Services\".",
+       "irs_text": "p526 p. 5: \"the amount treated as a charitable contribution deduction is reduced by the amount of the state or local tax credit\"; Exception: \"If the state or local tax credit ... doesn't exceed 15% of your payment amount ... your charitable contribution deduction isn't reduced.\"",
        "severity": "medium",
-       "fix": "Name foster-parent and student-hosting costs in the gate help."
+       "fix": "Add to the help: 'Count payments to a charity that earned you a state or local tax credit; the tool will remove the credited part later.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose only 2025 charitable payments were membership fees to a museum, zoo or public radio station, or synagogue High Holiday seat fees, with perks worth less than the payment.",
-       "why_no": "They see a membership or fee as a purchase, not as 'giving money to a charity'. The help names a fundraising dinner but not memberships or dues.",
+       "who": "A filer who bought a charitable gift annuity for cash, or who paid a membership to a museum or public radio station.",
+       "why_no": "They see a purchase (an annuity, or a membership with perks), not a gift. The help's 'fundraising dinner' example may not suggest these payments to them.",
        "line": "sa.line11_if_gifts",
-       "irs_text": "p526 p. 5, Membership fees or dues: \"You may be able to deduct membership fees or dues you pay to a qualified organization. However, you can deduct only the amount that is more than the value of the benefits you receive.\"",
-       "severity": "medium",
-       "fix": "Add to the gate help: 'Count memberships, dues or event fees paid to a charity, museum, public broadcaster or place of worship.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "An employee whose only gifts were United Way or similar charity payroll deductions set up years ago.",
-       "why_no": "The deduction comes out of the paycheck automatically, so the employee may not recall 'giving money' in 2025. The gate help does not mention payroll deductions, though the line 11 help does.",
-       "line": "sa.line11_if_gifts",
-       "irs_text": "i1040sca p. 10: \"If you made donations through payroll deductions, treat each deduction from each paycheck as a separate gift.\"",
+       "irs_text": "i1040sca p. 9: \"If you made a gift and received a benefit in return ... you can generally only deduct the amount that is more than the value of the benefit\"; p526 p. 5: \"You may be able to deduct membership fees or dues you pay to a qualified organization.\"",
        "severity": "low",
-       "fix": "Add 'including through payroll deduction' to the gate wording or its help."
+       "fix": "Extend the help examples: 'such as a fundraising dinner, a charity auction item, a museum or public-radio membership, or a charitable gift annuity'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A foster parent with unreimbursed expenses whose child was placed by a county or state child-welfare agency, not by a nonprofit.",
+       "why_no": "The gate says a foster child that 'it' (the charity) placed. The filer does not consider the county agency a charity, even though the help mentions governments in a different context.",
+       "line": "sa.line11_if_gifts",
+       "irs_text": "i1040sca p. 9: \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\"; \"Federal, state, and local governments if the gifts are solely for public purposes.\"",
+       "severity": "low",
+       "fix": "Reword the gate as 'hosting a student or foster child placed with you by a charity or a government agency'."
       }
      ],
-     "prompt_sha": "a22111daf054bbfd21e7a4d1fa86805c669f87d049fb4ed9d49be74fd19ca740",
+     "prompt_sha": "d114824f4009563a9d17562a23a4f35b9b976b7b549bda3fde4fc0875ed96b75",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.143428,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_sa.gifts.4df8c56d0fa7.1.response.txt"
+     "cost": 0.165904,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_sa.gifts.63bab6be8cea.1.response.txt"
     }
    ],
    "condition": "sa.gifts",
@@ -98,7 +98,7 @@
      "how": "cited pages",
      "locators": [
       "p. 10, Limit on the amount you can deduct, \"See Pub. 526 to figure the amount of your deduction if any of the following applies\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\"",
-      "p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\", \"14 cents a mile\", \"But don't deduct any amounts that were repaid to you\", Gifts from which you benefit, \"you can generally only deduct the amount that is more than the value of the benefit. But this rule doesn't apply to certain membership benefits provided in return for an annual payment of $75 or less or to certain items or benefits of token value\", Gifts of $250 or more; , Membership fees or dues, \"Both you and the organization can disregard the following membership benefits if you get them in return for an annual payment of $75 or less\"; , Token items, \"You don’t have to reduce your contribution by the value of any benefit you receive if both of the following are true\"; p. 10, Amounts You Can't Deduct, \"Political contributions\", \"Cost of raffle, bingo, or lottery tickets\", \"Cost of tuition\", \"Value of your time or services\", \"Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities\"; Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\", Recordkeeping, \"you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity\"",
+      "p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\", \"14 cents a mile\", \"But don't deduct any amounts that were repaid to you\", Gifts from which you benefit, \"you can generally only deduct the amount that is more than the value of the benefit. But this rule doesn't apply to certain membership benefits provided in return for an annual payment of $75 or less or to certain items or benefits of token value\", Gifts of $250 or more; , State or local tax credit, \"the amount treated as a charitable contribution deduction is reduced by the amount of the state or local tax credit you receive or expect to receive\", Exception, \"If the state or local tax credit you receive or expect to receive doesn’t exceed 15% of your payment amount or 15% of the FMV of the transferred property, then your charitable contribution deduction isn’t reduced\"; , Membership fees or dues, \"Both you and the organization can disregard the following membership benefits if you get them in return for an annual payment of $75 or less\"; , Token items, \"You don’t have to reduce your contribution by the value of any benefit you receive if both of the following are true\"; p. 10, Amounts You Can't Deduct, \"Political contributions\", \"Cost of raffle, bingo, or lottery tickets\", \"Cost of tuition\", \"Value of your time or services\", \"Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities\"; Line 11, \"Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)\", Recordkeeping, \"you must maintain as a record of the contribution a bank record (such as a canceled check or credit card statement) or a written record from the charity\"",
       "p. 9, Gifts to Charity, \"You can deduct contributions or gifts you gave to organizations that are religious, charitable, educational, scientific, or literary in purpose\", \"Certain whaling captains may be able to deduct expenses paid in 2025 for Native Alaskan subsistence bowhead whale hunting activities\" and \"Federal, state, and local governments if the gifts are solely for public purposes\"; p. 9, Gifts from which you benefit, \"If you made a gift and received a benefit in return\"; p. 9, Amounts You Can Deduct, \"Contributions can be in cash, property, or out-of-pocket expenses you paid to do volunteer work\"; p. 11, Line 13, \"You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits on the amount you could deduct\""
      ],
      "cols_pages": [
@@ -258,78 +258,78 @@
    ]
   },
   "gate:sa.home_asked": {
-   "subject_sha": "1715e4f5782c1e87b791f7c7180e581791b2e3430ec4ec6cfa3524220e60a90c",
+   "subject_sha": "594fc1e8a1b14ee520fcfd7446d62e8668947f51ec77a050157c1322bae44244",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A tenant-stockholder in a housing cooperative who lives in the apartment. They hold shares and a proprietary lease, pay interest on a share loan reported on Form 1098, and pay maintenance that includes their share of the co-op's real estate tax and mortgage interest.",
-       "why_no": "Legally they own stock in a corporation, not 'a home or other real estate', so a truthful no is available. The fallback helper lists 'a boat, camper or mobile home, or ... a mortgage on a home in the name of another person', and a share loan secured by co-op stock fits none of these.",
-       "line": "sa.line8a (also sa.line5b_if_home_owner, sa.mortgage_unreported_if_home, s2.mortgage_subsidy_if_interest)",
-       "irs_text": "i1040sca p. 8, Line 8: \"A home can be a house, condominium, cooperative, mobile home, boat, or similar property\"; \"A home mortgage is any loan that is secured by your main home or second home, regardless of how the loan is labeled.\"",
-       "severity": "high",
-       "fix": "Ask: 'At any time in 2025, did you (or your spouse) own a home or other real estate, including a condominium, shares in a housing cooperative, a timeshare, or a home held in your trust or LLC?' Add 'a co-op share loan' to the fallback interest helper."
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A couple who bought their house on a land contract (contract for deed). The seller keeps legal title until the last payment. The couple pays interest to the seller, who sends no Form 1098, and the couple pays the property tax.",
+       "why_no": "They do not hold title, so they answer no to 'own a home or other real estate'. The follow-up names only 'a loan secured by a boat, camper or mobile home, or ... a mortgage on a home in the name of another person', and a land contract is not called a mortgage.",
+       "line": "sa.mortgage_unreported_if_home (line 8b seller-paid interest; the refusal is missed), sa.line5b_if_home_owner",
+       "irs_text": "i1040sca p. 9, Line 8b: 'If you paid home mortgage interest to the person from whom you bought the home and that person didn't provide you a Form 1098, write that person's name...'; p. 8: 'A home mortgage is any loan that is secured by your main home or second home, regardless of how the loan is labeled'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you (or your spouse) own, or buy under a land contract, contract for deed or seller financing, a home or other real estate at any time in 2025?' Also add land contracts and seller financing to the interest follow-up."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose home is titled in their revocable living trust, or in a single-member LLC that is disregarded for tax purposes. They pay the property tax and the mortgage interest themselves.",
-       "why_no": "The deed names the trust or LLC, so they read 'did you ... own a home' as no. The fallback asks about 'a home in the name of another person', but they may not see their own trust as another person.",
-       "line": "sa.line5b_if_home_owner, sa.line8a",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"; p. 8, Line 8a: \"Enter on line 8a mortgage interest and points reported to you on Form 1098\"",
+       "who": "A tenant-stockholder in a housing cooperative. They own shares and a proprietary lease, not a deed. They pay interest on a co-op share loan reported on Form 1098, and their maintenance includes their share of the building's tax and interest. They may also have bought with a mortgage credit certificate and sold in 2025.",
+       "why_no": "They hold stock, not 'real estate', so they answer no to the first question. The follow-up lists 'boat, camper or mobile home' and a 'home in the name of another person' but never a co-op share loan.",
+       "line": "sa.line8a, sa.line5b_if_home_owner, s2.mortgage_subsidy_if_interest",
+       "irs_text": "i1040sca p. 8, Line 8: 'A home can be a house, condominium, cooperative, mobile home, boat, or similar property'",
        "severity": "medium",
-       "fix": "Add to the gate's help: 'Count a home held in your revocable trust or in an LLC you alone own as yours.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A buyer under a land contract (contract for deed). They live in the home and pay interest to the seller, but the seller keeps legal title until the contract is paid off.",
-       "why_no": "'The seller still holds title' makes owning read as no. They also may not see an installment contract as 'a mortgage' or as 'a loan secured by a home', so they answer no to the fallback as well.",
-       "line": "sa.mortgage_unreported_if_home (line 8b), sa.line5b_if_home_owner",
-       "irs_text": "i1040sca p. 9, Line 8b: \"Seller financed mortgage. If you paid home mortgage interest to the person from whom you bought the home and that person didn’t provide you a Form 1098...\"",
-       "severity": "medium",
-       "fix": "Add to the gate: 'or were buying a home on a land contract or other financing from the seller'."
+       "fix": "Name co-ops in the gate: 'own a house, condominium, co-op apartment (shares in a housing cooperative), mobile home, timeshare, land or other real estate'. Add 'a loan secured by co-op shares' to the interest follow-up."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "An owner of a deeded timeshare used as a second home, with a loan on it and a share of the property tax.",
-       "why_no": "They do not think of a vacation week as 'a home or other real estate', and the fallback's list (boat, camper, mobile home) leaves timeshares out.",
-       "line": "sa.line8a, sa.line5b_if_home_owner",
-       "irs_text": "i1040sca p. 8, Line 8: \"A home mortgage is any loan that is secured by your main home or second home\"",
+       "who": "A filer who owns a deeded timeshare used as a second home and pays interest on a loan secured by it, reported on Form 1098.",
+       "why_no": "A timeshare week is not thought of as 'a home or other real estate', and the follow-up's list of boats, campers and mobile homes does not mention timeshares.",
+       "line": "sa.line8a",
+       "irs_text": "i1040sca p. 8, Line 8: 'A home mortgage is any loan that is secured by your main home or second home ... A home can be a house, condominium, cooperative, mobile home, boat, or similar property'",
        "severity": "medium",
-       "fix": "Name timeshares in the gate's wording or its help."
+       "fix": "Include 'timeshare' in the ownership question and in the list of loans in the follow-up."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A life tenant who lives in a home after deeding the remainder to their children, or after receiving a life estate under a will. They pay the property tax.",
-       "why_no": "The deed or the will says the children own the home, so they answer no to owning.",
-       "line": "sa.line5b_if_home_owner",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own\"",
+       "pattern": "6",
+       "who": "A filer whose house is titled in their revocable living trust or a single-member LLC used only for personal purposes. They pay the property tax and the mortgage interest.",
+       "why_no": "Help that equates ownership with the name on the title leads them to answer that 'the trust owns it' or 'the LLC owns it', not that they own a home.",
+       "line": "sa.line5b_if_home_owner, sa.line8a",
+       "irs_text": "i1040sca p. 6, Line 5b: 'Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business'",
        "severity": "low",
-       "fix": "Add to the help: 'Count a life estate or other right to live in a home for life as owning it.'"
+       "fix": "Add help: 'Count a home held in your revocable trust or in a single-member LLC you own, and a home you are buying under a contract.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who sold, in 2025, a mobile home on rented land that they had bought with a bond-financed or MCC loan. The loan was already paid off, so they paid no interest in 2025.",
-       "why_no": "They see a mobile home as a vehicle, not 'a home or other real estate'. The fallback asks only about interest paid in 2025, and they paid none.",
-       "line": "s2.mortgage_subsidy_if_interest",
-       "irs_text": "i1040gi p. 113, Line 17b: \"If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax\"",
+       "who": "A filer who sold their home in December 2024 and paid a supplemental or delinquent property tax bill in 2025 for the period they owned it.",
+       "why_no": "The question asks 'At any time in 2025, did you ... own', and they did not own it in 2025.",
+       "line": "sa.line5b_if_home_owner",
+       "irs_text": "i1040sca p. 6, Line 5b: 'Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025'",
        "severity": "low",
-       "fix": "Ask the Form 8828 question regardless of the gate, or broaden the gate to 'owned or sold a home of any kind, including a mobile home or houseboat'."
+       "fix": "Broaden the gate: 'own real estate in 2025, or pay in 2025 any property tax or mortgage interest on real estate you owned earlier'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse alone paid interest on a boat-home loan or on a mortgage on a home titled to the spouse's parent, while neither spouse owns real estate.",
+       "why_no": "The follow-up label reads 'Paid interest on a loan secured by ...' with no 'or your spouse', so the filer answers only for themselves.",
+       "line": "sa.line8a, sa.mortgage_unreported_if_home",
+       "irs_text": "i1040sca p. 8, Line 8a: 'If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on a mortgage ...'",
+       "severity": "low",
+       "fix": "Word the follow-up as 'Did you (or, on a joint return, your spouse) pay interest in 2025 on ...'."
       }
      ],
-     "prompt_sha": "a2293147863b8469d81f39c2099b12b1754d8136cf340007d0d26893a33022ea",
+     "prompt_sha": "68a63494cf1ad272234589b928c72030f6bd5349a8b94397821a04164410b300",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.168356,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_sa.home_asked.1715e4f5782c.1.response.txt"
+     "cost": 0.193608,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_sa.home_asked.594fc1e8a1b1.1.response.txt"
     }
    ],
    "condition": "sa.home_asked",
@@ -424,88 +424,98 @@
    ]
   },
   "gate:sa.medical_asked": {
-   "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
+   "subject_sha": "70b77c815ad7a09f555f02b61b8be9157bbdf34d8ee3f952bb1e12fd4097d171",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A self-employed filer with $220,000 in gross receipts and $40,000 AGI paid $5,000 in medical bills. Or a retiree whose Social Security is mostly untaxed and whose AGI is far below total cash income.",
-       "why_no": "The gate asks whether costs were more than 7.5% of 'your income'. Measured against gross receipts, total pay before pretax deductions, or untaxed Social Security and tax-exempt interest, the costs fall below 7.5%. The real threshold is 7.5% of AGI, which can be far smaller.",
-       "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 1: 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.'",
-       "severity": "high",
-       "fix": "Say 'more than 7.5% of your adjusted gross income (Form 1040, line 11b, which is income after business expenses, pretax retirement contributions and other adjustments, and leaves out untaxed Social Security and tax-exempt interest)'. Better, have the tool compute the comparison against AGI from a dollar amount the filer enters."
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "An executor files the final 2025 return of a person who died in 2025. The estate paid that person's hospital and nursing bills in early 2026, within one year of death.",
-       "why_no": "The gate asks about costs 'you (or ... your spouse) paid yourselves' 'In 2025'. The estate paid, and it paid in 2026, so the honest answer is no. Line 1 help mentions estate-paid costs, but the filer never sees it after a no.",
+       "who": "The executor files a 2025 final joint return for a spouse who died in late 2025. The estate paid the decedent's last hospital and nursing bills in early 2026, within one year after death. Those bills exceed 7.5% of AGI.",
+       "why_no": "The gate asks about costs that 'you ... paid yourselves' 'In 2025'. The estate is not 'yourselves', and it paid in 2026. Both words give a truthful no. The help that mentions estates appears only with the gated question, which is never reached.",
        "line": "sa.line1_if_medical",
        "irs_text": "i1040sca p. 1: 'Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return. See Pub. 502 for details.'",
        "severity": "high",
-       "fix": "Add to the gate: 'or, on the final return of someone who died in 2025, medical costs for that person were paid from the estate within one year after death'. The tool can also open the gate whenever the return is marked as a decedent's final return."
+       "fix": "Add to the gate: 'or, for a person who died, medical costs the estate paid within one year after the death.' Also state that bills charged to a credit card in 2025 count as paid in 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A retiree has AGI of $60,000, $2,000 of copays, Medicare Part B and D premiums withheld from Social Security, and qualified long-term care premiums. With the premiums, the total exceeds $4,500.",
+       "why_no": "The filer reads 'medical and dental costs ... after anything insurance paid' as bills, not premiums, and answers no. To the fallback 'paid for health insurance with money already taxed' the filer also answers no. The premiums were withheld from benefits before receipt, and the filer believes those benefits are largely untaxed.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 1: 'you can include what you paid for: • Insurance premiums for medical and dental care, including premiums for qualified long-term care insurance contracts ... • The supplemental part of Medicare insurance (Medicare Part B). • The premiums you pay for Medicare Part D insurance.'",
+       "severity": "medium",
+       "fix": "Say in the first question: 'counting health, dental, Medicare and long-term care insurance premiums you paid (including premiums taken out of Social Security), as well as bills.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer paid over $15,000 toward the nursing home and medical bills of a parent they support. The parent is not their dependent because of $5,200 or more of gross income. Or a noncustodial divorced parent pays a child's orthodontics while the other parent claims the child.",
-       "why_no": "'The medical and dental costs you (or ... your spouse) paid yourselves' reads as costs for your own care. The gate says nothing about dependents, near-dependents, or a child claimed by the other parent.",
+       "who": "A filer pays nursing-home and doctor bills for a parent who is not their dependent only because the parent has $5,200 or more of gross income. Another filer pays a child's orthodontist while the ex-spouse claims the child.",
+       "why_no": "'the medical and dental costs you (or ... your spouse) paid yourselves' reads as costs for your own household. The rules on whose costs count appear only in the gated question's help.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 2: 'Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return'; 'Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents.'",
+       "irs_text": "i1040sca p. 2: 'Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents. ... Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return.'",
        "severity": "medium",
-       "fix": "Reword to 'costs you or your spouse paid for anyone's care: yourselves, your dependents, a child the other parent claims, or a relative you support who has too much income to be your dependent'."
+       "fix": "Add: 'including costs you paid for your dependents, for a child the other parent claims, and for a relative you support who has too much income to be your dependent.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer's costs fall in categories they do not think of as medical: mileage and parking to treatment, lodging for out-of-town care, special-education tuition on a doctor's advice, an attendant's wages and employment taxes, or medically required home modifications. Counted, these push the total past 7.5% of AGI.",
+       "why_no": "'Medical and dental costs' brings to mind doctor and dentist bills, so the filer leaves these out and answers no.",
+       "line": "sa.line1_if_medical",
+       "irs_text": "i1040sca p. 2: '• Ambulance service and other travel costs to get medical care. If you used your own car, you can include ... 21 cents a mile.'; p502 p. 12: 'You can include in medical expenses the cost (tuition, meals, and lodging) of attending a school that furnishes special education'",
+       "severity": "medium",
+       "fix": "List the less obvious categories in the gate (travel and mileage, lodging, nursing or attendant care, special schooling, long-term care services). Or ask the line 1 amount whenever the filer itemizes and compute the 7.5% test."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer paid in 2025 a large 2024 surgery bill, or charged medical bills to a credit card in 2025 and paid the card off in 2026.",
-       "why_no": "'In 2025, were the medical and dental costs...' can be read as care received in 2025, which drops the old bill. 'Paid' can be read as the date the card balance was paid, which drops the charges.",
+       "who": "A Marketplace enrollee paid low monthly premiums because of large advance credit payments. The enrollee must repay excess APTC on Form 8962, and that repaid portion counts as premiums. With it, the total exceeds 7.5% of AGI.",
+       "why_no": "The filer counts only what was paid out of pocket during 2025, as 'In 2025 ... paid' suggests. The repayment made with the return feels like tax, not a medical cost.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 2: 'You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them.'",
+       "irs_text": "p502 p. 12: 'any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses'; 'You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)'",
        "severity": "medium",
-       "fix": "Say 'amounts you paid during 2025 (including bills for earlier care and charges put on a credit card in 2025), whenever the care was received'."
+       "fix": "For anyone with a Form 1095-A, compute the premium amount from Form 8962 instead of relying on the filer's comparison, or always ask line 1 when a 1095-A is present."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer paid $12,000 in 2025 medical costs and received a $6,000 insurance reimbursement in 2025 for 2024 bills. AGI is $100,000.",
-       "why_no": "'After anything insurance paid' invites netting every insurance payment received in 2025. That brings $12,000 down to $6,000, below the 7.5% threshold.",
+       "who": "In 2025 a filer received an insurance reimbursement for 2024 bills and also paid 2025 bills above 7.5% of AGI.",
+       "why_no": "'after anything insurance paid' invites subtracting every reimbursement received in 2025. Netting the prior-year reimbursement drops the total below the threshold.",
        "line": "sa.line1_if_medical",
        "irs_text": "i1040sca p. 2: 'If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount.'",
        "severity": "medium",
-       "fix": "Say 'after what insurance or anyone else paid toward these 2025 costs (do not subtract repayments of earlier years' bills)'."
+       "fix": "Change the gate to 'after insurance paid or reimbursed you for 2025 costs (do not subtract repayments of earlier years' costs).'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer has large costs that they don't see as medical care: special-school tuition for a child with a learning disability, home modifications for a disability, long-term care services, mileage and lodging for out-of-town treatment, or Medicare Part B/D premiums withheld from Social Security.",
-       "why_no": "'Medical and dental costs' brings to mind doctor and dentist bills. Counting only those, the filer stays under 7.5%. For premiums withheld from largely untaxed Social Security, the fallback 'money already taxed' question also gets a no.",
+       "who": "A self-employed filer has low net profit, so the self-employed health insurance deduction cannot absorb all premiums. The unabsorbed premiums plus bills exceed 7.5% of AGI.",
+       "why_no": "The filer leaves out premiums from the first question because 'those go on my business deduction'. The filer answers no to 'money already taxed' because they consider business-deducted premiums pre-tax.",
        "line": "sa.line1_if_medical",
-       "irs_text": "p502 p. 12: 'You can include in medical expenses the cost (tuition, meals, and lodging) of attending a school that furnishes special education...'; i1040sca p. 1: 'The supplemental part of Medicare insurance (Medicare Part B). The premiums you pay for Medicare Part D insurance.'",
+       "irs_text": "i1040sca p. 2: 'if you claimed the self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17.'",
        "severity": "medium",
-       "fix": "Add help to the gate listing what counts: insurance premiums including Medicare premiums taken from benefits, long-term care, special schooling, travel and lodging for care, and home changes for a disability. Or ask for a dollar total and let the tool compare it to AGI."
+       "fix": "Compute the unabsorbed premium excess from the self-employed health insurance worksheet and open the gate whenever it is non-zero."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A self-employed filer has a small or negative net profit, so the self-employed health insurance deduction can't take all of their premiums. Or a 2% S-corporation shareholder has premiums paid by the corporation and included in Form W-2 box 1.",
-       "why_no": "The fallback question asks whether the filer 'paid for health insurance with money already taxed'. The self-employed filer thinks of the premiums as deductible business costs, not money already taxed. The S-corporation shareholder didn't personally pay them. Either way the leftover premiums that line 1 is supposed to pick up are dropped.",
+       "who": "A filer near the threshold has large adjustments, or income the filer does not count, so the filer's own estimate of AGI is wrong.",
+       "why_no": "The filer must compute 7.5% of an AGI the return has not yet produced. A filer using gross pay instead of AGI wrongly concludes costs are under 7.5%.",
        "line": "sa.line1_if_medical",
-       "irs_text": "i1040sca p. 2: 'if you claimed the self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17'; 'don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2.'",
+       "irs_text": "i1040sca p. 1: 'You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b.'",
        "severity": "medium",
-       "fix": "Have the tool open the gate whenever the premiums entered for the self-employed health insurance deduction exceed the deduction allowed. Reword the fallback to 'paid health insurance premiums other than by a pretax payroll deduction, including premiums included in W-2 box 1, Medicare premiums withheld from benefits, and self-employed premiums'."
+       "fix": "Do not ask the filer to apply the threshold. Ask 'Did you pay any medical, dental or health insurance costs?', then take the amount and compare it with 7.5% of the computed AGI."
       }
      ],
-     "prompt_sha": "d91122411b94928da5414d8deaf7d7d0a70e4de7462b99d21b63f3d7047e30b1",
+     "prompt_sha": "45f92c9182c37d2a0cb8450d2b30f55b6bb4b6e81920e6cf68f6728ebae42bbe",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.172404,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_sa.medical_asked.41ec635c0a76.1.response.txt"
+     "cost": 0.16931200000000002,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_sa.medical_asked.70b77c815ad7.1.response.txt"
     }
    ],
    "condition": "sa.medical_asked",
@@ -1159,88 +1169,78 @@
    ]
   },
   "gate:sa.property_tax_other_if_home": {
-   "subject_sha": "f3ee7ddc0662e20ae12dd13ee6258290d6b5ba02a82fdfbb4d7f04d87f4e675c",
+   "subject_sha": "8d38d4ce12104784f14c83defab29bb7614e4d3dbfa0c16e4fdc4e29a91016ad",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer who owns a rental house, or uses part of a home or a parcel in a business, and enters the total property tax from the county bills, including the tax on the rental or business portion.",
-       "why_no": "The question defines 'not deductible' by a list after a colon: foreign real estate, service charges, improvements, tax charged to the buyer, refunds, and tax not assessed before 2026. Business or rental use is not on the list, so the truthful answer to the question as worded is no.",
-       "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"",
-       "severity": "high",
-       "fix": "Add to the list: 'tax on real estate, or the part of a property, used in a business or rented out (this tax belongs on Schedule C, E, or F).' Better, ask about business or rental use as its own yes/no question before the list, and say the list is not complete."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer whose bill includes a levy that is not assessed uniformly at a like rate on all property in the community, or whose proceeds do not go to general governmental purposes. Examples are a special-district or benefit assessment on certain parcels only that is not plainly for an 'improvement', or a fee for a private association that the bill collects.",
-       "why_no": "The charge is not foreign, not an itemized service charge, and not visibly an improvement, so it matches nothing on the list, and the filer answers no.",
-       "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes\"",
-       "severity": "medium",
-       "fix": "Add to the list: 'any charge not levied at the same rate on all property in the community, or not used for general government purposes (for example, a special assessment on some parcels only, or an association fee).'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer who paid the property tax on real estate they do not own, such as a parent's or adult child's house, and included it in the amount entered.",
-       "why_no": "The list does not mention ownership. The tax was paid and is a genuine local real estate tax, so nothing on the list applies.",
-       "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"the state and local taxes you paid on real estate you own\"",
-       "severity": "medium",
-       "fix": "Add to the list: 'tax on real estate that you (or your spouse) do not own.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer with an escrow account who enters the escrow deposits for taxes, or the annual escrow total from the lender statement, rather than the amount the lender actually paid to the taxing authority in 2025.",
-       "why_no": "The filer sees the escrow deposits as 'real estate tax' and nothing on the list covers the gap between deposits and disbursements, so they answer no. The excess deposits are then deducted.",
-       "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.\"",
-       "severity": "medium",
-       "fix": "State on the amount question, or add to the list: 'escrow money your lender held but did not pay to the taxing authority in 2025 (use the taxes paid shown on Form 1098 or the escrow statement).'"
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "Joint filers where only the spouse owns real estate (for example, a premarital house or inherited land), and the spouse's property tax reaches the return's real estate tax amount.",
-       "why_no": "The parent helper reads 'You owned a home or other real estate, or paid interest on a loan secured by a home'. The filer answers for themself, says no, and the leave-out question is never asked for the spouse's foreign, service, or improvement charges.",
+       "who": "A married couple filing jointly where only the spouse holds title to real estate, for example a foreign condo or a house with a sidewalk-construction assessment on its bill, and that property's tax is in the real estate tax amount the return carries (for example from Form 1098 box 10 or the spouse's entry).",
+       "why_no": "The parent helper says \"You owned a home or other real estate, or paid interest on a loan secured by a home\". The filer owns nothing and pays no mortgage, so they truthfully answer no, and the nondeductible-amount question is never asked.",
        "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Don't include the following amounts on line 5b. • Foreign taxes you paid on real estate.\"",
-       "severity": "medium",
-       "fix": "Reword the parent as 'You or your spouse owned a home or other real estate in 2025, or paid interest on a loan secured by a home.' Alternatively, condition the gate on a non-zero real estate tax amount rather than on ownership."
+       "irs_text": "i1040sca p. 6, Line 5b: \"Don't include the following amounts on line 5b. • Foreign taxes you paid on real estate. • ... Charges for improvements that tend to increase the value of your property\"",
+       "severity": "high",
+       "fix": "Word the parent gate as \"You or your spouse owned a home or other real estate (now or at any time in 2025), or paid interest on a loan secured by a home\". Also make every source of the real estate tax amount open the leave-out question, not ownership alone."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who prepaid in December 2025 a tax bill their locality issued before the tax is legally assessed under state law, for example an early or estimated bill for the 2026 levy.",
-       "why_no": "The help says 'Tax is billed when it is assessed under state or local law.' The filer had a bill before 2026, so they conclude the tax was assessed before 2026 and answer no.",
+       "who": "A homeowner who paid a $6,000 2025 tax bill and later in 2025 received a $400 rebate or abatement of that 2025 tax. They entered the $6,000 they paid.",
+       "why_no": "The question asks whether the amount entered \"include[s] ... a refund or rebate of 2025 tax\". The $6,000 is money paid out and contains no refund, so the filer answers no. The refund is a separate receipt that IRS text subtracts, not a part of the entered amount.",
        "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Prepayment of next year's property taxes: \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025. State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed.\"",
+       "irs_text": "i1040sca p. 6, Refunds and rebates: \"If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate.\"",
        "severity": "medium",
-       "fix": "Replace the help sentence with: 'A tax is assessed when state or local law makes you liable for it, which may differ from when you are billed. A payment in 2025 toward next year's tax that your state had not yet assessed is not deductible.'"
+       "fix": "Ask separately: \"Did you or your spouse get back any 2025 real estate tax in 2025 (a refund, rebate, abatement credit, or an amount the buyer paid you for taxes at a sale)?\" Then subtract that amount whatever the entered amount contains."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who bought a home in 2025 and, at closing, paid real estate tax covering part of the year before the purchase date (the seller's share), shown on the settlement statement.",
-       "why_no": "The list mentions only 'tax charged to the buyer on a sale', which a buyer reads as tax they themselves paid, or as a seller-only item. Nothing tells them that tax for the seller's part of the year is not their deduction, so they answer no.",
+       "who": "A filer who sold a home in 2025 after paying that year's full tax bill. At closing the buyer was charged the post-sale share, shown on the settlement statement and in box 6 of Form 1099-S. The filer entered the bills they paid from bank records.",
+       "why_no": "\"Tax charged to the buyer on a sale\" reads as tax the buyer paid, which is not in the seller's figure, so the seller answers no. IRS text treats that amount as a refund that reduces the seller's deduction even though the seller's entered amount is wholly their own payments.",
        "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Any real estate taxes you paid at closing should be shown on your settlement statement.\" together with \"the state and local taxes you paid on real estate you own\"",
+       "irs_text": "i1040sca p. 6, Line 5b: \"If you sold your home in 2025, any real estate tax charged to the buyer should be shown on your settlement statement and in box 6 of any Form 1099-S you received. This amount is considered a refund of real estate taxes.\"",
+       "severity": "medium",
+       "fix": "Ask directly: \"Did you or your spouse sell real estate in 2025? Enter any real estate tax charged to the buyer (settlement statement, Form 1099-S box 6).\" Subtract it without regard to whether the filer thinks the entered amount 'includes' it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A homeowner who entered the amount on their 2025 tax bill, which they actually paid in January or February 2026, or who entered escrow deposits rather than what the lender disbursed to the taxing authority in 2025.",
+       "why_no": "The list names only \"tax not assessed before 2026\". This tax was assessed in 2025, so none of the listed items applies and the filer answers no, though it was not paid in 2025.",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6: \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.\" and \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.\"",
+       "severity": "medium",
+       "fix": "Add to the list: \"tax not actually paid in 2025 (a 2025 bill paid in 2026, or escrow deposits the lender did not pay to the taxing authority in 2025)\". Or state at entry that only amounts paid to the taxing authority during 2025 count."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose entered real estate tax includes tax on property used in a business (a home office share or a separate shop), tax on property they do not own (paying a parent's or child's bill), or a levy not assessed uniformly or not used for general purposes (a special district or HOA-type charge billed with the tax).",
+       "why_no": "The question lists six kinds of nondeductible amount after a colon. The filer reads the list as complete and answers no because none of these situations appears on it.",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes.\"",
+       "severity": "medium",
+       "fix": "Extend the list with \"tax on real estate used in a business, tax on real estate you and your spouse don't own, or a charge not assessed at a like rate on all property in the community\", and say \"for example\" before the list so it is not read as complete."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A tenant-stockholder in a cooperative, or a buyer under a land contract or a life tenant, who pays real estate tax but does not hold title.",
+       "why_no": "The parent asks whether they \"owned a home or other real estate\". A co-op holder owns stock and a contract buyer has no deed, so either may answer no. The leave-out question is then skipped for any amount entered elsewhere (for example a co-op's share of taxes).",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own ... Pub. 530 explains the deductions homeowners can take.\"",
        "severity": "low",
-       "fix": "Add: 'If you bought real estate, any tax you paid at closing for the part of the year before you owned it (see your settlement statement).'"
+       "fix": "Add help to the parent: \"Count a co-op apartment, a home bought under a land contract, and a life estate.\""
       }
      ],
-     "prompt_sha": "7fe579b2294e31b46045e9683932fb5fe7121b37e9c0ec7f7a3efd4efc8e10c6",
+     "prompt_sha": "e53e657876f309ea4f123ef3cdde5c79c131a82d55d9845c4501ea119225ddf2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.11374000000000001,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_sa.property_tax_other_if_home.f3ee7ddc0662.1.response.txt"
+     "cost": 0.12625999999999998,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_sa.property_tax_other_if_home.8d38d4ce1210.1.response.txt"
     }
    ],
    "condition": "sa.property_tax_other_if_home",

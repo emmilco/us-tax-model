@@ -1197,11 +1197,11 @@
    "printed": "21",
    "project_expr_sha256": "c012fc53dabe4c444eeddd669c74c0f83cd889b3c2ade2cdbbb1f4e1045cec19",
    "second_expr_sha256": "6fa2c0eaad03e95d756bd97d3a9d2a29a9ac2053059cb871de5621640a450146",
-   "ruling": "Ruling: representation; i1040se p. 5, Line 2. As the ruling of 2026-11-22: every completed difference is an input the reply reads ungated; no value differs. Triage executable-triage-v2 (.transcription/triage/2025/rental.json, pass ebf7da51095d): 1597 of 1908 agree; {\"candidate-refuses\": 33, \"candidate-unknown\": 13, \"project-refuses\": 15, \"project-unknown\": 250}; completed {\"candidate-unknown\": 1}. Re-reviewed because the landing merged next's rental lines with advfix's. Project stands.",
-   "context": "16ba37763d57d4c51aa3c2ff11b56a37a413defcc4b38b8205151e33fd258341",
-   "date": "2026-11-23",
-   "run": "4b5d402f828d532447b0cdd6ebb18caa0f8c805cfcdcfd551f59c5d48c47e6d5",
-   "subject_key": "9251533475ca5ba91966030ec744b6333888ad4f46ae2d58d1b691cd4f871bdb",
+   "ruling": "Ruling: representation; i1040se p. 5, Line 2, as the rulings of 2026-11-22 and 2026-11-23: the project's line 21 is line 3 less line 20 with the personal-use and excluded-home branches the reply leaves to its inputs; the reply's own note confirms the refusals on rental.not_at_risk and the new rental.at_risk_prior (p925 p. 19). Executable triage .transcription/triage/2025/rental.json (pass a37bfaad4db5): 2275 of 2671 agree; completed returns differ only as candidate-unknown (37, the reply reading an input the project does not need); no completed value differs. Project stands.",
+   "context": "b1404b3718233ad2ea497128258cac2db8d29c9aaf2fe1e3f3c9f1e6ba5f049c",
+   "date": "2026-11-24",
+   "run": "325c040c4c0e61e6fe1d5c67ae7676d1f142270e6af6c6a3877d1568cb443486",
+   "subject_key": "d5e521f2289cef53a1f51a78c6ec799aba34c749d5231e9a083a81cdea98f2ff",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1229,12 +1229,7 @@
      "partial:classm.f8582.1.deepseek-rental[a].not_for_profit@rental[a]",
      "partial:classm.f8582.1.deepseek-rental[a].not_at_risk@rental[a]",
      "partial:classm.rental.2.deepseek-rental[a].not_at_risk@rental[a]",
-     "partial:classm.rental.1-rental[a].not_at_risk@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].days_personal@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].days_overlap@rental[a]",
-     "partial:x1sche.r6.not_at_risk-rental[a].short_stays@rental[a]"
+     "partial:classm.sche.2.deepseek-rental[a].at_risk_prior@rental[a]"
     ],
     "policy": "executable-triage-v2"
    }

@@ -118,6 +118,7 @@ const NOT_DRAWN = new Set([
   "sb.account_any", "sb.asset_any", "sb.trust_any", "sb.company_any", "sb.territory_any",
   "sa.state_tax_other", "sa.property_tax_leave_out",
   "sa.mortgage_unreported", "sa.mortgage_over_limit", "sa.mortgage_other_use", "sa.sales_tax_wish", "sa.foreign_tax_deduct", "sa.estate_tax_income", "sa.bond_premium", "sa.debt_instrument_loss", "sa.pension_unrecovered", "sa.impairment_work",
+  "sa.gst_paid", "sa.foreign_tax_noncreditable",
   // The credit questions asked of everyone, and the questions beneath them: none applies, except the tax credit
   // bond credit, which is drawn (rarely yes) so that some returns are refused for a credit this tool does not prepare.
   "s3.adoption_any", "s3.adoption", "s3.adoption_earlier", "s3.adoption_us", "ftc.carryover", "s3.ev", "s3.ev_dealer",
@@ -694,10 +695,12 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     const basis = basisReported && !code.includes("B") ? sale.reported_basis : sale.correct_basis;
     const loss = Math.max(0, basis - sale.proceeds);
     const wash = code.includes("W") ? (sale.invalid ? sale.wash_loss : Math.min(sale.wash_loss, loss)) : 0;
-    const entry = { box: sale.box, route, code, special: sale.invalid && sale.special, aggregate_eligible: sale.aggregate_eligible,
+    const entry = { box: sale.box, route, code, aggregate_eligible: sale.aggregate_eligible,
       proceeds: sale.proceeds, reported_basis: sale.reported_basis, correct_basis: sale.correct_basis, wash_loss: wash };
     for (const [k, v] of Object.entries(entry)) inputs[`sales[s${i + 1}].${k}`] = v;
   });
+  // The special-sale question is asked once for all the sales: a Yes when any invalid entry drew it.
+  if (sales.length > 0) inputs["sd.special_any"] = sales.some((sale) => sale.invalid && sale.special);
 
   inputs["sa.line1"] = s.medical; inputs["sa.line5a"] = s.saltIncome; inputs["sa.line5b"] = s.saltRe;
   inputs["sa.mortgage_interest"] = s.mortgage; inputs["sa.line11"] = s.cashGifts;

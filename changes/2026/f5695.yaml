@@ -1105,6 +1105,8 @@ changes:
         id: amb.2025.f5695_category_cap
     - remove_ambiguity:
         id: amb.2025.f5695_section_b_residence
+    - remove_ambiguity:
+        id: amb.2025.f5695_door_ranking
   - change: C-CRED-08
     evidence:
     - doc: i5695

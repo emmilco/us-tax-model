@@ -33,6 +33,9 @@ answers:
   rental[house].depletion: false
   rental[house].part_home: false
   rental[house].business_incidental: false
+  rental[house].at_risk_prior: false
+  rental[house].business_credit: false
+  rental[house].prerental: false
   rental[house].land_heavy: false
   rental[house].held_for_sale: false
   rental[house].active: true

@@ -5,7 +5,7 @@
  "base": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
  "head_rows": {
   "agree / disagree / missing": "21 / 4 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -41,9 +41,9 @@
   },
   {
    "key": "5b",
-   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
+   "record": "b5309a2c83f4d081945162cffc645bc557e07e4e13a248792e941ba8110ee7c2",
    "status": "AGREE",
-   "subject_key": "a25825d99af4713b1d7233bc8a1906394f13b4822a47c89cdb09b6a8b076c45f"
+   "subject_key": "d1cc4f38a7d37f91a39bd3f8e2ea241372423d992985ec6ea109d67e228361a5"
   },
   {
    "key": "5c",
@@ -169,7 +169,7 @@
   "3": "9efc47563b5e745ad0a62260eb83256f5a1aa39aa0f5682b5dbc358c76bd7604",
   "4a": "34af9d91c0f63de8f58de62192aca5fcbea109a92b0b6cddf30bb27afaf3900e",
   "4b": "770b0aad45fefae79d4d4a8cab25c8155d5797b038a0c7aeba74816020613f40",
-  "5b": "c99832f6ebcc21317c54a8ca30b02324a224bc3dd154bb3a216c7c73b38a9391",
+  "5b": "07400818b59adb40bd8c482b3be2cf85428b63fa4d2f338f884596f726e5b86c",
   "5c": "976b194d49f703347bb27c703df3b0a9f506900fc1b3d644c90d12f0a373c28d",
   "6": "410047364e479bf737a23c19db998ba25be6067f5a2d5bee15a91e3d42203737",
   "7": "cf5a19c0a4094091e79cd786167a2ef76d2b70b0f749ba16405cb33c79cc5024",

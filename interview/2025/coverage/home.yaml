@@ -215,6 +215,19 @@ rows:
     expect:
       proceeds:
         gift[g].deduction: 300000
+  - id: home.gift_subject_to_debt
+    design: BUG-1088 (gift.special, property subject to a debt)
+    situation: A person gave a charity a lot worth $4,000 that still had a $1,500 loan secured on it.
+    answers:
+      sa.gifts: true
+      sa.line11: 0
+      $gift: [g]
+      gift[g].deduction: 400000
+      gift[g].special: true
+      sa.charity_limited: false
+      s3.foreign_any: false
+    expect:
+      refused: gift[g].special
   - id: home.gift_restricted_shares
     design: gift.public_securities (securities not free to be sold are not publicly traded; Section B)
     situation: A person gave listed shares worth $8,000 that they were not yet allowed to sell.
@@ -490,5 +503,19 @@ rows:
     situation: A person with a disability pays an attendant in order to work.
     answers:
       sa.impairment_work: true
+    expect:
+      refused: sa.unsupported
+  - id: home.gst_on_trust_distribution
+    design: BUG-0802 (Schedule A line 6, generation-skipping tax on an income distribution, refused through sa.unsupported)
+    situation: A grandchild paid generation-skipping tax on income a family trust distributed to them.
+    answers:
+      sa.gst_paid: true
+    expect:
+      refused: sa.unsupported
+  - id: home.foreign_tax_not_creditable
+    design: BUG-0768 (Schedule A line 6, foreign tax not allowed as a credit, refused through sa.unsupported)
+    situation: A person had foreign tax withheld from a dividend on shares sold ten days after buying them.
+    answers:
+      sa.foreign_tax_noncreditable: true
     expect:
       refused: sa.unsupported

@@ -803,56 +803,62 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gift.special#1": {
-   "reason": "Short-term and ordinary-income property are reduced in the amount question; recapture and the 50% election are refused elsewhere; property subject to a debt is a defect.",
+   "reason": "Short-term and ordinary-income property are reduced in the amount question; recapture and the 50% election are refused elsewhere; a sale by the charity over $5,000 is refused by Section B.",
+   "class": "no screen defect",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "gift.deduction help: 'For things held a year or less, or that would have brought you ordinary income if sold, the deduction is limited to what you paid for them' (p526 p. 19, ordinary income property, including works of art and manuscripts created by the donor).",
+     "evidence": "gift.deduction help: 'For things held a year or less, or that would have brought you ordinary income if sold, the deduction is limited to what you paid for them' (p526 p. 19, ordinary income property).",
      "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "Depreciated business property given away is refused on its asset entry by asset.ended_this_year ('did you sell, give away or scrap it'); the 50% election for capital gain property matters only where the 30% limit binds, which sa.charity_limited refuses ('so large that the law limits what you can deduct').",
+     "class": "covered",
+     "evidence": "The same gift.deduction help covers art or manuscripts created by the donor (ordinary income property, p526 p. 19).",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "p526 p. 12, Property Subject to a Debt: 'you must reduce the FMV of the property by ... any allowable deduction for interest you paid (or will pay) that is attributable to any period after the contribution' and, if the debt is assumed, 'by the amount of the outstanding debt assumed'; no gift.special item and nothing in gift.deduction mentions debt. Filed as BUG-1088.",
+     "class": "out of scope",
+     "evidence": "Depreciable business property given away is refused on its asset entry by asset.ended_this_year ('did you sell, give away or scrap it').",
      "bugs": []
     },
     {
      "n": 3,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "The 50% election for capital gain property matters only where the 30% limit binds, which sa.charity_limited refuses.",
+     "bugs": []
+    },
+    {
+     "n": 4,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Tangible property claimed at more than $5,000 that is not publicly traded is refused by gift.section_b (i8283 Section B), so the charity's later sale cannot reach a computed deduction.",
+     "bugs": []
+    },
+    {
+     "n": 5,
      "kind": "WIDE",
      "class": "accepted WIDE",
      "evidence": "Depreciated property and 50%-limit private foundations answer Yes and are refused although the plain amount is right; extra refusal only.",
      "bugs": []
     },
     {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Restricted or partial-interest gifts of $5,000 or less are refused though i8283 p. 3 puts them in Section A; extra refusal only.",
-     "bugs": []
-    },
-    {
-     "n": 5,
+     "n": 6,
      "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "An earmarked gift read as restricted answers Yes and is refused; read as unrestricted, its value is the amount entered; no wrong value.",
+     "class": "presentation",
+     "evidence": "Items worded with 'you' on a joint return; the gift entries are the couple's gifts and the other questions name the spouse. Low.",
      "bugs": []
     }
    ],
-   "subject_sha": "8a120f7cd940cb85f2c8a4d06e5532be02245873cf98b38c183a9407d5178e78",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-1088"
-   ]
+   "subject_sha": "29ee328150a532817ab741ba905348e3901077b2f5cdbd0263df4de865cd366a",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:person.x_other#1": {
    "reason": "No defect. Findings 0 and 1 accepted WIDE, as the prior review's 0 and 2; finding 2 accepted (minor UNCLEAR, leans WIDE), the prior finding 3 read as unclear. The restructuring drew no finding of a narrowed item.",
@@ -4319,39 +4325,35 @@
    "subject_sha": "5c0815c4099523a682fb54fb6b32f106d90d6c669fc0a4eb7ea7c06b7988ae04"
   },
   "unruled:gate:asset.listed#1": {
-   "reason": "Vehicles are refused by asset.kind_excluded; the computer/peripheral findings concern property placed in service before 2018, which has no 2025 depreciation.",
+   "subject_sha": "5041402562fc4fcd25e192ac8ee39dec4f82335a9f3df08402fa1e9363e1fa19",
+   "reason": "Transportation property is refused as an asset; the vehicle roster handles cars, trucks and vans.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "A passenger automobile is a vehicle: asset.kind_excluded (\"a vehicle\") refuses it and vehicles are entered as scveh items (i4562 p. 3, \"Passenger automobiles weighing 6,000 pounds or less\").",
-     "bugs": []
+     "evidence": "asset.kind_excluded refuses a vehicle entered as an asset (tick 'A building, land, vehicle, boat, aircraft ...'; help 'A car, truck or van is entered with the business's vehicles, not here'); a car's 50% test is scveh.low_use."
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "accepted residual",
-     "evidence": "i4562 p. 14 lists \"computers and peripheral equipment placed in service before 2018\"; such property is 5-year (class 00.12), recovered by the sixth tax year at the latest (2022), so a peripheral that escapes asset.listed produces no 2025 depreciation and no section 179 or bonus claim on property placed in service before 2018; the cost is nil for 2025.",
-     "bugs": []
+     "class": "covered",
+     "evidence": "A motorcycle, pickup, SUV or aircraft is a vehicle or aircraft, refused as an asset by asset.kind_excluded; a pickup or SUV is entered as a vehicle (scveh)."
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "accepted residual",
-     "evidence": "The ownership/lease condition of exception 2 (i4562 p. 3) matters only for a pre-2018 computer, fully recovered by 2022 (5-year class 00.12), so the filer's No yields no 2025 amount; the project accepts the narrower wording.",
-     "bugs": []
+     "kind": "SOURCE",
+     "class": "covered",
+     "evidence": "The gate covers the listed-property categories that can be entered as an asset; the transportation category is refused at asset.kind_excluded and handled for cars, trucks and vans by scveh."
     },
     {
      "n": 3,
-     "kind": "SOURCE",
-     "class": "accepted residual",
-     "evidence": "i4562 p. 14 counts \"placed in service before 2018\" and the gate says \"first used before 2018\"; for depreciable business property first use and placed-in-service date coincide in the year, and in both readings the property is past its 5-year recovery in 2025.",
-     "bugs": []
+     "kind": "WIDE",
+     "class": "out of scope",
+     "evidence": "The asset roster belongs to a Schedule C business; an employee's equipment is not entered here. Extra questions at most."
     }
    ],
-   "subject_sha": "f63520391a58a4d20d669e805bf0ad333d1f6d672c957d5416027af0ffeafb1a",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": []
   },
   "unruled:gate:asset.placed_this_year#1": {
    "class": "no gate defect; the three findings read the gate as inverted from the review prompt's polarity text (BUG-0800)",
@@ -5324,29 +5326,29 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f5695.doors_if_any#1": {
-   "reason": "Spouse covered; plural wording presentation; one WIDE.",
+   "subject_sha": "2caffa1297cc72d8ef97808290d749f3bc8e5b841933044d80db2f76e93ff840",
+   "reason": "The filer is not asked about purpose; condo shares and non-qualifying doors are handled.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "Covered: the opener f5695.any names the spouse (\"you (or, on a joint return, your spouse)\") and the child question is a continuation (\"Did that include ...?\", no bare \"you\"), so a joint filer's spouse items are in; a spouse with a separate main home is refused by f5695.separate_homes_joint on f5695.line30 (i5695 p. 3, \"Complete lines 17a through 30 of a separate Form 5695 for each main home\")."
+     "class": "wrong",
+     "evidence": "'to save or make energy' is the gate line's label, not what the filer reads: the tick is 'Exterior doors' under 'Did the work include any of these?', with no purpose, and f5695.line19a's help says to count only doors that meet the Energy Star requirements."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Wording only: the child question names the category (\"Did that include ...?\") and the next cost questions say \"Zero if there was one\", so one item is still a Yes; the opener adds \"If in doubt, answer Yes\"."
+     "class": "covered",
+     "evidence": "f5695.condo asks about a condominium or cooperative share (i5695 p. 2, Association or cooperative costs), and f5695.any's help says to count 'your share of condo or co-op work'."
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A non-Energy Star door or a door at a second home gives a Yes; f5695.line19a asks only for doors \"that meet the Energy Star program requirements\" and line17a limits Section A to the main home. Extra asking only (rule 2)."
+     "evidence": "Non-qualifying doors or doors at another home lead to questions answered zero; extra questions only."
     }
    ],
-   "subject_sha": "026b55169cffdd410f86d27c1ddc31a120a6c21daafda7e11045ebdb0b7baeb3",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "bugs": []
   },
   "unruled:gate:f5695.furnace_if_any#1": {
    "reason": "Reconstruction, spouse covered by the opener; tier on the cost help.",
@@ -7137,38 +7139,41 @@
    "bugs": []
   },
   "unruled:gate:sa.medical_asked#1": {
-   "reason": "The 7.5%-of-income wording is BUG-1087 (open, low); the rest is wording or extra asking.",
+   "reason": "Estate-paid costs are in the gate's help; the rest is extra asking.",
+   "class": "no gate defect",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1040sca p. 1, 7.5% of adjusted gross income; the tick says 'your income'. BUG-1087 (open, low); not filed again.",
-     "bugs": [
-      "BUG-1087"
-     ]
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "sa.medical_any help: 'Count costs an estate paid within a year of a death.' (i1040sca p. 1, Deceased taxpayer).",
+     "bugs": []
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The help says 'Count what you paid for doctors, dentists, hospitals, prescriptions and insurance'; it does not limit the person cared for. Low.",
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Any after-tax premium opens sa.line1 even when the floor is not reached; extra asking only.",
      "bugs": []
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Any after-tax premium opens sa.line1 even when the floor is not reached; extra asking only.",
+     "evidence": "Exception 05 needs the medical amount whether or not the filer itemizes (sa.e05_claimed reads it); extra asking only.",
+     "bugs": []
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Counting HSA-paid costs in the yes/no estimate only opens sa.line1, whose own question asks costs after reimbursement; extra asking only.",
      "bugs": []
     }
    ],
-   "bugs": [
-    "BUG-1087"
-   ],
-   "class": "no gate defect beyond BUG-1087 (low)",
-   "subject_sha": "41ec635c0a76a1260dda0eb3fc605f9a0ebd75f9b87bf1e6216040993cc13347",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "70b77c815ad7a09f555f02b61b8be9157bbdf34d8ee3f952bb1e12fd4097d171",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:gate:sa.personal_property_tax_any#1": {
    "class": "defect (low): the gate's help says a weight-based fee does not count, missing the value-based part of a mixed fee",
@@ -7300,41 +7305,34 @@
    "subject_sha": "63d2a608f113889b8fd8dbea9e06324c16529b612c68ba928ad194f8b49e5fef"
   },
   "unruled:gate:sa.property_tax_other_if_home#1": {
-   "class": "no gate defect; the amount question excludes business real estate, unowned property and unpaid escrow",
-   "reason": "Findings 0 to 3 covered: the line 5b amount question itself asks only for tax paid in 2025 on real estate owned and not used for business, its help gives the lender's actual payment for escrow, and the leave-out list names a special tax charged only on some properties. Finding 4 accepted WIDE.",
+   "reason": "Special levies, escrow and business real estate are excluded by the leave-out list and the line 5b question and help.",
+   "class": "no gate defect",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040sca p. 6, Line 5b, 'real estate you own that wasn't used for business'. sa.line5b asks 'How much property tax did you (or, on a joint return, your spouse) pay in 2025 on your home and on any other real estate you own that is not used for business?', so business-use tax is never entered in the amount the gate asks about."
+     "evidence": "The leave-out list names 'a special tax charged only on some properties' and 'a charge for a service, such as trash collection or water' (i1040sca p. 6, 'assessed uniformly').",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040sca p. 6, 'you can include only the amount the mortgage company actually paid to the taxing authority in 2025'. The sa.line5b help: 'If your lender pays the tax for you, box 10 of Form 1098 or the lender's year-end statement shows what it paid in 2025.'"
+     "evidence": "sa.line5b help: 'If your lender pays it, count what it paid in 2025 (Form 1098 box 10 or its statement)' (i1040sca p. 6, 'only the amount the mortgage company actually paid').",
+     "bugs": []
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040sca p. 6, 'only if the taxes are assessed uniformly at a like rate on all real property throughout the community'. The sa.property_tax_other_any list includes 'a special tax charged only on some properties' and 'a charge for a service'."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i1040sca p. 6, 'Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025'. sa.line5b asks 'How much property tax did you (or, on a joint return, your spouse) pay in 2025 on your home and on any other real estate you own that is not used for business?': the year of payment is in the amount question; the list carries the assessment condition."
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "sa.home_asked is true for a filer who answered sa.home_other Yes without owning real estate; that filer is asked one extra question, harmless."
+     "evidence": "sa.line5b asks for tax 'on your home and on any other real estate you own that is not used for business', so business-use tax is never in the amount the gate asks about.",
+     "bugs": []
     }
    ],
-   "subject_sha": "f3ee7ddc0662e20ae12dd13ee6258290d6b5ba02a82fdfbb4d7f04d87f4e675c"
+   "subject_sha": "8d38d4ce12104784f14c83defab29bb7614e4d3dbfa0c16e4fdc4e29a91016ad",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:oi8z.injury#1": {
    "reason": "The amount question already excludes medical-care damages; the pre-September 14, 1995 agreement exclusion is not stated anywhere.",
@@ -7857,34 +7855,35 @@
    "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516"
   },
   "unruled:gate:sd.sold_other#1": {
-   "reason": "Condemnations and scrapped business assets are asked outside the gate; the help names royalties and vehicles.",
+   "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
+   "adjudication": "lane capital, wave 2026-11-24 (claude-opus-5-5, judgment; RUBRIC2)",
+   "reason": "The gate's NARROW cases are asked by sibling boxes of the same rare-sales screen; the WIDE case costs only questions.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sd.condemned, asked of every filer: 'Had business or investment property taken by a government' (refused).",
-     "bugs": []
+     "class": "model error",
+     "evidence": "Section 1244 and 1242 losses are asked by sd.small_business_stock, a box of the same screen asked of every return ('Lost money on small-company stock and claim it as an ordinary loss'), which refuses with Form 4797."
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "A Schedule C asset scrapped or abandoned is refused by asset.ended_this_year ('sell, give away or scrap it'); a rental's by its own asset questions.",
-     "bugs": []
+     "class": "model error",
+     "evidence": "A mark-to-market trader is asked by sd.trader_election, a box of the same screen ('Trade securities as a business under a mark-to-market election'), which refuses."
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help: 'Real estate includes ... an oil, gas or mineral interest such as a royalty. Business property is anything used in a business or rented out, such as equipment, a vehicle'.",
-     "bugs": []
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "A sale of service receivables outside a business is rare; with a business it is a Schedule C matter. Recorded, not fixed."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A fully excludable home sale ticked here is asked sd.home_sale and answers No; nothing is refused or computed differently."
     }
-   ],
-   "bugs": [],
-   "class": "no gate defect",
-   "subject_sha": "d6e501a3c2f95989579892856f86b74ef01ef7466ac0c811d0a09c287f447b42",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   ]
   },
   "unruled:f8853c.nonqualified#1": {
    "reason": "Scope of \"those forms\" is the line-17 forms; any mis-reading over-refuses.",
@@ -9592,23 +9591,27 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:sa.home_asked#1": {
-   "reason": "The boat/camper question names the spouse, and an owner with no tax or interest only gets extra questions.",
+   "reason": "The boat/camper question and the tick heading name the spouse; business-only real estate only adds questions.",
+   "class": "no gate defect",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
+     "kind": "UNCLEAR",
      "class": "model error",
-     "evidence": "The shown sa.home_other prompt is 'In 2025, did you (or, on a joint return, your spouse) pay interest on a loan for a boat, camper or mobile home you can live in, or on a mortgage for a home that is in someone else's name?', which names the spouse."
+     "evidence": "The tick group heading is 'Do any of these apply to you (or, on a joint return, your spouse) for 2025?' and the sa.home_other prompt reads 'did you (or, on a joint return, your spouse) pay interest on a loan for a boat, camper or mobile home'.",
+     "bugs": []
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Owning a home opens the gated questions even where no tax or interest exists; amounts stay zero. Coverage cost only."
+     "evidence": "Owning only business real estate opens the gated questions; amounts stay zero. Coverage cost only.",
+     "bugs": []
     }
    ],
-   "subject_sha": "e098ff5ee3abd1c34bae9d57ac74cc1a8c221ae0285384230b9b3af670c13669",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "594fc1e8a1b14ee520fcfd7446d62e8668947f51ec77a050157c1322bae44244",
+   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
+   "bugs": []
   },
   "unruled:s3.section960c#2": {
    "reason": "The other line 13z items are asked by their own screens.",
@@ -10545,42 +10548,29 @@
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:sd.home_sale#1": {
-   "reason": "The help states the $500,000 joint exclusion and the 2-of-5-year test without the both-spouses use test or the 2-year rule, and the prompt does not name the spouse's home (filed, low).",
+   "subject_sha": "b6a8ba21f8a86f19ec7fc30afca6006376158db7b4eea674a10ef2ab8197bb36",
+   "adjudication": "lane capital, wave 2026-11-24 (claude-opus-5-5, judgment; RUBRIC2)",
+   "reason": "All three findings are WIDE (a Yes refuses where the gain is excludable); each is now named in the help.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i1040sd p. 2: 'If both you and your spouse meet these tests and you file a joint return, you can exclude up to $500,000'. The help says 'Gain of up to $250,000 ($500,000 on a joint return) is usually excluded if you owned the home and lived in it for 2 of the 5 years', so a joint filer with only one spouse meeting the use test and a gain between the two limits can answer No; the reportable gain is neither computed nor refused. Rare; low.",
-     "bugs": [
-      "BUG-1288"
-     ]
+     "kind": "WIDE",
+     "class": "accepted WIDE; help reworded",
+     "evidence": "i1040sd p. 2, Reduced Exclusion: the help now says 'A smaller exclusion may apply after a move for work, health or other unforeseen reasons (see Pub. 523)'; a refusal costs coverage, not a value."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i1040sd p. 2, Test 2: 'You haven't excluded gain on the sale or exchange of another main home during the 2-year period'. The help states only ownership and use. Same entry; low.",
-     "bugs": [
-      "BUG-1288"
-     ]
+     "kind": "WIDE",
+     "class": "accepted WIDE; help reworded",
+     "evidence": "i1040sd p. 2, Sale of home by surviving spouse: the help now gives the $500,000 limit 'on a joint return or, not remarried, within 2 years of your spouse's death'."
     },
     {
      "n": 2,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "The prompt 'Was any of it your main home' is asked once per return; a spouse's own main home sold on a joint return is not named (interview/README.md spouse-phrase rule). Same entry; low.",
-     "bugs": [
-      "BUG-1288"
-     ]
+     "kind": "WIDE",
+     "class": "accepted WIDE; help reworded",
+     "evidence": "i1040sd p. 2, Exceptions to Test 1: the help now says 'service abroad can extend the 5 years'."
     }
-   ],
-   "bugs": [
-    "BUG-1288"
-   ],
-   "class": "defect (low): home sale screen wording (BUG-1288)",
-   "subject_sha": "a2f6b98377f023841243813182c0254d541df39f6381e36e0f9d98e3ee02de48",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   ]
   },
   "unruled:gate:div.other_boxes_if_dividends#1": {
    "reason": "The less-common-boxes question counts a share of a form in another's name.",

@@ -223,6 +223,16 @@
   {
    "printed": "(g)",
    "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The code B part (reported basis minus correct basis, only for box A/D/G/J) and the code W part (positive nondeductible loss) match the worksheet and the code W text. But when the filer picks 'other' (E, L, N, O, D and so on), column (g) is $0 and no refusal names that exclusion, while the IRS says to \"enter in column (g) the necessary adjustment\" (code E) and \"enter the amount of the nondeductible loss as a positive number in column (g)\" (code L).",
+   "ruling": "Ruling: scope; i8949 p. 9 to 10, codes E, L, N, O and D: the project does not figure those adjustments; a filer choosing 'other' is refused at the sale by sales.bad_code on sales.one (coverage row sales.nominee_sale, refused: sales[a].bad_code), and the refusal reaches every Schedule D total and Form 1040 line 7a, so no return is completed with $0 where such an adjustment belongs. The code B part (boxes A, D, G and J) and code W part match, as the reviewer says. Rerun because the form's sales.special is now derived from sd.special_any (BUG-1127).",
+   "context": "30fb1034a7b15da04b061729b8c17902179a49df3bff970d1d214280a9ab5b0d",
+   "date": "2026-11-24",
+   "run": "e2c0d9122c7e9c08e7ad68b3f9905906b81e851a49dc9296f6ddb950d028e2ae",
+   "subject_key": "0620889cf267c17d68dd3ff6f6e9b0ce6d6b9c93677f08ff247ad13dfa83cb47"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
    "model": "The code B part (reported minus correct, signed per Worksheet lines 3–4) and the code W part ('enter the correct amount of the nondeductible loss as a positive number in column (g)') match, and the wash-sale refusal is a valid narrowing. However, the code input offers 'other' (E, D, O, N, L) with no refusal, and those codes add nothing to (g). The IRS requires adjustments for them, e.g. code E: 'In column (g), enter as a negative number (in parentheses) selling expenses...'. It also says: 'If you entered more than one code ... enter the net adjustment in column (g)'.",
    "ruling": "Ruling: scope; as in the goal-1 and landing render rulings: an entry with any code other than none, B, W or BW (code E, D, O, N, L and the rest, the 'other' choice of sales.code) is refused at sales.one by sales.bad_code (\"Only applicable B and W adjustments are supported\"; i8949 pp. 7-11, columns (e) through (h)), so (g) never stands for an entry that needs another code's adjustment. The code B part (signed per the worksheet) and the code W part (i8949 p. 10, code W, \"enter the correct amount of the nondeductible loss as a positive number in column (g)\") match, as the reviewer says; this merge's change to (g) only added boxes G and J to the code B test.",
    "context": "20f5f55723a758a527b50cd4bcd7e403ed51a04eb166949cddd8dfae22a8f444",

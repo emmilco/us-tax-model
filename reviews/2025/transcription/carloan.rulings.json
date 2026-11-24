@@ -73,6 +73,38 @@
   {
    "printed": "22(ii)",
    "project_expr_sha256": "906002942e9165616fe161c0490c20731194572c1728c5546a15c33097e7759d",
+   "second_expr_sha256": "caacab2ca464a60fbaf239989bebcc098cc8fcaf1c25161150852577bade8937",
+   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (ii), \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return\"; fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated ... on a pro rata basis\", and (d)(4) for a refinancing; p. 23, (g)(1), \"Independently deductible interest is limited to interest that is QPVLI\". The Schedule C interest is interest on the whole loan, so its QPVLI part is its pro rata share; the reply caps the whole Schedule C interest at the loan's QPVLI instead (triage: stage12.car.mixed_sc_interest_prorated, project $84.80, reply $106.00), and asks column (ii) without a Schedule C (candidate-unknown on returns the project gives zero). Same as the earlier rulings on this line.",
+   "context": "1cfb0ccb18a21af3506be59ae436e9b495e31cf22cb837975a3682d283277e7f",
+   "date": "2026-11-24",
+   "run": "c1c30d098a00b1e9a80f371b8af8b289b20eeee18a4c18cdd7e6c1786fccfd0e",
+   "subject_key": "14e272ffa9e276841504e0020ad10c98cee55863c39e073f93c6dfa94f5bf511",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@carloan[vin_1]",
+     "fixture:classm.clcw.2.deepseek@carloan[vin_1]",
+     "fixture:classm.s3.4.deepseek@carloan[vin_1]",
+     "fixture:classm.carloan.2@carloan[vin_1]",
+     "fixture:classm.carloan.3@carloan[vin_1]",
+     "fixture:classm.s1a.2@carloan[VIN0]",
+     "fixture:classm.s1a.3@carloan[VIN0]",
+     "fixture:classm.s1a.4@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN1]",
+     "fixture:classm.clcw.2@carloan[vin_1]",
+     "fixture:mutation.t2.no_senior_part5@carloan[vin_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22(ii)",
+   "project_expr_sha256": "906002942e9165616fe161c0490c20731194572c1728c5546a15c33097e7759d",
    "second_expr_sha256": "d29d6380244d639e3c5abd0f9106611d69e5f743d5c67205e40188a20006f26e",
    "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (ii), \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return\"; fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated ... on a pro rata basis\", (d)(4) (a refinancing, also pro rata), and p. 23, (g)(1), \"Independently deductible interest is limited to interest that is QPVLI\". The interest deducted on Schedule C is interest on the whole loan, so its QPVLI part is its pro rata share; the reply instead takes the smaller of the whole Schedule C interest and the loan's QPVLI (stage12.car.mixed_sc_interest_prorated: project $84.80, reply $106.00; classm.carloan.3 and classm.clcw.2: project $551.52, reply $2,149.00), and it counts a Schedule C amount on a return with no Schedule C, where the project enters $0 (classm.carloan.2: project $0, reply $1,268.00; candidate-unknown on returns without a Schedule C, where carloan.col_ii_input is not asked, e.g. stage12.car.basic). Same as the landing round. Triage executable-triage-v2 (pass 50b4293b54a4): 210/278 agree; 35 candidate-unknown, 33 value; on completed returns 4 candidate-unknown.",
    "context": "7674d1e4188939b88ca8300e9663caf611e620f156d522e03bd74f27cd6610ed",
@@ -169,6 +201,38 @@
    "date": "2026-11-10",
    "run": "ad9cc45866f31fa3d0120085a50099ac8292926c0b29bb6212769a81a2bafb1f",
    "subject_key": "bde5c547dc72d9f8007428bfa2f71eb47338b528817be105fa82d8a450bbcbfe"
+  },
+  {
+   "printed": "22(iii)",
+   "project_expr_sha256": "3c30859adb6ed36132e2cdacae4413acf92f2c983961df81909ee01038c63c72",
+   "second_expr_sha256": "91f0b6555746fd67d395c58bfff0637811cdc2965fd9ea9f2e283ade2cf25787",
+   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (iii), \"enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)\". The QPVLI is the same on both sides; every difference follows the reply's column (ii), ruled a model error (stage12.car.mixed_sc_interest_prorated: project $254.40, reply $233.20). Same as the earlier rulings on this line.",
+   "context": "1cfb0ccb18a21af3506be59ae436e9b495e31cf22cb837975a3682d283277e7f",
+   "date": "2026-11-24",
+   "run": "c1c30d098a00b1e9a80f371b8af8b289b20eeee18a4c18cdd7e6c1786fccfd0e",
+   "subject_key": "29200741b0851a82a933b74b17bc3c1029661969118110d5d7b7c454e1ce24f4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@carloan[vin_1]",
+     "fixture:classm.clcw.2.deepseek@carloan[vin_1]",
+     "fixture:classm.s3.4.deepseek@carloan[vin_1]",
+     "fixture:classm.carloan.2@carloan[vin_1]",
+     "fixture:classm.carloan.3@carloan[vin_1]",
+     "fixture:classm.s1a.2@carloan[VIN0]",
+     "fixture:classm.s1a.3@carloan[VIN0]",
+     "fixture:classm.s1a.4@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN1]",
+     "fixture:classm.clcw.2@carloan[vin_1]",
+     "fixture:mutation.t2.no_senior_part5@carloan[vin_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "22(iii)",

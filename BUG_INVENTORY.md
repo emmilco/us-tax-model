@@ -15382,3 +15382,438 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix:** run `npm run mutate` on `next`; for each argument it lists, re-read it against the current premises and re-record the digest, rewrite it, or remove it if its mutant is now killed.
 - **Severity:** low
 - **Tags:** mutation, tools; open
+
+## BUG-1302 — Closure: BUG-0802 is fixed
+
+- **Closes:** BUG-0802
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced: no question or form line named generation-skipping tax (grep of interview/2025/questions.yaml and forms/2025/sa.yaml), sa.line6 fixed at zero.
+- **Fix:** New input sa.gst_paid ('Paid generation-skipping tax on income from a trust', rare_deductions tick group, asked of every filer beside the other rare Schedule A items), cited to i1040sca p. 7, Line 6, and added to sa.unsupported, so a Yes refuses the Schedule A lines (line 6 among them). The sa.unsupported label and cite name it. Fixture sa.gst_paid_refused (predicted by hand: sa.line6 refused at sa.unsupported); coverage row home.gst_on_trust_distribution. The 2026 operation on sa.unsupported (changes/2026/sa.yaml) is rebased to include it.
+- **Fix lines:** sa.gst_paid, sa.unsupported
+- **Siblings checked:** sa.foreign_tax_deduct_if_tax, sa.foreign_tax_noncreditable, sa.gst_paid, sa.line5a, sa.line5a_if_state_tax, sa.line5a_total, sa.mortgage_interest_mfs, sa.mortgage_interest_not_mfs, sa.mortgage_over_limit_if_interest, sa.mortgage_over_limit_if_joint_limits, sa.mortgage_over_limit_mfs, sa.mortgage_over_limit_mfs_if_mfs, sa.mortgage_unreported, sa.mortgage_unreported_if_home, sa.state_tax_other, sa.state_tax_other_any, sa.state_tax_other_if_any, sa.unsupported (sa.foreign_tax_deduct_if_tax: the other line 6 item, unchanged; the mortgage and state tax lines share the sa.unsupported cite page only).
+- **Tags:** sa, refusal, completeness, fixed
+
+## BUG-1303 — Closure: BUG-1085 is a duplicate of BUG-0802
+
+- **Closes:** BUG-1085
+- **Closure:** duplicate
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** BUG-1085 and BUG-0802 report the same omission (generation-skipping tax on Schedule A line 6, neither asked nor refused) with the same source quote; fixed under BUG-0802 (BUG-1302).
+- **Tags:** sa, duplicate
+
+## BUG-1304 — Closure: BUG-0768 is fixed
+
+- **Closes:** BUG-0768
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced: ftc.taxes help tells the filer to leave out tax on shares held under 16 days, and nothing asks about that tax (sa.foreign_tax_deduct_if_tax reads ftc.has_tax only).
+- **Fix:** New input sa.foreign_tax_noncreditable ('Had foreign tax withheld that cannot be taken as a credit', paid_more tick group, asked of every filer), cited to p514 p. 3, Exceptions for foreign taxes not allowed as a credit (holding period, related payments), and added to sa.unsupported, so a Yes refuses. Refused rather than computed (computing the deduction would extend coverage). A filer who takes the standard deduction and answers Yes is refused too, as with the other sa.unsupported items. Fixture sa.foreign_tax_noncreditable_refused (predicted by hand: sa.line6 refused at sa.unsupported); coverage row home.foreign_tax_not_creditable.
+- **Fix lines:** sa.foreign_tax_noncreditable, sa.unsupported
+- **Siblings checked:** sa.foreign_tax_deduct_if_tax, sa.foreign_tax_noncreditable, sa.gst_paid, sa.line5a, sa.line5a_if_state_tax, sa.line5a_total, sa.mortgage_interest_mfs, sa.mortgage_interest_not_mfs, sa.mortgage_over_limit_if_interest, sa.mortgage_over_limit_if_joint_limits, sa.mortgage_over_limit_mfs, sa.mortgage_over_limit_mfs_if_mfs, sa.mortgage_unreported, sa.mortgage_unreported_if_home, sa.state_tax_other, sa.state_tax_other_any, sa.state_tax_other_if_any, sa.unsupported (ftc.taxes and ftc.eligible: their help already sends this tax out of the credit; unchanged).
+- **Tags:** sa, ftc, refusal, fixed
+
+## BUG-1305 — Closure: BUG-1086 is fixed
+
+- **Closes:** BUG-1086
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced: the sa.line11 source said to leave out 'the part of a gift for which you received a state or local tax credit' and its help 'any part earning a state tax credit', with no 15% exception.
+- **Fix:** The sa.line11 source now leaves out that part 'unless the credit is not more than 15% of the gift', cited to p526 p. 5, State or local tax credit and Exception; the help says 'any part earning a state tax credit over 15% of the gift'. Wording only; no fixture changes value.
+- **Fix lines:** sa.line11
+- **Siblings checked:** sa.line11_if_gifts, sa.gifts (sa.gifts names a payment that earned a state or local tax credit as a gift, which stays right).
+- **Tags:** sa, wording, fixed
+
+## BUG-1306 — Closure: BUG-1087 is fixed
+
+- **Closes:** BUG-1087
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced: the tick read 'above 7.5% of your income' and the help 'On $60,000 of income'.
+- **Fix:** The sa.medical_any tick, prompt, help, label and source now compare with 7.5% of income after adjustments (adjusted gross income); the help glosses it (income less deductions such as IRA or HSA contributions). Its cite is i1040sca p. 1, Medical and Dental Expenses. Wording only.
+- **Fix lines:** sa.medical_any
+- **Siblings checked:** sa.medical_asked, sa.medical_premiums_if_not_large, sa.agi_floor, sa.line1, sa.line1_if_medical (sa.agi_floor computes the floor from AGI already).
+- **Tags:** sa, interview, wording, fixed
+
+## BUG-1307 — Closure: BUG-1090 is fixed
+
+- **Closes:** BUG-1090
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced: the sa.gifts prompt named money, things and volunteer costs only, and the sa.line11 help named no hosting costs.
+- **Fix:** The sa.gifts tick now reads 'Gave money or things to charity, or paid volunteering or hosting costs' and its prompt ends 'or hosting a student or foster child it placed with you?'; the sa.line11 help counts 'up to $50 a month for a student a charity placed with you' (p526 p. 6). The encoded sa.gifts source already listed hosting. Wording only.
+- **Fix lines:** sa.gifts, sa.line11
+- **Siblings checked:** sa.charity_limited_if_gifts, sa.line11_if_gifts, sa.line12, sa.gift_carryover_if_no_gifts, sa.line11, sa.gifts.
+- **Tags:** sa, interview, wording, fixed
+
+## BUG-1308 — Closure: BUG-1147 is fixed
+
+- **Closes:** BUG-1147
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** Part 1 (the personal-use share of a rental's tax) was fixed under BUG-1203: rental.tax_personal (rental.amt16_if_any less rental.line16) is summed over reported rentals into sa.rental_tax_personal and added to line 5b (forms/2025/sa.yaml sa.rental_tax_sum, sa.rental_tax_personal; fixture fxi.rental_tax_personal_to_5b, line 5b $142.86). Part 2 was also changed by BUG-1203: the sa.mortgage_interest help no longer says to count interest for the rest of the year, but 'Leave out the interest on a property rented out for 15 days or more in 2025, except for the days it was your home before or after renting it'; a rental used as a home (more than 14 days or 10%) is refused at rental.ws51. The remaining gap: an owner of a vacation rental could read days stayed there before the rental season as days it was 'your home'. Fix: the sa.mortgage_interest and sa.line5b help now say 'your main home' (p527 days used as a main home before or after renting).
+- **Fix:** sa.mortgage_interest and sa.line5b help: 'your home' before or after renting becomes 'your main home'. Wording only.
+- **Fix lines:** sa.mortgage_interest, sa.line5b
+- **Siblings checked:** sa.line8a, sa.line5b_if_home_owner, rental.tax_personal, sa.home_asked, sa.line5b_gross, sa.line5b_total, sa.line5c, sa.line5c_if_taxed, sa.property_tax_leave_out_if_any, sa.property_tax_other_if_home, sa.state_tax_other (rental.tax_personal carries the vacation-rental tax share; rental.ws51 refuses a rental used as a home).
+- **Tags:** sa, rental, wording, fixed
+
+## BUG-1309 — Closure: BUG-1289 is fixed
+
+- **Closes:** BUG-1289
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced on fixture fxi.rental_tax_personal_to_5b with sa.property_tax_other_any Yes and $47.62 to leave out: sa.line5b_net $0, sa.line5b_total $142.86 (the leave-out was taken only from the home's tax, floored at zero, so the rental share kept the service charge).
+- **Fix:** sa.property_tax_other_any (prompt, label and source) now asks about the home's tax 'or the tax you entered for a rental you also used yourself'; the sa.property_tax_leave_out prompt says to count, for such a rental, only the share for the days used. The leave-out is now taken from the whole of line 5b: sa.line5b_net is sa.line5b_gross (home tax plus the rentals' personal shares, new) less sa.property_tax_leave_out_if_any, floored at zero, and the printed sa.line5b_total copies it. Values change only where the leave-out exceeds the home's tax and a rental share is present. Fixture sa.rental_tax_leave_out (predicted by hand: line 5b $95.24 = $142.86 - $47.62, line 17 $11,595.24). The rental.amt16 help (lane rentals) is not changed.
+- **Fix lines:** sa.property_tax_other_any, sa.property_tax_leave_out, sa.line5b_gross, sa.line5b_net, sa.line5b_total
+- **Siblings checked:** sa.property_tax_other_if_home, sa.property_tax_leave_out_if_any, sa.line5b_net, rental.tax_personal, sa.home_asked, sa.line5b, sa.line5b_if_home_owner, sa.line5b_total, sa.rental_tax_personal, sa.rental_tax_sum, sa.line5b_gross, sa.line5d (sa.property_tax_other_if_home stays gated on sa.home_asked: a rental owner owns real estate and answers the home tick Yes).
+- **Tags:** sa, rental, fixed
+
+## BUG-1310 — Closure: BUG-1088 is fixed
+
+- **Closes:** BUG-1088
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced: no gift.special item, label or prompt named debt on the property.
+- **Fix:** gift.special (label, source and prompt) adds 'property subject to a debt, such as a mortgage' / 'it had a mortgage or other debt on it', cited to p526 p. 12, Property Subject to a Debt; a Yes refuses through gift.allowed as the other items do. Noncash gifts reach Schedule A line 12 only through gift entries (sa.line12_noncash sums gift.allowed), so no other route bypasses it. Coverage row home.gift_subject_to_debt.
+- **Fix lines:** gift.special
+- **Siblings checked:** gift.allowed, gift.deduction, gift.no, gift.not_public, gift.over_5000, gift.public_securities, gift.section_b.
+- **Tags:** gift, refusal, fixed
+
+## BUG-1311 — Closure: BUG-0827 is fixed
+
+- **Closes:** BUG-0827
+- **Closure:** fixed
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24; reproduced on fixture f1116.c5_carryover_in with f1116sb.prior_year other or election: the answer was not read (f1116sb.prior_year_if_excess none, no 2025 excess), and $270 of carryover was credited (ftc.credit $549.46).
+- **Fix:** f1116sb.prior_year is now asked when a carryover is generated or one is brought in (new gate f1116sb.prior_asked). New gate f1116sb.carry_through_prior (a carryover claimed and 2024 answered 'the tax was deducted, or no credit was taken') refuses ftc.credit (it is false where f1116sb.changed_if_carry or f1116sb.split_if_carry already refuses on Form 1116 line 35, so those refusals are still told first, at their own questions), cited to i1116 p. 19, Line 10, Restrictions ('you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit'). A carryover through a 2024 election year is not refused: i1116 p. 19 says 'Don’t reduce the carryback or carryforward by the amount you would have used in the election year', so it passes through unreduced, as through a 2024 with no foreign income (p514 p. 37); the entry's proposal to refuse it was narrowed on that text after the second transcription of f1116sb.carry_through_prior pointed to it. The $f1116sbyr help now says that with no 2024 Schedule B the latest one is used, each amount entered under the year it came from (a tax more than ten years old has no year to choose). f1116sb.carryback now also requires a 2025 excess (f1116sb.generated), so a carryover brought in through a 2024 Form 1116 with room is not refused as a carryback. The prompt no longer opens 'Your foreign tax is more than this year's limit'. The refusal sits on ftc.credit, not on Schedule B, because the gate reads line 6, which reads line 10. Fixtures (predicted by hand): f1116.carry_through_deduction_year (refused at f1116sb.carry_through_prior), f1116.carry_through_election_year (credit $549.46, line 10 $270.00, as f1116.c5_carryover_in), f1116.carry_in_prior_room_no_excess (credit $549.46, no carryback). Coverage rows ftc1116.carryover_through_deduction_year (refused) and ftc1116.carryover_through_election_year (proceeds). The chosen text of amb.2025.f1116_carryback is updated to say when the question is asked. Where line 1 comes from with no 2024 Schedule B (an election year or a year without foreign income) is registered as amb.2025.f1116_carry_no_schedule_b, decided under the owner's delegation of 2026-11-24.
+- **Fix lines:** f1116sb.prior_asked, f1116sb.prior_year_if_excess, f1116sb.carryback, f1116sb.carry_through_prior, ftc.credit
+- **Siblings checked:** f1116sb.prior_year_if_excess, f1116.line10, f1116sb.carry_through_prior, f1116sb.carryback, f1116sb.prior_none, f1116sb.prior_year, ftc.carryover, ftc.carryover_ask, ftc.carryover_if_asked, ftc.carryover_no_tax, ftc.credit, f1116.line35, f1116sb.prior_asked, ftc.all_passive, ftc.all_passive_if_tax, ftc.asked, ftc.credit_tax, ftc.elect, ftc.elect_if_tax, ftc.eligible, ftc.eligible_if_tax, ftc.has_tax, ftc.limit, ftc.limited, ftc.needs1116, ftc.no, ftc.statements, ftc.statements_if_tax, ftc.taxes, ftc.taxes_if_asked, ftc.yes, ftc.zero (f1116.line10 reads the carryover unchanged; ftc.carryover_no_tax refuses a carryover with no 2025 tax before this gate matters).
+- **Tags:** ftc, f1116sb, refusal, fixed
+
+## BUG-1312 — Closure: BUG-0774 is not fixed: unreachable while excluded income refuses the return
+
+- **Closes:** BUG-0774
+- **Closure:** won't fix
+- **Caught by:** bug-fix lane L2 itemized (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** Evaluated fixture f1116.excluded_income_small_tax (sa.excluded_income true): f1040.line15 and sa.line6 are refused at sa.excluded_income, and the question's help says a Yes ends the interview. ftc.needs1116 does read sa.excluded_income for condition 4, but every return on which that reading could send a Form 2555 filer to Form 1116 instead of the election is already refused, so no return computed by the tool is affected. A narrower Form 4563 / Puerto Rico input would change no outcome while Form 2555 is out of scope (coverage expansion is frozen). Reopen with Form 2555 coverage or with owner question D3 (docs/provisional/lanes/scout-form-1116.md).
+- **Tags:** ftc, sa, won't fix
+
+## BUG-1313 — No question refuses a return for a fiscal tax year; the interview and the depreciation quarters assume the calendar year
+
+- **Date:** 2026-11-24
+- **Caught by:** lane business (claude-opus-5-5, judgment), bug-fix wave of 2026-11-24, while checking BUG-1119 item 5.
+- **Source:** f1040 p. 1 (the header, 'For the year Jan. 1–Dec. 31, 2025, or other tax year beginning'); p946 p. 41, Mid-quarter convention, 'The first quarter in a year begins on the first day of the tax year'.
+- **Symptom:** Every question asks about 2025 as the calendar year (income 'during 2025', the quarter of 2025 an asset or vehicle was placed in service, 'January to March' and so on), and no scope question asks whether the return is for a fiscal year. A fiscal-year individual is rare, but such a filer is not refused and answers questions whose periods do not match the return's. docs/2026-11-06_formal_gates_design.md says a refusing fiscal-year row was added to the gates; no such input is in forms/2025/scope.yaml or interview/2025/questions.yaml (searched for 'fiscal', 'calendar year', 'tax year other').
+- **Where:** forms/2025/scope.yaml and its question (a scope form; not in lane business).
+- **Proposed fix:** A scope item 'your tax year is not the calendar year (a fiscal year)', refusing; then asset.placed, asset.quarter, scveh.quarter need no fiscal-year wording.
+- **Severity:** low
+- **Tags:** scope; fiscal year; hand-off
+
+## BUG-1314 — BUG-0780 is fixed: sc.special describes the lease inclusion amount in plain words
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0780
+- **Closure:** fixed
+- **Caught by:** lane business (claude-opus-5-5, judgment), bug-fix wave of 2026-11-24; the entry records the fix because the inventory is append-only.
+- **Source:** p463 p. 32, Inclusion Amounts, the table of fair market values by the year the lease began ($62,000 for 2024–2025, $60,000 for 2023, $56,000 for 2022, $51,000 for 2021, $50,000 for 2018–2020; about $19,000 before 2018); i1040sc p. 8, Line 20a; i1040sc p. 6, Line 6 and p946 Lessee's Inclusion Amount (leased listed property other than a car used 50% or less).
+- **Symptom:** Reproduced: the item read 'leased property has an “inclusion amount”' only, and scveh.lease_business prorates the whole lease payment with no inclusion reduction (forms/2025/scveh.yaml), so the screen is the only guard.
+- **Fix:** wording, in the bank. sc.special's combined recapture/inclusion item is split: the recapture item reads 'property depreciated or expensed in an earlier year (equipment, a vehicle, a building improvement) dropped to half or less business use in 2025', and a new item reads 'you lease a car, truck or van for 30 days or more that was worth more than $62,000 when the lease began (less for a lease that began before 2024), or lease a motorcycle, boat, aircraft, truck over 6,000 pounds, camera or other recreation-type equipment used half or less for the business (an “inclusion amount”)'; the help gives the earlier years' amounts. From the question reviews of the change (claude-opus-5-5): three items brought to the form's own list (depletion of any natural deposit, not only for a business that mines or drills; an activity that is only occasional, not run for profit, or a hobby, as separate cases; travel on a yacht or other luxury boat). The form label and source (which already name the inclusion amount) are unchanged; no expression changes.
+- **Fix lines:** sc.special (bank prompt and help)
+- **Siblings checked:** scveh.lease, scveh.lease_business, scveh.line20a (the lease payment the screen guards; unchanged), sc.screened (reads sc.special; unchanged), sc.line6 (recapture income; unchanged).
+- **Regression predictions:** wording only; no value or refusal changes for any fixture.
+- **Tags:** wording; sc; lease; fixed
+
+## BUG-1315 — BUG-0530 is fixed: sc.at_risk says qualified nonrecourse financing on real estate is at risk
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0530
+- **Closure:** fixed
+- **Caught by:** lane business (claude-opus-5-5, judgment), bug-fix wave of 2026-11-24; the entry records the fix because the inventory is append-only.
+- **Source:** i1040sc pp. 14-15, Line 32, 'However, there is an exception for certain nonrecourse financing borrowed by you in connection with holding real property'; p925 p. 23, 'you’re considered at risk for qualified nonrecourse financing secured by real property used in an activity of holding real property' (from a qualified person or a government; not the seller).
+- **Symptom:** Reproduced: the help listed only a loan secured by property outside the business and insurance as not counting, so a filer with a nonrecourse commercial mortgage on the business's real estate answered No and was refused (Form 6198). The other items of BUG-0530 were fixed by BUG-0700 or closed won't-fix by BUG-1059; this was the last open item.
+- **Fix:** wording. sc.at_risk's source adds that qualified nonrecourse financing secured by real property used in holding real property is at risk, with the p925 citation; its help lists, for a business of holding real estate (such as renting rooms), a mortgage secured only by that real estate, not convertible into a share of the business, from a government or from a bank or other regular lender not related to the filer, the seller or a promoter, among what does not count against the filer (p925 p. 23, the four conditions and the qualified person). From the question reviews of the change: the prompt names a stop-loss or similar agreement beside a guarantee, and the help's related-lender rule says 'someone other than you'. An over-refusal removed; no expression change.
+- **Fix lines:** sc.at_risk (form source and cite; bank help)
+- **Siblings checked:** sc.not_at_risk, sc.loss_allowed (read it; unchanged).
+- **Regression predictions:** wording only; no fixture answers sc.at_risk differently.
+- **Tags:** wording; sc; at-risk; fixed
+
+## BUG-1316 — BUG-0559 is closed: line 43 is never asked, and a vehicle used in two businesses is worded
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0559
+- **Closure:** fixed
+- **Caught by:** lane business (claude-opus-5-5, judgment), bug-fix wave of 2026-11-24; the entry records the fix because the inventory is append-only.
+- **Evidence:** Item by item, after BUG-0701 (the written binding contract rule, already in scveh.after_jan19's source and question) and BUG-1059 (items (c) to (e) won't fix). (a) scveh.placed_date: not reproduced as a defect a filer meets. No line reads it and no target of the full profile reaches it, so it is never asked: a walk of a vehicle on the standard mileage rate (the path where line 43 applies; answers method, miles_business, parking, smr_always, fleet) left no vehicle question pending, and reports/2025/coverage.md lists the input as unobserved. No year is shown anywhere and no value changes. (b) A vehicle used in two of the filer's businesses: decided by the coordinator under the owner's delegation of 2026-11-24 (amb.2025.vehicle_two_businesses): the vehicle is listed with each business, the other business's miles counted among its other miles; scveh.miles_other's source and a new help say so; the help also counts miles for investments or a job as other miles (a question review of the change). The unreduced vehicle-credit basis and fiscal-year quarters were closed by BUG-0701 (the fiscal year as a whole is filed as BUG-1313).
+- **Fix lines:** scveh.miles_other (form source, ambiguity link; bank help)
+- **Siblings checked:** scveh.no_miles, scveh.om_c (read it; unchanged), scveh.miles_business, scveh.miles_commuting (unchanged).
+- **Regression predictions:** wording only; no fixture value changes.
+- **Tags:** wording; scveh; fixed
+
+## BUG-1317 — BUG-1119 is fixed but for the fiscal year: asset question wording
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1119
+- **Closure:** fixed
+- **Caught by:** lane business (claude-opus-5-5, judgment), bug-fix wave of 2026-11-24; the entry records the fix because the inventory is append-only.
+- **Source:** i4562 p. 3, Listed property and Exceptions 1 and 2; i4562 p. 2, 'Property used by a tax-exempt organization (other than a section 521 farmers’ cooperative)'; p946 p. 37, Figuring the Unadjusted Basis, 'without reducing your original basis by any MACRS depreciation taken in earlier years'; i4562 p. 11, Column (c); p946 p. 32 (conversion date).
+- **Symptom:** Each item reproduced against the questions of this tree (the text of BUG-1119 was present).
+- **Fix:** wording, in forms/2025/asset.yaml and the bank. (1) asset.listed: the exclusive-use exception now applies only to photographic, phonographic (sound), communication or video equipment; other entertainment or recreation property is listed regardless; a computer 'or peripheral equipment' (bank: 'computer accessory') placed in service before 2018 (bank: 'first used in the business before 2018', so a computer converted from personal use later is not caught) is excepted only at a regular business establishment the filer operates; the citation quotes the definition and both exceptions. (2) asset.cost: source and help say not to subtract depreciation taken in earlier years (unadjusted basis; citation adds p946 p. 37). (3) asset.not179: the tax-exempt organization item excepts a section 521 farmers' cooperative (bank: 'other than a farmers' cooperative'; cite adds i4562 p. 2). (4) asset.pct: decided by the coordinator under the owner's delegation of 2026-11-24 (amb.2025.asset_business_pct): a whole percent, a fraction rounded down; source and question say so. (6) asset.quarter: source and a new help say property first used personally counts from the date its business use began. (5) The calendar-year assumption is not asset-specific: no question refuses a fiscal-year return; filed as BUG-1313 (scope, a hand-off) rather than worded here.
+- **Fix lines:** asset.listed, asset.cost, asset.not179, asset.pct (ambiguity link), asset.quarter
+- **Siblings checked:** asset.qbu_low, asset.qbu_low_if_listed (read asset.listed; unchanged), asset.pct_c, asset.pct_bad (read asset.pct; unchanged), asset.placed (already words the conversion date), scveh.cost and scveh.quarter (vehicle twins; scveh asks per vehicle and is unchanged). Readers through helpers, unchanged (the change is wording; none reads a different value): `asset.basis`, `asset.is_section179`, `asset.listed_low`, `asset.mqbase_q4`, `asset.on_17`, `asset.on_19`, `asset.on_26_this_year`, `asset.qconv`, `asset.s179_bad_test2_from2`, `sc.f14`, `sc.f17`, `sc.f19_y10`, `sc.f19_y15`, `sc.f19_y15sl`, `sc.f19_y20`, `sc.f19_y3`, `sc.f19_y5`, `sc.f19_y7`, `sc.f25_assets`, `sc.f26_assets`, `sc.f29_assets`, `sc.f6` (their transcription review of this change found no project defect).
+- **Regression predictions:** wording only; no fixture answers a fractional percentage; no value changes.
+- **Tags:** wording; asset; f4562; fixed
+
+## BUG-1318 — BUG-0555 is closed: Form 5695 Part II wording items fixed, met or decided
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0555
+- **Closure:** fixed
+- **Caught by:** lane business (claude-opus-5-5, judgment), bug-fix wave of 2026-11-24; the entry records the fix because the inventory is append-only.
+- **Evidence:** Item by item against this tree. Met by earlier redrafts (no change): line 26b counts only audits with the qualifying report ('Count only audits with such a report'), and the audit is its own tick ('A home energy audit paid for in 2025', f5695.audit) so no installation timing rule is applied to it; line 26a's 'incur' is the printed form's own wording while the tick and line 26b ask what was paid in 2025 (i5695 p. 7, Line 26b, 'Enter the amounts you paid for home energy audits in 2025'); line 21a asks a home 'you lived in during 2025'; line 23b's help leaves out heat pump water heaters; line 29a is reached only from the heat pump tick, which excludes geothermal. Fixed here: the gas water heater tick and f5695.water_heater's source exclude a heat pump water heater, so a gas heat pump water heater is not entered on line 23a as well as 29c. Decided by the coordinator under the owner's delegation of 2026-11-24 (amb.2025.f5695_door_ranking): doors are ranked by their cost after rebates, keeping the $250 limit 'for any qualifying exterior door' (i5695 p. 3) on the door with the largest credit; f5695.line19a's source, question and help say so. Won't fix: f5695.qmid_enabling for enabling property installed in 2024 and treated as 2025 under the safe harbor (i5695 p. 6): a No only refuses, never a wrong value, and whether such property needs a QMID the instructions do not say (QMIDs apply to 'specified property placed into service in 2025', p. 1).
+- **Fix lines:** f5695.water_heater (form source; bank tick), f5695.line19a (form source, ambiguity link; bank prompt and help)
+- **Siblings checked:** f5695.hp_water_heater, f5695.line23a_i, f5695.line23a_ii, f5695.line23b, f5695.line29c (water heater lines; unchanged), f5695.line19d_i, f5695.line19e (same ranking, 'on the same basis'; unchanged). The gates of the changed questions, unchanged: `f5695.line19a_if_doors`, `f5695.water_heater_if_any`.
+- **Regression predictions:** wording only; no fixture has a gas heat pump water heater or rebate-reordered doors.
+- **Tags:** wording; f5695; fixed
+
+## BUG-1319 — BUG-0515 is fixed: a maker's or dealer's rebate is not counted as a down payment
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-0515
+- **Closure:** fixed
+- **Caught by:** lane business (claude-opus-5-5, judgment), bug-fix wave of 2026-11-24; the entry records the fix because the inventory is append-only.
+- **Source:** fr-2025-24154 pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), 'any down payment (or other consideration provided by the taxpayer at the time of the purchase transaction for an APV)'.
+- **Symptom:** The rebate part, the only part BUG-0738 left open, reproduced: carloan.down named a down payment and a trade-in only.
+- **Fix:** decided by the coordinator under the owner's delegation of 2026-11-24 (amb.2025.carloan_rebate): a rebate from the maker or dealer is a price reduction, not consideration provided by the taxpayer (the sources are silent; this reading does not understate tax). carloan.down's source and help say not to count it. The help also names the trade-in value in the purchase contract (proposed § 1.163-16(b)(8), 'the vehicle's trade-in value specified by the contract'), from a question review of the change.
+- **Fix lines:** carloan.down (form source, ambiguity link; bank help)
+- **Siblings checked:** carloan.nonqualifying, carloan.nonqualifying_debt, carloan.mixed_qualifying (read the down payment's allocation; unchanged), carloan.financed (unchanged).
+- **Regression predictions:** wording only; no value changes.
+- **Tags:** wording; carloan; fixed
+
+## BUG-1320 — Closure: BUG-0764 is fixed
+
+- **Closes:** BUG-0764
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** s2.amt_l7 now chooses on s2.amt_part3: line 40 (Part III) where the return used a capital gain tax worksheet (f1040.gate.qdcg_applies, as before), or where Form 1040 line 15 is zero, Form 6251 line 7's own condition holds (s2.amt_part3_form: qualified dividends on line 3a, capital gain distributions reported directly on line 7a, or gains on both Schedule D lines 15 and 16) and the worksheet that applies is the Qualified Dividends and Capital Gain Tax Worksheet (i6251 p. 13, 'Only statement (2) applies'). Where the Schedule D Tax Worksheet would apply (f1040.gate.sdtw_rules, split out of f1040.gate.sdtw unchanged in value), line 39 is kept: lines 13 to 15 would then need an AMT Schedule D Tax Worksheet the encoding builds only when line 15 is above zero, and line 39 is never less than line 40, so that case can only over-refuse. With line 15 zero, lines 20 and 27 (qdcg.line5) are zero, as Form 6251 lines 20 and 27 direct ('If you did not complete either worksheet for the regular tax, enter the amount from Form 1040 or 1040-SR, line 15; if zero or less, enter -0-').
+- **Fix lines:** s2.amt_l7, s2.amt_part3, s2.amt_part3_form, f1040.gate.sdtw_rules
+- **Siblings checked:** f1040.gate.sdtw (now all of f1040.gate.qdcg_applies and f1040.gate.sdtw_rules, the same expression as before, so its readers f1040.line16, f1116.l5 and f1116.must_adjust are unchanged in value; fixtures 2750/2750), sd.investment_election (read by the rules, unchanged), s2.amt_tmt_over (the only reader of s2.amt_l7; now false in the kill case).
+- **Mutation note:** The related survivor named in BUG-0764 (the operand mutant of s2.amt_l16 reading s2.amt_l15) is not killed: its distinguishing case (zero taxable income with a Form 4952 line 4g election) keeps line 39 (f1040.gate.sdtw_rules true), so line 16 does not reach line 7 there.
+- **Evidence:** Reproduced before the fix: the saved draft case (single, $15,000 qualified dividends, $85,000 private activity bond interest) gave s2.amt_l7 $3,094 (line 39) and s2.amt_tmt_over true; after it, fixture capital.s2.amt_l7_qd_zero_taxable_income (predicted by hand from f6251 before recording) gives line 40 $0, line 7 $0, s2.amt_tmt_over false.
+- **Tags:** s2, AMT, Form 6251, over-refusal, mutation, fixed
+
+## BUG-1321 — Closure: BUG-1293 is not a defect: box 13 dividends already refuse the return
+
+- **Closes:** BUG-1293
+- **Closure:** not a defect
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Evaluated on next d60f83a9 (lane capital): a return with $15,000 qualified dividends, div.other_boxes Yes and $85,000 in Form 1099-DIV boxes 12 and 13, no Schedule D (sd.filed false): div.amt (div.box13_if_dividends above $0) refuses div.screen with Form 6251, and the refusal reaches s2.amt_l4, s2.amt_l7, s2.amt_tmt_over, s2.line2 and f1040.line24. No return with a box 13 amount is completed, so the line 2g amount the screen reads is never too low by box 13 (div.box13_if_dividends is box 13 only when div.other_boxes, whose question names box 13, is Yes). The refusal of every box 13 amount is an over-refusal of coverage, not this defect.
+- **Tags:** s2, AMT, div, not reproduced
+
+## BUG-1322 — Closure: BUG-1092 is fixed
+
+- **Closes:** BUG-1092
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** s2.lookback_if_business now chooses on s2.lookback_ask, true when the return has a Schedule C (s1.has_sc) or scope.business_before is Yes (a business, farm, rental or partnership or S corporation share owned before 2025, asked of every return at order 258, before the look-back question at 267). A contract of a business closed before 2025 that is completed or adjusted in 2025 is now asked about, and a Yes reaches s2.other and its refusal. The interview prompt of s2.lookback now also names income-forecast property ('or do you depreciate a film, book or similar property by the income it is expected to earn?') and says 'figured as the work went on', with the help counting a contract figured so for the alternative minimum tax only (i6251 p. 7, Line 2p, Note), from the scoped false-no review of gate:s2.lookback_ask; its royalty-investor finding is BUG-1332.
+- **Fix lines:** s2.lookback_if_business, s2.lookback_ask
+- **Siblings checked:** s2.other (its only reader; unchanged); s2.amt_business_if_sc (asks about business AMT items only with a 2025 Schedule C: items of the current year, so a closed business has none).
+- **Evidence:** Reproduced before the fix: scope.business_before Yes, no Schedule C, s2.lookback Yes gave s2.lookback_if_business false and f1040.line23 $0. Fixtures capital.s2.lookback_closed_business (s2.other true) and capital.s2.lookback_closed_business_none, predicted by hand.
+- **Tags:** s2, false-no review, fixed
+
+## BUG-1323 — Closure: BUG-1127 and BUG-1201 are fixed
+
+- **Closes:** BUG-1127 and BUG-1201
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Fix:** Owner's W7 decision (one special-sale question per return): the special-sale list is the per-return input sd.special_any (order 274, seq 12, right after the sales list and before the per-sale questions; sd.route_each moves to seq 13, sales.box to 14), and sales.special is a derived line equal to it (protocol technique 3.1), so sales.one's refusal, its wording and its gate name (sales[<key>].special) are unchanged. The list's section 1202 item now reads 'small business stock on which you exclude some or all of the gain (section 1202)' (BUG-1201). Fixtures, defaults (sd.special_any false), coverage rows and personas 06, 17, 18 and 30 restated from sales[<key>].special to sd.special_any (one answer per return; the restated value is Yes where any sale's was Yes); the case generators (engine/src/generate.ts, tools/engines/generate_cases.py) state the new input.
+- **Fix lines:** sales.special, sd.special_any
+- **Siblings checked:** sales.one (refuses on sales.special, unchanged), sales.box, sales.aggregate_eligible (its 'not a collectible, not an opportunity zone fund' wording stays per sale: it decides the route of that sale), sd.qof (the per-return opportunity-fund question of the rare-sales screen, unchanged), u1250.reached, f1040.digital_assets, s1.digital_income_if_assets (anchored on the same pages; no change needed).
+- **Evidence:** Fixtures capital.sales.special_once_two_sales (two sales, one Yes: both sales' sales.special true, Form 1040 line 7a refused at sales[a].special as in sales.refuse.special) and capital.sales.special_once_two_sales_none, predicted by hand; sales.refuse.special unchanged.
+- **Tags:** sales, interview length, wording, fixed
+
+## BUG-1324 — Closure: BUG-0829 is fixed
+
+- **Closes:** BUG-0829
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** sales.correct_basis's text adds 'For a digital asset received as a gift, if you do not have any documentation to substantiate the donor's basis, your basis is zero' (p550 p. 60) and the time-payment rule, 'the stated purchase price minus the amount considered to be unstated interest' (p550 p. 59); its interview prompt says of a gift 'usually what the giver paid (for crypto with no record of that, zero)' and its help 'If you paid over time with little or no interest, leave out the part of the price treated as interest'. sales.box's text adds the digital-asset gift holding period (from the day after the gift without the donor's records, p550 p. 82), and its help 'Crypto received as a gift counts from the day after you got it unless you have a record of when the giver got it'.
+- **Wording lines:** sales.correct_basis, sales.box
+- **Siblings checked:** sales.reported_basis (a statement's figure, no gift rule), sales.code (code B, basis wrong on the statement, unchanged).
+- **Tags:** sales, wording, fixed
+
+## BUG-1325 — Closure: BUG-1091 and BUG-1285 are fixed
+
+- **Closes:** BUG-1091 and BUG-1285
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** sd.sold_other's help now counts 'a copyright, patent, invention, manuscript or work of art you created yourself or were given by its creator' (i1040sd p. 2, Capital Asset, item 5), 'real estate you traded with a relative or a related company in 2023 or 2024 that either of you sold or gave away in 2025', a government taking, foreclosure or abandonment, and payments on an installment note inherited or received in a divorce, or the note's sale or cancellation (the last three from the scoped false-no and screen reviews of gate:sd.sold_other run in this lane); sd.business_property's help adds 'A copyright, patent, invention, manuscript or work of art you created yourself, or were given by its creator, counts too' (Form 4797, refused); sd.like_kind's help adds 'Yes too if you traded real estate with a relative or a related company in 2023 or 2024 and either of you sold or gave away what you traded in 2025' (Form 8824, refused). Wording only; the refusals are the existing ones.
+- **Wording lines:** sd.sold_other, sd.business_property, sd.like_kind
+- **Siblings checked:** sd.home_sale, sd.installment, sd.condemned (same screen; not about these cases).
+- **Tags:** sd, interview, wording, fixed
+
+## BUG-1326 — Closure: BUG-1288 is fixed
+
+- **Closes:** BUG-1288
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** sd.home_sale's prompt reads 'Was any of it your (or, on a joint return, your spouse's) main home, ...'; its help states both tests, the $500,000 limit for spouses on a joint return or a surviving spouse not remarried selling within 2 years of the death, the reduced exclusion and the suspension of the 5 years for service abroad (i1040sd p. 2, Tests 1 and 2, Reduced Exclusion, Sale of home by surviving spouse, Exceptions to Test 1; the last three from the scoped screen review of sd.home_sale run in this lane, whose findings were WIDE, refusals only).
+- **Wording lines:** sd.home_sale
+- **Siblings checked:** sd.sold_other (its help names a home you lived in; unchanged).
+- **Tags:** sd, interview, wording, fixed
+
+## BUG-1327 — Closure: BUG-0184 is fixed
+
+- **Closes:** BUG-0184
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** The labels of sd.line4, sd.line5, sd.line11 and sd.line12 read 'zero only after unsupported source screening' (their only refusal is sd.other_forms).
+- **Tags:** sd, stale-label, fixed
+
+## BUG-1328 — Closure: BUG-0502 is fixed
+
+- **Closes:** BUG-0502
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** clcw.prior_11's help: 'If you filed a 2024 Form 1040-NR, use its adjusted gross income'; clcw.prior_14's help: 'On a 2024 Form 1040-NR, the total of the deductions it subtracts from adjusted gross income to give taxable income on line 15'. The 2024 Form 1040-NR is not archived, so its lines are named by content; line 15 as its taxable income is from the archived i1040sd p. 10, Capital Loss Carryover Worksheet, line 1.
+- **Tags:** clcw, wording, fixed
+
+## BUG-1329 — Closure: BUG-0560 is fixed
+
+- **Closes:** BUG-0560
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Wording fix:** f8960.prior_2i asks 'For 2024, was there (or, had you figured it, would there have been) an amount other than zero on line 2(i) of the Net Gains and Losses Worksheet ...'; its help says a line 2(i) of zero is a No and, for a filer who did not figure the tax for 2024, to answer Yes only if 2024 losses left out of investment income (such as on business property) were more than such gains (i8960 p. 9, the adjustment follows from a net excluded loss). A Yes still only refuses.
+- **Tags:** f8960, wording, fixed
+
+## BUG-1330 — Closure: BUG-0570 is fixed
+
+- **Closes:** BUG-0570
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Evidence:** Both parts are fixed on next d60f83a9: lines 35a and 36 are bounded by line 34 through f1040.split_bad and the refusing values-sheet line f1040.split_checked (BUG-1158; fixtures adlow.f1040.split_over, adlow.f1040.split_nothing_overpaid, adlow.f1040.split_within), and f1040.line3a's text lists the line 3a exceptions without builder wording (forms/2025/f1040.yaml: 'less any amount the line 3a exceptions leave out (for example, dividends on stock held less than 61 days ...)').
+- **Tags:** f1040, fixed
+
+## BUG-1331 — Closure: BUG-1118's reading is decided
+
+- **Closes:** BUG-1118, in part: the reading is decided and registered; the change to line 4a stays open
+- **Closure:** fixed
+- **Caught by:** lane capital (claude-opus-5-5, judgment), wave 2026-11-24
+- **Decision:** Registered amb.2025.line4a_several, decided by the coordinator under the owner's delegation of 2026-11-24: line 4a is the total of every IRA distribution once any goes on line 4a (i1040gi p. 27, More than one distribution, 'Enter the total amount of those distributions on line 4a'); f1040.line4a carries the ambiguity. Line 4b and the tax do not change.
+- **Evidence:** Reproduced: two IRA distributions of one person, $10,000 with $6,000 rolled over and $3,000 fully taxable, give line 4a $10,000 and line 4b $7,000; under the decided reading line 4a is $13,000.
+- **Proposed fix:** Add to forms/2025/person.yaml a per-person total of IRA box 1 (sum_over retirement of retirement.box1 where retirement.is_ira) and make f1040.line4a choose that total, summed over persons, when the sum of person.ira_amount_a is more than zero (else the current sum, $0). Not made in lane capital: person.yaml belongs to another lane of the wave.
+- **Tags:** f1040, retirement, ambiguity, fixed in part
+
+## BUG-1332 — Look-back interest on income-forecast property held for royalties is not asked of a filer with no business
+
+- **Caught by:** the sampled false-no review of gate:s2.lookback_ask (claude-opus-5-5), 2026-11-24, finding 2; ruled in lane capital (claude-opus-5-5, judgment)
+- **Source:** f1040s2 (2025) line 17n, 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'.
+- **Symptom:** s2.lookback (which covers Form 8866, property depreciated under the income forecast method) is asked only through s2.lookback_ask: a 2025 Schedule C or scope.business_before (a business, farm, rental or partnership or S corporation share owned before 2025). An investor who holds film, book or recording rights for royalties (Schedule E royalties) and owns no business may truthfully answer No to scope.business_before, so the look-back question is never asked and a Form 8866 amount is left off Schedule 2 instead of being refused. Rare.
+- **Where:** forms/2025/s2.yaml s2.lookback_ask
+- **Proposed fix:** Add a royalty leg to s2.lookback_ask (sche.royalty_count above zero), after confirming the royalty roster is known on every return that reaches s2 (the roster is asked at order 130, before s2.lookback at 267) and stating $royalty in the no-default fixture files that reach the gate; not made in lane capital because an unknown roster would leave s2.other unknown on returns that do not state it.
+- **Proposed fix lines:** s2.lookback_ask
+- **Severity:** low
+- **Tags:** s2, false-no review, missed refusal
+
+## BUG-1333 — Closure: BUG-1113 is fixed (Form 6198 history of a rental or royalty is asked and refused)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change (no rental or royalty input mentioned Form 6198 or an earlier at-risk limit: grep of forms/2025/rental.yaml, royalty.yaml).
+- **Closes:** BUG-1113
+- **Closure:** fixed
+- **Fix:** New inputs rental.at_risk_prior and royalty.at_risk_prior ('Was Form 6198 (at-risk limits) filed for it on any of your (or, on a joint return, your spouse's) earlier returns, or was a loss from it held back on one because amounts were not at risk?'), boxes on the rental_use and royalty_rare screens asked of every entry, refused on rental.line21_full and royalty.line21 (form Form 6198, at-risk limits, earlier year). Asked of every entry rather than behind rental.prior_any, so that the recapture case of p925 p. 19 (losses allowed earlier, amount at risk now below zero) is reached in a year with income and no held-back loss. Source: p925 p. 19, At-Risk Limits. Fixtures rentals25.at_risk_prior_refused and rentals25.royalty_at_risk_prior_refused, predicted by hand.
+- **Fix lines:** rental.line21_full, royalty.line21
+- **Siblings checked:** rental.line3, s3.rental_credit_count, sche.line23b (readers and citation neighbours, unchanged); rental.not_at_risk_if_loss, royalty.not_at_risk_if_loss (this year's at-risk screens, unchanged), rental.prior_any (an 8582 carryover, unchanged), k1p and k1s at-risk refusals (not rentals of this form)
+- **Tags:** closure; rental; royalty; Form 6198
+
+## BUG-1334 — Closure: BUG-1115 is fixed (a rental's general business credit is asked and refused)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change (no rental input mentioned a credit; s3.business_credit_any counted Schedules C only).
+- **Closes:** BUG-1115
+- **Closure:** fixed
+- **Fix:** New input rental.business_credit (a box on the rental_use screen, help naming Form 3800, the low-income housing credit, the rehabilitation credit and the disabled access credit), refused on rental.line21_full (Form 3800) as sc.business_credit is on sc.line1; new s3.rental_credit_count (reported rentals claiming it), s3.rental_credit_listed and s3.rental_credit_if_rentals (read only when scope.rental is Yes, so a return without rentals is never asked for the rental roster), read by s3.business_credit_any beside the Schedule C count, so s3.line7 (line 6a) and s3.line14 (line 13c) refuse too and line 7's note stays true. Source: i1040gi p. 116, Lines 6a Through 6z. Fixture rentals25.business_credit_refused, predicted by hand (refusal on rental line 21 and on s3.line7).
+- **Fix lines:** rental.line21_full, s3.business_credit_any
+- **Siblings checked:** person.sc_credit_count, rental.business_credit, rental.line3, s3.adoption, s3.adoption_asked_if_any, s3.adoption_if_any, s3.business_credit_count, s3.line14, s3.line7, s3.no, s3.other_credit, s3.rental_credit_count, s3.rental_credit_if_rentals, s3.rental_credit_listed, sc.business_credit, sc.line1 (the Schedule C credit path is unchanged; s3.line7 and s3.line14 refuse through the same gate as before; rprop.credit, s3.prior_forms_if_forms and the K-1 credit refusals already refuse their cases)
+- **Tags:** closure; rental; s3; Form 3800
+
+## BUG-1335 — Closure: BUG-0761 is fixed (Form 8978 listed among Schedule 3 line 7's refusals)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change (s3.line7 refuses list had no Form 8978 entry).
+- **Closes:** BUG-0761
+- **Closure:** fixed
+- **Evidence:** s3.line7 refuses gains 'when: scope.f8978_if_business_before', form Form 8978 (partner's additional reporting year tax), citing i1040gi p. 116, Line 6l. The return was already refused at f1040.line16 through scope.other_line16, so no value or refusal outcome changes and no fixture is added.
+- **Lines changed:** s3.line7
+- **Related lines read:** scope.other_line16 (unchanged), f1040.line16. Recorded as a closure without a Fix field: the change adds a refusal entry to a return already refused at f1040.line16, so no line of any form reads a different value or refusal; the s3 transcription, render and class M reviews of the change were run.
+- **Tags:** closure; s3; Form 8978; no value change
+
+## BUG-1336 — Closure: BUG-1191 is fixed (costs paid before a rental was first offered for rent are asked and refused)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change (no rental question named pre-rental or start-up costs).
+- **Closes:** BUG-1191
+- **Closure:** fixed
+- **Fix:** Read p527 first, as the entry asked: p. 5, Pre-rental expenses, allows rental expenses only 'from the time you make it available for rent', so the issue is wider than section 195 (which needs a trade or business; a rental that is one is now refused by sche.qbi_business, BUG-1148). New input rental.prerental ('Was it first offered for rent in 2025, and did you pay costs for it before then, to get it ready or find tenants, or, for a place you bought to rent, its other costs?'; help excepts costs of the filer's own home while lived in), a box on rental_use, refused on rental.line21_full. No $5,000 threshold: it is a section 195 figure and does not fit a rental that is not a business. Reading decided under the owner's delegation: amb.2025.rental_prerental_costs. Fixture rentals25.prerental_refused, predicted by hand.
+- **Fix lines:** rental.line21_full
+- **Siblings checked:** rental.line3, s3.rental_credit_count (unchanged readers of rental.line21_full), sc start-up refusal (BUG-1176, unchanged), rental.amt9, rental.amt12, rental.amt13, rental.amt16 (help on days of home use, unchanged), sche.qbi_business
+- **Tags:** closure; rental; start-up costs; ambiguity decided
+
+## BUG-1337 — Closure: BUG-1148 is fixed (the QBI rental question asks the fact of a trade or business)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change (the bank prompt then read 'Do you claim the qualified business income deduction for a rental (Form 8995 or 8995-A)?', a claim, not the fact).
+- **Closes:** BUG-1148
+- **Closure:** fixed
+- **Fix:** sche.qbi_business source now reads 'Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously (for example, 250 hours or more a year of rental services, with separate books)?', citing i8995 p. 1 (the section 162 standard, and the safe harbor); the bank's prompt override is removed; tick 'A rental run as a business: for profit, regularly and continuously'; help keeps the 2024 Form 8995 and safe-harbor cases. Label, remedy and form note say 'a rental that is a trade or business'. Yes still refuses. Reading decided under the owner's delegation: amb.2025.rental_not_qbi (rewritten).
+- **Fix lines:** sche.qbi_business
+- **Siblings checked:** sche.line26 (the refusal), sche.re_pro, sche.grouped
+- **Tags:** closure; sche; f8995; wording; ambiguity decided
+
+## BUG-1338 — Closure: BUG-0993 is fixed (rental building basis prompt states decreases to basis)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change; the draft of .claude/scouts-2026-11-22/leftovers-check.md (queue item 9, owner-approved) checked against the current bank, which still had the old prompt and help.
+- **Closes:** BUG-0993
+- **Closure:** fixed
+- **Evidence:** rprop.basis bank prompt now reads 'Your share of its cost without the land, less casualty insurance or deductions, easement payments, and home energy credits or subsidies. If you used it yourself before renting, enter the smaller of that (plus improvements made before renting) and its value then without land.' Its help keeps the closing costs (BUG-0956) and adds 'A former home is also reduced by any pre-1997 postponed gain, D.C. homebuyer credit and tax-free forgiven home-loan debt.' rprop.credit help now says a home energy credit taken before renting is subtracted from cost, not ticked. Source: p527 p. 12, Decreases to basis (both lists), p. 23, Basis of Property Changed to Rental Use. Widening rprop.basis_changed was rejected (over-refusal of converted homes valued below cost). Wording only; no value or refusal changes. The optional cite change to forms/2025/rprop.yaml was not taken (no form change).
+- **Lines changed:** rprop.basis, rprop.credit
+- **Related lines read:** rprop.basis_changed, rprop.credit, rprop.exchanged, rprop.fast. Recorded as a closure without a Fix field: only the interview bank's prompt and help changed, no form line; the question review of rprop.basis and rprop.credit was run (reviews/2025/questions/rprop.json, ruled).
+- **Tags:** closure; rprop; wording
+
+## BUG-1339 — Closure: BUG-0925 is fixed (prepaid interest and points on rental loans)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change. Already in the tree: rental.amt13's source excludes interest for a later year and takes only 2025's share of points (Round F). Still open: where a loan with a Form 1098 puts its points.
+- **Closes:** BUG-0925
+- **Closure:** fixed
+- **Evidence:** Form 1098 box 1 excludes points and prepaid interest (i1098, Box 1 and Prepaid Interest), so rental.amt12 stays box 1, and its help now says so. The yearly share of points on a loan with a Form 1098 is mortgage interest beyond the form (i1040se p. 7, Lines 12 and 13, How to report: line 12 with a statement), so rental.mortgage_excess's help now counts it and a Yes refuses as before; rental.has_other_interest's help takes the share for a loan with no Form 1098 in the filer's name, matching amt13. Reading decided under the owner's delegation: amb.2025.rental_points_on_1098_loan. Wording only; no fixture changes.
+- **Lines changed:** rental.amt12, rental.amt13, rental.mortgage_excess
+- **Related lines read:** rental.amt12_if_any, rental.amt13_if_any, rental.line12, rental.line13. Recorded as a closure without a Fix field: only the interview bank's help changed, no form line; the question reviews of rental.amt12, rental.has_other_interest and rental.mortgage_excess were run and ruled.
+- **Tags:** closure; rental; interview wording; ambiguity decided
+
+## BUG-1340 — Closure: BUG-0785 is fixed (spouse's earlier return asked; grouped rentals sent to the grouping question)
+
+- **Date:** 2026-11-24
+- **Caught by:** lane rentals (claude-opus-5-5, judgment), 2026-11-24, bug-fix wave 2026-11-24; reproduced against the archived source and the YAML and bank before the change.
+- **Closes:** BUG-0785
+- **Closure:** fixed
+- **Evidence:** Spouse part already fixed in the tree: rental.prior_any reads 'on any of your (or, on a joint return, your spouse's) earlier returns, even a separate one?'. Grouped part: a rental reported with others as one activity is grouped, which sche.grouped refuses, so entering its share of a carryover (the proposed help) would only precede a refusal; instead sche.grouped's help now says 'Yes also if your 2024 Form 8582 shows a rental's loss only in one figure with other rentals', so the filer who cannot find the rental alone on Form 8582 reaches the refusal rather than a dropped carryover. Source: i8582 p. 1, Grouping of Activities; p. 10, Part IV column (c).
+- **Lines changed:** none in the forms; the bank help of sche.grouped
+- **Related lines read:** rental.prior_amt, sche.line26. Recorded as a closure without a Fix field: only the interview bank's help of sche.grouped changed; rental.prior_any's source already held the spouse wording. The question review of sche.grouped was run and ruled.
+- **Tags:** closure; rental; sche; f8582; wording
+
+## BUG-1341 — At-risk recapture of a rental or royalty with no Form 6198 history is neither asked nor refused in a year without a loss
+
+- **Date:** 2026-11-24
+- **Caught by:** the question review of rental.at_risk_prior and royalty.at_risk_prior (claude-opus-5-5), 2026-11-24, ruled by lane rentals (claude-opus-5-5, judgment).
+- **Source:** p925 (2025) p. 19, At-Risk Limits, 'If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero'; p. 23, Recapture Rule.
+- **Symptom:** rental.at_risk_prior and royalty.at_risk_prior refuse a Form 6198 history or an at-risk carryover; rental.not_at_risk and royalty.not_at_risk ask this year's at-risk facts only when line 21 is a loss. A filer whose losses were allowed in full earlier without Form 6198 and whose amount at risk falls below zero in 2025 (for example, debt changed from recourse to nonrecourse that is not qualified nonrecourse financing) in a year with income answers No to both and owes recapture the return leaves out.
+- **Where:** forms/2025/rental.yaml (rental.not_at_risk_if_loss), forms/2025/royalty.yaml (royalty.not_at_risk_if_loss)
+- **Proposed fix:** Ask rental.not_at_risk and royalty.not_at_risk of every entry whose earlier returns deducted a loss from it (or of every entry), not only when line 21 is a loss; a Yes refuses as now.
+- **Proposed fix lines:** rental.not_at_risk_if_loss, royalty.not_at_risk_if_loss
+- **Severity:** low
+- **Tags:** rental, royalty, Form 6198, question review, open
+
+## BUG-1342 — The QBI rental question's safe-harbor example can read as the bar a rental must clear
+
+- **Date:** 2026-11-24
+- **Caught by:** the question review of sche.qbi_business (claude-opus-5-5), 2026-11-24, ruled by lane rentals (claude-opus-5-5, judgment).
+- **Source:** i8995 (2025) p. 1, Trade or business: 'Rental real estate that doesn’t meet the requirements of the safe harbor may still be treated as a trade or business for purposes of the QBI deduction if it’s a section 162 trade or business.'
+- **Symptom:** sche.qbi_business asks whether a rental is run 'as a business, renting it out to make money and being involved in it regularly and continuously (for example, 250 hours or more a year of rental services, with separate books)'. The example is the safe harbor's conditions; a landlord involved regularly with fewer hours may read it as the threshold and answer No, so the rental is left out of QBI (deduction overstated where the rental has a loss).
+- **Where:** forms/2025/sche.yaml (sche.qbi_business source); interview/2025/questions.yaml (its help)
+- **Proposed fix:** Move the example to the help as one way to qualify ('Yes also if you use the rental safe harbor: usually 250 hours or more a year of rental services, with separate books'), leaving the prompt with the section 162 standard.
+- **Proposed fix lines:** sche.qbi_business
+- **Severity:** low
+- **Tags:** sche, f8995, wording, question review, open

@@ -21,4 +21,4 @@ answers:
   $sales: [nft]
   sd.route_each: false
   sales[nft].box: L
-  sales[nft].special: true
+  sd.special_any: true

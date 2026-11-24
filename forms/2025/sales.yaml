@@ -26,6 +26,7 @@ form:
         Inheritances and gifts:
         - Property you inherited is long-term however long you held it, unless the decedent died in 2010 and the executor elected to file Form 8939 (Revenue Procedure 2011-41 then sets the holding period).
         - If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did.
+        - For a digital asset received as a gift, if you do not have documentation substantiating the donor's holding period, your holding period begins the day after you received the gift.
         - If your basis in a gift is its fair market value, the holding period starts the day after the gift.
 
         Counting the holding period:
@@ -64,6 +65,7 @@ form:
           Inheritances and gifts:
           - Property you inherited is long-term however long you held it, unless the decedent died in 2010 and the executor elected to file Form 8939 (Revenue Procedure 2011-41 then sets the holding period).
           - If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did.
+          - For a digital asset received as a gift, if you do not have documentation substantiating the donor's holding period, your holding period begins the day after you received the gift.
           - If your basis in a gift is its fair market value, the holding period starts the day after the gift.
 
           Counting the holding period:
@@ -118,7 +120,8 @@ form:
           period for that share is a split holding period", Nontaxable trades, "your holding period for the new property
           begins on the day following the date you acquired the old property", Property received as a gift, "If your basis
           is determined by the fair market value of the property, your holding period starts on the day after the date of
-          the gift.", Real property bought, "begin counting on the day after you received title to it or on the day after
+          the gift.", Holding period of digital assets received as a gift, "if you do not have documentation substantiating
+          that person's holding period, then your holding period begins the day after you receive the gift", Real property bought, "begin counting on the day after you received title to it or on the day after
           you took possession of it and assumed the burdens and privileges of ownership, whichever happened first" and Real
           property repossessed, "Your holding period does not include the time between the original sale and the
           repossession."; i8949 p. 6, Column (b)—Date Acquired, "For property you previously elected to treat as having
@@ -220,35 +223,14 @@ form:
           (f) as the code explaining the loss is nondeductible"
     - id: sales.special
       printed: (helper)
-      label: |-
-        Does any of the following apply to this sale?
-
-        Does this sale involve:
-        - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
-        - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
-        - qualified small business stock with a section 1202 exclusion
-        - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
-        - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
-        - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
-        - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
-
-        Or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
+      label: "This sale may be one of the special kinds: the answer to the special-sale question, asked once for all
+        the sales (any sale of those kinds refuses the return, whichever sale it is)"
       type: Bool
       expr:
-        op: input
-        source: |-
-          Does any of the following apply to this sale?
-
-          Does this sale involve:
-          - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
-          - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
-          - qualified small business stock with a section 1202 exclusion
-          - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
-          - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
-          - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
-          - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
-
-          Or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
+        op: test
+        eq:
+          - sd.special_any
+          - const: true
       cite:
         doc: i1040sd
         locator: pp. 11–12, lines 18 and 19; p. 11, Line 19, "section 1250 property (generally, real property that you depreciated)"; p. 12, "Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale."; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12,
@@ -331,7 +313,7 @@ form:
         source: |-
           Correct adjusted basis from records.
 
-          The basis of property you buy is usually its cost, including costs of purchase such as commissions. The basis of a digital asset is the cost to acquire it, including transaction fees, commissions, transfer taxes and other acquisition costs.
+          The basis of property you buy is usually its cost, including costs of purchase such as commissions. The basis of a digital asset is the cost to acquire it, including transaction fees, commissions, transfer taxes and other acquisition costs. For property bought on a time-payment plan that charges little or no interest, the basis is the stated purchase price minus the amount considered to be unstated interest.
 
           Gifts:
           - The basis of property you received as a gift is generally the donor's adjusted basis just before the gift, increased (for a gift after 1976) by the part of any gift tax paid that was for the net increase in value of the gift.
@@ -339,6 +321,7 @@ form:
             - the donor's adjusted basis if that gives a gain
             - the fair market value at the time of the gift if that gives a loss
             - the proceeds if neither does (no gain or loss)
+          - For a digital asset received as a gift, if you do not have any documentation to substantiate the donor's basis, your basis is zero.
           - For property you got in a transfer that is partly a sale and partly a gift, your basis is the larger of the amount you paid and the transferor's adjusted basis at the time of the transfer, plus any gift tax figured as above, but for figuring a loss not more than the property's fair market value at the time of the transfer.
 
           Inherited property:
@@ -391,7 +374,9 @@ form:
           the gift tax paid that was for the net increase in value of the gift" and Part sale, part gift, "your basis is the
           larger of the amount you paid for the property or the transferor's adjusted basis in the property at the time of
           the transfer" and "For figuring loss, your basis is limited to the property's fair market value at the time of
-          the transfer."; i8949 p. 7, Adjustments to basis, "Also,
+          the transfer."; p550 p. 60, Basis of digital assets received as a gift, "If you do not have any documentation to
+          substantiate the donor's basis, then your basis is zero"; p550 p. 59, Unstated interest, "the basis of your
+          property is your stated purchase price, minus the amount considered to be unstated interest"; i8949 p. 7, Adjustments to basis, "Also,
           adjust your basis for any stock splits.", "Increase the cost or other basis of a taxable OID debt instrument by
           the amount of OID that you have included in gross income for that instrument.", "Increase the cost or other
           basis of a tax-exempt OID debt instrument by the amount of tax-exempt OID that accrued on the debt instrument

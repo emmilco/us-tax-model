@@ -13,7 +13,7 @@ answers:
   $sales: [airdrop]
   sd.route_each: false
   sales[airdrop].box: H
-  sales[airdrop].special: false
+  sd.special_any: false
   sales[airdrop].code: none
   sales[airdrop].proceeds: 80000
   sales[airdrop].correct_basis: 50000

@@ -163,6 +163,16 @@
   {
    "printed": "15",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The line is always entered as zero, and no refusal or gate covers a personal casualty or theft loss. The IRS line reads 'Casualty and theft loss(es) from a federally declared disaster ... Attach Form 4684 and enter the amount from line 18 of that form.' None of the refusals (charity limits, the unsupported items, excluded income) catches such a loss, so a filer who has one would get zero.",
+   "ruling": "Ruling: model error; a casualty or theft loss is refused on the return by sd.casualty through sd.other_forms ('Had property damaged, destroyed or stolen (a loss, or an insurance gain)', asked of every filer in the paid_more ticks; its help: 'A loss to things you own for personal use counts only if it came from a federally declared disaster ... A Yes ends the interview here'), as the sa.casualty_loss source notes. Line 15 is zero only on returns with no such loss (i1040sca p. 11, Line 15).",
+   "context": "408374568fb8b0518a2fcaad73771f0342592d83ef1327f44fb2f9b499497f0a",
+   "date": "2026-11-24",
+   "run": "76b0a5e9559a24d4f5b06919e59dee143f6ca8d55471aab333561930568f2d40",
+   "subject_key": "c5abf9b151822632d5449b71dc5ddf0f31cceae557f5dac7c4061dd16ced24da"
+  },
+  {
+   "printed": "15",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "The line is always zero. The refusal names Form 4684, but none of the questions behind sa.unsupported asks about casualty or theft losses, so a filer with such a loss is never refused. The IRS says: \"Complete and attach Form 4684 ... Only enter the amount from Form 4684, line 18, on line 15.\"",
    "ruling": "Ruling: finding; i1040sca, Line 15, \"Complete and attach Form 4684 ... Only enter the amount from Form 4684, line 18, on line 15.\" The value is right: a casualty or theft is asked of everyone by sd.casualty and refused through sd.other_forms on Schedule D, Form 1040 line 7a and the return, so line 15 is $0 on every computed return. The reply is right that none of the questions behind sa.unsupported asks about a casualty: the line's refusal (also on lines 6 and 16) still names \"Schedule A unsupported item / Form 4684\", stale since the redraft moved the casualty words to sd.casualty, and the line does not say where a casualty goes. Low (BUG-0639).",
    "context": "d2b291d5725ba9cbc0992169b82987aa6aea2c542b7c594a138c3ded86ab9a0f",
@@ -170,6 +180,16 @@
    "run": "4b948fe4e820036b9ef4549b55e40d952c80ab2f8313256f8f040449fe645449",
    "severity": "low",
    "subject_key": "0c9a4c47c10591a9136238431463817908b5748103ad74558a6429f78165272f"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [s1 helper \"Any gambling winnings\" = true → helper \"Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b\"] [s1 helper \"Any gambling winnings\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Gambling losses are handled correctly: losses up to winnings on Schedule 1, line 8b. But sa.unsupported does not refuse three items on the instructions' list for this line: 'Casualty and theft losses of income-producing property ... from Form 4684, lines 32 and 38b, or Form 4797, line 18a', 'Deduction for repayment of amounts under a claim of right if over $3,000', and a net qualified disaster loss. These would be silently omitted.",
+   "ruling": "Ruling: model error; the three items are refused elsewhere: casualty and theft losses of income-producing property and a net qualified disaster loss by sd.casualty through sd.other_forms, and a claim-of-right repayment over $3,000 by s3.repaid_income ('Paid back over $3,000 in all of income from an earlier year'). Gambling losses are computed as the reply says (i1040sca pp. 11-12, Line 16).",
+   "context": "408374568fb8b0518a2fcaad73771f0342592d83ef1327f44fb2f9b499497f0a",
+   "date": "2026-11-24",
+   "run": "76b0a5e9559a24d4f5b06919e59dee143f6ca8d55471aab333561930568f2d40",
+   "subject_key": "488a5c6c421c427ee7eabee18a8fd9f541a05707734271566c7fb43261e6a47c"
   },
   {
    "printed": "16",

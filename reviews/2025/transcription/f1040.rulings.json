@@ -72,6 +72,48 @@
   {
    "printed": "16",
    "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
+   "second_expr_sha256": "37d4a907d8ada6241093296e7f19fe1b913011bfe49a2d1140d364657447225b",
+   "ruling": "Ruling: model error; i1040gi p. 36, Line 16, the Qualified Dividends and Capital Gain Tax Worksheet applies if \"You don’t have to file Schedule D and you reported capital gain distributions on Form 1040 or 1040-SR, line 7a\" or \"You reported qualified dividends on Form 1040 or 1040-SR, line 3a\". The six completed value differences (qdcg.gate.cgd, sales.distribution, sales.line7b_distributions_only: distributions without Schedule D; stage4.qbi.capital_limit, stage4.sdtw.skip32 and generated return 398 of seed 20261026) are returns where the reply's own worksheet test (f1040.h_qdcg) is false and it taxes the whole of line 15 by the Tax Table or Tax Computation Worksheet, overstating line 16; the project uses the worksheet (f1040.gate.qdcg_applies). As the earlier rulings, the other line 16 amounts (Forms 8814 and 4972 and the rest) are refused through scope.other_line16. Executable triage (.transcription/triage/2025/f1040.json, this pass): 3,342/3,614 agree; completed {candidate-unknown 216, value 6}; refused {candidate-refuses 2, project-refuses 26}. Rerun because f1040.gate.sdtw's rules moved to f1040.gate.sdtw_rules (BUG-0764); line 16 is unchanged in value.",
+   "context": "b7ed11d6f33e515436bca818a9ef64de639fe3eef3b255b93d374f08478f92b4",
+   "date": "2026-11-24",
+   "run": "71856522e688e61ff1602e02692a7a450ffa298eb93661895116816557ab930b",
+   "subject_key": "8bbe60b68f1f9e1a30da6509944f48287ccf35147ae235e1a1119f883ede024b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.1.deepseek@f1040",
+     "fixture:classm.clcw_next_year.3.deepseek@f1040",
+     "fixture:classm.s2.5.deepseek@f1040",
+     "fixture:classm.s2.8.deepseek@f1040",
+     "fixture:classm.s2.9.deepseek@f1040",
+     "fixture:classm.f1040.3.deepseek@f1040",
+     "fixture:classm.f1040.6.deepseek@f1040",
+     "fixture:classm.s179.4@f1040",
+     "fixture:classm.tipjob.1@f1040",
+     "fixture:stage9.eic.refuse.form8814@f1040",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f1040",
+     "fixture:stage16.cleanup.refuse.f1040_line16@f1040",
+     "fixture:stage4.qbi.capital_limit@f1040",
+     "fixture:qdcg.gate.cgd@f1040",
+     "fixture:sales.distribution@f1040",
+     "fixture:sales.line7b_distributions_only@f1040",
+     "fixture:stage4.sdtw.skip32@f1040",
+     "generated:20261026.398@f1040",
+     "partial:stage14.asset.refuse_bonus_mixed_forty-f1040.status@f1040",
+     "partial:mf.asset.recycling_item_listed-f1040.status@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
    "second_expr_sha256": "5235df7be37b1e5de7c77d6da641fc3cffc275e31118f5a078834c49a312c6ee",
    "ruling": "Ruling: representation; the reply's tax on taxable income follows the same Tax Table / Tax Computation Worksheet / Qualified Dividends and Capital Gain Tax Worksheet / Schedule D Tax Worksheet selection as the project (i1040gi pp. 36-38, Line 16) and adds nothing for Forms 8814, 4972, 8615 and the other listed taxes, which the project refuses (scope.other_lines). Triage d366a5e05a41: 3,016/3,215 agree with no value difference: 150 candidate-unknown (the reply reads f1040.line3a as an unanswered input), 19 candidate-refuses and 30 project-refuses (a refusal reached on one side only, on returns refused either way). Equivalent wherever both compute.",
    "context": "5fd2e4025f04e9245f81e05d11bfa66d515ad0950487bdd4256e5faff69bfdd0",
@@ -1033,6 +1075,38 @@
   {
    "printed": "f1040.gate.sdtw",
    "project_expr_sha256": "502792f26d40195b33b76705428f6de714a1f86772611dccc7c9c634e5e49290",
+   "second_expr_sha256": "a48f20fef0377f60976887fdabbe863b97e0939ad0080ca86fed0cdfaff0da95",
+   "ruling": "Ruling: representation; as the earlier ruling: i1040sd p. 15, \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g\", with its Exception (line 15 zero or less, or no gains and no qualified dividends). The project conditions the worksheet rules (now the helper f1040.gate.sdtw_rules, the same expression) on the shared trigger f1040.gate.qdcg_applies, which includes line 15 above zero, and reads the line 4g election as sd.investment_election (amb.2025.sd4952_selection); the reply states the exception directly. Executable triage (.transcription/triage/2025/f1040.json, this pass): 2,844/3,614 agree; 765 project-refuses, 4 candidate-unknown, all on refused returns, and 1 project-unknown on an incomplete record; no completed return differs. Rerun because the worksheet rules were split out to f1040.gate.sdtw_rules for the Form 6251 screen (BUG-0764); the gate's value is unchanged.",
+   "context": "b7ed11d6f33e515436bca818a9ef64de639fe3eef3b255b93d374f08478f92b4",
+   "date": "2026-11-24",
+   "run": "71856522e688e61ff1602e02692a7a450ffa298eb93661895116816557ab930b",
+   "subject_key": "c59d17b907173beb014cf6a3132fcddccb1ae29e2ff5fd10914b5c81a6a80b4f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f1040",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1040",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1040",
+     "fixture:stage14.asset.refuse_class@f1040",
+     "fixture:stage14.asset.refuse_listed_low@f1040",
+     "fixture:stage14.asset.refuse_s179_over@f1040",
+     "fixture:classm.asset.1@f1040",
+     "fixture:classm.asset.2@f1040",
+     "fixture:classm.s179.3@f1040",
+     "fixture:classm.tipjob.1@f1040",
+     "partial:classm.s8812.4.deepseek-f1040.line3a@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1040.gate.sdtw",
+   "project_expr_sha256": "502792f26d40195b33b76705428f6de714a1f86772611dccc7c9c634e5e49290",
    "second_expr_sha256": "b7f513a178c645e6dd8f7d19dbc5bd030f3f4cf44681de97e5dddaedc0ad8fd1",
    "ruling": "Ruling: representation; i1040sd p. 15, the same trigger and Exception. As the earlier ruling: the project conditions both worksheet branches on the shared trigger; the candidate's differences are refusals and unknowns on records the project refuses or that are incomplete. Triage executable-triage-v2 (2026-11-23): 3,148 of 3,510 agree; no completed return differs in value (13 candidate-unknown, 2 candidate-refuses). Project stands.",
    "context": "8ce02770aaac2a5706df4940c1aa1e81e7724897d849699d2ca778a7a9ec149e",
@@ -1130,6 +1204,36 @@
      "fixture:classm.f8962.2.deepseek@f1040",
      "fixture:classm.f8863.2.deepseek@f1040",
      "fixture:classm.asset.2@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1040.gate.sdtw_rules",
+   "project_expr_sha256": "bba1294094a1d2f47b4fbabe67260097c6adc182b48cd1135a56f2fbbafb67df",
+   "second_expr_sha256": "c16f214e3fb7c66df4c54e3e1d2beabd60a174f03f53dd36e116779a78aec5a0",
+   "ruling": "Ruling: representation; i1040sd p. 15, \"Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g\". The reply writes out \"lines 15 and 16 are gains\" (and Schedule D being filed) beside line 18 or 19 above zero; the project's lines 18 and 19 are zero unless Schedule D line 17 (both gains) is Yes, so the conjuncts are implied. The reply reads Form 4952 line 4g directly; the project reads it through f4952.has_interest (zero when no investment interest is entered, where line 4g is not asked). Executable triage (this pass): 3,602/3,614 agree; 8 project-refuses on refused returns, 4 project-unknown on incomplete records; no completed return differs.",
+   "context": "b7ed11d6f33e515436bca818a9ef64de639fe3eef3b255b93d374f08478f92b4",
+   "date": "2026-11-24",
+   "run": "71856522e688e61ff1602e02692a7a450ffa298eb93661895116816557ab930b",
+   "subject_key": "90547f0d52ac60cad7f0b0ff7c6f136d429ebeec59262df17e647220f7026482",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage4.refuse.div.section1202@f1040",
+     "fixture:stage4.refuse.div.amt@f1040",
+     "fixture:stage4.refuse.div.special@f1040",
+     "fixture:stage4.refuse.div.components@f1040",
+     "fixture:stage4.refuse.div.basis@f1040",
+     "fixture:stage16.f4952.required_unanswered_bad_dividends@f1040",
+     "fixture:mexist.f4952.exception.filing_4952@f1040",
+     "fixture:stage21.f1.aggregate_eligible_withheld@f1040",
+     "fixture:stage21.f1.aggregate_eligible_null@f1040",
+     "partial:classm.s8812.4.deepseek-f1040.line3a@f1040"
     ],
     "policy": "executable-triage-v2"
    }

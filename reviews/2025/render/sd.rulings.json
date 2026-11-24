@@ -33,6 +33,16 @@
   {
    "printed": "12",
    "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "Line 12 is 'Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. No gate screens for K-1 income, so the program would enter $0 where a K-1 amount belongs.",
+   "ruling": "Ruling: scope; refusal located elsewhere; as line 5: f1040sd line 12, Schedule K-1 net long-term gain or loss; scope.k1, asked of every return, refuses any Schedule K-1 through scope.schedule1. Project stands.",
+   "context": "7d47d5228e2e855bf5df36f157ee2db7ca92eb365b22666f28db1c7f4f03ec4b",
+   "date": "2026-11-24",
+   "run": "445ab34dc0cd7e05e6a02233c5fdfde6aa3cb118725e94eec70f52e5dc5d10a8",
+   "subject_key": "0be4e7ad7f8b0816932139dc97b985de3ccc91de0dc7eb6348e991dcc4b7b3c6"
+  },
+  {
+   "printed": "12",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
    "model": "Line 12 is 'Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The program enters $0 without asking about or refusing for Schedule K-1 amounts.",
    "ruling": "Ruling: scope; f1040sd line 12, as line 5: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1.",
    "context": "bad9f66b8b0f3f340fef2a21a372f125c8600aca623454d6a341e542897f692b",
@@ -198,6 +208,16 @@
    "date": "2026-11-22",
    "run": "aef90e516b295e1c2ef1b5be485efaa360de0d8f8d81203e4875870299c16196",
    "subject_key": "71c8f31de2bd53b1d2b031fd72961ec7f4736f7a21ce8081a940e2cb24433ca6"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "Line 5 is 'Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The program enters $0, but the other_forms gate never asks about Schedule K-1 income, so a filer with K-1 capital gains gets a wrong $0 instead of a refusal.",
+   "ruling": "Ruling: scope; refusal located elsewhere; as the earlier rulings: f1040sd line 5, Schedule K-1 net short-term gain or loss. The line's citation says a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at Form 1040 line 8; scope.k1 is asked of every return, so no computed return has a K-1 capital gain. Project stands. Rerun because sd's lines read sales.special, now derived from sd.special_any (BUG-1127).",
+   "context": "7d47d5228e2e855bf5df36f157ee2db7ca92eb365b22666f28db1c7f4f03ec4b",
+   "date": "2026-11-24",
+   "run": "445ab34dc0cd7e05e6a02233c5fdfde6aa3cb118725e94eec70f52e5dc5d10a8",
+   "subject_key": "3c23892614ec5e1b875a6825fc110cbf1071603e87bfbe5cfb8d99d469778cce"
   },
   {
    "printed": "5",

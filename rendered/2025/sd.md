@@ -61,15 +61,15 @@
 
 ## (gate) — `sd.home_sale`
 
-- **Authored helper label:** Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?
-- **Encoded (Bool):** Input — Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?
-- Expr: `{"op":"input","source":"Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?"}`
+- **Authored helper label:** Was any of it your (or, on a joint return, your spouse's) main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?
+- **Encoded (Bool):** Input — Was any of it your (or, on a joint return, your spouse's) main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?
+- Expr: `{"op":"input","source":"Was any of it your (or, on a joint return, your spouse's) main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?"}`
 - Cite: [i1040sd] p. 2, Sale of Your Home, "Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange." (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (gate) — `sd.home_sale_if_sold`
 
 - **Authored helper label:** Whether the sale of a main home must be reported on Form 8949 (a Form 1099-S, or gain beyond the exclusion), asked only with a sale or trade of real estate or business property or a sale paid for over more than one year (false without one)
-- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale." = true → helper "Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?"] [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale." = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale." = true → helper "Was any of it your (or, on a joint return, your spouse's) main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?"] [helper "In 2025, did you (or, on a joint return, your spouse) sell or trade real estate or business property? Answer Yes too if any payment for anything you (or, on a joint return, your spouse) sold, in 2025 or before, comes in a year after the year of the sale." = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sd.sold_other",{"const":true}],"op":"test"},"then":"sd.home_sale"},{"guard":{"eq":["sd.sold_other",{"const":false}],"op":"test"},"then":"sd.no"}],"op":"choose"}`
 - Cite: [i1040sd] p. 2, Sale of Your Home, "Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange." (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -142,6 +142,36 @@
 - **Encoded (Bool):** Input — Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed.
 - Expr: `{"op":"input","source":"Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed."}`
 - Cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; sha256 650643a6)
+
+## (helper) — `sd.special_any`
+
+- **Authored helper label:** Does any of the following apply to any of the sales you listed?
+
+  Does any of them involve:
+  - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
+  - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
+  - qualified small business stock with a section 1202 exclusion
+  - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
+  - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
+  - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
+  - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
+
+  Or does any of them dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
+- **Encoded (Bool):** Input — Does any of the following apply to any of the sales you listed?
+
+  Does any of them involve:
+  - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
+  - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
+  - qualified small business stock with a section 1202 exclusion
+  - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
+  - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
+  - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
+  - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
+
+  Or does any of them dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
+- Interpretation: amb.2025.nft_collectible
+- Expr: `{"op":"input","source":"Does any of the following apply to any of the sales you listed?\n\nDoes any of them involve:\n- collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)\n- a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem\n- qualified small business stock with a section 1202 exclusion\n- depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)\n- an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost\n- a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend\n- a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it\n\nOr does any of them dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?"}`
+- Cite: [i1040sd] pp. 11–12, lines 18 and 19; p. 11, Line 19, "section 1250 property (generally, real property that you depreciated)"; p. 12, "Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale."; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12, line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property"; p. 10, Disposal of QOF Investment, "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements."; p. 4, "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the extraordinary dividends. An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of preferred stock) of your basis in the stock."; p550 p. 79, Gains From Certain Constructive Ownership Transactions, "all or part of the gain may be treated instead as ordinary income" and Financial asset, "any equity interest in a pass-through entity"; i1040gi p. 15, Digital Assets, "digital assets include non-fungible tokens (NFTs)" (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sd.carryover`
 
@@ -474,7 +504,7 @@
 
 ## 4 — `sd.line4`
 
-- **IRS:** Line 4: zero only after unsupported source/carryover screening
+- **IRS:** Line 4: zero only after unsupported source screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -482,7 +512,7 @@
 
 ## 5 — `sd.line5`
 
-- **IRS:** Line 5: zero only after unsupported source/carryover screening
+- **IRS:** Line 5: zero only after unsupported source screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -505,7 +535,7 @@
 
 ## 11 — `sd.line11`
 
-- **IRS:** Line 11: zero only after unsupported source/carryover screening
+- **IRS:** Line 11: zero only after unsupported source screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`
@@ -513,7 +543,7 @@
 
 ## 12 — `sd.line12`
 
-- **IRS:** Line 12: zero only after unsupported source/carryover screening
+- **IRS:** Line 12: zero only after unsupported source screening
 - **Encoded (Dollars):** Enter the amount from helper "No amount on an inapplicable line".
 - **Refusal:** when sd.other_forms is true, cannot complete Schedule D additional source forms. Prepare the required source forms; their gains/losses are outside the supported securities slice. Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 - Expr: `{"from":"sd.zero","op":"copy"}`

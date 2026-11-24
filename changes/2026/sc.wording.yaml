@@ -164,7 +164,9 @@ changes:
       27a) and the p463 and i4562 parts are left as they are: the 2026 pages are not verified. The two refusals added to
       the 2025 screen (pay for work done outside the United States; start-up costs over $5,000 of a business begun in the
       year) are carried with their 2026 pages, the start-up one dated 2026 and naming Form 4562-B, which the 2026 draft
-      prints for amortization that begins in 2026.'
+      prints for amortization that begins in 2026. The prompt''s leased-vehicle threshold ($62,000, the
+      2025 figure) is carried unverified: no 2026 lease inclusion table is archived; a higher 2026 threshold only refuses
+      more.'
     operations:
     - set:
         line: sc.special
@@ -321,11 +323,12 @@ changes:
         from: |-
           Does any of these apply to this business?
 
-          - it mines, drills or cuts timber and deducts depletion
+          - it deducts depletion (of a mine, an oil or gas well, timber or other natural deposits)
           - it claims the deduction for energy-saving work on a commercial building (Form 7205)
           - it claims a tax credit for employing certain workers or for their benefits (Forms 5884, 8844, 8846, 8932, 8941 or 8994)
           - its interest deduction is limited by Form 8990
-          - equipment or a vehicle written off in an earlier year is now used half or less for the business, or leased property has an “inclusion amount”
+          - property depreciated or expensed in an earlier year (equipment, a vehicle, a building improvement) dropped to half or less business use in 2025
+          - you lease a car, truck or van for 30 days or more that was worth more than $62,000 when the lease began (less for a lease that began before 2024), or lease a motorcycle, boat, aircraft, truck over 6,000 pounds, camera or other recreation-type equipment used half or less for the business (an “inclusion amount”)
           - it has export income excluded as extraterritorial income (Form 8873)
           - it reports sales by the installment method
           - you chose to spread research costs over several years
@@ -335,20 +338,21 @@ changes:
           - it has losses of earlier years that the passive activity rules held back
           - you do work in it for a business that employed you within the last 3 years, much the same work as when you were its employee
           - part of its income is pay for work you did while outside the United States
-          - it is a hobby, or an occasional activity not run for profit
+          - it is a hobby, an activity not run for profit, or only an occasional activity
           - it received a Form 1099-PATR from a cooperative with amounts not reported as qualified
           - it has a license or other cost that must be written off over several years, such as some liquor licenses
           - it began in 2025 and spent more than $5,000 to get started before it opened (such as training, market research or advertising)
-          - it paid for travel by cruise ship or ocean liner
+          - it paid for travel by cruise ship, ocean liner, yacht or other luxury boat
           - it is an LLC you own alone that chose to be taxed as a corporation
         to: |-
           Does any of these apply to this business?
 
-          - it mines, drills or cuts timber and deducts depletion
+          - it deducts depletion (of a mine, an oil or gas well, timber or other natural deposits)
           - it claims the deduction for energy-saving work on a commercial building (Form 7205)
           - it claims a tax credit for employing certain workers or for their benefits (Forms 5884, 8846, 8932, 8941 or 8994)
           - its interest deduction is limited by Form 8990
-          - equipment or a vehicle written off in an earlier year is now used half or less for the business, or leased property has an “inclusion amount”
+          - property depreciated or expensed in an earlier year (equipment, a vehicle, a building improvement) dropped to half or less business use in 2026
+          - you lease a car, truck or van for 30 days or more that was worth more than $62,000 when the lease began (less for a lease that began before 2024), or lease a motorcycle, boat, aircraft, truck over 6,000 pounds, camera or other recreation-type equipment used half or less for the business (an “inclusion amount”)
           - it has export income excluded as extraterritorial income (Form 8873)
           - it reports sales by the installment method
           - you chose to spread research costs over several years
@@ -358,9 +362,9 @@ changes:
           - it has losses of earlier years that the passive activity rules held back
           - you do work in it for a business that employed you within the last 3 years, much the same work as when you were its employee
           - part of its income is pay for work you did while outside the United States
-          - it is a hobby, or an occasional activity not run for profit
+          - it is a hobby, an activity not run for profit, or only an occasional activity
           - it received a Form 1099-PATR from a cooperative with amounts not reported as qualified
           - it has a license or other cost that must be written off over several years, such as some liquor licenses
           - it began in 2026 and spent more than $5,000 to get started before it opened (such as training, market research or advertising)
-          - it paid for travel by cruise ship or ocean liner
+          - it paid for travel by cruise ship, ocean liner, yacht or other luxury boat
           - it is an LLC you own alone that chose to be taxed as a corporation

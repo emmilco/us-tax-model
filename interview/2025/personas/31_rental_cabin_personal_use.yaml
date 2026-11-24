@@ -25,6 +25,9 @@ answers:
   rental[cabin].part_home: false
   rental[cabin].held_for_sale: false
   rental[cabin].business_incidental: false
+  rental[cabin].at_risk_prior: false
+  rental[cabin].business_credit: false
+  rental[cabin].prerental: false
   rental[cabin].land_heavy: false
   rental[cabin].active: true
   rental[cabin].rents: 1950000

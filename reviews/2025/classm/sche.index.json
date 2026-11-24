@@ -2,106 +2,109 @@
  "kind": "classm",
  "form": "sche",
  "family": "claude",
- "base": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+ "base": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
  "lines": [
   {
    "key": "case classm.sche.1",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": null
   },
   {
    "key": "classm.sche.1 — 23a",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.1 — 23b",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.1 — 23c",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.1 — 23d",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.1 — 23e",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.1 — 24",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.1 — 25",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
-   "status": "AGREE"
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040se p. 7, Line 22, \"If you have an unallowed rental real estate loss from a prior year that after completing Form 8582 you can include this year, include that loss on line 22.\" Rental B (income $4,000, not actively managed) carries a $2,000 prior-year loss; Form 8582 allows all losses ($8,000 of losses against $4,000 of passive income plus a $4,000 special allowance), so B's line 22 is ($2,000) and line 25 is ($8,000), line 26 ($4,000), line 41 ($4,000), as the project computes. The model left B's allowed prior-year loss off line 22. [dropped]"
   },
   {
    "key": "classm.sche.1 — 26",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
-   "status": "AGREE"
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040se p. 7, Line 22, \"If you have an unallowed rental real estate loss from a prior year that after completing Form 8582 you can include this year, include that loss on line 22.\" Rental B (income $4,000, not actively managed) carries a $2,000 prior-year loss; Form 8582 allows all losses ($8,000 of losses against $4,000 of passive income plus a $4,000 special allowance), so B's line 22 is ($2,000) and line 25 is ($8,000), line 26 ($4,000), line 41 ($4,000), as the project computes. The model left B's allowed prior-year loss off line 22. [dropped]"
   },
   {
    "key": "classm.sche.1 — 41",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
-   "status": "AGREE"
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040se p. 7, Line 22, \"If you have an unallowed rental real estate loss from a prior year that after completing Form 8582 you can include this year, include that loss on line 22.\" Rental B (income $4,000, not actively managed) carries a $2,000 prior-year loss; Form 8582 allows all losses ($8,000 of losses against $4,000 of passive income plus a $4,000 special allowance), so B's line 22 is ($2,000) and line 25 is ($8,000), line 26 ($4,000), line 41 ($4,000), as the project computes. The model left B's allowed prior-year loss off line 22. [dropped]"
   },
   {
    "key": "case classm.sche.2",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": null
   },
   {
    "key": "classm.sche.2 — 23a",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 23b",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 23c",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 23d",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 23e",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 24",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 25",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 26",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   },
   {
    "key": "classm.sche.2 — 41",
-   "record": "b892a159249bcbabead658cb829e1b5bdd720830107a248523b0c349b2ec0d9f",
+   "record": "a387bbc25522673d2889b0261a9815c407275850364bbbc2c6be7cad95425c12",
    "status": "AGREE"
   }
  ]

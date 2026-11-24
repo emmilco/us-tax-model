@@ -80,6 +80,16 @@
   {
    "printed": "16",
    "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
+   "model": "The routing among the Schedule D Tax Worksheet, the Qualified Dividends and Capital Gain Tax Worksheet, and the Tax Table or Tax Computation Worksheet (with the $100,000 boundary) matches the line 16 instructions, as do the Tax Computation Worksheet rates and amounts. However, the instructions also require line 16 to include a 'Triggering event under section 965(i) … check box 3 and enter the amount of the triggered deferred net 965 tax liability.' Neither the refusal nor any screening question covers this tax, so the program would omit it from line 16.",
+   "ruling": "Ruling: scope; as the earlier ruling (Form 2555 refused by sa.excluded_income; Forms 8814 and 4972, Form 8615, education credit recapture, PFIC and CFC items refused through scope.other_line16). A triggered deferred net 965 tax liability (i1040gi p. 36, Triggering event under section 965(i)) arises only for a shareholder of an S corporation that elected the section 965(i) deferral (the statute is not archived; this is the section's text as known, not an archived quotation), and each triggering event (the corporation ceasing to be an S corporation, its liquidation or sale of substantially all its assets, or a transfer of the shares) falls in a year the shareholder receives a Schedule K-1 from the S corporation, which scope.k1, asked of every return, refuses through scope.schedule1. Rerun because f1040.gate.sdtw's rules moved to f1040.gate.sdtw_rules (BUG-0764); line 16 is unchanged in value.",
+   "context": "357e5e486668904d0fae8b7b55174a7cd6380cbac0fe285cbcf4b036780f1bda",
+   "date": "2026-11-24",
+   "run": "e06f628afd3788ce1ec270f7883782a1644efa46162df414399357575d74ab11",
+   "subject_key": "1d3f78f1f12e285757a47faf863ae1e310b5b5bba56986a5aabcfd36c5e7e2fa"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
    "model": "The routing, Tax Table and Tax Computation Worksheet rates, brackets and subtraction amounts all match the IRS text. The refusal covers the other line 16 taxes. But the line 16 instructions say 'if you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet instead', and qdcg line 25 says 'If you are filing Form 2555, don't enter this amount on ... line 16'. No refusal or gate here names Form 2555, so a Form 2555 filer would get a different line 16.",
    "ruling": "Ruling: scope; project retained. i1040gi, Line 16: \"If you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet\"; Form 2555 is refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\"), which refuses the deduction and so line 16 downstream; the refusal sits on Schedule A, not on this line's derivation, so the rendered English did not name it. Line 16 itself is unchanged; it went stale through line 3a.",
    "context": "32622b207b256a29da3ff66bdd5a1a4abc7f1cb52be916d8be18358661e940c1",
@@ -423,6 +433,16 @@
    "run": "f856e0c21b123799e9bb919608bc799c7aa683dd35ce977f40421174996fdc20",
    "severity": "low",
    "subject_key": "fc8859196fc9c2261246d6727c8e183c21bae38e50fa82b8a75683a26ffa8ad9"
+  },
+  {
+   "printed": "4a",
+   "restated": "Add person.ira_amount_a over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Within the screened cases, entering box 1 for an IRA rollover or a Roth IRA (code Q) distribution, and nothing for a fully taxable one, follows 'If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a' and Exceptions 1 and 2. The other exceptions (basis, conversions, returned contributions, QCD, HFD) are refused. But the text also says 'If you … received more than one distribution … Enter the total amount of those distributions on line 4a.' It does not say whether a fully taxable distribution is left off line 4a when another distribution needs an entry there, and the program adds only the exception distributions.",
+   "ruling": "Ruling: ambiguity; amb.2025.line4a_several, decided by the coordinator under the owner's delegation of 2026-11-24: i1040gi p. 27, More than one distribution, \"Enter the total amount of those distributions on line 4a\" is read as every IRA distribution once any goes on line 4a. The tool still adds only the exception distributions (person.ira_amount_a); the change needs a per-person total of IRA box 1 in person.yaml and is handed off (BUG-1118, left open in part). Line 4b and the tax are the same under either reading.",
+   "context": "357e5e486668904d0fae8b7b55174a7cd6380cbac0fe285cbcf4b036780f1bda",
+   "date": "2026-11-24",
+   "run": "e06f628afd3788ce1ec270f7883782a1644efa46162df414399357575d74ab11",
+   "subject_key": "5607cc94a277ccad810530e9c1290ec2ae4b5de8a943786f27ebe93323379925"
   },
   {
    "printed": "4c",

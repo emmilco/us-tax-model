@@ -6,29 +6,29 @@
  "head_rows": {
   "printed lines compared": "35",
   "agree / disagree / missing": "4 / 31 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "f5695.part1_any",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 2, Joint occupancy, \"These rules don't apply to married individuals filing a joint return\". The candidate reads business_use directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4287 of 5226 comparisons agree, 4287 of 5206 in scope; completed {\"candidate-unknown\": 284}. Project stands.",
-   "subject_key": "6de1ba81de8a8b8782a198611e30131d3bef3d6170b944753f98c7b155e2c83e"
+   "ruling": "Ruling: representation; i5695 p. 2, Residential Clean Energy Credit (Part I). The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,281 of 5,234 agree; completed returns 357 candidate-unknown, no value.",
+   "subject_key": "70a42a86077a58eba48dc0276f6c02bd447f0a1a0fabebf5b1110b3feda32f08"
   },
   {
    "key": "f5695.part2_any",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 2, Residential Clean Energy Credit (Part I), \"You may be able to take a credit of 30% of your costs of qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump property, battery storage technology, and fuel cell property\". The two completed-return differences are the reply's own joint-occupancy gate returning false where its sub-question is unanswered; the line is a gate, no amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4367 of 5226 comparisons agree, 4367 of 5196 in scope; completed {\"candidate-unknown\": 271, \"value\": 2}. Project stands.",
-   "subject_key": "df5ab6b3f0076a0e743f71dbc7bd198dbcb33afa00f570a1fa54842b0ffe654f"
+   "ruling": "Ruling: representation; as the earlier rulings on this line. The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. The one completed-return value (mutation.m4.f5695.doors_not_main_home_with_solar) is a door at a home that is not the main home: the project marks Part II as completed (line 17a answered No, line 19h $0), the reply derives it from line 30 ($0); no credit differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 3,333 of 5,234 agree.",
+   "subject_key": "11e070a6b8fade594a54d7009a827c394d25cab4deb36470d650df93c193ed37"
   },
   {
    "key": "f5695.claiming_part1",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040s8812 p. 4, Credit Limit Worksheet A, \"You are claiming one or more of the following credits\". The candidate reads business_use, construction_later directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 5155 of 5226 comparisons agree, 5143 of 5212 in scope; completed {\"candidate-unknown\": 1}. Project stands.",
-   "subject_key": "d61972c02c382e3d84d52b349681a5aa77792d53c9d65bbe902728b5553a0886"
+   "ruling": "Ruling: representation; i1040s8812 p. 4, Credit Limit Worksheet A. The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 5,151 of 5,234 agree; one completed-return unknown.",
+   "subject_key": "0ff69de179fc7b583e21a20cf71a7e62acb460312d20005ca65aa436806ca292"
   },
   {
    "key": "5b",
@@ -128,10 +128,10 @@
   },
   {
    "key": "19c",
-   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate reads lines 17a to 17e, the door costs and f5695.qmid_doors raw (classm.eic.1: unknown on line 17a). Four value differences are on incomplete records that carry a door cost with line 17a No (mutation.t2.f5695.doors_not_main_home, mutation.m4.f5695.doors_not_main_home_with_solar, classm.f5695.10.deepseek and a partial of it): the interview does not ask line 19a after a line 17a No (checked with the engine: with 17a No the door-cost questions are not reachable, with 17a Yes they are), so the $500 there is an input the filer is never asked, and line 19h is $0 either way (f5695 p. 2, line 17c, \"Do not complete Part II, Section A\"). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,886 of 4,642 agree; on completed returns: 11 candidate-unknown.",
-   "subject_key": "23b25a30153eb7948d4915cdef22acb45c362f5fd96a2e3c38760ab33d0b4d28"
+   "ruling": "Ruling: representation; as the earlier rulings on this line: the reply hides line 19c where the form says to skip Section A (line 17a No), the project shows its amount and zeroes the section at line 19h (classm.f5695.13 and mutation.m4.f5695.doors_not_main_home_with_solar: project $150.00 shown, 19h $0.00; reply hidden). Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,180 of 5,234 agree; on completed returns 2 candidate-hides-shown and 321 candidate-unknown; no credit differs.",
+   "subject_key": "da7aa48615a2355c9c1724e83fb61c29a84c3cb6bd721754e6dfdd7a1f75fa6d"
   },
   {
    "key": "19f",
@@ -149,10 +149,10 @@
   },
   {
    "key": "19h",
-   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate gates on raw lines 17a to 17e and f5695.qmid_doors (classm.eic.1: unknown on line 17a). Value and refusal differences are only on refused returns: the candidate zeroes a line 17e Yes (new home; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\") or a cost without a valid QMID (i5695 p. 5, \"you must provide a valid QMID for each item\") or a Section B new home (i5695 p. 1, Costs, \"only available for existing homes\"), cases the project refuses (owner decision 7). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,947 of 4,642 agree; on completed returns: 14 candidate-unknown.",
-   "subject_key": "a53ba4f2a4f1733fdb88866dc2090faec2bae19a59de7a932c8c09cc93d90ba4"
+   "ruling": "Ruling: scope; i5695 p. 5, Line 17e, \"You cannot claim the credit for expenses related to the construction of a new home\"; owner decision 7: the project refuses where the reply enters zero; The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,209 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "7b1a451ad320ff6b7c6f0add51823edc0df74cbcc87acfd158b347fcb383822d"
   },
   {
    "key": "20c",
@@ -177,24 +177,24 @@
   },
   {
    "key": "22d",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 5, \"If you check the 'Yes' box, skip lines 18a through 20d\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4425 of 5226 comparisons agree, 4425 of 5207 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
-   "subject_key": "e3e266ae22d9002fbfe75cbd2a54be343e9c93f2cc65a4aa8d2b20fd03b89c2e"
+   "ruling": "Ruling: representation; f5695 p. 3, line 21b, \"Skip lines 22 through 25 and line 29\"; the QMID refusal of owner decision 7 is the project's where the reply zeroes; The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,290 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "5e737cc21f771865ff90b06f66ba918073099e6dc50d415ebf3e787181fcf6b0"
   },
   {
    "key": "23c",
-   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 23a and 23b (f5695 p. 3, line 23c); the project reads them through the water heater gate (classm.eic.1: unknown on line 23a (i)). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,901 of 4,642 agree; on completed returns: 31 candidate-unknown.",
-   "subject_key": "46423660eace12ae767de2dfe803b4c6d02caf6b01615fee26efc02c677b0764"
+   "ruling": "Ruling: representation; i5695 p. 5, Lines 23a Through 23d, the two most expensive and all other qualifying water heaters added on both sides; The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,398 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "1618c5f463f0f128c10e849a6ebfe16f9a2f3f1842a49c3132b316e8c315d8de"
   },
   {
    "key": "23d",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 p. 3, line 21b, \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4427 of 5226 comparisons agree, 4427 of 5209 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
-   "subject_key": "3e96944cf1ff4f750a5019de68da0ade1487a737363a69fd63c9857847d7b6be"
+   "ruling": "Ruling: representation; as line 22d, with f5695.qmid_wh. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,254 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "46252b9cf56d8f0186d784c9fb6ff119fcfb12af619a059471b09822a12aa91c"
   },
   {
    "key": "24c",
@@ -205,17 +205,17 @@
   },
   {
    "key": "24d",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4426 of 5226 comparisons agree, 4426 of 5207 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
-   "subject_key": "c185c8059291dee7cf7589561be417238f667ef90925625c28fad78943030f24"
+   "ruling": "Ruling: representation; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\"; The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,288 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "b173d3eac05a176298a4b90d534474e7c1936f9125b7646deadbe5cf15ce938a"
   },
   {
    "key": "25e",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 p. 3, line 21b, \"If you checked the “No” box for line 21a or 21b, you cannot claim the credit for your residential energy property costs. Skip lines 22 through 25 and line 29. Go to line 26.\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4447 of 5226 comparisons agree, 4447 of 5224 in scope; completed {\"candidate-unknown\": 255}. Project stands.",
-   "subject_key": "4f685cc8ff7737290e800fac26056bc566b3e9b9bf2ee2df04bea6c66568d09d"
+   "ruling": "Ruling: representation; f5695 p. 3, line 21b; The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,405 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "211c32830ef46be5cdcb7b111ffda8a8a04d756859ff277e51b330a69bd1508e"
   },
   {
    "key": "26c",
@@ -245,16 +245,16 @@
   },
   {
    "key": "29h",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 5, Part II, \"you must provide a valid QMID for each item\". The candidate reads an input the project asks only through its gate directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4427 of 5226 comparisons agree, 4427 of 5207 in scope; completed {\"candidate-unknown\": 258}. Project stands.",
-   "subject_key": "57abcc6d7e67e3c7ac2fb5c8188261200dd0d222d6b44d058240691a2cbf0900"
+   "ruling": "Ruling: representation; i5695 p. 5, Part II, QMID; The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,292 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "b9976256751700c125f169fb2b072226db131b8682b0495709f8d8da9dece29d"
   },
   {
    "key": "30",
-   "record": "0155268e344372e79e0eb52b5b496e69a6ab14ac99fadb51628fe0da25ea0626",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "AGREE",
-   "subject_key": "b0268737c1ef1eacbc788b436a499847b6c2855bcd140f99dec3fd13a816d827"
+   "subject_key": "b990bce1a195fc82d46c933a03508daf45eaa7c1926d86ce2841514e3ec9fc45"
   },
   {
    "key": "31",
@@ -265,30 +265,30 @@
   },
   {
    "key": "32",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f5695 Form 5695 (2025), line 32 (zero when Part II is not completed). The candidate reads joint_occupancy, listed directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 2329 of 5226 comparisons agree, 2296 of 3367 in scope; completed {\"candidate-unknown\": 271}. Project stands.",
-   "subject_key": "de6182fb6ae4aeb7f55fb69d2f8cfd92ce7c177af921fceecae5e55a51fbe0cd"
+   "ruling": "Ruling: representation; f5695 line 32 (zero when Part II is not completed); The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs; the reply's 1,676 refusals are on records the project also refuses or leaves incomplete, none on a completed return. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 2,196 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "63b82ec95273a423237670888314ad70a0fe29160467d116e162fc7ee516ec01"
   },
   {
    "key": "32a",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 7, Line 32a, \"Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a\". The candidate reads joint_occupancy directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4494 of 5226 comparisons agree, 4494 of 5041 in scope; completed {\"candidate-unknown\": 250}. Project stands.",
-   "subject_key": "68947e5536b52f70305e6c497c576122a8383d673b73f44f9ee0e151da595920"
+   "ruling": "Ruling: representation; i5695 p. 7, Line 32a; The reply reads inputs the project asks only behind their gates (business_use, joint_occupancy, construction_later, the QMID questions) directly, so on completed returns its differences are unknowns where the project gives zero; no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,465 of 5,234 agree; completed returns only candidate-unknown.",
+   "subject_key": "d567b0274777cb3e480ad5a46ff807041e185217595c45c5693bec79201640c6"
   },
   {
    "key": "32b",
-   "record": "29a417c7e5e8d9eae3e56aa68c3983a07bc97716090713661263681bdd854bc9",
+   "record": "2aeea68c7577a6dc3a4111f4ff51faf446a07ad80aadc4bc39a3e6146150966f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i5695 p. 7, Lines 32a and 32b, \"must check the box on line 32b\". The candidate reads condo directly where the project asks them only through its gate, so on completed returns every difference is that unasked input and no computed amount differs. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json): 4348 of 5226 comparisons agree, 4348 of 4966 in scope; completed {\"candidate-unknown\": 247}. Project stands.",
-   "subject_key": "91d3aa6f0d57532c38d3028e3a7121a12a425765efb302cbec15868871dd2ccf"
+   "ruling": "Ruling: model error; minor, a Boolean on which no amount depends; as the earlier rulings on this line. i5695 p. 7, \"Line 32b. Occupants of a condominium or cooperative who are claiming a fractional share of the qualified energy efficiency improvements or residential energy property costs must check the box on line 32b\": the box goes with a Part II claim; the reply checks it on the condominium answer alone. Triage executable-triage-v2 (.transcription/triage/2025/f5695.json; 2,745 fixtures, 500 generated returns seed 20261026, partial records): 4,251 of 5,234 agree; 16 value differences, none an amount.",
+   "subject_key": "bf3859d3435be6eedd19075cb54c6a7427d66d7ca642afe598f614c658beb398"
   }
  ],
  "subjects": {
-  "f5695.part1_any": "5c9f20894b128165d9c6dfe2356bf8531c91a877acb52050902d151ecf607c4c",
-  "f5695.part2_any": "224cc569dfb11b703b08ee870c08e67963b3845778cb939c33258f6e214c3d09",
-  "f5695.claiming_part1": "22564fe2b158338a4afe22cc4004f2105556edeb59f63fecdd7f13e37926b431",
+  "f5695.part1_any": "778b02a18c96a0cab5b314df2c52ead8d5b54f9fb6c7445faaa7aeaf95584ee3",
+  "f5695.part2_any": "4d6e7d44b928fbaeb2c86c698153886aec1def19c1949717f8060ef6b1307159",
+  "f5695.claiming_part1": "e470f861f2fcd5fb09862f36a54e2f63aa5bd458d311c3ab194eddc949be40e1",
   "5b": "b85bb04e033af2058a15cad03c19b087f07549fb38d2ee19dd331bad64a28fdd",
   "6a": "5a92e7820d32ab5a6314c321b7dac0c898ed2bcfeb3b91d6cef96eed33fff4f3",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
@@ -298,29 +298,29 @@
   "15": "ce0d0c5d6f5ca806cd56185ddf076fdb30f6651f01de84ca65b6f82f38f78059",
   "16": "0d84c71f0cf9d6ffc75d2eadb0afa9522117038adeacd6559b3972da778d4d4c",
   "18b": "6b1c33798204270f490829eafabdc7a362ed177a8d2aabe14d7287a72c4ee7f6",
-  "19c": "23425638cb73fc0e66a65b09a739525a82009a550ee9778bf5566c3f9b2b3587",
+  "19c": "c17ef5005005cb237916035a818dc65f54a68ece86367921a3190ceb1bf79927",
   "19f": "df13e4a182b1940c5662e69e1705f3ef2490d6b73293d44060f1ac24acdb8001",
   "19g": "8c64ecf5dfe473b274f016fdb7eb2fa67d3edb02b67522370dc31baceefb1de2",
-  "19h": "b0297c1c3436cbaca18df8235fce357bee56566c920e60566675db93f36a8935",
+  "19h": "114edfd045c0863e73039ecf085db2914709e373ac791dd8a9716ce56625b626",
   "20c": "15ba58771053e60818b39e844c935d42d598418f3d6eb28891b10c78456951bc",
   "20d": "39244e259cd5673c688f718773dc985be548c82d4d309995f44faa77604c42e8",
   "22c": "3728e4db17ec5d830e211af2098bcff4ec634bc232a1dcde4f236246903a6220",
-  "22d": "129a344224fec7b6f840d74b86e25f213e33b40e3afe704696126e44914dd998",
-  "23c": "86e9652473828e698daab560861ad636c2a74da046b1fe6882f9100c51def0d0",
-  "23d": "55ed76d0500dacf189ddf8aefc7cf3c3585968d84f5ab3ede5d03dbfff273e12",
+  "22d": "b5af959a3b508e51e0656840cccffdb5a82e82963a0c710dbd667be1d08e97a3",
+  "23c": "c7e030c2c87a2c678daf4b4652a1bcbe5fcb38280a271226c7c8ba1aa9442298",
+  "23d": "5b6e5afe493b4dedee9fa0c9640b73c3117140dcd05313352611ff30ba806919",
   "24c": "9a400726e5fe9cd765ab2b322312eb09b1c8cd2ba952f53b4994260503f025fe",
-  "24d": "5e2b47acf53ab41a5be42277c25ec36c89a7022d690f8b559969d6f215b0e7a7",
-  "25e": "488f210f46fb18151740d5db280839366fda50af3e831550a31bdf3b5d18fc15",
+  "24d": "38e78fa86c05235d9385fab58f3b157945b3b3319b478f1213e21fe8b79844be",
+  "25e": "6c360bc06214b8d6ce868104b91e8b9c4f92ce52cad2f93209cc4dc7d29f8874",
   "26c": "0b6f529aca9d2ef6bc322050da23a3560ab42b0514547f7c5c23bba916e6499c",
   "27": "ba37ce34b486adbd5d0faaf2c5c092a547042fa4cd731c284824a036921d660a",
   "28": "395d7c34a09b2fc1ae73116a364da14c606591ddd09c19c3bf5f161166887e51",
   "29g": "2620b4f2b048a85bdb84d09a6cb1ea68f132f5c0efd7d91c839e6f2b1a2aa858",
-  "29h": "a3918d140cf3f1b57a482314a98d3c0bd23808b2acb632b9500166b511ccc200",
-  "30": "cc09cfbe474848d3851da85bd42d463b539e46a7b1195cbbdd70f72e8784a9e6",
+  "29h": "bbdfd9ce5530abb866016205efa9576d036dea088eb083c6fe578a70dfd26929",
+  "30": "0394cf7ede86f13fb7c54078678dd37079436dd84c5930585aee390a7d1fec85",
   "31": "df0d89b489cb65c6b9aff92a63add114abb5a2f34bea2f18b6e73c07a022c6f5",
-  "32": "a7b1984da945354daf7861ba49f2cc72f79c3f264a44b0ce9ec40496ed06a612",
-  "32a": "6291d96ac8f348e557c8d2505ebb4900239d85ecc84cc693cf6f059ae5fb5ae2",
-  "32b": "0cc901a367c5b9312027571036c11a7e9ef3f123f42d1c962b832cd357e1fe5c"
+  "32": "70640e7825cfa581d9c7812ade092833dd7856669d35c32ba8b4679eb8f2aff3",
+  "32a": "21d402fd77166b6914bd956ef5a10957a455bf72554f5a6b69b0c695a0e21cfb",
+  "32b": "254d3813395dc31455920c1fe208390bb6da0dff3ac7fa1a06eb7325f0a9e032"
  },
  "__rest__": "9eb53ebd84be121b2dff181a4acb827ff5c29d9dd96cbbe8f7ecc67c12520537",
  "foreign": {

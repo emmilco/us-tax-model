@@ -129,12 +129,12 @@ form:
         locator: 'p. 1, Other Forms You May Have To File, "Use Form 8824 to report like-kind exchanges."'
     - id: sd.home_sale
       printed: (gate)
-      label: 'Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?'
+      label: 'Was any of it your (or, on a joint return, your spouse''s) main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?'
       type: Bool
       gated_by: sd.home_sale_if_sold
       expr:
         op: input
-        source: 'Was any of it your main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?'
+        source: 'Was any of it your (or, on a joint return, your spouse''s) main home, with a Form 1099-S for the sale or a gain you cannot exclude in full?'
       cite:
         doc: i1040sd
         locator: 'p. 2, Sale of Your Home, "Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange."'
@@ -313,6 +313,51 @@ form:
       cite:
         doc: i1040sd
         locator: p. 10, lines 1a and 8a
+    - id: sd.special_any
+      printed: (helper)
+      label: |-
+        Does any of the following apply to any of the sales you listed?
+
+        Does any of them involve:
+        - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
+        - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
+        - qualified small business stock with a section 1202 exclusion
+        - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
+        - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
+        - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
+        - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
+
+        Or does any of them dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
+      type: Bool
+      expr:
+        op: input
+        source: |-
+          Does any of the following apply to any of the sales you listed?
+
+          Does any of them involve:
+          - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
+          - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
+          - qualified small business stock with a section 1202 exclusion
+          - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
+          - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
+          - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
+          - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
+
+          Or does any of them dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
+      cite:
+        doc: i1040sd
+        locator: pp. 11–12, lines 18 and 19; p. 11, Line 19, "section 1250 property (generally, real property that you depreciated)"; p. 12, "Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale."; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12,
+          line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned
+          section 1250 property"; p. 10, Disposal of QOF Investment, "If you disposed of any investment in a QOF during the tax year,
+          check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements.";
+          p. 4, "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary
+          dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the
+          extraordinary dividends. An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of
+          preferred stock) of your basis in the stock."; p550 p. 79, Gains From Certain Constructive Ownership
+          Transactions, "all or part of the gain may be treated instead as ordinary income" and Financial asset, "any
+          equity interest in a pass-through entity"; i1040gi p. 15, Digital Assets, "digital assets include non-fungible
+          tokens (NFTs)"
+      ambiguity: amb.2025.nft_collectible
     - id: sd.carryover
       printed: (helper)
       label: 'Did line 21 of your 2024 Schedule D show a loss, or would it have, on a correct 2024 return, if you filed none or left a loss off?'
@@ -1659,7 +1704,7 @@ form:
             locator: Schedule D (2025), Parts I–III
     - id: sd.line4
       printed: "4"
-      label: "Line 4: zero only after unsupported source/carryover screening"
+      label: "Line 4: zero only after unsupported source screening"
       type: Dollars
       expr:
         op: copy
@@ -1677,7 +1722,7 @@ form:
             locator: Schedule D (2025), Parts I–III
     - id: sd.line5
       printed: "5"
-      label: "Line 5: zero only after unsupported source/carryover screening"
+      label: "Line 5: zero only after unsupported source screening"
       type: Dollars
       expr:
         op: copy
@@ -1740,7 +1785,7 @@ form:
             locator: Schedule D (2025), Parts I–III
     - id: sd.line11
       printed: "11"
-      label: "Line 11: zero only after unsupported source/carryover screening"
+      label: "Line 11: zero only after unsupported source screening"
       type: Dollars
       expr:
         op: copy
@@ -1758,7 +1803,7 @@ form:
             locator: Schedule D (2025), Parts I–III
     - id: sd.line12
       printed: "12"
-      label: "Line 12: zero only after unsupported source/carryover screening"
+      label: "Line 12: zero only after unsupported source screening"
       type: Dollars
       expr:
         op: copy

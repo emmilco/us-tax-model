@@ -68,32 +68,17 @@
    ]
   },
   "carloan.down": {
-   "subject_sha": "0397c158f3da93ffc1e5a72496436e253d7f2f15bf86ef353fbbd86eee9afc68",
+   "subject_sha": "b33c73be8f42ca371ee8e7bd8963985dbfedb2230d00b41054631ff9bf66fe21",
    "samples": [
     {
-     "verdict": "WIDE",
-     "findings": [
-      {
-       "kind": "WIDE",
-       "situation": "A filer trades in a car that still has a loan on it, and counts the trade-in's gross value as 'other consideration you provided' along with any cash down payment.",
-       "source_text": "fr-2025-24154 p. 22, Proposed § 1.163-16(d)(6) Example 4: \"trades in a previously owned vehicle subject to an existing vehicle loan with $6,000 of negative equity. A makes a down payment of $4,000 ... incurring indebtedness of $42,000 ($40,000 plus $6,000 minus $4,000)\"; p. 21, (d)(2)(iii)(B): \"any down payment (or other consideration provided by the taxpayer at the time of the purchase transaction for an APV) is applied first against any negative equity\"",
-       "why": "The trade-in's value is already netted against its loan payoff to produce the negative equity. The question's \"or other consideration you provided\" invites the filer to also enter the trade-in's gross value. That counts it twice, can wipe out the negative equity, and overstates the qualifying debt that flows to 22(ii)/(iii).",
-       "bound": ""
-      },
-      {
-       "kind": "UNCLEAR",
-       "situation": "A filer whose purchase included a manufacturer rebate or dealer incentive applied at signing is unsure whether that amount counts as consideration 'you provided'.",
-       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(2)(iii)(B): \"any down payment (or other consideration provided by the taxpayer at the time of the purchase transaction for an APV)\"",
-       "why": "Neither the question nor the help says whether third-party rebates or incentives shown as a down payment on the sales contract count. Filers will answer both ways, and the two answers give different nonqualifying-debt amounts.",
-       "bound": ""
-      }
-     ],
-     "prompt_sha": "14daadaec8921f5895eb7775f3a7237369e89224315b5e11b4ff428d88e094b8",
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "202f561d3b7ec250fd9eca174c65c007280505e9d1a163d3f72e4581035b79a6",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.06838,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/carloan.down.0397c158f3da.1.response.txt"
+     "cost": 0.07150000000000001,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/carloan.down.b33c73be8f42.1.response.txt"
     }
    ],
    "type": "NonNegDollars",
@@ -105,16 +90,18 @@
      "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
      "text_sha256": "eccaf8550a66615e5932726cb4e98cab002b31b9f13c5d4ffec11f0619af479e",
      "pages": [
+      19,
       20,
       21,
       22
      ],
      "how": "cited pages",
      "locators": [
-      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B) and (d)(6) Example 4",
-      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), \"any down payment ... is applied first against any negative equity and any other amounts that are not incurred for the purchase of the APV\""
+      "p. 19, Proposed § 1.163-16(b)(8), \"existing indebtedness on a vehicle traded in as part of a purchase transaction for an APV, to the extent such indebtedness exceeds the vehicle's trade-in value specified by the contract for the purchase of the APV\"; pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), \"any down payment ... is applied first against any negative equity and any other amounts that are not incurred for the purchase of the APV\"",
+      "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B) and (d)(6) Example 4"
      ],
      "cols_pages": [
+      19,
       20,
       21,
       22

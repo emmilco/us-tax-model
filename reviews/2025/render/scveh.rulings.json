@@ -64,6 +64,16 @@
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "The Form 4562 instructions say 'Enter the date the property was placed in service' and 'treat the property as placed in service on the date of conversion'. The restatement collects only a year (2019 to 2025), not the date the column calls for. The low-use refusal does correctly name Form 4562 line 27.",
+   "ruling": "Ruling: representation; i4562 p. 14, Column (b): the column is printed from the year the filer gives. The depreciation the tool figures uses only the recovery year (the year placed in service) and, for 2025, the quarter (scveh.quarter); a vehicle converted between personal and business use in 2025 is refused by scveh.converted. No amount turns on the day.",
+   "context": "aa5fdd6d4b80c4109612c692a94102f3cf180f5013af9775b56e3e78f977df71",
+   "date": "2026-11-24",
+   "run": "3e07cf53a4600eef96546275af5cda508a525fbdd7d6f04716186bba14c63e12",
+   "subject_key": "d00e3ca77b8d3c7afda04f69184947201d2aa5947d5f48f4cf43d157c3b1c011"
+  },
+  {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "The instruction says 'Enter the date the property was placed in service', but the restatement collects only the year. The narrowing to 2019-2025 and the refusal for 50% or less business use are acceptable.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
    "context": "c5d32ef54a7054781c0615a3d7747434f2008210f01c2e5c0d5c5fb828d7b47d",
@@ -123,6 +133,16 @@
    "model": "Worksheet line 10 is the 'Section 179 deduction claimed this year (not more than line 9)'. The program uses the elected cost from column (i) and never applies the Form 4562 line 11 limit: 'The total cost you can deduct is limited to your taxable income from the active conduct of a trade or business'.",
    "ruling": "Ruling: owner's reading open (amb.2025.vehicle_s179_claimed, TASKS.md T-046); project retained pending the owner. Line 10 takes the section 179 cost elected for the vehicle. The two readings differ only when the business income limit (Form 4562 line 11) cuts the year's deduction; the basis is reduced by the whole election, the carryover included (Pub. 946 p. 20: on a disposition before the carryover is used 'you must add it back to the property's basis'), and the worksheet limits the year's depreciation by the same amount.",
    "subject_key": "449672e1a316cd2f809dc3612f84f948a1fdb94a290ca120b13164dd99a813c3"
+  },
+  {
+   "printed": "13",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.",
+   "model": "Line 12 times a mileage percentage matches 'Multiply line 12 by line 8' in ordinary cases. However, Form 4562 column (c) says a vehicle converted during the year uses the percentage 'only for the number of months you use the property in your business ... Multiply that percentage by the number of months ... and divide the result by 12'. The restatement has no months factor, and the text given does not show whether the 'screen' refusal excludes vehicles converted in 2025.",
+   "ruling": "Ruling: scope; i4562 p. 14, Column (c), the months/12 rule applies to property converted during the year; scveh.converted ('During 2025, did this vehicle change between personal and business use') refuses such a vehicle, so the plain miles ratio is the full-year percentage for every vehicle computed.",
+   "context": "aa5fdd6d4b80c4109612c692a94102f3cf180f5013af9775b56e3e78f977df71",
+   "date": "2026-11-24",
+   "run": "3e07cf53a4600eef96546275af5cda508a525fbdd7d6f04716186bba14c63e12",
+   "subject_key": "7f0a6c44f3567376c4a297b7730d5fc966e6a140958d785aeaea661fd0c3fdff"
   },
   {
    "printed": "13",
@@ -289,6 +309,16 @@
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "The restatement enters the business portion of the lease payments with no further adjustment and no refusal. The instructions add 'But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount', and that reduction is neither computed nor excluded.",
+   "ruling": "Ruling: scope; i1040sc p. 8, Line 20a, 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'. A lease with an inclusion amount is refused upstream by sc.special ('you lease a car, truck or van for 30 days or more that was worth more than $62,000 when the lease began ... (an “inclusion amount”)'), whose Yes refuses the business through sc.screened, so line 20a is computed only for leases with no inclusion amount.",
+   "context": "aa5fdd6d4b80c4109612c692a94102f3cf180f5013af9775b56e3e78f977df71",
+   "date": "2026-11-24",
+   "run": "3e07cf53a4600eef96546275af5cda508a525fbdd7d6f04716186bba14c63e12",
+   "subject_key": "031c225dd1df50ced55f78a2a7ab0564ae59482e83131980f98639041e7a91aa"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "The restatement enters the business portion of the lease payments with no reduction. The instructions say 'But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount,' and no inclusion amount or refusal covers that case.",
    "ruling": "Ruling: scope; i1040sc, Line 20a: \"But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\", as the earlier rulings. An inclusion amount for leased property is refused for the business: sc.special lists \"recapture of depreciation or section 179 on listed property, ... or an inclusion amount for leased property\", and sc.screened (which reads sc.special) refuses Schedule C line 1 (forms/2025/sc.yaml). So line 20a is the business portion of the lease payments on every vehicle that reaches it. Project stands.",
    "context": "8692c9d1a19c1c083852466e3cca4d3bc64d67f97bfcbf120f162b025c225484",
@@ -451,6 +481,16 @@
    "subject_key": "b31d673a60c989717a4b7c80cf8b2cc07cb6aeb31b90b28936afd6a2e4dfebc5"
   },
   {
+   "printed": "44c",
+   "restated": "Input — The other (personal) miles you drove this vehicle in 2025, counting miles driven for another business of yours (the vehicle is listed with that business too)",
+   "model": "The form asks only for the miles used for 'c Other' out of 'the total number of miles you drove your vehicle during 2025'. The restatement agrees with that, but the text given never says whether miles driven for another of your businesses count as 'Other' for this Schedule C, so the added clause cannot be checked.",
+   "ruling": "Ruling: ambiguity; amb.2025.vehicle_two_businesses (decided by the coordinator under the owner's delegation of 2026-11-24). Schedule C line 44 asks 'the total number of miles you drove your vehicle during 2025' split into business, commuting and other; the sources do not say where a second business's miles go. The register entry records the reading (listed with each business, the other business's miles counted as other miles here), its alternative and how to reverse it.",
+   "context": "aa5fdd6d4b80c4109612c692a94102f3cf180f5013af9775b56e3e78f977df71",
+   "date": "2026-11-24",
+   "run": "3e07cf53a4600eef96546275af5cda508a525fbdd7d6f04716186bba14c63e12",
+   "subject_key": "7773d8c3e6cddeb057ee3b80777569012789560dfa197d81d8b14049acd0a5f9"
+  },
+  {
    "printed": "7",
    "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Limit for a 2025 vehicle\"] [helper \"Placed in service in 2025\" = false → helper \"Limit for the vehicle's 2025 year of recovery\"]",
    "model": "The 2025 amounts ($20,200 with the special allowance, $12,200 without) and the earlier-year amounts match the tables. But line 7 always applies the passenger-automobile limit, even when the filer says the vehicle is not a passenger automobile. The text says the limits apply \"For any passenger automobile\", and those vehicles have no refusal.",
@@ -539,6 +579,16 @@
    "model": "Line 9 is 'Multiply line 7 by line 8', and the business-use percentage omits the conversion-year proration: 'Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12.'",
    "ruling": "Ruling: model right in substance; resolved by refusal (owner, BUG-0072). As line 13: the conversion-year proration of the business-use percentage applies only in the year of conversion, and a vehicle converted from personal use during 2025 is now refused through scveh.screen.",
    "subject_key": "da5c9302f680a5ec0f3a47ab1bc44373133dac05cb6562ad2864963d1e6bf4b2"
+  },
+  {
+   "printed": "9 (scveh.line9w)",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line 7 by the result.",
+   "model": "This follows 'Multiply line 7 by line 8' with line 8 taken as business miles over total miles. It has the same gap as line 13: there is no months/12 adjustment for a vehicle converted between personal and business use in 2025, and the text given does not show whether such vehicles are screened out.",
+   "ruling": "Ruling: scope; as line 13: a vehicle converted between personal and business use in 2025 is refused by scveh.converted, so no months/12 adjustment is needed on a computed return.",
+   "context": "aa5fdd6d4b80c4109612c692a94102f3cf180f5013af9775b56e3e78f977df71",
+   "date": "2026-11-24",
+   "run": "3e07cf53a4600eef96546275af5cda508a525fbdd7d6f04716186bba14c63e12",
+   "subject_key": "750efac4e012f64a8f955f456d3055e15c3fc6d57a75b7526f652215e875b2f0"
   },
   {
    "printed": "9 (scveh.line9w)",

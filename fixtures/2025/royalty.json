@@ -276,6 +276,43 @@
           }
         }
       }
+    },
+    {
+      "id": "rentals25.royalty_at_risk_prior_refused",
+      "covers": [
+        "royalty"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane rentals (2026-11-24), predicted by hand before running the evaluator: royalties of $5,000 whose earlier return had Form 6198 (p925 p. 19: an at-risk carryover or recapture); every other royalty screen answer is No by default, so Schedule E line 21 for the royalty refuses at that question.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$royalty": [
+          "r"
+        ],
+        "royalty[r].line4": 500000,
+        "royalty[r].at_risk_prior": true
+      },
+      "expect": {
+        "royalty[r].line21": {
+          "kind": "refusal",
+          "gate": "royalty[r].at_risk_prior",
+          "form": "Form 6198 (at-risk limits, earlier year)",
+          "remedy": "A royalty with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198.",
+          "cite": {
+            "doc": "p925",
+            "locator": "p. 19, At-Risk Limits, \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year\"",
+            "revision": "2025",
+            "snapshot": "dda751f07a7059488659c18d3e81afaa1463528b0951b0f8351fa16137cda5d3",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

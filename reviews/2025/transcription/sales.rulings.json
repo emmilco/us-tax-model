@@ -16,11 +16,11 @@
    "printed": "(e)",
    "project_expr_sha256": "7073866372583b5cebfe2045f62ce644f2888404771e49b6d5ec219ebf1bbdb5",
    "second_expr_sha256": "8d35f99d35a840969c47e78a85da93c0c1f98be6d4127d9833970fa22fddc328",
-   "ruling": "Ruling: representation; the reply's value is the project's (reported basis for boxes A, D, G and J; correct basis otherwise; this merge added G and J, as i8949 p. 3, Box A or Box G, has it). It differs only in hiding the column on the aggregate route; the project carries (e) on every entry because Schedule D lines 1a and 8a total column (e) of the aggregated entries (sd 1a(e) sums sales.e; i1040sd p. 10, Lines 1a and 8a), and Form 8949's display of a detail row is not a different amount. Triage (pass 60bd5eac256b): 1,864/2,223 agree; no value difference; 77 candidate-hides-shown (21 completed: aggregate entries); 278 candidate-unknown (the reply reads sales.route, which is asked only when the entry may be aggregated, sales.route_if_chosen); 4 project-unknown on incomplete partial records.",
-   "context": "63e4d911dbc8ce5bba0ce3b732fb0263961b0f689f6277a03ee595fb7717ffa3",
-   "date": "2026-11-15",
-   "run": "c8609d4e0a8ade47e51ddb546a3d72a8aa69ea18ba4d4f78d60ee9f273471a53",
-   "subject_key": "5288331881e47e23924187bc26d58275173f7a499c228251b68daa932a071edc",
+   "ruling": "Ruling: representation; as the earlier ruling: the reply's value is the project's (reported basis for boxes A, D, G and J; correct basis otherwise). It differs only in hiding the column on the aggregate route; the project carries (e) on every entry because Schedule D lines 1a and 8a total column (e) of the aggregated entries (i1040sd p. 10, Lines 1a and 8a). Triage (this pass): 1,573/1,845 agree; no value difference; 33 candidate-hides-shown (aggregate entries), 237 candidate-unknown (the reply reads sales.route, asked only when sd.route_each is Yes), 2 project-unknown on incomplete records. Rerun because the line sits on the sales form, whose sales.special is now derived from the per-return sd.special_any (BUG-1127); the line itself is unchanged.",
+   "context": "d6aea25ff299b8f28cd03a90c1e07d85808833d6894b037a5ee93e09a5be95eb",
+   "date": "2026-11-24",
+   "run": "629af0cc7b6b50a4ca7fb29175d33478c679a864d6297aebf7c0d7e9b63bedff",
+   "subject_key": "f48dd95776569bf4d379a6232862170d7168a6d6b45fde11edb9ebb2d5badf80",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -29,22 +29,20 @@
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.f1040.6.deepseek@sales[s2]",
+     "fixture:classm.s2.1.deepseek@sales[s1]",
+     "fixture:classm.s2.1.deepseek@sales[s2]",
+     "fixture:classm.s2.3.deepseek@sales[s1]",
+     "fixture:classm.s2.3.deepseek@sales[s2]",
+     "fixture:classm.s2.3.deepseek@sales[s3]",
+     "fixture:classm.s2.7.deepseek@sales[s1]",
      "fixture:classm.retirement.3.deepseek@sales[s1]",
-     "fixture:classm.f4952.2@sales[s1]",
-     "fixture:classm.f4952.3@sales[s1]",
-     "fixture:classm.f5695.11@sales[s1]",
-     "fixture:classm.f8959.1@sales[s1]",
-     "fixture:classm.f8959.2@sales[s1]",
      "fixture:classm.ltc.2@sales[s1]",
-     "fixture:classm.s179.3@sales[s1]",
-     "fixture:classm.sales.2@sales[s2]",
      "fixture:classm.tcw.5@sales[s3]",
      "fixture:classm.tcw.15@sales[s1]",
-     "partial:classm.f1040.6.deepseek-sales[s2].box@sales[s2]",
-     "partial:classm.f1040.6.deepseek-sales[s2].reported_basis@sales[s2]",
-     "partial:classm.clcw_next_year.2-sales[s3].box@sales[s3]",
-     "partial:classm.clcw_next_year.2-sales[s3].reported_basis@sales[s3]"
+     "fixture:f1116.m1116_zero_taxable_capital_loss@sales[a]",
+     "fixture:sales.official.aggregate@sales[a]",
+     "partial:mexist.f4952.exception.filing_4952-sales[s2].box@sales[s2]",
+     "partial:mexist.f4952.exception.filing_4952-sales[s2].reported_basis@sales[s2]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -212,6 +210,45 @@
      "partial:classm.sa.1.deepseek-sales[s3].box@sales[s3]",
      "partial:classm.sa.1.deepseek-sales[s3].proceeds@sales[s3]",
      "partial:classm.sa.1.deepseek-sales[s3].correct_basis@sales[s3]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "56390671764bfa213a881bb275066884aacf9eea2049186571bff607bd74127b",
+   "second_expr_sha256": "3ccf4a998ea035048eb01b30ff0727a3e93875665d17bf37e647851e44ea9f84",
+   "ruling": "Ruling: model error; as the earlier rulings: the reply's own refusal of a code W loss figured from the correct basis refuses entries the project computes (i8949 p. 10, code W, the nondeductible loss entered as a positive adjustment from the broker's or the filer's figure, sales.wash_loss), and it hides the column where no code applies, which on the aggregate route is the project's $0. Triage (this pass): 1,729/1,845 agree; no value difference; 2 candidate-refuses and 3 project-refuses on refused returns, 104 candidate-unknown (sales.route read where unasked), 7 project-unknown on incomplete records. Rerun because the form's sales.special is now derived from sd.special_any (BUG-1127); the line itself is unchanged.",
+   "context": "d6aea25ff299b8f28cd03a90c1e07d85808833d6894b037a5ee93e09a5be95eb",
+   "date": "2026-11-24",
+   "run": "629af0cc7b6b50a4ca7fb29175d33478c679a864d6297aebf7c0d7e9b63bedff",
+   "subject_key": "ee4f6038dea3d41ce5a19980b51ac2d208e0ea0b74df64f2d4736f85f9b97e9f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.s2.1.deepseek@sales[s1]",
+     "fixture:classm.s2.3.deepseek@sales[s1]",
+     "fixture:classm.s2.3.deepseek@sales[s2]",
+     "fixture:classm.s2.7.deepseek@sales[s1]",
+     "fixture:classm.f1040.2.deepseek@sales[s2]",
+     "fixture:classm.f8995.2@sales[s1]",
+     "fixture:sales.refuse.wash_over_loss@sales[a]",
+     "fixture:bug0476.sales.market_discount_code_d@sales[a]",
+     "fixture:sales.refuse.code@sales[a]",
+     "generated:20261026.256@sales[s2]",
+     "generated:20261026.310@sales[s3]",
+     "partial:classm.ltc.1-sales[s1].box@sales[s1]",
+     "partial:classm.ltc.1-sales[s1].proceeds@sales[s1]",
+     "partial:classm.ltc.1-sales[s1].correct_basis@sales[s1]",
+     "partial:classm.tcw.12-sales[s1].box@sales[s1]",
+     "partial:classm.tcw.12-sales[s1].proceeds@sales[s1]",
+     "partial:classm.tcw.12-sales[s1].correct_basis@sales[s1]"
     ],
     "policy": "executable-triage-v2"
    }

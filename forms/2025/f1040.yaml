@@ -323,6 +323,7 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution')
+      ambiguity: amb.2025.line4a_several
     - id: f1040.line4b
       printed: 4b
       label: IRA distributions, taxable amount
@@ -739,33 +740,45 @@ form:
               - f1040.gate.qdcg_applies
               - const: true
           - op: test
-            any:
+            eq:
+              - f1040.gate.sdtw_rules
+              - const: true
+      cite:
+        doc: i1040sd
+        locator: p. 15, Schedule D Tax Worksheet, applicability and exceptions
+    - id: f1040.gate.sdtw_rules
+      printed: (gate)
+      type: Bool
+      label: "The Schedule D Tax Worksheet, not the Qualified Dividends and Capital Gain Tax Worksheet, is the one that applies: Schedule D lines 15 and 16 are both gains with line 18 or 19 above zero, or a Form 4952 line 4g election is made"
+      expr:
+        op: test
+        any:
+          - op: test
+            all:
               - op: test
-                all:
-                  - op: test
-                    eq:
-                      - sd.line17
-                      - const: true
-                  - op: test
-                    any:
-                      - op: test
-                        gt:
-                          - sd.line18
-                          - const: 0
-                      - op: test
-                        gt:
-                          - sd.line19
-                          - const: 0
+                eq:
+                  - sd.line17
+                  - const: true
               - op: test
-                all:
-                  - op: test
-                    eq:
-                      - sd.filing4952
-                      - const: true
+                any:
                   - op: test
                     gt:
-                      - sd.investment_election
+                      - sd.line18
                       - const: 0
+                  - op: test
+                    gt:
+                      - sd.line19
+                      - const: 0
+          - op: test
+            all:
+              - op: test
+                eq:
+                  - sd.filing4952
+                  - const: true
+              - op: test
+                gt:
+                  - sd.investment_election
+                  - const: 0
       cite:
         doc: i1040sd
         locator: p. 15, Schedule D Tax Worksheet, applicability and exceptions

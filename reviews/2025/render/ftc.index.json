@@ -5,7 +5,7 @@
  "base": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
  "head_rows": {
   "match / mismatch / unclear / missing": "21 / 4 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-22); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -158,9 +158,9 @@
   },
   {
    "key": "credit",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "b9bba0828b0a7f4043ec379a27f2cac78438f3590656a60b2bab7982a84a1e55",
    "status": "MATCH",
-   "subject_key": "7bcb439acb2a898b60e0a16e2086d216c07a5405e77c43820e87acf66b80dc43"
+   "subject_key": "99944258197289c9fe8365cc7b847d254283daf5cefc273aee5777911733a3e9"
   }
  ],
  "subjects": {
@@ -188,7 +188,7 @@
   "regular_tax": "9708e41122ecdaf9ac692bbfdc199dc4e05b00233f3861a7c8094d89caed5945",
   "limited": "b2e74af5b9682a4aeef2f0226855242cf098442526b2e5edfb260d3296514681",
   "credit_tax": "2a12750526e09fb1f9a7a50187cae79075355c70e8c88fa02a88cbdad454de74",
-  "credit": "cb27cc2a621b02abaa7fa80c927f4aa52ab7aae6884cb1b38dca8ee73b671656"
+  "credit": "3b61d13d0c8254e8cdd4233bd4ec4fa21c49c383576ecf94c120194862eb8b3a"
  },
  "__rest__": "ef08dea3f16551b6ced17254950d5a0c4ee28f6a2065659aa454c41344463759"
 }

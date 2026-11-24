@@ -4,14 +4,15 @@
  "family": "claude",
  "base": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-23); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "23 / 5 / 1 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "6ffefd2b86dfc34a21d6a33f1a8723d1a336d0e48167360287339476a8473de0",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "d39c93001999d49c63f6e474062752a7d2a48e051ea6d02c5e39658e8643dc32"
+   "subject_key": "7816d333410ffcba28e54e7b8b421f7fe276f3e41ee2f13ca230c48428c9248b"
   },
   {
    "key": "5a",
@@ -21,9 +22,9 @@
   },
   {
    "key": "5b",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "ef9df752377220a0d69d2faf5a7e67cd334bf49b5e09ca3f9058c0d8ce12601a"
+   "subject_key": "a7e211545929898a916d6ebe534c94aed0c8b6e86b59f05426ef9a23d1dc72b7"
   },
   {
    "key": "5c",
@@ -40,10 +41,9 @@
   },
   {
    "key": "11",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; p526 p. 5, Exception, 'If the state or local tax credit you receive or expect to receive doesn't exceed 15% of your payment amount ... your charitable contribution deduction isn't reduced'. The line 11 source leaves out every credit-earning part. Already filed as BUG-1086 (open); the foreign-organization point is the source's own rule (i1040sca p. 10, gifts to foreign organizations), with the Canadian, Israeli and Mexican treaty charities a narrow residual within BUG-1086's review. Re-reviewed only as a reader of the changed lines.",
-   "subject_key": "72255534603fa9cc7ccd3e2a1807fdfed528cbe4549a1d167d1f9164e939b732"
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
+   "status": "MATCH",
+   "subject_key": "e5b331c6d5add564a292a841b12dbfb1cdf50d94076ca5264c49d6b6ad53fb57"
   },
   {
    "key": "2 (sa.line2)",
@@ -66,9 +66,9 @@
   },
   {
    "key": "5d",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "95e51c678d9a9a26a07d2854b233daecf6d4f08b57278dd31f3802a6352cd335"
+   "subject_key": "a9d67fba2a7f1c92ab8827ff3597de723a5fbdbcd22f035ae0e2ec24a078df09"
   },
   {
    "key": "5e",
@@ -78,66 +78,41 @@
   },
   {
    "key": "6",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca, Line 6, 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' The foreign tax deduction is refused by sa.foreign_tax_deduct. The GST deduction (section 164(a)(4)) is for tax on income distributions from a trust, which reach the beneficiary on a Schedule K-1 (Form 1041), refused by scope.k1. Same ruling as the earlier round.",
-   "subject_key": "d5ee42129d7d5e35976b2399c57f1ebad4c7dcb0882ba38d5441d8acca22428c"
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
+   "status": "MATCH",
+   "subject_key": "f353ae5276f61bf3e67aa1a39047fd4d908d03025f3e7082af5f0dd8f8c93825"
   },
   {
    "key": "8b",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "145992619b7696b941f2361147d4fb507a50ff71894606d6905e808b590a0923"
+   "subject_key": "ed16aabb6a1150d17fa06737b347dba76b0f4eff64c553472032136172cc13b1"
   },
   {
    "key": "8c",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "fc417e641ca9f0b55ae7472ce9b29ea75c59b31c5b3117a65db6f5c957a74020"
+   "subject_key": "ffaa5fe19c12de1c0dfb9c0a10120186d4b3c4ab1df2ab1bc610a055f0e04f76"
   },
   {
    "key": "13",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "bf888112eefe0784caaf4e83566b25659b71537c6a9295d8f3c42a2dc62e1713",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "sa.line13": "sa.gift_carryover_amount"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "867f479ca94e1230f1af235eccfcb4f434c4be505824b7b15eaa522ad69afde8"
-   }
+   "subject_key": "6a7c10d5f8869e1ddf566f508195044482d582007fe1c3e6da1193550b571f5a"
   },
   {
    "key": "15",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss'. A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer) feeds sd.other_forms, refused on sd.count, so line 15 is $0 on every computed return. Same ruling as the earlier rounds.",
-   "subject_key": "de54bc426371f5effe34d67c7d36f570f1eda50c229e9af9fff7944ae5d289d1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "sa.line15": "sa.casualty_loss"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "abcd398e28446e4e65375e3764981a494e93a415d18451729ea0cdd6b3ca6326"
-   }
+   "ruling": "Ruling: model error; a casualty or theft loss is refused on the return by sd.casualty through sd.other_forms ('Had property damaged, destroyed or stolen (a loss, or an insurance gain)', asked of every filer in the paid_more ticks; its help: 'A loss to things you own for personal use counts only if it came from a federally declared disaster ... A Yes ends the interview here'), as the sa.casualty_loss source notes. Line 15 is zero only on returns with no such loss (i1040sca p. 11, Line 15).",
+   "subject_key": "88aa62e53685abbc17d3e9c5bb00e9992d915851a020d721fb792b07022dcd2b"
   },
   {
    "key": "16",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sca p. 11, Line 16 list. The gambling limit matches, as the model says. Casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused through sd.casualty and sd.business_property into sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income (Schedule 3 and scope refusals); the other listed items by sa.unsupported. Same ruling as the earlier rounds.",
-   "subject_key": "4ead62d59a200ba8cefa460d45a7140a293a5b164ca4ef38c835672c318b0ce0",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "sa.line16": "sa.other_itemized"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "65ca80592cd277c327bb7ef7b16d6dba994c95140f9ad8e760bacd46d9b05a6d"
-   }
+   "ruling": "Ruling: model error; the three items are refused elsewhere: casualty and theft losses of income-producing property and a net qualified disaster loss by sd.casualty through sd.other_forms, and a claim-of-right repayment over $3,000 by s3.repaid_income ('Paid back over $3,000 in all of income from an earlier year'). Gambling losses are computed as the reply says (i1040sca pp. 11-12, Line 16).",
+   "subject_key": "28be5910d2837d2324bbb91b497123ee11f05e75b039f5e067456780cd90858d"
   },
   {
    "key": "7",
@@ -166,9 +141,9 @@
   },
   {
    "key": "12",
-   "record": "fc999c02e8f7ea0a1888a242ac927bd99aec4e43b28151df82031f2de07b6dcd",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "db14ffe5a373d871d900a98c9582ce572d25492f3efda424bdbdd73f644f63fb"
+   "subject_key": "726f2fa96498a936d5f5432582164cb842078da820006fca448b6e4815d1340d"
   },
   {
    "key": "14",
@@ -187,9 +162,9 @@
   },
   {
    "key": "17",
-   "record": "6ffefd2b86dfc34a21d6a33f1a8723d1a336d0e48167360287339476a8473de0",
+   "record": "516cd2574f17a82ec51ad715ee86aeba33ffbd1c801ee2e383f6327a34069962",
    "status": "MATCH",
-   "subject_key": "83cf6121eddfd247d7b9c81196f78511d64bcf2d74180beb4f49205294b01f78"
+   "subject_key": "ad95082b6b63d1896bd74829724ea12c9d35791a03ab4fd9f3252e0fb7d24d53"
   },
   {
    "key": "2 (sa.dep_line2)",
@@ -232,30 +207,30 @@
   }
  ],
  "subjects": {
-  "1": "3eced479d252b4275afb182da1fe8ce5f32d6afc8b4f41474961681a6db49e01",
+  "1": "0a374a8f9d8cc00c7539457f30f3eeebb9f1a2b68eb779e16ef4e4c22ab4e544",
   "5a": "fd56fa7bc183d0c8e2064b037e3f9ac35ac9e0c02d8a5f77fe210c8812110831",
-  "5b": "73dd015108b60fde92971f31d1e99c7266dd115e5b843f5889e5b2377a1f046b",
+  "5b": "d308e8cc7db4b94a25ffeb3cae08f6abb67af900438ac73236991ab1a29820df",
   "5c": "9727f5441c3477fe0d2cb79a93b93266726e1b065e0c896692a71e3d730c6c80",
   "8a": "0e0e49979252859854e2cce3f047999eb1920aa7ffb6a2a8aa713df1364590ba",
-  "11": "4aa986f00a213972fa94e5c2898da305642ede20d71a6f0e0630fb7491986933",
+  "11": "97f4eaf548b3a0c975a47b8d2bbd32566be73081beea3ff7f24dad61fd2cf6ca",
   "2 (sa.line2)": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
   "3 (sa.line3)": "915c7f2a9b0042dab3a9e56be066227e30b5b060fc4824080ce27e96eaa3e71f",
   "4": "fa17cba921907dcce829816bc113fef4b6d3075b759757bc9ef55da5ee674303",
-  "5d": "b9ab7ad95ace5a0b1fe09a21d838e40df8d2e42c0264ea7cdbac0fba23bc0ebf",
+  "5d": "eff5aee7ba2d3c1adc5eb9058a31bcb0e09fac6bf1a96f0e00f0f60b0421d9cf",
   "5e": "3e29b31bba5a6121a5aede361c57d6ea2db7d8350136dc0f020d49168fa4f996",
-  "6": "8db70fd2ee2bc5429eb57efb7e826aface7521ee115b76c7745b3747183e8e0c",
-  "8b": "2110bdd5b67d488a307fb0777ec4358da275593ca0b4a6a6f6591b45326492b1",
-  "8c": "7b6e087400f16a5c6fe5306b5dafb41746e9b924f0fc951c3f7560f8ef3f704c",
-  "13": "287932af46c670f0a849a15eb92e919c5804fd591283286f607afcc40904710b",
-  "15": "915f43d524fa15ed0f79bfe8ea7d06fd8d325070d0a543fa404b1cb742b7cd90",
-  "16": "fd498ab84257c96127ef4d9b3e42feecf079cd2802ad4bcaeac4ea957f85c1dc",
+  "6": "f51d2803ebb8232df8ba0ce5b8ae6d6c30c697b8f233a9ebe8c25e654a32e631",
+  "8b": "b6bba3b472b8c839f2d4c6c618c890fb262466bcaeb9816fb5b48dba672a46bb",
+  "8c": "eae85bfeb78505f834fdf2b239ab7596855a9703f6445cd3d0e85fad27905ee4",
+  "13": "11c6f9f0709eb617702ee21f27a980e19eb2347665d1963a4aef406a32f3289e",
+  "15": "deda677483af85c089e23345cbfb9999c907593af99809f5189dd0c400f9a2b9",
+  "16": "dc033edc419f330b7a3f586a7e3bcdee6b2670310418fea18e471187105335cd",
   "7": "1d59e882ba98ae7a8dcf5a3c807217a18fd242122626f5a1ea0b0d30f7d3399e",
   "8e": "a1c3eaa8769af3038750e36dd1ffbdb9801945aaeb0ae10a2eaf1b402c4fdf0c",
   "9": "59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af",
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
-  "12": "6a6c25e736ae795437253e856836145d367ae2f602fc7fbc8fef6431563562ea",
+  "12": "cde2313040490b00188153f7abbef15333477d02619ce61cf8f0cedc57326803",
   "14": "5d211fc6e5622f9a857d5fa8f8c09a94d8678af98fb06a322b605ad9a90d33a2",
-  "17": "ce1677c8282aaaefe4380cb00550f375b1701a214e5502b523b2ba16c661eaad",
+  "17": "291998740ff65c179ed739503e31d5357ed04b72eb86e167f10205e747af0c42",
   "2 (sa.dep_line2)": "c491f5623624750dae66e27621ffa3e03f69b84da1ea8ce2d3552f795bc0b60a",
   "3 (sa.dep_line3)": "bb2a121adcb5f0e32bbd434e9b4a7b6b80ca36b93a3d446dfd5683b45c539313",
   "4a": "9841bdd28de3be44b498d2e5c93d69a3ceb154f08165210b8b4314b2adc47e9a",

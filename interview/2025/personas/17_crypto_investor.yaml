@@ -22,17 +22,15 @@ answers:
   $sales: [eth, btc, sol_swap]
   sd.route_each: false
   sales[eth].box: H
-  sales[eth].special: false
+  sd.special_any: false
   sales[eth].code: none
   sales[eth].proceeds: 420000
   sales[eth].correct_basis: 300000
   sales[btc].box: K
-  sales[btc].special: false
   sales[btc].code: none
   sales[btc].proceeds: 1500000
   sales[btc].correct_basis: 1850000
   sales[sol_swap].box: L
-  sales[sol_swap].special: false
   sales[sol_swap].code: none
   sales[sol_swap].proceeds: 260000
   sales[sol_swap].correct_basis: 100000

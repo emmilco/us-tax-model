@@ -68,7 +68,7 @@
           "kind": "refusal",
           "gate": "sche.qbi_business",
           "form": "Form 8995 (rental real estate as a trade or business)",
-          "remedy": "A rental treated as a trade or business is outside this tool.",
+          "remedy": "A rental that is a trade or business is outside this tool.",
           "cite": {
             "doc": "i8995",
             "locator": "p. 1, Trade or business, \"provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction\"",

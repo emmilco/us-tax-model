@@ -5,8 +5,8 @@
  "base": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
  "head_rows": {
   "lines judged": "49",
-  "match / mismatch / unclear / missing": "46 / 3 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "43 / 3 / 3 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -30,9 +30,10 @@
   },
   {
    "key": "44c",
-   "record": "609cf289cdd5de64f89adfc18f0f23e985f65c35bdef14eb76a86276812008c2",
-   "status": "MATCH",
-   "subject_key": "9786977319f8ba11619d7e60163e66f4d9b888689998236cc2cc49135daf8ca6"
+   "record": "6b011ddfabd9695d770e0de48daf57bfb6a75a4dbad42308a0609d274defb073",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.2025.vehicle_two_businesses (decided by the coordinator under the owner's delegation of 2026-11-24). Schedule C line 44 asks 'the total number of miles you drove your vehicle during 2025' split into business, commuting and other; the sources do not say where a second business's miles go. The register entry records the reading (listed with each business, the other business's miles counted as other miles here), its alternative and how to reverse it.",
+   "subject_key": "8913affb55340ce99d08cf5471e653500ae194498969de12592afc98680b712e"
   },
   {
    "key": "(screen) (scveh.smr_always)",
@@ -66,9 +67,9 @@
   },
   {
    "key": "9 (scveh.line9)",
-   "record": "8d4606541b5c7720609939001fdb521b18bb9e1b312eba04cd4ac17ca1cbbac4",
+   "record": "6b011ddfabd9695d770e0de48daf57bfb6a75a4dbad42308a0609d274defb073",
    "status": "MATCH",
-   "subject_key": "c641a9a27a7e26810b9461e8090d4012ed8d9b892524f9d2210851cb9d86c13c"
+   "subject_key": "6e4a8848b18d76d2a1a2d7931cd869cb02a7219a4a2dc74fd0c02e8363b6c757"
   },
   {
    "key": "(screen) (scveh.lease_smr_before)",
@@ -78,17 +79,17 @@
   },
   {
    "key": "20a",
-   "record": "8d4606541b5c7720609939001fdb521b18bb9e1b312eba04cd4ac17ca1cbbac4",
+   "record": "6b011ddfabd9695d770e0de48daf57bfb6a75a4dbad42308a0609d274defb073",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sc, Line 20a: \"But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\", as the earlier rulings. An inclusion amount for leased property is refused for the business: sc.special lists \"recapture of depreciation or section 179 on listed property, ... or an inclusion amount for leased property\", and sc.screened (which reads sc.special) refuses Schedule C line 1 (forms/2025/sc.yaml). So line 20a is the business portion of the lease payments on every vehicle that reaches it. Project stands.",
-   "subject_key": "f24e39bd212fc31ce0caacac49bfb61a29d28b79e5b5d4da0f5a5f2f7937498c"
+   "ruling": "Ruling: scope; i1040sc p. 8, Line 20a, 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'. A lease with an inclusion amount is refused upstream by sc.special ('you lease a car, truck or van for 30 days or more that was worth more than $62,000 when the lease began ... (an “inclusion amount”)'), whose Yes refuses the business through sc.screened, so line 20a is computed only for leases with no inclusion amount.",
+   "subject_key": "d3215b7a54ef663952cfd77809519be59210e0ebdf844671ba3d8b556866ac24"
   },
   {
    "key": "(b)",
-   "record": "6262d7e275e65f8875e0058e18c27dc2796ffe67f85d7ecac6609305a32cde68",
+   "record": "6b011ddfabd9695d770e0de48daf57bfb6a75a4dbad42308a0609d274defb073",
    "status": "MISMATCH",
-   "ruling": "Ruling: representation; same restatement and objection as the refresh-round ruling. The tool needs the year (and, for 2025 property, the quarter, asked separately) to choose the tables and limits; no value depends on the month or day otherwise. A vehicle converted from personal use in 2025 is refused by scveh.screen.",
-   "subject_key": "0a69d6e420ab172595fd4522f8a11acc804f23e134a90c92820731d4568d9e04"
+   "ruling": "Ruling: representation; i4562 p. 14, Column (b): the column is printed from the year the filer gives. The depreciation the tool figures uses only the recovery year (the year placed in service) and, for 2025, the quarter (scveh.quarter); a vehicle converted between personal and business use in 2025 is refused by scveh.converted. No amount turns on the day.",
+   "subject_key": "5eec35adf88851a43b26dfd97a2a9a72ec8d350d0ce29f8fa4fc9a6ade1e3c5b"
   },
   {
    "key": "(screen) (scveh.records)",
@@ -218,9 +219,10 @@
   },
   {
    "key": "13",
-   "record": "4e3cdd7d5dc96ffbb5fe9be4a38c9cfc539aa3f19fac1275a1b0771b564d1070",
-   "status": "MATCH",
-   "subject_key": "6bbd133173382e0c1fbad72af03c99f9f081fc1c0a51f9550800a4a61689e4fc"
+   "record": "6b011ddfabd9695d770e0de48daf57bfb6a75a4dbad42308a0609d274defb073",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: scope; i4562 p. 14, Column (c), the months/12 rule applies to property converted during the year; scveh.converted ('During 2025, did this vehicle change between personal and business use') refuses such a vehicle, so the plain miles ratio is the full-year percentage for every vehicle computed.",
+   "subject_key": "4ee10a6e198e85e649584947c82fa8aa2b48aa7b7534c2d385cfdc2454dfb677"
   },
   {
    "key": "(screen) (scveh.bonus_same)",
@@ -236,9 +238,10 @@
   },
   {
    "key": "9 (scveh.line9w)",
-   "record": "8d4606541b5c7720609939001fdb521b18bb9e1b312eba04cd4ac17ca1cbbac4",
-   "status": "MATCH",
-   "subject_key": "b59fc58992f0303eb0fa3ce908ab605fdc1b51655544e6683cbc40cb17868185"
+   "record": "6b011ddfabd9695d770e0de48daf57bfb6a75a4dbad42308a0609d274defb073",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: scope; as line 13: a vehicle converted between personal and business use in 2025 is refused by scveh.converted, so no months/12 adjustment is needed on a computed return.",
+   "subject_key": "60b5a29846de0a087a00571767c1933872b32ec3ae78846333919422de75ff65"
   },
   {
    "key": "10",
@@ -311,16 +314,16 @@
   "43": "653bdae1d00d54a8d0e502e8af68db95ad1303fb72a32c6351af88bf712d8ad9",
   "44a": "146e16db3d74cebceb6b516ed6bb866cf35b480210cddeb836faf76b938c1111",
   "44b": "912a0646daf46af54d73f00939094e22a3a6afcc364df5e2217b9d0c63ecdc85",
-  "44c": "1b5eb777d9f95e6354b469528f86cf17ecd87a5ca3790f73cb02264e7986557c",
+  "44c": "dfded08e875866d3da1ae9770210e0016b04075ccc773b16a33c782cff624fe9",
   "(screen) (scveh.smr_always)": "20fb8db6d7803643b14693f2dbfcc4caa06d706d7b4823d7134215e7993ed8db",
   "(screen) (scveh.smr_first)": "beac580e9a7efbbb3517b67bf41b322936066da519a50bf1825507e76367439a",
   "(screen) (scveh.fleet)": "8636a739198b78a4ae0996ce4f6566524d0a983109ea3a334c2e5c781c208afe",
   "(screen) (scveh.smr_ok)": "99fb8eace64d484285b504193c51df531d9ce073286a9c507933baa85c788f5e",
   "(screen) (scveh.employee_use)": "643c015b12e980ff10a568580ea8efa7789a30b1a2cf4fd3e81007f0b717da5c",
-  "9 (scveh.line9)": "0f33a73f0127bc9cfc4d8c5dcb9f7e6960b22507461aca5a7e2a01a6b86d05a4",
+  "9 (scveh.line9)": "11798c7534269e0f63802227027fabfa2159fdf7d8e8f98b0b51c3ccadea4bc7",
   "(screen) (scveh.lease_smr_before)": "3b7b3aabbc6c5d31b1c98695ea76b5ebda1e48236a80be3d7d009a3c51d93807",
-  "20a": "77fd58e454a81d0b09169ae7e5bc48940b4448840f9b5ddf1f81a574655f7a54",
-  "(b)": "3d1072852e40be84db47283401be422fb858a0c61b8ba666b2b967fbc82bb104",
+  "20a": "88122813ac7ed1a57a3b9cd6114538f7f51996105a1739077117cf6add37f4be",
+  "(b)": "0820447b52b4a3cf2c4d3629dd6d82bd828c8dbcac23f2b8d0d437eafc0609ba",
   "(screen) (scveh.records)": "0cc79bb0ee7e5cd7280d46807f172981074565987d35295c093162bcc4713032",
   "(screen) (scveh.got_other)": "3e54b3b8889614b8cfb5f5d0c10029b890e675e000a996fc519ad4efe9efb0ee",
   "(screen) (scveh.acquired_before_bonus_date)": "63fb4a118896d1b82b48abb375183a06ca01e38fb90c5687fa629762e75cc5bd",
@@ -342,10 +345,10 @@
   "(screen) (scveh.qbu_low)": "e36827c485097e9d27303fa06640b8738b59bc28f40e8e7ab6f59c7787ea6bfa",
   "(screen) (scveh.screen)": "3dad0b269053cd5d1d0a2cb0a1d47621c6caaa4d393ad524107fd0c2f7946545",
   "(d)": "ee1e3287cf67c2f507e5b10be6aa04e27ef774cb7fd267e66e7df1497dc17949",
-  "13": "befed96b27463bc7f3672e45bffd1f6b4779046c53060272f99a67b33c02d6b7",
+  "13": "27922eef934c78c4aa41e83d976c26adeea328cbe3c14847205162e7875b4ba3",
   "(screen) (scveh.bonus_same)": "bcc0a3d54012fab053eedd53cdfdd1d7d0a471c32654babe2b00b4cf3cc2d878",
   "7": "16cd1258bce1e8c4c5527db07a0a910f784dae99b75592aa6ac845ff4e35829d",
-  "9 (scveh.line9w)": "257a3bcfc3a2064faefd1f3101542f7d52fd25bfc4667afcf10f8032a8b31df3",
+  "9 (scveh.line9w)": "fa6ef200d7f91e3e03e8372275da9991ea19ce3a31c3bf8c1d0aff04bfe2cad1",
   "10": "06381ee07499eb2a6e6c67f897f7a9fd44aa52cd5719bc1f5dc5ebda077fcf8c",
   "11": "3309f4a64a5bc95aa577ba189416d6804facd0c5c4d1998c07fa3a925c4ffaad",
   "14": "ef257d5d3d87f5f7c5dd746169690fbe29c0140c458815eedaf6be07433b9305",
