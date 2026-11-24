@@ -128,8 +128,13 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier full
 - **light** (the default; what a commit on `next` or a lane branch needs): compile, build and render, the engine
   self-check, the federal and New York fixtures, the bookkeeping checks (`check_bug_inventory`, `bug_status`,
   `check_agent_runs`, `check_docs_conventions`, `siblings_check`, `bookkeeping_self_tests`), the checks of generated
-  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), and the interview checks
-  `interview_rules`, `interview_coverage` and `tick_groups` scoped to the forms the change touches.
+  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), the static guards below, and the
+  interview checks `interview_rules`, `interview_coverage` and `tick_groups` scoped to the forms the change touches.
+  The static guards read the tree and the build and evaluate no return: `year_changes` and `ny_year_changes` (the next
+  year's operations still apply, "Year changes as operations"; about 8 s), `renamed_ids` and `ny_renamed_ids` (no old
+  id of `tools/year_free_names.json` left, the code included, "Renaming the ids in the data"; about 11 s),
+  `mutate_arguments` and `ny_mutate_arguments` (the keyed mutation arguments on the build, below; under 1 s) and
+  `unread_params` (every parameter read, below; about 8 s). They run side by side in the first wave after the build.
   `tools/change_scope.py` computes the scope from the paths that differ from HEAD: `all` when a path can change any
   walk (the engine, the profiles, the schema, parameters, tables, an unlisted path), `none` when the interview checks
   read no changed path (tools, bookkeeping, reports, reviews, sources, the Lean evaluator, the web UI), else the form
@@ -399,6 +404,17 @@ rewording every question, label and line citation leaves every pinned argument h
 and changing any one premise line's type or premise parameter's value un-pins it) and
 `retargetSelfTest` (an argument is not taken by a mutant that now reads another line).
 
+The keyed arguments are also checked without a mutation run, in the light tier: `node engine/dist/main.js
+mutate-arguments [--ny]` (steps `mutate_arguments`, `ny_mutate_arguments`) takes every generated mutant of the
+jurisdiction as surviving and reports each argument whose mutant is no longer generated, reads another line than the
+argument names, or no longer holds on the build, and each `ANSWERED_ONLY` id with no argument (`argumentProblems` in
+`engine/src/mutate.ts`, the same test as the run's stale-argument check, less whether the mutant is killed). An
+argument that a recorded open bug covers is listed in `tools/mutation_arguments_open.json` (`{"open": {argument id:
+bug id}}`): it is printed as known and does not fail the step; a listed argument of the jurisdiction with no problem
+fails it until it is removed from the list, so the list only shrinks. A change that moves an argument's premises
+therefore fails the commit that makes it: re-read the argument and record the new digest, or file the bug and list
+the argument. `--self-test` checks the comparison with the list (check-all `self_tests`).
+
 One structural rule explains survivors on unobserved lines (`unobservedLine`): the mutated line is a `(helper)` of a
 form with no refusal gate, and it and every line that names it, transitively (in an expression, a collection filter, a
 refusal gate, a display condition or a gate), are such helpers, none reading a definition instance and none named by an
@@ -547,7 +563,27 @@ rename names). A collection-indexed id whose rename moves it to another document
 it. The order of a rename: rename the definitions and the files that name them, `rename_ids.py apply` (both
 jurisdictions), build and render, `rename_carry.py --write`, then test-fixtures and coverage at once. `check` runs in
 check-all for both jurisdictions (steps `renamed_ids`, `ny_renamed_ids`) and fails on any old id of
-`year_free_names.json` left in those places. Tests: `tools/test_rename_ids.py` (check-all `self_tests`).
+`year_free_names.json` left in those places. The federal `check` also reads the code (every `.ts`, `.tsx`, `.mjs`,
+`.js`, `.py`, `.sh` and `.lean` file under `engine/src`, `ui`, `tools` and `lean`, build output, dependencies and
+`tools/test_rename_ids.py` left out), where a line is often named by its bare local name: it reports a quoted bare name `"L"` (or `'L'`, or
+backquoted) where the map renamed `doc.L`, `doc` has no line `L` now, and the name stands beside its document: `doc`
+is named as a document (`doc.`, `doc[`, quoted) within three lines, or the line quotes at least three names and `doc`
+has the most of them among its current lines (a list such as `["line8", "line16a", "line16b"]` of Schedule C
+inputs). A line holding `rename_ids: not an id` is not read. Ids built from pieces (`s2\.line(8|21)` in a
+pattern) are not found. Tests: `tools/test_rename_ids.py` (check-all `self_tests`).
+
+## Unread parameters
+
+`python3 tools/check_unread_params.py [--year N]` (light-tier step `unread_params`) fails on a parameter of
+`params/<year>.yaml` or `params/ny/<year>.yaml` whose key no reader names as a whole name (not inside a longer id).
+The readers: `forms/<year>/`, `forms/ny/<year>/`, `interview/<year>/`, `interview/ny/<year>/`, the next year's
+operations (`changes/<year+1>/`, `changes/ny/<year+1>/`) and the code and data files under `engine/src`, `tools`,
+`ui` and `lean`; a mention in a comment counts. A parameter that code reads only by a name it builds
+(`eic.earned_amount${k}`) is listed in `tools/unread_params_allow.json` with the prefix, the files that build the
+name and the reason; the check fails on an entry whose key is gone, is read by name, or whose files no longer build a
+name from the prefix. A parameter nothing reads is removed, with its staged next-year value
+(`research/ty<year+1>/params-<year+1>.proposed.yaml`, `params_auto.json`), rather than listed. Tests:
+`tools/test_check_unread_params.py` (check-all `self_tests`).
 
 ## EIC Table
 

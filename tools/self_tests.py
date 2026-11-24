@@ -61,6 +61,8 @@ TESTS = [
     ("year_carry_self_test", "code", False, ["python3", "tools/transcription/year_carry.py", "--self-test"]),
     ("rename_carry_self_test", "code", False, ["python3", "tools/transcription/test_rename_carry.py"]),
     ("rename_ids_self_test", "code", False, ["python3", "tools/test_rename_ids.py"]),
+    ("unread_params_self_test", "code", False, ["python3", "tools/test_check_unread_params.py"]),
+    ("mutate_arguments_self_test", "code", False, NODE + ["mutate-arguments", "--self-test"]),
     ("citations_self_test", "code", True, ["python3", "tools/citations.py", "--self-test"]),
     ("year_diff_self_test", "code", True, ["python3", "tools/year_diff.py", "--self-test"]),
     ("propose_params_self_test", "code", False, ["python3", "tools/propose_params.py", "--self-test"]),

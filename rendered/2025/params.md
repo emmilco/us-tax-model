@@ -171,7 +171,6 @@
 | `hsa.inh_spouse_earlier` | Enum(hsa_inherited) | spouse_earlier | [i8889] p. 3, Death of Account Beneficiary, "The surviving spouse completes Form 8889 as though the HSA belonged to the surviving spouse.": the case of an inherited HSA that refuses nothing, taken when no HSA was acquired because of a death (2025; sha256 da6f2f58) |
 | `hsa.no` | Bool | false | [f8889] Form 8889 (2025), Parts I and II: the answer taken for a Form 8889 question that is not asked because an earlier answer settles it (2025; created 2025-03-28; sha256 15ed4587) |
 | `hsa.no_last_month` | Bool | false | [i8889] p. 2, Last-month rule, "for the entire year if you are an eligible individual" (2025; sha256 da6f2f58) |
-| `hsa.no_months` | Count | 0 | [i8889] p. 4, Line 3, rule 2, "You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year" (2025; sha256 da6f2f58) |
 | `hsa.self_only` | NonNegDollars | $4,300 | [i8889] p. 6, Line 3 Limitation Chart, self-only coverage, "Enter $4,300 on the line below for the month" (2025; sha256 da6f2f58) |
 | `hsa.self_only_55` | NonNegDollars | $5,300 | [i8889] p. 6, Line 3 Limitation Chart, self-only coverage, "If you were age 55 or older at the end of 2025, enter $5,300 for the month" (2025; sha256 da6f2f58) |
 | `hsa.twelfth` | Rate | 1/12 | [i8889] p. 6, Line 3 Limitation Chart and Worksheet, "Limitation. Divide the total by 12" (2025; sha256 da6f2f58) |

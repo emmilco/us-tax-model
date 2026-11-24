@@ -2158,12 +2158,6 @@ params:
       cite:
         doc: i8889
         locator: 'p. 4, Line 3, rule 2, "If the last-month rule ... applies, you are considered an eligible individual for the entire year. You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
-    hsa.no_months:
-      type: Count
-      value: 0
-      cite:
-        doc: i8889
-        locator: 'p. 4, Line 3, rule 2, "You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year"'
     hsa.two:
       type: Count
       value: 2

@@ -1254,18 +1254,6 @@ params:
       cite:
         doc: ny_it201i
         locator: 'p. 18, Sales and use tax chart, "or $125, whichever amount is smaller"'
-    ny.est.min_due:
-      type: Dollars
-      value: 30000
-      cite:
-        doc: ny_it201i
-        locator: 'p. 23, Line 81, "if line 80 is $300 or more and represents more than 10% of the income tax shown on your 2025 return"'
-    ny.est.share:
-      type: Rate
-      value: { num: 10, den: 100 }
-      cite:
-        doc: ny_it201i
-        locator: 'p. 23, Line 81, "and represents more than 10% of the income tax shown on your 2025 return"'
     ny.est.prior_rate:
       type: Rate
       value: { num: 1, den: 1 }
@@ -1278,17 +1266,6 @@ params:
       cite:
         doc: ny_it201i
         locator: 'p. 23, Line 81, "your 2025 prepayments must equal at least 110% of your 2024 New York income tax"'
-    ny.est.high_agi:
-      type: Dollars
-      value:
-        single: 15000000
-        mfj: 15000000
-        mfs: 7500000
-        hoh: 15000000
-        qss: 15000000
-      cite:
-        doc: ny_it201i
-        locator: 'p. 23, Line 81, "if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025)"'
     ny.it270.max_threshold_plus:
       type: Dollars
       value:

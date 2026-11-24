@@ -2900,6 +2900,14 @@ function outcome(baseline: CanonicalData, cases: JudgingCases, m: Mutation): Out
 
 // --ny: only the New York mutants (documents ny_*, parameters ny.*, tables ny_*), judged by the New York fixtures;
 // otherwise every mutant, as before (a New York mutant is then judged by the federal fixtures, which never read it).
+// The keyed arguments of this run's jurisdiction checked on `data` without a mutation run: every generated mutant is
+// taken as surviving, so staleEquivalences reports each argument whose mutant is no longer generated, reads another
+// line than the argument names, or no longer holds; whether a mutant is killed is left to the run.
+export function argumentProblems(data: CanonicalData): string[] {
+  const muts = selectMutants(mutations(data));
+  return staleEquivalences(EQUIVALENT_IF, ANSWERED_ONLY, data, muts, new Set(muts.map((m) => m.id)));
+}
+
 function selectMutants(muts: Mutation[]): Mutation[] {
   // Each jurisdiction's run takes only its own mutants: the federal fixtures never read a New York line, so a
   // New York mutant can be killed only by the New York fixtures (`mutate --ny`, its own check-all step).

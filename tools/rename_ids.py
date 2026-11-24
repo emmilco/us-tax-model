@@ -26,9 +26,18 @@ The places, for the jurisdiction and year (places()):
   `<kind>:<case id>@<instance>` or `partial:<case id>-<withheld input>@<instance>`; a case id holds no `-`). The
   ruling texts and keys stay as the reviewer saw them; tools/transcription/rename_carry.py re-keys what it proves.
 
+check also reads the code (federal run only; code_left()): every .ts, .tsx, .mjs, .js, .py, .sh and .lean file
+under engine/src, ui, tools and lean (build output, dependencies and this tool's own tests left out). Code names a
+line by its bare local name as often as by its id (`["line8", "line16a", ...]`, then `sc.${k}`), so check reports a quoted bare name L
+(`"L"`, `'L'` or a backquoted L) where the map renamed `doc.L`, `doc` has no line `L` now (forms/<year>/ and
+forms/ny/<year>/), and the name stands beside that document: `doc` is named as a document (`doc.`, `doc[` or quoted)
+within three lines of it, or the line quotes at least three names and `doc` is the document (or one of those) with
+the most of them among its current lines. A line holding `rename_ids: not an id` is not read. Ids built from pieces
+(`s2\\.line(8|21)` in a pattern) are not found.
+
 apply rewrites the places, and each FILE given whole, and lists the files it changed. check lists every old id
-left in the places, by file and line (or ruling and witness), and exits 1 when there is one. check-all runs check
-with the default map for both jurisdictions (the steps renamed_ids and ny_renamed_ids).
+left in the places and the code, by file and line (or ruling and witness), and exits 1 when there is one. check-all
+runs check with the default map for both jurisdictions (the steps renamed_ids and ny_renamed_ids).
 """
 import json
 import re
@@ -232,6 +241,91 @@ def left(text, kind, find):
     return out
 
 
+# ---------------------------------------------------------------- the code
+
+CODE_DIRS = ("engine/src", "ui", "tools", "lean")
+CODE_SUFFIXES = (".ts", ".tsx", ".mjs", ".js", ".py", ".sh", ".lean")
+CODE_SKIP_DIRS = {"node_modules", "dist", ".lake", "build", "__pycache__"}
+CODE_SKIP_FILES = {"tools/test_rename_ids.py"}  # plants old names on purpose
+CODE_KEEP = "rename_ids: not an id"
+QUOTED = re.compile(r"""(["'`])([A-Za-z_][A-Za-z0-9_]*)\1""")
+NEAR = 3
+SIBLINGS = 3
+
+
+def code_files(root=None):
+    """[path] of the code files code_left() reads (module doc)."""
+    base = Path(root or ROOT)
+    out = []
+    for top in CODE_DIRS:
+        d = base / top
+        if d.is_dir():
+            out += [p for p in d.rglob("*") if p.suffix in CODE_SUFFIXES and p.is_file()
+                    and not CODE_SKIP_DIRS.intersection(p.relative_to(d).parts[:-1])
+                    and p.relative_to(base).as_posix() not in CODE_SKIP_FILES]
+    return sorted(out)
+
+
+def current_locals(root=None, year=None):
+    """{document: {local name}} of the lines of forms/<year>/ and forms/ny/<year>/."""
+    import yaml
+    loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+    base = Path(root or ROOT)
+    year = str(Y if year is None else year)
+    out = {}
+    for d in (base / "forms" / year, base / "forms" / "ny" / year):
+        for p in sorted(d.glob("*.yaml")) if d.is_dir() else []:
+            raw = yaml.load(p.read_text(encoding="utf-8"), Loader=loader) or {}
+            doc = raw.get("form") or raw.get("def") or {} if isinstance(raw, dict) else {}
+            for line in doc.get("lines", []) if isinstance(doc, dict) else []:
+                if isinstance(line, dict) and isinstance(line.get("id"), str):
+                    name, _, local = line["id"].partition(".")
+                    out.setdefault(name, set()).add(local)
+    return out
+
+
+def bare_finder(mapping, locals_):
+    """A function listing, for the lines of one file's text, [(line number, [old ids])] of the bare quoted names
+    left beside their document (module doc). `locals_` is current_locals()."""
+    gone = {}
+    for old in mapping:
+        doc, _, local = old.partition(".")
+        if local and local not in locals_.get(doc, ()):
+            gone.setdefault(local, set()).add(doc)
+    docs = sorted({d for ds in gone.values() for d in ds}, key=len, reverse=True)
+    docref = re.compile(r"(?<![A-Za-z0-9_])(" + _alts(docs) + r")(?=[.\[\"'`])") if docs else None
+
+    def find(text):
+        lines = text.splitlines()
+        out = []
+        for n, line in enumerate(lines):
+            names = [m.group(2) for m in QUOTED.finditer(line)]
+            if not any(x in gone for x in names) or CODE_KEEP in line:
+                continue
+            near = set(docref.findall("\n".join(lines[max(0, n - NEAR):n + NEAR + 1])))
+            distinct = set(names)
+            best = set()
+            if len(distinct) >= SIBLINGS:
+                score = {d: len(distinct & ls) for d, ls in locals_.items()}
+                top = max(score.values(), default=0)
+                if top >= SIBLINGS:
+                    best = {d for d, v in score.items() if v == top}
+            found = sorted({f"{d}.{x}" for x in distinct if x in gone for d in gone[x] if d in near or d in best})
+            if found:
+                out.append((n + 1, found))
+        return out
+    return find
+
+
+def code_left(mapping, root=None, year=None):
+    """[(path, where, [old ids])] of the bare quoted names of old ids left in the code (module doc)."""
+    find = bare_finder(mapping, current_locals(root, year))
+    out = []
+    for path in code_files(root):
+        out += [(path, f"line {n}", ids) for n, ids in find(path.read_text(encoding="utf-8", errors="replace"))]
+    return out
+
+
 def apply(mapping, documents, files=(), root=None, ny=None, year=None):
     """Rewrite the places and `files`; the paths changed."""
     sub = substituter(mapping, documents)
@@ -286,7 +380,13 @@ def main(argv):
         sys.exit("rename_ids: check takes no files; it reads the places the module doc lists")
     found = check(mapping, documents)
     n = len(places())
-    where = f"{len(mapping)} ids and {len(documents)} documents renamed, {n} files"
+    if not jurisdiction.NY:
+        code = code_left(mapping)
+        found += code
+        n = f"{n} files and {len(code_files())} code files"
+    else:
+        n = f"{n} files"
+    where = f"{len(mapping)} ids and {len(documents)} documents renamed, {n}"
     if found:
         print(f"rename_ids: old ids left ({where}); rename them with `python3 tools/rename_ids.py apply`, or by "
               "hand where the document moved:")

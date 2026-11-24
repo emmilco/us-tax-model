@@ -179,6 +179,55 @@ class Tree(unittest.TestCase):
         self.assertEqual([(p.name, ids) for p, _, ids in found], [("a.json", ["a.moved_2025"])])
 
 
+CODE_MAP = {"sc.line16b": "sc.interest_other", "f5695.line12": "f5695.carry_in", "s2.line8": "s2.tax_favored"}
+CODE_FORMS = {
+    "forms/2025/sc.yaml": "form:\n  id: sc\n  lines:\n" + "".join(f"  - id: sc.{n}\n" for n in
+                                                              ("line8", "line10", "line11", "interest_other")),
+    "forms/2025/f5695.yaml": "form:\n  id: f5695\n  lines:\n  - id: f5695.line1\n  - id: f5695.carry_in\n",
+    "forms/2025/s2.yaml": "form:\n  id: s2\n  lines:\n  - id: s2.tax_favored\n  - id: s2.line8\n",
+}
+
+
+class Code(unittest.TestCase):
+    """The bare quoted names of the code (code_left): the shapes a rename left behind in the generators."""
+
+    def setUp(self):
+        self.dir = tempfile.TemporaryDirectory()
+        self.root = Path(self.dir.name)
+        for rel, text in CODE_FORMS.items():
+            (self.root / rel).parent.mkdir(parents=True, exist_ok=True)
+            (self.root / rel).write_text(text, encoding="utf-8")
+
+    def tearDown(self):
+        self.dir.cleanup()
+
+    def left(self, rel, text):
+        (self.root / rel).parent.mkdir(parents=True, exist_ok=True)
+        (self.root / rel).write_text(text, encoding="utf-8")
+        return [(p.relative_to(self.root).as_posix(), w, ids) for p, w, ids in R.code_left(CODE_MAP, root=self.root, year=2025)]
+
+    def test_list_of_siblings(self):
+        # a list of a document's local names, read far from where the document is named
+        self.assertEqual(self.left("engine/src/g.ts", 'const E = ["line8", "line10", "line11", "line16b"];\n'),
+                         [("engine/src/g.ts", "line 1", ["sc.line16b"])])
+
+    def test_document_named_nearby(self):
+        text = "X = ['line1', 'line12']\n\nY = {f\"f5695.{k}\": 50 for k in X}\n"
+        self.assertEqual(self.left("tools/x.py", text), [("tools/x.py", "line 1", ["f5695.line12"])])
+
+    def test_not_beside_its_document(self):
+        self.assertEqual(self.left("tools/x.py", 'k = "line16b"\n'), [])
+        self.assertEqual(self.left("tools/x.py", 'k = "line16b"  # sc. rename_ids: not an id\n'), [])
+
+    def test_name_still_a_line(self):
+        # s2.line8 was renamed, but s2 has a line8 again: the name is current
+        self.assertEqual(self.left("tools/x.py", 'k = "s2." + "line8"\n'), [])
+
+    def test_skipped_and_other_files(self):
+        self.assertEqual(self.left("ui/node_modules/m/g.js", '["line8", "line10", "line11", "line16b"]\n'), [])
+        self.assertEqual(self.left("tools/notes.txt", '["line8", "line10", "line11", "line16b"]\n'), [])
+
+
 def main():
     result = unittest.TextTestRunner(verbosity=1).run(unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__]))
     ok = result.wasSuccessful()

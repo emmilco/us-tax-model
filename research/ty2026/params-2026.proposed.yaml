@@ -2297,16 +2297,6 @@ params:
       value: null
       source: none
       note: 2025 source `i8889` has no 2026 edition archived and no other archived 2026 source prints this value
-    hsa.no_months:
-      type: Count
-      value: 0
-      cite:
-        doc: i8889
-        locator: p. 5, Line 3
-        quote: You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last
-          month of your tax year
-      source: draft
-      note: 2025 quote printed unchanged in the 2026 edition
     hsa.two:
       type: Count
       value: 2

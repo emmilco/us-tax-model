@@ -36,7 +36,8 @@
 #
 # --tier light|full|docs selects the steps (default light, the tier a commit on `next` or a lane branch needs).
 # light runs light_steps: compile, build and render, the federal and New York fixtures, the bookkeeping checks, the
-# checks of generated reports, and the interview checks of scoped_steps scoped to the forms the change touches
+# checks of generated reports, the static guards (the next year's operations still apply, no renamed id left, the
+# keyed mutation arguments hold on the build, every parameter read), and the interview checks of scoped_steps scoped to the forms the change touches
 # (tools/change_scope.py: `--forms <ids>`; no step when no form is touched; when the change can reach any walk,
 # interview_coverage and tick_groups run unscoped and interview_rules, whose unscoped run is the release's, not at all). full is the release's tier: every step, the interview checks unscoped, except release_steps (the interview
 # length report and the release checks of the sampled reviews), which run only in release mode
@@ -75,7 +76,7 @@ case "$ny_rc" in
   3) ny_skip="$ny_status" ;;
   *) echo "check-all: tools/jurisdiction.py --ny-status failed" >&2; exit 2 ;;
 esac
-light_steps=" compile build check_self_test bookkeeping_self_tests check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check gate_frequencies person_wording coverage_tree doc_figures test_fixtures ny_test_fixtures interview_rules interview_coverage tick_groups "
+light_steps=" compile build check_self_test bookkeeping_self_tests check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check gate_frequencies person_wording coverage_tree doc_figures test_fixtures ny_test_fixtures interview_rules interview_coverage tick_groups year_changes ny_year_changes renamed_ids ny_renamed_ids mutate_arguments ny_mutate_arguments unread_params "
 docs_steps=" compile build check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree doc_figures "
 scoped_steps=" interview_rules interview_coverage tick_groups "
 release_unscoped=" interview_rules "
@@ -300,11 +301,18 @@ jstep release_false_no "--jurisdiction ny" python3 tools/transcription/check_fal
 # No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
 step year_ids python3 tools/check_year_ids.py "$@"
 # No old id of tools/year_free_names.json is left in the fixtures (defaults included), coverage rows, personas or the
-# triage witnesses of the rulings, in any form, the collection-indexed `doc[entry].name` included (tools/rename_ids.py).
+# triage witnesses of the rulings, in any form, the collection-indexed `doc[entry].name` included, nor, in the federal
+# run, as a bare quoted name beside its document in the code (tools/rename_ids.py).
 jstep renamed_ids "--jurisdiction ny" python3 tools/rename_ids.py check
 # The prepared operations of the next tax year (changes/<year+1>/) still apply to this year's forms, question bank and
 # profiles: no line gone or renamed, no expected text changed, no collision, reference or gate broken, evidence printed.
 jstep year_changes "--jurisdiction ny" python3 tools/year_changes.py --check
+# The keyed equivalence arguments of engine/src/mutate.ts on this build, without a mutation run: each one's mutant still
+# generated, reading the line it names, and the argument holding; those of tools/mutation_arguments_open.json known.
+jstep mutate_arguments --ny "${node[@]}" mutate-arguments
+# Every parameter of both jurisdictions read by a form, interview, change file or code (tools/unread_params_allow.json:
+# the names code builds).
+step unread_params python3 tools/check_unread_params.py "$@"
 # New York only: its tax tables and household credit tables, each the same as a fresh extraction.
 step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
 step ny_household_tables python3 tools/extract_ny_household_tables.py --check "$@"

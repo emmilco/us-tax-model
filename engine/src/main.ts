@@ -18,6 +18,8 @@
 //   node engine/dist/main.js conjecture            test the Tax Table conjecture
 //   node engine/dist/main.js properties            check the data-level properties over generated returns
 //   node engine/dist/main.js properties --ny       the refusal properties over generated returns with New York answers
+//   node engine/dist/main.js mutate-arguments [--ny] [--self-test]
+//                                                  the keyed equivalence arguments of mutate.ts on the build, no run
 //   node engine/dist/main.js classm-jobs [--docs a,b] write the class M hand-work jobs (branch-covering cases)
 //   node engine/dist/main.js check-self-test       test check rules against constructed violations
 //   node engine/dist/main.js interview-rules       the interview rules over profiles, fixture paths and generated returns
@@ -77,6 +79,7 @@ import { interviewCoverage } from "./interview-coverage.js";
 import { draftWalk } from "./draft-walk.js";
 import { interviewOrder } from "./interview-order.js";
 import { tickGroups } from "./tick-groups-check.js";
+import { mutationArguments } from "./mutation-arguments.js";
 import { vettingReport } from "./vetting.js";
 import { personWordingReport, spouseWordingSelfTest } from "./spouse-wording.js";
 
@@ -214,6 +217,8 @@ if (command === "review-stage5") {
   process.exit(process.argv.includes("--corpus-self-test") ? corpusSelfTest() : compareEvaluators());
 } else if (command === "mutate") {
   process.exit(await runMutation());
+} else if (command === "mutate-arguments") {
+  process.exit(mutationArguments(process.argv.slice(3)));
 } else if (command === "properties") {
   process.exit(runProperties());
 } else if (command === "classm-jobs") {
@@ -248,7 +253,7 @@ if (command === "review-stage5") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] [--vetting <file>] | test-serve | vetting-report [--write] [--file <file>] [--self-test] | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | draft-walk [--personas <dir>] [--out <dir>] [--only <name>] [--summary] [--self-test] | tick-groups [--self-test] | spouse-wording --self-test | spouse-wording --report [--check]",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] [--vetting <file>] | test-serve | vetting-report [--write] [--file <file>] [--self-test] | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | mutate-arguments [--ny] [--self-test] | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | draft-walk [--personas <dir>] [--out <dir>] [--only <name>] [--summary] [--self-test] | tick-groups [--self-test] | spouse-wording --self-test | spouse-wording --report [--check]",
   );
   process.exit(2);
 }
