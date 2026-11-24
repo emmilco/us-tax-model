@@ -6719,6 +6719,57 @@
           "cents": 81000
         }
       }
+    },
+    {
+      "id": "mut.f2441.attrib_gate_benefits_open_no_credit",
+      "covers": [
+        "f2441.attrib_gate",
+        "f2441.line31",
+        "f2441.line5"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture, expected values predicted by hand from the archived i2441 and f2441 (2025) before running the evaluator. Joint return, W-2 wages $40,000 (filer) and $30,000 (spouse), one child aged 6 living in the home all year, care asked with $0 of care expenses paid, and the dependent care benefits question left unanswered. Line 30 is the expenses paid ($0) less line 28, floored at zero: $0 whatever the benefits are; line 31, the smaller of lines 29 and 30, is $0 (Form 2441 lines 30 and 31). No credit remains, so the line 1e attribution gate (which needs line 31 more than zero) is a known false although line 1e is not known; line 5 is the spouse's earned income, $30,000 (i2441 p. 4, Lines 4 and 5).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "$w2@person[spouse]": [
+          "emp_b"
+        ],
+        "person[spouse].w2[emp_b].box1": 3000000,
+        "person[spouse].w2[emp_b].box5": 3000000,
+        "person[spouse].w2[emp_b].box6": 43500,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 6,
+        "dependent[a].months": 12,
+        "dependent[a].dc_paid": 0,
+        "f2441.care": true,
+        "f2441.benefits": null
+      },
+      "expect": {
+        "f2441.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f2441.attrib_gate": {
+          "kind": "bool",
+          "value": false
+        },
+        "f2441.line5": {
+          "kind": "money",
+          "cents": 3000000
+        }
+      }
     }
   ]
 }
