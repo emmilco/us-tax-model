@@ -303,8 +303,10 @@ type checker are the federal ones and the New York ones. A New York request:
   parentheses and punctuation dropped), from the line's printed label as printed on the federal form's
   own archived pages (its sentences, less "This is your" and instruction sentences such as "Add lines
   ..."; "Earned income credit (EIC)" also without "(EIC)"; "IRA distributions, taxable amount" also as
-  "taxable amount of IRA distributions"); it counts only where the 50 words before it name the line's
-  federal form or say "federal" (implying Form 1040 and its numbered schedules), not where the text
+  "taxable amount of IRA distributions"); it counts only where the 50 words before it, or the rest of its
+  line after it (up to the next printed line number, at most 15 words: "Rental real estate, royalties, ...
+  (submit copy of federal Schedule E, Form 1040)"), name the line's federal form or say "federal"
+  (implying Form 1040 and its numbered schedules), not where the text
   qualifies it as New York's ("New York adjusted gross income", "city taxable income"), and not inside
   a longer phrase matched at the same place. A federal document is listed whole only where a line of
   the document cites its pages or the document instantiates a federal definition; a federal form the
@@ -716,7 +718,9 @@ cases, suffixed with the family, to `fixtures/2025/classm.<family>.json`
 (see Model families). A disagreement is written into the fixture as the model's value,
 so the build fails until it is ruled: a project defect gets a data fix and an
 inventory entry; a model arithmetic error is dropped from the fixture with
-`{"ruling": "...", "drop": true}` and stays in the log. Documents that are
+`{"ruling": "...", "drop": true}` and stays in the log. A model-error or ambiguity ruling applied without drop
+can be given it afterwards with `rule.py --amend` and the same object (the line leaves the fixture and the
+ruling is suffixed `[dropped]`); clearing a drop is refused. Documents that are
 collections (`person`, `w2`, `sales`, `gift`, `interest`) or definitions
 (`tcw`, `tax_on_amount`) have no class M cases yet.
 

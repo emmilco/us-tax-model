@@ -21,7 +21,10 @@ its file on this line of history, or from HEAD while the file is uncommitted.
 The review-refresh half of T-150 (fail check-all when a sibling form's logs were not rerun)
 is `--reviews-since <rev>`: it reports sibling forms with no review log changed since <rev>. In `--check`, a changed
 transcription or render log refreshes a sibling form; a changed class M log refreshes the sibling lines the form's
-transcription review does not compare (helper lines, which only class M reviews).
+transcription review does not compare (helper lines, which only class M reviews). The review refresh is checked only
+for the entries the tree under test adds or changes over HEAD (an inventory entry HEAD lacks, a pending file that is
+new or differs from HEAD's), measured from HEAD; an entry already committed keeps the verdict of the commit that
+added it, so a later change to another form does not make its sibling forms due again.
 """
 import argparse
 import json
@@ -311,6 +314,18 @@ def entry_base(bug, head_text):
     return f"{out}^" if out else "HEAD"
 
 
+def under_test(bug, base):
+    """Whether the tree under test adds or changes the entry over HEAD: an entry measured from HEAD (not committed),
+    or a committed pending entry whose file the working tree changes."""
+    if base == "HEAD":
+        return True
+    if not bug.startswith("BUG-NEW-"):
+        return False  # the inventory is append-only: a committed entry is unchanged
+    rel = str((PENDING / f"{bug[len('BUG-NEW-'):]}.md").relative_to(ROOT))
+    return bool(subprocess.run(["git", "diff", "--name-only", "HEAD", "--", rel],
+                               capture_output=True, text=True, check=False).stdout.strip())
+
+
 def missing_siblings(fix, siblings, checked):
     """The generated siblings a Siblings checked field omits. A fix's own lines are not siblings of one
     another: a fix of two lines that read each other need not list either."""
@@ -455,6 +470,9 @@ def check(docs, ids):
         if missing:
             problems.append(f"{bug}: Siblings checked omits {len(missing)} generated sibling(s): "
                             f"{', '.join(sorted(missing)[:8])}{' ...' if len(missing) > 8 else ''}")
+        if not under_test(bug, base):
+            continue
+        base = "HEAD"
         if base not in logged:
             logged[base] = current_docs(changed_logs(base))
         if base not in year_forms_changed:
@@ -529,6 +547,9 @@ def self_test(docs, ids):
     assert unknown_siblings({"a.x", "a.gone", "a.typo"}, {"a.x"}, {"a.x", "a.gone"}) == ({"a.gone"}, {"a.typo"}), \
         "a sibling line removed since a committed entry was written is reported, not failed; an unknown one fails"
     assert unknown_siblings({"a.gone"}, {"a.x"}, None) == (set(), {"a.gone"}), "a pending entry's unknown line fails"
+    assert under_test("BUG-0001", "HEAD") and under_test("BUG-NEW-" + "x-01", "HEAD"), "an uncommitted entry is under test"
+    assert not under_test("BUG-0001", "abc^"), "a committed inventory entry keeps its commit's verdict"
+    assert not under_test("BUG-NEW-" + "no-such-entry-99", "abc^"), "a committed pending file the tree leaves unchanged"
     if check(docs, ids) != 0:
         raise SystemExit("siblings self-test: bug-entry check failed")
     print("siblings self-test: ok")

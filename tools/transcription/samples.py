@@ -100,6 +100,8 @@ def carried(found, rulings):
 
 
 BUG_ID = re.compile(r"BUG-\d{4}")
+# A class that classes a defect or a real gap: "defect ...", "real gap ...", or either after a severity ("low defect: ...").
+DEFECT_CLASS = re.compile(r"(?:(?:low|medium|high|critical) )?(?:defect|real gap)\b", re.I)
 # The severities an open bug may have and still not hold a release back; an open bug of any other severity, or of none
 # recorded, holds it back unless the release allows open bugs.
 RELEASE_SEVERITIES = ("low",)
@@ -107,15 +109,17 @@ RELEASE_SEVERITIES = ("low",)
 
 def confirmed_bugs(ruling):
     """The bug ids a ruling confirms as defects: its `bug` (a completeness real gap) and `bugs` fields, the ids its own
-    class names, and the ids in a finding it classes a defect or a real gap. An id named only in its reason, or in a
-    finding classed otherwise (covered, out of scope, model error), is context, not a confirmation."""
+    class names when the class classes a defect or a real gap (DEFECT_CLASS), and the ids in a finding it classes so.
+    An id named only in its reason, in a class that rules no defect ("no gate defect; ... (BUG-NNNN)"), or in a finding
+    classed otherwise (covered, out of scope, model error), is context, not a confirmation."""
     if not isinstance(ruling, dict):
         return set()
     ids = set(BUG_ID.findall(str(ruling.get("bug") or "")))
     ids |= {b for b in ruling.get("bugs") or [] if isinstance(b, str) and BUG_ID.fullmatch(b)}
-    ids |= set(BUG_ID.findall(str(ruling.get("class") or "")))
+    if DEFECT_CLASS.match(str(ruling.get("class") or "")):
+        ids |= set(BUG_ID.findall(str(ruling.get("class") or "")))
     for f in ruling.get("findings") or []:
-        if isinstance(f, dict) and re.match(r"(defect|real gap)\b", str(f.get("class") or "")):
+        if isinstance(f, dict) and DEFECT_CLASS.match(str(f.get("class") or "")):
             ids |= set(BUG_ID.findall(json.dumps(f)))
     return ids
 

@@ -847,6 +847,7 @@ def label_phrases(label, form_text):
 # and its numbered schedules.
 FEDERAL_RETURN = ("f1040", "f1040s1", "f1040s1a", "f1040s2", "f1040s3")
 LABEL_WINDOW = 50        # words before a phrase that make up its passage
+LABEL_TAIL = 15          # at most this many words after a phrase, to the line's end, make up its tail
 NEW_YORK_QUALIFIER = re.compile(r" (new york|new york state|new york city|nys|nyc|city|yonkers|state) $")
 NORM_NAME = re.compile(r" (form|schedule)s? (\d{3,4}(?: [a-z]{1,3})?|w 2|[1-3](?: a)?|8812|se|[a-e])(?= )")
 
@@ -861,14 +862,26 @@ def passage_families(passage, mani):
     return out
 
 
+def label_tail(flat, b):
+    """The rest of the line a phrase ending at `b` of the normalized text `flat` is printed on: the words after it, up
+    to the next printed line number (a number not after "form" or "schedule") and at most LABEL_TAIL words."""
+    out = []
+    for word in flat[b:].split()[:LABEL_TAIL]:
+        if re.fullmatch(r"\d+[a-z]?", word) and (not out or out[-1] not in ("form", "forms", "schedule", "schedules")):
+            break
+        out.append(word)
+    return " " + " ".join(out) + " "
+
+
 def federal_labelled(text, mani):
     """{federal document id: line ids} of the printed federal lines the text names by printed label.
 
     Text and labels are compared normalized (label_norm). A line's label phrases (label_phrases) are looked
     for in the text as whole phrases. An occurrence counts only where
-      - its passage, the LABEL_WINDOW words before it and the phrase itself, names the line's IRS form or,
-        saying "federal", implies the federal return (passage_families): the IRS form the text names or
-        implies for that passage;
+      - its passage, the LABEL_WINDOW words before it and the phrase itself, or its tail, the rest of the
+        line after it (label_tail: "Rental real estate, royalties, ... (submit copy of federal Schedule E, Form
+        1040)"), names the line's IRS form or, saying "federal", implies the federal return (passage_families):
+        the IRS form the text names or implies for that passage;
       - the text does not qualify it as a New York amount ("New York adjusted gross income", "New York
         State earned income credit", "city taxable income"): NEW_YORK_QUALIFIER just before it;
       - it does not lie inside a longer phrase found at the same place ("IRA distributions" inside "taxable
@@ -900,7 +913,7 @@ def federal_labelled(text, mani):
         if NEW_YORK_QUALIFIER.search(flat[max(0, a - 20):a + 1]):
             continue
         first = starts[max(0, bisect.bisect_left(starts, a + 1) - LABEL_WINDOW)]
-        if fams & passage_families(flat[max(0, first - 1):b + 1], mani):
+        if fams & (passage_families(flat[max(0, first - 1):b + 1], mani) | passage_families(label_tail(flat, b), mani)):
             out.setdefault(d, set()).add(i)
     return out
 

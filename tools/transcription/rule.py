@@ -19,7 +19,10 @@ finding, its severity: a finding is given as {"ruling": "Ruling: finding; ...", 
 sidecar entry without reopening the section. The amended ruling keeps the class of the one it
 replaces (compare_families.ruling_category), its drop flag and its context; it is stamped with
 today's date, and a finding keeps its severity unless a new one is given. Changing a ruling's
-class, or whether it drops a fixture line, is not an amendment and is refused.
+class is not an amendment and is refused. In a class M log an amendment given as {"ruling": "...",
+"drop": true} may set the drop flag on a model-error or ambiguity ruling that did not drop: the line
+is removed from the fixture as when ruling with drop. Clearing a drop flag is refused (the dropped
+expectation is not restored).
 """
 import argparse, datetime, json, os, re, sys
 
@@ -71,6 +74,7 @@ def amend(form, rulings, kind="transcription", family=families.DEFAULT):
     parts = body.split("\n### ")
     stored = sidecar.load(kind, form, family)
     amended = []
+    drops = []
     for i in range(1, len(parts)):
         title, _, content = parts[i].partition("\n")
         found = sidecar.section_key(kind, title, content)
@@ -87,8 +91,15 @@ def amend(form, rulings, kind="transcription", family=families.DEFAULT):
         new_text = (given["ruling"] if isinstance(given, dict) else given).rstrip()
         if not new_text.startswith("Ruling:"):
             new_text = "Ruling: " + new_text
+        new_drop = old_drop
         if isinstance(given, dict) and "drop" in given and bool(given["drop"]) != old_drop:
-            raise SystemExit(f"{form}: the amendment at {printed} changes whether the line is dropped; not an amendment")
+            if old_drop:
+                raise SystemExit(f"{form}: the amendment at {printed} clears the drop flag; the dropped expectation "
+                                 "is not restored by an amendment")
+            if kind != "classm" or category(old_text) not in ("model_error", "ambiguity"):
+                raise SystemExit(f"{form}: the amendment at {printed} sets drop; only a class M model-error or "
+                                 "ambiguity ruling may drop its line")
+            new_drop = True
         if category(new_text) != category(old_text):
             raise SystemExit(f"{form}: the amendment at {printed} changes the ruling's class "
                              f"({category(old_text)} to {category(new_text)}); not an amendment")
@@ -102,8 +113,11 @@ def amend(form, rulings, kind="transcription", family=families.DEFAULT):
         severity = severity or entry.get("severity")
         if is_finding(new_text) and severity not in sidecar.SEVERITIES:
             raise SystemExit(f"{form}: the finding at {printed} needs a severity")
-        stored[skey] = {**entry, "ruling": new_text, "date": today(), **({"severity": severity} if severity else {})}
-        new_line = new_text + (sidecar.DROPPED if old_drop else "")
+        stored[skey] = {**entry, "ruling": new_text, "date": today(), **({"severity": severity} if severity else {}),
+                        **({"drop": True} if new_drop else {})}
+        new_line = new_text + (sidecar.DROPPED if new_drop else "")
+        if new_drop and not old_drop:
+            drops.append((key[0], key[1]))
         parts[i] = title + "\n" + content.replace(line, new_line, 1)
         amended.append(printed)
     missing = sorted(set(rulings) - set(amended))
@@ -112,6 +126,8 @@ def amend(form, rulings, kind="transcription", family=families.DEFAULT):
     if amended:
         sidecar.write_log(kind, form, head + sep + "\n### ".join(parts) + sep2 + tail, family)
         sidecar.save(kind, form, stored, family)
+        for case_id, handle in drops:
+            drop_from_fixture(form, case_id, handle, family)
     return amended
 
 
@@ -201,7 +217,8 @@ if __name__ == "__main__":
     ap.add_argument("--rulings", required=True)
     ap.add_argument("--kind", default="transcription", choices=["transcription", "render", "classm"])
     ap.add_argument("--family", default=families.DEFAULT, help="the model family whose log is ruled")
-    ap.add_argument("--amend", action="store_true", help="rewrite the text of rulings already applied (same class)")
+    ap.add_argument("--amend", action="store_true", help="rewrite the text of rulings already applied (same class; may set drop on a class M "
+                    "model-error or ambiguity ruling)")
     a = ap.parse_args()
     if a.amend:
         done = amend(a.form, json.load(open(a.rulings)), a.kind, a.family)

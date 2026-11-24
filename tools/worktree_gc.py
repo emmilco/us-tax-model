@@ -24,6 +24,10 @@ copy, when the worktree has a clone base; data.txt says which), then removes the
 refused, and so is one whose review data cannot be compared with the main worktree's (no clone base, or a carry-back
 dry run that refuses): it could hold the only copy of review results. `--force-data REASON` archives it anyway,
 recording the reason in data.txt, once the operator has saved or ruled out that data. `check --fail` is the release gate (tools/release_prep.sh); check-all prints `check` without failing.
+
+`check` also needs action when the clone's core.hooksPath is an absolute path (hooks_path_problem): git resolves a
+relative path (`tools/hooks`) against each worktree's root, so each worktree runs its own tree's hooks; an absolute
+one makes every worktree run one checkout's.
 """
 import datetime
 import os
@@ -202,6 +206,15 @@ def report(rows, only_action=False):
     return counts
 
 
+def hooks_path_problem(root):
+    """Why the clone's core.hooksPath needs action (an absolute path), or None."""
+    path = git("config", "--get", "core.hooksPath", cwd=root, check=False).stdout.strip()
+    if path and os.path.isabs(path):
+        return (f"core.hooksPath is the absolute path {path}, so every worktree runs that checkout's hooks; "
+                "set it relative: git config core.hooksPath tools/hooks")
+    return None
+
+
 def main(argv):
     args = [a for a in argv if not a.startswith("--")]
     dry = "--dry-run" in argv
@@ -215,6 +228,10 @@ def main(argv):
         if need:
             print(f"worktree_gc: {need} worktree(s) need action: `tools/worktree_gc.py remove` for the removable, "
                   "`archive NAME` or `git worktree lock --reason \"keep: <why>\"` for the stale")
+        hooks = hooks_path_problem(ROOT)
+        if hooks:
+            print(f"worktree_gc: {hooks}")
+            need += 1
         return 1 if need and "--fail" in argv else 0
     if cmd == "remove":
         for w, cls, why in survey(ROOT):
@@ -289,6 +306,10 @@ def self_test():
             ok &= os.path.isdir(os.path.join(tmp, "dirty")) and not os.path.exists(os.path.join(tmp, "arch", "dirty"))
         archive(r, w2, os.path.join(tmp, "arch", "dirty2"), unknown, force_data="checked by hand")
         ok &= "checked by hand" in open(os.path.join(tmp, "arch", "dirty2", "data.txt")).read()
+        g("config", "core.hooksPath", "tools/hooks")
+        ok &= hooks_path_problem(r) is None
+        g("config", "core.hooksPath", os.path.join(r, "tools", "hooks"))
+        ok &= hooks_path_problem(r) is not None
         print("worktree_gc self-test: " + ("ok" if ok else f"FAILED: {got}"))
         return 0 if ok else 1
     finally:

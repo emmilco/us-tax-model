@@ -104,6 +104,17 @@ class SampleTests(unittest.TestCase):
         self.assertEqual(samples.release_open_bugs({k: rulings[k] for k in ("unruled:b#1", "unruled:c#1", "unruled:e#1")},
                                                    allow=False, entries=entries), 0)
 
+    def test_a_class_ruling_no_defect_confirms_no_bug_it_names(self):
+        """An id in a ruling's class is confirmed only when the class classes a defect or a real gap."""
+        self.assertEqual(samples.confirmed_bugs({"class": "no gate defect; the finding is the prompt's text (BUG-0800)"}), set())
+        self.assertEqual(samples.confirmed_bugs({"class": "no defect (as BUG-0123, already fixed)"}), set())
+        self.assertEqual(samples.confirmed_bugs({"class": "covered by BUG-0124"}), set())
+        self.assertEqual(samples.confirmed_bugs({"class": "defect: x (BUG-0125)"}), {"BUG-0125"})
+        self.assertEqual(samples.confirmed_bugs({"class": "low defect: x (BUG-0126)"}), {"BUG-0126"})
+        self.assertEqual(samples.confirmed_bugs({"class": "defect (medium) in part: BUG-0127"}), {"BUG-0127"})
+        self.assertEqual(samples.confirmed_bugs({"class": "no gate defect", "findings": [
+            {"class": "low defect", "evidence": "BUG-0128"}]}), {"BUG-0128"})
+
     def test_claims_keyed_by_sample(self):
         r = rec(0)
         r["samples"] = [{"claims": [{"item": "a", "quote": "q"}]}, {"claims": [{"item": "a", "quote": "q"}, {"item": "b"}]}]

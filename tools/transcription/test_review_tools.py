@@ -125,6 +125,37 @@ class RulingContext(unittest.TestCase):
                     rule.amend("x", bad)
             self.assertIn("17 value records", rulings.read_log("transcription", "x"))
 
+    def test_amend_sets_drop_on_a_ruled_classm_model_error_or_ambiguity(self):
+        """rule.py --amend may set drop on a class M model-error or ambiguity ruling that did not drop: the log
+        line is suffixed [dropped], the sidecar entry drops and the fixture line is removed; drop is refused on
+        another class, and clearing a drop is refused."""
+        with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp), \
+                patch.object(M, "LOGS", temp), patch.object(M.subjects, "current", return_value="a" * 64), \
+                patch.object(M, "fixture_path", return_value=str(Path(temp, "fixtures.json"))), \
+                patch.object(rule, "drop_from_fixture") as dropped:
+            Path(temp, "classm").mkdir()
+            job = {"id": "classm.x.1", "branches": [], "inputs": {},
+                   "fill": [{"id": f"x.line{n}", "printed": str(n), "label": "Test", "type": "Dollars"} for n in (1, 2, 3)],
+                   "project": {f"x.line{n}": {"kind": "money", "cents": 100} for n in (1, 2, 3)}}
+            run = {"used": [], "verdicts": {str(n): {"value": 2} for n in (1, 2, 3)}, "raw": "raw", "prompt_sha": "b" * 64}
+            M.write_outputs({"id": "x", "title": "Test"}, "claude-opus-5-5", [job],
+                            {job["id"]: run}, {job["id"]: {"model_reported": ["claude-opus-5-5"]}})
+            rule.apply("x", {"classm.x.1 — 1": "ambiguity; amb.x, project stands",
+                             "classm.x.1 — 2": "scope; synthetic", "classm.x.1 — 3": {"ruling": "model error; sum", "drop": True}},
+                       "classm")
+            dropped.reset_mock()
+            self.assertEqual(rule.amend("x", {"classm.x.1 — 1": {"ruling": "ambiguity; amb.x, project stands",
+                                                                  "drop": True}}, "classm"), ["classm.x.1 — 1"])
+            dropped.assert_called_once_with("x", "classm.x.1", "1", families.DEFAULT)
+            self.assertIn("Ruling: ambiguity; amb.x, project stands [dropped]", rulings.read_log("classm", "x"))
+            entry = next(v for k, v in rulings.load("classm", "x").items() if k[1] == "1")
+            self.assertTrue(entry["drop"])
+            for bad in ({"classm.x.1 — 2": {"ruling": "scope; synthetic", "drop": True}},
+                        {"classm.x.1 — 3": {"ruling": "model error; sum", "drop": False}}):
+                with self.assertRaises(SystemExit):
+                    rule.amend("x", bad, "classm")
+            self.assertEqual(dropped.call_count, 1)
+
     def test_legacy_rulings_are_preserved_but_not_automatically_reused(self):
         with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp):
             Path(temp, "render").mkdir()

@@ -422,6 +422,10 @@ once per clone:
 
     git config core.hooksPath tools/hooks
 
+The path is relative: git resolves it against the root of the worktree a command runs in, so each linked worktree
+runs its own tree's hooks (an absolute path would make every worktree run one checkout's hooks);
+`tools/worktree_gc.py check` needs action, and so fails a release, while it is absolute.
+
 `--no-verify` bypasses either hook; that is a deliberate act, not a routine.
 
 **No ceremonial reruns (owner rule, 2026-11-15; advisory, no tool enforces it).** A check is rerun only where the
@@ -682,7 +686,8 @@ subject (item and normalised quote) carries that ruling. Between releases a form
 listed by check-all, not failed. `--release` of the completeness, screen and false-no checks is the release gate
 (`tools/release_reviews.sh`): it fails while any subject is due or short of `SAMPLES_PER_MILESTONE` samples, and while an
 accepted or carried ruling confirms an open bug of medium or high severity (or of none recorded) in `BUG_INVENTORY.md`
-(`samples.open_defects`: the ruling's `bug` or `bugs`, its class, or a finding it classes a defect or a real gap),
+(`samples.open_defects`: the ruling's `bug` or `bugs`, the ids its class names when the class is a defect or a real
+gap, "low defect: ..." included, or a finding it classes so; "no gate defect; ... (BUG-NNNN)" confirms nothing),
 unless the release is made with `--allow-open-bugs` (`tools/release.sh`, `release_prep.sh` and `release_reviews.sh`
 pass it on), which lists each such ruling and bug in the tag message.
 `check_questions.py` lists due questions (a count on the console, the list in `reports/<year>/question_currency.md`)
@@ -821,7 +826,10 @@ type accepts: a Bool, an integer, non-negative unless `Dollars`, or a value of i
 placed after, drops the defaults of inputs the operations remove, resolves the cases against the result, drops a
 case's answer to a removed input where it equals that input's unconditional from-year default (it says what the
 default said), marks "not evaluated in <year>" (and lists) the cases that still state a removed input, and drops (and
-lists) an expectation on a removed line. The engine's fixture loader leaves the marked cases out (`classm-jobs`,
+lists) an expectation on a removed line. A case of a file that takes no defaults (class M, mutation) is given the
+new inputs' defaults as stated answers where it does not answer them, so a value it asserts does not become unknown
+for want of an input the year adds; the report lists those answers, and any expectation the carry still moves from a
+known value to unknown. The engine's fixture loader leaves the marked cases out (`classm-jobs`,
 `mutate` and the other commands that evaluate every case see none of them), and `test-fixtures` names them and fails
 while any remain.
 
@@ -968,7 +976,9 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   what `--assign` appends for the parents' pending entries the merge removes; a pending file the merge
   keeps is a parent's, changed only by the rewriting of assigned placeholders. `tools/siblings.py --check`
   reads pending entries too, measured from the commit that added the file, and an assigned entry from the
-  merge that assigned it.
+  merge that assigned it. Its review-refresh test (a sibling form's review log changed) applies only to the
+  entries the tree under test adds or changes over HEAD, measured from HEAD; a committed entry keeps the
+  verdict of the commit that added it, so a later change to another form does not make its siblings due again.
 - **Bug status** (`tools/bug_status.py`, step `bug_status`, docs tier). The inventory is append-only, so an
   entry's status is derived, never edited in: from its own fields (`Status`, `Disposition`, a fix field), then
   from later entries that close it (a `Closes:` field, or the title conventions older entries used, such as
