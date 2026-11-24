@@ -447,6 +447,45 @@
   {
    "printed": "scope.schedule1",
    "project_expr_sha256": "6575fd839383b717d1689dcce36a2542d6b118d163141fc877ce2ce0621262c9",
+   "second_expr_sha256": "3701e17399229e46b3020381be1018a4a7349ea8b068fe1d723e473368add309",
+   "ruling": "Ruling: interface gap; as the ruling of 2026-11-22: the pages do not define this helper and the reply guessed a narrower set of Schedule 1 adjustments. The project's helper is any Schedule 1 item this tool does not compute (its label), and also holds the personal property rental, Schedule K-1, farm, clergy and church-employee screens. Encoding unchanged; re-reviewed because scope.military_move's question text changed (BUG-NEW-lane-lints-03). Triage (pass 61c588e4239c): 4,431 of 4,897 agree; the 134 value differences are the screens the reply leaves out. Project stands.",
+   "context": "317c8474600fbb7af46e08cfd9d639e13fa3a0c46b13087d4d5473dd5091ffe7",
+   "date": "2026-11-24",
+   "run": "22437ffbb18e82a9e8da37277b870a5f9288fdf2085ba66e76a866241aac86ee",
+   "subject_key": "cefaa87b9d2c6da4b4644ad1a65b816c258d8e12c09969364cc260254d1a5395",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.2.deepseek@scope",
+     "fixture:classm.s2.9.deepseek@scope",
+     "fixture:classm.asset.1.deepseek@scope",
+     "fixture:classm.asset.3.deepseek@scope",
+     "fixture:classm.k1s.1.deepseek@scope",
+     "fixture:classm.k1s.2.deepseek@scope",
+     "fixture:classm.k1s.3.deepseek@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1.step5@scope",
+     "fixture:t264.eic.step2_schedule1@scope",
+     "fixture:stage9.eic.refuse.clergy_schedule1@scope",
+     "fixture:x2k1p.refuse_ptp@scope",
+     "fixture:x2k1p.refuse_box10@scope",
+     "fixture:x2k1p.refuse_multi@scope",
+     "fixture:mutation.t2.mfj_no_overtime_part3@scope",
+     "fixture:mutation.t2.s1a.line13_magi_first@scope",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_three_jobs@scope",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@scope",
+     "partial:stage14.asset.hy_5yr-scope.armed_forces@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "scope.schedule1",
+   "project_expr_sha256": "6575fd839383b717d1689dcce36a2542d6b118d163141fc877ce2ce0621262c9",
    "second_expr_sha256": "6b15b8e8fe7f3ea775fe0143ce7abf45ce2bc6c448459a357bb724fd3f40bd35",
    "ruling": "Ruling: interface gap; as the ruling of 2026-11-23: the pages do not define this helper and the reply guesses a narrower set of Schedule 1 adjustments; the project's helper is any Schedule 1 item this tool does not compute, each a cited refusal (now with scope.trade_act_repaid and scope.remic from next). Triage executable-triage-v2 (.transcription/triage/2025/scope.json, pass 7497bafeab0e): 4253 of 4694 agree; {\"candidate-unknown\": 11, \"project-unknown\": 287, \"value\": 143}; completed {\"candidate-unknown\": 4}. Re-reviewed because the landing merged next's scope lines with advfix's. Project stands.",
    "context": "8c08b5e1fae183ecfd84bbafce78d116399c879a84491643614fe91984c9a2f0",

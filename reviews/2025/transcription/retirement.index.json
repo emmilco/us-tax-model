@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "27",
   "agree / disagree / missing": "1 / 26 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -66,52 +66,52 @@
   },
   {
    "key": "retirement.l2",
-   "record": "504af63fc42dd0ba1c255aadf535affbe0bced271610a63326b5cdb9be81864b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the candidate leaves out exception 12 for a filer 59½ or older all year: advland.retirement.code1_born_1955 (born 1955, code 1, $20,000) gives the project $20,000 and the candidate $0 (i5329 p. 5, exception 12, \"Distributions incorrectly indicated as early distributions by code 1, J, or S ... Include on line 2 the amount you received when you were age 59 1/2 or older\"). The rest are unknowns on partial input states.",
-   "subject_key": "58885dab2eb4c4b9432d6795390ba5556ada4a3b28fda3a531f9f4b2d16bdfa5"
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\" and exception 12, \"Include on line 2 the amount you received when you were age 59 1/2 or older.\" The encoding is unchanged since the ruling of 2026-11-23; this pass is line-scoped because retirement.exception's question text changed (BUG-NEW-release-prep-16). Triage (pass fd2030494f1d): 1,951 candidate-unknown (the reply reads retirement.after59 and early_screen where the interview does not ask them), 86 value differences of the kind ruled before (the reply's exception-12 and per-person-limit reading). Project stands.",
+   "subject_key": "3684aee6024b241bb276165c5de5acca060c09a940949b41aad9d1d5acaf2d51"
   },
   {
    "key": "retirement.l2_e05",
-   "record": "504af63fc42dd0ba1c255aadf535affbe0bced271610a63326b5cdb9be81864b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where one side is unknown on a partial input state (candidate-unknown 101, project-unknown 1, pass e6eb130ff729); no value or refusal differs.",
-   "subject_key": "cb50933113292d85283e99622415bfdb314885413de2301cd8a0fb50e347e896"
+   "ruling": "Ruling: representation; encoding unchanged since the ruling of 2026-11-23. Triage (pass fd2030494f1d): 3,230 of 3,997 agree; every other comparison is candidate-unknown (the reply reads retirement.after59 on entries where it is not asked) or project-unknown on a partial state; no value or refusal differs.",
+   "subject_key": "62b42e13e1149f41d84168021403ceac5672c7f69bdb7ea8ee5d5d5154771d28"
   },
   {
    "key": "retirement.l2_e09",
-   "record": "504af63fc42dd0ba1c255aadf535affbe0bced271610a63326b5cdb9be81864b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where the candidate is unknown on a partial input state (102, pass e6eb130ff729); no value or refusal differs.",
-   "subject_key": "2eb7fa8fcf89c6166c971f5977adc927a5c394c4b3cc4a7f8ef71bb460a9a97f"
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; re-reviewed only because retirement.exception's question text changed. Triage (pass fd2030494f1d): 3,241 of 3,997 agree, the rest candidate-unknown (the reply reads retirement.after59 where it is not asked); no value differs.",
+   "subject_key": "3e2742d727db8922890285ee612e45eb1dd8766c295019e7c8fc4ba50a572652"
   },
   {
    "key": "retirement.l2_e19",
-   "record": "504af63fc42dd0ba1c255aadf535affbe0bced271610a63326b5cdb9be81864b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where one side is unknown on a partial input state (candidate-unknown 102, project-unknown 1, pass e6eb130ff729); no value or refusal differs.",
-   "subject_key": "0cdd27e39853ed20aaaf3baa2d3cdae21dd8841205f52042c736889bd4730cd5"
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; triage (pass fd2030494f1d): 3,243 of 3,997 agree, the rest candidate-unknown (retirement.after59 read where not asked); no value differs.",
+   "subject_key": "d16dfee7150642724bc666e2834ccf9a899754361db305d1742eb9331801f4bf"
   },
   {
    "key": "retirement.l2_e22",
-   "record": "504af63fc42dd0ba1c255aadf535affbe0bced271610a63326b5cdb9be81864b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where the candidate is unknown on a partial input state (102, pass e6eb130ff729); no value or refusal differs.",
-   "subject_key": "3459ac27b3693aae467dcd0093cfdeb2c135f931fc5c8f91a6f6608962bbe1cb"
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; triage (pass fd2030494f1d): 3,167 of 3,997 agree, the rest candidate-unknown (retirement.after59 read where not asked); no value differs.",
+   "subject_key": "8c68a6736be06e65b24ead21abb82da84474d41e5fa872353f89386f284fc498"
   },
   {
    "key": "retirement.is_e23",
-   "record": "8101fa861dd53eefe45786bce01b9d648203bcc482f3ece7a4e97c22e3f7f25b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p590b p. 28, Emergency personal expense distributions; i5329 p. 5, Line 2. As the ruling of 2026-11-07: the reply's early test includes codes the project refuses or does not ask the exception for, so it reads retirement.exception where the interview does not ask it; no completed value differs. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json, pass 69423d5662ec): 3560 of 3594 agree; {\"candidate-unknown\": 31, \"project-unknown\": 3}; completed {}. Re-reviewed because this lane (advland) changed the retirement lines for exception 12 (BUG-1193) and gave the retirement questions the per-person frame (BUG-1196). Project stands.",
-   "subject_key": "5126b5c46664964c9bcb41eaa94af4f068a2c54202d5d35eed0dcc5d2a9e2aca"
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; triage (pass fd2030494f1d): 3,192 of 3,997 agree, the rest candidate-unknown (the reply reads retirement.after59 and retirement.exception where the interview does not ask them); no value differs.",
+   "subject_key": "6ccef733640de6bc5e9c3d35101d4713c01d34702e00e5e94bd120b334dcbc34"
   },
   {
    "key": "retirement.l2_e23",
-   "record": "504af63fc42dd0ba1c255aadf535affbe0bced271610a63326b5cdb9be81864b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where the candidate is unknown on a partial input state (102, pass e6eb130ff729); no value or refusal differs.",
-   "subject_key": "c9078259158883c4a58fff2f5e1a183811adc80747438c19dd99d78d2ed46e37"
+   "ruling": "Ruling: representation; as the ruling of 2026-11-14 (retirement.under59 is asked only with code 7). Encoding unchanged; triage (pass fd2030494f1d): 3,189 of 3,997 agree, the rest candidate-unknown or project-unknown on partial states; no value differs.",
+   "subject_key": "3857e56410df3796aab583fdfb0917e5df5593abfec8f91e6b00ab2d4ffe57f0"
   },
   {
    "key": "retirement.l1_s",
@@ -122,10 +122,10 @@
   },
   {
    "key": "retirement.l2_s",
-   "record": "504af63fc42dd0ba1c255aadf535affbe0bced271610a63326b5cdb9be81864b",
+   "record": "84746503b48be37725a6055f3e2978f8e0fce1cadef5f3faa2615c8b2c32bd0d",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where the candidate is unknown on a partial input state (85, pass e6eb130ff729); no value or refusal differs.",
-   "subject_key": "1dc7e6f62d28223e6f53901106066f64eeb85cd75e697cf4689d999772350876"
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged since the scope ruling of 2026-11-17; triage (pass fd2030494f1d): 3,988 of 3,997 agree, the 9 others unknown on partial states (rollover, roth_moved not yet answered); no value differs.",
+   "subject_key": "5d8163d8ef8bca8f9af2a7beb5bdbfa414b690cee7b22192fc911cda45fda759"
   },
   {
    "key": "(SMW 1)",
@@ -207,15 +207,15 @@
   "retirement.amount_a": "8599699e9913f70e1b96777fad631f4b50676fc17622586bd02bc63f6579a8ce",
   "retirement.sav_amount": "2449cd379a95c859bb56cf261a2815b3399f98204c2d21f35edc15cc19225e3c",
   "retirement.l1": "b441ebde6574657b1e0179634ee9bad66619e7af36082e166cc6aee8c607add6",
-  "retirement.l2": "359afed9c305dc2f79e3555b7c2f3c23b246294a8eeb6cc20749163136c15061",
-  "retirement.l2_e05": "20666352bbab93b984e74c7e8504c612cf0100da4edadd957c41945056207ab2",
-  "retirement.l2_e09": "882dd0567dc20f79c6cd1caf6e6e4c215a7d8e2d62c748167b4484942a8cbbe5",
-  "retirement.l2_e19": "b94e3ac1355bb06a0022dafc6739ff0f43b7a6566d50c102b365fb2b40d7413c",
-  "retirement.l2_e22": "5b4428a890dc78a962e44a4de5fff91cb4c909b5b4bc14825b500c74041756aa",
-  "retirement.is_e23": "5d7f321f6251022960b396a1307437581d038d23b83742ddd83f81cab01f9a47",
-  "retirement.l2_e23": "0390b97fb8337764c5b52750443bb35e2bc7a683c625cc9e9a87d93119afab43",
+  "retirement.l2": "56bf7ec2a6c5eb7de7abee82bace6eca26a64b8f37b8446497330939b5c143e7",
+  "retirement.l2_e05": "4a6bc1f110e7051738d0a5c5e9937cf1bb795f8d2b134495033c6e05f19f0dcc",
+  "retirement.l2_e09": "f97d7b42262546a3f0217678a98eb8524148597bfceaa1e12baae2a7a178fdbf",
+  "retirement.l2_e19": "b365c813979d7a781ca9397fe34b537c7f40e520f1eef029fbd2b844ab851068",
+  "retirement.l2_e22": "520fa7f71257a3dd33ff674249fc0c69a27eac5dc51376e295f8a4cebf9d4111",
+  "retirement.is_e23": "b02819a3325c00a26957dd86559a51308532c2a6aa61525af3eba20824b55231",
+  "retirement.l2_e23": "bd32991f1a0fc1fc676abefef6bf789a87bc1807477292e70d37736531bdcf8c",
   "retirement.l1_s": "afda3816a0f8b6c4e673268028f86fba955f15339bd9f7c16b89b15c53ac3e29",
-  "retirement.l2_s": "51bddf655b72d8732e3a8721f2c41fccba575d323b51dab985ad6930b074b279",
+  "retirement.l2_s": "3a4d544b6191e3a945e71217a248c8509c7e26df9fca9ec7da7a39dbdc62357b",
   "(SMW 1)": "6cb93b92e8867cf90e78cb740ae19ccc1230fc61c1a98abbbd651d5549f07b82",
   "(SMW 2)": "db87ae5f86ff35815b8daee3e086d080c5c024071aff0254b4367df9cb2aa9c0",
   "(SMW 4)": "8784980b8e3f69dd647b676bb94b7e6d9d1357c614f923f963940b11defab806",

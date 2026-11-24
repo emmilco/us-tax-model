@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "88",
   "match / mismatch / unclear / missing": "81 / 4 / 3 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "6 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -78,15 +78,15 @@
   },
   {
    "key": "military_move",
-   "record": "e3b53c3a15536ff000ed0fcb47bcc859e083d2883c22e6df17a82103d8ac5222",
+   "record": "da152fd6833045e9b42d748c3f204d8783ce82f5050606387c4c44ee85c7596a",
    "status": "MATCH",
-   "subject_key": "5a618a433fdfd3556c64d058ac85a35d9c276b713557880ba18eae201b6279dd"
+   "subject_key": "e31c6ebe1e654503babbc1811c472b0c6fb473fa38c5ac686849139ada60fa6e"
   },
   {
    "key": "military_move_if_armed_forces",
-   "record": "e3b53c3a15536ff000ed0fcb47bcc859e083d2883c22e6df17a82103d8ac5222",
+   "record": "da152fd6833045e9b42d748c3f204d8783ce82f5050606387c4c44ee85c7596a",
    "status": "MATCH",
-   "subject_key": "76d25eda23eafbed93beb05fd4a3f567cbae7f30b8988f394dcf331d82194aef"
+   "subject_key": "93bd51c0c200b7204162f32e7d6f0723a74c26d8972dbf3255fe775aae0003a2"
   },
   {
    "key": "reservist_repaid",
@@ -497,9 +497,9 @@
   },
   {
    "key": "schedule1",
-   "record": "57b95340f229b8f4281807b9b053c3ccb9ffada3cb5fa31fdf27dc93fdf289af",
+   "record": "da152fd6833045e9b42d748c3f204d8783ce82f5050606387c4c44ee85c7596a",
    "status": "MATCH",
-   "subject_key": "e00e8af783d1d977f66001e010819818b2a1e79ac5dca508a38c85b27d55791b"
+   "subject_key": "06b3d85726c403aa62252c01800c34c5c548a8c21225ef332e2cce4eb80d56d2"
   },
   {
    "key": "other_income",
@@ -557,8 +557,8 @@
   "armed_forces": "7ec44fb2ce962131f9c20eca5cfc8d26398fa3684283616dc4d11293a9455158",
   "reservist_expenses": "6733348ffde861780fdf729d07ef976bd69b1ead2dccacdfbd50a1bba32aec21",
   "reservist_expenses_if_armed_forces": "64d5f4ff1e3bad278b054348761a6fca51c67ab0860e3419fb1931dd8e1c9be9",
-  "military_move": "ef380ed31780aac0ae12faa4b226d09fb32f03136839a2f955d0b5533584ca28",
-  "military_move_if_armed_forces": "89fb5c69f6f31180ffec7cf974fb9f6bd3084d7cf45ca16c6c262d58b9130c6e",
+  "military_move": "6745a02247d1090782282911081a47505464ad483d38ede84067fbaa1802b4df",
+  "military_move_if_armed_forces": "b1a088883295f721cd01602aeeb19c8e61d69662663c8bc56f7212cb970b1b1e",
   "reservist_repaid": "c9149cf90ebc397daf0b366d2a2ed47b6aae031bb49cb6fa01496a0ab391f96d",
   "reservist_repaid_if_armed_forces": "a3b918347920f5f4af079574af72bece900fb84680bd07b4c922238e7a5f16df",
   "under24_count": "35f09aa6c054560d492082a26037dabb2194a0db05820b1abd54078aa05151c9",
@@ -626,7 +626,7 @@
   "passive_if_business_before": "c90f75d34fe0b9a9ae3948e3a664b4481d693a1851c4a69ce97a536ecd84341a",
   "f8978": "55fd93d088666a05e39701777efa2970e6dbb8e5dac38b8917868126b2cfb821",
   "f8978_if_business_before": "33c9bbb2fe3e9e3afafd84dde0a459eaabf32c867c9cf4c40dd09d41858d362f",
-  "schedule1": "e832ad409f1f7fa24ff65503880a54e16a054b8b65778cd6a5cf223a6a4ab3b4",
+  "schedule1": "032ff18a0c419db94c5062bd25b42bed6ade088d346231d521b9fc3bdde00c20",
   "other_income": "65d596d263e0ddd9a76a626b80c49b7914a281854a2acb674d3636b73e38ab2f",
   "other_line16": "da0f0c402076ae5339d54eaf7a215f4a719109dc472a42d01456955f95951c20",
   "ready_schedule1": "a383c4ddaca3b33b4ee6bbf33c7265a4992f53d45b99c8ce834b03c3bcf5f573",

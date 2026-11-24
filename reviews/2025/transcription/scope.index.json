@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "10",
   "agree / disagree / missing": "1 / 9 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-23); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -59,10 +59,10 @@
   },
   {
    "key": "scope.schedule1",
-   "record": "8694157a167330ef692ca4338d589c29d51ce4869163b9024fa244617bfa6340",
+   "record": "bfa44c7175befc9a31ebbbdab8e1ec7f30363da6d827562192fdd341e1e167bc",
    "status": "DISAGREE",
-   "ruling": "Ruling: interface gap; as the ruling of 2026-11-23: the pages do not define this helper and the reply guesses a narrower set of Schedule 1 adjustments; the project's helper is any Schedule 1 item this tool does not compute, each a cited refusal (now with scope.trade_act_repaid and scope.remic from next). Triage executable-triage-v2 (.transcription/triage/2025/scope.json, pass 7497bafeab0e): 4253 of 4694 agree; {\"candidate-unknown\": 11, \"project-unknown\": 287, \"value\": 143}; completed {\"candidate-unknown\": 4}. Re-reviewed because the landing merged next's scope lines with advfix's. Project stands.",
-   "subject_key": "0f6ec1715d9cb90c53c89f7a50afd8db111a4b78051f2ca83aa8a600a2907a5c"
+   "ruling": "Ruling: interface gap; as the ruling of 2026-11-22: the pages do not define this helper and the reply guessed a narrower set of Schedule 1 adjustments. The project's helper is any Schedule 1 item this tool does not compute (its label), and also holds the personal property rental, Schedule K-1, farm, clergy and church-employee screens. Encoding unchanged; re-reviewed because scope.military_move's question text changed (BUG-NEW-lane-lints-03). Triage (pass 61c588e4239c): 4,431 of 4,897 agree; the 134 value differences are the screens the reply leaves out. Project stands.",
+   "subject_key": "037d62ff4670fa8afc75643b9bd25dbfb96b9c7e22d24bfb3843efa429d6a166"
   },
   {
    "key": "scope.other_income",
@@ -87,7 +87,7 @@
   "scope.tips_unreported_if_pay": "00259428488f6304ddf62dca19ec13880901e9f2c5c10623d4f07a2606369326",
   "scope.strike_pay_if_pay": "c33b66de5acc1cdb893e0b32a73da4b75367b865b8495bdf79935e01e81129c6",
   "scope.excess_deferral_if_w2": "f62b1921e36df83067fa2da62cd47f106dfc9fe5cb829ed703143c124679ee03",
-  "scope.schedule1": "c3a48f6e73af30d4f7b4b1c2f00a3610750a2a35acef1d1755f7356930093df7",
+  "scope.schedule1": "3accadf774099839b49c04fc432113658a108e3670a4c6ccb201e2ad25de6795",
   "scope.other_income": "6a224103c474c0ea0f38a1ee2fb34f34e77649624b44b97ee394e8a4bbaca755",
   "scope.other_line16": "1b2fe692e217c68a900d353c42f9594839c291a77f532e65a009239b670e2a3f"
  },
