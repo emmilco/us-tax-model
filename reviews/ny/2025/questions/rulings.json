@@ -493,6 +493,31 @@
     "BUG-1215"
    ],
    "subject_sha": "845e5e106f2821b082e70ec61d551cad79a0e8a71f1819dbf564d0d6a32e3540"
+  },
+  "unruled:ny_it201.ask.other_withholding#1": {
+   "subject_sha": "db8d8bf14bffeae10b3767ffb9de58d2376251ac8e61799db122e3c91ad05b18",
+   "reason": "No defect: two findings only refuse; one residual.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A Yes refuses (ny_it201.line72 refuses on ny_it201.gate.other_withholding, \"New York withholding on forms other than Form W-2 is outside this tool\"); counting a W-2G only refuses."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "As finding 0: a Yes for another payment only refuses."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "The tool's New York withholding comes from the Forms W-2 the filer lists (ny_it2); New York tax withheld from foreign wages with no Form W-2 is rare and outside both the W-2 path and this question."
+    }
+   ],
+   "bugs": []
   }
  },
  "baseline": {}

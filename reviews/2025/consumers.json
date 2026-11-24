@@ -3829,7 +3829,7 @@
    "question_phrase": "child (son, daughter, stepchild, eligible foster child, or a descendant of any of them)",
    "source_phrase": "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent",
    "reason": "The qualifying surviving spouse test takes only a son, daughter or stepchild, while the child answer also takes foster children and descendants, so household.qss_child_conflict can miss or wrongly raise its conflict.",
-   "fixed_by": "BUG-NEW-release-prep-01"
+   "fixed_by": "BUG-1277"
   },
   "consumer:dependent.lived_all_year@i1040gi:p15": {
    "verdict": "same",

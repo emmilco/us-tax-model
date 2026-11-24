@@ -127,7 +127,7 @@ class NewYorkMode(unittest.TestCase):
                                                       "person:person.birth_year", "person:person.bonus_all", "person:person.dis_wages", "person:person.ira_taxable", "person:person.one",
                                                       "person:person.plan_taxable", "person:person.prior_bonus_assets", "person:person.sc_count",
                                                       "person:person.sc_total", "person:person.suv179", "person:person.x_edu_account", "s1:s1.alimony_any",
-                                                      "s1:s1.alimony_if_any", "s1:s1.has_sc", "s1:s1.line5", "sa:sa.dependent",
+                                                      "s1:s1.alimony_if_any", "s1:s1.has_sc", "sa:sa.dependent",
                                                       "sche:sche.line41", "sche:sche.roy_income", "sche:sche.roy_loss",
                                                       "scope:scope.armed_forces", "scope:scope.has_w2", "scope:scope.rental"])
 
@@ -275,11 +275,11 @@ class NewYorkFederalCatalog(unittest.TestCase):
         it201, stated = got.pop("ny_it201"), got.pop("stated")
         self.assertTrue(all(r.startswith(T.NAMED_LINES) for r in it201["fed"].values()))
         # The federal lines the New York text names (by form and line: 1z, 2a, 2b, 3b, 7a, and the Schedule 1 and Schedule C
-        # lines the cited IT-216-I page names; the rest by label).
+        # lines the cited IT-216-I page names; the rest by label, s1.line5 by a label whose line then names Form 1040).
         self.assertEqual(it201["listed"], sorted([
             "f1040.line11a", "f1040.line15", "f1040.line1z", "f1040.line27a", "f1040.line2a", "f1040.line2b",
             "f1040.line3b", "f1040.line4b", "f1040.line5b", "f1040.line6b", "f1040.line7a", "f1040.status",
-            "person.sep_s3", "s1.line1", "s1.line15", "s1.line26", "s1.line2a", "s1.line3", "s1.line7", "s1.line8z", "s1.line9", "s2.line4",
+            "person.sep_s3", "s1.line1", "s1.line15", "s1.line26", "s1.line2a", "s1.line3", "s1.line5", "s1.line7", "s1.line8z", "s1.line9", "s2.line4",
             "sc.f7206_line3", "sc.line3", "f5329.l4", "f5329.l49", "s1.line8a"]))
         for fid, r in got.items():
             self.assertTrue(r["notes"].strip().startswith("In this New York request"), fid)
@@ -300,6 +300,8 @@ class NewYorkFederalCatalog(unittest.TestCase):
                      " 'form_only': f('Do not send federal Form W-2. Total payments: add lines 63 to 75.'),\n"
                      " 'longer': f('From your federal return: taxable amount of IRA distributions.'),\n"
                      " 'acronym': f('Did you claim the federal earned income credit?'),\n"
+                     " 'tail': f('11 Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E, Form 1040) 11'),\n"
+                     " 'next_line': f('5 Alimony received 5 6 Business income or loss (submit a copy of federal Schedule C, Form 1040) 6'),\n"
                      " 'phrases': sorted(T.label_phrases('IRA distributions, taxable amount', T.label_norm('4a IRA distributions b Taxable amount'))),\n"
                      "}))")
         self.assertEqual(got["federal"], ["f1040.line11a"])
@@ -308,6 +310,8 @@ class NewYorkFederalCatalog(unittest.TestCase):
         self.assertEqual(got["form_only"], [])         # "federal Form W-2" names W-2, not the return
         self.assertEqual(got["longer"], ["f1040.line4b"])   # not 4a, whose phrase lies inside it
         self.assertEqual(got["acronym"], ["f1040.line27a"])
+        self.assertEqual(got["tail"], ["s1.line5"])    # the rest of its line names Form 1040
+        self.assertEqual(got["next_line"], ["s1.line3"])  # not alimony (s1.line2a): its line ends at the number 5
         self.assertEqual(got["phrases"], [" ira distributions taxable amount ", " taxable amount of ira distributions "])
 
     def test_federal_requests_carry_no_new_york_note(self):

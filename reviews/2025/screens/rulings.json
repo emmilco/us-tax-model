@@ -8401,7 +8401,7 @@
      "class": "defect",
      "evidence": "p970 p. 33, Interest paid by others (Example 2, a mother's gift). The tick and help do not say such payments count as the borrower's. Low.",
      "bugs": [
-      "BUG-NEW-release-prep-10"
+      "BUG-1286"
      ]
     },
     {
@@ -8413,9 +8413,9 @@
     }
    ],
    "bugs": [
-    "BUG-NEW-release-prep-10"
+    "BUG-1286"
    ],
-   "class": "defect (low): interest paid by others (BUG-NEW-release-prep-10)",
+   "class": "defect (low): interest paid by others (BUG-1286)",
    "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
@@ -10553,7 +10553,7 @@
      "class": "defect",
      "evidence": "i1040sd p. 2: 'If both you and your spouse meet these tests and you file a joint return, you can exclude up to $500,000'. The help says 'Gain of up to $250,000 ($500,000 on a joint return) is usually excluded if you owned the home and lived in it for 2 of the 5 years', so a joint filer with only one spouse meeting the use test and a gain between the two limits can answer No; the reportable gain is neither computed nor refused. Rare; low.",
      "bugs": [
-      "BUG-NEW-release-prep-12"
+      "BUG-1288"
      ]
     },
     {
@@ -10562,7 +10562,7 @@
      "class": "defect",
      "evidence": "i1040sd p. 2, Test 2: 'You haven't excluded gain on the sale or exchange of another main home during the 2-year period'. The help states only ownership and use. Same entry; low.",
      "bugs": [
-      "BUG-NEW-release-prep-12"
+      "BUG-1288"
      ]
     },
     {
@@ -10571,14 +10571,14 @@
      "class": "defect",
      "evidence": "The prompt 'Was any of it your main home' is asked once per return; a spouse's own main home sold on a joint return is not named (interview/README.md spouse-phrase rule). Same entry; low.",
      "bugs": [
-      "BUG-NEW-release-prep-12"
+      "BUG-1288"
      ]
     }
    ],
    "bugs": [
-    "BUG-NEW-release-prep-12"
+    "BUG-1288"
    ],
-   "class": "defect (low): home sale screen wording (BUG-NEW-release-prep-12)",
+   "class": "defect (low): home sale screen wording (BUG-1288)",
    "subject_sha": "a2f6b98377f023841243813182c0254d541df39f6381e36e0f9d98e3ee02de48",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
@@ -10606,15 +10606,15 @@
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:retirement.is_code2#1": {
-   "reason": "Code 7 series changes were not asked (BUG-NEW-release-prep-15, fixed); the change wording is wide by one-time switches.",
+   "reason": "Code 7 series changes were not asked (BUG-1291, fixed); the change wording is wide by one-time switches.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "defect",
-     "evidence": "p590b p. 26. A series changed in 2025 with a code 7 payment is not asked; with code 1 it is asked by retirement.early_screen. Filed and fixed as BUG-NEW-release-prep-15 (medium): s2.other_tax names the recapture.",
+     "evidence": "p590b p. 26. A series changed in 2025 with a code 7 payment is not asked; with code 1 it is asked by retirement.early_screen. Filed and fixed as BUG-1291 (medium): s2.other_tax names the recapture.",
      "bugs": [
-      "BUG-NEW-release-prep-15"
+      "BUG-1291"
      ]
     },
     {
@@ -10626,9 +10626,9 @@
     }
    ],
    "bugs": [
-    "BUG-NEW-release-prep-15"
+    "BUG-1291"
    ],
-   "class": "defect (medium, fixed): BUG-NEW-release-prep-15",
+   "class": "defect (medium, fixed): BUG-1291",
    "subject_sha": "5673e512eef903571b1ce673341c5fe928ab504ae8c8b656d27613437de296a5",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   }

@@ -7,6 +7,7 @@
 # the path rule's own self-test on this repository (tools/tier_paths.py --self-test).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+eval "$(python3 -I "$ROOT/tools/hermetic_env.py" --unset)"  # behave as alone inside a check-all run
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/green-test.XXXXXX")"
 trap 'rm -rf "$TMP"' EXIT
 fail() { echo "green self-test: $*" >&2; exit 1; }

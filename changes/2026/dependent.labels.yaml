@@ -1,0 +1,18 @@
+changes:
+  tax_year: 2026
+  form: dependent
+  entries:
+  - change: BUG-1236
+    evidence:
+    - doc: rp-25-32
+      page: 20
+      quote: the exemption amount referred to in § 152(d)(1)(B) is $5,300.
+    verified: final
+    note: The label prints the amount of qr.gross_income_limit; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: dependent.qr_income
+        field: label
+        from: Gross income under $5,200
+        to: Gross income under $5,300

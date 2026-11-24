@@ -661,25 +661,32 @@
    ]
   },
   "retirement.exception": {
-   "subject_sha": "d6c622b63cc124b04b7cff552f2e90eeb4848e3568774a0616df4b9ec3becb38",
+   "subject_sha": "7764526e860a38e97d77cad1f0b5f0b500a9a788e0c84f12b71313e1e987ea53",
    "samples": [
     {
-     "verdict": "TYPE",
+     "verdict": "WIDE",
      "findings": [
       {
+       "kind": "WIDE",
+       "situation": "A filer took an IRA distribution meant for a first-time homebuyer's main home but did not spend it on qualified acquisition costs (buying, building or rebuilding costs, or settlement, financing or closing costs) within 120 days, and still answers 09.",
+       "source_text": "p590b p. 27: \"To qualify for treatment as a first-time homebuyer distribution, the distribution must meet all the following requirements. 1. It must be used to pay qualified acquisition costs (defined next) before the close of the 120th day after the day you received it.\"",
+       "why": "The question's help for 09 lists only who the homebuyer must be and the 2-year no-ownership test. It leaves out the 120-day deadline and the qualified-acquisition-cost requirement, so a truthful filer can pick 09 for a distribution that doesn't qualify.",
+       "bound": ""
+      },
+      {
        "kind": "TYPE",
-       "situation": "A filer whose distribution qualifies under more than one exception (for example disability 03 and medical expenses 05) has no list choice for 99, so must pick one exception code.",
-       "source_text": "i5329 p. 5, Line 2: \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" and table row \"Enter this exception number if more than one exception applies. ... 99\"",
-       "why": "The accepted enum has only none and e01–e23 and lacks 99, and the question asks for a single exception. Form 5329 line 2 therefore cannot get the code it requires when several exceptions apply.",
-       "bound": "{none, 01–23, 99}"
+       "situation": "More than one exception applies to the same distribution (for example, disability (03) and medical expenses (05)), and Form 5329 line 2 needs exception number 99.",
+       "source_text": "i5329 p. 5, Line 2: \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\"",
+       "why": "The accepted answers run only from e01 to e23 plus none. There is no 99, so the filer has to pick a single exception and line 2 gets the wrong code.",
+       "bound": "01–23, 99, or none"
       }
      ],
-     "prompt_sha": "1c882684e668bdaf8793e358e953bc72a3d82ac9027ab68084831794efb9141b",
+     "prompt_sha": "c985b65552214eb78bde620a23281d739c40fa8a37f96844e48982bca74f3f6f",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.055048,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/retirement.exception.d6c622b63cc1.1.response.txt"
+     "cost": 0.08476,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/retirement.exception.7764526e860a.1.response.txt"
     }
    ],
    "type": "Enum(early_exception)",
@@ -697,7 +704,7 @@
      "locators": [
       "p. 5, Line 2, \"A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted.\"",
       "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\"",
-      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\", \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or 25 years of service under the plan, whichever is earlier.\", \"(if from an employer plan, payments must begin after separation from service)\", \"You are considered disabled if you can furnish proof that you can’t do any substantial gainful activity because of your physical or mental condition.\" and \"Distributions due to death (doesn’t apply to modified endowment contracts).\"; , First-time homebuyer, \"you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home which the distribution is being used to buy, build, or rebuild. If you are married, your spouse must also meet this no-ownership requirement.\", \"You enter into a binding contract to buy the main home\", \"You were ordered or called to active duty after September 11, 2001.\", \"of more than 179 days or for an indefinite period because you are a member of a reserve component.\", \"The distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement.\", \"the date of the order or call to active duty and no later than the close of the active duty period.\", \"if made during the 1-year period beginning on the date on which your child was born or the date on which the legal adoption of your child was finalized\" and \"an eligible adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable of self-support.\"",
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\", \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or 25 years of service under the plan, whichever is earlier.\", \"(if from an employer plan, payments must begin after separation from service)\", \"You are considered disabled if you can furnish proof that you can’t do any substantial gainful activity because of your physical or mental condition.\", \"Distributions due to death (doesn’t apply to modified endowment contracts).\" and \"IRA distributions made for qualified higher education expenses.\"; , \"The education must be for you, your spouse, or the children or grandchildren of you or your spouse.\", \"who is any of the following.\", \"Your or your spouse's child.\", \"Your or your spouse's grandchild.\" and \"Your or your spouse's parent or other ancestor.\"; , First-time homebuyer, \"you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home which the distribution is being used to buy, build, or rebuild. If you are married, your spouse must also meet this no-ownership requirement.\", \"You enter into a binding contract to buy the main home\", \"You were ordered or called to active duty after September 11, 2001.\", \"of more than 179 days or for an indefinite period because you are a member of a reserve component.\", \"The distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement.\", \"the date of the order or call to active duty and no later than the close of the active duty period.\", \"if made during the 1-year period beginning on the date on which your child was born or the date on which the legal adoption of your child was finalized\" and \"an eligible adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable of self-support.\"",
       "p. 5, Line 2, \"IRA distributions made for the purchase of a first home, up to $10,000.\"",
       "p. 5, Line 2, \"Qualified distributions to victims of domestic abuse.\"",
       "p. 5, Line 2, \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service\"",
@@ -714,11 +721,13 @@
      "revision": "2025",
      "text_sha256": "24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4",
      "pages": [
+      27,
       28
      ],
      "how": "pages named by another document's citation",
      "locators": [],
      "cols_pages": [
+      27,
       28
      ],
      "cols_sha256": "464639ba13341fe9c824b6f495922126cb3d158650887bf9beb265fd951c3e77"

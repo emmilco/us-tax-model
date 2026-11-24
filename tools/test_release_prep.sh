@@ -9,6 +9,7 @@
 # repository: it regenerates each derived file before it runs a check, and stops at the first failure.
 set -euo pipefail
 here="$(cd "$(dirname "$0")/.." && pwd)"
+eval "$(python3 -I "$here/tools/hermetic_env.py" --unset)"  # behave as alone inside a check-all run
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 repo="$tmp/repo"

@@ -826,7 +826,7 @@
      "class": "defect",
      "evidence": "ny_it225i p. 10, A-119 and p. 18, S-136: applicable alimony is payment under an instrument 'executed after December 31, 2018'. s1.alimony_if_any is true when any 2025 alimony is under a pre-2019 agreement, so ny_it201.ask.alimony_later is not asked and a second, post-2018 agreement's alimony gets no New York addition or subtraction and no refusal. Rare; low.",
      "bugs": [
-      "BUG-NEW-release-prep-11"
+      "BUG-1287"
      ]
     },
     {
@@ -835,7 +835,7 @@
      "class": "defect",
      "evidence": "Same mechanism on a joint return: one spouse's pre-2019 alimony hides the other spouse's post-2018 alimony from the New York question. Low.",
      "bugs": [
-      "BUG-NEW-release-prep-11"
+      "BUG-1287"
      ]
     },
     {
@@ -853,7 +853,7 @@
      "class": "defect",
      "evidence": "A recapture of earlier alimony with new post-2018 alimony: the same gate hides the New York question. Low.",
      "bugs": [
-      "BUG-NEW-release-prep-11"
+      "BUG-1287"
      ]
     },
     {
@@ -866,9 +866,9 @@
    ],
    "bugs": [
     "BUG-1215",
-    "BUG-NEW-release-prep-11"
+    "BUG-1287"
    ],
-   "class": "defect (low): post-2018 New York alimony hidden by pre-2019 alimony (BUG-NEW-release-prep-11); BUG-1215 (low)",
+   "class": "defect (low): post-2018 New York alimony hidden by pre-2019 alimony (BUG-1287); BUG-1215 (low)",
    "subject_sha": "480d9d4002e74101f104e1bc6c9d4a395f8e17ebb5dc4f851d91fa72994d66e6",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   }

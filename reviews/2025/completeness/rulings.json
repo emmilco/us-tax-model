@@ -743,7 +743,7 @@
   "unruled:rental#1.4": {
    "class": "real gap",
    "evidence": "i1040sca p. 6, Line 5b. rental.tax_personal carries the rental's taxes not taken on Schedule E to line 5b, but sa.property_tax_other_any asks only about 'the real estate tax amount you entered' (sa.line5b), so service charges, foreign tax, refunds and taxes assessed after 2025 inside the rental's share reach line 5b unchecked. Rare; low.",
-   "bug": "BUG-NEW-release-prep-13",
+   "bug": "BUG-1289",
    "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
@@ -1207,8 +1207,8 @@
   },
   "unruled:s2#1.1": {
    "class": "real gap",
-   "evidence": "i6251 pp. 3-4, Line 2g: exempt-interest dividends 'reported to you in box 13 of Form 1099-DIV' are private activity bond interest. s2.amt_pab asks only Form 1099-INT box 9 and tax-exempt OID, and div.box13 is read by no AMT line, so the screen's line 2g is low. Filed as BUG-NEW-release-prep-17 (low).",
-   "bug": "BUG-NEW-release-prep-17",
+   "evidence": "i6251 pp. 3-4, Line 2g: exempt-interest dividends 'reported to you in box 13 of Form 1099-DIV' are private activity bond interest. s2.amt_pab asks only Form 1099-INT box 9 and tax-exempt OID, and div.box13 is read by no AMT line, so the screen's line 2g is low. Filed as BUG-1293 (low).",
+   "bug": "BUG-1293",
    "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
@@ -1467,8 +1467,8 @@
   },
   "unruled:retirement#1.2": {
    "class": "real gap",
-   "evidence": "p590b p. 27. retirement.exception gives no conditions for 08 (whose education) and states 09's no-ownership test for 'you' and the spouse only, not the child, grandchild or ancestor homebuyer. Filed as BUG-NEW-release-prep-16 (low).",
-   "bug": "BUG-NEW-release-prep-16",
+   "evidence": "p590b p. 27. retirement.exception gives no conditions for 08 (whose education) and states 09's no-ownership test for 'you' and the spouse only, not the child, grandchild or ancestor homebuyer. Filed as BUG-1292 (low).",
+   "bug": "BUG-1292",
    "subject_sha": "a178918fd5e043e7afeaedef536fc0b14a4536fbf7271ff2aebf023175356474",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
@@ -1553,8 +1553,8 @@
   },
   "unruled:sli#1.3": {
    "class": "real gap",
-   "evidence": "p970 p. 33, Interest paid by others: the gate and the amount question do not say that interest someone else paid on the borrower's loan counts as paid by the borrower. Filed as BUG-NEW-release-prep-10 (low). Origination fees for lender services follow the lender's Form 1098-E box 1; low.",
-   "bug": "BUG-NEW-release-prep-10",
+   "evidence": "p970 p. 33, Interest paid by others: the gate and the amount question do not say that interest someone else paid on the borrower's loan counts as paid by the borrower. Filed as BUG-1286 (low). Origination fees for lender services follow the lender's Form 1098-E box 1; low.",
+   "bug": "BUG-1286",
    "subject_sha": "8e9a8f0aeca0972bb0a6690b4c978072d20e39a2e0a1e39127369b55a6b9978b",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },

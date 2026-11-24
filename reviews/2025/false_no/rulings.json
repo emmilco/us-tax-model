@@ -8584,7 +8584,7 @@
      "class": "defect",
      "evidence": "i8824 p. 1: 'Also file Form 8824 for the 2 years following the year of a related party exchange'; Line 7: a disposition within 2 years makes the deferred gain reportable 'on your tax return for the year of disposition'. The gate asks only about 2025 sales or trades, so a 2023 or 2024 related-party exchange with a 2025 disposition is neither asked nor refused. Rare; low.",
      "bugs": [
-      "BUG-NEW-release-prep-09"
+      "BUG-1285"
      ]
     },
     {
@@ -8597,9 +8597,9 @@
    ],
    "bugs": [
     "BUG-1091",
-    "BUG-NEW-release-prep-09"
+    "BUG-1285"
    ],
-   "class": "defect (low): related-party exchange of an earlier year (BUG-NEW-release-prep-09)",
+   "class": "defect (low): related-party exchange of an earlier year (BUG-1285)",
    "subject_sha": "d6e501a3c2f95989579892856f86b74ef01ef7466ac0c811d0a09c287f447b42",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
@@ -9128,15 +9128,15 @@
    ]
   },
   "unruled:gate:retirement.is_code2#1": {
-   "reason": "Code 1 is asked by the early-distribution screen and double codes are refused; code 7 and no-form series changes were not asked (BUG-NEW-release-prep-15, fixed by naming the recapture in s2.other_tax).",
+   "reason": "Code 1 is asked by the early-distribution screen and double codes are refused; code 7 and no-form series changes were not asked (BUG-1291, fixed by naming the recapture in s2.other_tax).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "p590b p. 26, recapture 'imposed in the tax year in which the modification occurs'. A code 7 series payment changed in 2025 before the 5th anniversary is asked neither here nor in retirement.early_screen (codes 1 and S). Filed and fixed as BUG-NEW-release-prep-15 (medium): s2.other_tax now names the recapture.",
+     "evidence": "p590b p. 26, recapture 'imposed in the tax year in which the modification occurs'. A code 7 series payment changed in 2025 before the 5th anniversary is asked neither here nor in retirement.early_screen (codes 1 and S). Filed and fixed as BUG-1291 (medium): s2.other_tax now names the recapture.",
      "bugs": [
-      "BUG-NEW-release-prep-15"
+      "BUG-1291"
      ]
     },
     {
@@ -9150,9 +9150,9 @@
      "n": 2,
      "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "Stopped payments with no 2025 Form 1099-R have no entry to ask; same entry, BUG-NEW-release-prep-15 (medium, fixed through s2.other_tax).",
+     "evidence": "Stopped payments with no 2025 Form 1099-R have no entry to ask; same entry, BUG-1291 (medium, fixed through s2.other_tax).",
      "bugs": [
-      "BUG-NEW-release-prep-15"
+      "BUG-1291"
      ]
     },
     {
@@ -9164,9 +9164,9 @@
     }
    ],
    "bugs": [
-    "BUG-NEW-release-prep-15"
+    "BUG-1291"
    ],
-   "class": "defect (medium, fixed): BUG-NEW-release-prep-15",
+   "class": "defect (medium, fixed): BUG-1291",
    "subject_sha": "5673e512eef903571b1ce673341c5fe928ab504ae8c8b656d27613437de296a5",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
@@ -9467,7 +9467,7 @@
      "class": "defect",
      "evidence": "p970 p. 33, Interest paid by others: 'you are treated as receiving the payments from the other person and, in turn, paying the interest' (Example 2, a mother's gift). The sli.any tick 'Paid interest on a student loan' and its help do not say so, so the borrower answers No and loses the deduction. Low.",
      "bugs": [
-      "BUG-NEW-release-prep-10"
+      "BUG-1286"
      ]
     },
     {
@@ -9493,9 +9493,9 @@
     }
    ],
    "bugs": [
-    "BUG-NEW-release-prep-10"
+    "BUG-1286"
    ],
-   "class": "defect (low): interest paid by others (BUG-NEW-release-prep-10)",
+   "class": "defect (low): interest paid by others (BUG-1286)",
    "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },

@@ -126,6 +126,8 @@ READERS = {
     ("tools/year_changes.py", "docs/*"): _COMMENT,
     ("tools/year_changes.py", "research/costs/*"): ("none", "the quoted component is research/ty<year> (staged parameters and tables)"),
     ("tools/year_changes.py", "research/audits/*"): ("none", "the quoted component is research/ty<year> (staged parameters and tables)"),
+    ("tools/check_label_year.py", "research/costs/*"): ("none", "the quoted component is research/ty<year> (staged parameters)"),
+    ("tools/check_label_year.py", "research/audits/*"): ("none", "the quoted component is research/ty<year> (staged parameters)"),
 }
 
 # (file, idiom) -> why the enumeration stays inside named, non-allowlisted directories.
@@ -154,6 +156,8 @@ WALKERS = {
     ("tools/siblings.py", "--name-only"): "git diff over reviews/<year> logs; the unscoped one serves --reviews-since, not a step",
     ("tools/siblings.py", ".rglob("): "the --input ripple over its listed source directories; not a step",
     ("tools/year_changes.py", ".rglob("): "the files of interview/<year> only",
+    ("tools/check_unread_params.py", ".rglob("): "the .yaml and .json files of forms/, interview/ and changes/ of the years it checks, and the code under engine/src, tools, ui and lean; reads no docs-tier path",
+    ("tools/hermetic_env.py", ".rglob("): "the code under tools/, engine/src and ui/src, for the environment variables it reads; reads no docs-tier path",
     ("tools/year_diff.py", ".rglob("): "the .yaml files under the from-year's forms/, tables/ and interview/ directories (adoption), and under a temporary tree (its self-test)",
     ("tools/year_shared_refs.py", ".rglob("): "the files of tools/ and engine/src/ (SCAN_DIRS), outside every docs-tier path",
     ("tools/transcription/carry.py", "ls-tree"): "lists forms/ and tables/ directories at a revision",

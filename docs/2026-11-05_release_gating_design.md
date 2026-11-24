@@ -146,12 +146,17 @@ the release instead of the commit; cheap invariants stay at commit; `main` is al
    (`pre-merge-commit` a merge commit there); `pre-push` refuses to push `main` to a commit not recorded
    release-green.
 2. **Commit-time checks** (the light tier, for `next` and lane branches): compile, build and render, the federal and
-   New York fixtures, the bookkeeping checks, the checks of generated reports, and the interview checks
-   (`interview_rules`, `interview_coverage`, `tick_groups`) scoped to the forms the change touches (`--forms`,
-   computed by `tools/change_scope.py`). Release-only, in the full tier: mutation (federal and New York), the engine
-   differential, both Lean comparisons and the Lean build, the unscoped interview rules, the interview length report,
-   the properties, the web UI tests, refusal reach, and the release checks of the sampled reviews. The fast tier is
-   gone; `tools/full_paths.txt` is gone, since no path makes a commit need the full tier. The docs tier is kept.
+   New York fixtures, the bookkeeping checks, the checks of generated reports, the year-label lint (`label_year`), the
+   self-tests' environment check (`hermetic_env`), the twins, refusal reach, a sample of the engine differential's
+   generated returns evaluated by the build (`engine_cases`), the static guards (`year_changes` and `ny_year_changes`,
+   `renamed_ids` and `ny_renamed_ids`, `mutate_arguments` and `ny_mutate_arguments`, `unread_params`), and the
+   interview checks (`interview_rules`, `interview_coverage`, `tick_groups`, `spouse_phrase`) scoped to the forms the
+   change touches (`--forms`, computed by `tools/change_scope.py`). Release-only, in the full tier: mutation (federal
+   and New York), the engine differential, both Lean comparisons and the Lean build, the unscoped interview rules, the
+   interview length report, the properties, the web UI tests, and the release checks of the sampled reviews. The
+   light-tier steps beyond the fixtures and bookkeeping each take seconds and catch failures that would otherwise
+   surface only in the release's run. The fast tier is gone; `tools/full_paths.txt` is gone, since no path makes a
+   commit need the full tier. The docs tier is kept.
 3. **Preflight.** `tools/preflight.sh` runs first in `check_all.sh` and `check_all_bg.sh` and stops the run on
    failure: it regenerates the derived files the steps compare (bug status, the coverage tree, gate frequencies,
    person wording, the interview coverage report when it will be compared, the figure blocks), then runs the fast

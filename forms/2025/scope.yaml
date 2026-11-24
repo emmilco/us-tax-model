@@ -153,10 +153,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: scope.military_move_if_armed_forces
-      label: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?"
+      label: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you (or, on a joint return, your spouse) were posted outside the United States?"
       expr:
         op: input
-        source: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?"
+        source: "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you (or, on a joint return, your spouse) were posted outside the United States?"
       cite:
         doc: f1040
         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 93, Line 14, \"If you are claiming only storage fees during your absence from the United States, check the box on line 14\""

@@ -1,0 +1,56 @@
+{
+ "form": "rec",
+ "reviews": {
+  "rec.medical": {
+   "subject_sha": "8117f2ff7b0fe0290b60fc51a3832e850ae82efb58a26c8e6a429edd076101ef",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "In 2024 the filer paid and deducted medical bills for a dependent child, and the insurer paid those bills back in 2025, but the filer reads 'your 2024 medical and dental bills' as bills for their own care only and leaves this amount out.",
+       "source_text": "p525 p. 27, Worksheet 2, line 2: \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\"",
+       "why": "Line 2 needs every repayment of an amount deducted on the 2024 Schedule A, including the medical bills of dependents. The question names only the filer and, on a joint return, the spouse, so a dependent's reimbursement can be left out.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "As in Example 34, the filer paid $1,700 of medical expenses in 2024 but could deduct only $200 because of the medical deduction limit, then got $500 back in 2025. The truthful answer is $500, but line 2 may hold only $200.",
+       "source_text": "Question: \"How much of your 2024 medical and dental bills was repaid to you ... in 2025?\"; p525 p. 27, Worksheet 2, footnote 2: \"Don't enter more than the amount deducted for the prior year\"; p525 p. 26, Example 34: \"The only amount of the $500 reimbursement that must be included in your income for 2025 is $200, the amount actually deducted.\"",
+       "why": "The question asks for the full amount repaid. Nothing caps it at the 2024 medical deduction, and the answer goes to line 2 unchanged, so any reimbursement above the amount deducted is entered against the footnote's limit.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "9819763cf342f566c0a8aa387b719d7f723e9272e398ca919727b3aa68b1d2bd",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06930800000000001,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rec.medical.8117f2ff7b0f.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      26,
+      27
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 26, Example 34, \"In 2025, you received a $500 reimbursement from your medical insurance for your 2024 expenses\"",
+      "p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "description": [
+  "Parameters that code reads only by a name it builds, so tools/check_unread_params.py finds no whole-name reader;",
+  "each entry names the prefix the name is built from, the files that build it, and why. The check fails on an entry that no longer holds."
+ ],
+ "allow": {
+  "eic.earned_amount0": {
+   "built": "eic.earned_amount",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the EIC Table's earned income amount for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.earned_amount{k}"
+  },
+  "eic.earned_amount1": {
+   "built": "eic.earned_amount",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the EIC Table's earned income amount for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.earned_amount{k}"
+  },
+  "eic.earned_amount2": {
+   "built": "eic.earned_amount",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the EIC Table's earned income amount for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.earned_amount{k}"
+  },
+  "eic.earned_amount3": {
+   "built": "eic.earned_amount",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the EIC Table's earned income amount for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.earned_amount{k}"
+  },
+  "eic.maximum0": {
+   "built": "eic.maximum",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the maximum EIC for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.maximum{k}"
+  },
+  "eic.maximum1": {
+   "built": "eic.maximum",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the maximum EIC for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.maximum{k}"
+  },
+  "eic.maximum2": {
+   "built": "eic.maximum",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the maximum EIC for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.maximum{k}"
+  },
+  "eic.maximum3": {
+   "built": "eic.maximum",
+   "in": [
+    "engine/src/conjecture.ts",
+    "tools/engines/compare.py"
+   ],
+   "reason": "the maximum EIC for k qualifying children (Rev. Proc. 2024-40 section 2.06(1)); the Tax Table conjecture and the outside-engine comparison read it as eic.maximum{k}"
+  }
+ }
+}

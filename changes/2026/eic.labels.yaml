@@ -1,0 +1,20 @@
+changes:
+  tax_year: 2026
+  form: eic
+  entries:
+  - change: BUG-1237
+    evidence:
+    - doc: rp-25-32
+      page: 15
+      quote: investment income exceeds $12,200.
+    verified: final
+    note: The label prints the amount of eic.investment_limit; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: eic.step2_income
+        field: label
+        from: Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form
+          4797)
+        to: Step 2, question 2. Investment income not more than $12,200 (more than $12,200 stops at question 3 without Form
+          4797)

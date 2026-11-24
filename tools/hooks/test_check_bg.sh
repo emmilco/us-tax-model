@@ -8,6 +8,7 @@
 # failing preflight starts no run. (The slot lock itself: tools/check_slot.py --self-test.)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+eval "$(python3 -I "$ROOT/tools/hermetic_env.py" --unset)"  # behave as alone inside a check-all run
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/check-bg-test.XXXXXX")"
 trap 'rm -rf "$TMP"' EXIT
 fail() { echo "check-bg self-test: $*" >&2; exit 1; }

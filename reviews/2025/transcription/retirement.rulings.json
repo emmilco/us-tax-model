@@ -1569,6 +1569,31 @@
   {
    "printed": "retirement.is_e23",
    "project_expr_sha256": "9f36cc8ce6a26488623b3acc12e81cf2c0adb96ff58987bc7487ddaf3598e3b1",
+   "second_expr_sha256": "3ec8a95d808ea40aca1ae7389c690099544b17e72a8beb63aa337193afe1603a",
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; triage (pass fd2030494f1d): 3,192 of 3,997 agree, the rest candidate-unknown (the reply reads retirement.after59 and retirement.exception where the interview does not ask them); no value differs.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "46bf576e4397181a537e0d46d6caf850694f908226cfd7020463a6ed51d95a25",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.is_e23",
+   "project_expr_sha256": "9f36cc8ce6a26488623b3acc12e81cf2c0adb96ff58987bc7487ddaf3598e3b1",
    "second_expr_sha256": "806c7947025d3e5ccfb5af7ff399593506e53792e7c4c4369fa226fdbae7dd08",
    "ruling": "Ruling: model error; p590b p. 28, Emergency personal expense distributions; i5329 p. 5, Line 2. As the ruling of 2026-11-07: the reply's early test includes codes the project refuses or does not ask the exception for, so it reads retirement.exception where the interview does not ask it; no completed value differs. Triage executable-triage-v2 (.transcription/triage/2025/retirement.json, pass 69423d5662ec): 3560 of 3594 agree; {\"candidate-unknown\": 31, \"project-unknown\": 3}; completed {}. Re-reviewed because this lane (advland) changed the retirement lines for exception 12 (BUG-1193) and gave the retirement questions the per-person frame (BUG-1196). Project stands.",
    "context": "725c1c8ee693b97f0fa3c032c58a44c50185682890054f114d303062796a3b24",
@@ -2920,6 +2945,59 @@
   {
    "printed": "retirement.l2",
    "project_expr_sha256": "e50b8692f72e961870cc7d09c3a49345ced050f7d7edfe66ac8dadaf0173a5cb",
+   "second_expr_sha256": "a184039c860b49956f54dff2301e2f1f2a5302386cfd484fbd871786efb1fae2",
+   "ruling": "Ruling: model error; i5329 p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\" and exception 12, \"Include on line 2 the amount you received when you were age 59 1/2 or older.\" The encoding is unchanged since the ruling of 2026-11-23; this pass is line-scoped because retirement.exception's question text changed (BUG-1292). Triage (pass fd2030494f1d): 1,951 candidate-unknown (the reply reads retirement.after59 and early_screen where the interview does not ask them), 86 value differences of the kind ruled before (the reply's exception-12 and per-person-limit reading). Project stands.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "aa1dc99d7e4b833577f059606244b7423f119191b30bb59d83753027df070cd2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:stage10.refuse.special@person[taxpayer].retirement[a]",
+     "fixture:stage10.refuse.roth_special@person[taxpayer].retirement[r]",
+     "fixture:stage21.blind.e9@person[taxpayer].retirement[a]",
+     "fixture:stage21.refuse.wrong_kind@person[taxpayer].retirement[a]",
+     "fixture:stage21.refuse.early_screen@person[taxpayer].retirement[a]",
+     "fixture:x2pay.disability.w6@person[taxpayer].retirement[r]",
+     "fixture:x2pay.disability.split_year@person[taxpayer].retirement[r]",
+     "fixture:stage10.smw.survivor_of_retiree@person[taxpayer].retirement[p]",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@person[taxpayer].retirement[p]",
+     "fixture:advland.retirement.code1_born_1955@person[taxpayer].retirement[a]",
+     "fixture:mut.retirement.code1_born_1955_exception_named@person[taxpayer].retirement[a]",
+     "generated:20261026.262@person[taxpayer].retirement[r2]",
+     "generated:20261026.427@person[taxpayer].retirement[r2]",
+     "partial:stage21.blind.e3-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e3-person[taxpayer].retirement[b].rollover_any@person[taxpayer].retirement[b]",
+     "partial:stage21.blind.e7-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e7-person[spouse].retirement[a].rollover_any@person[spouse].retirement[a]",
+     "partial:stage21.mut.e23_over_cap-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.wrong_kind-person[taxpayer].retirement[a].box1@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.wrong_kind-person[taxpayer].retirement[a].box5@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.wrong_kind-person[taxpayer].retirement[a].rollover@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.wrong_kind-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.refuse.wrong_kind-person[taxpayer].retirement[a].roth_moved@person[taxpayer].retirement[a]",
+     "partial:stage21.mut.simple_e23_within_cap-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2",
+   "project_expr_sha256": "e50b8692f72e961870cc7d09c3a49345ced050f7d7edfe66ac8dadaf0173a5cb",
    "second_expr_sha256": "b95f2e4e2639d1320650e2b899bf63bcf8268d3448f2f2428173f6f469260a4e",
    "ruling": "Ruling: model error; the candidate leaves out exception 12 for a filer 59½ or older all year: advland.retirement.code1_born_1955 (born 1955, code 1, $20,000) gives the project $20,000 and the candidate $0 (i5329 p. 5, exception 12, \"Distributions incorrectly indicated as early distributions by code 1, J, or S ... Include on line 2 the amount you received when you were age 59 1/2 or older\"). The rest are unknowns on partial input states.",
    "context": "7de2da7f6719c787a10184223d4acfc4256248075fa4e1934b0c73b95e8be5d0",
@@ -3431,6 +3509,59 @@
    }
   },
   {
+   "printed": "retirement.l2_e05",
+   "project_expr_sha256": "a3b4c5999c72d1ff3986288f154bd21fb9e265f641bb862692b894e4a91c0c24",
+   "second_expr_sha256": "f013d07e6b15e5e15d01b63821ce84e0cc4f158b96673265a8c51eef082bbe6f",
+   "ruling": "Ruling: representation; encoding unchanged since the ruling of 2026-11-23. Triage (pass fd2030494f1d): 3,230 of 3,997 agree; every other comparison is candidate-unknown (the reply reads retirement.after59 on entries where it is not asked) or project-unknown on a partial state; no value or refusal differs.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "e8555135f9fb7f056d98ff7ef3950b76bf9dd335faed0853f81e91d7c4320d74",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]",
+     "partial:stage21.blind.e7-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.blind.e7-person[spouse].retirement[a].rollover_any@person[spouse].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e09",
+   "project_expr_sha256": "26cb9bcd75503edefd2a2f7dce0b7db0d067b7726264fe94944240f305e7ab35",
+   "second_expr_sha256": "21a1df45752f37f922167d7f9cb168da0b00fc3133fd1a80f255f4712b8f30e8",
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; re-reviewed only because retirement.exception's question text changed. Triage (pass fd2030494f1d): 3,241 of 3,997 agree, the rest candidate-unknown (the reply reads retirement.after59 where it is not asked); no value differs.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "fd584e7992d3e43c89e45fecd18a946966f4046c8aa591fd31d7c3c30fb63cb8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "retirement.l2_e09",
    "project_expr_sha256": "26cb9bcd75503edefd2a2f7dce0b7db0d067b7726264fe94944240f305e7ab35",
    "second_expr_sha256": "3db3b530d30bb8b489778e2437d32760212c8344e207b785bc588b6ee245fdd6",
@@ -3869,6 +4000,31 @@
      "fixture:classm.sales.1@person[taxpayer].retirement[r2]",
      "fixture:classm.sb.1@person[taxpayer].retirement[r1]",
      "partial:stage21.mut.e19-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e19",
+   "project_expr_sha256": "228322c52f13c7ba6a4a032c33cc33bb0cbdd148b7f6fa55f6ec6e935cab9e22",
+   "second_expr_sha256": "4cddb3e06bf2d6d3b5bc632c754a8777f233d97cc89c67801e42c965e73aa29f",
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; triage (pass fd2030494f1d): 3,243 of 3,997 agree, the rest candidate-unknown (retirement.after59 read where not asked); no value differs.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "8754fca689621cbc3bb7a624d372b32bca22b68b88d3792b1ebeb038f0e0721b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -4333,6 +4489,31 @@
      "partial:classm.tcw.8-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
      "partial:classm.tcw.15-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]",
      "partial:classm.clcw_next_year.4-person[taxpayer].retirement[r1].code@person[taxpayer].retirement[r1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e22",
+   "project_expr_sha256": "37de23880dbef1abbae2276f105bd74d3627c73988c16cc7e145591d93e61f8b",
+   "second_expr_sha256": "8afe25c51abde2533cee4072fb74b5bf078d56d1658a4140c5d7ecb9ef42bf1f",
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged; triage (pass fd2030494f1d): 3,167 of 3,997 agree, the rest candidate-unknown (retirement.after59 read where not asked); no value differs.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "002be7f0d547d3171cf15dae52f6882ab45cb0c9786b9a92a692f1f6298066a8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -4849,6 +5030,34 @@
   {
    "printed": "retirement.l2_e23",
    "project_expr_sha256": "71079b12909182e8b491d14985781737753d1d47a3595a043f7175677fcc5bbe",
+   "second_expr_sha256": "49d098ce36298af8a5df17d8323697b8c23b0609aec70bffa65db0b0a695a917",
+   "ruling": "Ruling: representation; as the ruling of 2026-11-14 (retirement.under59 is asked only with code 7). Encoding unchanged; triage (pass fd2030494f1d): 3,189 of 3,997 agree, the rest candidate-unknown or project-unknown on partial states; no value differs.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "fbc896eaddddaf4d45e33e3376a213871d94ad7228917342af339c301681eb60",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[taxpayer].retirement[r2]",
+     "fixture:classm.clcw.1.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r1]",
+     "fixture:classm.f8962.2.deepseek@person[taxpayer].retirement[r2]",
+     "partial:stage21.mut.e23_over_cap-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.mut.simple_e23_within_cap-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_e23",
+   "project_expr_sha256": "71079b12909182e8b491d14985781737753d1d47a3595a043f7175677fcc5bbe",
    "second_expr_sha256": "cdd4931fcdc48b8c47465b337cf6bdb34bd1d46121258e9833da706bc62c35aa",
    "ruling": "Ruling: representation; equivalent on executable triage except where the candidate is unknown on a partial input state (102, pass e6eb130ff729); no value or refusal differs.",
    "context": "7de2da7f6719c787a10184223d4acfc4256248075fa4e1934b0c73b95e8be5d0",
@@ -5133,6 +5342,33 @@
      "partial:stage21.blind.e5-person[taxpayer].retirement[b].exception@person[taxpayer].retirement[b]",
      "partial:stage21.blind.e5-person[taxpayer].retirement[c].box1@person[taxpayer].retirement[c]",
      "partial:stage21.blind.e5-person[taxpayer].retirement[c].exc_amount@person[taxpayer].retirement[c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "retirement.l2_s",
+   "project_expr_sha256": "4f04f92c7a6dfa0581a2900dd018d9da218eb3a7dca653025b155add704e89fa",
+   "second_expr_sha256": "22a10c485e7f156d70819611d867a2767cb978d25a70e9caf120e9670b701c28",
+   "ruling": "Ruling: representation; i5329 p. 5, Line 2. Encoding unchanged since the scope ruling of 2026-11-17; triage (pass fd2030494f1d): 3,988 of 3,997 agree, the 9 others unknown on partial states (rollover, roth_moved not yet answered); no value differs.",
+   "context": "7854f236feccc2eb835c02b029fdab2acaad85af903cc4edd2d15bb0ab46455f",
+   "date": "2026-11-24",
+   "run": "75850d4c15e0425093af8daae39db32c219d181c9c0137f9b91e7dadfe885aa3",
+   "subject_key": "e2849c2b84d2d03562fe255f37675a6d940659aafaa467ec04df9f15d6c93585",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "generated:20261026.274@person[taxpayer].retirement[r1]",
+     "generated:20261026.453@person[spouse].retirement[r1]",
+     "partial:stage21.mut.simple_e23_within_cap-person[taxpayer].retirement[a].rollover@person[taxpayer].retirement[a]",
+     "partial:stage21.mut.simple_e23_within_cap-person[taxpayer].retirement[a].rollover_any@person[taxpayer].retirement[a]",
+     "partial:stage21.mut.simple_e23_within_cap-person[taxpayer].retirement[a].roth_moved@person[taxpayer].retirement[a]",
+     "partial:stage21.mut.simple_e23_within_cap-person[taxpayer].retirement[a].rollover_property@person[taxpayer].retirement[a]",
+     "partial:stage21.mut.simple_e23_within_cap-person[taxpayer].retirement[a].box6@person[taxpayer].retirement[a]"
     ],
     "policy": "executable-triage-v2"
    }

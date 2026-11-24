@@ -873,22 +873,84 @@ def redraft_answers(case):
                        f"{E}.b_doubt": False, f"{E}.b_fixed_same": uniform})
 
 
+# --check-project: the light tier's check of the generator against the current build (check-all step engine_cases),
+# on a sample of each kind of return. The engine differential, which runs only in the release's full tier, fails when
+# the project leaves a line uncomputed on more than its floor of the cases (compare.py, NOT_COMPUTED_FLOOR) and stops
+# when the evaluator rejects a case's inputs; a renamed or new input the generator does not know causes both.
+CHECK_SAMPLE = {"count": 40, "joint": 20, "se": 20}
+CHECK_LINES = ("f1040.line24", "f1040.line37")
+CHECK_FLOOR = 0.05
+
+
+def check_project(cases):
+    """The project's evaluator on `cases`: no case rejected, and Form 1040 lines 24 and 37 a money value or a refusal
+    on all but CHECK_FLOOR of them. Prints the result; returns the exit status."""
+    import subprocess, tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "cases.json"
+        path.write_text(json.dumps(cases))
+        r = subprocess.run(["node", str(ROOT / "engine" / "dist" / "main.js"), "eval", "--year", Y, "--batch", str(path),
+                            "--target", ",".join(CHECK_LINES)], capture_output=True, text=True)
+    if r.returncode != 0:
+        print(f"engine cases: the project's evaluator failed (exit {r.returncode}):\n{r.stderr}", file=sys.stderr)
+        return 1
+    out = json.loads(r.stdout)["cases"]
+    rejected, open_, inputs = [], [], {}
+    for c in cases:
+        res = out[c["id"]]
+        if "error" in res:
+            rejected.append(f"{c['id']}: {res['error']}")
+            continue
+        for line in CHECK_LINES:
+            v = res["values"].get(line, {}).get("value", {})
+            if v.get("kind") not in ("money", "refusal"):
+                open_.append(c["id"])
+                inputs[v.get("input") or v.get("reason") or v.get("kind")] = inputs.get(v.get("input") or v.get("reason") or v.get("kind"), 0) + 1
+                break
+    problems = []
+    if rejected:
+        problems.append(f"{len(rejected)} case(s) rejected by the project's evaluator, e.g. " + "; ".join(rejected[:3]))
+    if len(open_) > CHECK_FLOOR * len(cases):
+        problems.append(f"{len(open_)} of {len(cases)} cases leave {' or '.join(CHECK_LINES)} without a value "
+                        f"(more than {CHECK_FLOOR:.0%}); unanswered: " + ", ".join(f"{k} ({n})" for k, n in sorted(inputs.items())))
+    for p in problems:
+        print(f"engine cases: {p}", file=sys.stderr)
+    if problems:
+        print("engine cases: the generator (tools/engines/generate_cases.py) writes an input the build does not have, or "
+              "leaves one the interview now asks unanswered", file=sys.stderr)
+        return 1
+    print(f"engine cases: {len(cases)} generated returns evaluated by the project; {len(open_)} without a value on "
+          f"{' or '.join(CHECK_LINES)}; 0 rejected")
+    return 0
+
+
+def generate(count, joint, se, seed):
+    rng = random.Random(seed)
+    cases = [gen_case(rng, i) for i in range(count)]
+    cases += [make_joint(gen_case(random.Random(f"mfj-base:{seed}:{j}"), 100_000 + j), j) for j in range(joint)]
+    cases += [make_se(gen_case(random.Random(f"se-base:{seed}:{j}"), 200_000 + j), j) for j in range(se)]
+    # The dividends question agrees with the amounts it gates, answered once every amount is final.
+    for c in cases:
+        c["inputs"]["div.any"] = any(c["inputs"].get(k, 0) != 0 for k in DIV_ANY_GATED)
+        redraft_answers(c)
+    return cases
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=1000)
     ap.add_argument("--joint", type=int, default=400)
     ap.add_argument("--se", type=int, default=300)
     ap.add_argument("--seed", type=int, default=20260101)
-    ap.add_argument("--out", required=True)
+    ap.add_argument("--out")
+    ap.add_argument("--check-project", action="store_true",
+                    help="evaluate a sample of each kind in the built project instead of writing cases")
     a = ap.parse_args()
-    rng = random.Random(a.seed)
-    cases = [gen_case(rng, i) for i in range(a.count)]
-    cases += [make_joint(gen_case(random.Random(f"mfj-base:{a.seed}:{j}"), 100_000 + j), j) for j in range(a.joint)]
-    cases += [make_se(gen_case(random.Random(f"se-base:{a.seed}:{j}"), 200_000 + j), j) for j in range(a.se)]
-    # The dividends question agrees with the amounts it gates, answered once every amount is final.
-    for c in cases:
-        c["inputs"]["div.any"] = any(c["inputs"].get(k, 0) != 0 for k in DIV_ANY_GATED)
-        redraft_answers(c)
+    if a.check_project:
+        sys.exit(check_project(generate(**CHECK_SAMPLE, seed=a.seed)))
+    if not a.out:
+        ap.error("--out is required")
+    cases = generate(a.count, a.joint, a.se, a.seed)
     with open(a.out, "w") as f:
         json.dump(cases, f)
     print(f"generated {len(cases)} cases (seed {a.seed}) -> {a.out}")

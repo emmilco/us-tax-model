@@ -82,15 +82,15 @@
 
 ## (helper) — `scope.military_move`
 
-- **Authored helper label:** Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?
-- **Encoded (Bool):** Input — Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?
-- Expr: `{"op":"input","source":"Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?"}`
+- **Authored helper label:** Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you (or, on a joint return, your spouse) were posted outside the United States?
+- **Encoded (Bool):** Input — Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you (or, on a joint return, your spouse) were posted outside the United States?
+- Expr: `{"op":"input","source":"Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you (or, on a joint return, your spouse) were posted outside the United States?"}`
 - Cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 93, Line 14, "If you are claiming only storage fees during your absence from the United States, check the box on line 14" (2025; created 2025-09-05; sha256 3d31c226)
 
 ## (gate) — `scope.military_move_if_armed_forces`
 
 - **Authored helper label:** The answer to scope.military_move, asked only when the question scope.armed_forces is answered Yes (false otherwise)
-- **Encoded (Bool):** Choose — [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true → helper "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you were posted outside the United States?"] [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = false → helper "Year parameter household.no (false)"]
+- **Encoded (Bool):** Choose — [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = true → helper "Do you want to deduct moving costs, not paid back, of a 2025 move to a new permanent post under military orders, or storage fees while you (or, on a joint return, your spouse) were posted outside the United States?"] [helper "In 2022 or later, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, Coast Guard, reserves or National Guard?" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["scope.armed_forces",{"const":true}],"op":"test"},"then":"scope.military_move"},{"guard":{"eq":["scope.armed_forces",{"const":false}],"op":"test"},"then":"scope.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station" (2025; printed date 2026-02-25; sha256 482e9c48)
 

@@ -1023,7 +1023,7 @@
      "class": "defect",
      "evidence": "ny_it225i p. 10, A-119; i1040gi p. 89 expects more than one agreement. A pre-2019 agreement makes s1.alimony_if_any true and hides ny_it201.ask.alimony_later, so post-2018 alimony under a second agreement gets no New York addition or subtraction and no refusal. Low.",
      "bugs": [
-      "BUG-NEW-release-prep-11"
+      "BUG-1287"
      ]
     },
     {
@@ -1032,7 +1032,7 @@
      "class": "defect",
      "evidence": "A recapture makes the same gate true and hides the New York question. Low.",
      "bugs": [
-      "BUG-NEW-release-prep-11"
+      "BUG-1287"
      ]
     },
     {
@@ -1054,9 +1054,9 @@
    ],
    "bugs": [
     "BUG-1215",
-    "BUG-NEW-release-prep-11"
+    "BUG-1287"
    ],
-   "class": "defect (low): BUG-NEW-release-prep-11; BUG-1215 (low)",
+   "class": "defect (low): BUG-1287; BUG-1215 (low)",
    "subject_sha": "480d9d4002e74101f104e1bc6c9d4a395f8e17ebb5dc4f851d91fa72994d66e6",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   }

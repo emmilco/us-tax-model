@@ -15,6 +15,7 @@ import { loadFixtureCases } from "./fixture-inputs.js";
 import fc from "fast-check";
 import { federalDocuments, nyReturnArbitrary, sampleReturns } from "./generate.js";
 import { runChecks } from "./check.js";
+import { interviewStatus, loadInterview, type InterviewData } from "./interview.js";
 import type { CanonicalData, Expr, FormDoc, Line, ParamEntry, TableDoc, ValueType } from "./types.js";
 import { NY_MODE, YEAR } from "./year.js";
 import { nyPath, reportName, reportPath, yearPath } from "./year.js";
@@ -303,7 +304,6 @@ const EQUIVALENT: Record<string, string> = {};
 // mutants proven equivalent on every input, and the score is stated both with and without them excluded. They do
 // not fail the run.
 export const ANSWERED_ONLY = new Set([
-  "operand.f2441.f2441.attrib_gate.line31.all.3.gt.0",
   "operand.sdtw.sdtw.line4.zero.then1",
   "operand.dependent.dependent.dc_line2c.dc_incapable.all.1.eq.0",
   "operand.eic.eic.step5_income.earned_for_limit.lt.0",
@@ -1959,8 +1959,6 @@ export const EQUIVALENT_IF: Record<string, Conditional> = {
     ["dependent.dc_line2c", "dependent.dc_incapable", "dependent.dc_disabled_qp", "dependent.dc_qp", "dependent.dc_lived_half", "dependent.dc_child_all_year", "dependent.dc_child", "dependent.dc_age13", "dependent.qc_dependent", "dependent.qualifying_child", "dependent.qc_tests", "dependent.qc_from_age", "dependent.qc_from_support", "dependent.qc_from_joint", "dependent.no", "param:household.no", "dependent.lived_half"], "b5b7b1b9f8f8dfe0", "dependent.dc_disabled_qp"),
   "operand.eic.eic.step5_income.earned_for_limit.lt.0": pinned("step5_income compares earned_for_limit with eic.limit; the mutant compares wsb_4b, sum[earned_income, wsb_se]. earned_for_limit chooses on self_employed (sc_count > 0): earned_income when false, wsb_4b when true. With self_employed true the two are the same value. With it false sc_count is a complete 0 (a lower bound decides gt only true, spec 4.7.5), so each person's sc_count is a complete 0, has_sc is false and eic_se is person.zero ($0); wsb_se sums eic_se over the same roster with no where-test, so it is $0, and wsb_4b is earned_income's value (a sum returns its first operand's refusal at once, and an unknown plus $0 stays unknown). self_employed is never a refusal (its counts sum parameters over rosters, with no gates); it is unknown only with a $person or $sc roster unconfirmed, where the base is unknown and the mutant can be decided (earned_income's refusal), so the argument is over answered inputs: those rosters are asked on every return.",
     ["eic.step5_income", "eic.earned_for_limit", "eic.wsb_4b", "eic.wsb_se", "eic.earned_income", "eic.self_employed", "eic.sc_count", "person.sc_count", "person.has_sc", "person.eic_se", "person.zero", "param:ss.zero"], "5a7f48cd7751a68a", "eic.wsb_4b"),
-  "operand.f2441.f2441.attrib_gate.line31.all.3.gt.0": pinned("attrib_gate's fourth conjunct compares line31 with $0; the mutant compares line3, a choose with no gates that is line31 when f2441.benefits is true and line3_expenses when it is false. The conjunct is reached only when has_1e (Form 1040 line 1e above $0) was true or unknown. Line 1e is f2441.zero ($0) when benefits is false, so has_1e true means benefits is a memoized true and line3 is line31's value: the comparisons agree. With benefits answered, has_1e is unknown only when it is true and line 26 is unknown, and line3 is again line31. With benefits unanswered line3 is unknown where line31 may be decided, so the argument is over answered inputs: benefits is read by Form 1040 line 1e, which line 1z sums, and is asked on every return.",
-    ["f2441.attrib_gate", "f2441.line3", "f2441.line31", "f2441.has_1e", "f1040.line1e", "f2441.benefits", "f2441.zero", "param:sales.zero"], "825b60d565640e42", "f2441.line3"),
   "operand.s8812.s8812.line18a.chart_eic.then0": (() => {
     const p = pinned("line18a's taking_eic-true alternative is chart_eic; the mutant reads eiw_7_figured (eiw_3 less eiw_6). It is taken only when Form 1040 line 27a, a copy of eic.credit, is above $0, so eligible is true and line6 is above $0; line6 is line2 or the smaller of line5 and line2, so line2 is above $0, line1_in_table is true and line1 is at least table_start (positive, checked). eligible true makes step1_income and step5_income complete. Line 11b (line 9 less line 10) is complete; line 9 sums line 8, a copy of Schedule 1 line 10, which sums s1.line10_ex5 (a sum that includes Schedule 1 line 3) and Schedule 1 line 5, and line 10 copies Schedule 1 line 26, which sums Schedule 1 line 15, so both are complete. earned_for_limit is complete, so earned_income (Step 5 line 1, line 1z behind scope.schedule1; less line 2, M, the sum of person.mw_not_earned over the person roster; plus line 4, $0 behind s8812.combat_pay) is complete, so M is a complete amount, at least $0, and those gates are false. Then eiw_1a is line 1z, eiw_1b $0 (the same combat-pay gate), eiw_2b Schedule 1 line 3, eiw_3 eiw_3sum floored at zero, eiw_4 M (the same sum over the same field, behind scope.schedule1) and eiw_5 Schedule 1 line 15: eiw_7_figured is max(line 1z + S1 line 3, 0) less (M + S1 line 15). S1 line 3 sums each person's sc_total and line 15 each person's se_line13. With self_employed false every Schedule C roster is empty, line 3 is $0 and each se_line13 is person.zero; chart_eic is earned_income, line 1z less M, and so is eiw_7_figured (line 1z is NonNegDollars, so the floor does not apply). With it true chart_eic is wsb_4b, line 1z plus the sum of each person's eic_se: person.zero for a person with no Schedule C (whose sc_total and se_line13 are $0), sc_total less se_line13 when files_se, and sc_total otherwise, where files_se false means Schedule SE line 4c is $0, so lines 6, the social security base, 10, 11, 12 and 13 of that person's Schedule SE are $0. So wsb_4b is line 1z + S1 line 3 less (M + S1 line 15); line1 (wsb_6, wsb_4b floored) is above $0, so line 1z + S1 line 3 is above M + S1 line 15, itself at least $0, no floor applies, and eiw_7_figured equals chart_eic. Where taking_eic is false or refused the alternative is not evaluated; where it is unknown the alternative is a way (spec 4.7.3) and chart_eic and eiw_7_figured can differ in whether they refuse, so the argument is over answered inputs. A Schedule C roster is empty when self_employed is false because self_employed tests sc_count > 0 and sc_count sums sc.one, a positive parameter (pinned).",
       ["s8812.line18a", "s8812.chart_eic", "s8812.eiw_7_figured", "s8812.taking_eic", "f1040.line27a", "eic.credit", "eic.zero", "eic.line6", "eic.after_line4", "eic.smaller", "eic.line2", "eic.line1_in_table", "eic.line1", "eic.wsb_6", "eic.eligible", "eic.step1_income", "eic.step5_income", "eic.earned_for_limit", "eic.earned_income", "eic.step5_line1", "eic.step5_line2", "eic.step5_line3", "eic.step5_line4", "eic.wsb_4b", "eic.wsb_se", "eic.self_employed", "eic.sc_count", "s8812.eiw_3", "s8812.eiw_3sum", "s8812.eiw_1a", "s8812.eiw_1b", "s8812.eiw_2b", "s8812.eiw_6", "s8812.eiw_4", "s8812.eiw_5", "s8812.zero", "f1040.line11b", "f1040.line11a", "f1040.line9", "f1040.line8", "f1040.line10", "s1.line10", "s1.line10_ex5", "s1.line26", "s1.line3", "s1.line15", "person.sc_total", "person.se_line13", "person.se_line4c", "person.files_se", "person.eic_se", "person.eic_se_has", "person.eic_part1", "person.has_sc", "person.sc_count", "person.zero", "def:se", "param:sales.zero", "param:ss.zero", "sc.one", "param:sc.one"], "03704f7f8e7a4b8d", "s8812.eiw_7_figured");
@@ -2900,6 +2898,14 @@ function outcome(baseline: CanonicalData, cases: JudgingCases, m: Mutation): Out
 
 // --ny: only the New York mutants (documents ny_*, parameters ny.*, tables ny_*), judged by the New York fixtures;
 // otherwise every mutant, as before (a New York mutant is then judged by the federal fixtures, which never read it).
+// The keyed arguments of this run's jurisdiction checked on `data` without a mutation run: every generated mutant is
+// taken as surviving, so staleEquivalences reports each argument whose mutant is no longer generated, reads another
+// line than the argument names, or no longer holds; whether a mutant is killed is left to the run.
+export function argumentProblems(data: CanonicalData): string[] {
+  const muts = selectMutants(mutations(data));
+  return staleEquivalences(EQUIVALENT_IF, ANSWERED_ONLY, data, muts, new Set(muts.map((m) => m.id)));
+}
+
 function selectMutants(muts: Mutation[]): Mutation[] {
   // Each jurisdiction's run takes only its own mutants: the federal fixtures never read a New York line, so a
   // New York mutant can be killed only by the New York fixtures (`mutate --ny`, its own check-all step).
@@ -3035,7 +3041,9 @@ const OPEN_DEFECT_SURVIVORS: Record<string, string> = Object.fromEntries(
 // The input sets are SAMPLED_RETURNS generated returns and the inputs of every fixture case, each as given and with
 // answers withheld at each rate of SAMPLED_RATES (each answer at the rate, each roster, with its entries, at a quarter
 // of it).
-// An argument listed in ANSWERED_ONLY claims less and is held only to the sets as given.
+// An argument listed in ANSWERED_ONLY claims less and is held only to the sets that are answered returns: those as
+// given whose interview reaches no input they leave unanswered (partialLabels). A set as given that still reaches an
+// unanswered input (a fixture case written before a question was added) is partial, as the withheld sets are.
 // A set reaches the mutant where a line the mutant changes reads other operands, or has another value, than under the
 // data; it exercises the mutant where a value the mutant can change differs (the readers were shown the change and
 // none passed it on to a value sheet). An argument that no set reaches is not backed by the sample: it fails the run
@@ -3064,8 +3072,9 @@ const SAMPLED_RETURNS = ((n) => (Number.isInteger(n) && n >= 0 ? n : 300))(Numbe
 const SAMPLED_RATES = [0, 0.1, 0.3, 0.6];
 const SAMPLE_SEED = 20261115;
 
-/** A sampled input set: where it came from, the rate its answers were withheld at, and the inputs. */
-type SampleSet = { label: string; rate: number; inputs: Record<string, unknown> };
+/** A sampled input set: where it came from, the rate its answers were withheld at, the inputs, and whether it is a
+ * partial return (answers withheld, or as given with an input the interview reaches left unanswered). */
+type SampleSet = { label: string; rate: number; inputs: Record<string, unknown>; partial: boolean };
 
 function mulberry32(seed: number): () => number {
   let a = seed >>> 0;
@@ -3096,16 +3105,34 @@ export function withholdAnswers(inputs: Record<string, unknown>, rate: number, s
   return out;
 }
 
-/** The sampled input sets of this run's jurisdiction. */
-function sampleSets(baseline: CanonicalData, cases: JudgingCases): SampleSet[] {
+/** The input sets as given, before any answer is withheld: the generated returns, then every fixture case. */
+function givenSets(baseline: CanonicalData, cases: JudgingCases): { label: string; inputs: Record<string, unknown> }[] {
   const generated = NY_MODE
     ? fc.sample(nyReturnArbitrary(baseline), { seed: SAMPLE_SEED, numRuns: SAMPLED_RETURNS })
     : sampleReturns(federalDocuments(baseline), SAMPLED_RETURNS, SAMPLE_SEED);
-  const given: { label: string; inputs: Record<string, unknown> }[] = [
+  return [
     ...(SAMPLED_RETURNS === 0 ? [] : generated).map((inputs, i) => ({ label: `generated return ${i} (seed ${SAMPLE_SEED})`, inputs })),
     ...cases.all.map((c) => ({ label: `fixture case ${c.id}`, inputs: c.inputs as Record<string, unknown> })),
   ];
-  return given.flatMap((g, i) => SAMPLED_RATES.map((rate, r) => ({ label: g.label, rate, inputs: withholdAnswers(g.inputs, rate, SAMPLE_SEED + 7919 * i + r) })));
+}
+
+/** Whether a return as given is partial: the interview of this run's jurisdiction still reaches an input it does not
+ * answer (interviewStatus's reachable inputs). */
+export function isPartialReturn(data: CanonicalData, config: InterviewData, inputs: Record<string, unknown>): boolean {
+  return interviewStatus(data, config, inputs).reachableInputs.length > 0;
+}
+
+/** The labels of the sets as given that are partial returns (isPartialReturn), computed once for every worker. */
+export function partialLabels(baseline: CanonicalData, cases: JudgingCases): string[] {
+  const config = loadInterview(NY_MODE ? "ny" : "full");
+  return givenSets(baseline, cases).filter((g) => isPartialReturn(baseline, config, g.inputs)).map((g) => g.label);
+}
+
+/** The sampled input sets of this run's jurisdiction; `partial` are the labels of the sets as given that are partial
+ * returns (partialLabels). */
+function sampleSets(baseline: CanonicalData, cases: JudgingCases, partial: Set<string>): SampleSet[] {
+  return givenSets(baseline, cases).flatMap((g, i) => SAMPLED_RATES.map((rate, r) => ({ label: g.label, rate,
+    inputs: withholdAnswers(g.inputs, rate, SAMPLE_SEED + 7919 * i + r), partial: rate > 0 || partial.has(g.label) })));
 }
 
 /** The line a derivation key is of: a top-level line's key is its id, `coll[k].x` and `p[k].coll[j].x` are lines of
@@ -3210,9 +3237,9 @@ function sampleSite(baseline: CanonicalData, site: string, muts: Mutation[], set
     let base: Map<string, string> | undefined;
     muts.forEach((m, i) => {
       const r = results.get(m.id)!;
-      // An argument over answered inputs only is held to the sets as given; on the others the first set telling the
-      // mutant apart is kept as a witness of the partial return the argument excludes.
-      const partial = set.rate > 0 && answeredOnly.has(m.id);
+      // An argument over answered inputs only is held to the answered returns; on the partial sets the first set
+      // telling the mutant apart is kept as a witness of the partial return the argument excludes.
+      const partial = set.partial && answeredOnly.has(m.id);
       if (partial ? r.partial !== undefined : !full && r.contradicted !== undefined) return;
       if (!partial) r.sets++;
       const ownMutant = evaluate(mutantData[i]!, set.inputs, own).derivations;
@@ -3241,7 +3268,7 @@ function sampleSite(baseline: CanonicalData, site: string, muts: Mutation[], set
         // A def's lines are seen only through the lines that read its instances, which are compared; a helper is on
         // no value sheet and is seen only through the lines that read it; the mutated line may differ.
         if (b === undefined || k.includes("|inst:") || exclude.has(id) || isHelper(baseline, id)) continue;
-        if (partial) { r.partial = `${set.label}, answers withheld at rate ${set.rate}: ${k} is ${brief(b)} with the data and ${brief(v)} with the mutant`; return; }
+        if (partial) { r.partial = `${set.label}, ${set.rate > 0 ? `answers withheld at rate ${set.rate}` : "as given, a partial return"}: ${k} is ${brief(b)} with the data and ${brief(v)} with the mutant`; return; }
         r.contradicted ??= `${set.label}, answers withheld at rate ${set.rate}: ${k} is ${brief(b)} with the data and ${brief(v)} with the mutant`;
         if (!full) return;
         if (!closure.has(id)) r.closureMiss ??= `${set.label}, rate ${set.rate}: ${k} differs and is not a reader of ${watch.join(", ")} by the closure`;
@@ -3274,9 +3301,9 @@ export function sampledPlan(baseline: CanonicalData, muts: Mutation[], survivors
 }
 
 /** The sampled check of a share of the plan (every `count`-th site from `index`), for the workers. */
-export function sampledShare(index: number, count: number, plan: SampledPlan): [string, SampledResult][] {
+export function sampledShare(index: number, count: number, plan: SampledPlan, partial: string[]): [string, SampledResult][] {
   const baseline = loadCanonical();
-  const sets = sampleSets(baseline, judgingCases(baseline));
+  const sets = sampleSets(baseline, judgingCases(baseline), new Set(partial));
   const byId = new Map(selectMutants(mutations(baseline)).map((m) => [m.id, m]));
   const out: [string, SampledResult][] = [];
   for (let i = index; i < plan.length; i += count) {
@@ -3295,16 +3322,36 @@ export function sampledShare(index: number, count: number, plan: SampledPlan): [
 }
 const CLOSURE_TEST_SETS = 200;
 
-async function sampledResults(plan: SampledPlan): Promise<Map<string, SampledResult>> {
+async function sampledResults(baseline: CanonicalData, plan: SampledPlan, partial: string[]): Promise<Map<string, SampledResult>> {
   const count = Math.min(workerCount(), Math.max(1, plan.length));
-  if (count === 1) return new Map(sampledShare(0, 1, plan));
+  if (count === 1) return new Map(sampledShare(0, 1, plan, partial));
   const shares = await Promise.all(Array.from({ length: count }, (_, index) => new Promise<[string, SampledResult][]>((done, fail) => {
-    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count, ny: NY_MODE, plan } });
+    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count, ny: NY_MODE, plan, partial } });
     w.once("message", done);
     w.once("error", fail);
     w.once("exit", (code) => { if (code !== 0) fail(new Error(`sampled-check worker ${index} exited with ${code}`)); });
   })));
   return new Map(shares.flat());
+}
+
+/** Self-test of isPartialReturn: a return with no answers is partial; some fixture case is an answered return (else
+ * every argument over answered inputs only would be held to no set); and withholding one of its answers makes it
+ * partial. */
+export function partialReturnSelfTest(baseline: CanonicalData, cases: JudgingCases, partial: string[]): string[] {
+  const config = loadInterview(NY_MODE ? "ny" : "full");
+  const problems: string[] = [];
+  if (!isPartialReturn(baseline, config, {})) problems.push("partial returns: a return with no answers is not found partial");
+  const marked = new Set(partial);
+  const answered = cases.all.find((c) => !marked.has(`fixture case ${c.id}`));
+  if (answered === undefined) problems.push("partial returns: every fixture case is partial, so no answered return backs an argument over answered inputs only");
+  else {
+    // Withholding one answer of an answered return must make it partial for some answer (the first 40 tried).
+    const keys = Object.keys(answered.inputs).filter((k) => !k.startsWith("$")).sort().slice(0, 40);
+    const without = (k: string): Record<string, unknown> => Object.fromEntries(Object.entries(answered.inputs).filter(([key]) => key !== k));
+    if (!keys.some((k) => isPartialReturn(baseline, config, without(k))))
+      problems.push(`partial returns: ${answered.id} stays an answered return with any one of ${keys.length} answers withheld`);
+  }
+  return problems;
 }
 
 export async function runMutation(): Promise<number> {
@@ -3370,7 +3417,9 @@ export async function runMutation(): Promise<number> {
   const staleTest = staleEquivalenceSelfTest(baseline, muts, survivorIds);
   const fixtureKilled = new Set(muts.filter((_, i) => outcomes[i] === "fixtures" || outcomes[i]!.startsWith("classm:")).map((m) => m.id));
   const plan = sampledPlan(baseline, muts, survivorIds, fixtureKilled);
-  const sampled = await sampledResults(plan);
+  // Only an argument over answered inputs only reads which sets as given are partial returns.
+  const partial = plan.some((p) => p.claimed.some((id) => ANSWERED_ONLY.has(id))) ? partialLabels(baseline, fixtureFile) : [];
+  const sampled = await sampledResults(baseline, plan, partial);
   const sampledProblems: string[] = [];
   const sampledRows: string[] = [];
   let controlsTried = 0, controlsRejected = 0;
@@ -3378,7 +3427,7 @@ export async function runMutation(): Promise<number> {
   for (const p of plan) {
     for (const id of p.claimed) {
       const r = sampled.get(id)!;
-      const mode = ANSWERED_ONLY.has(id) ? "sets as given" : "all sets";
+      const mode = ANSWERED_ONLY.has(id) ? "answered returns" : "all sets";
       sampledRows.push(`| ${id} | ${mode} | ${r.sets} | ${r.reached} | ${r.exercised} | ${r.contradicted === undefined ? "holds" : "CONTRADICTED"}${r.reached === 0 && r.exercised === 0 && UNEXERCISED_IF[id] ? `; not reachable by a sample: ${UNEXERCISED_IF[id]!.reason}` : ""}${r.partial ? `; on a partial return: ${r.partial}` : ""} |`);
       if (r.contradicted !== undefined) sampledProblems.push(`${id}: the sample contradicts the argument: ${r.contradicted}`);
       else if (r.reached === 0 && r.exercised === 0 && !UNEXERCISED_IF[id]?.holds(baseline)) sampledProblems.push(`${id}: no sampled set reaches the mutant's change, so the sample does not back the argument; add a fixture case that reaches it or state the reason in UNEXERCISED_IF`);
@@ -3391,6 +3440,7 @@ export async function runMutation(): Promise<number> {
       else powerGaps.push(`${id} (${p.site})`);
     }
   }
+  if (partial.length > 0) sampledProblems.push(...partialReturnSelfTest(baseline, fixtureFile, partial));
   if (plan.length > 0 && controlsTried === 0) sampledProblems.push("sampled check: no line of a keyed argument has a fixture-killed mutant to serve as a control");
   if (controlsTried > 0 && controlsRejected === 0) sampledProblems.push(`sampled check: none of the ${controlsTried} known-killed controls was rejected, so the check has shown no power`);
   const adjusted = total - equivalentSurvivors.length === 0 ? 1 : killed / (total - equivalentSurvivors.length);
@@ -3540,7 +3590,7 @@ export async function runMutation(): Promise<number> {
   for (const p of staleArguments) console.log(`mutation: stale argument: ${p}`);
   console.log(`mutation: stale-argument self-test: ${staleTest.planted} planted stale arguments, ${staleTest.problems.length} problems`);
   for (const p of staleTest.problems) console.log(`mutation: ${p}`);
-  console.log(`mutation: sampled check: ${plan.reduce((n, p) => n + p.claimed.length, 0)} keyed arguments on ${plan.length} lines, ${SAMPLED_RETURNS} generated returns and ${fixtureFile.all.length} fixture cases at ${SAMPLED_RATES.length} withholding rates; known-killed controls rejected ${controlsRejected} of ${controlsTried}; ${sampledProblems.length} problems`);
+  console.log(`mutation: sampled check: ${plan.reduce((n, p) => n + p.claimed.length, 0)} keyed arguments on ${plan.length} lines, ${SAMPLED_RETURNS} generated returns and ${fixtureFile.all.length} fixture cases at ${SAMPLED_RATES.length} withholding rates (${partial.length} sets as given are partial returns); known-killed controls rejected ${controlsRejected} of ${controlsTried}; ${sampledProblems.length} problems`);
   for (const p of sampledProblems) console.log(`mutation: sampled check: ${p}`);
   return sampledProblems.length === 0 && staleArguments.length === 0 && staleTest.problems.length === 0 && unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 && wholeProblems.length === 0 && guardProblems.length === 0 && figureProblems.length === 0 && digestTest.problems.length === 0 && chooseProblems.length === 0 && unobservedProblems.length === 0 ? 0 : 1;
 }

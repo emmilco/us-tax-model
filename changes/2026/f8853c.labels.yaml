@@ -1,0 +1,18 @@
+changes:
+  tax_year: 2026
+  form: f8853c
+  entries:
+  - change: BUG-1238
+    evidence:
+    - doc: rp-25-32
+      page: 34
+      quote: chronically ill individual, is $430
+    verified: final
+    note: The label prints the amount of f8853c.per_diem_limit; the 2026 label prints the staged 2026 amount (research/ty2026/params-2026.proposed.yaml),
+      the parameter's value being set by the parameter run.
+    operations:
+    - set:
+        line: f8853c.rate
+        field: label
+        from: Year parameter f8853c.per_diem_limit ($420)
+        to: Year parameter f8853c.per_diem_limit ($430)

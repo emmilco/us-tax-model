@@ -14498,3 +14498,887 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Caught by:** the bug characterization of 2026-11-23 (claude-opus-5-5, judgment), which found BUG-1114 listed open although BUG-1182 fixed the same defect; checked against the tree by the coordinator, 2026-11-24.
 - **Evidence:** forms/2025/s8812.yaml s8812.line22 is the sum of s1.line15, s2.tip_ss_tax and s2.wage_ss_tax (Schedule 2 lines 5 and 6, renamed by T-353), and s8812.clwb_8 copies s8812.line22; BUG-1182 records the fix and its fixture (Form 8919 tax of $306 reaching line 27).
 - **Tags:** closure; Schedule 8812, Form 4137, Form 8919, fixed
+
+## BUG-1226 — Closure: BUG-1299 is fixed, every part checked on next and the cheap ones guarded in the light tier
+
+- **Date:** 2026-11-24
+- **Caught by:** lane hermetic (claude-opus-5-5, judgment), owner item 1 of the 2026-11-24 wave.
+- **Closes:** BUG-1299
+- **Closure:** fixed
+- **Evidence:** On the lane's tree (next d60f83a9 plus this lane), with a fresh build: (1) tools/hooks/test_check_bg.sh passes through tools/self_tests.py run_one, and now also when run directly, with CHECK_ALL_PREFLIGHT=done, CHECK_ALL_RELEASE=1, ENGINE_CACHE=verify and AGENT_RUNS_FOLD=0 set (it failed run directly before this lane's change); (2) python3 tools/check_twins.py: 38 pairs, 54 declared differences, 16 one-sided ids, 0 problems; (3) python3 tools/year_changes.py --check: pass; (4) node tools/check_refusal_reach.mjs: 671 refusal fixtures, 5 listed exceptions, pass; (5) reports/2025/interview_pruning.md says 287 complete returns, as the resolution states (the count itself is judged only by the unscoped interview_rules run, not rerun here); (6) and (8): 80 generated returns (40 single or head of household, 20 joint, 20 self-employment) evaluated by the build, none rejected, Form 1040 lines 24 and 37 a money value or a refusal on all 80; (7) and (8): the EARLY_MOVED patterns of the three adapters name s2.(line21|tax_favored_accounts), and the PTC and EDU patterns name f5695.rce_limit and rce_credit. The engine differential itself was not rerun (release tier).
+- **Guards:** Light tier: (1) the step hermetic_env (tools/hermetic_env.py --self-test): every environment variable the tools read is classified, and every shell self-test drops the run settings; (2) twins and (4) refusal_reach run in the light tier (2 s and 31 s); (6) and the unanswered inputs of (8): the step engine_cases (tools/engines/generate_cases.py --check-project) fails on a rejected input or on more than 5% of the sample without lines 24 and 37 (planting the old input line16b, or dropping the answer to scope.trade_act_repaid, fails it). (3), the stale ids of (7) and (8): lane lightguards (year_changes, rename_ids). (5): no cheap guard.
+- **Tags:** tools, self-tests, release, closure
+
+## BUG-1227 — Closure: BUG-1122 is fixed; the unread-parameter check runs in the light tier, and hsa.no_months is removed
+
+- **Date:** 2026-11-24
+- **Caught by:** lane lightguards (claude-opus-5-5, judgment): tools/check_unread_params.py on next d60f83a9 reported four parameters that no form, interview, change file, engine source or tool names: ny.est.min_due, ny.est.share and ny.est.high_agi (params/ny/2025.yaml; BUG-1122) and hsa.no_months (params/2025.yaml).
+- **Closes:** BUG-1122
+- **Closure:** fixed
+- **Tool change:** params/ny/2025.yaml drops ny.est.min_due, ny.est.share and ny.est.high_agi; params/2025.yaml drops hsa.no_months, with its staged 2026 value (research/ty2026/params-2026.proposed.yaml, params_auto.json). No form line reads any of them (a whole-name search of forms, interview, changes/2026 and the code; the committed reports/ny/2025/mutation.md explains the three ny.est mutants by the rule 'Unread parameter'), so no value, refusal or question changes. New light-tier step unread_params (tools/check_unread_params.py) fails on any parameter of either jurisdiction no reader names; the eight EIC Table parameters eic.earned_amount0-3 and eic.maximum0-3, read by built names in engine/src/conjecture.ts and tools/engines/compare.py, are listed in tools/unread_params_allow.json, so the reason of the mutation rule 'Unread parameter' (it serves a cross-check outside the computation) is true of every parameter it now applies to. ny_it201.gate.estimated_penalty still refuses without the $300 and 10% test of ny_it201i Line 81, as before (the conservative over-refusal BUG-1122 describes).
+- **Evidence:** python3 tools/check_unread_params.py: 4 problems on d60f83a9, 0 after (566 parameters, 8 by a built name); grep of the tree outside reports/, rendered/, research/ and the review store finds no other mention of the four keys.
+- **Severity:** low
+- **Tags:** ny, params, mutation, tools, fixed
+
+## BUG-1228 — f4952.line1: the investment interest amount is asked of "you" only on a joint return
+
+- **Date:** 2026-11-24
+- **Caught by:** the spouse-phrase lint (engine/src/spouse-phrase.ts), built and triaged in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.1)
+- **Source:** f4952 p. 3, Line 1, "Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment"; i1040gi p. 13, "report their combined income and deduct their combined allowable expenses" (a joint return); interview/README.md, "A joint return combines both spouses' items"
+- **Symptom:** f4952.line1, asked once per return, said "How much interest did you pay in 2025 on money borrowed to buy investments?" while its parent f4952.has_interest asks of "you (or, on a joint return, your spouse)". A joint filer whose spouse paid margin interest can leave it out: Form 4952 line 1, and the deduction it allows, are understated.
+- **Where:** interview/2025/questions.yaml f4952.line1 (prompt).
+- **Fix:** Prompt: "How much interest did you (or, on a joint return, your spouse) pay in 2025 on money borrowed to buy investments? ..." (the rest unchanged). No fixture: the value read is unchanged; only the wording that leads to it.
+- **Fix lines:** f4952.line1
+- **Siblings checked:** f4952.line1_if_interest
+- **Severity:** low
+- **Tags:** Form 4952, spouse phrase; fixed
+
+## BUG-1229 — s2.household_employee: the Schedule H wage test is asked of "you" only on a joint return
+
+- **Date:** 2026-11-24
+- **Caught by:** the spouse-phrase lint (engine/src/spouse-phrase.ts), built and triaged in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** i1040sh p. 4, Name of employer, "Only two Schedules H can be attached to Form 1040, 1040-SR, and 1040-SS, one Schedule H for each of the primary taxpayer and the secondary taxpayer"; i1040sh, Line A, "Did you pay any one household employee cash wages of $2,800 or more in 2025?"; i1040gi p. 13, "report their combined income and deduct their combined allowable expenses" (a joint return); interview/README.md, "A joint return combines both spouses' items"
+- **Symptom:** s2.household_employee, a refusal screen asked once per return, said "Did you pay any one of them $2,800 or more ..." while its parent s2.household_help asks whether "you (or, on a joint return, your spouse)" paid anyone to work in the home. A joint filer whose spouse employs the household worker can answer No: the Schedule H refusal is missed and the household employment taxes are left off Schedule 2.
+- **Where:** interview/2025/questions.yaml s2.household_employee (prompt).
+- **Fix:** Prompt: "Did you (or, on a joint return, your spouse) pay any one of them $2,800 or more in 2025, ..." (the rest unchanged). No fixture: values unchanged.
+- **Fix lines:** s2.household_employee
+- **Siblings checked:** s2.household_employee_if_help
+- **Severity:** low
+- **Tags:** Schedule 2, Schedule H, spouse phrase; fixed
+
+## BUG-1230 — scope.military_move: storage fees "while you were posted" outside the United States leaves out a spouse posted abroad
+
+- **Date:** 2026-11-24
+- **Caught by:** the spouse-phrase lint (engine/src/spouse-phrase.ts), built and triaged in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.1) (weaker)
+- **Source:** i1040gi p. 93, Line 14, "If you are claiming only storage fees during your absence from the United States, check the box on line 14"; i1040gi p. 13, "report their combined income and deduct their combined allowable expenses" (a joint return); interview/README.md, "A joint return combines both spouses' items"
+- **Symptom:** scope.military_move, asked once per return after scope.armed_forces (which names the spouse), said "... or storage fees while you were posted outside the United States?". On a joint return where the spouse is the member posted abroad, the filer can answer No and the refusal of the Form 3903 deduction is not told; the return is then figured without a deduction the couple may take.
+- **Where:** forms/2025/scope.yaml scope.military_move (label and source).
+- **Fix:** Label and prompt: "... or storage fees while you (or, on a joint return, your spouse) were posted outside the United States?". No fixture: values unchanged.
+- **Fix lines:** scope.military_move
+- **Siblings checked:** scope.military_move_if_armed_forces
+- **Severity:** low
+- **Tags:** scope, Form 3903, spouse phrase; fixed
+
+## BUG-1231 — rec.medical: the repaid 2024 medical expenses are asked as repaid "to you" only, unlike rec.property_tax
+
+- **Date:** 2026-11-24
+- **Caught by:** the spouse-phrase lint (engine/src/spouse-phrase.ts), built and triaged in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** p525 p. 26, Recoveries, Example 34, "In 2025, you received a $500 reimbursement from your medical insurance for your 2024 ..."; i1040gi p. 13, "report their combined income and deduct their combined allowable expenses" (a joint return); interview/README.md, "A joint return combines both spouses' items"
+- **Symptom:** rec.medical, an amount asked once per return, said "How much of your 2024 medical and dental bills was repaid to you in 2025?", while its sibling rec.property_tax asks what was refunded "to you (or, on a joint return, your spouse)". A joint filer can leave out a reimbursement paid to the spouse: the recovery on Schedule 1 line 8z is understated.
+- **Where:** interview/2025/questions.yaml rec.medical (prompt).
+- **Fix:** Prompt: "How much of your 2024 medical and dental bills was repaid to you (or, on a joint return, your spouse) in 2025?". No fixture: values unchanged.
+- **Fix lines:** rec.medical
+- **Siblings checked:** rec.medical_if_has
+- **Severity:** low
+- **Tags:** Schedule 1, recoveries, spouse phrase; fixed
+
+## BUG-1232 — ftc.statements: foreign income "reported to you" on a payee statement leaves out the spouse's statements
+
+- **Date:** 2026-11-24
+- **Caught by:** the spouse-phrase lint (engine/src/spouse-phrase.ts), built and triaged in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** i1116 pp. 1-2, the election to claim the credit without Form 1116, available only if all foreign income and taxes are reported on qualified payee statements; i1040gi p. 13, "report their combined income and deduct their combined allowable expenses" (a joint return); interview/README.md, "A joint return combines both spouses' items"
+- **Symptom:** ftc.statements, asked once per return, said "Was all of that income, and the foreign tax on it, reported to you on a Form 1099-DIV, ...". A joint filer whose spouse's Form 1099-DIV reports the foreign tax can answer No, and the return is then sent to Form 1116 (refused) although the election applies.
+- **Where:** interview/2025/questions.yaml ftc.statements (prompt).
+- **Fix:** Prompt: "... reported to you (or, on a joint return, your spouse) on a Form 1099-DIV, ...". No fixture: values unchanged.
+- **Fix lines:** ftc.statements
+- **Siblings checked:** ftc.statements_if_tax
+- **Severity:** low
+- **Tags:** foreign tax credit, spouse phrase; fixed
+
+## BUG-1233 — ny_it201.ask.noncustodial: the child support question names "you" only, so a spouse who is the noncustodial parent misses the IT-209 refusal
+
+- **Date:** 2026-11-24
+- **Caught by:** the spouse-phrase lint (engine/src/spouse-phrase.ts), built and triaged in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.1)
+- **Source:** ny_it201i p. 19, Line 66, "Did you make child support payments payable through a New York State Support Collection Unit?"; ny_it209 line 25, "If your NYS filing status is Married filing joint return, enter the amount from column c" (a joint return claims the credit); interview/README.md, "A joint return combines both spouses' items"
+- **Symptom:** ny_it201.ask.noncustodial, asked once per return, said "Did you pay child support in 2025 through New York's child support program ...?". On a joint return where the spouse is the noncustodial parent the filer can answer No, and the refusal for Form IT-209 (the noncustodial parent EIC, which this tool does not compute) is missed.
+- **Where:** interview/ny/2025/questions.yaml ny_it201.ask.noncustodial (prompt).
+- **Fix:** Prompt: "Did you (or, on a joint return, your spouse) pay child support in 2025 through New York's child support program (a Support Collection Unit)?". No fixture: values unchanged.
+- **Fix lines:** ny_it201.ask.noncustodial
+- **Siblings checked:** ny_it201.gate.noncustodial
+- **Severity:** low
+- **Tags:** New York, IT-209, spouse phrase; fixed
+
+## BUG-1234 — ny_it201.ask.other_withholding: New York tax withheld from a payment "to you" leaves out the spouse's Forms 1099-R, 1099-G and W-2G
+
+- **Date:** 2026-11-24
+- **Caught by:** the spouse-phrase lint (engine/src/spouse-phrase.ts), built and triaged in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.1)
+- **Source:** ny_it201i p. 21, Lines 72, 73, and 74, "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:"; interview/README.md, "A joint return combines both spouses' items"
+- **Symptom:** ny_it201.ask.other_withholding, asked once per return, said "Was New York income tax taken out of any retirement, unemployment or other payment to you (not pay on a Form W-2)?". A joint filer whose spouse's Form 1099-R shows New York withholding can answer No: the refusal is missed and the withholding is left off lines 72 to 74 (the New York balance due overstated).
+- **Where:** interview/ny/2025/questions.yaml ny_it201.ask.other_withholding (prompt and help).
+- **Fix:** Prompt: "Was New York income tax taken out of any retirement, unemployment or other payment (not pay on a Form W-2) to you (or, on a joint return, your spouse)?"; help: "Look at the state and local boxes of your (or, on a joint return, your spouse's) Forms 1099-R, 1099-G and W-2G. ..." No fixture: values unchanged. The question's gating (BUG-1153) is not changed here.
+- **Fix lines:** ny_it201.ask.other_withholding
+- **Siblings checked:** ny_it201.gate.other_withholding
+- **Severity:** low
+- **Tags:** New York, withholding, spouse phrase; fixed
+
+## BUG-1235 — Closure: BUG-1292 is fixed (whose education and whose first home count, in the early-distribution exception question)
+
+- **Date:** 2026-11-24
+- **Closes:** BUG-1292
+- **Closure:** fixed
+- **Evidence:** reproduced against forms/2025/retirement.yaml: the source of retirement.exception listed conditions for 01, 02, 03, 04, 09, 11 and 19, none for 08, and stated 09's no-ownership test for "you" and the spouse only; p590b (2025) p. 27: "The education must be for you, your spouse, or the children or grandchildren of you or your spouse." and the first-time homebuyer "who is any of the following" list (yourself, your spouse, your or your spouse's child, grandchild, parent or other ancestor).
+- **Fix:** retirement.exception's question (source) adds "08, an IRA distribution for qualified higher education expenses, only for the education of you, your spouse, or your or your spouse's children or grandchildren" and restates 09 as a first home "of a first-time homebuyer who is you, your spouse, or your or your spouse's child, grandchild, parent or other ancestor", the no-ownership test stated of that homebuyer and their spouse. The locator adds the i5329 table row for 08 and the p590b p. 27 quotes; the 2026 operation that sets the locator (changes/2026/retirement.yaml, C-PEOP-05+C-PEOP-07) carries them, at p590b p. 28 in the 2026 edition. No fixture: the enumeration and its values are unchanged.
+- **Fix lines:** retirement.exception
+- **Siblings checked:** retirement.has_exception, retirement.is_e05, retirement.is_e09, retirement.is_e19, retirement.is_e22, retirement.is_e23, retirement.wrong_kind
+- **Tags:** retirement, Form 5329, wording; fixed
+
+## BUG-1236 — dependent.qr_income: its label prints the 2025 amount of qr.gross_income_limit, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** rp-25-32 (2026) p. 20, "the exemption amount referred to in § 152(d)(1)(B) is $5,300."; research/ty2026/params-2026.proposed.yaml qr.gross_income_limit (source: final)
+- **Symptom:** The label of dependent.qr_income prints "Gross income under $5,200". The line reads qr.gross_income_limit, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/dependent.yaml dependent.qr_income (label), as adopted for 2026.
+- **Fix:** changes/2026/dependent.labels.yaml, entry BUG-1236: a set of the label to "Gross income under $5,300" (verified: final). No 2025 text or value changes.
+- **Fix lines:** dependent.qr_income
+- **Siblings checked:** none generated
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1237 — eic.step2_income: its label prints the 2025 amount of eic.investment_limit, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** rp-25-32 (2026) p. 15, "investment income exceeds $12,200."; research/ty2026/params-2026.proposed.yaml eic.investment_limit (source: final)
+- **Symptom:** The label of eic.step2_income prints "Step 2, question 2. Investment income not more than $11,950 (more than $11,950 stops at question 3 without Form 4797)". The line reads eic.investment_limit, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/eic.yaml eic.step2_income (label), as adopted for 2026.
+- **Fix:** changes/2026/eic.labels.yaml, entry BUG-1237: a set of the label to "Step 2, question 2. Investment income not more than $12,200 (more than $12,200 stops at question 3 without Form 4797)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** eic.step2_income
+- **Siblings checked:** eic.from_step2_income, eic.wsb_line5_stop
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1238 — f8853c.rate: its label prints the 2025 amount of f8853c.per_diem_limit, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** rp-25-32 (2026) p. 34, "chronically ill individual, is $430"; research/ty2026/params-2026.proposed.yaml f8853c.per_diem_limit (source: final)
+- **Symptom:** The label of f8853c.rate prints "Year parameter f8853c.per_diem_limit ($420)". The line reads f8853c.per_diem_limit, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/f8853c.yaml f8853c.rate (label), as adopted for 2026.
+- **Fix:** changes/2026/f8853c.labels.yaml, entry BUG-1238: a set of the label to "Year parameter f8853c.per_diem_limit ($430)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** f8853c.rate
+- **Siblings checked:** f8853c.line21_figured
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1239 — f8880.agi_limit: its label prints the 2025 amount of savers.agi_limit, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** f8880 (2026) p. 2, "is more than $40,250 ($60,375 if head of household; $80,500 if married filing jointly)."; research/ty2026/params-2026.proposed.yaml savers.agi_limit (source: final)
+- **Symptom:** The label of f8880.agi_limit prints "Year parameter savers.agi_limit ($39,500; $59,250 if head of household; $79,000 if married filing jointly)". The line reads savers.agi_limit, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/f8880.yaml f8880.agi_limit (label), as adopted for 2026.
+- **Fix:** changes/2026/f8880.labels.yaml, entry BUG-1239: a set of the label to "Year parameter savers.agi_limit ($40,250; $60,375 if head of household; $80,500 if married filing jointly)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** f8880.agi_limit
+- **Siblings checked:** f8880.past9, f8880.within_limit
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1240 — person.comp_limit: its label prints the 2025 amount of ret.comp_limit, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** n-25-67 (2026) p. 2, "is increased from $350,000 to $360,000."; research/ty2026/params-2026.proposed.yaml ret.comp_limit (source: final)
+- **Symptom:** The label of person.comp_limit prints "$350,000". The line reads ret.comp_limit, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/person.yaml person.comp_limit (label), as adopted for 2026.
+- **Fix:** changes/2026/person.labels.yaml, entry BUG-1240: a set of the label to "$360,000" (verified: final). No 2025 text or value changes.
+- **Fix lines:** person.comp_limit
+- **Siblings checked:** person.ne_comp, person.sep_s6
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1241 — person.educator_max: its label prints the 2025 amount of s1.educator_max, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** rp-25-32 (2026) p. 17, "supplementary materials used by the eligible educator in the classroom is $350."; research/ty2026/params-2026.proposed.yaml s1.educator_max (source: final)
+- **Symptom:** The label of person.educator_max prints "Year parameter s1.educator_max ($300)". The line reads s1.educator_max, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/person.yaml person.educator_max (label), as adopted for 2026.
+- **Fix:** changes/2026/person.labels.yaml, entry BUG-1241: a set of the label to "Year parameter s1.educator_max ($350)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** person.educator_max
+- **Siblings checked:** person.educator_limited
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1242 — person.eligible: its label prints the 2025 amount of ss.base, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** p15 (2026) p. 2, "The social security wage base limit is $184,500."; research/ty2026/params-2026.proposed.yaml ss.base (source: final)
+- **Symptom:** The label of person.eligible prints "More than one employer and total social security wages over $176,100". The line reads ss.base, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/person.yaml person.eligible (label), as adopted for 2026.
+- **Fix:** changes/2026/person.labels.yaml, entry BUG-1242: a set of the label to "More than one employer and total social security wages over $184,500" (verified: final). No 2025 text or value changes.
+- **Fix lines:** person.eligible
+- **Siblings checked:** person.credit
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1243 — person.excess: its label prints the 2025 amount of ss.limit, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** iw2w3 (2026) p. 19, "For 2026, the amount should not exceed $11,439 ($184,500 × 6.2%)."; research/ty2026/params-2026.proposed.yaml ss.limit (source: final)
+- **Symptom:** The label of person.excess prints "Withholding above $10,918.20, if any". The line reads ss.limit, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/person.yaml person.excess (label), as adopted for 2026.
+- **Fix:** changes/2026/person.labels.yaml, entry BUG-1243: a set of the label to "Withholding above $11,439, if any" (verified: final). No 2025 text or value changes.
+- **Fix lines:** person.excess
+- **Siblings checked:** person.credit
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1244 — person.ira_line2_apart: its label prints the 2025 amount of ira.line2_apart, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** p590a (2026) p. 15, "$91,000 or more"; research/ty2026/params-2026.proposed.yaml ira.line2_apart (source: draft)
+- **Symptom:** The label of person.ira_line2_apart prints "$89,000 (married filing separately and lived apart from your spouse for all of 2025)". The line reads ira.line2_apart, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/person.yaml person.ira_line2_apart (label), as adopted for 2026.
+- **Fix:** changes/2026/person.labels.yaml, entry BUG-1244: a set of the label to "$91,000 (married filing separately and lived apart from your spouse for all of 2026)" (verified: draft). No 2025 text or value changes.
+- **Fix lines:** person.ira_line2_apart
+- **Siblings checked:** person.ira_line2_status
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1245 — person.ira_line2_nc: its label prints the 2025 amount of ira.line2_not_covered, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** n-25-67 (2026) p. 4, "between $242,000 and $252,000"; research/ty2026/params-2026.proposed.yaml ira.line2_not_covered (source: final)
+- **Symptom:** The label of person.ira_line2_nc prints "$246,000". The line reads ira.line2_not_covered, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/person.yaml person.ira_line2_nc (label), as adopted for 2026.
+- **Fix:** changes/2026/person.labels.yaml, entry BUG-1245: a set of the label to "$252,000" (verified: final). No 2025 text or value changes.
+- **Fix lines:** person.ira_line2_nc
+- **Siblings checked:** person.ira_line2
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1246 — person.ira_line2_table: its label prints the 2025 amount of ira.line2, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** n-25-67 (2026) p. 4, "between $81,000 and $91,000"; n-25-67 (2026) p. 4, "between $129,000 and $149,000"; n-25-67 (2026) p. 4, "remains $0 to $10,000"; research/ty2026/params-2026.proposed.yaml ira.line2 (source: final)
+- **Symptom:** The label of person.ira_line2_table prints "The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse; $10,000 if married filing separately)". The line reads ira.line2, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/person.yaml person.ira_line2_table (label), as adopted for 2026.
+- **Fix:** changes/2026/person.labels.yaml, entry BUG-1246: a set of the label to "The line 2 amount for the filing status ($91,000; $149,000 if married filing jointly or qualifying surviving spouse; $10,000 if married filing separately)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** person.ira_line2_table
+- **Siblings checked:** person.ira_line2_status
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1247 — qdcg.line13: its label prints the 2025 amount of qdcg.fifteen_rate_ceiling, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** rp-25-32 (2026) p. 13, "Married Individuals Filing Joint Returns and Surviving Spouse $98,900 $613,700"; rp-25-32 (2026) p. 13, "Married Individuals Filing Separate Returns $49,450 $306,850"; rp-25-32 (2026) p. 13, "Heads of Household $66,200 $579,600"; rp-25-32 (2026) p. 13, "All Other Individuals $49,450 $545,500"; research/ty2026/params-2026.proposed.yaml qdcg.fifteen_rate_ceiling (source: final)
+- **Symptom:** The label of qdcg.line13 prints "Enter: $533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly or qualifying surviving spouse, $566,700 if head of household". The line reads qdcg.fifteen_rate_ceiling, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/qdcg.yaml qdcg.line13 (label), as adopted for 2026.
+- **Fix:** changes/2026/qdcg.labels.yaml, entry BUG-1247: a set of the label to "Enter: $545,500 if single, $306,850 if married filing separately, $613,700 if married filing jointly or qualifying surviving spouse, $579,600 if head of household" (verified: final). No 2025 text or value changes.
+- **Fix lines:** qdcg.line13
+- **Siblings checked:** qdcg.line14
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1248 — qdcg.line6: its label prints the 2025 amount of qdcg.zero_rate_ceiling, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** rp-25-32 (2026) p. 13, "Married Individuals Filing Joint Returns and Surviving Spouse $98,900 $613,700"; rp-25-32 (2026) p. 13, "Married Individuals Filing Separate Returns $49,450 $306,850"; rp-25-32 (2026) p. 13, "Heads of Household $66,200 $579,600"; rp-25-32 (2026) p. 13, "All Other Individuals $49,450 $545,500"; research/ty2026/params-2026.proposed.yaml qdcg.zero_rate_ceiling (source: final)
+- **Symptom:** The label of qdcg.line6 prints "Enter: $48,350 if single or married filing separately, $96,700 if married filing jointly or qualifying surviving spouse, $64,750 if head of household". The line reads qdcg.zero_rate_ceiling, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/qdcg.yaml qdcg.line6 (label), as adopted for 2026.
+- **Fix:** changes/2026/qdcg.labels.yaml, entry BUG-1248: a set of the label to "Enter: $49,450 if single or married filing separately, $98,900 if married filing jointly or qualifying surviving spouse, $66,200 if head of household" (verified: final). No 2025 text or value changes.
+- **Fix lines:** qdcg.line6
+- **Siblings checked:** qdcg.line7
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1249 — s2.amt_h39_high: its label prints the 2025 amount of amt.bracket_subtract, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** i6251 (2026) p. 11, "multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)"; research/ty2026/params-2026.proposed.yaml amt.bracket_subtract (source: draft)
+- **Symptom:** The label of s2.amt_h39_high prints "That line 6 times 28%, less $4,782 ($2,391 if married filing separately)". The line reads amt.bracket_subtract, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_h39_high (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1249: a set of the label to "That line 6 times 28%, less $4,890 ($2,445 if married filing separately)" (verified: draft). No 2025 text or value changes.
+- **Fix lines:** s2.amt_h39_high
+- **Siblings checked:** s2.amt_h39
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1250 — s2.amt_h6_high: its label prints the 2025 amount of amt.bracket, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** rp-25-32 (2026) p. 16, "Married Individuals Filing Separate Returns $122,250"; rp-25-32 (2026) p. 16, "All Other Taxpayers $244,500"; research/ty2026/params-2026.proposed.yaml amt.bracket (source: final)
+- **Symptom:** The label of s2.amt_h6_high prints "That line 6 is more than $239,100 ($119,550 if married filing separately)". The line reads amt.bracket, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_h6_high (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1250: a set of the label to "That line 6 is more than $244,500 ($122,250 if married filing separately)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** s2.amt_h6_high
+- **Siblings checked:** s2.amt_h39
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1251 — s2.amt_l17_high: its label prints the 2025 amount of amt.bracket, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** rp-25-32 (2026) p. 16, "Married Individuals Filing Separate Returns $122,250"; rp-25-32 (2026) p. 16, "All Other Taxpayers $244,500"; research/ty2026/params-2026.proposed.yaml amt.bracket (source: final)
+- **Symptom:** The label of s2.amt_l17_high prints "Line 17 is more than $239,100 ($119,550 if married filing separately)". The line reads amt.bracket, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_l17_high (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1251: a set of the label to "Line 17 is more than $244,500 ($122,250 if married filing separately)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** s2.amt_l17_high
+- **Siblings checked:** s2.amt_l18
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1252 — s2.amt_l18_high: its label prints the 2025 amount of amt.bracket_subtract, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** i6251 (2026) p. 11, "multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)"; research/ty2026/params-2026.proposed.yaml amt.bracket_subtract (source: draft)
+- **Symptom:** The label of s2.amt_l18_high prints "Line 17 times 28%, less $4,782 ($2,391 if married filing separately)". The line reads amt.bracket_subtract, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_l18_high (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1252: a set of the label to "Line 17 times 28%, less $4,890 ($2,445 if married filing separately)" (verified: draft). No 2025 text or value changes.
+- **Fix lines:** s2.amt_l18_high
+- **Siblings checked:** s2.amt_l18
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1253 — s2.amt_l19: its label prints the 2025 amount of qdcg.zero_rate_ceiling, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** rp-25-32 (2026) p. 13, "Married Individuals Filing Joint Returns and Surviving Spouse $98,900 $613,700"; rp-25-32 (2026) p. 13, "Married Individuals Filing Separate Returns $49,450 $306,850"; rp-25-32 (2026) p. 13, "Heads of Household $66,200 $579,600"; rp-25-32 (2026) p. 13, "All Other Individuals $49,450 $545,500"; research/ty2026/params-2026.proposed.yaml qdcg.zero_rate_ceiling (source: final)
+- **Symptom:** The label of s2.amt_l19 prints "Form 6251 line 19: $96,700 if married filing jointly or qualifying surviving spouse, $48,350 if single or married filing separately, $64,750 if head of household". The line reads qdcg.zero_rate_ceiling, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_l19 (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1253: a set of the label to "Form 6251 line 19: $98,900 if married filing jointly or qualifying surviving spouse, $49,450 if single or married filing separately, $66,200 if head of household" (verified: final). No 2025 text or value changes.
+- **Fix lines:** s2.amt_l19
+- **Siblings checked:** s2.amt_l21
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1254 — s2.amt_l25: its label prints the 2025 amount of qdcg.fifteen_rate_ceiling, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** rp-25-32 (2026) p. 13, "Married Individuals Filing Joint Returns and Surviving Spouse $98,900 $613,700"; rp-25-32 (2026) p. 13, "Married Individuals Filing Separate Returns $49,450 $306,850"; rp-25-32 (2026) p. 13, "Heads of Household $66,200 $579,600"; rp-25-32 (2026) p. 13, "All Other Individuals $49,450 $545,500"; research/ty2026/params-2026.proposed.yaml qdcg.fifteen_rate_ceiling (source: final)
+- **Symptom:** The label of s2.amt_l25 prints "Form 6251 line 25: $533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly or qualifying surviving spouse, $566,700 if head of household". The line reads qdcg.fifteen_rate_ceiling, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_l25 (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1254: a set of the label to "Form 6251 line 25: $545,500 if single, $306,850 if married filing separately, $613,700 if married filing jointly or qualifying surviving spouse, $579,600 if head of household" (verified: final). No 2025 text or value changes.
+- **Fix lines:** s2.amt_l25
+- **Siblings checked:** s2.amt_l29
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1255 — s2.amt_l39_high: its label prints the 2025 amount of amt.bracket_subtract, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** i6251 (2026) p. 11, "multiplying line 6 by 28% (0.28) and subtracting $4,890 ($2,445 if married filing separately)"; research/ty2026/params-2026.proposed.yaml amt.bracket_subtract (source: draft)
+- **Symptom:** The label of s2.amt_l39_high prints "Line 6 times 28%, less $4,782 ($2,391 if married filing separately)". The line reads amt.bracket_subtract, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_l39_high (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1255: a set of the label to "Line 6 times 28%, less $4,890 ($2,445 if married filing separately)" (verified: draft). No 2025 text or value changes.
+- **Fix lines:** s2.amt_l39_high
+- **Siblings checked:** s2.amt_l39
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1256 — s2.amt_l6_high: its label prints the 2025 amount of amt.bracket, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24
+- **Source:** rp-25-32 (2026) p. 16, "Married Individuals Filing Separate Returns $122,250"; rp-25-32 (2026) p. 16, "All Other Taxpayers $244,500"; research/ty2026/params-2026.proposed.yaml amt.bracket (source: final)
+- **Symptom:** The label of s2.amt_l6_high prints "Line 6 is more than $239,100 ($119,550 if married filing separately)". The line reads amt.bracket, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/s2.yaml s2.amt_l6_high (label), as adopted for 2026.
+- **Fix:** changes/2026/s2.labels.yaml, entry BUG-1256: a set of the label to "Line 6 is more than $244,500 ($122,250 if married filing separately)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** s2.amt_l6_high
+- **Siblings checked:** s2.amt_l39
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1257 — sli.base_joint: its label prints the 2025 amount of sli.base_joint, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** rp-25-32 (2026) p. 23, "modified adjusted gross income in excess of $85,000 ($175,000 for joint returns)"; research/ty2026/params-2026.proposed.yaml sli.base_joint (source: final)
+- **Symptom:** The label of sli.base_joint prints "Year parameter sli.base_joint ($170,000)". The line reads sli.base_joint, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/sli.yaml sli.base_joint (label), as adopted for 2026.
+- **Fix:** changes/2026/sli.labels.yaml, entry BUG-1257: a set of the label to "Year parameter sli.base_joint ($175,000)" (verified: final). No 2025 text or value changes.
+- **Fix lines:** sli.base_joint
+- **Siblings checked:** sli.line5
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1258 — w2.over: its label prints the 2025 amount of ss.limit, which changes in 2026, and no 2026 operation relabels it
+
+- **Date:** 2026-11-24
+- **Caught by:** the year-label lint (tools/check_label_year.py), built in lane lints (claude-opus-5-5, judgment), 2026-11-24; named as a candidate by the bug-characterization scout of 2026-11-23 (section 4.2)
+- **Source:** iw2w3 (2026) p. 19, "For 2026, the amount should not exceed $11,439 ($184,500 × 6.2%)."; research/ty2026/params-2026.proposed.yaml ss.limit (source: final)
+- **Symptom:** The label of w2.over prints "Did this employer withhold more than $10,918.20?". The line reads ss.limit, whose staged 2026 value differs, and no operation of changes/2026/ set the label, so the adopted 2026 line would print the 2025 amount beside the 2026 value (the BUG-1032 shape). Values unchanged.
+- **Where:** forms/2025/w2.yaml w2.over (label), as adopted for 2026.
+- **Fix:** changes/2026/w2.labels.yaml, entry BUG-1258: a set of the label to "Did this employer withhold more than $11,439?" (verified: final). No 2025 text or value changes.
+- **Fix lines:** w2.over
+- **Siblings checked:** person.withheld
+- **Severity:** low
+- **Tags:** TY2026, year changes, labels; fixed
+
+## BUG-1259 — f4952.line1: interest on money borrowed for a rental or a passive activity is not left out, so a filer may count it as investment interest
+
+- **Date:** 2026-11-24
+- **Caught by:** the question review of 2026-11-24 (claude-opus-5-5), sample #1 on the reworded question, ruled in lane lints (claude-opus-5-5, judgment)
+- **Source:** f4952 p. 3, Property held for investment, "However, it doesn’t include an interest in a passive activity." (a rental property is a passive activity; its interest goes on Schedule E)
+- **Symptom:** The prompt leaves out interest on a home, tax-exempt bonds and a business, but not a rental property or a passive partnership, which filers often call investments. A filer with a rental mortgage can report its interest on Form 4952 line 1 (and on Schedule E), overstating the deduction.
+- **Where:** interview/2025/questions.yaml f4952.line1 (prompt or help).
+- **Proposed fix:** Add a rental property or other passive activity to what is left out ("..., a rental property or a business").
+- **Proposed fix lines:** f4952.line1
+- **Severity:** low
+- **Tags:** Form 4952, wording, question review; open
+
+## BUG-1260 — ftc.statements: "a similar statement" lets in a foreign bank or broker certificate, which is not a qualified payee statement
+
+- **Date:** 2026-11-24
+- **Caught by:** the question review of 2026-11-24 (claude-opus-5-5), sample #1 on the reworded question, ruled in lane lints (claude-opus-5-5, judgment)
+- **Source:** i1116 p. 1, the election without Form 1116: all foreign source gross income and foreign taxes must be reported on a qualified payee statement (Form 1099-DIV, 1099-INT, Schedule K-1 (Form 1041), Schedule K-3, or a similar substitute statement)
+- **Symptom:** A filer whose foreign dividends and withheld tax appear only on a foreign institution's certificate can answer Yes, and the election is taken where Form 1116 is required.
+- **Where:** interview/2025/questions.yaml ftc.statements (prompt or help).
+- **Proposed fix:** Say "a substitute for one of these forms" and add to the help that a statement from a foreign bank or broker does not count.
+- **Proposed fix lines:** ftc.statements
+- **Severity:** low
+- **Tags:** foreign tax credit, wording, question review; open
+
+## BUG-1261 — retirement.exception: exception 09 does not state the 120-day deadline or that the money must pay qualified acquisition costs
+
+- **Date:** 2026-11-24
+- **Caught by:** the question review of 2026-11-24 (claude-opus-5-5), sample #1 on the reworded question, ruled in lane lints (claude-opus-5-5, judgment)
+- **Source:** p590b (2025) p. 27, First home, "It must be used to pay qualified acquisition costs (defined next) before the close of the 120th day after the day you received it."
+- **Symptom:** A filer whose first-home distribution was not spent on buying, building or rebuilding costs within 120 days can still choose 09, understating the additional tax.
+- **Where:** forms/2025/retirement.yaml retirement.exception (source).
+- **Proposed fix:** Add to 09: "used within 120 days to pay the costs of buying, building or rebuilding the home, including closing costs".
+- **Proposed fix lines:** retirement.exception
+- **Severity:** low
+- **Tags:** retirement, Form 5329, wording, question review; open
+
+## BUG-1262 — rec.medical: "your 2024 medical and dental bills" can be read to leave out a dependent's bills deducted on the 2024 Schedule A
+
+- **Date:** 2026-11-24
+- **Caught by:** the question review of 2026-11-24 (claude-opus-5-5), sample #1 on the reworded question, ruled in lane lints (claude-opus-5-5, judgment)
+- **Source:** p525 p. 27, Worksheet 2, line 2, "Enter the total of all other Schedule A (Form 1040) refunds or reimbursements"
+- **Symptom:** A filer whose insurer repaid in 2025 a dependent child's 2024 bills, deducted on the 2024 Schedule A, can leave the repayment out; the recovery is understated.
+- **Where:** interview/2025/questions.yaml rec.medical (prompt).
+- **Proposed fix:** Ask for the repayment of "the 2024 medical and dental bills you deducted on your 2024 Schedule A, including a dependent's".
+- **Proposed fix lines:** rec.medical
+- **Severity:** low
+- **Tags:** recoveries, wording, question review; open
+
+## BUG-1263 — s2.household_employee: the help leaves out pay to a student under 18 from every test, but it counts toward the $1,000 quarterly (FUTA) test
+
+- **Date:** 2026-11-24
+- **Caught by:** the question review of 2026-11-24 (claude-opus-5-5), sample #1 on the reworded question, ruled in lane lints (claude-opus-5-5, judgment)
+- **Source:** i1040sh Line A (the under-18 exclusion is for the $2,800 test); Line 9, "Did you pay total cash wages of $1,000 or more in any calendar quarter of 2024 or 2025 to all household employees?", and Line 15 list only a spouse, a child under 21 and a parent as excluded
+- **Symptom:** A filer who paid a 17-year-old student babysitter $1,200 in cash in one quarter answers No, following the help, and the Schedule H refusal is missed (FUTA tax left off Schedule 2 line 9).
+- **Where:** interview/2025/questions.yaml s2.household_employee (help).
+- **Proposed fix:** Limit the help's exclusion to the $2,800 test.
+- **Proposed fix lines:** s2.household_employee
+- **Severity:** low
+- **Tags:** Schedule 2, Schedule H, wording, question review; open
+
+## BUG-1264 — Form 8889 line 6 is refused when one spouse had family coverage all year and the other a self-only plan all year, a case i8889 rule 1 makes computable
+
+- **Date:** 2026-11-23
+- **Caught by:** mutation lane mutA (claude-opus-5-5, judgment), 2026-11-23, while killing operand.f8889.f8889.self_dec_year.zero.then1 with fixture mut.f8889.self_only_spouse_all_year
+- **Source:** i8889 p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage."
+- **Symptom:** Joint; both spouses have a Form 8889; you answer coverage_year family (12 months), your spouse self_only (12 months, a plan of their own). Both line 6 and Schedule 1 line 13 are refused at f8889.family_months_bad: your spouse's self-only amount stays in Step 4 (step4_total > 0) and the family amounts differ, so neither matchable pattern of f8889.family_other holds. Under rule 1 both are treated as having family coverage all year, the simplest matchable case (the spouse's self-only plan is disregarded). The coverage_year help tells a filer to choose family only when covered by someone else's family plan, not when the spouse's family coverage makes the year family under rule 1, so the natural answer reaches the refusal; the remedy (count family months the same way for both) points at the right fix but the filer must re-answer coverage_year as family. A refusal, not a wrong figure.
+- **Proposed fix:** either treat a married spouse's self_only months as family months where the other spouse's are family and both are eligible (Step 4 self amount disregarded), or extend coverage_year's help for married filers to choose family when the spouse had family coverage all year and both were eligible; walk with the fixture's inputs.
+- **Severity:** low
+- **Tags:** forms, f8889, interview, refusal, open
+
+## BUG-1265 — Closure: BUG-1301 is fixed
+
+- **Closes:** BUG-1301
+- **Closure:** fixed
+- **Caught by:** lane mutargs (claude-opus-5-5, judgment), 2026-11-24, checking the entry on next (d60f83a9).
+- **Resolution:** Repaired by the mutation lanes A to H integrated in d63d282a (release r2026.11.24.1): of the 46 arguments, 38 re-pinned and 8 removed (f8889.self_dec_year.zero.then1 and self_in_family.self_dec_year.then0, sc.qbi_se.zero.then1 and household.cp_any.community_property.then0, their mutants killed by fixtures; the four Schedule 1-A arguments re-keyed under the T-353 names line10_over.tips_threshold, line13_figured.tips_reduction, line18_over.ot_threshold and line21_figured.ot_reduction). The lane notes record the re-reading of each federal argument (.claude/wave-2026-11-22/mut-A.md to mut-D.md). The eight New York arguments (gate.spouse_nonresident then0, then2, then3, then4; line79.zero.then1; gate.line79_over.line79.gt.0; line78.line79; est_penalty_balance.no.then1) have no lane note; re-read here: against their pin commit 870cc146 only the reader lists of ny_it201.no (new readers alimony_later_if_not_old, alimony_later_if_any, nyc_flex_if_public, prior_168k_if_business), ny_it201.zero (new reader rental_re) and f1040.status (new reader household.qss) moved, every premise expression, gate, type and marker is unchanged, and no step of the eight arguments depends on who else reads those three (each rests on ny_it201.no being the never-refusing parameter ny.false, ny_it201.zero being ny.zero, the status being a gateless input, and the readers of the gate lines themselves, whose digests did not move), so they hold as written.
+- **Evidence:** Each EQUIVALENT_IF argument evaluated on the canonical build (mutant exists, reads the line it names, holds): on b18efa47, 185 arguments, 46 failing (the entry's list); on d60f83a9, 188 arguments, 132 pinned, 0 failing. d63d282a's release-mode mutate: 0 stale arguments; mutate --ny: 53 survivors all explained. Lane lightguards reports the same 188 holding.
+- **Tags:** mutation, tools, fixed
+
+## BUG-1266 — Closure: BUG-1300 is fixed
+
+- **Closes:** BUG-1300
+- **Closure:** fixed
+- **Caught by:** lane mutargs (claude-opus-5-5, judgment), 2026-11-24, checking the entry on next (d60f83a9).
+- **Resolution:** Repaired in f2377cc2 (release preparation on next, year changes apply), which re-based the stale operations of changes/2026/qbi.yaml, s8812.yaml and sc.wording.yaml and gave C-SCHED-03 (person.s1a.yaml) operations on person.tips_over_wages.
+- **Evidence:** tools/year_changes.py --check on d60f83a9 exits 0; the static checks of the applied 2026 tree run and pass (references, cycles, types, guard tiling, gates, citations, tables).
+- **Tags:** changes, year change, TY2026, fixed
+
+## BUG-1267 — Closure: BUG-1124 is fixed
+
+- **Closes:** BUG-1124
+- **Closure:** fixed
+- **Caught by:** lane mutargs (claude-opus-5-5, judgment), 2026-11-24.
+- **Resolution:** fixtures/2025/f2441.json mut.f2441.attrib_gate_benefits_open_no_credit (the scout's draft, inputs unchanged): joint return, W-2 wages $40,000 and $30,000, one child aged 6, care asked, $0 of care expenses, f2441.benefits unanswered. Predicted by hand before evaluation from Form 2441 lines 30 and 31 and i2441 p. 4: line 31 $0, attrib_gate false, line 5 $30,000; the evaluator agrees. Under the mutant (attrib_gate reads line 3) the gate and line 5 are unknown, so the case kills it. The keyed argument and its ANSWERED_ONLY entry are removed from engine/src/mutate.ts (an argument for a killed mutant is stale). No form line changed.
+- **Siblings checked:** python3 tools/siblings.py f2441.attrib_gate: its readers f2441.line4 and f2441.line5 (line 5 now asserted by the case); the other lines on the same i2441 heading are unaffected by a fixture.
+- **Evidence:** evaluate() of the case on the canonical build and on the mutated data (operand.f2441.f2441.attrib_gate.line31.all.3.gt.0): base line31 $0, attrib_gate false, line5 $30,000; mutant attrib_gate and line5 unknown (no input supplied for f2441.benefits). test-fixtures 2746/2746.
+- **Tags:** fixtures, f2441, mutation, fixed
+
+## BUG-1268 — Form 8889's allocation check (f8889.allocation_bad) reads the spouse sums on a form that does not use the spouse rule of line 6
+
+- **Date:** 2026-11-23
+- **Caught by:** mutation lane mutF (claude-opus-5-5, judgment), 2026-11-23, while explaining filter.person.person.hsa_step1 (fixture mut.f8889.two_forms_one_person_allocation_check)
+- **Source:** i8889 p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Step 2, "Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation"
+- **Symptom:** f8889.allocation_bad (the gate of f8889.share) has no f8889.split conjunct: on every form it compares twice the form's Step 1 limit with household.hsa_step1_sum and the agreed allocation with household.hsa_share_sum, sums taken only over forms that split. On a form that does not split but has a nonzero Step 1 limit (one person with two Forms 8889, each with family coverage; or a joint return not married at the end of 2025), the printed gate is unknown (allocation unanswered, as the interview leaves it) or true (allocation answered agreed), though no allocation applies. f8889.share is read only through line6_split, on forms that split, so no amount changes, and each such return is refused elsewhere (Schedule 1 line 13 at person.hsa_repeated, or the filing-status conflict); only the printed gate shows a verdict for a rule that does not apply. It also leaves the where-test of person.hsa_step1 observable only there, so its mutant survives every hand-written case but this one.
+- **Proposed fix:** add all[f8889.split eq true, ...] to both disjuncts of f8889.allocation_bad (or have it choose on f8889.split, false taking f8889.no); then update mut.f8889.two_forms_one_person_allocation_check (the gate becomes false) and recheck whether filter.person.person.hsa_step1 becomes equivalent (on known values a form with split false then has no reader of the sums).
+- **Severity:** low
+- **Tags:** forms, f8889, open
+
+## BUG-1269 — Closure: BUG-1170 is fixed: siblings.py --check tests the review refresh only of the entries the tree under test adds or changes
+
+- **Closes:** BUG-1170
+- **Closure:** fixed
+- **Caught by:** BUG-1170, recorded open; lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** in a shared clone with HEAD at ed6c46ea and the tree of 25e48ec0 (integration 4), its reviews/ reset to ed6c46ea's (the int4 working state before its reviews were rerun), built: siblings.py --check failed BUG-1125, BUG-1126 and BUG-1128 (and BUG-1069) with 'no review log changed since <commit>^ for sibling form(s)'. Commit ed6c46ea, which added BUG-1125 to BUG-1128, changes no file under forms/2025, so on ed6c46ea itself no review was due; the later form changes of int4 made those entries' sibling forms due.
+- **Change:** tools/siblings.py: the review-refresh test (review_logs_due) runs only for an entry under test (under_test: an entry measured from HEAD, or a committed pending entry whose file the working tree changes), measured from HEAD; a committed entry keeps the verdict of the commit that added it. The Fix-lines, Siblings-checked and omitted-sibling tests are unchanged. Self-test: under_test cases in siblings.py --self-test. tools/README.md (Bug inventory) says so.
+- **Evidence:** the same reproduction with the changed siblings.py: no committed entry fails; the 22 entries the int4 tree adds over HEAD are still checked against their sibling forms' logs. siblings.py --self-test ok; --check passes on this tree.
+- **Fix lines:** none (tool change: tools/siblings.py)
+- **Tags:** tool, siblings, verification, fixed
+
+## BUG-1270 — Closure: BUG-1171 is fixed: rule.py --amend may set drop on a class M model-error or ambiguity ruling
+
+- **Closes:** BUG-1171
+- **Closure:** fixed
+- **Caught by:** BUG-1171, recorded open; lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** rule.amend with {"ruling": ..., "drop": true} on an applied ruling without drop exited 'changes whether the line is dropped; not an amendment' (tools/transcription/rule.py, amend).
+- **Change:** tools/transcription/rule.py: --amend given {"ruling": "...", "drop": true} on a class M ruling of class model error or ambiguity that did not drop sets the drop flag in the sidecar entry, suffixes the log line [dropped] and removes the line from the class M fixture (drop_from_fixture, as when ruling with drop); drop on another kind or class, and clearing a drop, are refused. Self-test: test_amend_sets_drop_on_a_ruled_classm_model_error_or_ambiguity (test_review_tools.py). tools/transcription/README.md says so.
+- **Evidence:** The three classm.f8889.3 spouse lines (7, 8, 12) need no re-ruling: the current f8889 class M log (reviews/2025/classm, f8889) rules them model error with drop (the reply that read the spouse as under 55), and fixtures/2025/classm.json case classm.f8889.3 has no expectation on them ('dropped after ruling' in its note). The ambiguity rulings without drop that BUG-1171 names are sidecar entries of an earlier reply, not sections of the current log, so --amend does not reach them and nothing reads them until a reply with that context returns.
+- **Fix lines:** none (tool change: tools/transcription/rule.py)
+- **Tags:** tool, class M, rulings, fixtures, fixed
+
+## BUG-1271 — Closure: BUG-1279 is fixed: samples.confirmed_bugs takes a class's ids only when the class classes a defect or a real gap
+
+- **Closes:** BUG-1279
+- **Closure:** fixed
+- **Caught by:** BUG-1279, recorded open; lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** samples.confirmed_bugs({'class': 'no defect (as BUG-0123, already fixed)'}) returned {'BUG-0123'}. Ten ruling classes in reviews/ and .transcription/ name a bug id in a class that rules no defect ('no gate defect beyond BUG-1087 (low)', 'no gate defect; ... (BUG-0800)', 'As ruled for the earlier subject: ... BUG-0827 and BUG-0964 open', ...).
+- **Change:** tools/transcription/samples.py: DEFECT_CLASS (a class beginning 'defect' or 'real gap', optionally after a severity: 'low defect: ...'); confirmed_bugs takes the ids of the ruling's class only when the class matches it, and applies the same test to a finding's class. The bug and bugs fields are unchanged. Self-test: test_a_class_ruling_no_defect_confirms_no_bug_it_names (test_samples.py). tools/README.md says so.
+- **Evidence:** of the ids the no-defect classes name, the open ones (BUG-0620, BUG-0827, BUG-1087, BUG-1092) are all low, so the release gate's outcome on the current rulings is unchanged; test_samples.py 10 passed.
+- **Fix lines:** none (tool change: tools/transcription/samples.py)
+- **Tags:** tool, sampled reviews, release gate, fixed
+
+## BUG-1272 — Closure: BUG-1280 is fixed: core.hooksPath is relative, so each worktree runs its own tree's hooks
+
+- **Closes:** BUG-1280
+- **Closure:** fixed
+- **Caught by:** BUG-1280, recorded open; lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** git config --show-origin core.hooksPath gave the absolute path of the main checkout's tools/hooks, set in the clone's shared .git/config. No tool sets it: every instruction (tools/README.md, README.md, docs/TRUST.md, the hooks' own headers) says git config core.hooksPath tools/hooks, so the absolute value was set by hand.
+- **Change:** the clone's config set to core.hooksPath tools/hooks (git config, once, in the shared .git/config; not a tracked file). tools/worktree_gc.py: check needs action (and so fails a release) while core.hooksPath is absolute (hooks_path_problem), with a self-test; tools/README.md says why the path is relative.
+- **Evidence:** git resolves a relative hooksPath against the root of the worktree a command runs in: in a scratch clone with a linked worktree, a sentinel pre-commit hook ran from each tree's own tools/hooks, for a commit in the main checkout, in the worktree, in a subdirectory of it and with git -C. With the real hooks, git -c core.hooksPath=tools/hooks hook run pre-merge-commit ran this lane's hook in its worktree and the main checkout's in the main checkout (which, on main, refused as it should). Every hook cds to git rev-parse --show-toplevel first; tools/release.sh fast-forwards main with git -C <main worktree> merge --ff-only (runs no hook) and pushes with git push (pre-push from the tree it runs in, the release commit's), so none depends on an absolute path. The wave's git -c core.hooksPath=tools/hooks commit is now equivalent to a plain git commit.
+- **Fix lines:** none (repository configuration; tool change: tools/worktree_gc.py)
+- **Tags:** tool, hooks, worktrees, fixed
+
+## BUG-1273 — Closure: BUG-1219 is fixed: a New York label whose line then names the federal form offers the federal line
+
+- **Closes:** BUG-1219
+- **Closure:** fixed
+- **Caught by:** BUG-1219, recorded open; lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** with --jurisdiction ny, transcribe.federal_labelled on IT-201 (2025) p. 2 lines 10 to 12 ('... 11 Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E, Form 1040) 11 ...', sources/ny/2025/ny_it201.cols.txt) returned {}: the phrase matches s1.line5's label, but the 50 words before it name no form of Schedule 1's and do not say 'federal'.
+- **Change:** tools/transcription/transcribe.py: label_tail, the rest of a phrase's line (the words after it up to the next printed line number, a number not after 'form' or 'schedule', at most LABEL_TAIL = 15 words); federal_labelled credits an occurrence whose passage before it or whose tail names or implies the line's IRS form. On the IT-201 text the tail '(submit copy of federal Schedule E, Form 1040)' names Form 1040, one of Schedule 1's families, so s1.line5 is offered. test_ny_review.py: the IT-201 catalog lists s1.line5 and no longer reports it missing; label cases for a tail and for a line that ends before the next line's form name. tools/transcription/README.md says so.
+- **Evidence:** across the New York documents only the ny_it201 federal catalog changes, by s1.line5 (test_ny_review.py, the catalog and prompt tests). The Schedule E lines are not offered: line 11's text names Schedule E as a form, not a Schedule E line, and line 12 ('Rental real estate included in line 11') is New York's own figure. The change applies at ny_it201's next transcription review (prompt changes apply prospectively); no review rerun here.
+- **Fix lines:** none (tool change: tools/transcription/transcribe.py)
+- **Tags:** tool, review-prompt, New York, transcription, fixed
+
+## BUG-1274 — Closure: BUG-1198 is fixed: check_completeness accepts a branch's pending bug id on a real gap
+
+- **Closes:** BUG-1198
+- **Closure:** fixed
+- **Caught by:** BUG-1198, listed open by tools/bug_status.py (its 'Tool change (fixed)' field is not a fix field bug_status reads); lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Evidence:** does not reproduce: the fix the entry records is in the tree since 8175c23d (integration of the advfix and advland lanes). check_completeness.validate on a real gap with a pending bug id (BUG-NEW-<name>, the advfix lane's first) returns no error, and with PENDING-1 still refuses ('pending bug id PENDING-1'); its self-test case u:f#6 (a BUG-NEW id) is in tools/transcription/check_completeness.py. Nothing changed here; this entry records the status bug_status could not derive.
+- **Tags:** tool, completeness, pending entries, fixed
+
+## BUG-1275 — Closure: BUG-1040 is fixed: the fixture carry answers a year's new inputs with their defaults in cases that take no defaults, and lists any expectation moved from known to unknown
+
+- **Closes:** BUG-1040
+- **Closure:** fixed
+- **Caught by:** BUG-1040, recorded open; lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** by reading tools/fixtures_year.py: cases of the class M and mutation files resolve without defaults (engine/src/fixture-inputs.ts takesDefaults), the carry adds the add_question defaults only to defaults.json, and an expectation whose new value is unknown is re-recorded as unknown with only 'value changed' as its reason. The rehearsal that measured it (tools/year_rehearse.sh) was not rerun: it builds both years (up to an hour on a loaded machine).
+- **Change:** tools/fixtures_year.py: new_answers gives each case of a file that takes no defaults, as stated answers, the defaults carry_defaults added for the year's new inputs, at every key those defaults give the case that it does not answer (the engine resolves the case against a defaults file holding only those entries, once as its own file and once as a file that takes defaults; the difference is the new answers); the case's note says so and the report lists the answers by input. An expectation re-recorded from a known value to unknown is listed in the report (case, key, the unknown's reason) and counted on the console. Self-test: a classm case is given a new input's default it does not answer, and a mutation case that answers it is not (fixtures_year.py --self-test). tools/README.md (Year changes as operations) says so.
+- **Regression predictions:** at the next adoption rehearsal (tools/year_rehearse.sh --to 2026), fixtures_year leaves no class M or mutation expectation unknown for want of sa.mortgage_insurance, person.work_ssn or f8962.sep_income, and its report's known-to-unknown list is empty or names other causes; test-fixtures --year 2026 passes the 12 classm.tcw cases or lists them as marked.
+- **Fix lines:** none (tool change: tools/fixtures_year.py)
+- **Tags:** tool change, fixtures, adoption, class M, TY2026, fixed
+
+## BUG-1276 — Closure: BUG-1297 is fixed: the sampled mutation check counts a set as given that still reaches an unanswered input as a partial return
+
+- **Closes:** BUG-1297
+- **Closure:** fixed
+- **Caught by:** BUG-1297, recorded open; lane tooling of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** engine/src/mutate.ts sampleSite took a set as partial only at a withholding rate above 0 (set.rate > 0), so every fixture case and generated return as given was held to an ANSWERED_ONLY argument as an answered return. On this tree, with the interview of the full profile (interviewStatus, reachable inputs), 732 of the 3,045 federal sets as given still reach an input they do not answer: 582 of 2,745 fixture cases (classm.deepseek.json 107, classm.json 94, mutation.json 228, the rest in files that take defaults) and 150 of the 300 generated returns; the inputs most often reached are f1040.estimated_any, s2.iso_vested, f1040.withheld_other_any, f1040.tax_exempt_any and the W-2 box 2 input.
+- **Change:** engine/src/mutate.ts: a sample set carries partial (answers withheld, or as given and isPartialReturn: the interview of the run's jurisdiction still reaches an input it does not answer); an ANSWERED_ONLY argument is held only to the answered returns, and a partial set as given may be its witness of a partial return, as a withheld set is. partialLabels computes the partial sets as given once in the main thread (only when the plan has an ANSWERED_ONLY argument) and passes them to the workers (mutate-worker.ts); the run's sampled-check line counts them, and partialReturnSelfTest (a return with no answers is partial; some fixture case is an answered return; withholding one of its answers makes it partial) adds its problems to the sampled check's. No fixture was changed.
+- **Evidence:** on this tree partialLabels takes 21 s; partialReturnSelfTest reports no problem. The full mutation run, which this lane did not hold the slot for, is the end-to-end check: an ANSWERED_ONLY argument that only partial sets as given reached would now fail 'no sampled set reaches the mutant's change'.
+- **Fix lines:** none (tool change: engine/src/mutate.ts, engine/src/mutate-worker.ts)
+- **Tags:** mutation, tools, sampled check, fixed
+
+## BUG-1277 — QSS child conflict screen counts foster children and descendants as the qualifying surviving spouse's child
+
+- **Date:** 2026-11-23
+- **Caught by:** release preparation of next (7466debd), tools/check_consumers.py: new pair dependent.relationship@i1040gi:p15, read by household.qss_children_listed.
+- **Symptom:** household.qss_children_listed and household.qss_children_all_year count dependents whose relationship is child, which the question defines as a son, daughter, stepchild, eligible foster child or a descendant of any of them. The qualifying surviving spouse test (i1040gi p. 15, test 2) needs "a child or stepchild (not a foster child)". The conflict screen household.qss_child_conflict (refused through household.qss_fails) therefore misses the case where a listed stepchild did not live with the filer all year while a listed foster child or grandchild did, and refuses where only a foster child or grandchild is listed and did not live there all year. The screen is a backstop to the filer's Yes to the QSS tests; no amount changes.
+- **Where:** forms/2025/household.yaml household.qss_children_listed, household.qss_children_all_year; dependent.relationship (forms/2025/dependent.yaml).
+- **Proposed fix:** count only sons, daughters and stepchildren: split the child answer (or add a follow-up asked of a child entry: foster child or descendant) and filter the two counts on it.
+- **Severity:** low
+- **Tags:** household, QSS, consumers; open
+
+## BUG-1278 — Return generator still names two ids T-353 renamed (sc.line16b, f5695.line12)
+
+- **Date:** 2026-11-23
+- **Caught by:** release preparation of next (7466debd): rerun_all.py --kinds classm --dry-run could not build the class M requests of person, sa and sc (classm-jobs: person[taxpayer].sc[biz_a].line16b: input is not declared).
+- **Symptom:** engine/src/generate.ts lists Schedule C expense inputs by bare name (SC_EXPENSES) and Form 5695 inputs that are often nonzero (EXTRA_NONZERO_PERCENT). The T-353 rename (sc.line16b to sc.interest_other, f5695.line12 to f5695.carry_in) did not reach these lists: every generated return with a Schedule C carried an undeclared input, so classm-jobs, and every step that evaluates generated returns (properties, the engine differential, mutation, compare), failed or would fail; the Form 5695 carryforward lost its nonzero weighting silently. The light tier does not evaluate generated returns, so commits on next passed.
+- **Where:** engine/src/generate.ts (SC_EXPENSES, EXTRA_NONZERO_PERCENT); tools/rename_ids.py and the rename's own search, which matched dotted ids only.
+- **Tool change:** generate.ts names interest_other and carry_in. The other 67 renamed ids were searched for in engine/src, ui, lean and tools as dotted ids and as bare quoted names beside their form: no other use.
+- **Evidence:** classm-jobs --docs person (and sa, sc) builds its jobs; rerun_all.py --dry-run prices person, sa and sc.
+- **Severity:** medium
+- **Tags:** tool, generator, rename, T-353, fixed
+
+## BUG-1279 — samples.confirmed_bugs counts a bug id named in a ruling's class even when the class rules no defect
+
+- **Date:** 2026-11-23
+- **Caught by:** queue item 6 of .claude/wave-2026-11-22/after-int-queue.md (integration of 2026-11-23); filed in release preparation.
+- **Symptom:** confirmed_bugs() adds every BUG id found in a ruling's class text (BUG_ID.findall on ruling['class']), so a class such as 'no defect (as BUG-NNNN, already fixed)' or 'covered by BUG-NNNN' confirms that bug, and samples.open_defects fails the release on an open medium or high bug the ruling only mentions. Its docstring says an id named only as context is not a confirmation.
+- **Where:** tools/transcription/samples.py confirmed_bugs (the class branch).
+- **Proposed fix:** take ids from the class only when the class itself classes a defect or a real gap (the same test the findings branch applies), with a self-test of a 'no defect' class naming an id.
+- **Severity:** low
+- **Tags:** tool, sampled reviews, release gate; open
+
+## BUG-1280 — core.hooksPath points every worktree at the main checkout's hooks
+
+- **Date:** 2026-11-23
+- **Caught by:** queue item 19 of .claude/wave-2026-11-22/after-int-queue.md; filed in release preparation.
+- **Symptom:** The repository's local config (.git/config, shared by every worktree) sets core.hooksPath to the absolute path of the main checkout's tools/hooks, so a commit in any linked worktree runs the hooks of the main checkout's tree, which is on main and older than next until a release moves main. Commits on next and lane branches therefore have to be made with git -c core.hooksPath=tools/hooks commit to run their own tree's hooks.
+- **Where:** the repository's core.hooksPath setting (shared by every worktree of the clone); tools/hooks.
+- **Proposed fix:** set core.hooksPath to the relative path tools/hooks (resolved in each worktree), or have the worktree tools set it per worktree (extensions.worktreeConfig), with a check in tools/worktree_gc.py or preflight that the hooks a commit runs are its own tree's.
+- **Severity:** low
+- **Tags:** tool, hooks, worktrees; open
+
+## BUG-1281 — Closure: BUG-1300 is fixed
+
+- **Closes:** BUG-1300
+- **Closure:** fixed
+- **Caught by:** release preparation of next (release-prep, claude-opus-5-5, judgment), 2026-11-23.
+- **Change:** in release preparation (release-prep, claude-opus-5-5, judgment), each stale `from` re-based on the current 2025 text, and each `to` checked against the 2026 drafts: qbi C-SCHED-31 op 3 keeps the i8995a segment (Line 6, carryforward to Form 8995 line 3) at its 2025 page, as C-SCHED-32 does, the 2026 i8995a being unpublished; s8812 C-SCHED-17 op 2 quotes the 2026 line 22 and names only line 17c as refused (lines 16a and 16b are s2.tip_ss_tax and s2.wage_ss_tax, which line 22 reads); sc.wording C-BUS-08 ops 1, 2, 3 and 5 carry the two refusals added to the 2025 screen (pay for work done outside the United States; start-up costs over $5,000 of a business begun in the year, dated 2026 and naming Form 4562-B, which the 2026 i1040sc p. 17 prints), with their 2026 pages (i8995 p. 4, i1116 p. 7, i1040sc p. 17) and evidence. C-SCHED-03: the 2026 Schedule 1-A line 4 column (iii) is the W-2 box 12 code TP amount, the cash tips reported to the employer (iw2w3 p. 23), which box 5 includes (iw2w3 p. 19, "Be sure to enter tips that the employee reported"), so the box 5 screen still applies: person.tip_reported is kept, relabelled and recited as the column (iii) total, and the citations of person.tips_over_wages, s1a.tips_over_count, s1a.tips_over_wages and the s1a.line4c_calc refusal move from the retired line 4a (W-2 box 7) to code TP.
+- **Evidence:** tools/year_changes.py --check exits 0: 1,324 operations apply and the static checks of the applied 2026 tree pass (references, cycles, types, guard tiling, gates, citations, tables).
+- **Tags:** changes, year change, TY2026, fixed
+
+## BUG-1282 — A release-mode check-all passes its run settings to the self-tests, which then fail
+
+- **Date:** 2026-11-23
+- **Caught by:** release preparation of next: the full tier in release mode (AGENT_RUNS_FOLD=0 CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify, as tools/release.sh runs it) failed self_tests on build_cache_self_test, step_cache_self_test and check_bg_self_test; each passes when run without those settings.
+- **Symptom:** tools/self_tests.py ran every test with the run's environment. ENGINE_CACHE=verify makes the build-cache and step-cache self-tests miss every reuse they test ('same inputs: not reused'), and AGENT_RUNS_FOLD=0 stops the fold test_check_bg.sh expects ('the fold did not run before the snapshot was taken'). Every release-mode full run, and so every release, would fail self_tests.
+- **Where:** tools/self_tests.py run_one.
+- **Tool change:** run_one passes the environment without ENGINE_CACHE, AGENT_RUNS_FOLD, CHECK_ALL_RELEASE and CHECK_ALL_ALLOW_OPEN_BUGS (RUN_SETTINGS); a self-test sets up the cases it tests and expects the tool defaults otherwise.
+- **Evidence:** node engine/dist/main.js build-cache --self-test: ok without ENGINE_CACHE, fails with ENGINE_CACHE=verify; bash tools/hooks/test_check_bg.sh: ok without AGENT_RUNS_FOLD=0, fails with it.
+- **Severity:** medium
+- **Tags:** tool, self-tests, release, fixed
+
+## BUG-1283 — audit_skipped.py raises on a class M log case removed from its fixture
+
+- **Date:** 2026-11-23
+- **Caught by:** release preparation of next: full tier step classm_skipped (ValueError: classm.f1040.4: no matching fixture case).
+- **Symptom:** Integration 5 (8175c23d) removed the DeepSeek fixture case classm.f1040.4.deepseek (its gifts refused under BUG-1204) while the DeepSeek class M log of f1040 keeps the case with blank model rows; tools/transcription/audit_skipped.py raised on the first blank row of a case with no fixture, so the step failed on next.
+- **Where:** tools/transcription/audit_skipped.py reclassify.
+- **Tool change:** a blank row of a case that is not in the fixture is passed over (it holds no assertion to drop); the log section is left as written.
+- **Evidence:** audit_skipped.py: 0 numeric assertions to exclude; 0 log sections reclassified; exit 0.
+- **Severity:** low
+- **Tags:** tool, class M, fixtures, fixed
+
+## BUG-1284 — The pre-push self-test runs release.sh against the tree's real sampled reviews
+
+- **Date:** 2026-11-23
+- **Caught by:** release preparation of next: full tier, pre_push_self_test ('release: the sampled reviews are not complete for a release ... pre-push self-test: release.sh refused a release-green tree').
+- **Symptom:** tools/hooks/test_pre_push.sh (pre_push_self_test) expects release.sh to promote a planted release-green tree, but release.sh runs tools/release_reviews.sh on the repository's real sampled reviews even for a release-green tree (2026-11-22 amendment, item 4), so the self-test fails whenever any real sample is due or unruled, which is the state between releases.
+- **Where:** tools/hooks/test_pre_push.sh; tools/release.sh (release_reviews.sh call on the release-green branch).
+- **Proposed fix:** have the self-test stub tools/release_reviews.sh (or run release.sh with a test hook that replaces it), so it tests promotion and the pre-push hook only.
+- **Severity:** low
+- **Tags:** tool, self-tests, release; open
+
+## BUG-1285 — A related-party like-kind exchange of 2023 or 2024 followed by a 2025 disposition is neither asked nor refused
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled reviews of the release run, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: false-no review of gate:sd.sold_other, finding 7.
+- **Source:** i8824 p. 1, 'Also file Form 8824 for the 2 years following the year of a related party exchange'; Line 7, a disposition by either party within 2 years makes the deferred gain reportable 'on your tax return for the year of disposition'.
+- **Symptom:** sd.sold_other asks only about real estate or business property sold or traded in 2025 (and later payments on an earlier sale). A filer who made a like-kind exchange with a related party in 2023 or 2024, where either party disposed of the property in 2025, answers No; the deferred gain is neither computed nor refused and Form 8824 is not filed.
+- **Where:** forms/2025/sd.yaml sd.sold_other (and sd.like_kind_if_sold); interview/2025/questions.yaml sd.sold_other help.
+- **Proposed fix:** Name the case in the sd.sold_other help ('or you traded property with a relative or a related company in 2023 or 2024'), so a Yes reaches sd.like_kind and its refusal; or ask it as its own refusing question under the rare-sales group.
+- **Proposed fix lines:** sd.sold_other, sd.like_kind
+- **Severity:** low
+- **Tags:** sd, Form 8824, missed refusal, sampled false-no review; open
+
+## BUG-1286 — Student loan interest someone else paid on the borrower's loan is not named as the borrower's, so it can be left out
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled reviews of the release run, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: false-no review of gate:sli.any_if_not_mfs, finding 0; screen review of the same gate, finding 0; completeness claim sli#1.3.
+- **Source:** p970 p. 33, Interest paid by others: 'If you are the person legally obligated to make interest payments and someone else makes a payment of interest on your behalf, you are treated as receiving the payments from the other person and, in turn, paying the interest' (Example 2, a mother's gift).
+- **Symptom:** The sli.any tick ('Paid interest on a student loan') and its help, and the sli.interest question, say nothing of payments made by another person. A borrower whose parent or employer (through W-2 box 1) paid the interest answers No, and the Schedule 1 line 21 deduction is lost.
+- **Where:** interview/2025/questions.yaml sli.any (help) and sli.interest (help); forms/2025/sli.yaml sli.any.
+- **Proposed fix:** Add to the sli.any help: 'Count interest someone else paid on a loan you owe, such as a parent's gift or an employer's payment added to your W-2 box 1; it counts as paid by you.'
+- **Proposed fix lines:** sli.any, sli.interest
+- **Severity:** low
+- **Tags:** sli, interview, wording, sampled false-no review; open
+
+## BUG-1287 — New York alimony under an agreement made after 2018 is not asked when other 2025 alimony is under an older agreement or a recapture
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled reviews of the release run, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: false-no and screen reviews of gate:s1.alimony_if_any (New York), findings 0, 1 and 3.
+- **Source:** ny_it225i p. 10, A-119, and p. 18, S-136: applicable alimony is a payment under an instrument 'executed after December 31, 2018'; i1040gi p. 89 provides for alimony 'from more than one divorce or separation agreement'.
+- **Symptom:** ny_it201.ask.alimony_later is asked only when s1.alimony_if_any is false. A filer (or, on a joint return, the other spouse) with any 2025 alimony under a pre-2019 agreement, or a recapture, makes the gate true, so post-2018 alimony under a second agreement gets no New York addition (A-119) or subtraction (S-136) and no refusal.
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.alimony_later_if_not_old; interview/ny/2025/questions.yaml ny_it201.ask.alimony_later.
+- **Proposed fix:** Ask ny_it201.ask.alimony_later whenever alimony was paid or received since 2023 (the federal alimony_any answer), worded 'under an agreement made after 2018, or an older one changed to adopt the new rules', and refuse a Yes; fold BUG-1215 (1) into the same wording.
+- **Proposed fix lines:** ny_it201.alimony_later_if_not_old, ny_it201.ask.alimony_later
+- **Severity:** low
+- **Tags:** ny, alimony, missed refusal, sampled false-no review; open
+
+## BUG-1288 — The main home sale screen states the joint exclusion without the both-spouses use test or the two-year rule, and does not name a spouse's home
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled reviews of the release run, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: screen review of sd.home_sale, findings 0 to 2.
+- **Source:** i1040sd p. 2: 'If both you and your spouse meet these tests and you file a joint return, you can exclude up to $500,000'; Test 2, 'You haven't excluded gain on the sale or exchange of another main home during the 2-year period'.
+- **Symptom:** sd.home_sale's help says 'Gain of up to $250,000 ($500,000 on a joint return) is usually excluded if you owned the home and lived in it for 2 of the 5 years'. A joint filer with only one spouse meeting the use test and a gain between the two limits, or a filer who excluded gain on another home within 2 years, can answer No without a Form 1099-S; the prompt 'Was any of it your main home' does not name a spouse's own home. The reportable gain is then neither computed nor refused.
+- **Where:** interview/2025/questions.yaml sd.home_sale (prompt and help); forms/2025/sd.yaml sd.home_sale.
+- **Proposed fix:** Prompt: 'Was any of it your (or, on a joint return, your spouse's) main home, ...'; help: '$500,000 on a joint return only if both of you lived in it for 2 of the 5 years; no exclusion if either of you excluded gain on another home sold in the 2 years before.'
+- **Proposed fix lines:** sd.home_sale
+- **Severity:** low
+- **Tags:** sd, interview, wording, sampled screen review; open
+
+## BUG-1289 — A rental's taxes carried to Schedule A line 5b skip the non-deductible-charges question
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled reviews of the release run, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: completeness claim rental#1.4.
+- **Source:** i1040sca p. 6, Line 5b: taxes 'assessed uniformly', not itemized service charges, not foreign real estate taxes, only what the lender actually paid, only taxes assessed before 2026, reduced by 2025 refunds.
+- **Symptom:** rental.tax_personal carries the part of a rental's taxes not taken on Schedule E (personal-use days) to Schedule A line 5b, but sa.property_tax_other_any asks only about 'the real estate tax amount you entered' for sa.line5b. A service charge, a refund or a tax assessed after 2025 inside the rental's tax reaches line 5b unchecked; the rental.amt16 question excludes only improvement charges.
+- **Where:** forms/2025/rental.yaml rental.tax_personal; forms/2025/sa.yaml sa.property_tax_other_any (its wording and readers).
+- **Proposed fix:** Word sa.property_tax_other_any to cover 'that amount, or the taxes of a rental that was also your home', or ask the rental.amt16 help to leave out the same items.
+- **Proposed fix lines:** sa.property_tax_other_any, rental.amt16
+- **Severity:** low
+- **Tags:** sa, rental, completeness review; open
+
+## BUG-1290 — Closure: BUG-1202 is fixed
+
+- **Closes:** BUG-1202
+- **Closure:** fixed
+- **Caught by:** release preparation 2 (release-prep-2, claude-opus-5-5, judgment), 2026-11-23, on the owner's direction to fix open bugs.
+- **Fix:** retirement.code2_partial, the code 2 question asked of every code 2 entry, now asks 'Does that exception fail to cover all of this money, or is this money one of a series of substantially equal payments that was changed in 2025?', with help naming the recapture ('Changing a series before age 59½, or within 5 years of its first payment, brings back the extra tax on the earlier payments'); a Yes refuses through retirement.code_screen and retirement.screen_refused, whose remedy already names 'a modified series of substantially equal payments'. Cite: p590b p. 26 (recapture tax 'imposed in the tax year in which the modification occurs'). The gate label retirement.code2_partial_if_code2 says the same.
+- **Fix lines:** retirement.code2_partial, retirement.code2_partial_if_code2
+- **Siblings checked:** retirement.early_screen (codes 1 and S, already names a modified series), retirement.code_screen, retirement.screen_refused (remedy unchanged), retirement.code7_wrong and retirement.not_beneficiary_if_death (codes 7 and 4: a series payment coded 7 after 59½ owes no recapture; code 4 is a beneficiary's), f5329.l2, the lines the siblings tool lists for the fix lines.
+- **Evidence:** fixtures/2025/retirement.json relprep2.retirement.code2_series_changed (refused at retirement.screen_refused on Form 1040 line 4b, predicted before evaluation) and relprep2.retirement.code2_exception_covers (line 4b $10,000, Schedule 2 line 8 $0, predicted before evaluation); coverage row retirement.code2_series_changed.
+- **Tags:** retirement, Form 5329, missed refusal, fixed
+
+## BUG-1291 — A series of substantially equal payments changed in 2025 with a code 7 Form 1099-R, or with no 2025 Form 1099-R, is neither asked nor refused
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled screen and false-no reviews of gate:retirement.is_code2 run after the BUG-1202 fix, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: screen finding 0, false-no findings 0 and 2.
+- **Source:** p590b p. 26: 'The recapture tax applies if you modify the series of payments ... before the later of ... The 5th anniversary of the date of the first distribution of the series; or ... The date you reach age 59½' and 'The recapture tax is imposed in the tax year in which the modification occurs'; reported on Form 5329 line 4.
+- **Symptom:** The series question is asked only with codes 1 and S (retirement.early_screen) and, since BUG-1202's fix, code 2 (retirement.code2_partial). A filer past 59½ whose series began less than 5 years ago and was changed in 2025 gets code 7, and a filer who stopped the payments may get no 2025 Form 1099-R from that account; neither is asked, and the recapture of the earlier years' 10% tax is left off without a refusal (understated tax).
+- **Where:** forms/2025/s2.yaml s2.other_tax; interview/2025/questions.yaml s2.other_tax (help).
+- **Fix:** s2.other_tax, asked of every filer in the other-taxes group, now names the case: its help gives 'the 10% tax brought back when a series of equal retirement payments is changed too soon' as an example, and its encoded question lists 'the recapture of the 10% additional tax when a series of substantially equal payments from a retirement plan or IRA is changed before the later of age 59½ or 5 years after its first payment (Form 5329 line 4)', cited to p590b p. 26. A Yes refuses through s2.other, as before. Lane release-prep-2 (claude-opus-5-5, judgment), 2026-11-23.
+- **Fix lines:** s2.other_tax
+- **Siblings checked:** retirement.early_screen (codes 1 and S), retirement.code2_partial (code 2), s2.other (refusal unchanged).
+- **Severity:** medium
+- **Tags:** retirement, s2, Form 5329, missed refusal, sampled false-no review, fixed
+
+## BUG-1292 — The early-distribution exception question does not state whose education (08) or whose first home (09) counts
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled completeness review of retirement run after the BUG-1202 fix, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: claim retirement#1.2.
+- **Source:** p590b p. 27: 'The education must be for you, your spouse, or the children or grandchildren of you or your spouse'; the first-home distribution must pay costs 'for the main home of a first-time homebuyer ... who is any of the following' (you, your spouse, your or your spouse's child, grandchild or ancestor), each meeting the no-ownership test.
+- **Symptom:** retirement.exception lists conditions for 01, 02, 03, 04, 09, 11 and 19; for 08 it gives none, and for 09 it states the no-ownership test for 'you' and the spouse only. A filer who paid a niece's tuition can choose 08 (the additional tax is understated); one who paid for a child's first home may read 09 as not applying (overstated).
+- **Where:** forms/2025/retirement.yaml retirement.exception (source).
+- **Proposed fix:** Add to the list: '08, higher education costs for you, your spouse, or your or your spouse's children or grandchildren' and, in 09, 'a first home for you, your spouse, or your or your spouse's child, grandchild, parent or other ancestor, each of whom (and their spouse) had no home in the 2 years before'.
+- **Proposed fix lines:** retirement.exception
+- **Severity:** low
+- **Tags:** retirement, Form 5329, wording, completeness review; open
+
+## BUG-1293 — Private activity bond exempt-interest dividends (Form 1099-DIV box 13) are left out of the AMT line 2g amount the screen reads
+
+- **Date:** 2026-11-23
+- **Caught by:** the sampled completeness review of s2 run after the s2.other_tax change, adjudicated in release preparation 2 (claude-opus-5-5, judgment), 2026-11-23: claim s2#1.1.
+- **Source:** i6251 pp. 3-4, Line 2g: 'Exempt-interest dividends paid by a mutual fund or other regulated investment company are treated as interest income on specified private activity bonds ...' and 'This specified private activity bond interest dividends amount should be reported to you in box 13 of Form 1099-DIV.'
+- **Symptom:** s2.amt_pab asks for Form 1099-INT box 9 and tax-exempt OID on a private activity bond only; div.box13 (asked with the dividends) is read by no AMT line. The line 2g amount the AMT screen adds is too low by the box 13 dividends, so a filer near the AMT exemption can pass the screen with AMT owed (no refusal, understated tax).
+- **Where:** forms/2025/s2.yaml s2.amt_pab and the line 2g sum it feeds; interview/2025/questions.yaml s2.amt_pab.
+- **Proposed fix:** Add div.box13_if_dividends to the line 2g amount (or name Form 1099-DIV box 13 in s2.amt_pab's question), with a hand-predicted fixture near the AMT screen's threshold.
+- **Proposed fix lines:** s2.amt_pab
+- **Severity:** low
+- **Tags:** s2, AMT, Form 6251, completeness review; open
+
+## BUG-1294 — Closure: BUG-1284 is fixed
+
+- **Closes:** BUG-1284
+- **Closure:** fixed
+- **Caught by:** release preparation 2 (release-prep-2, claude-opus-5-5, judgment), 2026-11-23.
+- **Tool change:** The self-test runs release.sh in a temporary repository against a stub release_reviews.sh, as before; what failed was its expectation for a release-green tree, written before the 2026-11-22 amendment made release.sh check the sampled reviews again for such a tree (so the tag can list allowed open bugs). tools/hooks/test_pre_push.sh now expects, for a release-green tree: no second full run, one run of the reviews check, nothing promoted or tagged while the reviews are incomplete, and promotion once they are complete. The entry's premise that the test read the repository's real sampled reviews did not hold: the stub decides.
+- **Evidence:** bash tools/hooks/test_pre_push.sh: 'release.sh refused a release-green tree' before the change; 'pre-push self-test: ok' after.
+- **Tags:** tool, self-tests, release, fixed
+
+## BUG-1295 — Closure: BUG-1214 is partly fixed
+
+- **Closes:** BUG-1214, in part: the three order-dependent reaches are fixed; f8889.months_eligible stays open, held in the baseline
+- **Closure:** fixed
+- **Caught by:** release preparation 2 (release-prep-2, claude-opus-5-5, judgment), 2026-11-23.
+- **Fix:** Each reach traced on the generated return interview-rules named (engine evaluate derivations, reverse readers): (1) dependent.lived_all_year was read by household.qss_children_all_year's filter all(relationship = child, lived_all_year) while the relationship was unanswered; the filter now reads dependent.child_all_year, a choice on the relationship (child: lived_all_year; every other value: dependent.no). (2) dependent.spouse_relative was read by dependent.spouse_relative_joint, all(status = mfj, spouse_relative), before the status; it is now a choice on f1040.status (mfj: spouse_relative; others: dependent.no). (3) person.tin was read by person.edu_llc_tin_refused, all(edu_llc, tin = false), before person.edu; it is now a choice on person.edu_llc (true: person.edu_tin_missing, the test tin = false; false: person.no). Values are unchanged where the guards are known (2715/2715 fixtures pass). (4) f8889.months_eligible is read through the spouse's family-months check (f8889.family_months_bad via household.hsa_self_sum, the taxpayer's step4_total and self_counted) while the spouse's December coverage is self-only and last_month is unanswered; nesting that check is a change to the HSA split left open; held in tools/interview_rules_baseline.json walked_unused with that reason. reports/2025/interview_pruning.md rewritten (--write-pruning).
+- **Fix lines:** household.qss_children_all_year, dependent.child_all_year, dependent.spouse_relative_joint, person.edu_llc_tin_refused, person.edu_tin_missing
+- **Siblings checked:** dependent.child_all_year, dependent.edu_line31, dependent.edu_llc_tin_refused, dependent.edu_student_tin, dependent.edu_tin_issued, dependent.filer_parent_if_child, dependent.hoh_test1, dependent.hoh_test2_lived, dependent.household_all_year, dependent.kidnapped_if_part_year, dependent.lived_half, dependent.qc_relationship, dependent.qr_household_member, dependent.qr_listed_relative, dependent.qr_other_relation, dependent.qr_relationship, dependent.spouse_relative, dependent.under_7_months, f1040.line12e, f8863.claimed_count, f8863.eligible, f8863.eligible_figured, f8863.line14, f8863.line3, f8863.none_claimed, household.qss, household.qss_child_conflict, household.qss_child_conflict_if_claimed, household.qss_child_not_all_year, household.qss_children_listed, household.qss_eligible, household.qss_fails, person.edu_line31, person.edu_student, person.edu_student_itin, person.edu_student_tin, person.tin_or_itin_applied, person.work_ssn_or_tin (values unchanged: fixtures 2715/2715; no reach on them in the unscoped run).
+- **Evidence:** node engine/dist/main.js interview-rules (unscoped, default sizes): 5 problems before; 'interview-rules: 0 problem(s)' after, with months_eligible held.
+- **Tags:** interview, interview-rules, release, fixed in part
+
+## BUG-1296 — Mutation on release-prep-2: 127 survivors not yet explained, 44 stale arguments, 3 retargeted arguments and one sampled contradiction
+
+- **Date:** 2026-11-23
+- **Caught by:** release preparation 2 (claude-opus-5-5, judgment): node engine/dist/main.js mutate on the tree of this branch, 2026-11-23 (44 min).
+- **Symptom:** 10,388 mutants, 534 surviving: 400 explained on every input, 7 on answered inputs, 8 by open defects (BUG-0928, BUG-0764), 127 not yet explained. 44 keyed arguments are stale (premise digest moved, or, for household.cp_any.community_property.then0, the mutant is now killed: remove it); 3 arguments read a different line (sa.home_other_if_not_owner.no.then1 now reads sa.e05_claimed, sc.qbi_se.zero.then1 sc.f7206_unused_if_uses, household.cp_any.community_property.then0 household.cp_retirement_if_asked); the sampled check contradicts operand.s8812.s8812.line18a.chart_eic.then0 on classm.carloan.2 (s8812.line19 a refusal with the data, unknown with the mutant). Unexplained groups: f8962 show_<month>_ab (24), dependent (20, of which 11 are new lines of this branch: dependent.spouse_relative_joint.no.then0/2/3/4 and dependent.child_all_year.no.then1 to then7, from the BUG-1214 rewrites), f8889 (9), household (8), s1a (6), sa (9), eic (6), sc (6), sche filters (3), f8863, f8960, f1116, f5695, rental, retirement, person, ssb, ira, sdtw and two sa rate parameters. The step fails (staleEquivalences, unexplained, retarget, sampled); it is in the full tier only. The committed reports/2025/mutation.md is of 2026-11-22 and is not rewritten here.
+- **Where:** engine/src/mutate.ts EQUIVALENT_IF; fixtures; reports/2025/mutation.md (the run's report is kept at /tmp only).
+- **Proposed fix:** A mutation lane (judgment, Opus): for each stale argument diff its premises against the commit it was pinned on and re-pin only where the reasoning still holds; for each unexplained survivor write a hand-predicted fixture that kills it or a pinned argument; resolve the s8812.line18a contradiction (a fixture or a defect entry). The spouse_relative_joint mutants replace dependent.no with qr_other_lawful inside qr_other_relation's any(), which looks equivalent; the child_all_year ones need a fixture with a non-child dependent answered kidnapped on a qualifying surviving spouse return.
+- **Severity:** medium
+- **Tags:** mutation, tools, release; open
+
+## BUG-1297 — The sampled mutation check treats every fixture case at withholding rate 0 as an answered return, though 259 federal cases reach inputs they do not answer
+
+- **Date:** 2026-11-23
+- **Caught by:** mutation lane mutD (claude-opus-5-5, judgment), 2026-11-23, while resolving the sampled contradiction of operand.s8812.s8812.line18a.chart_eic.then0 on classm.carloan.2; filed at integration by release preparation 4 (claude-opus-5-5, judgment).
+- **Symptom:** engine/src/mutate.ts withholdAnswers returns a case's inputs unchanged at rate 0, and the sampled check judges an ANSWERED_ONLY argument (equivalent on answered inputs only) on those sets as if they were answered returns. A fixture case written before a question was added still reaches that question unanswered. Lane mutD's scan (its count; not repeated at integration) found 259 of 2733 federal cases refused while the interview still reaches unanswered inputs, most often scope.remic (144), scope.trade_act_repaid (144), f1040.estimated_any (135), the W-2 box 2 input (49) and f1040.withheld_other_any (45), most of them in fixtures/2025/classm.deepseek.json. Any ANSWERED_ONLY argument can be contradicted by such a case although the argument holds, as classm.carloan.2 and mutation.t2.hoh_s1a_car contradicted s8812.line18a.chart_eic.then0 until their missing answers were added.
+- **Where:** engine/src/mutate.ts (withholdAnswers, sampleSite and the rate-0 fixture sets); fixtures/2025/*.json (the incomplete cases).
+- **Proposed fix:** Either count a rate-0 fixture set as partial when the interview still reaches an input it does not answer (so an ANSWERED_ONLY argument may have a witness there, as at the other rates), or complete the incomplete cases' answers and add a check that a fixture case reaches no unanswered input. Tool work for the next release.
+- **Partial measure (coordinator decision, 2026-11-23):** at integration (release preparation 4) the two inputs that cause most of it, scope.trade_act_repaid and scope.remic, were filled with their defaults.json value (false, 'Closed') into every case of the no-default files that lacked them, by script: fixtures/2025 classm.json 125 cases, classm.deepseek.json 97, classm.gpt.json 1, mutation.json 195; fixtures/ny/2025 classm.json 1, classm.deepseek.json 1, mutation.json 3 (lane mutC had added them to 5 cases). Every case still meets its expects (test-fixtures 2735/2735, New York 378/378). The entry stays open for the general case: a question added later leaves the no-default cases partial again, and the other inputs named above (f1040.estimated_any, the W-2 box 2 input, f1040.withheld_other_any) were not filled.
+- **Severity:** low
+- **Tags:** mutation, tools, fixtures, sampled check; open
+
+## BUG-1298 — Closure: BUG-1296 is fixed
+
+- **Closes:** BUG-1296
+- **Closure:** fixed
+- **Caught by:** release preparation 5 (release-prep-4, claude-opus-5-5, judgment), 2026-11-23, integrating mutation lanes A to H.
+- **Resolution:** Mutation lanes A to D (stale and retargeted arguments: re-pinned after re-reading, rewritten, or removed where the mutant is now killed; the s8812.line18a contradiction resolved by completing the missing answers of classm.carloan.2 and mutation.t2.hoh_s1a_car, with the rate-0 sampling issue filed as BUG-1297) and lanes E to H (the remaining survivors: pinned arguments for household.hoh_missed_mfs.no.then1, ssb.line18.zero.then1 and f1116.line18_shown.line17.gt.0; hand-predicted fixtures for the others in eic.json, dependent.json, f8889.json, f8582.json, f8960.json and ny/2025/it201.json; BUG-1264 and BUG-1268 filed, low).
+- **Evidence:** node engine/dist/main.js mutate on the integrated tree, 2026-11-23 (46 min): 10392 mutants, surviving 462 (443 explained on every input, 11 on answered inputs only, 8 by open defects), 0 not yet explained, 0 stale arguments, 113 retargeted arguments rejected by the self-test with 0 problems, sampled check 0 problems; mutate --ny: 945 mutants, 53 survivors all explained, 0 problems.
+- **Tags:** mutation, tools, release, fixed
+
+## BUG-1299 — The full tier in release mode failed checks the light tier does not run: the check_all_bg self-test, the Form 8863 twins, a 2026 year-change operation, refusal reach, the pruning report and the engine differential's generator
+
+- **Date:** 2026-11-24
+- **Caught by:** release preparation 5 (release-prep-4, claude-opus-5-5, judgment): AGENT_RUNS_FOLD=0 CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full, 2026-11-23 and 2026-11-24 (two runs).
+- **Symptom:** (1) self_tests/check_bg_self_test fails in every check_all_bg run ('the snapshot lacks what the preflight regenerated'): tools/self_tests.py strips the run's settings from the self-tests (BUG-1282) but not CHECK_ALL_PREFLIGHT=done, which check_all_bg.sh exports, so tools/hooks/test_check_bg.sh's stub preflight is skipped; it passes when run by hand. (2) twins and twins_self_test: BUG-1214's rewrite of person.edu_llc_tin_refused as a choice through the new person.edu_tin_missing left the dependent twin an all-test; 16 undeclared differences (also on next 4c8ebd83). (3) year_changes: changes/2026/s2.yaml C-SCHED-10 op 10 expected s2.other_tax's cite locator as it was before BUG-1291 added the p590b recapture citation (also on next 4c8ebd83). (4) refusal_reach: adlow.f1040.split_over and adlow.f1040.split_nothing_overpaid assert the refusal of the values-sheet line f1040.split_checked, which no interview target reads (BUG-1158); mutation.m4.f5695.doors_no_qmid_no_windows left f1040.tax_exempt_any, f5695.reconstruct_later and s2.iso_vested unanswered (questions added after it was written), so the interview stopped before the refusal. (5) interview_rules: reports/2025/interview_pruning.md, edited by hand when f8889.months_eligible left the baseline, said 286 complete returns where the run classes 287. (6) engine_differential: tools/engines/generate_cases.py still wrote the Schedule C input line16b, renamed sc.interest_other by T-353, so all 300 self-employment cases failed in the project's evaluator and compare.py stopped on a KeyError. (7) engine_differential, once (6) was fixed: 66 unexplained UsTaxes differences on Schedule 2 line 8 and Form 5329 line 4. The EARLY_MOVED pattern of tools/engines/ustaxes_adapter.py, ots_adapter.py and run_engines.py still named s2.line8, renamed s2.tax_favored_accounts by T-353, so the early-distribution limitations no longer covered that line (54 differences); and the UsTaxes adapter entered every code 1 amount with no exception as an early withdrawal, where the project now leaves out an amount received at 59½ or older (retirement.over59_all_year; i5329 p. 5, line 2, exception 12), so UsTaxes taxed it (12 differences on 8 returns).
+- **Resolution:** (1) CHECK_ALL_PREFLIGHT added to RUN_SETTINGS in tools/self_tests.py; the check_bg self-test passes through run_one with the release settings and CHECK_ALL_PREFLIGHT=done set. (2) reviews/2025/twins.json declares the 15 field differences of edu_llc_tin_refused (replacing the stale expr.all[1].eq[0] entry) and person.edu_tin_missing as one-sided, with the reason and i8863 p. 3 item 5; no form line changed. (3) the operation's from is the current locator, and its to carries the citation into 2026 as p590b p. 27 (draft), the same sentence on page 27 of the archived 2026 draft (sources/2026/p590b.txt). (4) the two split cases are listed in tools/refusal_reach_exceptions.json with BUG-1158's reason; the doors case answers the three inputs with their defaults.json value (false) and is refused at f5695.doors_no_qmid by the interview. (5) the report's count is 287, the run's own text. (6) SC_ZERO names interest_other; 20 generated self-employment cases evaluate with values. (7) the three EARLY_MOVED patterns name s2.(line21|tax_favored_accounts); the UsTaxes adapter enters no early withdrawal amount for an owner born no later than age.over59h_all_year (read from the year's parameters). Rerunning compare.py on the run's own cases, project values and engine records with the recomputed limitations left 12 unexplained, all of the second kind; UsTaxes rerun on those 8 returns with the changed adapter gives Schedule 2 line 8 $0, as the project. The next run left 4, Form 5329 line 1 on four of them (the project's line 1 holds the code 1 amount and line 2 the exception; UsTaxes' line 1 is the amount after exceptions): compare.py's derived_features now marks a return early_exception when the project's Form 5329 line 2 is more than zero, as for a drawn exception; compare.py on that run's records: 0 unexplained. (8) engine_differential, the run after: 0 unexplained but 303 lines over the not-computed floor, the step's other failure, present in every run since scope.trade_act_repaid and scope.remic joined scope.schedule1 (and so present on next 4c8ebd83): the generator answered neither, so Form 1040 line 10 and everything after it was unknown on all 1700 returns and the comparison of those lines was empty. Two more inputs were left unanswered (qbi.unreported_loss, f5695.reconstruct_later), and the adapters still named T-353's old ids: S1A_MAP and the Form 8959 lists by printed number (s1a.line4c, f8959.line13 and the rest), and PTC_MOVED and EDU_MOVED f5695.line14 and line15 (now rce_limit and rce_credit). Fixed: the generator answers the four inputs No (their defaults.json values; 1698 of 1700 returns now complete or refuse, the other two ask when a spouse born in 1965 or 1966 turned 59½); compare.py translates an adapter's printed-number id through tools/year_free_names.json when that id is no longer a line (current_names); the six patterns name rce_limit and rce_credit. compare.py offline on the regenerated cases, the project's values for them and the run's engine records with the limitations recomputed: 0 unexplained, 3 explained, 0 lines over the floor.
+- **Severity:** low
+- **Tags:** tools, self-tests, twins, year changes, refusal reach, engine differential, release, fixed
+
+## BUG-1300 — changes/2026: seven operations no longer apply to the 2025 tree on next
+
+- **Date:** 2026-11-23
+- **Caught by:** lane rename-t353 (T-353), running `tools/year_changes.py --check` on `next` (b18efa47) before the rename.
+- **Symptom:** `year_changes.py --check` exits 1 with 7 failures on `next`, so the static checks of the applied 2026 tree do not run (they run only when every operation applies). Stale `from` values: qbi.yaml C-SCHED-31 op 3 (`qbi.carryforward` cite.locator); s8812.yaml C-SCHED-17 op 2 (`s8812.line22` cite.locator); sc.wording.yaml C-BUS-08 ops 1, 2, 3 and 5 (`sc.special` label, expr.source, cite.locator and the bank prompt). Dangling: person.s1a.yaml C-SCHED-03 op 1 removes `person.tip_reported`, which `person.tips_over_wages` still reads (the engine's static check of the applied tree reports the unresolved reference). The step `year_changes` is not in the light tier, so commits on `next` did not catch it. The rename of T-353 changes none of the seven (same failures before and after).
+- **Where:** changes/2026/qbi.yaml, s8812.yaml, sc.wording.yaml, person.s1a.yaml; forms/2025/qbi.yaml, s8812.yaml, sc.yaml, person.yaml (the lines the operations expect).
+- **Proposed fix:** re-base each stale operation's `from` on the current 2025 text after checking its `to` still says what the 2026 source prints; for C-SCHED-03, decide whether `person.tips_over_wages` goes in 2026 with `person.tip_reported` or reads its replacement, and add that operation.
+- **Severity:** medium
+- **Tags:** changes, year change, TY2026, adoption; open
+
+## BUG-1301 — Mutation: 46 pinned equivalence arguments no longer hold on next
+
+- **Date:** 2026-11-23
+- **Caught by:** lane rename-t353 (T-353), evaluating every `EQUIVALENT_IF` argument's `holds` on the canonical build of `next` (b18efa47) before the rename, to tell the rename's digest moves from earlier ones (`npm run mutate` itself not run).
+- **Symptom:** 46 keyed arguments of `engine/src/mutate.ts` `EQUIVALENT_IF` fail `holds` on the build of `next` (a premise digest moved, or a structural condition no longer met), among them arguments on f8889, f8962 (`marriage.no.then1` to `then4`), household, dependent, eic, sa, sc, sdtw, f5695, sche (`filter.sche.*`), ira, person and New York (`ny_it201.gate.spouse_nonresident`). The mutation step (`staleEquivalences`) would fail on each; it is in the full tier only. The T-353 rename moved none of them (the same 46 fail with the renamed names put back).
+- **Where:** engine/src/mutate.ts EQUIVALENT_IF; the full list is printed by evaluating each argument's holds on canonical/2025 (or by `npm run mutate`).
+- **Proposed fix:** run `npm run mutate` on `next`; for each argument it lists, re-read it against the current premises and re-record the digest, rewrite it, or remove it if its mutant is now killed.
+- **Severity:** low
+- **Tags:** mutation, tools; open

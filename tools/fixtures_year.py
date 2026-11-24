@@ -30,7 +30,13 @@ Copies fixtures/<from>/ to fixtures/<to>/ (refusing to overwrite) and re-derives
     default said and is dropped with it; a case that still states a removed input otherwise
     is marked "not evaluated" and listed (the engine's fixture loader leaves such a case out,
     and test-fixtures fails while any remain). An expectation on a removed line is dropped and
-    listed. The cases resolve against the carried defaults.
+    listed. The cases resolve against the carried defaults;
+  - a case of a file that takes no defaults (the class M and mutation files: engine/src/fixture-inputs.ts
+    takesDefaults) states every input its return reads, so an input the year adds would be unanswered in it and
+    every value reading it unknown. It is given, as stated answers, the defaults the add_question operations
+    state for the new inputs, at every key those defaults give the case that it does not answer (new_answers: the
+    engine resolves the case against those defaults alone, as for a file that takes them); the report lists them. An expectation the carry would
+    re-record from a known value to unknown is listed in the report, never re-recorded silently.
 
 Writes reports/<to>/fixtures_from_<from>.md.
 
@@ -151,7 +157,14 @@ def self_test():
     ok3 = got3 == want3 and got4 == ({"f.line14": 2}, ["f.line13", "person[taxpayer].w2[a].miles"])
     print("fixtures-year self-test: answers to removed inputs equal to their default dropped, others marked; "
           "expectations on removed lines dropped: " + ("as expected" if ok3 else f"WRONG ({got3}; {got4})"))
-    return 0 if ok and all(refused) and ok2 and ok3 else 1
+    # A case of a file that takes no defaults is given a new input's default where it does not answer the input.
+    entry = {"input": "f1040.status", "value": "single", "reason": "r"}
+    got5 = new_answers([{"id": "a", "file": "classm.json", "inputs": {}},
+                        {"id": "b", "file": "mutation.json", "inputs": {"f1040.status": "mfj"}}], year, [entry])
+    ok5 = got5 == {"a": {"f1040.status": "single"}}
+    print("fixtures-year self-test: a no-defaults case is given a new input's default it does not answer: "
+          + ("as expected" if ok5 else f"WRONG ({got5})"))
+    return 0 if ok and all(refused) and ok2 and ok3 and ok5 else 1
 
 
 def carry_defaults(d, ops):
@@ -173,6 +186,29 @@ def carry_defaults(d, ops):
         added.append(b["input"])
     d["defaults"] = defaults
     return added, dropped, removed
+
+
+def no_default_file(name):
+    """Whether a fixture file takes no test-data defaults (engine/src/fixture-inputs.ts takesDefaults)."""
+    return name.startswith("classm") or name == "mutation.json"
+
+
+def new_answers(cases, year, entries, ny=False):
+    """{case id: {input key: value}}: for cases of files that take no defaults, the answers the year's new-input
+    defaults (`entries`, the defaults entries carry_defaults added) give them, at the keys the case does not
+    answer. The engine resolves each case twice, against a defaults file holding only `entries`: as its own file
+    (no defaults) and as a file that takes them; the keys only the second has are the new answers."""
+    if not cases or not entries:
+        return {}
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+        json.dump({"tax_year": year, "defaults": entries}, f)
+        path = f.name
+    try:
+        own = resolve_cases(cases, year, ny, [path])
+        taking = resolve_cases([{**c, "file": "carry-new-inputs.json"} for c in cases], year, ny, [path])
+    finally:
+        Path(path).unlink()
+    return {cid: added for cid in own if (added := {k: v for k, v in taking[cid].items() if k not in own[cid]})}
 
 
 def plain_defaults(d):
@@ -323,14 +359,27 @@ def main():
     try:
         resolved = resolve_cases(all_cases, t, jurisdiction.J == "ny", defaults)
     except ValueError as e:
-        sys.exit(f"fixtures {f} -> {t}: {e}")
-    finally:
         Path(carried.name).unlink()
+        sys.exit(f"fixtures {f} -> {t}: {e}")
+    # A case that takes no defaults is given the year's new inputs' defaults as stated answers (new_answers).
+    added_entries = [x for x in (d or {}).get("defaults", []) if x["input"] in set(new_defaults)]
+    filled = new_answers([c for c in all_cases if no_default_file(c["file"])], t, added_entries, jurisdiction.J == "ny")
+    if filled:
+        refill = [c for c in all_cases if c["id"] in filled]
+        for c in refill:
+            c["inputs"].update(filled[c["id"]])
+            c["evidence_note"] = (f"Carried from {f}: answered {', '.join(sorted(filled[c['id']]))} with the {t} "
+                                  f"default(s) of the input(s) the year adds. " + c.get("evidence_note", "")).strip()
+        try:
+            resolved.update(resolve_cases(refill, t, jurisdiction.J == "ny", defaults))
+        except ValueError as e:
+            sys.exit(f"fixtures {f} -> {t}: {e}")
+    Path(carried.name).unlink()
     for c in all_cases:
         c["resolved"] = resolved[c["id"]]
     results = evaluate(all_cases, t)
 
-    failed, expect_dropped = [], []
+    failed, expect_dropped, to_unknown = [], [], []
     for c in all_cases:
         del c["file"]
         derivations = results[c["id"]]
@@ -353,6 +402,8 @@ def main():
             new_expect[key] = new
             if comparable(new) != comparable(old):
                 changed.append(key)
+                if new.get("kind") == "unknown" and old.get("kind") != "unknown":
+                    to_unknown.append((c["id"], key, new.get("reason", "")))
             lines, ps = rests_on(derivations, key)
             resting |= (lines & work_lines) | {"#" + p for p in ps & work_params}
         c["expect"] = new_expect
@@ -405,6 +456,18 @@ def main():
                 "Their inputs are not valid for the new year (often a year value the new year's definitions do not "
                 "yet list); their expected values are the old year's until they evaluate.", ""]
         out += [f"- `{cid}`: {err}" for cid, err in failed] + [""]
+    if filled:
+        by_input = collections.Counter(template(k) for answers in filled.values() for k in answers)
+        out += [f"## New inputs answered in cases that take no defaults ({sum(by_input.values())} answers in "
+                f"{len(filled)} cases)", "",
+                "Each answer is the default the year's add_question states for the input: "
+                + ", ".join(f"`{k}` {n}" for k, n in by_input.most_common()) + ".", ""]
+    if to_unknown:
+        out += [f"## Expectations re-recorded from a known value to unknown ({len(to_unknown)})", "",
+                "A value the case asserted is unknown in the new year: an input the year reads that the case does not "
+                "answer. Answer it in the case, or drop the expectation, before relying on the case.", ""]
+        out += [f"- `{cid}` `{k}`: {why}" for cid, k, why in to_unknown[:200]] + (
+            [f"- and {len(to_unknown) - 200} more"] if len(to_unknown) > 200 else []) + [""]
     if expect_dropped:
         out += [f"## Expectations dropped on lines the {t} operations remove ({len(expect_dropped)})", ""]
         out += [f"- `{cid}`: `{k}`" for cid, k in expect_dropped] + [""]
@@ -435,7 +498,9 @@ def main():
     report.write_text("\n".join(out) + "\n", encoding="utf-8")
     print(f"fixtures {f} -> {t}: defaults {len(new_defaults)} added, {len(dropped_defaults)} dropped "
           f"({sum(len(x[2]) for x in answers_dropped)} case answers to a removed input were its default and dropped; "
-          f"{len(stating)} differ from it; {len(expect_dropped)} expectations on removed lines dropped)")
+          f"{len(stating)} differ from it; {len(expect_dropped)} expectations on removed lines dropped; "
+          f"{sum(len(x) for x in filled.values())} new-input answers given to {len(filled)} cases that take no "
+          f"defaults; {len(to_unknown)} expectations re-recorded from a known value to unknown)")
     print(f"fixtures {f} -> {t}: {kept} kept, {rerecorded} re-recorded, {len(failed) + len(marked)} not evaluated "
           f"({len(marked)} stating a removed input, {len(failed)} rejected), {len(dropped)} official examples dropped; "
           f"hand-work: {'skipped' if a.no_hand_work else len(hand)} document(s); report: {report.relative_to(ROOT)}")

@@ -38,7 +38,7 @@ before relying on the list.
 
 - **Last release:** `r2026.11.24.1` (2026-11-24), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
-- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,225 entries (highest BUG-1225), 118 open, 4 of them covered
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,301 entries (highest BUG-1301), 110 open, 4 of them covered
   by a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 72 rows not done; scoreboard 693 of 4,046 computed lines
   (17.1%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
   156 ambiguity entries, 152 linked to a line (`ambiguities/2025.yaml`).
@@ -126,8 +126,8 @@ household with a nonresident spouse (`amb.2025.eic_hoh_nonresident_spouse`): the
 - fx-capital and fx-seqbi leftovers, per their messages (not rechecked): code H not in the `sales.code` list;
   `qbi.prior_form` asked of filers without QBI; the generate.ts premiums-over-Form-7206 differential at release.
 - T-353 is done on branch `rename-t353` (TASKS-DONE.md): the 67 ids and the two s2 add-back helpers are renamed in the 2025
-  tree. `year_changes.py --check` still fails on 7 operations of `changes/2026/` (BUG-NEW-rename-t353-01), and 46
-  pinned mutation arguments no longer hold (BUG-NEW-rename-t353-02); both were already true on `next` before the rename.
+  tree. `year_changes.py --check` still fails on 7 operations of `changes/2026/` (BUG-1300), and 46
+  pinned mutation arguments no longer hold (BUG-1301); both were already true on `next` before the rename.
 
 **Review debt the integrations recorded** (run before the release): class M person (BUG-1207's
 `person.tip_employers` and the other person changes since fx-ny's run), sc and sa against the combined form changes,

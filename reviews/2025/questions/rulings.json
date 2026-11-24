@@ -3164,18 +3164,25 @@
    ]
   },
   "unruled:ftc.statements#1": {
-   "subject_sha": "40bd8346cbd824127d333cffa1eee2bf602bf28b84b56e1ea999e0b243cb4523",
-   "reason": "No defect: K-1 and K-3 income is refused for the whole return; a No on a substitute statement only refuses.",
+   "subject_sha": "d6e7fe31dbf0035045437be1cc2f52572d85677d5511ac074e8152ca881b96d2",
+   "reason": "Finding 0 out of scope (K-1 and K-3 refused); finding 1 real (BUG-1260).",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
+     "kind": "WIDE",
      "class": "out of scope",
-     "evidence": "Schedule K-1 (Form 1041) and Schedule K-3 (Form 1065/1120-S) come only with partnership, S corporation, estate or trust income, refused by scope.schedule1 ('partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)'). A filer with a substitute 1099 answering No is refused through ftc.needs1116 (over-refusal only).",
-     "gate": "scope.schedule1 (refusal on scope.ready: partnerships, S corporations, estates or trusts, Schedule E or a Schedule K-1)"
+     "evidence": "Schedules K-1 (Form 1065, 1120-S) and K-3 come only with partnership or S corporation income, refused by scope.schedule1."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "i1116 p. 1: the election requires a qualified payee statement (Forms 1099-DIV, 1099-INT, Schedule K-1 (Form 1041), Schedule K-3, or a similar substitute statement); a foreign institution's certificate is none. BUG-1260."
     }
    ],
-   "bugs": []
+   "bugs": [
+    "BUG-1260"
+   ]
   },
   "unruled:ftc.taxes#1": {
    "subject_sha": "1d75c080079dbc4bad0b0227220efa92376b1078ad0a744dff45e5e1d084900b",
@@ -5102,18 +5109,25 @@
    "bugs": []
   },
   "unruled:retirement.exception#1": {
-   "subject_sha": "d6c622b63cc124b04b7cff552f2e90eeb4848e3568774a0616df4b9ec3becb38",
-   "reason": "No defect: more than one exception is screened and refused.",
+   "subject_sha": "7764526e860a38e97d77cad1f0b5f0b500a9a788e0c84f12b71313e1e987ea53",
+   "reason": "Finding 0 real (BUG-1261); finding 1 covered by the early-distribution screen.",
    "findings": [
     {
      "n": 0,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "p590b (2025) p. 27, First home, item 1: \"It must be used to pay qualified acquisition costs (defined next) before the close of the 120th day after the day you received it.\" BUG-1261."
+    },
+    {
+     "n": 1,
      "kind": "TYPE",
      "class": "covered",
-     "evidence": "retirement.early_screen ends \"or more than one exception to the additional tax applies to it?\"; a Yes refuses through retirement.screen_refused (refusal on retirement.taxable, \"Form 5329 or Form 8915-F\"), so code 99 is never needed.",
-     "line": "retirement.early_screen (retirement.screen_refused)"
+     "evidence": "retirement.early_screen ends \"or more than one exception to the additional tax applies to it?\"; a Yes refuses through retirement.screen_refused, so code 99 is never needed."
     }
    ],
-   "bugs": []
+   "bugs": [
+    "BUG-1261"
+   ]
   },
   "unruled:retirement.months#1": {
    "subject_sha": "43443c7b40865b0f9ae9f89eecc7a163d949dd24edcc47337f8d6d0d57905676",
@@ -6668,18 +6682,43 @@
    ]
   },
   "unruled:f4952.line1#1": {
-   "subject_sha": "fd973d20654ea485fb390f88e35b264d11579fb1e8db1bb9d3e31028e063b013",
-   "reason": "No defect: K-1 interest comes only with a Schedule K-1, refused for the return.",
+   "subject_sha": "da9a416a3af7dcfec39901db3dae9446181c7925184330731e37142f465a452e",
+   "reason": "Finding 2 is covered by the parent; finding 3 is real (BUG-1259); the rest are out of scope or accepted.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "scope.schedule1 lists \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\"; refused on f1040.line8.",
-     "gate": "scope.schedule1 (refusal on f1040.line8)"
+     "evidence": "scope.schedule1 lists \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\"; a K-1 is refused for the return."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "The parent f4952.has_interest asks whether you or your spouse \"pay or accrue\" interest; an individual on the cash method deducts interest when paid, and accrued-unpaid investment interest of an individual is rare."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "The parent f4952.has_interest lists \"an oil or gas working interest you do not materially participate in\" among the loans that count, so the filer who answered Yes there includes it here."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "f4952 p. 3, Property held for investment, \"However, it doesn\u2019t include an interest in a passive activity.\"; the prompt does not leave out a rental or passive activity. BUG-1259."
+    },
+    {
+     "n": 4,
+     "kind": "WIDE",
+     "class": "accepted residual",
+     "evidence": "Capitalized interest and section 264 interest on loans against post-1997 insurance contracts used to buy investments are rare for this tool's filers; f4952 p. 3 Line 1 excludes them."
     }
    ],
-   "bugs": []
+   "bugs": [
+    "BUG-1259"
+   ]
   },
   "unruled:f8863.ban#1": {
    "subject_sha": "654316c623f944716dc5bb57ae1245d2dd184803d07f69ff439b8b5868e89a3a",
@@ -7835,6 +7874,79 @@
    "bugs": [
     "BUG-0619",
     "BUG-0620"
+   ]
+  },
+  "unruled:scope.military_move#1": {
+   "subject_sha": "a410a163066807c58889167d00098f150ebb1f019cf56d56895bd27ebba0f06a",
+   "reason": "No defect to fix: one residual, one over-refusal.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "No archived source (i1040gi p. 93, Line 14; Form 3903 instructions not archived) states the treatment of costs of a 2024 move paid in 2025; a No only leaves out a deduction the return is right without."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A reservist not on active duty who answers Yes is refused (the interview ends); no amount is misstated."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:rec.medical#1": {
+   "subject_sha": "8117f2ff7b0fe0290b60fc51a3832e850ae82efb58a26c8e6a429edd076101ef",
+   "reason": "Finding 0 real (BUG-1262); finding 1 covered by rec.medical_counted.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "p525 p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\"; \"your 2024 medical and dental bills\" can be read to leave out a dependent's. BUG-1262."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "rec.medical_counted takes the smaller of rec.medical_if_has and rec.medical_deducted_if_has (p525 p. 26, Recovery limited to deduction; p. 27, Worksheet 2, footnote 2)."
+    }
+   ],
+   "bugs": [
+    "BUG-1262"
+   ]
+  },
+  "unruled:s2.household_employee#1": {
+   "subject_sha": "b08395f81928943682bff126ca0ef78dfa8d8969660768951735d50c6dfc9a51",
+   "reason": "Finding 0 real (BUG-1263); findings 1 to 3 only refuse.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "real, low",
+     "evidence": "i1040sh Line 9, \"Did you pay total cash wages of $1,000 or more in any calendar quarter of 2024 or 2025 to all household employees?\"; the under-18 exclusion is Line A's ($2,800 test) only. BUG-1263."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "A Yes ends the interview (Schedule H refused); counting pay to a spouse, a child under 21 or a parent only refuses."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "Counting non-cash pay only refuses."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted (over-refusal)",
+     "evidence": "Counting pay to a non-student under 18 only refuses."
+    }
+   ],
+   "bugs": [
+    "BUG-1263"
    ]
   }
  },

@@ -5,8 +5,8 @@
 import "./build-cache.js";
 import { parentPort, workerData } from "node:worker_threads";
 
-const { year, index, count, ny, plan } = workerData as { year: number; index: number; count: number; ny?: boolean; plan?: unknown };
+const { year, index, count, ny, plan, partial } = workerData as { year: number; index: number; count: number; ny?: boolean; plan?: unknown; partial?: string[] };
 process.argv.push("--year", String(year));
 if (ny) process.argv.push("--ny");
 const { mutantShare, sampledShare } = await import("./mutate.js");
-parentPort!.postMessage(plan === undefined ? mutantShare(index, count) : sampledShare(index, count, plan as Parameters<typeof sampledShare>[2]));
+parentPort!.postMessage(plan === undefined ? mutantShare(index, count) : sampledShare(index, count, plan as Parameters<typeof sampledShare>[2], partial ?? []));

@@ -21,7 +21,11 @@ its file on this line of history, or from HEAD while the file is uncommitted.
 The review-refresh half of T-150 (fail check-all when a sibling form's logs were not rerun)
 is `--reviews-since <rev>`: it reports sibling forms with no review log changed since <rev>. In `--check`, a changed
 transcription or render log refreshes a sibling form; a changed class M log refreshes the sibling lines the form's
-transcription review does not compare (helper lines, which only class M reviews).
+transcription review does not compare (helper lines, which only class M reviews). The review refresh is checked only
+for the entries the tree under test adds or changes over HEAD (an inventory entry HEAD lacks, a pending file that is
+new or differs from HEAD's), measured from HEAD; an entry already committed keeps the verdict of the commit that
+added it, so a later change to another form does not make its sibling forms due again. So does an entry that a merge
+being concluded (MERGE_HEAD) assigns from a pending file one of its parents committed.
 """
 import argparse
 import json
@@ -311,6 +315,44 @@ def entry_base(bug, head_text):
     return f"{out}^" if out else "HEAD"
 
 
+def merge_verdicts():
+    """The ids a merge being concluded in this worktree (MERGE_HEAD) assigns to pending entries its parents committed:
+    each such entry already had the verdict of the commit that added its file, as a committed entry keeps it. Empty
+    unless the working inventory is exactly what tools/new_bug.py --assign appends for those entries."""
+    import check_bug_inventory as inventory
+    if BUGS.resolve() != (ROOT / "BUG_INVENTORY.md").resolve():
+        return set()
+    heads = inventory.merge_heads()
+    if not heads:
+        return set()
+    parents = [inventory.state_at(p) for p in ["HEAD", *heads]]
+    return merge_assigned(BUGS.read_text(encoding="utf-8"), parents, inventory.working_pending())
+
+
+def merge_assigned(inv, parents, working):
+    """The ids `inv` gives the pending entries of `parents` (each (inventory text, {name: text})) that `working`
+    (the tree's pending files) no longer holds, when `inv` is exactly their assignment; else none."""
+    import check_bug_inventory as inventory
+    offered = {}
+    for _, pending in parents:
+        offered.update(pending)
+    longest = max((p_inv or "" for p_inv, _ in parents), key=len)
+    want, mapping = inventory.assign(longest, {n: t for n, t in offered.items() if n not in working})
+    return set(mapping.values()) if inv == want else set()
+
+
+def under_test(bug, base):
+    """Whether the tree under test adds or changes the entry over HEAD: an entry measured from HEAD (not committed),
+    or a committed pending entry whose file the working tree changes."""
+    if base == "HEAD":
+        return True
+    if not bug.startswith("BUG-NEW-"):
+        return False  # the inventory is append-only: a committed entry is unchanged
+    rel = str((PENDING / f"{bug[len('BUG-NEW-'):]}.md").relative_to(ROOT))
+    return bool(subprocess.run(["git", "diff", "--name-only", "HEAD", "--", rel],
+                               capture_output=True, text=True, check=False).stdout.strip())
+
+
 def missing_siblings(fix, siblings, checked):
     """The generated siblings a Siblings checked field omits. A fix's own lines are not siblings of one
     another: a fix of two lines that read each other need not list either."""
@@ -421,6 +463,7 @@ def check(docs, ids):
         return transcribed[form] is None or line in transcribed[form]
     existed = {}
     year_forms_changed = {}
+    assigned_by_merge = merge_verdicts()
     for bug, number, title, fields in bug_entries():
         if (number is not None and number < REQUIRED_FROM) or "Fix" not in fields:
             continue
@@ -455,6 +498,9 @@ def check(docs, ids):
         if missing:
             problems.append(f"{bug}: Siblings checked omits {len(missing)} generated sibling(s): "
                             f"{', '.join(sorted(missing)[:8])}{' ...' if len(missing) > 8 else ''}")
+        if not under_test(bug, base) or bug in assigned_by_merge:
+            continue
+        base = "HEAD"
         if base not in logged:
             logged[base] = current_docs(changed_logs(base))
         if base not in year_forms_changed:
@@ -529,6 +575,19 @@ def self_test(docs, ids):
     assert unknown_siblings({"a.x", "a.gone", "a.typo"}, {"a.x"}, {"a.x", "a.gone"}) == ({"a.gone"}, {"a.typo"}), \
         "a sibling line removed since a committed entry was written is reported, not failed; an unknown one fails"
     assert unknown_siblings({"a.gone"}, {"a.x"}, None) == (set(), {"a.gone"}), "a pending entry's unknown line fails"
+    assert under_test("BUG-0001", "HEAD") and under_test("BUG-NEW-" + "x-01", "HEAD"), "an uncommitted entry is under test"
+    assert not under_test("BUG-0001", "abc^"), "a committed inventory entry keeps its commit's verdict"
+    assert not under_test("BUG-NEW-" + "no-such-entry-99", "abc^"), "a committed pending file the tree leaves unchanged"
+    import check_bug_inventory as inventory
+    n_ = "BUG-" + "NEW-"
+    base = "# Bug inventory\n\n---\n\n## BUG-0001 — one\n\n- **Fix:** x\n"
+    lane = {"lane-a-01": f"## {n_}lane-a-01 — from a\n\n- **Symptom:** s\n"}
+    merged, _ = inventory.assign(base, lane)
+    assert merge_assigned(merged, [(base, {}), (base, lane)], {}) == {"BUG-0002"}, \
+        "an entry a merge assigns from a parent's committed pending file keeps that commit's verdict"
+    assert merge_assigned(merged + "\n## BUG-0003 — mine\n", [(base, {}), (base, lane)], {}) == set(), \
+        "an inventory that is not exactly the assignment exempts nothing"
+    assert merge_assigned(base, [(base, {}), (base, lane)], lane) == set(), "a pending entry kept is not assigned"
     if check(docs, ids) != 0:
         raise SystemExit("siblings self-test: bug-entry check failed")
     print("siblings self-test: ok")

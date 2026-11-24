@@ -18,6 +18,8 @@
 //   node engine/dist/main.js conjecture            test the Tax Table conjecture
 //   node engine/dist/main.js properties            check the data-level properties over generated returns
 //   node engine/dist/main.js properties --ny       the refusal properties over generated returns with New York answers
+//   node engine/dist/main.js mutate-arguments [--ny] [--self-test]
+//                                                  the keyed equivalence arguments of mutate.ts on the build, no run
 //   node engine/dist/main.js classm-jobs [--docs a,b] write the class M hand-work jobs (branch-covering cases)
 //   node engine/dist/main.js check-self-test       test check rules against constructed violations
 //   node engine/dist/main.js interview-rules       the interview rules over profiles, fixture paths and generated returns
@@ -39,12 +41,16 @@
 //   node engine/dist/main.js vetting-report [--write] [--file F]
 //                                                  the owner's verdicts on the questions, for whoever acts on them
 //   node engine/dist/main.js test-serve            the web UI server's tests (synthetic returns, temporary dirs)
+//   node engine/dist/main.js spouse-phrase [--forms a,b] [--self-test]
+//                                                  the once-per-return questions with a bare "you", against tools/spouse_phrase_baseline.json
 //   node engine/dist/main.js spouse-wording --self-test
 //                                                  the spouse phrase's rewording for display, on constructed texts and the built questions
 //   node engine/dist/main.js spouse-wording --report [--check]
 //                                                  reports/<year>/person_wording.md: each question asked of a person, as stored and as shown
 
-// First: the build cache records the build's reads from the first module that reads a file (build-cache.ts).
+// First: a command that loads the machine waits for a check-all slot (slot.ts), before any work.
+import "./slot.js";
+// Then: the build cache records the build's reads from the first module that reads a file (build-cache.ts).
 import { buildCacheSelfTest, cachedBuild, stepCacheSelfTest, stepProbe } from "./build-cache.js";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { NY_MODE, YEAR, yearPath } from "./year.js";
@@ -77,8 +83,10 @@ import { interviewCoverage } from "./interview-coverage.js";
 import { draftWalk } from "./draft-walk.js";
 import { interviewOrder } from "./interview-order.js";
 import { tickGroups } from "./tick-groups-check.js";
+import { mutationArguments } from "./mutation-arguments.js";
 import { vettingReport } from "./vetting.js";
 import { personWordingReport, spouseWordingSelfTest } from "./spouse-wording.js";
+import { spousePhrase } from "./spouse-phrase.js";
 
 const command = process.argv[2];
 
@@ -214,6 +222,8 @@ if (command === "review-stage5") {
   process.exit(process.argv.includes("--corpus-self-test") ? corpusSelfTest() : compareEvaluators());
 } else if (command === "mutate") {
   process.exit(await runMutation());
+} else if (command === "mutate-arguments") {
+  process.exit(mutationArguments(process.argv.slice(3)));
 } else if (command === "properties") {
   process.exit(runProperties());
 } else if (command === "classm-jobs") {
@@ -234,6 +244,8 @@ if (command === "review-stage5") {
   process.exit(await draftWalk(process.argv.slice(3)));
 } else if (command === "tick-groups") {
   process.exit(tickGroups(process.argv.slice(3)));
+} else if (command === "spouse-phrase") {
+  process.exit(spousePhrase(process.argv.slice(3)));
 } else if (command === "spouse-wording" && process.argv.includes("--self-test")) {
   process.exit(spouseWordingSelfTest());
 } else if (command === "spouse-wording" && process.argv.includes("--report")) {
@@ -248,7 +260,7 @@ if (command === "review-stage5") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] [--vetting <file>] | test-serve | vetting-report [--write] [--file <file>] [--self-test] | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | draft-walk [--personas <dir>] [--out <dir>] [--only <name>] [--summary] [--self-test] | tick-groups [--self-test] | spouse-wording --self-test | spouse-wording --report [--check]",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | serve --dir <dir> [--port N] [--vetting <file>] | test-serve | vetting-report [--write] [--file <file>] [--self-test] | conjecture | fixture-inputs --cases <file> [--ny] [--defaults <file> ...] | test-fixtures | test-integration | coverage | properties [--ny] | mutate | mutate-arguments [--ny] [--self-test] | compare | check-self-test | interview-rules | interview-length [--write] | interview-words [--write] | draft-walk [--personas <dir>] [--out <dir>] [--only <name>] [--summary] [--self-test] | tick-groups [--self-test] | spouse-phrase [--forms a,b] [--self-test] | spouse-wording --self-test | spouse-wording --report [--check]",
   );
   process.exit(2);
 }

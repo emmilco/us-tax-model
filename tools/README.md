@@ -128,14 +128,23 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier full
 - **light** (the default; what a commit on `next` or a lane branch needs): compile, build and render, the engine
   self-check, the federal and New York fixtures, the bookkeeping checks (`check_bug_inventory`, `bug_status`,
   `check_agent_runs`, `check_docs_conventions`, `siblings_check`, `bookkeeping_self_tests`), the checks of generated
-  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), and the interview checks
-  `interview_rules`, `interview_coverage` and `tick_groups` scoped to the forms the change touches.
+  reports (`gate_frequencies`, `person_wording`, `coverage_tree`, `doc_figures`), the year-label lint
+  (`label_year`, "Year-label lint" below), four checks of seconds that would otherwise fail only at a release
+  (`hermetic_env`, `twins`, `refusal_reach`, and `engine_cases`: a sample of the engine differential's generated
+  returns evaluated by the build, `generate_cases.py --check-project`), the static guards below, and the interview
+  checks `interview_rules`, `interview_coverage`, `tick_groups` and `spouse_phrase` scoped to the forms the change
+  touches.
+  The static guards read the tree and the build and evaluate no return: `year_changes` and `ny_year_changes` (the next
+  year's operations still apply, "Year changes as operations"; about 8 s), `renamed_ids` and `ny_renamed_ids` (no old
+  id of `tools/year_free_names.json` left, the code included, "Renaming the ids in the data"; about 11 s),
+  `mutate_arguments` and `ny_mutate_arguments` (the keyed mutation arguments on the build, below; under 1 s) and
+  `unread_params` (every parameter read, below; about 8 s). They run side by side in the first wave after the build.
   `tools/change_scope.py` computes the scope from the paths that differ from HEAD: `all` when a path can change any
   walk (the engine, the profiles, the schema, parameters, tables, an unlisted path), `none` when the interview checks
   read no changed path (tools, bookkeeping, reports, reviews, sources, the Lean evaluator, the web UI), else the form
   ids of the changed form files and of the input keys on the changed lines of fixtures, coverage rows and the
   question bank. With a list, each check gets `--forms <ids>` (`engine/src/form-scope.ts`: a walk, row or tick group
-  is checked when one of its input keys names one of the forms); with `none` the three steps are listed as skipped;
+  is checked when one of its input keys names one of the forms); with `none` the four steps are listed as skipped;
   with `all` they run unscoped. A scoped run does not judge what needs every walk (a baseline entry no longer seen,
   the pruning report, the interview coverage report, a coverage set no row uses).
 - **full** (the release's tier): every step. In release mode (`CHECK_ALL_RELEASE=1`, which `tools/release.sh` sets)
@@ -309,6 +318,19 @@ mutate, interview-length and interview-coverage); `TEST_WORKERS`, `MUTATE_WORKER
 and `hooks/test_check_bg.sh` (per-run records, pruning, a background run waiting for a
 slot) are check-all steps.
 
+The engine commands that load the machine take the same slots when they start outside a check-all run
+(`SLOT_COMMANDS` in `engine/src/slot.ts`: build, test-fixtures, test-integration, test-serve, interview-rules,
+interview-length, interview-coverage, tick-groups, mutate, properties and compare), so that a build or test run
+started by hand or by an agent in a worktree waits its turn beside the checks instead of overloading the machine.
+Such a command waits for a slot before any work (it prints the same waiting lines), holds it until it exits
+(`tools/check_slot.py --for-pid`: a holder process frees the slot when the command's process ends, however it ends),
+and passes `CHECK_ALL_SLOT` and `CHECK_ALL_MAX_RUNS` to its children, so a command it starts does not wait again
+and its pools are sized as in a run. Where `CHECK_ALL_SLOT` is already set (inside a check-all run, release-prep or
+a command that holds a slot) nothing waits, so a run never waits for a second slot while it holds one. A
+`--self-test` of these commands runs at once, as do the commands not listed (eval, interview, serve, render and the
+rest). `npm run build` takes a slot through the build. `tools/check_slot.py --status` names each holder (`node build`
+for a build). On an idle machine the wait is one call of `check_slot.py`, a fraction of a second.
+
 The build (`node engine/dist/main.js build`) walks the fixtures' interview paths on `BUILD_WORKERS` worker threads
 (default `defaultWorkers()`; the errors are the same for every count, `interview-paths --self-test`), and reuses a
 passing build whose every read is unchanged (`engine/src/build-cache.ts`): the build records what it reads (file bytes,
@@ -334,7 +356,13 @@ step must be placed by it. A check that runs for both jurisdictions is declared 
 (`jstep`), and its New York run is the step `ny_<name>`. The tools' self-tests and test
 suites run as two steps, `bookkeeping_self_tests` and `self_tests`
 (`tools/self_tests.py --list` names each test and its command), side by side in a worker
-pool, each failing test named. A step's output is printed when its wave ends, under its `== <step>` line.
+pool, each failing test named. A self-test behaves inside a run as when run alone: `tools/self_tests.py` gives each
+test its environment without the run settings (`STRIP` in `tools/hermetic_env.py`: release mode, the preflight's
+`CHECK_ALL_PREFLIGHT=done`, `AGENT_RUNS_FOLD=0`, the cache modes, the sizing variables and the rest), and each shell
+self-test (`tools/test_*.sh`, `tools/hooks/test_*.sh`) unsets them on its first lines, so one run by hand from a
+polluted shell behaves the same. Worker counts, `CHECK_ALL_MAX_RUNS` and `CHECK_ALL_SLOT` are passed on.
+`hermetic_env.py --self-test` (the light-tier step `hermetic_env`) fails when a tool reads an environment variable that none of its
+lists classifies, or when a shell self-test does not unset the run settings: a new run setting goes in `STRIP`. A step's output is printed when its wave ends, under its `== <step>` line.
 
 Some self-tests have no row in `tools/self_tests.py`: a step runs them inside itself, and with the
 call removed the step would print one line less and still pass. `tools/step_output.py` lists, per
@@ -399,6 +427,17 @@ rewording every question, label and line citation leaves every pinned argument h
 and changing any one premise line's type or premise parameter's value un-pins it) and
 `retargetSelfTest` (an argument is not taken by a mutant that now reads another line).
 
+The keyed arguments are also checked without a mutation run, in the light tier: `node engine/dist/main.js
+mutate-arguments [--ny]` (steps `mutate_arguments`, `ny_mutate_arguments`) takes every generated mutant of the
+jurisdiction as surviving and reports each argument whose mutant is no longer generated, reads another line than the
+argument names, or no longer holds on the build, and each `ANSWERED_ONLY` id with no argument (`argumentProblems` in
+`engine/src/mutate.ts`, the same test as the run's stale-argument check, less whether the mutant is killed). An
+argument that a recorded open bug covers is listed in `tools/mutation_arguments_open.json` (`{"open": {argument id:
+bug id}}`): it is printed as known and does not fail the step; a listed argument of the jurisdiction with no problem
+fails it until it is removed from the list, so the list only shrinks. A change that moves an argument's premises
+therefore fails the commit that makes it: re-read the argument and record the new digest, or file the bug and list
+the argument. `--self-test` checks the comparison with the list (check-all `self_tests`).
+
 One structural rule explains survivors on unobserved lines (`unobservedLine`): the mutated line is a `(helper)` of a
 form with no refusal gate, and it and every line that names it, transitively (in an expression, a collection filter, a
 refusal gate, a display condition or a gate), are such helpers, none reading a definition instance and none named by an
@@ -421,6 +460,10 @@ list, and a release tag (`refs/tags/r*`) whose commit's tree is not full-green a
 once per clone:
 
     git config core.hooksPath tools/hooks
+
+The path is relative: git resolves it against the root of the worktree a command runs in, so each linked worktree
+runs its own tree's hooks (an absolute path would make every worktree run one checkout's hooks);
+`tools/worktree_gc.py check` needs action, and so fails a release, while it is absolute.
 
 `--no-verify` bypasses either hook; that is a deliberate act, not a routine.
 
@@ -547,7 +590,27 @@ rename names). A collection-indexed id whose rename moves it to another document
 it. The order of a rename: rename the definitions and the files that name them, `rename_ids.py apply` (both
 jurisdictions), build and render, `rename_carry.py --write`, then test-fixtures and coverage at once. `check` runs in
 check-all for both jurisdictions (steps `renamed_ids`, `ny_renamed_ids`) and fails on any old id of
-`year_free_names.json` left in those places. Tests: `tools/test_rename_ids.py` (check-all `self_tests`).
+`year_free_names.json` left in those places. The federal `check` also reads the code (every `.ts`, `.tsx`, `.mjs`,
+`.js`, `.py`, `.sh` and `.lean` file under `engine/src`, `ui`, `tools` and `lean`, build output, dependencies and
+`tools/test_rename_ids.py` left out), where a line is often named by its bare local name: it reports a quoted bare name `"L"` (or `'L'`, or
+backquoted) where the map renamed `doc.L`, `doc` has no line `L` now, and the name stands beside its document: `doc`
+is named as a document (`doc.`, `doc[`, quoted) within three lines, or the line quotes at least three names and `doc`
+has the most of them among its current lines (a list such as `["line8", "line16a", "line16b"]` of Schedule C
+inputs). A line holding `rename_ids: not an id` is not read. Ids built from pieces (`s2\.line(8|21)` in a
+pattern) are not found. Tests: `tools/test_rename_ids.py` (check-all `self_tests`).
+
+## Unread parameters
+
+`python3 tools/check_unread_params.py [--year N]` (light-tier step `unread_params`) fails on a parameter of
+`params/<year>.yaml` or `params/ny/<year>.yaml` whose key no reader names as a whole name (not inside a longer id).
+The readers: `forms/<year>/`, `forms/ny/<year>/`, `interview/<year>/`, `interview/ny/<year>/`, the next year's
+operations (`changes/<year+1>/`, `changes/ny/<year+1>/`) and the code and data files under `engine/src`, `tools`,
+`ui` and `lean`; a mention in a comment counts. A parameter that code reads only by a name it builds
+(`eic.earned_amount${k}`) is listed in `tools/unread_params_allow.json` with the prefix, the files that build the
+name and the reason; the check fails on an entry whose key is gone, is read by name, or whose files no longer build a
+name from the prefix. A parameter nothing reads is removed, with its staged next-year value
+(`research/ty<year+1>/params-<year+1>.proposed.yaml`, `params_auto.json`), rather than listed. Tests:
+`tools/test_check_unread_params.py` (check-all `self_tests`).
 
 ## EIC Table
 
@@ -682,7 +745,8 @@ subject (item and normalised quote) carries that ruling. Between releases a form
 listed by check-all, not failed. `--release` of the completeness, screen and false-no checks is the release gate
 (`tools/release_reviews.sh`): it fails while any subject is due or short of `SAMPLES_PER_MILESTONE` samples, and while an
 accepted or carried ruling confirms an open bug of medium or high severity (or of none recorded) in `BUG_INVENTORY.md`
-(`samples.open_defects`: the ruling's `bug` or `bugs`, its class, or a finding it classes a defect or a real gap),
+(`samples.open_defects`: the ruling's `bug` or `bugs`, the ids its class names when the class is a defect or a real
+gap, "low defect: ..." included, or a finding it classes so; "no gate defect; ... (BUG-NNNN)" confirms nothing),
 unless the release is made with `--allow-open-bugs` (`tools/release.sh`, `release_prep.sh` and `release_reviews.sh`
 pass it on), which lists each such ruling and bug in the tag message.
 `check_questions.py` lists due questions (a count on the console, the list in `reports/<year>/question_currency.md`)
@@ -821,7 +885,10 @@ type accepts: a Bool, an integer, non-negative unless `Dollars`, or a value of i
 placed after, drops the defaults of inputs the operations remove, resolves the cases against the result, drops a
 case's answer to a removed input where it equals that input's unconditional from-year default (it says what the
 default said), marks "not evaluated in <year>" (and lists) the cases that still state a removed input, and drops (and
-lists) an expectation on a removed line. The engine's fixture loader leaves the marked cases out (`classm-jobs`,
+lists) an expectation on a removed line. A case of a file that takes no defaults (class M, mutation) is given the
+new inputs' defaults as stated answers where it does not answer them, so a value it asserts does not become unknown
+for want of an input the year adds; the report lists those answers, and any expectation the carry still moves from a
+known value to unknown. The engine's fixture loader leaves the marked cases out (`classm-jobs`,
 `mutate` and the other commands that evaluate every case see none of them), and `test-fixtures` names them and fails
 while any remain.
 
@@ -920,6 +987,20 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   for the forms that cite them. No model is called. A run takes hours on a loaded machine (each build of 2025 walks
   the interview); `--reuse-build` keeps an earlier copy's from-year build.
 
+### Year-label lint
+
+`check_label_year.py` (the light tier's `label_year`) finds a line's label, or a question's prompt or help, that
+prints this year's amount of a dollar parameter the line reads (a question: the parameters of its input's line and of
+the lines that read the input directly), when the next year's staged value
+(`research/ty<year+1>/params-<year+1>.proposed.yaml`) differs and no operation of `changes/<year+1>/` rewrites that
+text (`set` of `label`, `set_question` of `prompt` or `help`, `set` of `expr.source`, or a removal). Labels hold
+literal text (no form renders a parameter into a label), so the fix is an operation printing the staged amount:
+`changes/<year+1>/<form>.labels.yaml` holds those of lines no other operation relabels. A parameter staged with no
+value (`value: null`, the prior-year `refund.*` amounts until the next year's Form 1040 instructions) is printed as a
+note and checked once a value is staged, so the relabel goes in with the staging. A hit may instead be held in
+`tools/label_year_baseline.json` with the reason the amount stays right; a held id no longer a hit fails.
+`--self-test` (in check-all) plants each case.
+
 ## Process hooks
 
 - **Fresh build** (`tools/build_fresh.py`): the completeness, screen, false-no and question checks and triage refuse to run when
@@ -968,7 +1049,9 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   what `--assign` appends for the parents' pending entries the merge removes; a pending file the merge
   keeps is a parent's, changed only by the rewriting of assigned placeholders. `tools/siblings.py --check`
   reads pending entries too, measured from the commit that added the file, and an assigned entry from the
-  merge that assigned it.
+  merge that assigned it. Its review-refresh test (a sibling form's review log changed) applies only to the
+  entries the tree under test adds or changes over HEAD, measured from HEAD; a committed entry keeps the
+  verdict of the commit that added it, so a later change to another form does not make its siblings due again.
 - **Bug status** (`tools/bug_status.py`, step `bug_status`, docs tier). The inventory is append-only, so an
   entry's status is derived, never edited in: from its own fields (`Status`, `Disposition`, a fix field), then
   from later entries that close it (a `Closes:` field, or the title conventions older entries used, such as

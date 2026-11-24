@@ -12,7 +12,10 @@ deleted. So lanes working at once never write the inventory and never collide.
     check_bug_inventory.py                       the working tree against HEAD: the inventory extends HEAD's
                                                  and is gapless; every pending file is well formed; every
                                                  pending file committed at HEAD is present and unchanged;
-                                                 every BUG-NEW placeholder in a tracked file names a pending file
+                                                 every BUG-NEW placeholder in a tracked file names a pending file.
+                                                 While a merge is being concluded (MERGE_HEAD), the tree is held
+                                                 to --merge's rule against HEAD and the MERGE_HEADs instead of
+                                                 HEAD's pending files, so the merge may assign them
     check_bug_inventory.py --merge TREE PARENT...  pre-commit, concluding a merge: every parent's inventory is
                                                  a prefix of TREE's; what TREE appends after the longest of them
                                                  is exactly the parents' pending entries TREE no longer has, as
@@ -164,11 +167,23 @@ def placeholders_in_tracked():
     return out
 
 
+def merge_heads():
+    """The commits a merge being concluded in this worktree brings in (MERGE_HEAD), or []."""
+    f = pathlib.Path(git("rev-parse", "--path-format=absolute", "--git-path", "MERGE_HEAD").stdout.strip())
+    return f.read_text(encoding="utf-8").split() if f.is_file() else []
+
+
 def check_working():
     head_inv, head_pending = state_at("HEAD")
     inv = path.read_text(encoding="utf-8")
     pending = working_pending()
-    problems = working_problems(head_inv, head_pending, inv, pending, placeholders_in_tracked())
+    placeholders = placeholders_in_tracked()
+    problems = working_problems(head_inv, head_pending, inv, pending, placeholders)
+    if (heads := merge_heads()):
+        # Concluding a merge: HEAD's pending entries may be assigned, so the tree is held to the merge's rule against
+        # every parent (as pre-commit holds it), with the rules of the tree alone.
+        problems = merge_problems(inv, pending, [state_at(p) for p in ["HEAD", *heads]])
+        problems += working_problems(None, {}, inv, pending, placeholders)
     for p in problems:
         print(p, file=sys.stderr)
     if problems:

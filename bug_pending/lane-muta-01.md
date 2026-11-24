@@ -1,9 +1,0 @@
-## BUG-NEW-lane-muta-01 — Form 8889 line 6 is refused when one spouse had family coverage all year and the other a self-only plan all year, a case i8889 rule 1 makes computable
-
-- **Date:** 2026-11-23
-- **Caught by:** mutation lane mutA (claude-opus-5-5, judgment), 2026-11-23, while killing operand.f8889.f8889.self_dec_year.zero.then1 with fixture mut.f8889.self_only_spouse_all_year
-- **Source:** i8889 p. 4, How To Complete Part I, "if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage."
-- **Symptom:** Joint; both spouses have a Form 8889; you answer coverage_year family (12 months), your spouse self_only (12 months, a plan of their own). Both line 6 and Schedule 1 line 13 are refused at f8889.family_months_bad: your spouse's self-only amount stays in Step 4 (step4_total > 0) and the family amounts differ, so neither matchable pattern of f8889.family_other holds. Under rule 1 both are treated as having family coverage all year, the simplest matchable case (the spouse's self-only plan is disregarded). The coverage_year help tells a filer to choose family only when covered by someone else's family plan, not when the spouse's family coverage makes the year family under rule 1, so the natural answer reaches the refusal; the remedy (count family months the same way for both) points at the right fix but the filer must re-answer coverage_year as family. A refusal, not a wrong figure.
-- **Proposed fix:** either treat a married spouse's self_only months as family months where the other spouse's are family and both are eligible (Step 4 self amount disregarded), or extend coverage_year's help for married filers to choose family when the spouse had family coverage all year and both were eligible; walk with the fixture's inputs.
-- **Severity:** low
-- **Tags:** forms, f8889, interview, refusal, open
