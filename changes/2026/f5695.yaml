@@ -304,7 +304,7 @@ changes:
           to 2027"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly report their combined income and
           deduct their combined allowable expenses on one return"
     - set:
-        line: f5695.line12_if_carry
+        line: f5695.carry_in_if_carry
         field: cite.locator
         from: p. 1, Residential Clean Energy Credit, line 12, "Credit carryforward from 2024. Enter the amount, if any, from
           your 2024 Form 5695, line 16"; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy
@@ -334,7 +334,7 @@ changes:
         - f5695.line13
         - f5695.rce_limit
         to:
-        - f5695.line12_if_carry
+        - f5695.carry_in_if_carry
         - f5695.rce_limit
     - set:
         line: f5695.rce_credit
@@ -355,7 +355,7 @@ changes:
         line: f5695.carry_out
         field: expr.from
         from: f5695.line13
-        to: f5695.line12_if_carry
+        to: f5695.carry_in_if_carry
     - set:
         line: f5695.carry_out
         field: cite.locator
@@ -531,7 +531,7 @@ changes:
           expr:
             op: test
             gt:
-            - f5695.line12_if_carry
+            - f5695.carry_in_if_carry
             - param: sales.zero
           cite:
             doc: i1040s8812

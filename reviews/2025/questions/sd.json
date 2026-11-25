@@ -172,46 +172,17 @@
    ]
   },
   "sd.special_any": {
-   "subject_sha": "15b0007abb985f61f156b8a3e27702c2e5f3f637499a3a672228c3e9b593eaae",
+   "subject_sha": "1855dfd5c54f892376a5f6b3bd95e049620fb162982894d0dd6210182a953c1e",
    "samples": [
     {
-     "verdict": "NARROW",
-     "findings": [
-      {
-       "kind": "NARROW",
-       "situation": "A filer sold a long-held collectible that is not on the question's closed list, such as sports memorabilia or a historical artifact, and answers No.",
-       "source_text": "i1040sd p. 11, Line 18: \"Collectibles include works of art, rugs, antiques, metals (such as gold, silver, and platinum bullion), gems, stamps, coins, alcoholic beverages, and certain other tangible property.\"",
-       "why": "The question's collectible bullet is a closed list and drops \"certain other tangible property.\" The label keeps it (\"or other tangible property of that kind\"), so a truthful No misses a sale the line must flag.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "A filer has a gain on a forward contract or swap that gave them the return of S corporation stock or a non-fund trust interest, and answers No because the bullet names only a fund or partnership.",
-       "source_text": "p550 p. 79: \"A financial asset, for this purpose, is any equity interest in a pass-through entity. Pass-through entities include partnerships, S corporations, trusts, regulated investment companies, and REITs.\"",
-       "why": "The question says \"a fund's or partnership's return,\" which leaves out S corporations and trusts that are not funds. The label and the tax text include both.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "A filer sold an interest in a partnership or S corporation that holds collectibles or depreciated real property only through a lower-tier entity, and answers No.",
-       "source_text": "i1040sd p. 11, Line 18: \"gain ... from the sale or exchange of an interest in a partnership, S corporation, or trust ... attributable to unrealized appreciation of collectibles\"; p. 12, Line 19: \"an interest in a partnership that owned section 1250 property\"",
-       "why": "The label covers holdings \"directly or through another entity\" and covers all section 1250 real property. The question asks only whether the entity \"owns collectibles or depreciated buildings,\" so an ordinary filer would read it as direct ownership of buildings.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "A filer sold real property that was depreciated for a use other than renting it out or a home office, such as a home used partly for a licensed daycare business, and answers No.",
-       "source_text": "i1040sd p. 11, Line 19: \"section 1250 property (generally, real property that you depreciated)\"; p. 12: \"the depreciation allowed or allowable\"",
-       "why": "The question limits this bullet to real estate \"you once rented out or took a home office deduction for.\" The text and label cover any real property for which depreciation was allowed or allowable.",
-       "bound": ""
-      }
-     ],
-     "prompt_sha": "a9feab440b892fcd332a0bdfad731abc051d48cd89a243932257621603b2f663",
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "0414bf579956a616bf0d7f5feb6c82ffe384aa72db93783617a8c71743ebb7cf",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.11684800000000001,
+     "cost": 0.085172,
      "date": "2026-11-24",
-     "response": ".transcription/questions/sd.special_any.15b0007abb98.1.response.txt"
+     "response": ".transcription/questions/sd.special_any.1855dfd5c54f.1.response.txt"
     }
    ],
    "type": "Bool",

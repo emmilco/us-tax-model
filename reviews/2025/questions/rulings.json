@@ -528,46 +528,39 @@
    ]
   },
   "unruled:carloan.mixed#1": {
-   "subject_sha": "84c086d6bcb3a66b1dc4dd0cba0b3f56a9e8fb00eccb1935647c8cb0a236f6bd",
-   "reason": "No defect: carloan.mixed is read only on original and inherited loans; a refinancing is capped by refi_balance or refused.",
+   "subject_sha": "c15a1bda26de6cc76274127ef8dafb578c03e684a897c80d067eadfad1665082",
+   "reason": "One low residual, filed.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "wrong",
-     "evidence": "carloan.allocated takes carloan.refi_interest when kind = refinanced; carloan.mixed is read only through carloan.mixed_interest and carloan.sc_mixed, chosen for kind original or death. On a refinancing, carloan.refi_qualifying = smaller of refi_balance and financed, which already excludes rolled-in fees above the old balance (\u00a7 1.163-16(d)(4))."
-    },
-    {
-     "n": 1,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "A refinancing of a partly qualifying loan is refused: carloan.refi_whole = no makes carloan.refi_nested true, which refuses carloan.refi_qualifying (\"Refinancing of a loan that was itself only partly a qualifying vehicle loan\").",
-     "gate": "carloan.refi_nested"
+     "kind": "WIDE",
+     "class": "real, low",
+     "evidence": "fr-2026-18219 p. 24, \u00a7 1.163-16(d)(2)(i), 'include, but are not limited to'; the help's list reads as closed and 'other goods or services' is not limited to items unrelated to the vehicle (d)(2)(ii). A Yes reaches carloan.nonqualifying, where the filer may still leave the item out. BUG-1452."
     }
    ],
-   "bugs": []
+   "bugs": [
+    "BUG-1452"
+   ]
   },
   "unruled:carloan.nonqualifying#1": {
-   "subject_sha": "990a0370265a0b3db41d53f6c80c69d4c77e6bd90b0a1aefe631c4266d7ab11b",
-   "reason": "Lows: the parenthetical names property, not services, and 'in the purchase' could take in items paid outside the loan.",
+   "subject_sha": "8954f177bada9b674e8413d2436e92c6b65b94591e5f568c6852996f24154d80",
+   "reason": "The insurance reading is the registered decision; one low residual, filed.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "fr-2025-24154 \u00a7 1.163-16(d)(2)(ii), \"property or services unrelated to an APV\". The filer reached this question through carloan.mixed, whose first clause is \"anything other than the vehicle and items customarily financed with it\"; the general lead \"amounts in the purchase that do not qualify\" also covers it. A financed unrelated service is rare.",
-     "bug": "BUG-0515"
+     "kind": "WIDE",
+     "class": "covered",
+     "evidence": "amb.2025.carloan_insurance (decided by the coordinator under the owner's delegation of 2026-11-24): fr-2026-18219 p. 24 names GAP and credit insurance as qualifying and excludes collision and liability insurance; it is silent on comprehensive coverage, which the register treats as not qualifying, the reading that does not understate tax. The reviewer's 'leave other vehicle insurance within the open-ended list' is a reading, not text."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "real, low",
-     "evidence": "(d)(2)(ii) concerns indebtedness; the question follows carloan.mixed (\"Did this loan also finance ...\"), so 'in the purchase' reads as the financed amounts. A misreading lowers the deduction only for a filer who paid a nonqualifying item separately at the dealer. Wording.",
-     "bug": "BUG-0515"
+     "evidence": "fr-2026-18219 p. 25, (d)(6) Example 1 counts a dealer document fee; the help says only 'vehicle fees' (carloan.mixed's help names document fees). BUG-1452."
     }
    ],
    "bugs": [
-    "BUG-0515"
+    "BUG-1452"
    ]
   },
   "unruled:carloan.refi_balance#1": {
@@ -585,34 +578,18 @@
    "bugs": []
   },
   "unruled:carloan.refi_whole#1": {
-   "subject_sha": "1e92cbe97b5d6c8bc46276960c09055e742594e32208cdc0cf8770c937f49c05",
-   "reason": "Finding 0 changes value (refi_whole does not name the exclusions, so negative equity reads as customarily financed); findings 1 and 2 are lows.",
+   "subject_sha": "0d930a045a757ab8803006e798f0b1a7abfe9b0be7e61cf185bdc5bcf8238d65",
+   "reason": "One low residual, filed; a No only refuses.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
-     "class": "real, changes value",
-     "evidence": "fr-2025-24154 \u00a7 1.163-16(d)(2)(ii): negative equity and collision or liability insurance are not customarily financed items \"and as a result [are] not an SPVL\"; preamble p. 20: \"customarily financed ... determined on an industry-wide basis\". carloan.mixed lists these exclusions; carloan.refi_whole says only \"items customarily financed with it\". A Yes keeps carloan.refi_nested false, and carloan.refi_qualifying = min(refi_balance, financed) counts the old loan's whole balance as SPVL, overstating 22(iii).",
-     "bug": "BUG-0513"
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "real, low",
-     "evidence": "A three-loan chain inside 2025 (all loans must be originated after December 31, 2024) whose first loan was partly nonqualifying. The lead clause \"Was all of the loan this loan refinanced a qualifying vehicle loan\" covers it; only the parenthetical is incomplete. Vanishingly rare.",
-     "bug": "BUG-0515"
-    },
-    {
-     "n": 2,
      "kind": "UNCLEAR",
      "class": "real, low",
-     "evidence": "A No only refuses (carloan.refi_nested refuses carloan.refi_qualifying); the Yes reading is the right one for a whole-balance refinancing. Over-refusal.",
-     "bug": "BUG-0515"
+     "evidence": "fr-2026-18219 p. 24, \u00a7 1.163-16(d)(2)(i) names key fob plans, protection products and accessories that are components of the vehicle; the prompt's add-ons omit them. A wrong No refuses (carloan.refi_nested), no amount is computed wrongly. BUG-1452."
     }
    ],
    "bugs": [
-    "BUG-0513",
-    "BUG-0515"
+    "BUG-1452"
    ]
   },
   "unruled:carloan.requirements#1": {

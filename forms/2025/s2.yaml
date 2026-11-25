@@ -1185,13 +1185,34 @@ form:
         any:
         - { op: test, eq: [s1.has_sc, { const: true }] }
         - { op: test, eq: [scope.business_before, { const: true }] }
-        - op: test
-          all:
-          - { op: test, eq: [scope.rental, { const: true }] }
-          - { op: test, gt: [sche.royalty_count, { const: 0, type: Count }] }
+        - { op: test, eq: [s2.lookback_royalty, { const: true }] }
       cite:
         doc: i6251
         locator: 'p. 7, Line 2p, "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted"; f1040s2 Schedule 2 (2025), line 17n, "Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866"'
+    - id: s2.lookback_royalty
+      printed: (helper)
+      type: Bool
+      label: The return lists a source of royalties (false when no rental or royalty is reported, where the list is not asked)
+      expr:
+        op: choose
+        alternatives:
+        - guard: { op: test, eq: [scope.rental, { const: true }] }
+          then: s2.royalty_listed
+        - guard: { op: test, eq: [scope.rental, { const: false }] }
+          then: s2.no
+      cite:
+        doc: i6251
+        locator: 'p. 7, Line 2p, "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted"'
+    - id: s2.royalty_listed
+      printed: (helper)
+      type: Bool
+      label: At least one royalty property is listed
+      expr:
+        op: test
+        gt: [sche.royalty_count, { const: 0, type: Count }]
+      cite:
+        doc: i6251
+        locator: 'p. 7, Line 2p, "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted"'
     - id: s2.other_tax
       printed: (helper)
       type: Bool
@@ -1413,7 +1434,7 @@ form:
       cite:
         doc: f1040s2
         locator: 'Schedule 2 (2025), line 7, "Total additional social security and Medicare tax. Add lines 5 and 6"'
-    - id: s2.line8_must
+    - id: s2.tax_favored_accounts_must
       printed: (helper)
       type: Count
       label: Persons who must file Form 5329
@@ -1424,14 +1445,14 @@ form:
       cite:
         doc: i5329
         locator: 'p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."'
-    - id: s2.line8_file
+    - id: s2.tax_favored_accounts_file
       printed: (helper)
       type: Bool
       label: Someone on the return must file Form 5329, so a Form 5329 is prepared for each person with an early distribution
       expr:
         op: test
         gt:
-          - s2.line8_must
+          - s2.tax_favored_accounts_must
           - const: 0
             type: Count
       cite:
@@ -1487,7 +1508,7 @@ form:
           cite:
             doc: i5329
             locator: 'p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year."'
-    - id: s2.line8_box
+    - id: s2.tax_favored_accounts_box
       printed: 8 (box)
       type: Bool
       label: If not required, check here (the 10% tax on code 1 distributions entered directly, without Form 5329)
@@ -1501,7 +1522,7 @@ form:
               - const: 0
           - op: test
             eq:
-              - s2.line8_file
+              - s2.tax_favored_accounts_file
               - const: false
       cite:
         doc: f1040s2

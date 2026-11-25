@@ -135,6 +135,38 @@
    }
   },
   {
+   "printed": "22(ii)",
+   "project_expr_sha256": "906002942e9165616fe161c0490c20731194572c1728c5546a15c33097e7759d",
+   "second_expr_sha256": "ffb2cad8d937b7132468fb52d7be56a29bddfc22fd28586742881f3868573300",
+   "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places) on the value difference; representation on the rest. The lane changed only the wording and citations of carloan.mixed, carloan.nonqualifying and carloan.refi_whole (fr-2026-18219 p. 24, § 1.163-16(d)(2)(i) and (ii), which allocate pro rata as the proposed rules did, (d)(2)(iii)(A) and (d)(4)); the computation is unchanged. The second transcription prorates carloan.col_ii_input by the same qualifying part over carloan.financed (refinancing: the smaller of the refinanced balance and the loan) with a nine-place ratio against the project's six, reads column (ii)'s input without the Schedule C condition (Schedules E and F are refused by scope.schedule1, so without a Schedule C nothing is deducted elsewhere), and lists the partly qualifying refinancing as a gate (carloan.h_refi_partial), which the project refuses through carloan.refi_nested. Same reading as the earlier rulings on this line. Project stands.",
+   "context": "d6329d4fb0c59b8cfc0945b5845a78ee4ebd0ceb4882c35dfe457d31edcd1b2d",
+   "date": "2026-11-24",
+   "run": "e5c3f81226d2ae4901fbdd26dd8c478f8bb4c59fdcba3260d91d3bb70b1b46a1",
+   "subject_key": "71d3210007600a07ac6fa1b1711927338ccdcce6a37bdc2b01095f7eaaca3c96",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw.2.deepseek@carloan[vin_1]",
+     "fixture:classm.carloan.2@carloan[vin_1]",
+     "fixture:classm.carloan.3@carloan[vin_1]",
+     "fixture:classm.s1a.2@carloan[VIN0]",
+     "fixture:classm.s1a.3@carloan[VIN0]",
+     "fixture:classm.s1a.5@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN1]",
+     "fixture:classm.clcw.2@carloan[vin_1]",
+     "fixture:mutation.t2.no_senior_part5@carloan[vin_1]",
+     "fixture:mutation.t2.hoh_s1a_car@carloan[vin_1]",
+     "fixture:mutation.t2.eic.mfs_step1_agi_stop@carloan[vin_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "22(iii)",
    "project_expr_sha256": "3c30859adb6ed36132e2cdacae4413acf92f2c983961df81909ee01038c63c72",
    "second_expr_sha256": "061aada538fbc9e0511326335097682e067064d9f4f01a4e2ff6dc97bd3254ce",
@@ -230,6 +262,41 @@
      "fixture:classm.s1a.8@carloan[VIN1]",
      "fixture:classm.clcw.2@carloan[vin_1]",
      "fixture:mutation.t2.no_senior_part5@carloan[vin_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22(iii)",
+   "project_expr_sha256": "3c30859adb6ed36132e2cdacae4413acf92f2c983961df81909ee01038c63c72",
+   "second_expr_sha256": "ae1c4574a23b54403bad0e0f012164e50a64a195c62c05fe64aba0e3ffd0b91b",
+   "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places) on the value difference; representation on the rest. i1040gi p. 110, Line 22, column (iii), 'the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)'. Both take the loan's interest prorated by the qualifying part of the loan (fr-2026-18219 p. 24, § 1.163-16(d)(2)(iii)(A) and (d)(4)) and subtract column (ii); the second uses nine places and applies the proration with a ratio of one where nothing nonqualifying was financed, which gives the same value. The lane's change is wording and citations only. Same reading as the earlier rulings on this line. Project stands.",
+   "context": "d6329d4fb0c59b8cfc0945b5845a78ee4ebd0ceb4882c35dfe457d31edcd1b2d",
+   "date": "2026-11-24",
+   "run": "e5c3f81226d2ae4901fbdd26dd8c478f8bb4c59fdcba3260d91d3bb70b1b46a1",
+   "subject_key": "17f663a266f6d346aaf053eb890bdd99b50b2cf4b859b334d567fcf4d2c522c7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw.2.deepseek@carloan[vin_1]",
+     "fixture:classm.carloan.2@carloan[vin_1]",
+     "fixture:classm.carloan.3@carloan[vin_1]",
+     "fixture:classm.s1a.2@carloan[VIN0]",
+     "fixture:classm.s1a.3@carloan[VIN0]",
+     "fixture:classm.s1a.5@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN1]",
+     "fixture:classm.clcw.2@carloan[vin_1]",
+     "fixture:mutation.t2.no_senior_part5@carloan[vin_1]",
+     "fixture:mutation.t2.hoh_s1a_car@carloan[vin_1]",
+     "fixture:mutation.t2.eic.mfs_step1_agi_stop@carloan[vin_1]",
+     "partial:stage12.car.phaseout-carloan[VIN0].interest@carloan[VIN0]",
+     "partial:generated 20261026/324-carloan[vin_1].interest@carloan[vin_1]"
     ],
     "policy": "executable-triage-v2"
    }

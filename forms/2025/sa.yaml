@@ -1799,7 +1799,7 @@ form:
         locator: 'p. 11, Other Itemized Deductions, "Gambling losses (gambling losses include, but aren''t limited to, the
           cost of nonwinning bingo, lottery, and raffle tickets)"; p525 p. 33, Gambling winnings, "If you’re in the trade or
           business of gambling, use Schedule C (Form 1040)"'
-    - id: sa.line16_gambling
+    - id: sa.other_itemized_gambling
       printed: (helper)
       type: NonNegDollars
       label: Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
@@ -1826,7 +1826,7 @@ form:
               eq:
                 - s1.has_gambling
                 - const: true
-            then: sa.line16_gambling
+            then: sa.other_itemized_gambling
           - guard:
               op: test
               eq:

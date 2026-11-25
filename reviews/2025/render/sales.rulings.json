@@ -133,6 +133,16 @@
   {
    "printed": "(g)",
    "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The B and W parts are right: reported basis minus correct basis matches worksheet lines 3/4, and the wash-sale loss is a positive number. But the code helper offers 'other' for codes E, D, O, N and L, which still enters $0 with no refusal. The IRS text requires those amounts, e.g. 'enter the net adjustment in column (g)' and, for code E, 'enter as a negative number (in parentheses) selling expenses... and option premiums that you paid'.",
+   "ruling": "Ruling: scope; i8949 p. 9 to 10, codes E, L, N, O and D: the project does not figure those adjustments; a filer choosing 'other' is refused at the sale by sales.bad_code on sales.one (coverage row sales.nominee_sale, refused: sales[a].bad_code), and the refusal reaches every Schedule D total and Form 1040 line 7a, so no return is completed with $0 where such an adjustment belongs. The code B part (boxes A, D, G and J) and code W part match, as the reviewer says. Rerun because the form's sales.special is now derived from sd.special_any (BUG-1127). (carried over from reviews/2025/render/sales.index.json at 1944d1b9, review of 2026-11-22)",
+   "context": "3d3aeb7438c073c91cacdaed5fe1bb92c2a63f3301aabea62fc72a60b5ffe160",
+   "date": "2026-11-24",
+   "run": "62aa8349abb160295bc3c1af5256d53ed33f5f82772771bc568cdf25b9ecb5d1",
+   "subject_key": "0620889cf267c17d68dd3ff6f6e9b0ce6d6b9c93677f08ff247ad13dfa83cb47"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
    "model": "The IRS says to 'Enter in this column any necessary adjustments to gain (or loss)', and for more than one code to 'enter the net adjustment'. That includes code E ('enter as a negative number ... selling expenses ... and option premiums that you paid'), D, O, N and L. The restatement adds only the code B and W amounts. If the filer chooses 'other' for an additional code, it enters no amount for that code and also drops any B or W adjustment. No refusal names this exclusion.",
    "ruling": "Ruling: scope; as in the goal-1 and landing render rulings: an entry with any code other than none, B, W or BW (code E, D, O, N, L and the rest, the 'other' choice of sales.code) is refused at sales.one by sales.bad_code (\"Only applicable B and W adjustments are supported\"; i8949 pp. 7-11, columns (e) through (h)), so (g) never stands for an entry that needs another code's adjustment. The code B part (signed per the worksheet) and the code W part (i8949 p. 10, code W, \"enter the correct amount of the nondeductible loss as a positive number in column (g)\") match, as the reviewer says; this merge's change to (g) only added boxes G and J to the code B test. (carried over from reviews/2025/render/sales.index.json at deca6831, review of 2026-11-03)",
    "context": "3e131e0f69a8324aaa56ef47a342968c28a3105cae7f5d94e4d54f9d6533e56a",

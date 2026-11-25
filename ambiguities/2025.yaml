@@ -987,7 +987,7 @@ register:
         itemized deduction, so it counts only when itemized deductions are taken; with no winnings it is zero and the
         losses are not asked.
       - Gambling losses are not computed (Schedule A line 16 stays refused).
-      chosen: The first (sa.line16_gambling, sa.other_itemized); a professional gambler (s1.gambling_pro) is refused at line 8b.
+      chosen: The first (sa.other_itemized_gambling, sa.other_itemized); a professional gambler (s1.gambling_pro) is refused at line 8b.
       reason: The owner's decision D14 (Stage 16). The comparison of itemized and standard deductions (sa.itemizes) already
         applies the "only when itemizing" condition. Whether a professional gambler is asked only when there are winnings
         is the authoring agent's reading (a professional gambler with no winnings has nothing on line 8b or line 16).
@@ -1857,7 +1857,7 @@ register:
       - Prepare a Form 5329 for every person with an early distribution whenever anyone on the return must file one; check the box
         only when no one must.
       - "Per person: the second spouse's 10% goes on line 8 directly beside the first spouse's form."
-      chosen: The first (s2.line8_file and f5329.files; s2.line8_box).
+      chosen: The first (s2.tax_favored_accounts_file and f5329.files; s2.tax_favored_accounts_box).
       reason: 'The tax is the same either way, and the instructions give no way to mark the mixed case. Owner''s decision D5,
         2026-10-29.'
       cite:
@@ -2924,6 +2924,33 @@ register:
         locator: 'pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative
           equity"'
       status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane business, BUG-0515).
+    - id: amb.2025.carloan_insurance
+      text_at_issue: 'The final car loan regulations, which apply to taxable years beginning after December 31, 2024, count
+        "guaranteed asset protection (GAP) waiver or insurance" and "credit insurance products (including credit-related
+        accident, health, and life products)" among the items customarily financed with the vehicle, and exclude
+        indebtedness "to purchase collision and liability insurance that is not a credit insurance product". They do not
+        name other insurance on the vehicle, such as comprehensive (theft, fire, weather) coverage, financed in the
+        purchase. The 2025 Form 1040 instructions, written on the proposed regulations, give "liability insurance" as an
+        example of an item that does not qualify.'
+      readings:
+      - Any insurance on the vehicle other than GAP and credit insurance products is an amount that does not qualify
+        (carloan.mixed, carloan.nonqualifying, carloan.refi_whole say "collision, liability or other car insurance").
+      - Only collision and liability insurance is excluded; other insurance on the vehicle is a usual add-on and qualifies.
+      chosen: The first.
+      reason: 'Decided by the coordinator under the owner''s delegation of 2026-11-24 (lane fx-final). GAP and credit
+        insurance qualify because the final regulations say so for 2025. For other car insurance the regulations are
+        silent; comprehensive coverage is insurance of the vehicle of the same kind as collision coverage, not a credit
+        product, and the first reading is the one that does not understate tax (the second moves the loan that paid for it,
+        and its interest, into the deduction). To reverse: word carloan.mixed, carloan.nonqualifying and carloan.refi_whole
+        (source, help and prompt) to name only collision and liability insurance.'
+      cite:
+        doc: fr-2026-18219
+        locator: 'p. 24, § 1.163-16(d)(2)(i), "guaranteed asset protection (GAP) waiver or insurance that covers the
+          difference between an APV’s value and the outstanding balance of the indebtedness in the event of a total loss,
+          credit insurance products (including credit-related accident, health, and life products)"; (d)(2)(ii), "to
+          purchase collision and liability insurance that is not a credit insurance product"; p. 28, (i), "This section
+          applies to taxable years beginning after December 31, 2024, and before January 1, 2029."'
+      status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane fx-final, found by lane ty26b, -01).
     - id: amb.2025.vehicle_two_businesses
       text_at_issue: 'Schedule C Part IV (lines 44a to 44c) asks a vehicle''s business, commuting and other miles for the
         business the schedule reports, and line 9 deducts that business''s car expenses. Neither i1040sc nor Pub. 463 says

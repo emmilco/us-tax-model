@@ -2471,6 +2471,26 @@
       "revision_locator": "PDF page 1 header, \"Vol. 91, No. 1 ... Friday, January 2, 2026\"; preamble, \"REG-113515-25\""
     },
     {
+      "id": "fr-2026-18219",
+      "title": "Rules and Regulations",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-09-08/pdf/2026-18219.pdf",
+      "purpose": "Final regulations on the deduction for interest on qualified passenger vehicle loans (section 163(h)(4)), T.D. 10054, which apply to taxable years beginning after December 31, 2024: the items customarily financed with the vehicle (credit insurance products and GAP qualify; collision and liability insurance that is not a credit insurance product does not)",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/FR-2026-09-08/pdf/2026-18219.pdf",
+      "fetched_at": "2026-11-25T00:58:41.495762+00:00",
+      "file": "fr-2026-18219.pdf",
+      "sha256": "9b819aa6520ea701c2f9ba3ff88d4e1abb23698be71d0d1552e2d4be1626a321",
+      "revision": "91 FR 57214, September 8, 2026 (T.D. 10054), final regulations",
+      "revision_status": "Final regulations as printed in the Federal Register (GovInfo); \u00a7 1.163-16(i) (p. 28) applies them to taxable years beginning after December 31, 2024, so to 2025; cited by forms/2025/carloan.yaml for the items financed with the vehicle (\u00a7 1.163-16(d)(2), p. 24)",
+      "text_file": "fr-2026-18219.txt",
+      "text_sha256": "6d407aaf8eb3bec05ae7e47bca8d4e66b1c7700f5f225abce9bcd07f08aaa531",
+      "cols_file": "fr-2026-18219.cols.txt",
+      "cols_sha256": "e1f7d9f1c263b6cfca76091208729d0d30a542e9a2d100faa222267adcf8faa4",
+      "pages_file": "fr-2026-18219.pages.json",
+      "pages_sha256": "724858b1e5d02d271e2b4016909704f113fa1544c0c34da5951b00dc3bfaa6b4",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1, 'Federal Register / Vol. 91, No. 172 / Tuesday, September 8, 2026 / Rules and Regulations', '[TD 10054]', 'ACTION : Final regulations.'; p. 28, \u00a7 1.163-16(i), 'This section applies to taxable years beginning after December 31, 2024, and before January 1, 2029.'"
+    },
+    {
       "id": "fs-2025-01",
       "url": "https://www.irs.gov/pub/taxpros/fs-2025-01.pdf",
       "resolved_url": "https://www.irs.gov/pub/taxpros/fs-2025-01.pdf",

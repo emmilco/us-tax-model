@@ -504,7 +504,7 @@
 
 - Text at issue: Schedule A, line 16 (i1040sca p. 11): "Gambling losses ... but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b." A filer who does not itemize deducts none (p525 p. 33, "If you itemize your deductions on Schedule A (Form 1040), you can deduct gambling losses").
 - Candidate readings: Line 16 is the smaller of the year's gambling losses and line 8b; it enters Schedule A line 17 like any other itemized deduction, so it counts only when itemized deductions are taken; with no winnings it is zero and the losses are not asked. | Gambling losses are not computed (Schedule A line 16 stays refused).
-- **Chosen:** The first (sa.line16_gambling, sa.other_itemized); a professional gambler (s1.gambling_pro) is refused at line 8b.
+- **Chosen:** The first (sa.other_itemized_gambling, sa.other_itemized); a professional gambler (s1.gambling_pro) is refused at line 8b.
 - Reason: The owner's decision D14 (Stage 16). The comparison of itemized and standard deductions (sa.itemizes) already applies the "only when itemizing" condition. Whether a professional gambler is asked only when there are winnings is the authoring agent's reading (a professional gambler with no winnings has nothing on line 8b or line 16).
 - Status: Owner decision D14, Stage 16 (T-053).
 - Cite: [i1040sca] p. 11, Other Itemized Deductions, "but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b"; p525 p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)" (2025; printed date 2025-12-08; sha256 b0999b12)
@@ -944,7 +944,7 @@
 
 - Text at issue: The Schedule 2 line 8 box ("If not required, check here") on a joint return where one spouse must file Form 5329 and the other has only code 1 distributions taxed in full.
 - Candidate readings: Prepare a Form 5329 for every person with an early distribution whenever anyone on the return must file one; check the box only when no one must. | Per person: the second spouse's 10% goes on line 8 directly beside the first spouse's form.
-- **Chosen:** The first (s2.line8_file and f5329.files; s2.line8_box).
+- **Chosen:** The first (s2.tax_favored_accounts_file and f5329.files; s2.tax_favored_accounts_box).
 - Reason: The tax is the same either way, and the instructions give no way to mark the mixed case. Owner's decision D5, 2026-10-29.
 - Status: Owner decision, 2026-10-29 (research/premises/stage21-form-5329.decisions.md, D5).
 - Cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required. If not required, check here" (2025; created 2025-05-08; sha256 64d867b6)
@@ -1477,6 +1477,15 @@
 - Reason: Decided by the coordinator under the owner's delegation of 2026-11-24. The archived sources are silent; a rebate is paid by the maker or dealer, not provided by the taxpayer, and the first reading is the one that does not understate tax (the second moves more of the loan, and its interest, into the deduction). The readings differ only when the loan also paid for something other than the vehicle and its usual add-ons (carloan.mixed), by the interest on up to the amount of the rebate. To reverse: word carloan.down (source and help) to count a rebate applied at the purchase. Recorded from BUG-0515 (left open by BUG-0738).
 - Status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane business, BUG-0515).
 - Cite: [fr-2025-24154] pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative equity" (Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154; sha256 4d243f55)
+
+## amb.2025.carloan_insurance
+
+- Text at issue: The final car loan regulations, which apply to taxable years beginning after December 31, 2024, count "guaranteed asset protection (GAP) waiver or insurance" and "credit insurance products (including credit-related accident, health, and life products)" among the items customarily financed with the vehicle, and exclude indebtedness "to purchase collision and liability insurance that is not a credit insurance product". They do not name other insurance on the vehicle, such as comprehensive (theft, fire, weather) coverage, financed in the purchase. The 2025 Form 1040 instructions, written on the proposed regulations, give "liability insurance" as an example of an item that does not qualify.
+- Candidate readings: Any insurance on the vehicle other than GAP and credit insurance products is an amount that does not qualify (carloan.mixed, carloan.nonqualifying, carloan.refi_whole say "collision, liability or other car insurance"). | Only collision and liability insurance is excluded; other insurance on the vehicle is a usual add-on and qualifies.
+- **Chosen:** The first.
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane fx-final). GAP and credit insurance qualify because the final regulations say so for 2025. For other car insurance the regulations are silent; comprehensive coverage is insurance of the vehicle of the same kind as collision coverage, not a credit product, and the first reading is the one that does not understate tax (the second moves the loan that paid for it, and its interest, into the deduction). To reverse: word carloan.mixed, carloan.nonqualifying and carloan.refi_whole (source, help and prompt) to name only collision and liability insurance.
+- Status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane fx-final, found by lane ty26b, -01).
+- Cite: [fr-2026-18219] p. 24, § 1.163-16(d)(2)(i), "guaranteed asset protection (GAP) waiver or insurance that covers the difference between an APV’s value and the outstanding balance of the indebtedness in the event of a total loss, credit insurance products (including credit-related accident, health, and life products)"; (d)(2)(ii), "to purchase collision and liability insurance that is not a credit insurance product"; p. 28, (i), "This section applies to taxable years beginning after December 31, 2024, and before January 1, 2029." (91 FR 57214, September 8, 2026 (T.D. 10054), final regulations; sha256 9b819aa6)
 
 ## amb.2025.vehicle_two_businesses
 

@@ -484,7 +484,7 @@ USTAXES_PASS_THROUGH = {"lines": [], "components": {
                   "(likewise lines 18, 27 and 33); the part totals (lines 13, 21, 30, 37) are mapped",
     "s1a.tips_threshold": "the phase-out thresholds (lines 9, 17, 26, 32) are parameters",
     "person.se_line12": "UsTaxes never builds Schedule C, so self-employed returns are not run",
-    "s2.line8_box": "UsTaxes' Schedule 2 line 8 box is always unchecked (Schedule2.ts `l8box`: `false // TODO`); a Bool, not a money line",
+    "s2.tax_favored_accounts_box": "UsTaxes' Schedule 2 line 8 box is always unchecked (Schedule2.ts `l8box`: `false // TODO`); a Bool, not a money line",
     "person.f5329.l2": "UsTaxes' Form 5329 has no line 2 (exceptions are left out of `earlyWithdrawalAmount` by the user), so lines 2 and 3 "
                        "are not computed; lines 1 and 4 (its `l8`) are mapped",
     "person.f5329.l49": "UsTaxes' Form 5329 has no Part VII (F5329.ts: \"Parts II-IX (lines 9+) — not implemented\"; limitation hsa_excess_tax)",

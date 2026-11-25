@@ -340,7 +340,7 @@ form:
       all:
       - op: test
         eq:
-        - s2.line8_file
+        - s2.tax_favored_accounts_file
         - const: true
       - op: test
         any:

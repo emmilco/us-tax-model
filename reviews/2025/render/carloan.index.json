@@ -9,21 +9,21 @@
  "lines": [
   {
    "key": "22(ii)",
-   "record": "85736c2c31975cfcb98fc38996edc235922ef2ab71e75bf7b1d905731174a2af",
+   "record": "aa2c65a7dae58e3f15be9056a7ea8ec328412c078371248374cd83087b292d84",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere; restatement accepted. i1040gi p. 110, Schedule 1-A, Line 22, column (ii), 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'. As in the earlier rulings on this line: Schedule F and Schedule E business or K-1 income are refused through the return's scope screens (scope.farm, scope.k1), and a rental's car or truck expenses are refused (rental.vehicle, Schedule E line 6, auto and travel), so Schedule C is the only place a supported return deducts this loan's interest.",
-   "subject_key": "9eb8e5e4a127d99d9e29df9eaeb89a1c1c23630f3d69381cad94f40d6cf34db4"
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. i1040gi p. 110, Schedule 1-A, Line 22, column (ii), 'deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)'. Schedules E and F are refused by scope.schedule1 (Form 1040 lines 8 and 10), so on a completed return Schedule C is the only place the interest can be deducted elsewhere, and the line takes the QPVLI part of the Schedule C interest; the form note says 'Schedules E and F are refused'. Same as the earlier rulings on this line.",
+   "subject_key": "de5afd04fc13798b770ce7b064c23ccfe79b6189860425c18213fc221226f16f"
   },
   {
    "key": "22(iii)",
-   "record": "85736c2c31975cfcb98fc38996edc235922ef2ab71e75bf7b1d905731174a2af",
+   "record": "aa2c65a7dae58e3f15be9056a7ea8ec328412c078371248374cd83087b292d84",
    "status": "MATCH",
-   "subject_key": "fd05b5a8d773143732ffc4154cea7f05c21232f1370e9f113b7bc7913993e8b1"
+   "subject_key": "f8865af9974c337de53ebd7c8e961e7d7d040a015af3075f12d729faa1369680"
   }
  ],
  "subjects": {
-  "22(ii)": "719f241b11290dff6ad809591a3ecd85402bc87c6d7aa3432d7669a1bf03ed04",
-  "22(iii)": "ecf217bcf146719641100070f5aa17277197ebb018003613cfc014fd0e51a115"
+  "22(ii)": "7d3247b1fa5504ee3141009c89e40a0c0868215d4a4a9cf5f5493283515304be",
+  "22(iii)": "0ba0e52aa93d0543894fe20b7c5e2f1ecac26791801f24195bb2441c9ac3f3d4"
  },
  "__rest__": "e39fba84f369f3f389953310b2ef313c58a44d58a1aa1117fcf7b623c5168bd2"
 }

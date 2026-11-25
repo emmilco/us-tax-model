@@ -819,7 +819,7 @@
 - Expr: `{"op":"input","source":"Your gambling losses during 2025 (you and, on a joint return, your spouse), including the cost of nonwinning bingo, lottery and raffle tickets, in full, whether or not more than your winnings, but not losses of a trade or business of gambling, which go on Schedule C; zero if none"}`
 - Cite: [i1040sca] p. 11, Other Itemized Deductions, "Gambling losses (gambling losses include, but aren't limited to, the cost of nonwinning bingo, lottery, and raffle tickets)"; p525 p. 33, Gambling winnings, "If you’re in the trade or business of gambling, use Schedule C (Form 1040)" (2025; printed date 2025-12-08; sha256 b0999b12)
 
-## (helper) — `sa.line16_gambling`
+## (helper) — `sa.other_itemized_gambling`
 
 - **Authored helper label:** Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
 - **Encoded (NonNegDollars):** Enter the smaller of helper "Gambling losses you had during 2025" or s1 line 8b.
@@ -834,7 +834,7 @@
 - **Refusal:** when sa.charity_limited_if_gifts is true, cannot complete Schedule A charitable limitation / carryover. Income-limited and carried-over charitable deductions are outside scope. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.unsupported is true, cannot complete Schedule A unsupported item. Prepare the applicable deduction or limitation; only the listed Schedule A items are supported. Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 - **Refusal:** when sa.excluded_income is true, cannot complete Schedule A SALT Worksheet / Forms 2555 and 4563. Excluded-income addbacks are outside scope. Cite: [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12)
-- Expr: `{"alternatives":[{"guard":{"eq":["s1.has_gambling",{"const":true}],"op":"test"},"then":"sa.line16_gambling"},{"guard":{"eq":["s1.has_gambling",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["s1.has_gambling",{"const":true}],"op":"test"},"then":"sa.other_itemized_gambling"},{"guard":{"eq":["s1.has_gambling",{"const":false}],"op":"test"},"then":"sa.zero"}],"op":"choose"}`
 - Cite: [f1040sa] Schedule A (2025), line 16; i1040sca p. 11, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; created 2025-11-20; sha256 c14acf34)
 
 ## 7 — `sa.line7`

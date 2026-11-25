@@ -1823,13 +1823,13 @@ bank:
     prompt: |-
       Is any of the sales listed one of these?
 
-      - a collectible (art, rugs, antiques, coins, stamps, gems, wine or other alcoholic drinks, or gold, silver, platinum or other metal bullion), or shares of a fund that holds gold, silver or other metals
+      - a collectible (art, rugs, antiques, coins, stamps, gems, wine or other alcoholic drinks, gold, silver, platinum or other metal bullion, or other things collected for their value, such as sports memorabilia), or shares of a fund or trust that holds gold, silver or other metals
       - an NFT (non-fungible token) of art, a gem or another collectible
       - small business stock on which you exclude some or all of the gain (section 1202)
-      - real estate you once rented out or took a home office deduction for
-      - your share of a partnership, an S corporation or a trust that owns collectibles or depreciated buildings
-      - a loss on shares owned a year or less that paid a qualified dividend of 10% or more of their cost (5% for preferred stock)
-      - a gain on a forward contract, swap or similar deal that gave you a fund's or partnership's return without owning it
+      - real estate that was depreciated, or could have been, such as a home you once rented out or used in part for a home office or a home day care, or a building used in a business
+      - your share of a partnership, an S corporation or a trust that owns collectibles or depreciated real estate, itself or through another partnership, company or trust
+      - a loss on shares owned a year or less that paid a qualified dividend of 10% or more of your basis in them (5% for preferred stock)
+      - a gain on a forward contract, swap or similar deal that gave you the return of a fund, partnership, S corporation, trust or REIT without owning it
       - an investment in an opportunity zone fund, or a gain you put off by investing in one
   - input: sales.aggregate_eligible
     order: 274
@@ -5131,9 +5131,11 @@ bank:
   - input: carloan.mixed
     order: 221
     seq: 6
-    help: The usual add-ons are a service plan, an extended warranty, sales tax and vehicle fees. Answer Yes if the
-      loan also covered what was still owed on a trade-in, insurance, a trailer or other goods or services, or cash paid
-      to you.
+    help: The usual add-ons are a service or repair plan, a warranty or extended warranty, tire, wheel, paint or interior
+      protection, a key fob replacement plan, GAP coverage, credit insurance (which pays the loan if you die or cannot
+      work), accessories built into the vehicle, sales tax and vehicle fees such as title, registration and dealer
+      document fees. Answer Yes if the loan also covered what was still owed on a trade-in beyond its trade-in value,
+      collision, liability or other car insurance, a trailer or other goods or services, or cash paid to you.
     prompt: Did this loan pay for anything besides the vehicle and its usual add-ons?
   - input: carloan.financed
     order: 221
@@ -5142,9 +5144,12 @@ bank:
   - input: carloan.nonqualifying
     order: 221
     seq: 8
-    prompt: How much of the purchase this loan paid for was for those other things (what was still owed on a trade-in,
-      insurance, other goods or services, cash paid to you), before any down payment? Leave out what you paid for
-      separately.
+    help: Leave out the vehicle and its usual add-ons, which qualify, such as a service or repair plan, a warranty, tire,
+      wheel, paint or interior protection, a key fob replacement plan, GAP coverage, credit insurance, accessories built
+      into the vehicle, sales tax and vehicle fees.
+    prompt: How much of the purchase this loan paid for was for those other things (what was still owed on a trade-in
+      beyond its trade-in value, collision, liability or other car insurance, other goods or services, cash paid to
+      you), before any down payment? Leave out what you paid for separately.
   - input: carloan.down
     order: 221
     seq: 9
@@ -5159,11 +5164,11 @@ bank:
   - input: carloan.refi_whole
     order: 221
     seq: 11
-    help: Answer No if any of it covered what was still owed on a trade-in, insurance, other goods or services, or cash
-      paid to you. If it itself replaced a loan, answer for that loan too; paying it off counts, but not borrowing
-      more than was then owed.
-    prompt: Was the whole of the earlier loan for the vehicle and its usual add-ons (a service plan, an extended
-      warranty, sales tax and vehicle fees)?
+    help: Answer No if, after any down payment, any of it covered what was still owed on a trade-in beyond its trade-in
+      value, collision, liability or other car insurance, other goods or services, or cash paid to you. If it itself
+      replaced a loan, answer for that loan too; paying it off counts, but not borrowing more than was then owed.
+    prompt: Was the whole of the earlier loan for the vehicle and its usual add-ons (such as a service plan, a warranty,
+      GAP coverage, credit insurance, sales tax and vehicle fees)?
   - input: $asset
     order: 257
     seq: 1

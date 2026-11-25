@@ -9,22 +9,22 @@
  "lines": [
   {
    "key": "22(ii)",
-   "record": "8f6e069eaa02c74a940d9eec0f2c704b773f0666759783b552f36853f4c0ed7e",
+   "record": "90cb5198378549f3534b8b7389180ebcffe85085e505082abfc39d6fe099c5b7",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (ii), \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return\"; fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated ... on a pro rata basis\", and (d)(4) for a refinancing; p. 23, (g)(1), \"Independently deductible interest is limited to interest that is QPVLI\". The Schedule C interest is interest on the whole loan, so its QPVLI part is its pro rata share; the reply caps the whole Schedule C interest at the loan's QPVLI instead (triage: stage12.car.mixed_sc_interest_prorated, project $84.80, reply $106.00), and asks column (ii) without a Schedule C (candidate-unknown on returns the project gives zero). Same as the earlier rulings on this line.",
-   "subject_key": "e9095d6a73faee230b9426e0c49b652c5dfb2cca7764c2a3d83f7703fba90884"
+   "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places) on the value difference; representation on the rest. The lane changed only the wording and citations of carloan.mixed, carloan.nonqualifying and carloan.refi_whole (fr-2026-18219 p. 24, § 1.163-16(d)(2)(i) and (ii), which allocate pro rata as the proposed rules did, (d)(2)(iii)(A) and (d)(4)); the computation is unchanged. The second transcription prorates carloan.col_ii_input by the same qualifying part over carloan.financed (refinancing: the smaller of the refinanced balance and the loan) with a nine-place ratio against the project's six, reads column (ii)'s input without the Schedule C condition (Schedules E and F are refused by scope.schedule1, so without a Schedule C nothing is deducted elsewhere), and lists the partly qualifying refinancing as a gate (carloan.h_refi_partial), which the project refuses through carloan.refi_nested. Same reading as the earlier rulings on this line. Project stands.",
+   "subject_key": "f425d367ff52e203af09f0a480eb25e5a72550608e72eca2d93faa983dde10d4"
   },
   {
    "key": "22(iii)",
-   "record": "8f6e069eaa02c74a940d9eec0f2c704b773f0666759783b552f36853f4c0ed7e",
+   "record": "90cb5198378549f3534b8b7389180ebcffe85085e505082abfc39d6fe099c5b7",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (iii), \"enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)\". The QPVLI is the same on both sides; every difference follows the reply's column (ii), ruled a model error (stage12.car.mixed_sc_interest_prorated: project $254.40, reply $233.20). Same as the earlier rulings on this line.",
-   "subject_key": "b23a9168a382ade5198284f515eea18516f56e9c38c1746f80d8dac4a4c3a4bd"
+   "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places) on the value difference; representation on the rest. i1040gi p. 110, Line 22, column (iii), 'the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)'. Both take the loan's interest prorated by the qualifying part of the loan (fr-2026-18219 p. 24, § 1.163-16(d)(2)(iii)(A) and (d)(4)) and subtract column (ii); the second uses nine places and applies the proration with a ratio of one where nothing nonqualifying was financed, which gives the same value. The lane's change is wording and citations only. Same reading as the earlier rulings on this line. Project stands.",
+   "subject_key": "04dca932916fcabbae82cee24779b9bbffd8b2154053ca6ed83f715ff9022417"
   }
  ],
  "subjects": {
-  "22(ii)": "6594b3337c11fea293b69decef87f1d5f71bc4c5832cb3cba123094d1e4b9dd6",
-  "22(iii)": "113d3e9ed36b353c0ad09ffeef0438df3ddcb2a1c3f0391d13fa02202808616b"
+  "22(ii)": "86d9599dabbb60f9790d2247bd63f651a84b1e2e0482a0985934b20dee9be823",
+  "22(iii)": "49999a62e5464b2df8a56d1d1c5583ae2e2b9cada4a731c1edfa4e04c2e73fa0"
  },
  "__rest__": "deb19ff2f95d69c9289f6e2fec1090a13ac53679980606283ce9079810026314",
  "foreign": {

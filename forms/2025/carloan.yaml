@@ -112,12 +112,15 @@ form:
     expr:
       op: input
       source: Did this loan also finance anything other than the vehicle and items customarily financed with it and directly
-        related to it (such as a service plan, extended warranty, sales tax and vehicle fees)? For example negative equity
-        on a vehicle traded in, collision or liability insurance, a trailer or other unrelated property or services, or
-        cash paid to you.
+        related to it (such as a service or repair plan, a warranty or extended warranty, tire, wheel, paint or interior
+        protection, a key fob replacement plan, a GAP waiver or GAP insurance, credit insurance (credit life, accident or
+        health insurance), accessories that are components of the vehicle, sales tax and vehicle fees)? For example
+        negative equity on a vehicle traded in, collision, liability or other insurance that is not GAP or credit insurance,
+        a trailer or other unrelated property or services, or cash paid to you.
+    ambiguity: amb.2025.carloan_insurance
     cite:
-      doc: fr-2025-24154
-      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(i) and (ii); i1040gi p. 109, Schedule 1-A, Loan amount
+      doc: fr-2026-18219
+      locator: p. 24, § 1.163-16(d)(2)(i) and (ii); i1040gi p. 109, Schedule 1-A, Loan amount
   - id: carloan.financed
     printed: (helper)
     label: Total amount of this loan when it was taken out
@@ -136,11 +139,12 @@ form:
     expr:
       op: input
       source: The total of the amounts in the purchase transaction this loan financed that do not qualify (negative
-        equity, insurance, unrelated property or services, cash paid to you), before applying any down payment, and not
-        counting anything you paid for separately
+        equity, collision, liability or other insurance that is not GAP or credit insurance, unrelated property or
+        services, cash paid to you), before applying any down payment, and not counting anything you paid for separately
+    ambiguity: amb.2025.carloan_insurance
     cite:
-      doc: fr-2025-24154
-      locator: pp. 20–22, Proposed § 1.163-16(d)(2)(ii) and (d)(6) Example 4
+      doc: fr-2026-18219
+      locator: p. 24, § 1.163-16(d)(2)(ii); p. 25, (d)(6) Example 4
   - id: carloan.down
     printed: (helper)
     label: Down payment
@@ -201,18 +205,20 @@ form:
     expr:
       op: input
       source: Was all of the loan this loan refinanced a qualifying vehicle loan? It must have financed only the vehicle
-        and items customarily financed with it and directly related to it (such as a service plan, extended warranty,
-        sales tax and vehicle fees), and not negative equity on a vehicle traded in, collision or liability insurance, a
-        trailer or other unrelated property or services, or cash paid to you; and it must not itself have been a refinancing for
+        and items customarily financed with it and directly related to it (such as a service or repair plan, a warranty,
+        GAP or credit insurance, sales tax and vehicle fees), and not negative equity on a vehicle traded in, collision,
+        liability or other insurance that is not GAP or credit insurance, a trailer or other unrelated property or
+        services, or cash paid to you; and it must not itself have been a refinancing for
         more than the balance it replaced. If it was itself a refinancing, its payoff of the loan before it counts as
         financing the vehicle, and that loan must meet these tests too. Answer No if any part of either loan financed one
-        of those other amounts.
+        of those other amounts after any down payment, which is applied first against them.
     cite:
-      doc: fr-2025-24154
-      locator: pp. 20–22, Proposed § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"; (d)(2)(i) and (ii),
-        "repayment of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability
-        insurance, or to purchase any property or services unrelated to an APV (for example, a trailer or a boat) is not
-        incurred by a taxpayer for the purchase of an APV"
+      doc: fr-2026-18219
+      locator: p. 24, § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"; (d)(2)(i) and (ii), "repayment of negative
+        equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance that is not a credit
+        insurance product, or to purchase any property or services unrelated to an APV (for example, a trailer or a boat)
+        is not incurred by a taxpayer for the purchase of an APV"; (d)(2)(iii)(B), "any down payment ... is applied first
+        against any negative equity and any other amounts that are not incurred for the purchase of the APV"
   - id: carloan.refi_qualifying
     printed: (helper)
     label: Part of the new loan that is a specified passenger vehicle loan

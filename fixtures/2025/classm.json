@@ -39611,7 +39611,7 @@
         "s2"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 3c9d0dab0a8c33c8c35f0a39d205279e4d5b6a38d8052471147e48dd0dd192e9; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business:false, s2.amt_business_if_sc#0, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks_if_w2#1, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback:false, s2.lookback_if_business#0, s2.lookback_if_business:false, s2.lookback_ask:true, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.line8_file:false, s2.e05_over:false, s2.line8_box:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 3c9d0dab0a8c33c8c35f0a39d205279e4d5b6a38d8052471147e48dd0dd192e9; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business:false, s2.amt_business_if_sc#0, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks_if_w2#1, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback:false, s2.lookback_if_business#0, s2.lookback_if_business:false, s2.lookback_ask:true, s2.lookback_royalty#1, s2.lookback_royalty:false, s2.royalty_listed:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.tax_favored_accounts_file:false, s2.e05_over:false, s2.tax_favored_accounts_box:false",
       "inputs": {
         "f1040.status": "mfj",
         "$person": [
@@ -39898,7 +39898,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -39930,7 +39930,7 @@
         "s2"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 75295cb04abdf14c4c31143c4ceee112feca3ff5ed92b89fad090831b8aada9a; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:true, s2.amt_pab_if_could#0, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:positive, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:right, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:floor, s2.amt_l22:right, s2.amt_l23:left, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:positive, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:true, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.line8_file:false, s2.e05_over:false, s2.line8_box:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 75295cb04abdf14c4c31143c4ceee112feca3ff5ed92b89fad090831b8aada9a; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:true, s2.amt_pab_if_could#0, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:positive, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:right, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:floor, s2.amt_l22:right, s2.amt_l23:left, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:positive, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:true, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.lookback_royalty#1, s2.lookback_royalty:false, s2.royalty_listed:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.tax_favored_accounts_file:false, s2.e05_over:false, s2.tax_favored_accounts_box:false",
       "inputs": {
         "$w2@person[taxpayer]": [
           "a"
@@ -40126,7 +40126,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -40158,7 +40158,7 @@
         "s2"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 d9873b8cf0ce16687299892b1831faeedf6e76f97c6a435e6fe0aaf425cb0433; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:true, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#0, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#0, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.other_tax:false, s2.other:false, s2.line1a#0, s2.ss8_notice:false, s2.line8_file:false, s2.e05_over:false, s2.line8_box:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 d9873b8cf0ce16687299892b1831faeedf6e76f97c6a435e6fe0aaf425cb0433; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:true, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#0, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#0, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.lookback_royalty#1, s2.lookback_royalty:false, s2.royalty_listed:false, s2.other_tax:false, s2.other:false, s2.line1a#0, s2.ss8_notice:false, s2.tax_favored_accounts_file:false, s2.e05_over:false, s2.tax_favored_accounts_box:false",
       "inputs": {
         "f1040.status": "mfs",
         "household.married_dec31": true,
@@ -40374,7 +40374,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -40406,7 +40406,7 @@
         "s2"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 326e80b9e8752c3d48a875fe2fbe073d4780adb0da74e829fb5831a6e6ea4dde; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.line8_file:false, s2.e05_over:false, s2.line8_box:true",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 326e80b9e8752c3d48a875fe2fbe073d4780adb0da74e829fb5831a6e6ea4dde; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.lookback_royalty#1, s2.lookback_royalty:false, s2.royalty_listed:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.tax_favored_accounts_file:false, s2.e05_over:false, s2.tax_favored_accounts_box:true",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -40612,7 +40612,7 @@
           "kind": "money",
           "cents": 30000
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": true
         },
@@ -40644,7 +40644,7 @@
         "s2"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 aad58d85744761dae8ba137e0dee08c75bc03e2a59cbaccc10a84e8d80aae5b5; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.line8_file:true, s2.e05_over:false, s2.line8_box:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 aad58d85744761dae8ba137e0dee08c75bc03e2a59cbaccc10a84e8d80aae5b5; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.lookback_royalty#1, s2.lookback_royalty:false, s2.royalty_listed:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.tax_favored_accounts_file:true, s2.e05_over:false, s2.tax_favored_accounts_box:false",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -40851,7 +40851,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -40883,7 +40883,7 @@
         "s2"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e91fceff1ec3b6b2b8ef6c9c28fe039366507f9c73c316c5501d93b472b7a274; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:floor, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.other_tax:false, s2.other:false, s2.line1a#0, s2.ss8_notice:false, s2.line8_file:false, s2.e05_over:false, s2.line8_box:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e91fceff1ec3b6b2b8ef6c9c28fe039366507f9c73c316c5501d93b472b7a274; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:floor, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.lookback_royalty#1, s2.lookback_royalty:false, s2.royalty_listed:false, s2.other_tax:false, s2.other:false, s2.line1a#0, s2.ss8_notice:false, s2.tax_favored_accounts_file:false, s2.e05_over:false, s2.tax_favored_accounts_box:false",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -41108,7 +41108,238 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.niit": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.hsa_distribution_tax": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.other_additional_total": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line21": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "classm.s2.7",
+      "covers": [
+        "s2"
+      ],
+      "evidence": "M",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 66d1893b24cf2e15158ff710d796d75435072ac2f9ecb4d044a0d834ed2f5a75; pages f1040s2 1,2 (29e3a05ca4dc); i6251 1,2,3,4,5,6,7,8,9,13 (024ee22d5460); f6251 1,2 (b150bb91bafd); i1040gi 24,38,111,112,113,114 (6024dc94dd1f); f8919 1,2 (8a720f8e6f4f); i5329 1,5 (bc85a048e429); i1099int 1 (b36466d28374); p590b 26 (24de404e77c2); i1040sse 1,2,3,4,5 (bd4768e77e90); f4137 1,2 (0b976ed382c2); branches s2.no:false, s2.options_any:false, s2.iso_if_options#1, s2.iso_if_options:false, s2.iso_vested:false, s2.amt_l2a#1, s2.amt_dep_any:false, s2.amt_rel#1, s2.amt_pab_ask:false, s2.amt_pab_if_could#1, s2.amt_pab_over:false, s2.amt_mfs:false, s2.amt_mfs_over:floor, s2.amt_mfs_add:left, s2.amt_l4m#1, s2.amt_ex_over:floor, s2.amt_l5:positive, s2.amt_l6:floor, s2.amt_l6_high:false, s2.amt_l39#0, s2.amt_l13#1, s2.amt_l14#1, s2.amt_l15_sdtw:left, s2.amt_l15#1, s2.amt_l16:left, s2.amt_l17_high:false, s2.amt_l18#0, s2.amt_l20#1, s2.amt_l21:positive, s2.amt_l22:left, s2.amt_l23:right, s2.amt_l27#1, s2.amt_l29:positive, s2.amt_l30:left, s2.amt_l33:floor, s2.amt_l36:floor, s2.amt_l14_any:false, s2.amt_l37#1, s2.amt_l40:left, s2.amt_part3_form:false, s2.amt_part3:false, s2.amt_l7#1, s2.amt_l10:positive, s2.amt_tmt_over:false, s2.amt_mortgage#1, s2.amt_h_mfs_over:floor, s2.amt_h_mfs_add:left, s2.amt_h4m#1, s2.amt_h_ex_over:floor, s2.amt_h5:positive, s2.amt_h6:floor, s2.amt_h6_high:false, s2.amt_h39#0, s2.amt_could:false, s2.amt_boat_ask:false, s2.amt_boat_if_could#1, s2.amt_boat_if_could:false, s2.amt_business_if_sc#1, s2.amt_business_if_sc:false, s2.amt_owed:false, s2.amt:false, s2.w2_marks:false, s2.w2_marks_if_w2#0, s2.w2_marks_if_w2:false, s2.household_help:false, s2.household_employee_if_help#1, s2.household_employee_if_help:false, s2.mortgage_subsidy_if_interest#1, s2.mortgage_subsidy_if_interest:false, s2.hsa_testing:false, s2.credit_recapture:false, s2.lookback_if_business#1, s2.lookback_if_business:false, s2.lookback_ask:false, s2.lookback_royalty#0, s2.lookback_royalty:false, s2.royalty_listed:false, s2.other_tax:false, s2.other:false, s2.line1a#1, s2.ss8_notice:false, s2.tax_favored_accounts_file:false, s2.e05_over:false, s2.tax_favored_accounts_box:false",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 4000000,
+        "person[taxpayer].w2[a].box5": 4000000,
+        "scope.rental": true,
+        "scope.business_before": false,
+        "$royalty": [],
+        "$rental": [],
+        "$carloan": [],
+        "$dcprov": [],
+        "$dependent": [],
+        "div.any": false,
+        "f1040.status": "single",
+        "f1040.digital_assets": false,
+        "f1040.tax_exempt_any": false,
+        "f1040.withheld_other_any": false,
+        "f1040.estimated_any": false,
+        "$f1095a": [],
+        "$f1116col": [],
+        "$f1116sbyr": [],
+        "f2441.benefits": false,
+        "f2441.care": false,
+        "f4952.has_interest": false,
+        "f5695.any": false,
+        "$f8853c": [],
+        "f8863.paid": false,
+        "f8959.territory_w2": false,
+        "$gift": [],
+        "household.ever_married": true,
+        "household.married_dec31": false,
+        "household.community_property": false,
+        "household.rdp": false,
+        "household.spouse_died_this_year": false,
+        "$interest": [],
+        "$oi8z": [],
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].birth_year": 1980,
+        "person[taxpayer].blind": false,
+        "person[taxpayer].eligible_educator": false,
+        "person[taxpayer].rrta": false,
+        "person[taxpayer].ira_owner": false,
+        "person[taxpayer].x_edu_account": false,
+        "person[taxpayer].x_archer_excess": false,
+        "person[taxpayer].inherited_account": false,
+        "$f4137row@person[taxpayer]": [],
+        "$f8889@person[taxpayer]": [],
+        "$f8919firm@person[taxpayer]": [],
+        "$k1p@person[taxpayer]": [],
+        "$k1s@person[taxpayer]": [],
+        "$otjob@person[taxpayer]": [],
+        "$retirement@person[taxpayer]": [],
+        "$sc@person[taxpayer]": [],
+        "$tipjob@person[taxpayer]": [],
+        "person[taxpayer].w2[a].box2": 0,
+        "person[taxpayer].w2[a].box4": 0,
+        "person[taxpayer].w2[a].box6": 0,
+        "qbi.prior_form": false,
+        "refund.any": false,
+        "s1.uc_any": false,
+        "s1.ltc_payout": false,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.state_disability": false,
+        "s1.winnings_any": false,
+        "s1.alaska_any": false,
+        "s1.jury_any": false,
+        "s1.hobby_any": false,
+        "s1.scholarship_any": false,
+        "s1.alimony_any": false,
+        "s1.cod_any": false,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "s2.options_any": false,
+        "s2.iso_vested": false,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.other_tax": false,
+        "s3.adoption_any": false,
+        "s3.credit_bond": false,
+        "s3.disability_retired": false,
+        "s3.ev": false,
+        "s3.farmland": false,
+        "s3.foreign_any": false,
+        "s3.kerosene": false,
+        "s3.prior_other_forms": false,
+        "s3.repaid_income": false,
+        "s3.line10": 0,
+        "sa.gifts": false,
+        "sa.gift_carryover": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.elect_itemize": false,
+        "sa.medical_any": false,
+        "sa.medical_premiums": false,
+        "sa.state_tax_any": false,
+        "sa.state_tax_other_any": false,
+        "sa.home_owner": false,
+        "sa.home_other": false,
+        "sa.personal_property_tax_any": false,
+        "sa.sales_tax_wish": false,
+        "sa.estate_tax_income": false,
+        "sa.bond_premium": false,
+        "sa.debt_instrument_loss": false,
+        "sa.pension_unrecovered": false,
+        "sa.impairment_work": false,
+        "sa.gst_paid": false,
+        "sa.foreign_tax_noncreditable": false,
+        "$sales": [],
+        "sb.account_any": false,
+        "sb.asset_any": false,
+        "sb.trust_any": false,
+        "sb.company_any": false,
+        "sb.territory_any": false,
+        "sche.re_pro": false,
+        "sche.grouped": false,
+        "sche.qbi_business": false,
+        "sche.accrual": false,
+        "scope.noncitizen": false,
+        "scope.chapter11": false,
+        "scope.fiscal_year": false,
+        "scope.treaty": false,
+        "scope.armed_forces": false,
+        "scope.f8814": false,
+        "scope.rent_personal": false,
+        "scope.k1": false,
+        "scope.farm": false,
+        "scope.remic": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": false,
+        "scope.religious_work": false,
+        "scope.w2_marks": false,
+        "scope.artist_official": false,
+        "scope.recovery": false,
+        "scope.disaster_distribution": false,
+        "scope.excess_deferral": false,
+        "scope.archer_msa": false,
+        "scope.education_recapture": false,
+        "scope.foreign_shares": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.trade_act_repaid": false,
+        "scope.nol": false,
+        "sd.sold_other": false,
+        "sd.sec1256": false,
+        "sd.condemned": false,
+        "sd.small_business_stock": false,
+        "sd.trader_election": false,
+        "sd.casualty": false,
+        "sd.qof": false,
+        "sd.carryover": false,
+        "sli.any": false,
+        "ssb.any": false
+      },
+      "expect": {
+        "s2.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line1z": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line3": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.tip_ss_tax": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.wage_ss_tax": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.ss_medicare_total": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.tax_favored_accounts": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -115636,7 +115867,7 @@
         "f1116sb"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 23e4c4e18cf362e9381d895c7ad611f2f92b699010ac10a44ac96e65383022a1; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:positive, f1116sb.used_i:left, f1116sb.room_ii:positive, f1116sb.used_ii:left, f1116sb.room_iii:positive, f1116sb.used_iii:right, f1116sb.room_iv:floor, f1116sb.used_iv:left, f1116sb.room_v:floor, f1116sb.used_v:left, f1116sb.room_vi:floor, f1116sb.used_vi:left, f1116sb.room_ix:floor, f1116sb.used_ix:left, f1116sb.room_x:floor, f1116sb.used_x:left, f1116sb.room_xi:floor, f1116sb.used_xi:left, f1116sb.room_xii:floor, f1116sb.used_xii:left, f1116sb.l6_xiii:floor, f1116sb.l8_ii:floor, f1116sb.l8_iii:positive, f1116sb.l8_iv:floor, f1116sb.l8_v:floor, f1116sb.l8_vi:floor, f1116sb.l8_ix:floor, f1116sb.l8_x:floor, f1116sb.l8_xi:floor, f1116sb.l8_xii:floor, f1116sb.changed:false, f1116sb.changed_if_carry#0, f1116sb.changed_if_carry:false, f1116sb.split:false, f1116sb.split_if_carry#0, f1116sb.split_if_carry:false, f1116sb.generated:false, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 23e4c4e18cf362e9381d895c7ad611f2f92b699010ac10a44ac96e65383022a1; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:positive, f1116sb.used_i:left, f1116sb.room_ii:positive, f1116sb.used_ii:left, f1116sb.room_iii:positive, f1116sb.used_iii:right, f1116sb.room_iv:floor, f1116sb.used_iv:left, f1116sb.room_v:floor, f1116sb.used_v:left, f1116sb.room_vi:floor, f1116sb.used_vi:left, f1116sb.room_ix:floor, f1116sb.used_ix:left, f1116sb.room_x:floor, f1116sb.used_x:left, f1116sb.room_xi:floor, f1116sb.used_xi:left, f1116sb.room_xii:floor, f1116sb.used_xii:left, f1116sb.l6_xiii:floor, f1116sb.l8_ii:floor, f1116sb.l8_iii:positive, f1116sb.l8_iv:floor, f1116sb.l8_v:floor, f1116sb.l8_vi:floor, f1116sb.l8_ix:floor, f1116sb.l8_x:floor, f1116sb.l8_xi:floor, f1116sb.l8_xii:floor, f1116sb.changed:false, f1116sb.changed_if_carry#0, f1116sb.changed_if_carry:false, f1116sb.split:false, f1116sb.split_if_carry#0, f1116sb.split_if_carry:false, f1116sb.generated:false, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior#0, f1116sb.carry_through_prior:false, f1116sb.carry_through_tests:false",
       "inputs": {
         "$w2@person[taxpayer]": [
           "a"
@@ -115696,6 +115927,7 @@
         "household.ever_married": true,
         "household.married_dec31": false,
         "household.community_property": false,
+        "household.rdp": false,
         "household.spouse_died_this_year": false,
         "$interest": [],
         "$oi8z": [],
@@ -115802,7 +116034,6 @@
         "scope.k1": false,
         "scope.farm": false,
         "scope.remic": false,
-        "household.rdp": false,
         "scope.pay_no_w2": false,
         "scope.medicaid_waiver": false,
         "scope.religious_work": false,
@@ -116041,7 +116272,7 @@
         "f1116sb"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 299af758e8fd8e013487ef9d51e9847e6cec876ae7a069d0694c0b03f149b180; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:positive, f1116sb.used_i:right, f1116sb.room_ii:floor, f1116sb.used_ii:right, f1116sb.room_iii:floor, f1116sb.used_iii:right, f1116sb.room_iv:floor, f1116sb.used_iv:right, f1116sb.room_v:floor, f1116sb.used_v:right, f1116sb.room_vi:floor, f1116sb.used_vi:right, f1116sb.room_ix:floor, f1116sb.used_ix:right, f1116sb.room_x:floor, f1116sb.used_x:right, f1116sb.room_xi:floor, f1116sb.used_xi:right, f1116sb.room_xii:floor, f1116sb.used_xii:right, f1116sb.l6_xiii:floor, f1116sb.l8_ii:positive, f1116sb.l8_iii:positive, f1116sb.l8_iv:positive, f1116sb.l8_v:positive, f1116sb.l8_vi:positive, f1116sb.l8_ix:positive, f1116sb.l8_x:positive, f1116sb.l8_xi:positive, f1116sb.l8_xii:positive, f1116sb.changed:false, f1116sb.changed_if_carry#0, f1116sb.changed_if_carry:false, f1116sb.split:false, f1116sb.split_if_carry#0, f1116sb.split_if_carry:false, f1116sb.generated:false, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 299af758e8fd8e013487ef9d51e9847e6cec876ae7a069d0694c0b03f149b180; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:positive, f1116sb.used_i:right, f1116sb.room_ii:floor, f1116sb.used_ii:right, f1116sb.room_iii:floor, f1116sb.used_iii:right, f1116sb.room_iv:floor, f1116sb.used_iv:right, f1116sb.room_v:floor, f1116sb.used_v:right, f1116sb.room_vi:floor, f1116sb.used_vi:right, f1116sb.room_ix:floor, f1116sb.used_ix:right, f1116sb.room_x:floor, f1116sb.used_x:right, f1116sb.room_xi:floor, f1116sb.used_xi:right, f1116sb.room_xii:floor, f1116sb.used_xii:right, f1116sb.l6_xiii:floor, f1116sb.l8_ii:positive, f1116sb.l8_iii:positive, f1116sb.l8_iv:positive, f1116sb.l8_v:positive, f1116sb.l8_vi:positive, f1116sb.l8_ix:positive, f1116sb.l8_x:positive, f1116sb.l8_xi:positive, f1116sb.l8_xii:positive, f1116sb.changed:false, f1116sb.changed_if_carry#0, f1116sb.changed_if_carry:false, f1116sb.split:false, f1116sb.split_if_carry#0, f1116sb.split_if_carry:false, f1116sb.generated:false, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior#0, f1116sb.carry_through_prior:false, f1116sb.carry_through_tests:false",
       "inputs": {
         "$w2@person[taxpayer]": [
           "a"
@@ -116122,6 +116353,7 @@
         "household.ever_married": true,
         "household.married_dec31": false,
         "household.community_property": false,
+        "household.rdp": false,
         "household.spouse_died_this_year": false,
         "$interest": [],
         "$oi8z": [],
@@ -116228,7 +116460,6 @@
         "scope.k1": false,
         "scope.farm": false,
         "scope.remic": false,
-        "household.rdp": false,
         "scope.pay_no_w2": false,
         "scope.medicaid_waiver": false,
         "scope.religious_work": false,
@@ -116471,7 +116702,7 @@
         "f1116sb"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e56a3cf7e4f28a00d3ccf14829095d8bf110a942ff938a7d4a0d832f655bf001; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:positive, f1116sb.used_i:left, f1116sb.room_ii:positive, f1116sb.used_ii:left, f1116sb.room_iii:positive, f1116sb.used_iii:left, f1116sb.room_iv:positive, f1116sb.used_iv:left, f1116sb.room_v:positive, f1116sb.used_v:left, f1116sb.room_vi:positive, f1116sb.used_vi:left, f1116sb.room_ix:positive, f1116sb.used_ix:left, f1116sb.room_x:positive, f1116sb.used_x:left, f1116sb.room_xi:positive, f1116sb.used_xi:left, f1116sb.room_xii:positive, f1116sb.used_xii:right, f1116sb.l6_xiii:floor, f1116sb.l8_ii:floor, f1116sb.l8_iii:floor, f1116sb.l8_iv:floor, f1116sb.l8_v:floor, f1116sb.l8_vi:floor, f1116sb.l8_ix:floor, f1116sb.l8_x:floor, f1116sb.l8_xi:floor, f1116sb.l8_xii:positive, f1116sb.changed:false, f1116sb.changed_if_carry#0, f1116sb.changed_if_carry:false, f1116sb.split:false, f1116sb.split_if_carry#0, f1116sb.split_if_carry:false, f1116sb.generated:false, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 e56a3cf7e4f28a00d3ccf14829095d8bf110a942ff938a7d4a0d832f655bf001; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:positive, f1116sb.used_i:left, f1116sb.room_ii:positive, f1116sb.used_ii:left, f1116sb.room_iii:positive, f1116sb.used_iii:left, f1116sb.room_iv:positive, f1116sb.used_iv:left, f1116sb.room_v:positive, f1116sb.used_v:left, f1116sb.room_vi:positive, f1116sb.used_vi:left, f1116sb.room_ix:positive, f1116sb.used_ix:left, f1116sb.room_x:positive, f1116sb.used_x:left, f1116sb.room_xi:positive, f1116sb.used_xi:left, f1116sb.room_xii:positive, f1116sb.used_xii:right, f1116sb.l6_xiii:floor, f1116sb.l8_ii:floor, f1116sb.l8_iii:floor, f1116sb.l8_iv:floor, f1116sb.l8_v:floor, f1116sb.l8_vi:floor, f1116sb.l8_ix:floor, f1116sb.l8_x:floor, f1116sb.l8_xi:floor, f1116sb.l8_xii:positive, f1116sb.changed:false, f1116sb.changed_if_carry#0, f1116sb.changed_if_carry:false, f1116sb.split:false, f1116sb.split_if_carry#0, f1116sb.split_if_carry:false, f1116sb.generated:false, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior#0, f1116sb.carry_through_prior:false, f1116sb.carry_through_tests:false",
       "inputs": {
         "$w2@person[taxpayer]": [
           "a"
@@ -116552,6 +116783,7 @@
         "household.ever_married": true,
         "household.married_dec31": false,
         "household.community_property": false,
+        "household.rdp": false,
         "household.spouse_died_this_year": false,
         "$interest": [],
         "$oi8z": [],
@@ -116658,7 +116890,6 @@
         "scope.k1": false,
         "scope.farm": false,
         "scope.remic": false,
-        "household.rdp": false,
         "scope.pay_no_w2": false,
         "scope.medicaid_waiver": false,
         "scope.religious_work": false,
@@ -116897,7 +117128,7 @@
         "f1116sb"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 b8489d3c78ee672ac332fee7845c04fb866f69f381e737b2a8fc5868772ab127; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:floor, f1116sb.used_i:left, f1116sb.room_ii:floor, f1116sb.used_ii:left, f1116sb.room_iii:floor, f1116sb.used_iii:left, f1116sb.room_iv:floor, f1116sb.used_iv:left, f1116sb.room_v:floor, f1116sb.used_v:left, f1116sb.room_vi:floor, f1116sb.used_vi:left, f1116sb.room_ix:floor, f1116sb.used_ix:left, f1116sb.room_x:floor, f1116sb.used_x:left, f1116sb.room_xi:floor, f1116sb.used_xi:left, f1116sb.room_xii:floor, f1116sb.used_xii:left, f1116sb.l6_xiii:positive, f1116sb.l8_ii:floor, f1116sb.l8_iii:floor, f1116sb.l8_iv:floor, f1116sb.l8_v:floor, f1116sb.l8_vi:floor, f1116sb.l8_ix:floor, f1116sb.l8_x:floor, f1116sb.l8_xi:floor, f1116sb.l8_xii:floor, f1116sb.changed_if_carry#1, f1116sb.changed_if_carry:false, f1116sb.split_if_carry#1, f1116sb.split_if_carry:false, f1116sb.generated:true, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior:false",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 b8489d3c78ee672ac332fee7845c04fb866f69f381e737b2a8fc5868772ab127; pages i1116sb 1,2,3,4 (90f1313e93bf); f1116sb 1,2 (93e629b6b89e); p514 37,38,39 (db756c91fb39); i1116 19 (ca3e843c3bea); branches f1116sb.no:false, f1116sb.excess_limit:floor, f1116sb.used_i:left, f1116sb.room_ii:floor, f1116sb.used_ii:left, f1116sb.room_iii:floor, f1116sb.used_iii:left, f1116sb.room_iv:floor, f1116sb.used_iv:left, f1116sb.room_v:floor, f1116sb.used_v:left, f1116sb.room_vi:floor, f1116sb.used_vi:left, f1116sb.room_ix:floor, f1116sb.used_ix:left, f1116sb.room_x:floor, f1116sb.used_x:left, f1116sb.room_xi:floor, f1116sb.used_xi:left, f1116sb.room_xii:floor, f1116sb.used_xii:left, f1116sb.l6_xiii:positive, f1116sb.l8_ii:floor, f1116sb.l8_iii:floor, f1116sb.l8_iv:floor, f1116sb.l8_v:floor, f1116sb.l8_vi:floor, f1116sb.l8_ix:floor, f1116sb.l8_x:floor, f1116sb.l8_xi:floor, f1116sb.l8_xii:floor, f1116sb.changed_if_carry#1, f1116sb.changed_if_carry:false, f1116sb.split_if_carry#1, f1116sb.split_if_carry:false, f1116sb.generated:true, f1116sb.prior_asked:true, f1116sb.prior_year_if_excess#0, f1116sb.carryback:false, f1116sb.carry_through_prior#1, f1116sb.carry_through_prior:false, f1116sb.carry_through_tests:false",
       "inputs": {
         "$w2@person[taxpayer]": [
           "a"
@@ -116945,6 +117176,7 @@
         "household.ever_married": true,
         "household.married_dec31": false,
         "household.community_property": false,
+        "household.rdp": false,
         "household.spouse_died_this_year": false,
         "$interest": [],
         "$oi8z": [],
@@ -117043,6 +117275,7 @@
         "sb.territory_any": false,
         "scope.noncitizen": false,
         "scope.chapter11": false,
+        "scope.fiscal_year": false,
         "scope.treaty": false,
         "scope.armed_forces": false,
         "scope.f8814": false,
@@ -117077,9 +117310,7 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sli.any": false,
-        "ssb.any": false,
-        "household.rdp": false,
-        "scope.fiscal_year": false
+        "ssb.any": false
       },
       "expect": {
         "f1116sb.l1_i": {

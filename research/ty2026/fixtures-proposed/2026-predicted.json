@@ -152,7 +152,7 @@
     {
       "id": "ty2026.sa.gambling_90_limited_by_winnings",
       "covers": [
-        "sa.line16_gambling",
+        "sa.other_itemized_gambling",
         "sa.other_itemized"
       ],
       "evidence": "source-predicted (final (statute) and draft (Schedule A))",
@@ -169,7 +169,7 @@
     {
       "id": "ty2026.sa.gambling_90_below_winnings",
       "covers": [
-        "sa.line16_gambling",
+        "sa.other_itemized_gambling",
         "sa.other_itemized"
       ],
       "evidence": "source-predicted (final (statute) and draft (Schedule A))",

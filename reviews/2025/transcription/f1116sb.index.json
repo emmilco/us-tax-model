@@ -32,10 +32,10 @@
   },
   {
    "key": "f1116sb.carry_through_prior",
-   "record": "63e8d6e1fdbbfebfd1e97551132f55e3ddc5f9650782b5cb9ac1efd2deab89c3",
+   "record": "99e0c694f7976e32d44ae245747774185c5dab308722526131933462e8a8e681",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_carry_no_schedule_b (decided under the owner's delegation of 2026-11-24). The reply again reads the interface inverted: the line is the refusal gate its label states (true for a carryover brought in through a 2024 return that deducted the foreign tax or took no credit, and false where f1116sb.changed_if_carry or f1116sb.split_if_carry already refuses on Form 1116 line 35), and the reply returns true for the complement ('form_full' or 'form_room' with no change and no split), which as a refusal would refuse every ordinary Form 1116 carryover. On 'election' and 'none' it repeats the point the register entry decides: i1116 p. 19 ('Don’t reduce the carryback or carryforward by the amount you would have used in the election year') and Pub. 514 p. 37 (no excess limit without foreign income) leave the carryover unreduced, entered from the latest Schedule B by year of origin. For 'other' both refuse. Project right on the interface.",
-   "subject_key": "b9fc7df7bd492477c3b71ddb07c5525c29b43796dd531dc0a9c7f221f2e2389d"
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carry_no_schedule_b (decided under the owner's delegation of 2026-11-24), as the two earlier rulings of this line. The reply again reads the interface inverted: the line is the refusal gate its label states (true for a carryover brought in through a 2024 return that deducted the foreign tax or took no credit, prior year 'other'), and the reply returns true for the complement (prior year not 'other', with no change and no split), which as a refusal would refuse every ordinary Form 1116 carryover; it also drops the gate on ftc.carryover_if_asked. The line changed only in form: the conjunction is now a choice on ftc.carryover_if_asked whose true branch is f1116sb.carry_through_tests (the same three tests), so the interview no longer reaches the Form 1116 roster before the carryover question (BUG-1448); its value is the same for every known answer. i1116 p. 19, Line 10, 'However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit'. Project stands.",
+   "subject_key": "a858db56a1e2d2e1cd85b83f32347f06f3fdffda909afccbf289f380287fb8a5"
   },
   {
    "key": "1 (i)",
@@ -362,7 +362,7 @@
   "f1116sb.changed_if_carry": "7e888e0b617c916b86ac55b573c4ef0301bbea54ea31361fcdfe1b9b55affc57",
   "f1116sb.split_if_carry": "1d0a71bed341f88c88ff13349a18e12de6ff112511b2b3d4827202184380f659",
   "f1116sb.carryback": "a0e337447eb6ae606b2feffe3a134aa1d7efe06dd246d52043b1da4622096245",
-  "f1116sb.carry_through_prior": "192ceea5bab345e7b63822e57bce6b53112276f2f22233a635daf9b7d09f8c08",
+  "f1116sb.carry_through_prior": "2785deff5a17741d0eae5a74bbd23821702cb04fd4fa25e84bc7334d37a65bc8",
   "1 (i)": "6e79ef68f02d5a3a8ddfa388a0230cc5d740df29a63640f7f5fdfb04fedea9e6",
   "1 (ii)": "9cba85e4d465ff9da9d00a284240519181a1579a6b0f4476a93b8b06ce5da854",
   "1 (iii)": "c402c2a579499b244da974ff03bf21df72b54df9522347f913ac93de761cd07d",

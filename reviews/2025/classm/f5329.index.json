@@ -124,5 +124,17 @@
    "record": "fa79d36984452c609d546c2c0a17f415a69e8b5581e77fb96439a2e31fe94399",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "1c55768e2172eccde36c07147e08f5711b51e03849b60a8268427cb3bb93a514",
+  "was": "569ab70230c5dcdf386f8a1af903d25906c297eec6038980174bbfe55cc3a66e",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "s2.line8_file": "s2.tax_favored_accounts_file"
+   },
+   "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+   "was": "569ab70230c5dcdf386f8a1af903d25906c297eec6038980174bbfe55cc3a66e"
+  }
+ }
 }

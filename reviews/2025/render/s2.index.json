@@ -4,6 +4,7 @@
  "family": "claude",
  "base": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
  "head_rows": {
+  "match / mismatch / unclear / missing": "14 / 1 / 0 / 0",
   "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
@@ -15,9 +16,9 @@
   },
   {
    "key": "1z",
-   "record": "2cf0ad27602f6ba6b92cfbef70cd1cb64a57a9a2e02d9a07044d78fe69adbf15",
+   "record": "0738b82a20ae8f07f832b01912af9e793f58ab56f72f2779bdb5c74ff685280d",
    "status": "MATCH",
-   "subject_key": "10b5cba8b67bed6b543ec66826dbac9a61013ce47eb6a218cff87f4bffb86a4f"
+   "subject_key": "e9ed1eb62e627489c020f7e5161d61223c245dd633d04712c725680016f1eb54"
   },
   {
    "key": "2",
@@ -99,14 +100,16 @@
    "key": "8 (box)",
    "record": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
    "status": "MATCH",
-   "subject_key": "5a88d54b88d51167afacf692f75a9b7e5bce5fe8fad964d4e4b0e1e35fd8f781",
+   "subject_key": "65cb8b4ec92edcb63cbdcb4e2dc6e83e84f07087c69507a6c589609f7aff41f1",
    "carried": {
     "by": "rename",
     "map": {
-     "s2.line8": "s2.tax_favored_accounts"
+     "s2.line8_box": "s2.tax_favored_accounts_box",
+     "s2.line8_file": "s2.tax_favored_accounts_file",
+     "s2.line8_must": "s2.tax_favored_accounts_must"
     },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "7d55e0e6010642ce367defc75ad88de14dbc37e8b36fc1d7f71d7e03b33445dd"
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "5a88d54b88d51167afacf692f75a9b7e5bce5fe8fad964d4e4b0e1e35fd8f781"
    }
   },
   {
@@ -168,14 +171,15 @@
   },
   {
    "key": "21",
-   "record": "2cf0ad27602f6ba6b92cfbef70cd1cb64a57a9a2e02d9a07044d78fe69adbf15",
-   "status": "MATCH",
-   "subject_key": "8a5877e3d849c71d3e435c3de053bb1b9e27b731fcf4b0951777f56aa0431102"
+   "record": "0738b82a20ae8f07f832b01912af9e793f58ab56f72f2779bdb5c74ff685280d",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; as the earlier rulings of this line: lines 14 and 15 arise only from installment sales (Form 6252 and section 453A), refused by sd.installment ('An installment sale is figured on Form 6252 ... a Yes ends the interview here') and, for a business, sc.special ('income you report under the installment method (including installment sales of timeshares or residential lots)'); the remaining lines 9, 10, 13, 16, 17 and 19 are refused by the Schedule 2 screens through s2.other. The restatement changed only through s2.lookback_ask's royalty leg (BUG-1448), which leaves every value as it was.",
+   "subject_key": "ab2de6a839e6a26604249eb0d9be51585d6c978476bf3bdf3363c474297f45a2"
   }
  ],
  "subjects": {
   "1a": "948c5bdb2766ad5ed74cbb3ecc7e370cef081b3b5fc0e996e63782a1b301ec54",
-  "1z": "c4db1b8e37c5562c8122ee5073a3e20a84edbef6f565e60ac3351072ec5f176e",
+  "1z": "9d57b9f63daa00e63d251929282bf0b05fcff70a41fb526e97cd9d1d4d675b1e",
   "2": "858c5741670d944da4a7a875a8da1b965f3723a58ab724abf4fbbe32acb85f5e",
   "3": "092dce3698e41b666202e25927d6d429a51b8315eb175bfae2cf9419b6e941ae",
   "4": "9cd8a4c296c43b06d436f6de558fe38ee0931e30d2d7f91c46bde228c1854ab2",
@@ -183,12 +187,12 @@
   "6": "6d634a528e099b73b24d179bf5a4c7c71e3db5d547f10f11380e4429eb988c8f",
   "7": "16d3e30e2222a6d41e720d797b975ac1e2ba0bd52afe7e25d9a8ee12a07690e1",
   "8": "97d7427c96bc2e024ec18fa7c59dec2184f64becf3d6a4e2764ff1e158c1bf31",
-  "8 (box)": "c51eecd7f51c99f20aeb75ca8d7c877fa965c63e737953c023c700942e736c55",
+  "8 (box)": "501a3ccee560b80496619add87aa1dfd20292c172cd0bdff5fd498ace88b8176",
   "11": "09bdab9a66c619d3c9fc5a573660ddc16d750409e061b4741dd7ab2d7c5d0af5",
   "12": "6dbad47708090452ab64badbfae748c2775653d7f1abc4bddc60b27e8667b8eb",
   "17c": "a634180d4d96db525cb16d296104480aba08fef9c4715e22d96515cb216272e5",
   "18": "fd1ecf75160d713065c2e2e6a006b979e93d58cd0f0d70a13fac86bc885396d9",
-  "21": "919ec3c16d982d97b851037632963e2075c6686fc64e6874a1e768a91ecb72d7"
+  "21": "0633056fc94958eae6da7630b4a0d00398d4ac7008938d3d0e9a39d1557efc1d"
  },
  "__rest__": "62e1e78bc43403c82fc8dd83ac8b2f3e5535a2a722b2af4193ee0376b12e6cd6"
 }

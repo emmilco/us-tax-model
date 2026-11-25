@@ -425,12 +425,12 @@ changes:
             locator: p. 96, section 70114, section 165(d)(1)(A), "shall be equal to 90 percent of the amount of such losses
               during such taxable year"
     - set:
-        line: sa.line16_gambling
+        line: sa.other_itemized_gambling
         field: label
         from: Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
         to: 90 percent of gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
     - set:
-        line: sa.line16_gambling
+        line: sa.other_itemized_gambling
         field: expr.of
         from:
         - sa.gambling_losses

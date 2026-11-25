@@ -171,7 +171,15 @@
    "key": "16",
    "record": "b725ab76b33db271d4d469858d62885c4980b453f6bff722864791e3989c5ef9",
    "status": "AGREE",
-   "subject_key": "639a663e803e478fdd60a114542e1f58ea4d16e3a2ade98071eb4715fb7974e5"
+   "subject_key": "711ae9a768a106266629d3dd6a32e35a35a71a30846a515935d879b6494738f1",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "sa.line16_gambling": "sa.other_itemized_gambling"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "639a663e803e478fdd60a114542e1f58ea4d16e3a2ade98071eb4715fb7974e5"
+   }
   },
   {
    "key": "7",
@@ -283,7 +291,7 @@
   "8c": "279cb5b852dd1c005e58eac78dbce8b32e2c2e76244cc01fa24154949aa08285",
   "13": "5d8dcad7865e4e6df2d52b90d1d5c58a9f0dd9aa3edee21bf81f368e62c59bf8",
   "15": "9349fd74c518fc432faf480229cd4fc92253846c237201af6ffc8aa6b88f5402",
-  "16": "31fe3a00ff70102d525d5dc3f9598f8e2e2c54b7493cb269cc1a17e08ecc3dc0",
+  "16": "e5dd3d5fe53b7d27dcabe6f186af0c99549c7fd99df27d2fa20ec032586de320",
   "7": "f01dc441865ba4d227e6810328f38376b883f341b25679842cfe8a31fbf9aee0",
   "8e": "071a09a146b961bd36890e32be2ec4297f5915da1cc043f46279a262029f7cd9",
   "9": "6afefd4a342b5f5749c93d7aab8c5b7494cd95445e619cb164a79b29df97b69b",

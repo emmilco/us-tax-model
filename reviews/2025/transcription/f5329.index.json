@@ -28,62 +28,118 @@
    "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2138 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
-   "subject_key": "741f018d69035dc25ee8cffc120caf6312d3febd3f65a287f9bf23210414bb64"
+   "subject_key": "f37f8b202315ced2d42426e909c6b06910fdb997cc5b4334b99804d6a8fb0fe8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "741f018d69035dc25ee8cffc120caf6312d3febd3f65a287f9bf23210414bb64"
+   }
   },
   {
    "key": "2",
    "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i5329 p. 5, Line 2. representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2145 of 2228 comparisons agree; on completed returns no difference.",
-   "subject_key": "74a5b8bf1cff9a2da2c343ab7d870e69c545f678cfacffeb39f753f9de136de7"
+   "subject_key": "d26e3d3a32dc9913cb76e8fa63da08e278794f4193a91ebab2e14ef1cf7300ab",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "74a5b8bf1cff9a2da2c343ab7d870e69c545f678cfacffeb39f753f9de136de7"
+   }
   },
   {
    "key": "3",
    "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2133 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
-   "subject_key": "5981b69a67bf9fcfb83fbf811ea62b59a38b02b4ed2bc11706863effa32d138f"
+   "subject_key": "2ad80105a16ebeb5628950c2c187c0859bd7a4eeef92e8cb7a816ce3fb1d9992",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "5981b69a67bf9fcfb83fbf811ea62b59a38b02b4ed2bc11706863effa32d138f"
+   }
   },
   {
    "key": "4",
    "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i5329 p. 1, Who Must File: \"if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and you owe the additional tax on the full amount ... you don't have to file Form 5329.\" The project hides the line when the form is not filed; the candidate shows an amount there. Triage executable-triage-v2 (triage/f5329.json): 2134 of 2228 comparisons agree; on completed returns {\"candidate-shows-skipped\": 3}.",
-   "subject_key": "ad5ab5748f8c97b8c880697f5c9cb860e8af69b5c1a00e8f282ee05f87a34507"
+   "subject_key": "956cba6dbd6ede501dcbae2776701c77429c00d09d2c3aabc127961df8d4b239",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "ad5ab5748f8c97b8c880697f5c9cb860e8af69b5c1a00e8f282ee05f87a34507"
+   }
   },
   {
    "key": "47",
    "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i5329 p. 8, Line 47. representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2196 of 2228 comparisons agree; on completed returns no difference.",
-   "subject_key": "aa8367cef0dd4dbf2dc1b1228651d2491da7146942ff1224df3828864eb6f767"
+   "subject_key": "668b23fd5cbae9e74e41bdad9d4438004fea07855e6765c12379eb7fd211f413",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "aa8367cef0dd4dbf2dc1b1228651d2491da7146942ff1224df3828864eb6f767"
+   }
   },
   {
    "key": "48",
    "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
    "status": "DISAGREE",
    "ruling": "Ruling: scope; lines 42 to 46 are refused through person.x_other (BUG-0313). representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2195 of 2228 comparisons agree; on completed returns no difference.",
-   "subject_key": "bbb6c645423336d370b57cce57aa9ae5a1f4f86b27c3846e6926d3f6fa8f184f"
+   "subject_key": "a985522bec62c0b9729cdff540fe5f14396f8d84049a5f9820ee519356b02d5a",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "bbb6c645423336d370b57cce57aa9ae5a1f4f86b27c3846e6926d3f6fa8f184f"
+   }
   },
   {
    "key": "49",
    "record": "e2ff9df0f5d6499dbccee22b18c1305f812b31956245bc1644ad57146477362c",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/f5329.json): 2196 of 2228 comparisons agree; on completed returns no difference.",
-   "subject_key": "db022757167d5ce8bbb7f7df394039cc5080a9746998e4e03c5584ad621ffa28"
+   "subject_key": "264ef4ef65bc393a7ba8ffe9d2e3a68ae65e9f3012feb4ba7094f2cc98db55e8",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "db022757167d5ce8bbb7f7df394039cc5080a9746998e4e03c5584ad621ffa28"
+   }
   }
  ],
  "subjects": {
   "f5329.tax": "59e6f6d7383df4c7a21316f0670617c683eff2d23b19aa52b0e26785d75a7134",
   "f5329.must": "66d905687033fe3c388e6e7afbfdc69dfe642fff4c4d44093fe45d15526b676b",
   "f5329.one": "2a8599b7f9d681f0366275de22e3cf5a1f19a905ea58ce59034f46cfa4e0a500",
-  "1": "89754392f93940daf27e16f1e6493cd2dd31a298c5311fd10348a4aa65277068",
-  "2": "c871f2c2f30fe05c67985f75750d3b11518aa5225a2ccea322e0bc3ed82ab27a",
-  "3": "27f6256aa5bc3e2cb64897be1336cbcca60bc4baa5a299a72930ce12b646d5e6",
-  "4": "56f7ee62a585d54d0c8671650b7daff541f2f0b2b632e284171b5c59dae2b12c",
-  "47": "228de467db8bbce58e5afd5dd910615dbb8659c7ec71438d33b8e55bb3477fff",
-  "48": "784bb847bea5eb1b6a89f844db33baf73737625349a3641fe924ae345b940c46",
-  "49": "6477f7894d4cc0e8a342754bfd89a7b6a270fb1b251c7816051cd4a2c9f5b972"
+  "1": "ac86ff47b448803368e629c50bdbfc71bc3ebb019e384f7edd6b0278c190d313",
+  "2": "2d0e7b26cdf833bec5acf082e7e79b767cf3289723ee6b5b16de70ed6d2ab57b",
+  "3": "5a4d25e5bdca208ec664704e3a641d63386df4a32137711034fa15c04475af14",
+  "4": "f1f39dab4a56827dfb001cd8c8d8c2e815f184996c5ce76ae71d518bcfe9e8f1",
+  "47": "c5eaa1280994dba8dcbd2b4a64fbae3831cff8ab6b0532e8c04c20d3171d2e83",
+  "48": "f10564a434558ebc6725af61aca7bef96dd88456048d6e9bee3822f75f4d6eec",
+  "49": "8e7de6469fe356b12dd35244fcf3325c68e80393c81df0c336a395f58feb0c24"
  },
  "__rest__": "4c207866421816c1e9bbbee293f2b3b9ba53816f3f8f373afbc41758193585e9"
 }

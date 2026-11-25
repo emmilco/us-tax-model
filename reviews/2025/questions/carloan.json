@@ -307,38 +307,47 @@
    ]
   },
   "carloan.mixed": {
-   "subject_sha": "84c086d6bcb3a66b1dc4dd0cba0b3f56a9e8fb00eccb1935647c8cb0a236f6bd",
+   "subject_sha": "c15a1bda26de6cc76274127ef8dafb578c03e684a897c80d067eadfad1665082",
    "samples": [
     {
-     "verdict": "NARROW",
+     "verdict": "WIDE",
      "findings": [
       {
-       "kind": "NARROW",
-       "situation": "A filer refinanced a qualifying car loan. The new loan's principal is larger than the old loan's outstanding balance because refinance fees or closing costs were rolled in, but no cash went to the filer.",
-       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(4): \"The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan as of the date of the refinancing. A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis.\"",
-       "why": "The question frames non-qualifying amounts only as items outside 'the vehicle and items customarily financed with it' and 'cash paid to you'. A filer would see rolled-in refinance fees as vehicle-loan costs and answer no. Under (d)(4), any principal above the refinanced balance is outside the SPVL, so the lines need yes and a pro rata split.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "A filer's original loan included non-qualifying amounts such as negative equity or a trailer. The filer then refinanced that loan, and the new loan was used only to pay off the old one.",
-       "source_text": "fr-2025-24154 p. 21, Proposed § 1.163-16(d)(4): \"If a taxpayer refinances an SPVL (refinanced loan), the resulting indebtedness (new loan) is an SPVL ...\"; (d)(2)(iii)(A): \"Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) of this section is an SPVL.\"",
-       "why": "Asked whether the new loan financed anything other than the vehicle, the filer would truthfully say no, because it only paid off the car loan. But only the SPVL portion carried over from the old loan qualifies, so the lines need yes. The question cites only (d)(2)(i)–(ii) and never directs the filer to look through a refinance to the original loan's makeup.",
+       "kind": "WIDE",
+       "situation": "A filer's loan also financed a common dealer add-on that the help does not list, such as a theft-deterrent (VIN etching) protection product or a tracking device. Reading the help's closed list and its catch-all 'other goods or services', the filer answers Yes, even though the regulations treat such items as customarily financed vehicle-related amounts.",
+       "source_text": "fr-2026-18219 p. 24, § 1.163-16(d)(2)(i): 'Items or amounts customarily financed in an APV purchase transaction that are directly related to the purchase of the APV include, but are not limited to, ... vehicle protection products (including tire, wheel, paint, and interior protection products) ...'; question help: 'The usual add-ons are ... Answer Yes if the loan also covered ... a trailer or other goods or services'",
+       "why": "The regulation's list is open ('include, but are not limited to') and names 'vehicle protection products' as a general category. The help states the add-ons as a closed list ('The usual add-ons are') and sends any other goods or services to Yes, so qualifying amounts can switch the lines to the pro-rata branch and reduce the QPVLI.",
        "bound": ""
       }
      ],
-     "prompt_sha": "5f021e2540b15972517726a3615a9279ce075d44893dcc80136580a7eb096d83",
+     "prompt_sha": "f83917abda445a0dbdace043bb2c469fcb7181ef6fc285a7ca69d543c12e4085",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.093512,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/carloan.mixed.84c086d6bcb3.1.response.txt"
+     "cost": 0.125996,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/carloan.mixed.c15a1bda26de.1.response.txt"
     }
    ],
    "type": "Bool",
    "readers": 2,
    "brief": false,
    "used": [
+    {
+     "doc": "fr-2026-18219",
+     "revision": "91 FR 57214, September 8, 2026 (T.D. 10054), final regulations",
+     "text_sha256": "6d407aaf8eb3bec05ae7e47bca8d4e66b1c7700f5f225abce9bcd07f08aaa531",
+     "pages": [
+      24
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, § 1.163-16(d)(2)(i) and (ii); , Schedule 1-A, Loan amount"
+     ],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "e1f7d9f1c263b6cfca76091208729d0d30a542e9a2d100faa222267adcf8faa4"
+    },
     {
      "doc": "fr-2025-24154",
      "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
@@ -352,7 +361,6 @@
      "how": "cited pages",
      "locators": [
       "p. 23, Proposed § 1.163-16(g)(1), \"Independently deductible interest is limited to interest that is QPVLI\"",
-      "pp. 20–22, Proposed § 1.163-16(d)(2)(i) and (ii); , Schedule 1-A, Loan amount",
       "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(6) Examples 1, 2 and 4"
      ],
      "cols_pages": [
@@ -380,38 +388,56 @@
    ]
   },
   "carloan.nonqualifying": {
-   "subject_sha": "990a0370265a0b3db41d53f6c80c69d4c77e6bd90b0a1aefe631c4266d7ab11b",
+   "subject_sha": "8954f177bada9b674e8413d2436e92c6b65b94591e5f568c6852996f24154d80",
    "samples": [
     {
-     "verdict": "NARROW",
+     "verdict": "WIDE",
      "findings": [
       {
-       "kind": "NARROW",
-       "situation": "The loan finances a service unrelated to the vehicle (for example, a non-vehicle service contract or membership), and the filer leaves it out because the question lists only negative equity, insurance, unrelated property and cash paid to you.",
-       "source_text": "fr-2025-24154 p. 21, § 1.163-16(d)(2)(ii): \"to purchase any property or services unrelated to an APV (for example, a trailer or a boat)\"; (d)(2)(iii)(B): \"any negative equity and any other amounts that are not incurred for the purchase of the APV\"",
-       "why": "The rule covers unrelated services and any other amount not customarily financed and directly related to the vehicle. The question's closed parenthetical list names only \"unrelated property,\" so the filer understates the nonqualifying amount and overstates QPVLI.",
+       "kind": "WIDE",
+       "situation": "A filer whose loan also financed comprehensive (theft, fire, weather) coverage on the new vehicle reports that premium as nonqualifying, because the question names 'other car insurance'.",
+       "source_text": "fr-2026-18219 p. 24, § 1.163-16(d)(2)(i): items customarily financed 'include, but are not limited to ... guaranteed asset protection (GAP) waiver or insurance ... credit insurance products'; (d)(2)(ii) excludes only indebtedness 'to purchase collision and liability insurance that is not a credit insurance product'",
+       "why": "The recorded reading chooses the final regulations, and they exclude only collision and liability insurance. They leave other vehicle insurance within the open-ended list of directly related, customarily financed items. Asking for 'collision, liability or other car insurance' sweeps that coverage into the nonqualifying amount, which shrinks the QPVLI on lines 22(ii) and 22(iii).",
        "bound": ""
       },
       {
        "kind": "UNCLEAR",
-       "situation": "The filer paid for an item that does not qualify, such as collision insurance, separately at the dealership rather than rolling it into the loan, and is unsure whether it counts as an amount \"in the purchase.\"",
-       "source_text": "Question: \"The total of the amounts in the purchase that do not qualify (negative equity, insurance, ...)\"; fr-2025-24154 p. 21, § 1.163-16(d)(2)(ii): \"To the extent any indebtedness is not incurred ... for the purchase of an APV ... such indebtedness is not an SPVL\"",
-       "why": "The lines need only nonqualifying amounts that were financed under the loan. \"In the purchase\" can also be read to include nonqualifying items paid outside the loan, which would inflate the nonqualifying debt.",
+       "situation": "A filer whose contract finances a dealer document fee could count it under 'other goods or services' because the help mentions only sales tax and 'vehicle fees'.",
+       "source_text": "fr-2026-18219 p. 25, (d)(6) Example 1: amount financed includes 'title and registration fees, and a dealer document fee' and 'All of the amount financed ... is incurred for the purchase of an APV and for other items ... customarily financed'",
+       "why": "The rule excludes only property or services 'unrelated to an APV' (for example, a trailer or a boat). The question's bare 'other goods or services' can reasonably be read to cover dealer charges that the regulation treats as qualifying, and the two readings give different amounts.",
        "bound": ""
       }
      ],
-     "prompt_sha": "5e2cacc145b62b74f2dd32121af4176b4b433b2a4b3a3eec0c1ea810e97e98c8",
+     "prompt_sha": "974617dcd5e9e1cc92fab8efd7dda9b761e4d279cee9f61908e9e28285ab1247",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.0721,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/carloan.nonqualifying.990a0370265a.1.response.txt"
+     "cost": 0.09714,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/carloan.nonqualifying.8954f177bada.1.response.txt"
     }
    ],
    "type": "NonNegDollars",
    "readers": 1,
    "brief": false,
    "used": [
+    {
+     "doc": "fr-2026-18219",
+     "revision": "91 FR 57214, September 8, 2026 (T.D. 10054), final regulations",
+     "text_sha256": "6d407aaf8eb3bec05ae7e47bca8d4e66b1c7700f5f225abce9bcd07f08aaa531",
+     "pages": [
+      24,
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, § 1.163-16(d)(2)(ii); p. 25, (d)(6) Example 4"
+     ],
+     "cols_pages": [
+      24,
+      25
+     ],
+     "cols_sha256": "e1f7d9f1c263b6cfca76091208729d0d30a542e9a2d100faa222267adcf8faa4"
+    },
     {
      "doc": "fr-2025-24154",
      "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
@@ -423,7 +449,6 @@
      ],
      "how": "cited pages",
      "locators": [
-      "pp. 20–22, Proposed § 1.163-16(d)(2)(ii) and (d)(6) Example 4",
       "pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B) and (d)(6) Example 4"
      ],
      "cols_pages": [
@@ -486,45 +511,47 @@
    ]
   },
   "carloan.refi_whole": {
-   "subject_sha": "1e92cbe97b5d6c8bc46276960c09055e742594e32208cdc0cf8770c937f49c05",
+   "subject_sha": "0d930a045a757ab8803006e798f0b1a7abfe9b0be7e61cf185bdc5bcf8238d65",
    "samples": [
     {
-     "verdict": "WIDE",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "WIDE",
-       "situation": "The refinanced loan rolled in negative equity from a trade-in, or financed collision or liability insurance; a filer treats these as items customarily financed with the car and answers yes, although that loan was only partly an SPVL.",
-       "source_text": "fr-2025-24154 p.21, § 1.163-16(d)(2)(ii): \"indebtedness incurred for the repayment of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance ... is not incurred ... for any other items or amounts customarily financed in an APV purchase transaction ... and as a result is not an SPVL\"; p.22 Example 4",
-       "why": "The question says \"items customarily financed with it\" but does not say that negative equity and insurance are excluded. Rolled-in negative equity and dealer-sold insurance are commonly financed in practice, so a truthful yes switches off the partial-SPVL gate when it should be on.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "The refinanced loan was itself a refinancing for exactly the balance it replaced, but the earlier loan it paid off was only partly an SPVL (for example, it included a trailer, negative equity or cash proceeds); the filer answers yes to both parts of the parenthetical.",
-       "source_text": "fr-2025-24154 p.21, § 1.163-16(d)(4): \"The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan\"; (d)(2)(iii)(A): \"Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) ... is an SPVL\"",
-       "why": "The parenthetical tests only whether the refinanced loan's own balance grew. It misses a non-SPVL portion carried forward from an earlier loan in the chain, so a truthful yes hides a loan that was only partly qualifying.",
-       "bound": ""
-      },
-      {
        "kind": "UNCLEAR",
-       "situation": "The refinanced loan was itself a refinancing loan, so what it 'financed' was the payoff of a prior loan rather than the vehicle.",
-       "source_text": "Question: \"it financed only the vehicle and items customarily financed with it, and was not itself a refinancing for more than the balance it replaced\"; fr-2025-24154 p.21, § 1.163-16(d)(4)",
-       "why": "One filer could answer no because a payoff is not 'the vehicle'. Another could answer yes because the payoff traces back to the vehicle. The two readings give different gate values for the same loan.",
+       "situation": "The earlier loan also financed dealer-installed accessories that became part of the vehicle (for example a tow hitch or roof rack), or a key fob replacement plan or tire and wheel protection, bought in the same purchase.",
+       "source_text": "fr-2026-18219 p. 24, § 1.163-16(d)(2)(i): 'key fob replacement plans, ... vehicle protection products (including tire, wheel, paint, and interior protection products), ... and vehicle-related accessories that are components of the APV purchased as part of the APV transaction.'",
+       "why": "The help tells the filer to answer No if any of the loan covered 'other goods or services', and the examples of add-ons leave out accessories, key fob plans and protection products. A filer could reasonably count these as 'other goods' and answer No, which would wrongly treat a loan that fully qualifies under (d)(2)(i) as only partly qualifying.",
        "bound": ""
       }
      ],
-     "prompt_sha": "4bd1267358b8648af05182b6566a4369b584ed2e0be55cbe8ff18e2e11da4512",
+     "prompt_sha": "fc54197c7ab181f6bd135d91636905af1e7eb40847373030548c9627a16eeff7",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.085772,
-     "date": "2026-11-10",
-     "response": ".transcription/questions/carloan.refi_whole.1e92cbe97b5d.1.response.txt"
+     "cost": 0.087548,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/carloan.refi_whole.0d930a045a75.1.response.txt"
     }
    ],
    "type": "Bool",
    "readers": 1,
    "brief": false,
    "used": [
+    {
+     "doc": "fr-2026-18219",
+     "revision": "91 FR 57214, September 8, 2026 (T.D. 10054), final regulations",
+     "text_sha256": "6d407aaf8eb3bec05ae7e47bca8d4e66b1c7700f5f225abce9bcd07f08aaa531",
+     "pages": [
+      24
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, § 1.163-16(d)(4), \"If a taxpayer refinances an SPVL\"; (d)(2)(i) and (ii), \"repayment of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance that is not a credit insurance product, or to purchase any property or services unrelated to an APV (for example, a trailer or a boat) is not incurred by a taxpayer for the purchase of an APV\"; (d)(2)(iii)(B), \"any down payment ... is applied first against any negative equity and any other amounts that are not incurred for the purchase of the APV\""
+     ],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "e1f7d9f1c263b6cfca76091208729d0d30a542e9a2d100faa222267adcf8faa4"
+    },
     {
      "doc": "fr-2025-24154",
      "revision": "Federal Register Vol. 91, No. 1 (2026-01-02), proposed rules REG-113515-25 (Car Loan Interest Deduction), FR Doc. 2025-24154",
@@ -536,8 +563,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "pp. 20–22, Proposed § 1.163-16(d)(4)",
-      "pp. 20–22, Proposed § 1.163-16(d)(4), \"If a taxpayer refinances an SPVL\""
+      "pp. 20–22, Proposed § 1.163-16(d)(4)"
      ],
      "cols_pages": [
       20,

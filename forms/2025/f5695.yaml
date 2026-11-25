@@ -1731,7 +1731,7 @@ form:
     printed: "12"
     label: Credit carryforward from 2024. Enter the amount, if any, from your 2024 Form 5695, line 16
     type: NonNegDollars
-    gated_by: f5695.line12_if_carry
+    gated_by: f5695.carry_in_if_carry
     expr:
       op: input
       source: The residential clean energy credit carryforward from 2024, the amount on line 16 of your (or, on a joint
@@ -1743,7 +1743,7 @@ form:
         energy credit carryforward from 2024"; i1040gi p. 13, Married Filing Jointly, "A married couple filing jointly
         report their combined income and deduct their combined allowable expenses on one return"
     ambiguity: amb.2025.f5695_spouse_carryforward
-  - id: f5695.line12_if_carry
+  - id: f5695.carry_in_if_carry
     printed: (gate)
     label: "The answer to line12, asked only in its case (zero otherwise)"
     type: NonNegDollars
@@ -1821,7 +1821,7 @@ form:
       of:
       - f5695.line6b_if_any
       - f5695.line11_if_any
-      - f5695.line12_if_carry
+      - f5695.carry_in_if_carry
     cite:
       doc: f5695
       locator: Form 5695 (2025), line 13

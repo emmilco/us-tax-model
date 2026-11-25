@@ -63,14 +63,14 @@
    "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
    "status": "DISAGREE",
    "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate adds lines 6b, 11 and 12 without the gates (f5695 p. 1, line 13); it inherits line 6b's Part I screens (f5695.construction_later, asked only with Part I) and line 12's carryforward gate. The two value differences are the refused fixtures classm.dcprov.1 and mutation.t2.qss_s1a_car (a line 3 cost with every kind answered No). The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 3,782 of 4,642 agree; on completed returns: 78 candidate-unknown.",
-   "subject_key": "a051c1b1d3afb6facf42a47e817cfc5208e07c2b6d79ee0a9c4363624861d2ac",
+   "subject_key": "ed43abaab34e859465fae985869fc258d5fd14f38a07054efbadc7dd1371026e",
    "carried": {
     "by": "rename",
     "map": {
-     "f5695.line12": "f5695.carry_in"
+     "f5695.line12_if_carry": "f5695.carry_in_if_carry"
     },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "2437490d0d92b45102f019f060a3f1819adba433bee1c6d32009561f5c1e954b"
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "a051c1b1d3afb6facf42a47e817cfc5208e07c2b6d79ee0a9c4363624861d2ac"
    }
   },
   {
@@ -293,7 +293,7 @@
   "6a": "5a92e7820d32ab5a6314c321b7dac0c898ed2bcfeb3b91d6cef96eed33fff4f3",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
   "11": "24d6e9f296e5431e0f6011ca7b7dd2615daa98b09d2421fb56c25d14bba2850f",
-  "13": "e018d7fd771026e7dae5c32a56be96dc19f5e8fa2c56f4379f476c1ffa031546",
+  "13": "5f56c876600516604a88506d9fb3bd0d32d63954170c281431f776c7f3353c28",
   "14": "8ffaded32239e72ccac7d43af7a21c6ef01bfd0804ea129049d48e80b06beb6b",
   "15": "ce0d0c5d6f5ca806cd56185ddf076fdb30f6651f01de84ca65b6f82f38f78059",
   "16": "0d84c71f0cf9d6ffc75d2eadb0afa9522117038adeacd6559b3972da778d4d4c",

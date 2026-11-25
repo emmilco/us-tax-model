@@ -127,7 +127,7 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
     *Source:* [i1040s8812] p. 8, Earned Income Worksheet, line 4
   - *Not covered:* Schedule 1 adjustments (Social Security Benefits Worksheet, line 6). Schedule 1 adjustments on lines 12, 14 and 23 are outside this tool.
     *Source:* [i1040gi] p. 32, Social Security Benefits Worksheet, line 6
-  - *Refused at:* `eic.step2_other`, `eic.step5_line1`, `eic.clergy`, `f1040.line8`, `f1040.line10`, `s1a.line5_calc`, `s1a.line14b_calc`, `s8812.eiw_3`, `s8812.eiw_4`, `scope.ready_schedule1`, `ssb.line6`
+  - *Refused at:* `eic.step2_other`, `eic.step5_line1`, `eic.clergy`, `f1040.line8`, `f1040.line10`, `s1a.tips_business_calc`, `s1a.ot_1099_calc`, `s8812.eiw_3`, `s8812.eiw_4`, `scope.ready_schedule1`, `ssb.line6`
   - *Share of returns (coverage estimate):* Other income (Schedule 1 line 8z and similar), 4.8%; Partnership or S corporation income or loss, 3.5%; Farm income or loss, 1.1%; Sales of business property (Form 4797), 1.1%; Net operating loss deduction, 0.6%; Estate or trust income or loss, 0.4%
 - **`qbi.unsupported`**: Do you have qualified business income beyond your Schedule C businesses and section 199A dividends (a partnership, publicly traded partnership, REIT carryforward or cooperative)?
   - *The data asks or tests:* Any of these: a prior-year REIT or PTP loss carryforward; losses or deductions suspended in an earlier year by another provision and allowed this year; being a patron of any agricultural or horticultural cooperative, specified or not. Qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses is refused by the scope questions on Schedule E, Schedule K-1 and Schedule F income (`test`)
@@ -304,7 +304,7 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
     *Source:* [p514] p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the first preceding tax year) up to the excess limit in that year"
   - *Refused at:* `f1116.line35`
 - **`f1116sb.carry_through_prior`**: Is foreign tax carried into 2025 through a 2024 return that deducted the foreign tax or took no credit?
-  - *The data asks or tests:* Foreign tax is carried into 2025 through a 2024 return that had foreign income and deducted the foreign tax or took no credit for it, and is neither changed since 2024 nor carried from another joint return (those are refused on Form 1116 line 35; a carryover through a 2024 election year or a year with no foreign income passes through unreduced) (`test`)
+  - *The data asks or tests:* Foreign tax is carried into 2025 through a 2024 return that had foreign income and deducted the foreign tax or took no credit for it, and is neither changed since 2024 nor carried from another joint return (those are refused on Form 1116 line 35; a carryover through a 2024 election year or a year with no foreign income passes through unreduced) (`choose`)
   - *Not covered:* Schedule B (Form 1116), line 1 (carryover through a 2024 deduction year). Foreign tax carried through a 2024 return that deducted the foreign tax or took no credit for it is reduced by what a 2024 credit would have used, which this tool does not figure.
     *Source:* [i1116] p. 19, Line 10, "However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that year"
   - *Refused at:* `ftc.credit`
@@ -1480,7 +1480,7 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 108, Schedule 1-A, line 14b
   - *Not covered:* Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C). Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.
     *Source:* [i1040gi] p. 108, Schedule 1-A, line 14b, "Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only if"
-  - *Refused at:* `s1a.line5_calc`, `s1a.tips_deduction`, `s1a.line14b_calc`, `s1a.ot_deduction`
+  - *Refused at:* `s1a.tips_business_calc`, `s1a.tips_deduction`, `s1a.ot_1099_calc`, `s1a.ot_deduction`
 - **`s1a.f4137`**: Do you claim the deduction for qualified tips and have tips on Form 4137?
   - *The data asks or tests:* Someone on the return has tips on Form 4137 (`test`)
   - *Stops the return as:* The tips deduction with Form 4137 tips
@@ -1511,12 +1511,12 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
   - *The data asks or tests:* A filer who died in 2025 before reaching age 65 (`test`)
   - *Not covered:* Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65. A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool.
     *Source:* [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
-  - *Refused at:* `s1a.line36a_senior`
+  - *Refused at:* `s1a.senior_you_born`
 - **`s1a.spouse_senior_decedent`**: Did a spouse born in 1960 die in 2025 before turning 65?
   - *The data asks or tests:* A spouse who died in 2025 before reaching age 65 (`test`)
   - *Not covered:* Enhanced deduction for seniors on the final return of a person who died in 2025 before reaching age 65. A person born before January 2, 1961, who died in 2025 before reaching age 65 does not qualify; this case is outside this tool.
     *Source:* [i1040gi] p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
-  - *Refused at:* `s1a.line36b_senior`
+  - *Refused at:* `s1a.senior_spouse_born`
 
 ### Earned income credit
 
@@ -2306,12 +2306,12 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *The data asks or tests:* For someone on the return, the qualified tips entered are more than the Medicare wages and tips (W-2 box 5) that include them (not tested on a return with Form 4137 tips, which is refused at s1a.f4137) (`test`)
   - *Not covered:* Schedule 1-A, Part II (qualified tips larger than the Medicare wages and tips that include them). The tips entered for a person are more than that person's Form W-2 box 5 Medicare wages and tips, which include them. Correct the tip amounts or the Forms W-2.
     *Source:* [f1040s1a] p. 1, line 4a, "Enter qualified tips included on Form W-2, box 7"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"
-  - *Refused at:* `s1a.line4c_calc`
+  - *Refused at:* `s1a.tips_employee_calc`
 - **`s1a.ot_over_wages`**
   - *The data asks or tests:* For someone on the return, the qualified overtime amounts entered are more than the Medicare wages and tips (W-2 box 5) that include them (`test`)
   - *Not covered:* Schedule 1-A, Part III (qualified overtime compensation larger than the Medicare wages and tips that include it). The overtime compensation entered for a person is more than that person's Form W-2 box 5 Medicare wages and tips, which include it. Correct the overtime amounts or the Forms W-2.
     *Source:* [f1040s1a] p. 1, line 14a, "Qualified overtime compensation included in Form W-2, box 1"; fw2 p. 7, Box 6, "all Medicare wages and tips shown in box 5"
-  - *Refused at:* `s1a.line14a_calc`
+  - *Refused at:* `s1a.ot_w2_calc`
 
 #### Child and dependent care
 

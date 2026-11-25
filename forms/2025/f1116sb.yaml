@@ -1272,12 +1272,33 @@ form:
       no credit for it, and is neither changed since 2024 nor carried from another joint return (those are refused on Form
       1116 line 35; a carryover through a 2024 election year or a year with no foreign income passes through unreduced)
     expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ftc.carryover_if_asked
+          - const: true
+        then: f1116sb.carry_through_tests
+      - guard:
+          op: test
+          eq:
+          - ftc.carryover_if_asked
+          - const: false
+        then: f1116sb.no
+    cite:
+      doc: i1116
+      locator: p. 19, Line 10, "However, you must reduce the amount of any carryback or carryforward by the amount that you
+        would have used had you chosen to claim a credit rather than a deduction in that year", "Don’t reduce the carryback
+        or carryforward by the amount you would have used in the election year if you hadn’t made the election"
+  - id: f1116sb.carry_through_tests
+    printed: (helper)
+    type: Bool
+    label: With foreign tax carried into 2025, the carryover is neither changed since 2024 nor carried from another joint
+      return, and the 2024 return had foreign income and deducted the foreign tax or took no credit for it
+    expr:
       op: test
       all:
-      - op: test
-        eq:
-        - ftc.carryover_if_asked
-        - const: true
       - op: test
         eq:
         - f1116sb.changed_if_carry

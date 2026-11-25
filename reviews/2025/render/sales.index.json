@@ -2,27 +2,24 @@
  "kind": "render",
  "form": "sales",
  "family": "claude",
- "base": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
- "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
- },
+ "base": "e3a41392d02e0ce5db6cd053085ce2c25c8bc69eb59cfeca5e4ab28492018b92",
  "lines": [
   {
    "key": "(e)",
-   "record": "ca7c347859b06ed5835505311aad1fa64c495ee1176134d950aeab51db9b9cb7",
+   "record": "e3a41392d02e0ce5db6cd053085ce2c25c8bc69eb59cfeca5e4ab28492018b92",
    "status": "MATCH",
    "subject_key": "59604454635ce31bee6d6847ef16842fe86f35ef8d322039bab539f840915649"
   },
   {
    "key": "(g)",
-   "record": "ca7c347859b06ed5835505311aad1fa64c495ee1176134d950aeab51db9b9cb7",
+   "record": "e3a41392d02e0ce5db6cd053085ce2c25c8bc69eb59cfeca5e4ab28492018b92",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i8949 p. 9 to 10, codes E, L, N, O and D: the project does not figure those adjustments; a filer choosing 'other' is refused at the sale by sales.bad_code on sales.one (coverage row sales.nominee_sale, refused: sales[a].bad_code), and the refusal reaches every Schedule D total and Form 1040 line 7a, so no return is completed with $0 where such an adjustment belongs. The code B part (boxes A, D, G and J) and code W part match, as the reviewer says. Rerun because the form's sales.special is now derived from sd.special_any (BUG-1127).",
+   "ruling": "Ruling: scope; i8949 p. 9 to 10, codes E, L, N, O and D: the project does not figure those adjustments; a filer choosing 'other' is refused at the sale by sales.bad_code on sales.one (coverage row sales.nominee_sale, refused: sales[a].bad_code), and the refusal reaches every Schedule D total and Form 1040 line 7a, so no return is completed with $0 where such an adjustment belongs. The code B part (boxes A, D, G and J) and code W part match, as the reviewer says. Rerun because the form's sales.special is now derived from sd.special_any (BUG-1127). (carried over from reviews/2025/render/sales.index.json at 1944d1b9, review of 2026-11-22)",
    "subject_key": "89410d4857950965fe3a51279d833734829baa33ba2448bcb0e867c8c30c0698"
   },
   {
    "key": "(h)",
-   "record": "a6bf7efb7994c2d6ef35317517d17be206c8032a26b895f951b60db180beb182",
+   "record": "e3a41392d02e0ce5db6cd053085ce2c25c8bc69eb59cfeca5e4ab28492018b92",
    "status": "MATCH",
    "subject_key": "9d8e318a0f66f166c5f2a33ad88141725eb7b4a65741dbf7d3ab188a5c65992c"
   }

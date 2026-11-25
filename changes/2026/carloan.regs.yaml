@@ -82,15 +82,6 @@ changes:
           by reason of previous obligor's death, "If a loan met requirements 1 through 5 at the time it was originated by
           a previous obligor"; fr-2026-18219 p. 25, Applicable passenger vehicle (APV), § 1.163-16(e)(1)
     - set:
-        line: carloan.mixed
-        field: cite
-        from:
-          doc: fr-2025-24154
-          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(i) and (ii); i1040gi p. 109, Schedule 1-A, Loan amount
-        to:
-          doc: fr-2026-18219
-          locator: p. 24, § 1.163-16(d)(2)(i) and (ii); i1040gi p. 109, Schedule 1-A, Loan amount
-    - set:
         line: carloan.financed
         field: cite
         from:
@@ -99,15 +90,6 @@ changes:
         to:
           doc: fr-2026-18219
           locator: p. 24, § 1.163-16(d)(2)(iii)(A) and (d)(4); p. 25, (d)(6) Examples 3 and 4
-    - set:
-        line: carloan.nonqualifying
-        field: cite
-        from:
-          doc: fr-2025-24154
-          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(ii) and (d)(6) Example 4
-        to:
-          doc: fr-2026-18219
-          locator: p. 24, § 1.163-16(d)(2)(ii); p. 25, (d)(6) Example 4
     - set:
         line: carloan.down
         field: cite
@@ -156,21 +138,6 @@ changes:
           doc: fr-2026-18219
           locator: p. 24, § 1.163-16(d)(4), "The amount of the new loan that is an SPVL is limited to the outstanding balance
             of the refinanced loan as of the date of the refinancing"
-    - set:
-        line: carloan.refi_whole
-        field: cite
-        from:
-          doc: fr-2025-24154
-          locator: pp. 20–22, Proposed § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"; (d)(2)(i) and (ii), "repayment
-            of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance, or
-            to purchase any property or services unrelated to an APV (for example, a trailer or a boat) is not incurred by
-            a taxpayer for the purchase of an APV"
-        to:
-          doc: fr-2026-18219
-          locator: p. 24, § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"; (d)(2)(i) and (ii), "repayment of negative
-            equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance that is not a credit
-            insurance product, or to purchase any property or services unrelated to an APV (for example, a trailer or a boat)
-            is not incurred by a taxpayer for the purchase of an APV"
     - set:
         line: carloan.refi_qualifying
         field: cite

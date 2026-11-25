@@ -1504,5 +1504,17 @@
    "record": "457958bb3c20cd32de4076083e278b3f552aae2e9f71bdaf3efb75400a334c93",
    "status": "AGREE"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "ca38d081825e6a8be64347480417235c92f37ba1bc5ab101bb86f5f4025e767f",
+  "was": "b24f69457a7118fbaa1f27c17a092372eba02948a7650198013bb83ca3e8da40",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "sa.line16_gambling": "sa.other_itemized_gambling"
+   },
+   "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+   "was": "b24f69457a7118fbaa1f27c17a092372eba02948a7650198013bb83ca3e8da40"
+  }
+ }
 }

@@ -231,14 +231,14 @@ changes:
       read by Schedule 2).'
     operations:
     - set:
-        line: s2.line8_must
+        line: s2.tax_favored_accounts_must
         field: cite.locator
         from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
           you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
         to: p. 2 (draft), Who Must File, "However, if distribution code 1 is correctly shown in box 7a of all your Forms 1099-R
           and you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
     - set:
-        line: s2.line8_file
+        line: s2.tax_favored_accounts_file
         field: cite.locator
         from: p. 1, Who Must File, "However, if distribution code 1 is correctly shown in box 7 of all your Forms 1099-R and
           you owe the additional tax on the full amount shown on each Form 1099-R, you don’t have to file Form 5329."
@@ -262,17 +262,17 @@ changes:
         to: p. 2 (draft), Part II, line 5, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
           If not required, check here"; f5329 p. 1, line 4, "Include this amount on Schedule 2 (Form 1040), line 5"
     - set:
-        line: s2.line8_box
+        line: s2.tax_favored_accounts_box
         field: printed
         from: 8 (box)
         to: 5 (box)
     - set:
-        line: s2.line8_box
+        line: s2.tax_favored_accounts_box
         field: display
         from: The Schedule 2 line 8 check box, shown on the values sheet; it changes no amount.
         to: The Schedule 2 line 5 check box, shown on the values sheet; it changes no amount.
     - set:
-        line: s2.line8_box
+        line: s2.tax_favored_accounts_box
         field: cite.locator
         from: p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.
           If not required, check here"; i1040gi p. 112, Line 8, "Also check the box on line 8 to indicate that you don’t have

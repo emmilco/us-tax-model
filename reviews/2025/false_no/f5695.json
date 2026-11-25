@@ -350,7 +350,7 @@
    ]
   },
   "gate:f5695.carry_if_prior": {
-   "subject_sha": "037a430f4d0d8d51fe218f76ee7d216425fa72f5024e58b88e4da5b838861f4e",
+   "subject_sha": "fb9d6ad4d811bf729aadc2164ede6daa980304c6eae7225722d8dd109cfdc127",
    "samples": [
     {
      "verdict": "UNCLEAR",
@@ -452,10 +452,10 @@
    "carried": {
     "by": "rename",
     "map": {
-     "f5695.line12": "f5695.carry_in"
+     "f5695.line12_if_carry": "f5695.carry_in_if_carry"
     },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "bc56945a902f88d39df1df02d50afd70ae64d3d8f65e77d341f8d979b536e96b"
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "037a430f4d0d8d51fe218f76ee7d216425fa72f5024e58b88e4da5b838861f4e"
    }
   },
   "gate:f5695.central_ac_if_any": {

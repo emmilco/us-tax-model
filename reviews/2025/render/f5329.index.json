@@ -39,5 +39,17 @@
    "record": "30b2df645292d52b98eae8d47f1e237e7fe6f0f644b697eb74fa84b8513d1d9e",
    "status": "MATCH"
   }
- ]
+ ],
+ "subject_carried": {
+  "subject": "32a1b69b67fdaf3e4c50aeb463d4b2906efcecaafabdee40a92f8e86769a9125",
+  "was": "e348ef57debd3d3f531917d121cce7bbfce27c9b9cbac70219e94ad714a1e829",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "s2.line8_file": "s2.tax_favored_accounts_file"
+   },
+   "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+   "was": "e348ef57debd3d3f531917d121cce7bbfce27c9b9cbac70219e94ad714a1e829"
+  }
+ }
 }

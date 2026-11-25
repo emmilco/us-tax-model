@@ -126,6 +126,16 @@
   {
    "printed": "regular_tax",
    "restated": "Add f1040 line 16 and s2 line 1z.",
+   "model": "The election refers to the line 20 instructions for regular tax, which say: 'Enter the total of Form 1040... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.' The restatement does not subtract the Form 4972 tax.",
+   "ruling": "Ruling: scope; as the earlier rulings of this line: i1116 p. 25, Line 20, regular tax is Form 1040 line 16 plus Schedule 2 line 1z 'less any tax included on line 16 from Form 4972'. Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16, whose refusal names Forms 8814, 4972, 8615, 8621 or 8978), so nothing is subtracted on a return the tool completes. Rerun only for the siblings rule after f1116sb.carry_through_prior, which ftc.credit reads, was rewritten as a choice (BUG-1448); this line is unchanged.",
+   "context": "e7ab273f4d35867165bda6c6f2a3331d047b0748393b63feacfe6d28583ab180",
+   "date": "2026-11-25",
+   "run": "a4d7e6933078e7449b2fd544c0567a3407e6c5e10d96a55bd7df350a839f11cf",
+   "subject_key": "4e0e3f38ef0aa618c07d37a66fecfd43a93499e0933e7f4e87798431b496ab05"
+  },
+  {
+   "printed": "regular_tax",
+   "restated": "Add f1040 line 16 and s2 line 1z.",
    "model": "The line 20 instructions define regular tax for individuals as \"the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972\". The restatement omits the Form 4972 subtraction. It also omits the Form 8978 line 14 adjustment and the rule \"If ... the amount of your tax is zero or less, enter -0-\".",
    "ruling": "Ruling: scope; screens scope.other_line16 and scope.credits. i1116 p. 25, Line 20, \"Individuals. Enter the total of Form 1040, 1040-SR, or 1040-NR, line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" and \"If you file Form 8978, Partner’s Additional Reporting Year Tax, you will need to increase or decrease the amount you report on Form 1116, line 20 ... If, after your adjustment, the amount of your tax is zero or less, enter -0- on Form 1116, line 20.\" The restatement is the BUG-0190 fix (round-1 F1): ftc.regular_tax = f1040.line16 + s2.line1z. The three omitted terms are refused. Form 4972: scope.other_line16 (\"... including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount ...\") refuses f1040.line16 and scope.ready, so no Form 4972 tax is in line 16 and nothing is subtracted. Form 8978: a positive amount is in line 16 and refused by the same screen; a negative one goes to Schedule 3 Part I and is refused by scope.credits (\"... any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)\", at f1040 lines 29 and 30). The zero floor applies only \"after your adjustment\"; without one, line 16 and line 1z are both NonNegDollars, so their sum is never below zero. The fix uses line 1z, not line 3, which agrees with the page (line 3 adds the alternative minimum tax, section 26(b)(2)). Regression stage18.ftc_limit_with_repayment evaluates to ftc.regular_tax $375.00, ftc.credit $200.00 and Form 1040 line 22 $175.00, the round-1 source values. No new error found.",
    "context": "a9ae962a287487f3a50157a55f18b4bb518c3f421f18ecad9a9f950f6cfaad2b",

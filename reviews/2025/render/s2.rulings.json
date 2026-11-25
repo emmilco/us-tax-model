@@ -38,6 +38,16 @@
   },
   {
    "printed": "21",
+   "restated": "Add line 4, line 7, line 8, line 11, line 12, and line 18.",
+   "model": "The IRS says 'Add lines 4, 7 through 16, 18, and 19', but the restatement omits lines 9, 13, 14, 15, 16 and 19. The s2.other refusal covers lines 9, 13, 16 and 19, but none of its questions asks about line 14 ('Interest on tax due on installment income from the sale of certain residential lots and timeshares') or line 15 ('Interest on the deferred tax on gain from certain installment sales with a sales price over $150,000'). Those amounts would be dropped without a refusal.",
+   "ruling": "Ruling: scope; as the earlier rulings of this line: lines 14 and 15 arise only from installment sales (Form 6252 and section 453A), refused by sd.installment ('An installment sale is figured on Form 6252 ... a Yes ends the interview here') and, for a business, sc.special ('income you report under the installment method (including installment sales of timeshares or residential lots)'); the remaining lines 9, 10, 13, 16, 17 and 19 are refused by the Schedule 2 screens through s2.other. The restatement changed only through s2.lookback_ask's royalty leg (BUG-1448), which leaves every value as it was.",
+   "context": "d77335814253f6e2eb241c0881cbcbc2fe9a20a1efbe28286bb6b95167ee6676",
+   "date": "2026-11-24",
+   "run": "7204ed7ca292d8032f3c001e179589731e12acadcd6eed7e21b6bd847c9fa0b7",
+   "subject_key": "ff42939c9c879652156ccb50b94b982bcb6480499e2b931a76c21450b8c48e8a"
+  },
+  {
+   "printed": "21",
    "restated": "Add line 4, line 8, line 11, line 12, and line 18.",
    "model": "The IRS text says 'Add lines 4, 7 through 16, 18, and 19', but the restatement adds only lines 4, 8, 11, 12 and 18. The s2.other gate does not test for every omitted line: no input asks about Form 8919 uncollected tax (line 6, which feeds line 7), installment-sale interest (lines 14 and 15), or tips unreported to an employer that are not on a W-2 (Form 4137, line 5), so those amounts would be left out without a refusal.",
    "ruling": "Ruling: interface gap; each omitted line is refused by a screen the reviewer was not given: Form 4137 (line 5) and Form 8919 (line 6, feeding line 7) by scope.pay_no_w2 (\"wages, tips or strike benefits that are not on a W-2\"; help: \"tips not reported to your employer (or shown only in box 8), or pay from a firm that wrongly treated you as a contractor. A Yes ends the interview here\") through scope.other_income, and for self-employed persons also by person.se_screen (\"tips reported on Form 4137 or wages on Form 8919\"); lines 14 and 15 (interest on installment-sale deferred tax) need an installment obligation, which sd.sold_other (\"Answer Yes too if any payment for anything you sold, in 2025 or before, comes in a year after the year of the sale\") sends to sd.installment, refused (Form 6252). The reviewer names no other omitted line. Within scope line 21 is lines 4, 8, 11, 12 and 18 (f1040s2 line 21, \"Add lines 4, 7 through 16, 18, and 19\"). Project stands.",

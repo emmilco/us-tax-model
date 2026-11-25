@@ -2,163 +2,156 @@
  "kind": "render",
  "form": "ftc",
  "family": "claude",
- "base": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
- "head_rows": {
-  "match / mismatch / unclear / missing": "21 / 4 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
- },
+ "base": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
  "lines": [
   {
    "key": "taxes",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "588bc9d4fd64bab0c340aaa9f326f672fff8f8744244e89d41594684802eda47"
   },
   {
    "key": "asked",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "e00818ca6fb12ba9afb064b65c8395e6f4e2679608acbbd0f97a8bfebbcded03"
   },
   {
    "key": "taxes_if_asked",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "f405109b1f2c334d1815d0b34340c7b9156a9b25fd6e0ba7e8021ddd3f358595"
   },
   {
    "key": "carryover",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "ef10671002e794fc17b313e1a8ad6e0ad052220e7abd5965ad508bdd61f4cdcd"
   },
   {
    "key": "carryover_ask",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "c5100a6f162ab061b5f26ecb552e1e27beec25a062a367cd6a06c2a0afb1ab37"
   },
   {
    "key": "carryover_if_asked",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "63a8a3c1b1c170f611caf0d2ca187193563a77048802b0bd6dabd98ec221ee29"
   },
   {
    "key": "all_passive",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "7ded2646b4d92e09fea609f040fc7dc45d22ff68903a1d3586626af8f3644272"
   },
   {
    "key": "statements",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "f6aee30947bc1b42c6be18baa33e040a15ac8da7a7af9e37e5cd8556c547336f"
   },
   {
    "key": "eligible",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "795e49e28ba5b571f6664df22a6e3415f19e0bd213e865a72213a8dd46c0bea8"
   },
   {
    "key": "elect",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
-   "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.f1116_carryover_election and coordinator decision D3 (docs/provisional/DECISIONS.md, X1-F1116: the election made whenever its conditions are met). i1116 pp. 1-2: with the election \"You can't carry over to or from any other year any foreign taxes\". The model reads the election as the filer's choice and notes that electing forfeits any excess of foreign tax over the regular tax that Form 1116 would carry forward. The recorded reading and D3 make the election whenever available; on this tool's Form 1116 path any such excess refuses (f1116.carryover_out, coordinator decision D1), so a No could only refuse the return. The English states what the project does. Raised for the owner in the report: whether to refuse instead of electing when ftc.taxes exceeds ftc.regular_tax, which keeps the carryforward the election forfeits.",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
+   "status": "MATCH",
    "subject_key": "67d66af9eed749caad0c37cf800d4d7fbc665a13e71907133c2d0180e513c99a"
   },
   {
    "key": "yes",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "7b78da3efae21f9858c661b1bfbbf8b3808d78b19cfea91591847126a3d17e01"
   },
   {
    "key": "limit",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "2fee35b428dc14dac1ac98e6b99a955c22bd8b6739acd1df6e0adf93ddbfa2db"
   },
   {
    "key": "zero",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "7cdeb9e80195a5615892c1ad32cb7eed892a90f763235eb14102b84ed1d0a7d6"
   },
   {
    "key": "has_tax",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "3fef018a1b590464f3cf4c350175c93f2ee264c44a28d877df7b1c430c51d5b0"
   },
   {
    "key": "no",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "18f8a9d50ec4636c288c50ccb976ba98a40332d2e10a289eab76ee9ef789dd4a"
   },
   {
    "key": "all_passive_if_tax",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "837918c507c3f94f3389ada7fb4ab7897969578befd79cd77674349aed999715"
   },
   {
    "key": "statements_if_tax",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "c3f8f6b1ed2d38150d491173d2a9573b5d3b26d21c79547e404bb8a4daf97f31"
   },
   {
    "key": "eligible_if_tax",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "25fbc574c1b85564962dcaa00122af34f07694d76610784ca5ad64eb204a86d6"
   },
   {
    "key": "elect_if_tax",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "e757e771ef894cfcd26f9946710ca249e3acbe101a27919196041a5323744481"
   },
   {
    "key": "needs1116",
-   "record": "0adc0cb00491e9f92dfaa758be7118717259fa340502708e3efe22fb2413aaab",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040gi p. 115, Schedule 3 line 1, \"You aren't filing Form 4563 or excluding income from sources within Puerto Rico\" is the condition the reply finds tested (the BUG-0769 fix). sa.excluded_income also names Form 2555, which neither i1116 pp. 1-2 nor Schedule 3 lists; a Form 2555 filer with foreign tax is therefore sent to Form 1116, where f1116.reduction (foreign taxes on income excluded on Form 2555 or 4563, line 12) refuses. The extra condition turns an election credit into a refusal, never into a different amount on a completed return.",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
+   "status": "MATCH",
    "subject_key": "8d6577b7121da852c1e3b877c8b57deed8ca9a7a6cb8d0ef0283a28916a06d3f"
   },
   {
    "key": "carryover_no_tax",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "fd6fa9cbee839e600d974d9691fc8136a669862320b684bccb70e7fed4903a7c"
   },
   {
    "key": "regular_tax",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1116 p. 25, Line 20: regular tax is Form 1040 line 16 plus Schedule 2 line 1z \"less any tax included on line 16 from Form 4972\". Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16), so nothing is subtracted on a computed return. Same as the landing and goal-1 rulings on line limited.",
+   "ruling": "Ruling: scope; as the earlier rulings of this line: i1116 p. 25, Line 20, regular tax is Form 1040 line 16 plus Schedule 2 line 1z 'less any tax included on line 16 from Form 4972'. Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16, whose refusal names Forms 8814, 4972, 8615, 8621 or 8978), so nothing is subtracted on a return the tool completes. Rerun only for the siblings rule after f1116sb.carry_through_prior, which ftc.credit reads, was rewritten as a choice (BUG-1448); this line is unchanged.",
    "subject_key": "6edaa7f139427fe14a9443478172ec4dc6295fa6b63b528311393bf6e317d34e"
   },
   {
    "key": "limited",
-   "record": "c447c304498f50167b7d43b1b58ad5c7b22897f860a8e618bd19cc66a8af21fa",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "f70b7caaf2b82c38c8ab9de8d9c837ca08daced80ead762e7c0963f99c7e17df"
   },
   {
    "key": "credit_tax",
-   "record": "0adc0cb00491e9f92dfaa758be7118717259fa340502708e3efe22fb2413aaab",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; the Form 4972 subtraction is the regular_tax ruling (i1116 p. 25, Line 20, \"less any tax included on line 16 from Form 4972\"; Form 4972 tax is refused at Form 1040 line 16 by scope.other_line16, so nothing is subtracted on a computed return), and the Form 2555 condition is the needs1116 ruling (a Form 2555 filer with foreign tax is refused at f1116.reduction). The Form 1116 branch matches, as the reply says.",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
+   "status": "MATCH",
    "subject_key": "63c4ffa5c31a6a2942a65c2461848a4aa76f7480af4a6893ec9e6a4998c1d877"
   },
   {
    "key": "credit",
-   "record": "b9bba0828b0a7f4043ec379a27f2cac78438f3590656a60b2bab7982a84a1e55",
+   "record": "78540a1a2ac037edc92bf7d4f23c9b5fb867ed9d66a7448a2f443297172fce51",
    "status": "MATCH",
    "subject_key": "99944258197289c9fe8365cc7b847d254283daf5cefc273aee5777911733a3e9"
   }

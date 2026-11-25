@@ -18622,7 +18622,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -18901,7 +18901,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -19334,7 +19334,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -19652,7 +19652,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -19901,7 +19901,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -20174,7 +20174,7 @@
           "kind": "money",
           "cents": 35145
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -20463,7 +20463,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },
@@ -20702,7 +20702,7 @@
           "kind": "money",
           "cents": 30000
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": true
         },
@@ -21021,7 +21021,7 @@
           "kind": "money",
           "cents": 0
         },
-        "s2.line8_box": {
+        "s2.tax_favored_accounts_box": {
           "kind": "bool",
           "value": false
         },

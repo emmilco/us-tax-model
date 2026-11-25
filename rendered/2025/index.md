@@ -17,7 +17,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | f1095a.md | form | 90 |
 | f1116.md | form | 79 |
 | f1116col.md | form | 39 |
-| f1116sb.md | form | 85 |
+| f1116sb.md | form | 86 |
 | f1116sbyr.md | form | 2 |
 | f2441.md | form | 106 |
 | f4137.md | form | 16 |
@@ -65,7 +65,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | s1.md | form | 138 |
 | s179.md | form | 44 |
 | s1a.md | form | 146 |
-| s2.md | form | 136 |
+| s2.md | form | 138 |
 | s3.md | form | 94 |
 | s8812.md | form | 92 |
 | sa.md | form | 143 |

@@ -389,6 +389,40 @@
   },
   {
    "printed": "f1116sb.carry_through_prior",
+   "project_expr_sha256": "e4dfe2204fe792fdfaf0151a52772fcf1263e2c41edb90b2ce602576bb347fad",
+   "second_expr_sha256": "b4426a81b5e67cc173a334e439d7427aa6c049b4b12d2ae8583ad41a45eb1c5c",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carry_no_schedule_b (decided under the owner's delegation of 2026-11-24), as the two earlier rulings of this line. The reply again reads the interface inverted: the line is the refusal gate its label states (true for a carryover brought in through a 2024 return that deducted the foreign tax or took no credit, prior year 'other'), and the reply returns true for the complement (prior year not 'other', with no change and no split), which as a refusal would refuse every ordinary Form 1116 carryover; it also drops the gate on ftc.carryover_if_asked. The line changed only in form: the conjunction is now a choice on ftc.carryover_if_asked whose true branch is f1116sb.carry_through_tests (the same three tests), so the interview no longer reaches the Form 1116 roster before the carryover question (BUG-1448); its value is the same for every known answer. i1116 p. 19, Line 10, 'However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit'. Project stands.",
+   "context": "d0ebf9a7493f1446412ffa67ada4629c45351ad49e66b4966a9385541965b2d9",
+   "date": "2026-11-24",
+   "run": "9d07d8c3418732162369a68d7e0e427213947a964c7b2c0a5ae73c87860cdbd5",
+   "subject_key": "07e9c8c08f14858a4b99ec2209eb8f6691ea77c6f95ff5fcd1af81d7e06633ee",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116sb",
+     "fixture:stage14.asset.mq_7yr@f1116sb",
+     "fixture:stage14.asset.mq_mixed@f1116sb",
+     "fixture:stage14.asset.mq_not@f1116sb",
+     "fixture:stage14.asset.bonus_100@f1116sb",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@f1116sb",
+     "fixture:classm.f2441.1.deepseek@f1116sb",
+     "fixture:classm.f2441.2.deepseek@f1116sb",
+     "fixture:classm.f2441.3.deepseek@f1116sb",
+     "fixture:classm.f2441.4.deepseek@f1116sb",
+     "fixture:classm.f2441.5.deepseek@f1116sb",
+     "fixture:classm.f2441.6.deepseek@f1116sb",
+     "fixture:f1116.m1116_carryover_unanswered_with_tax@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116sb.carry_through_prior",
    "project_expr_sha256": "e94af40b3cc41ff5f94091c8e695f5c36b8a0d571c2555cfeaf7daa509d5adcb",
    "second_expr_sha256": "9b7c3576c3cac42ef4817fa85d29fc1c6f4a626af16181b51c9e4f8b539a43bc",
    "ruling": "Ruling: ambiguity; amb.2025.f1116_carry_no_schedule_b (decided under the owner's delegation of 2026-11-24). The reply reads the interface inverted: the line is the refusal gate its label states (true for a carryover brought in through a 2024 return that deducted the foreign tax or took no credit), and the reply returns true for the complement set ('form_full' or 'form_room' with no change and no split), which would refuse every ordinary Form 1116 carryover; changes and splits are refused by their own gates (f1116sb.changed_if_carry, f1116sb.split_if_carry). Its point on 'election' and 'none' (no 2024 Schedule B line 8) is the register entry: i1116 p. 19 says the carryover is not reduced in an election year and Pub. 514 p. 37 that a year without foreign income absorbs nothing, so the project computes it from the latest Schedule B by year of origin, as the $f1116sbyr help now says. For 'other' both refuse. Project right on the interface.",

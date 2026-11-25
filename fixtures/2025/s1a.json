@@ -2903,7 +2903,7 @@
         "eic.qc_of_another": null
       },
       "expect": {
-        "s1a.line5_calc": {
+        "s1a.tips_business_calc": {
           "kind": "refusal",
           "gate": "s1.sc_1a",
           "form": "Schedule 1-A, line 5 (qualified tips in a trade or business, with Schedule C)",
@@ -3007,7 +3007,7 @@
         "person[taxpayer].sc[side].line1": 500000
       },
       "expect": {
-        "s1a.line5_calc": {
+        "s1a.tips_business_calc": {
           "kind": "money",
           "cents": 0
         }
@@ -3036,7 +3036,7 @@
         "person[taxpayer].sc[gig].tips_ot": true
       },
       "expect": {
-        "s1a.line14b_calc": {
+        "s1a.ot_1099_calc": {
           "kind": "refusal",
           "gate": "s1.sc_1a",
           "form": "Schedule 1-A, line 14b (qualified overtime reported on Form 1099-NEC or 1099-MISC)",

@@ -11,16 +11,29 @@
  "lines": [
   {
    "key": "s2.other",
-   "record": "984e33ab7c34f01559db4b38e5d42c02c152709e340731d8e0d491084f5ca9b8",
+   "record": "1015c0c4a3e41068e5268c3ec2a8e9b41db3c052dd41ed2460956bc9e4ed72fa",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; s2.other is the project's screen for Schedule 2 amounts the tool does not figure (its label lists the ones it does: Schedule SE, Additional Medicare Tax, NIIT and the Form 8889 line 17b tax), so it is true only when one of the named screens is Yes. The reply reads it as 'line 21 above zero', which is true for every return with self-employment tax (the stage14.asset fixtures, a Schedule C with SE tax), giving the 221 value differences in the executable triage (s2.json, this pass). The line changed only by s2.lookback_ask's royalty leg (BUG-1332). Project stands.",
-   "subject_key": "acc0340bf556d61475ab1bec9e762ba69579ec9393b709255775e30333a467f8"
+   "ruling": "Ruling: model error; as the earlier rulings of this line: s2.other is the project's screen ('Any amount on Schedule 2 other than the following?', the lines this tool figures), which the IRS pages do not define, as the reply says; its reading 'line 21 above zero' would refuse or flag every return with self-employment tax, Additional Medicare Tax or net investment income tax, which the tool computes. The line changed only through s2.lookback_ask's royalty leg, now read through s2.lookback_royalty (a choice on scope.rental) with the same value for every known answer (BUG-1448). Project stands.",
+   "subject_key": "dbc2d8c6314620c43a453ebf4020c251c10bfb9a44f6ce9fc464bf492788a133"
   },
   {
-   "key": "s2.line8_file",
+   "key": "s2.tax_favored_accounts_file",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "491e040628e914545e65d8bf30f853c01fdd9d4a4a714dc95fae29d668229a27"
+   "subject_key": "6fe89e292b50bc3d9b69cc4ec24bcf2ff520affd035f3cad4f6e385891f68a14",
+   "section": "s2.line8_file",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s2.line8_file": "s2.tax_favored_accounts_file",
+     "s2.line8_must": "s2.tax_favored_accounts_must"
+    },
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "491e040628e914545e65d8bf30f853c01fdd9d4a4a714dc95fae29d668229a27",
+    "keys": {
+     "s2.line8_file": "s2.tax_favored_accounts_file"
+    }
+   }
   },
   {
    "key": "1a",
@@ -31,9 +44,9 @@
   },
   {
    "key": "1z",
-   "record": "984e33ab7c34f01559db4b38e5d42c02c152709e340731d8e0d491084f5ca9b8",
+   "record": "1015c0c4a3e41068e5268c3ec2a8e9b41db3c052dd41ed2460956bc9e4ed72fa",
    "status": "AGREE",
-   "subject_key": "3eace80c342e29334affaffa820ef1af977ea8a3e1f216b076ecabdb39ea715c"
+   "subject_key": "89a3750b7b9fb50bf3eaa480b7c1a739b9571d113770448bd94d746f437590c9"
   },
   {
    "key": "2",
@@ -116,14 +129,16 @@
    "key": "8 (box)",
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
-   "subject_key": "8e6b805ef991aeb45d25b0f0403ce25fd71faef974be2e82623ea9d7b795a4af",
+   "subject_key": "d32348d2c5442c94562e0ed6477b1509671645d304a0b54a767f856e617614ba",
    "carried": {
     "by": "rename",
     "map": {
-     "s2.line8": "s2.tax_favored_accounts"
+     "s2.line8_box": "s2.tax_favored_accounts_box",
+     "s2.line8_file": "s2.tax_favored_accounts_file",
+     "s2.line8_must": "s2.tax_favored_accounts_must"
     },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "30697421fdb25af77d680f4952470c1afbc74878d08f8254c54a791fe7e468a4"
+    "from": "498640a8fb69a26e756ca95ae4adbf13ea6243d2",
+    "was": "8e6b805ef991aeb45d25b0f0403ce25fd71faef974be2e82623ea9d7b795a4af"
    }
   },
   {
@@ -185,16 +200,16 @@
   },
   {
    "key": "21",
-   "record": "984e33ab7c34f01559db4b38e5d42c02c152709e340731d8e0d491084f5ca9b8",
+   "record": "1015c0c4a3e41068e5268c3ec2a8e9b41db3c052dd41ed2460956bc9e4ed72fa",
    "status": "AGREE",
-   "subject_key": "4cb1f9f1a2ccc65c2fbca59285602b675fc71d6b533ac39dc66bcafe579d8e30"
+   "subject_key": "b8fda032aea6ab7554c808e2dad92994a8b3e48049879e293f4d54bd8bdde1df"
   }
  ],
  "subjects": {
-  "s2.other": "e2fe19d2b9b2d5a7e299ac7196aeb535c6d505b1fee1529f0e387a14354b9848",
-  "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
+  "s2.other": "6b5f5aec4549e54c6532fbebea900f9922489e3680f11c0468fc83b947b39702",
+  "s2.tax_favored_accounts_file": "e59dba85545bdd14ca7f06c2dde0bea3333711f84a39a8fb7d89ccaf58d37b55",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
-  "1z": "d310ad25c001bdc4bc0bfc72f2ad9b95f6cc39dbc882a0357f038fd80b9e7c72",
+  "1z": "253e3cec2c55401592bd641e6341cd3e2362882eb45484ed60592e57b234d214",
   "2": "5f6498b556760af7ff2f738b672fb1d83aa53ce72d9b9a1274b293b1878863a1",
   "3": "7ab9b1b03d4566d66f61819570d3d1f50e8cef92e15293d3637f871dfcc2e150",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
@@ -202,12 +217,12 @@
   "6": "424b004aaee41a80069b2b4ce1b935c66d3494cd1f40932a68b5a77721b18bd3",
   "7": "9ca0a5ef568a7e31838d04e36acbc2debff9d8b874d09597fd8436523d115da4",
   "8": "60025646b4ab3b3d02b9fa42bf64ea1e43bbfbab5ed1e3a29fa3b504fd134947",
-  "8 (box)": "f161e2cbaddc9558ab0d563b02c95ca70fed2affc0642697b3c6bea5d2f1caaa",
+  "8 (box)": "8cd89309707dbf90d760f2507cc351b65bd8471f799a0aee0351677948dc0253",
   "11": "e926cbed799baf697ceb713460b3ed2c5c9d361f24c8207f25e22a4451206689",
   "12": "dcebc04d534b7cfe51c700ebf7de0880c5e311091e65226487dcc99dd1b85895",
   "17c": "e690fa9eac7cdc3d3d9c750d7d27edfddad825c027545d6790fe4a3cde22486e",
   "18": "7e4ec44f9b9fd2bdda3be26dc6e2d52f22050c4f890fe94143cc8c9f8fa26dc5",
-  "21": "dc9482d235bdbf99b5ad9522cfc4bde999e6ea191e7aedc5d8e37c99e4a2991c"
+  "21": "c7663c991172c67f0fd9523c846dbcddb549fa8751a7275fe2c7bcbdadb0c380"
  },
  "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
  "foreign": {
