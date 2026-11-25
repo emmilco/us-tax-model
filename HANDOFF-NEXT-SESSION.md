@@ -57,8 +57,8 @@ extended through this release, has now been used; whether it continues is the ow
 - **Last release:** `r2026.11.24.1` (2026-11-24), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
 - **Figures**, read from this tree: `BUG_INVENTORY.md` 1,464 entries (highest BUG-1464), 31 open, 31 of them covered
-  by a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 75 rows not done; scoreboard 693 of 4,046 computed lines
-  (17.1%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
+  by a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 75 rows not done; scoreboard 693 of 4,114 computed lines
+  (16.8%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
   170 ambiguity entries, 165 linked to a line (`ambiguities/2025.yaml`).
 <!-- /figures:handoff-state -->
 

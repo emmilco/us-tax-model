@@ -366,7 +366,7 @@ are committed under [`reviews/2025/`](reviews/2025/).
 it. It opens with the **scoreboard**: the share of computed lines with at least one assertion from
 outside the Claude model family. Claude wrote most of the encoding, so a Claude reviewer is the reader
 most likely to share its misreadings; the scoreboard counts only evidence from somewhere else.
-<!-- figures:readme-scoreboard -->In the report committed with this page it reads **693 of 4,046 (17.1%)**: 584 lines backed by second-family hand-work (counting lines credited through exact copies of a worked line) and 223 by an outside engine, with overlap.<!-- /figures:readme-scoreboard -->
+<!-- figures:readme-scoreboard -->In the report committed with this page it reads **693 of 4,114 (16.8%)**: 584 lines backed by second-family hand-work (counting lines credited through exact copies of a worked line) and 223 by an outside engine, with overlap.<!-- /figures:readme-scoreboard -->
 
 **Where it stops.** Two models reading the same English can share a misreading. The second family
 reviewed every form, but only 64 of 136 paired reviews qualified when it was last compared; the rest

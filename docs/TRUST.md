@@ -131,7 +131,7 @@ reach some worksheet lines.
 official IRS example; B, human hand-work; C, a named outside calculator; M, isolated model hand-work;
 H, human source reading; E, an engine; R, the project's own regression; `spec/spec.md` section 6.1).
 Its first line is the scoreboard, the share of computed lines with at least one assertion from outside
-the Claude model family: <!-- figures:trust-scoreboard -->**693 of 4,046 (17.1%)**, with H 0, B 0, second-family M 584 and E 223<!-- /figures:trust-scoreboard --> (the sub-counts overlap, and include lines credited through exact copies of an asserted line). H credits a source reading only with a current receipt and the exact log
+the Claude model family: <!-- figures:trust-scoreboard -->**693 of 4,114 (16.8%)**, with H 0, B 0, second-family M 584 and E 223<!-- /figures:trust-scoreboard --> (the sub-counts overlap, and include lines credited through exact copies of an asserted line). H credits a source reading only with a current receipt and the exact log
 committed by its named reader; it supplies no worked values and never fills B. Human packets are
 optional under the [2026-10-24 policy amendment](2026-10-24_validation_policy.md), and the reading
 packets are retired: no tool issues receipts, so H stays 0 and the recorded readings are listed as

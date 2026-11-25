@@ -144,7 +144,11 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = 0
       cite: [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
-  (gate) A business on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c
+  (gate) A rental claims a general business credit, read only when the return has rentals (false otherwise)
+      = false
+      cite: [i1040gi] p. 116, Lines 6a Through 6z, "The general business credit consists of a number of credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.rental",{"const":false}],"op":"test"}
+  (gate) A business or rental on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c
       = false
       cite: [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of Schedules C on the return that claim the credit for federal tax paid on fuels (Form 4136)
@@ -175,6 +179,11 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $1,481.80
       cite: [f1040s3] Schedule 3 (2025), line 15 (2025; created 2025-11-17; 008cfd3f)
 
+== Proof-of-concept scope screening ==
+  (helper) In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?
+      = false
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; p527 p. 3, Cash method, "You are a cash basis taxpayer if you report income on your return in the year you actually or constructively receive it, regardless of when it was earned" (2025; created 2025-09-05; 3d31c226)
+
 == Schedule D — securities sales and supplied distribution subtotals ==
   (helper) Year parameter household.no (false)
       = false
@@ -197,6 +206,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s3.virgin_islands_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
   s3.farmland_deferral_if_sold: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.rental_credit_if_rentals: chose false (guard 1)
       not taken: guard 0 = false
   sd.f2439_if_dividends: chose false (guard 1)
       not taken: guard 0 = false
@@ -230,7 +241,8 @@ Derivations:
   s3.virgin_islands_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.farmland_deferral_if_sold: choose(s3.farmland = false; true = true; s3.farmland = false; false = false; s3.no = false)
   s3.business_credit_count: sum_over(person[taxpayer].sc_credit_count = 0)
-  s3.business_credit_any: test(s3.business_credit_count = 0; 0 = 0)
+  s3.rental_credit_if_rentals: choose(scope.rental = false; true = true; scope.rental = false; false = false; s3.no = false)
+  s3.business_credit_any: test(s3.business_credit_count = 0; 0 = 0; s3.rental_credit_if_rentals = false; true = true)
   sd.no: param(#household.no = false)
   sd.f2439_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; sd.no = false)
   s3.line14: param(s3.section965_if_foreign = false; s3.section960c_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.farmland_deferral_if_sold = false; s3.repaid_income = false; s3.business_credit_any = false; sd.f2439_if_dividends = false; #sales.zero = $0)
@@ -239,6 +251,7 @@ Derivations:
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)
 Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
-Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
+Estimated tax penalty: not computed. The IRS generally figures it and sends a bill (i1040gi, line 38; i2210, Who Must File Form 2210). You must file Form 2210 yourself to ask for a waiver, to use the annualized income installment method or the dates tax was actually withheld (Form 2210, Part II, boxes A to D), or if you filed a joint return for 2024 or 2025 but not both and the payment based on your 2024 tax (Form 2210, line 8) is smaller than 90% of your 2025 tax (line 5) (box E).
+Refund: lines 35b to 35d are not asked. If line 34 shows a refund, give your routing number, account number and account type on lines 35b to 35d, or attach Form 8888 to split it; from October 2025 the IRS generally stopped issuing paper refund checks (i1040gi, Line 35a, p. 62).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
 The user is responsible for the return. Not affiliated with or endorsed by the IRS.

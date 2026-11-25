@@ -2430,7 +2430,7 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.f1116.f1116.line24.line23 | all sets | 12496 | 12496 | 0 | holds |
 | operand.f2441.f2441.line13_earned.line20.all.3.gt.1 | all sets | 12496 | 5032 | 5032 | holds |
 | operand.f5695.f5695.part1_any.no.then1 | all sets | 12496 | 3431 | 0 | holds |
-| operand.f5695.f5695.claiming_part1.no.then1 | all sets | 12496 | 12425 | 0 | holds |
+| operand.f5695.f5695.claiming_part1.no.then1 | all sets | 12496 | 12424 | 0 | holds |
 | operand.f7203.f7203.line14.line11 | all sets | 277 | 277 | 9 | holds |
 | operand.f8880.f8880.line3a_counted.zero.then1 | answered returns | 2383 | 308 | 16 | holds |
 | operand.f8880.f8880.line3b_counted.zero.then1 | all sets | 12496 | 3451 | 17 | holds |
@@ -2446,8 +2446,8 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.f8962.f8962.marriage.no.then2 | all sets | 12496 | 3860 | 740 | holds |
 | operand.f8962.f8962.marriage.no.then3 | all sets | 12496 | 4064 | 944 | holds |
 | operand.f8962.f8962.marriage.no.then4 | all sets | 12496 | 3466 | 346 | holds |
-| operand.f8962.f8962.filing.applicable.all.1.any.0.eq.0 | all sets | 12496 | 1483 | 1483 | holds |
-| operand.f8962.f8962.alien_branch.no.then1 | all sets | 12496 | 11798 | 11032 | holds |
+| operand.f8962.f8962.filing.applicable.all.1.any.0.eq.0 | all sets | 12496 | 1487 | 1487 | holds |
+| operand.f8962.f8962.alien_branch.no.then1 | all sets | 12496 | 11794 | 11028 | holds |
 | operand.household.household.hoh_community_property.no.then1 | all sets | 12496 | 4328 | 1208 | holds |
 | operand.household.household.hoh_community_property.no.then2 | all sets | 12496 | 3860 | 740 | holds |
 | operand.household.household.hoh_community_property.no.then4 | all sets | 12496 | 3466 | 346 | holds |
@@ -2469,9 +2469,9 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.k1s.k1s.p1_loss.zero | all sets | 277 | 277 | 277 | holds |
 | operand.k1s.k1s.p2_loss.zero | all sets | 277 | 277 | 277 | holds |
 | operand.k1s.k1s.p3_loss.zero | all sets | 277 | 277 | 277 | holds |
-| boundary.person.person.has_educator_expenses | all sets | 11665 | 9086 | 9086 | holds |
+| boundary.person.person.has_educator_expenses | all sets | 11665 | 9087 | 9087 | holds |
 | operand.person.person.has_educator_expenses.educator_expenses_if_educator.gt.0 | all sets | 11665 | 11665 | 11665 | holds |
-| operand.person.person.educator_eligible_amount.zero.then1 | all sets | 11665 | 11592 | 9027 | holds |
+| operand.person.person.educator_eligible_amount.zero.then1 | all sets | 11665 | 11592 | 9028 | holds |
 | operand.person.person.f4137_line6.zero.then1 | answered returns | 2383 | 2366 | 2366 | holds |
 | operand.person.person.se_line6.zero.then1 | all sets | 11665 | 9711 | 9642 | holds |
 | operand.person.person.eic_se.zero.then1 | all sets | 11665 | 10330 | 9711 | holds |
@@ -2489,7 +2489,7 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.rental.rental.home.home_pers10_if_any.all.1.gt.0 | answered returns | 101 | 11 | 0 | holds |
 | operand.rental.rental.net_loss.zero | all sets | 410 | 410 | 410 | holds |
 | operand.royalty.royalty.loss_abs.zero | all sets | 64 | 43 | 43 | holds |
-| boundary.s1a.s1a.tips_magi_over | all sets | 12496 | 9007 | 9007 | holds |
+| boundary.s1a.s1a.tips_magi_over | all sets | 12496 | 9010 | 9010 | holds |
 | operand.s1a.s1a.tips_magi_over.tips_threshold.gt.1 | all sets | 12496 | 12496 | 12381 | holds |
 | operand.s1a.s1a.tips_deduction_figured.tips_reduction | all sets | 12496 | 12496 | 12381 | holds |
 | operand.s1a.s1a.tips_deduction_ssn.zero.then0 | all sets | 12496 | 7543 | 902 | holds |
@@ -2498,7 +2498,7 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.s1a.s1a.tips_deduction_claim.zero.then2 | all sets | 12496 | 3860 | 740 | holds |
 | operand.s1a.s1a.tips_deduction_claim.tips_deduction_ssn.then3 | all sets | 12496 | 4064 | 303 | holds |
 | operand.s1a.s1a.tips_deduction_claim.tips_deduction_ssn.then4 | all sets | 12496 | 3466 | 151 | holds |
-| boundary.s1a.s1a.ot_magi_over | all sets | 12496 | 9066 | 9066 | holds |
+| boundary.s1a.s1a.ot_magi_over | all sets | 12496 | 9062 | 9062 | holds |
 | operand.s1a.s1a.ot_magi_over.ot_threshold.gt.1 | all sets | 12496 | 12496 | 12385 | holds |
 | operand.s1a.s1a.ot_deduction_figured.ot_reduction | all sets | 12496 | 12496 | 12385 | holds |
 | operand.s1a.s1a.ot_deduction_ssn.zero.then0 | all sets | 12496 | 7555 | 901 | holds |
@@ -2507,17 +2507,17 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.s1a.s1a.ot_deduction_claim.zero.then2 | all sets | 12496 | 3860 | 740 | holds |
 | operand.s1a.s1a.ot_deduction_claim.ot_deduction_ssn.then3 | all sets | 12496 | 4064 | 303 | holds |
 | operand.s1a.s1a.ot_deduction_claim.ot_deduction_ssn.then4 | all sets | 12496 | 3466 | 151 | holds |
-| boundary.s1a.s1a.vli_magi_over | all sets | 12496 | 8991 | 8991 | holds |
-| operand.s1a.s1a.vli_deduction.zero.then0 | all sets | 12496 | 12349 | 8991 | holds |
-| boundary.s1a.s1a.senior_magi_over | all sets | 12496 | 8574 | 8574 | holds |
+| boundary.s1a.s1a.vli_magi_over | all sets | 12496 | 8989 | 8989 | holds |
+| operand.s1a.s1a.vli_deduction.zero.then0 | all sets | 12496 | 12349 | 8989 | holds |
+| boundary.s1a.s1a.senior_magi_over | all sets | 12496 | 8572 | 8572 | holds |
 | operand.s1a.s1a.senior_you_claim.zero.then2 | all sets | 12496 | 3860 | 740 | holds |
 | operand.s2.s2.amt_rel.zero.then1 | all sets | 12496 | 12314 | 0 | holds |
-| operand.s2.s2.amt_l15.amt_l13.then1 | all sets | 12496 | 10921 | 3125 | holds |
+| operand.s2.s2.amt_l15.amt_l13.then1 | all sets | 12496 | 10921 | 3126 | holds |
 | operand.s8812.s8812.line18a.chart_eic.then0 | answered returns | 2383 | 226 | 226 | holds; on a partial return: generated return 99 (seed 20261115), answers withheld at rate 0.1: s8812.line19 is { "cite": { "doc": "i4562", "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)", "revision": "2025", "snapshot": "5c1c95b78d557130f2afa0bd192bef352ef65e42ae6... with the data and unknown with the mutant |
-| operand.sa.sa.medical_premiums_if_not_large.no.then1 | all sets | 12496 | 4464 | 1316 | holds |
-| operand.sa.sa.home_other_if_not_owner.no.then1 | all sets | 12496 | 4863 | 1712 | holds |
+| operand.sa.sa.medical_premiums_if_not_large.no.then1 | all sets | 12496 | 4467 | 1316 | holds |
+| operand.sa.sa.home_other_if_not_owner.no.then1 | all sets | 12496 | 4863 | 1711 | holds |
 | operand.sa.sa.deduction.standard.then1 | all sets | 12496 | 1971 | 0 | holds |
-| operand.sales.sales.bad_aggregate.no.then1 | all sets | 1677 | 1645 | 1152 | holds |
+| operand.sales.sales.bad_aggregate.no.then1 | all sets | 1677 | 1645 | 1153 | holds |
 | boundary.sc.sc.ho_over | all sets | 1469 | 9 | 9 | holds |
 | operand.sc.sc.f7206_line9.zero.then1 | all sets | 1469 | 1148 | 89 | holds |
 | filter.sche.sche.rents | all sets | 12496 | 410 | 81 | holds |
@@ -2528,7 +2528,7 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.scveh.scveh.d5.l5 | all sets | 586 | 586 | 586 | holds |
 | operand.scveh.scveh.l6.k6 | all sets | 586 | 550 | 550 | holds |
 | operand.scveh.scveh.d6.l6 | all sets | 586 | 586 | 586 | holds |
-| operand.sd.sd.to1040.line21.then0 | all sets | 12496 | 8417 | 0 | holds |
+| operand.sd.sd.to1040.line21.then0 | all sets | 12496 | 8416 | 0 | holds |
 | operand.sdtw.sdtw.line4.zero.then1 | answered returns | 2383 | 2260 | 2260 | holds |
 | operand.sdtw.sdtw.line17.line16 | all sets | 12496 | 10964 | 0 | holds |
 | operand.sdtw.sdtw.line45.line43 | all sets | 12496 | 10986 | 10365 | holds |
@@ -2537,7 +2537,7 @@ Known-killed controls (one fixture-killed mutant per line): 90 of 101 rejected b
 | operand.ssb.ssb.show16_18.mfs_together.all.1.any.0.eq.0 | all sets | 12496 | 11087 | 11087 | holds |
 | operand.ssb.ssb.show16_18.past9.all.1.any.1.eq.0 | all sets | 12496 | 10650 | 10650 | holds |
 | operand.ssb.ssb.line16.line16_together.then0 | all sets | 12496 | 3826 | 668 | holds |
-| operand.ssb.ssb.line18.zero.then1 | all sets | 12496 | 12254 | 9014 | holds |
+| operand.ssb.ssb.line18.zero.then1 | all sets | 12496 | 12254 | 9012 | holds |
 | boundary.se.positive | all sets | 11665 | 3 | 3 | holds |
 | param.eic.ws_threshold0.joint.$1 | all sets | 12496 | 12496 | 12496 | holds |
 | param.eic.ws_threshold0.other.$1 | all sets | 12496 | 12496 | 12496 | holds |

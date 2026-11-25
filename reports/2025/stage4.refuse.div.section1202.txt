@@ -125,11 +125,19 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Schedule D Tax Worksheet required after its exceptions
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability and exceptions (2025; printed date 2025-12-11; 650643a6)
-      note: Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
   16  Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [i1040gi] p. 34, Line 16, Tax, "Tax on your taxable income. Figure the tax using one of the methods described later"; p. 36, Line 16, "Use the Schedule D Tax Worksheet in the Instructions for Schedule D to figure the amount to enter on Form 1040 or 1040-SR, line 16", "Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet" (2025; printed date 2026-02-25; 482e9c48)
       note: guard incomplete
+
+== Schedule B (Form 1116) — Foreign Tax Carryover Reconciliation Schedule (passive category) ==
+  (helper) Year parameter ftc.no (false)
+      = false
+      cite: [i1116sb] p. 1, Who Must File, "if you’re filing Form 1116 that has a foreign tax carryover in the prior tax year, the current tax year, or both, you must file Schedule B for that separate category of income" (Rev. December 2022 (printed 'Instructions for Schedule B (Form 1116) (Rev. 12-2022)', Dec 29, 2022); current irs-pdf edition, not year-specific; the IRS had posted no 2025 edition; 84d287be)
+  (gate) Foreign tax is carried into 2025 through a 2024 return that had foreign income and deducted the foreign tax or took no credit for it, and is neither changed since 2024 nor carried from another joint return (those are refused on Form 1116 line 35; a carryover through a 2024 election year or a year with no foreign income passes through unreduced)
+      = false
+      cite: [i1116] p. 19, Line 10, "However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that year", "Don’t reduce the carryback or carryforward by the amount you would have used in the election year if you hadn’t made the election" (2025; printed date 2025-12-23; 6998cf8c)
+      note: taken: {"eq":["ftc.carryover_if_asked",{"const":false}],"op":"test"}
 
 == Form 2441 — Child and Dependent Care Expenses (Parts I to III) ==
   (helper) Year parameter sales.zero
@@ -416,13 +424,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Qualifying surviving spouse checked without meeting its tests
       = false
       cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply" (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Filing status qualifying surviving spouse
-      = false
-      cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of people listed as your son, daughter or stepchild (not a foster child, grandchild or other descendant)
+      = 0
+      cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $dependent:
   (gate) Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children listed lived with you for all of 2025
       = false
       cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["household.qss",{"const":false}],"op":"test"}
+  (helper) Were you a registered domestic partner in Nevada, Washington or California at any time in 2025?
+      = false
+      cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Did your spouse die in 2025?
       = false
       cite: [p501] p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025 returns; PDF created 2026-02-04; 288b62a4)
@@ -442,9 +453,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
-  (gate) Not filing jointly, living in a community property state, and a registered domestic partner in Nevada, Washington or California
+  (gate) Not filing jointly, and a registered domestic partner in Nevada, Washington or California at any time in 2025 (wherever you lived)
       = false
-      cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"; p555 p. 2, Domicile, "If you and your spouse (or your RDP) have different domiciles, check the laws of each to see if you have community property, community income, or both." (2025; printed date 2026-02-25; 482e9c48)
   (gate) The filing status conflicts with the marriage facts entered
       = false
       cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."; p. 14, Married Filing Separately, "if you are married at the end of 2025 and file a separate return"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; 482e9c48)
@@ -694,6 +705,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"; i1040gi p. 95, Line 20, "If you made any nondeductible contributions to a traditional" (2025; created 2025-11-04; ba2b2877)
       note: taken: {"eq":["person.ira_owner",{"const":false}],"op":"test"}
+  (gate) Roth IRA contributions for 2025 (asked only of a person with an IRA; otherwise zero)
+      = $0
+      cite: [f8880] Form 8880 (2025), line 1, "Do not include rollover contributions"; p. 2, Who Can Take This Credit, "(a) contributions (other than rollover contributions) to a traditional or Roth IRA" (2025; created 2025-11-04; ba2b2877)
+      note: taken: {"eq":["person.ira_owner",{"const":false}],"op":"test"}
   (helper) Year parameter household.no (false)
       = false
       cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; bfecbc99)
@@ -704,6 +719,17 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) This person made traditional IRA contributions for 2025
       = false
       cite: [i1040gi] p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person made Roth IRA contributions for 2025
+      = false
+      cite: [p590a] p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; ca0e4287)
+  (gate) This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return more than this person's own compensation where the spousal limit cannot raise it
+      = false
+      cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules"; p590a p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; 735fb7ae)
+      note: taken: {"eq":["person.ira_roth_has",{"const":false}],"op":"test"}
+  (gate) This person made Roth IRA contributions for 2025 and the return's modified AGI for Roth IRA purposes is in or above the phase-out range
+      = false
+      cite: [p590a] p. 2, Modified AGI limit for Roth IRA contributions, "For 2025, your Roth IRA contribution limit is reduced (phased out) in the following situations" (2025; ca0e4287)
+      note: taken: {"eq":["person.ira_roth_has",{"const":false}],"op":"test"}
   (helper) This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions)
       = $0
       cite: [i1040gi] p. 98, IRA Deduction Worksheet—Continued, line 12, "Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20" (2025; printed date 2026-02-25; 482e9c48)
@@ -807,35 +833,35 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: Interpretation amb.2025.f5329_simple_limits: The first (person.x_limit_binds refuses Form 5329 line 4). The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner. (i5329, p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.")
   (gate) Form 5329 parts this tool does not prepare
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 1, Part III, "or you had an amount on line 17 of your 2024 Form 5329"; p. 1, Part IV, "Complete this part if you contributed more to your Roth IRAs", "or you had an amount on line 25 of your 2024 Form 5329"; p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VI, "Complete this part if you or your employer contributed more to your Archer MSAs for 2025 than is allowable"; p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is allowable"; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
   (helper) This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is allowable" (2025; 2ad77023)
   (gate) A taxable distribution from a Coverdell ESA, a qualified tuition program or an ABLE account (asked only with such an account; otherwise no)
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account." (2025; 2ad77023)
       note: taken: {"eq":["person.x_edu_account",{"const":false}],"op":"test"}
   (gate) Excess contributions to a Coverdell ESA or an ABLE account (asked only with such an account; otherwise no)
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; p. 2, Part VIII, "Complete this part if contributions to your ABLE account for 2025 were more than is allowable" (2025; 2ad77023)
       note: taken: {"eq":["person.x_edu_account",{"const":false}],"op":"test"}
   (helper) Do you have excess contributions to an Archer MSA?
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 2, Part VI, "Complete this part if you or your employer contributed more to your Archer MSAs for 2025 than is allowable" (2025; 2ad77023)
   (gate) An earlier year's excess IRA contributions remained at the end of 2025 (asked only of a person with an IRA; otherwise no)
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 1, Part III, "or you had an amount on line 17 of your 2024 Form 5329"; p. 1, Part IV, "Complete this part if you contributed more to your Roth IRAs", "or you had an amount on line 25 of your 2024 Form 5329" (2025; 2ad77023)
       note: taken: {"eq":["person.ira_owner",{"const":false}],"op":"test"}
   (helper) This person listed a health savings account
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329" (2025; 2ad77023)
   (gate) An earlier year's excess HSA contributions not removed or used up before 2025 (asked only of a person who listed a health savings account; otherwise no)
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 2, Part VII, "or you had an amount on line 49 of your 2024 Form 5329" (2025; 2ad77023)
       note: taken: {"eq":["person.has_hsa",{"const":false}],"op":"test"}
   (helper) Born in 1952 or earlier (age 73 or older at the end of 2025)
       = false
-      cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
+      cite: [f5329] p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
   (helper) Have you inherited an IRA or an account in a retirement plan from someone who died?
       = false
       cite: [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."; p. 3, Part IX, "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan."; i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed." (2025; 2ad77023)
@@ -1068,10 +1094,17 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Must you (or, on a joint return, your spouse) pay back in 2025 a tax credit claimed in an earlier year (a recapture or repayment of a business, investment, energy, low-income housing or vehicle refueling credit, or a penalty tied to one)?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 1d, 1e, 1f, 1y, 16, 17a, 17z and 19 (2025; created 2025-05-08; 64d867b6)
-  (gate) Look-back interest, asked only when the return has a Schedule C (false otherwise)
+  (gate) Look-back interest, asked only when the return has a Schedule C or a business was owned before 2025 (false otherwise)
       = false
       cite: [f1040s2] Schedule 2 (2025), line 17n (2025; created 2025-05-08; 64d867b6)
-      note: taken: {"eq":["s1.has_sc",{"const":false}],"op":"test"}
+      note: taken: {"eq":["s2.lookback_ask",{"const":false}],"op":"test"}
+  (gate) The return has a Schedule C, or you (or, on a joint return, your spouse) owned a business, farm, rental or share of a partnership or S corporation before 2025 (a contract of a business closed before 2025 can still be adjusted in 2025), or the return lists a source of royalties (property such as a film or book may be depreciated by the income it is expected to earn)
+      = false
+      cite: [i6251] p. 7, Line 2p, "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted"; f1040s2 Schedule 2 (2025), line 17n, "Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
+  (helper) The return lists a source of royalties (false when no rental or royalty is reported, where the list is not asked)
+      = false
+      cite: [i6251] p. 7, Line 2p, "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
+      note: taken: {"eq":["scope.rental",{"const":false}],"op":"test"}
   (helper) Do you (or, on a joint return, your spouse) owe any other additional tax for Schedule 2 that has not been asked about: the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, the recapture of the 10% additional tax when a series of substantially equal payments from a retirement plan or IRA is changed before the later of age 59½ or 5 years after its first payment (Form 5329 line 4), or any other tax to be written in on line 1y or line 17z?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 1y, 17h to 17m and 17z; p590b p. 26, Recapture tax for changes in distribution method under equal payment exception, "Report the recapture tax (including the interest on the deferral periods) on line 4 of Form 5329" (2025; created 2025-05-08; 64d867b6)
@@ -1269,9 +1302,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [p525] p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income" (2025; 39b0fa5e)
 
 == Schedule A — supported itemized deductions and standard comparison ==
-  (helper) A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses
+  (helper) A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction, foreign tax not allowed as a credit, or generation-skipping tax on a trust distribution (line 6); or a deduction from the Schedule A line 16 list other than gambling losses
       = false
-      cite: [i1040sca] p. 8, Limits on home mortgage interest, "Your deduction for home mortgage interest is subject to a number of limits"; p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 3, Line 5a, "You can elect to deduct state and local general sales taxes instead of state and local income taxes"; p. 7, Other Taxes, "Include on this line income taxes you paid to a foreign country"; pp. 11–12, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; printed date 2025-12-08; b0999b12)
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "Your deduction for home mortgage interest is subject to a number of limits"; p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 3, Line 5a, "You can elect to deduct state and local general sales taxes instead of state and local income taxes"; p. 7, Line 6, "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions"; p514 p. 3, Exceptions for foreign taxes not allowed as a credit, "you can deduct any foreign tax that is not allowed as a credit"; pp. 11–12, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; printed date 2025-12-08; b0999b12)
   (helper) Did you or your spouse make any charitable contribution in 2025? Answer Yes if any of these applies:
 
       - money given to a charity by cash, check, card or payroll deduction, including money put into a donor-advised fund
@@ -1364,6 +1397,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Did you (or, on a joint return, your spouse) pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))?
+      = false
+      cite: [i1040sca] p. 7, Line 6, "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions" (2025; printed date 2025-12-08; b0999b12)
+  (helper) Was foreign income tax withheld from your (or, on a joint return, your spouse's) dividends, interest or other income that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments on positions in substantially similar or related property?
+      = false
+      cite: [p514] p. 3, Exceptions for foreign taxes not allowed as a credit, "Even if you claim a credit for other foreign taxes, you can deduct any foreign tax that is not allowed as a credit if you did any of the following", "You paid withholding tax on dividends from foreign corporations whose stock you did not hold for the required period of time", "You paid withholding tax on income or gain (other than dividends) from property you did not hold for the required period of time", "You paid withholding tax on income or gain to the extent you had to make related payments on positions in substantially similar or related property" (2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026); 35061c2d)
   11  Gifts by cash or check (zero when you and your spouse gave nothing to charity)
       = $0
       cite: [f1040sa] p. 1, Gifts to Charity, line 11, "Gifts by cash or check"; i1040sca p. 10, Line 11, "Enter on line 11 the total value of gifts you made in cash or by check (including out-of-pocket expenses)" (2025; created 2025-11-20; c14acf34)
@@ -1426,9 +1465,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) At any time in 2025, did you (or, on a joint return, your spouse) own anything else of value outside the United States, or were you owed money by someone abroad?
       = false
       cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
-  (gate) Do you (or, on a joint return, your spouse) have anything to do with a trust or family foundation that is outside the United States or has a trustee abroad, as the person who set it up, gave to it, or may receive from it?
+  (gate) Do you (or, on a joint return, your spouse) have, or did you have at any time in 2025, anything to do with a trust or family foundation that is outside the United States, has a trustee abroad, or in which anyone other than a U.S. citizen, U.S. resident or U.S. company can make or veto a decision: as the person who set it up, gave, sold or lent anything to it (directly or through another person or company), received or may receive anything from it in any way, holds a power over it, or is taxed on its income as its owner?
       = false
-      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
+      cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans; i3520 p. 1, Who Must File, items 2 and 3, "treated as the owner of any part of the assets of a foreign trust", "received, directly or indirectly, a distribution from a foreign trust"; i3520 p. 4, Distribution, "without regard to whether the recipient is designated as a beneficiary"; i3520 p. 6, Reportable Event, "The transfer of any money or property, directly or indirectly, to a foreign trust" (2025; created 2025-04-23; dd1ec371)
   (gate) In 2025, were you (or, on a joint return, your spouse) a director, officer or manager of a company set up outside the United States, or an owner, alone or with your family, of 10% or more of one?
       = false
       cite: [f1040sb] Part III, Foreign Accounts and Trusts, "You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust"; i1040sb pp. 2–3, Part III, lines 7a and 8; fincen114 pp. 4–5, Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; i8938 pp. 7–8, Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans (2025; created 2025-04-23; dd1ec371)
@@ -1504,6 +1543,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sb] p. 3, Line 8, "If you received a distribution from a foreign trust, you must provide additional information", "If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520" (TY2025; printed April 23, 2025; b92f31ec)
       note: taken: {"eq":["sb.foreign_trust_any",{"const":false}],"op":"test"}
+  (helper) The owner of a foreign trust under the grantor trust rules, when you or your spouse had a connection to a foreign trust or a trust in a U.S. territory; false otherwise
+      = false
+      cite: [i3520] p. 1, Who Must File, item 2, "is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679" (Rev. December 2025 (continuous-use: "Use these instructions for tax year 2025 and subsequent years until a superseding revision is issued"; used with the December 2023 revision of Form 3520); d3e27f7d)
+      note: taken: {"eq":["sb.foreign_trust_any",{"const":false}],"op":"test"}
   (helper) Form 5471 officer, director or 10% shareholder of a foreign corporation, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
       = false
       cite: [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation" (TY2025; printed April 23, 2025; b92f31ec)
@@ -1530,6 +1573,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) At any time in 2025, were you (or, on a joint return, your spouse) in a chapter 11 bankruptcy case?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (helper) Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?
+      = false
+      cite: [f1040] Form 1040 (2025), page 1 heading, "For the year Jan. 1–Dec. 31, 2025, or other tax year beginning"; i1040gi p. 12, Fiscal-year filers, "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025, enter the beginning and ending months of your fiscal year" (2025; created 2025-09-05; 3d31c226)
   (helper) Is any of your (or, on a joint return, your spouse's) 2025 income exempt from U.S. tax under a tax treaty?
       = false
       cite: [i1040s8812] p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a." (2025; printed date 2026-01-23; bb9788cd)
@@ -1659,9 +1705,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["scope.has_w2",{"const":true}],"op":"test"}
-  (helper) In 2025, did you (or, on a joint return, your spouse) put money into, or take money out of, an Archer MSA or a Medicare Advantage MSA (older kinds of medical savings account, not a health savings account)?
+  (helper) For 2025, did anyone (you, your employer or anyone else) put money into your (or, on a joint return, your spouse's) Archer MSA, counting money put in during 2026 for 2025, or in 2025 did you (or, on a joint return, your spouse) take money out of an Archer MSA or a Medicare Advantage MSA, or come to own one because its owner died? (These are older kinds of medical savings account, not a health savings account.)
       = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+      cite: [i8853] p. 1, Who Must File, "You (or your employer) made contributions for 2025 to your Archer MSA", "your spouse (or their employer) made contributions for 2025 to your spouse's Archer MSA", "acquired an interest in an Archer MSA or a Medicare Advantage MSA because of the death of the account holder", "received Archer MSA or Medicare Advantage MSA distributions in 2025" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); cefff141)
   (helper) In 2025, was tuition or a fee refunded, or tax-free aid given, to a student for a year for which you (or, on a joint return, your spouse) had already claimed an education credit?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -1687,9 +1733,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Do you (or, on a joint return, your spouse) own or lease timber land on which you paid to plant or replant trees, in 2025 or in the seven years before?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
-  (helper) In 2025, were lawyer's fees or court costs paid by you (or, on a joint return, your spouse), or taken out of what you won, for a claim of unlawful discrimination, a claim against the U.S. Government, a Medicare secondary-payer claim or an IRS whistleblower award?
+  (helper) In 2025, were lawyer's fees or court costs paid by you (or, on a joint return, your spouse), or taken out of what you won, for a claim of unlawful discrimination, a claim against the U.S. Government, a Medicare secondary-payer claim, a whistleblower award from the IRS, the SEC or the CFTC, or a suit under a state false claims act?
       = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful discrimination claims", Line 24i; p525 p. 32, Deduction for costs involved in unlawful discrimination suits, "a claim against the U.S. Government, or a claim under section 1862(b)(3)(A) of the Social Security Act", "The attorney fees and court costs may be paid by you or on your behalf" (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful discrimination claims", Line 24i; p525 p. 32, Deduction for costs involved in unlawful discrimination suits, "a claim against the U.S. Government, or a claim under section 1862(b)(3)(A) of the Social Security Act", "The attorney fees and court costs may be paid by you or on your behalf"; usc-26-62 p. 2, paragraph (21), attorney fees and court costs "in connection with any award under" section 7623(b) or an action brought under section 21F of the Securities Exchange Act of 1934, "a State false claims act" or section 23 of the Commodity Exchange Act (2025; created 2025-09-05; 3d31c226)
   (helper) In 2025, did you (or, on a joint return, your spouse) pay back supplemental unemployment benefits from an employer's fund in order to qualify for trade readjustment allowances?
       = false
       cite: [i1040gi] p. 99, Line 24e, "Enter repayment of supplemental unemployment benefits under the Trade Act of 1974 (see Pub. 525)"; p525 p. 29, Repayment of benefits, "You may have to repay some of your supplemental unemployment benefits to qualify for trade readjustment allowances under the Trade Act of 1974" (2025; printed date 2026-02-25; 482e9c48)
@@ -1712,7 +1758,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home"; p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station"; p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs"; i1040sf p. 2, General Instructions, "Use Schedule F (Form 1040) to report farm income and expenses"; i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner"; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes"; p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)"; p. 99, Line 23, "Archer MSA Deduction"; p. 99, Lines 24a Through 24z, "Enter reforestation amortization and expenses"; p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful"; p. 99, Line 24e, "Enter repayment of supplemental unemployment benefits under the Trade Act of 1974"; i1040se p. 11, Part IV, "If you are the holder of a residual interest in a REMIC, use Part IV to report your total share of the REMIC’s taxable income or loss" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes)
       = false
-      cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"; i1040s8812 p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a." (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 12, Fiscal-year filers, "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"; i1040s8812 p. 3, Line 18a, "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a." (2025; printed date 2026-02-25; 482e9c48)
   (helper) An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes)
       = false
       cite: [i1040gi] p. 36, Form 8615, "You must file Form 8615 if you meet all of the following conditions"; p. 34, Line 16, "Tax from Form(s) 8814 (relating to the election to report child’s interest or dividends)", "Recapture of an education credit", "Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates)"; p. 34, Line 16, "Any tax from Form 8621, line 16e, relating to a section 1291 fund"; p. 114, Line 17p, "Enter any interest amount from Form 8621, line 16f"; p. 34, Line 16, "Tax from Form 8978, line 14 (relating to partner’s audit liability under section 6226)"; p. 36, Schedule J, "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J" (2025; printed date 2026-02-25; 482e9c48)
@@ -1831,20 +1877,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040sd] p. 1, Part II, line 10, column (h), "Totals for all transactions reported on Form(s) 8949 with Box F or Box L checked", "(h) Gain or (loss) Subtract column (e) from column (d) and combine the result with column (g)" (2025; created 2025-10-06; 90564c8b)
       note: confirmed roster $sales:
-  4   Line 4: zero only after unsupported source/carryover screening
+  4   Line 4: zero only after unsupported source screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  5   Line 5: zero only after unsupported source/carryover screening
+  5   Line 5: zero only after unsupported source screening
       = $0
       cite: [f1040sd] Schedule D (2025), line 5, "Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1" (zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at Form 1040 line 8) (2025; created 2025-10-06; 90564c8b)
   6   Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
       cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
       note: taken: {"eq":["sd.carryover",{"const":false}],"op":"test"}
-  11  Line 11: zero only after unsupported source/carryover screening
+  11  Line 11: zero only after unsupported source screening
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
-  12  Line 12: zero only after unsupported source/carryover screening
+  12  Line 12: zero only after unsupported source screening
       = $0
       cite: [f1040sd] Schedule D (2025), line 12, "Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1" (zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at Form 1040 line 8) (2025; created 2025-10-06; 90564c8b)
   13  Capital gain distributions
@@ -2093,6 +2139,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sb.line8_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
+  sb.trust_owner_if_foreign: chose false (guard 1)
+      not taken: guard 0 = false
   sb.form5471_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
   ssb.benefits_if_any: chose $0 (guard 1)
@@ -2147,8 +2195,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   household.hoh_missed_mfs: chose false (guard 1)
       not taken: guard 0 = false
-  household.qss_child_not_all_year: chose false (guard 1)
-      not taken: guard 0 = false
   sa.mfs_joint_paid_if_itemizing: chose false (guard 1)
       not taken: guard 0 = false
   sa.line11_if_gifts: chose $0 (guard 1)
@@ -2183,6 +2229,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s2.mortgage_subsidy_if_interest: chose false (guard 1)
       not taken: guard 0 = false
+  s2.lookback_royalty: chose false (guard 1)
+      not taken: guard 0 = false
   s2.lookback_if_business: chose false (guard 1)
       not taken: guard 0 = false
   person[taxpayer].se_line12: chose $0 (guard 1)
@@ -2192,6 +2240,12 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].f8919_tax: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].x_c05: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].sav_roth_if_ira_owner: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].ira_roth_over: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].ira_roth_income: chose false (guard 1)
       not taken: guard 0 = false
   person[taxpayer].inherited_account_if_under_73: chose false (guard 0)
   person[taxpayer].rmd_missed_if_possible: chose false (guard 1)
@@ -2218,6 +2272,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   ftc.carryover_ask: chose false (guard 1)
       not taken: guard 0 = false
   ftc.carryover_if_asked: chose false (guard 1)
+      not taken: guard 0 = false
+  f1116sb.carry_through_prior: chose false (guard 1)
       not taken: guard 0 = false
   ftc.credit: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -2248,7 +2304,7 @@ Derivations:
   scope.care_benefits_other_if_benefits: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; scope.no = false)
   scope.excess_deferral_if_w2: choose(scope.has_w2 = true; true = true; scope.excess_deferral = false)
   scope.passive_if_business_before: choose(scope.business_before = false; true = true; scope.business_before = false; false = false; scope.no = false)
-  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.treaty = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.wages_no_form_if_pay = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
+  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.fiscal_year = false; true = true; scope.treaty = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.wages_no_form_if_pay = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
   scope.ready_other_income: test(scope.other_income = false; true = true; true = true)
   person[taxpayer].under24: test(person[taxpayer].birth_year = 1980; #age.cut_24 = 2002; person[taxpayer].birth_year = 1980; #age.cut_24 = 2002)
   scope.under24_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].under24 = false; true = true)
@@ -2352,7 +2408,7 @@ Derivations:
   household.roster_bad: test(household.roster_ok = true; false = false)
   household.cp_not_joint: choose(household.community_property = false; true = true; household.community_property = false; false = false; household.no = false)
   household.cp_marriage_ended: choose(f1040.status = single; "single" = single; household.cp_not_joint = false)
-  household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
+  household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.rdp = false; true = true)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $0)
   f1040.line1a: sum_over(household.mfs_community_property = false; household.roster_bad = false; household.cp_marriage_ended = false; household.rdp_community_property = false; person[taxpayer].box1 = $0)
   scope.household_pay_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
@@ -2407,14 +2463,15 @@ Derivations:
   sb.form8938_if_foreign: choose(sb.foreign_any = false; true = true; sb.foreign_any = false; false = false; sb.foreign_no = false)
   sb.foreign_trust_any: test(sb.trust_any = false; true = true; sb.territory_any = false; true = true)
   sb.line8_if_foreign: choose(sb.foreign_trust_any = false; true = true; sb.foreign_trust_any = false; false = false; sb.foreign_no = false)
+  sb.trust_owner_if_foreign: choose(sb.foreign_trust_any = false; true = true; sb.foreign_trust_any = false; false = false; sb.foreign_no = false)
   sb.foreign_company_any: test(sb.company_any = false; true = true; sb.territory_any = false; true = true)
   sb.form5471_if_foreign: choose(sb.foreign_company_any = false; true = true; sb.foreign_company_any = false; false = false; sb.foreign_no = false)
-  sb.line2: sum_over(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.form5471_if_foreign = false)
+  sb.line2: sum_over(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.trust_owner_if_foreign = false; sb.form5471_if_foreign = false)
   sb.zero: param(#sales.zero = $0)
-  sb.line3: copy(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.form5471_if_foreign = false; sb.zero = $0)
+  sb.line3: copy(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.trust_owner_if_foreign = false; sb.form5471_if_foreign = false; sb.zero = $0)
   sb.line4: subtract(sb.line2 = $0; sb.line3 = $0)
   f1040.line2b: copy(sb.line4 = $0)
-  sb.line6: copy(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.form5471_if_foreign = false; sb.ordinary_dividends_if_dividends = $0)
+  sb.line6: copy(sb.unsupported_if_income = false; sb.fbar_required_if_foreign = false; sb.form8938_if_foreign = false; sb.line8_if_foreign = false; sb.trust_owner_if_foreign = false; sb.form5471_if_foreign = false; sb.ordinary_dividends_if_dividends = $0)
   f1040.line3b: copy(sb.line6 = $0)
   f1040.line4b: sum_over(person[taxpayer].ira_taxable = $0)
   f1040.line5b: sum_over(person[taxpayer].plan_taxable = $0)
@@ -2489,8 +2546,7 @@ Derivations:
   household.hoh_missed: test(f1040.status = single; "single" = single; household.unmarried = true; true = true; household.hoh_missed_test2 = false; true = true)
   household.hoh_missed_mfs: choose(household.mfs = false; true = true; household.mfs = false; false = false; household.no = false)
   household.hoh_fails: test(household.hoh_missed = false; household.hoh_missed_mfs = false; f1040.status = single; "hoh" = hoh)
-  household.qss: test(f1040.status = single; "qss" = qss)
-  household.qss_child_not_all_year: choose(household.qss = false; true = true; household.qss = false; false = false; household.no = false)
+  household.qss_child_not_all_year: test(household.qss_children_listed = 0; 0 = 0)
   household.qss_fails: test(household.qss_child_not_all_year = false; f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.mfs_itemizing: test(sa.mfs = false; true = true)
@@ -2510,7 +2566,7 @@ Derivations:
   ftc.taxes_if_asked: choose(ftc.asked = true; true = true; ftc.taxes = $0)
   ftc.has_tax: test(ftc.taxes_if_asked = $0; 0 = $0)
   sa.foreign_tax_deduct_if_tax: choose(ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; sa.no = false)
-  sa.unsupported: test(sa.mortgage_unreported_if_home = false; true = true; sa.mortgage_over_limit_if_interest = false; true = true; sa.mortgage_other_use_if_interest = false; true = true; sa.sales_tax_wish = false; true = true; sa.foreign_tax_deduct_if_tax = false; true = true; sa.estate_tax_income = false; true = true; sa.bond_premium = false; true = true; sa.debt_instrument_loss = false; true = true; sa.pension_unrecovered = false; true = true; sa.impairment_work = false; true = true)
+  sa.unsupported: test(sa.mortgage_unreported_if_home = false; true = true; sa.mortgage_over_limit_if_interest = false; true = true; sa.mortgage_other_use_if_interest = false; true = true; sa.sales_tax_wish = false; true = true; sa.foreign_tax_deduct_if_tax = false; true = true; sa.estate_tax_income = false; true = true; sa.bond_premium = false; true = true; sa.debt_instrument_loss = false; true = true; sa.pension_unrecovered = false; true = true; sa.impairment_work = false; true = true; sa.gst_paid = false; true = true; sa.foreign_tax_noncreditable = false; true = true)
   sa.line12: choose(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.gifts = false; true = true; sa.gifts = false; false = false; sa.zero = $0)
   sa.gift_sum: sum(sa.line11_if_gifts = $0; sa.line12 = $0)
   sa.agi: copy(f1040.line11b = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
@@ -2543,7 +2599,9 @@ Derivations:
   s2.no: param(#household.no = false)
   s2.household_employee_if_help: choose(s2.household_help = false; true = true; s2.household_help = false; false = false; s2.no = false)
   s2.mortgage_subsidy_if_interest: choose(sa.home_asked = false; true = true; sa.home_asked = false; false = false; s2.no = false)
-  s2.lookback_if_business: choose(s1.has_sc = false; true = true; s1.has_sc = false; false = false; s2.no = false)
+  s2.lookback_royalty: choose(scope.rental = false; true = true; scope.rental = false; false = false; s2.no = false)
+  s2.lookback_ask: test(s1.has_sc = false; true = true; scope.business_before = false; true = true; s2.lookback_royalty = false; true = true)
+  s2.lookback_if_business: choose(s2.lookback_ask = false; true = true; s2.lookback_ask = false; false = false; s2.no = false)
   s2.other: test(s2.w2_marks_if_w2 = false; true = true; s2.household_employee_if_help = false; true = true; s2.mortgage_subsidy_if_interest = false; true = true; s2.hsa_testing = false; true = true; s2.credit_recapture = false; true = true; s2.lookback_if_business = false; true = true; s2.other_tax = false; true = true)
   person[taxpayer].se_line12: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s2.line4: sum_over(person[taxpayer].se_line12 = $0)
@@ -2558,6 +2616,10 @@ Derivations:
   person[taxpayer].x_c05: choose(person[taxpayer].x_has05 = false; true = true; person[taxpayer].x_has05 = false; false = false; person[taxpayer].zero = $0)
   s2.e05_total: sum_over(person[taxpayer].x_c05 = $0)
   s2.e05_over: test(s2.e05_total = $0; 0 = $0)
+  person[taxpayer].sav_roth_if_ira_owner: choose(person[taxpayer].ira_owner = false; true = true; person[taxpayer].ira_owner = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].ira_roth_has: test(person[taxpayer].sav_roth_if_ira_owner = $0; #sales.zero = $0)
+  person[taxpayer].ira_roth_over: choose(person[taxpayer].ira_roth_has = false; true = true; person[taxpayer].ira_roth_has = false; false = false; person[taxpayer].no = false)
+  person[taxpayer].ira_roth_income: choose(person[taxpayer].ira_roth_has = false; true = true; person[taxpayer].ira_roth_has = false; false = false; person[taxpayer].no = false)
   person[taxpayer].rmd_age: test(person[taxpayer].birth_year = 1980; #age.cut_73 = 1953)
   person[taxpayer].inherited_account_if_under_73: choose(person[taxpayer].rmd_age = false; false = false; person[taxpayer].inherited_account = false)
   person[taxpayer].rmd_possible: test(person[taxpayer].rmd_age = false; true = true; person[taxpayer].inherited_account_if_under_73 = false; true = true)
@@ -2597,7 +2659,7 @@ Derivations:
   person[taxpayer].f5329[form].zero: param(#sales.zero = $0)
   person[taxpayer].f5329[form].l49: choose(person[taxpayer].x_other = false; person[taxpayer].f5329[form].has_excess = false; true = true; person[taxpayer].f5329[form].has_excess = false; false = false; person[taxpayer].f5329[form].zero = $0)
   person[taxpayer].f5329[form].tax: sum(person[taxpayer].f5329[form].l4 = $0; person[taxpayer].f5329[form].l49 = $0)
-  person[taxpayer].x_tax: sum_over(person[taxpayer].f5329[form].tax = $0)
+  person[taxpayer].x_tax: sum_over(person[taxpayer].ira_roth_over = false; person[taxpayer].ira_roth_income = false; person[taxpayer].f5329[form].tax = $0)
   s2.tax_favored_accounts: sum_over(s2.e05_over = false; person[taxpayer].x_tax = $0)
   f8959.unsupported: test(f8959.territory_w2 = false; true = true)
   person[taxpayer].medicare5: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box5 = $200,000)
@@ -2642,8 +2704,10 @@ Derivations:
   ftc.no: param(#ftc.no = false)
   ftc.carryover_if_asked: choose(ftc.carryover_ask = false; true = true; ftc.carryover_ask = false; false = false; ftc.no = false)
   ftc.carryover_no_tax: test(ftc.carryover_if_asked = false; true = true)
+  f1116sb.no: param(#ftc.no = false)
+  f1116sb.carry_through_prior: choose(ftc.carryover_if_asked = false; true = true; ftc.carryover_if_asked = false; false = false; f1116sb.no = false)
   ftc.zero: param(#sales.zero = $0)
-  ftc.credit: choose(ftc.carryover_no_tax = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
+  ftc.credit: choose(ftc.carryover_no_tax = false; f1116sb.carry_through_prior = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
   s3.line1: copy(ftc.credit = $0)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
 Interpretation amb.2025.s1_nol_limit_test: The first (s1.nol_ti, s1.nol_ti4, s1.nol_limit_test, refused at f1040.line15 by s1.nol_limit). Owner decision D3 (lane x2-s1o, scout-s1-other): the sufficiency test is accepted. The premise T0 ≥ T + N holds when no deduction in scope rises with AGI. Checked against the forms (lane x2-s1o, 2026-11-15): the above-the-line deductions with phase-outs (student loan interest, IRA) fall as modified AGI rises; taxable social security benefits rise with other income, so AGI without the NOL is at least AGI with it plus N; the itemized deductions with an AGI floor (medical, casualty) and the SALT limit that falls above $500,000 of modified AGI fall as AGI rises; the larger of itemized and standard deductions keeps that direction; Schedule 1-A deductions (tips, overtime, car loan interest, seniors) phase out with modified AGI; the QBI deduction is left out of T0 and only lowers T. The one deduction that rises with AGI, charitable gifts under the AGI percentage limits, is refused when a limit binds (sa.charity_limited). NOLs from before 2018 (no 80% limit, deducted first) are refused (s1.nol_before_limit_date). The refusal sits on line 15, not on line 8a, because the test reads lines 11b and 14, which read line 8a. (i172, p. 2, "80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions")
@@ -2657,13 +2721,13 @@ Interpretation amb.2025.jury_24a_cap: The first (s1.jury_over refuses s1.line24a
 Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
-Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
 Interpretation amb.2025.f5329_medical_joint: The first (person.x_c05 limits each person to Schedule A line 4, and s2.e05_over refuses when the spouses together exceed it). Owner's decision D8(d), 2026-10-29. (i5329, p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.")
 Interpretation amb.2025.f5329_simple_limits: The first (person.x_limit_binds refuses Form 5329 line 4). The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner. (i5329, p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.")
 Interpretation amb.2025.f5329_line1_codes: The first (retirement.l1 is the taxable amount of a code 1 or S entry only). The tax is the same either way. Owner's decision D8(a), 2026-10-29. (i5329, p. 3, Line 1, "Enter the amount of early distributions includible in income (other than qualified disaster recovery distributions) that you received from:")
 Interpretation amb.2025.f5329_line4_cents: The first (f5329.tax10 and f5329.tax25 on the person's line 3). The two can differ by a cent on the no-form path only. Owner's decision D8(b), 2026-10-29. (f5329, p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3.")
 Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).
-Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).
+Estimated tax penalty: not computed. The IRS generally figures it and sends a bill (i1040gi, line 38; i2210, Who Must File Form 2210). You must file Form 2210 yourself to ask for a waiver, to use the annualized income installment method or the dates tax was actually withheld (Form 2210, Part II, boxes A to D), or if you filed a joint return for 2024 or 2025 but not both and the payment based on your 2024 tax (Form 2210, line 8) is smaller than 90% of your 2025 tax (line 5) (box E).
+Refund: lines 35b to 35d are not asked. If line 34 shows a refund, give your routing number, account number and account type on lines 35b to 35d, or attach Form 8888 to split it; from October 2025 the IRS generally stopped issuing paper refund checks (i1040gi, Line 35a, p. 62).
 This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.
 The user is responsible for the return. Not affiliated with or endorsed by the IRS.
