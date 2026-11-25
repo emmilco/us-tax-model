@@ -1,12 +1,13 @@
 # 2026-11-25: released `r2026.11.25.1`, the 2026-11-24 wave (the owner's order of 2026-11-23 worked through)
 
-**State (2026-11-25).** The release `r2026.11.25.1` is the commit that holds this entry, on `main` and `next`. It holds
-the 2026-11-24 wave, integrated on `next` in five commits and released by this one: `29baf383` (batch 1: tool and
+**State (2026-11-25).** The release `r2026.11.25.1` is `next`'s tip at the time of release, on `main` and `next`
+(`git describe --tags --match 'r*'`). It holds the 2026-11-24 wave, integrated on `next` in five commits and released
+by the commits after them: `29baf383` (batch 1: tool and
 process fixes, light-tier guards, hermetic self-tests, lints), `1944d1b9` (batch 2a: itemized, rentals, capital and
 business bug lanes), `6b3a9a03` (batch 2b: people, HSA, screens, New York and K-1 bug lanes, and the 2026 lane ty26),
 `fb4ab2f7` (batch 3: tool fixes, wording lows and missed refusals, people fixes, 2026 operations), `b236b273` (the final
-lane: fx-final, two interview-order fixes, the 55 year-drifting helper ids), then the release commit (the agent-run fold,
-the release's sampled reviews ruled, full-tier findings fixed, this bookkeeping). Each commit's message lists its lanes,
+lane: fx-final, two interview-order fixes, the 55 year-drifting helper ids), then the release commits (the agent-run fold,
+the release's sampled reviews ruled, full-tier findings fixed and ruled, this bookkeeping). Each commit's message lists its lanes,
 merge resolutions and reviews. Open bugs went from 118 at the wave's start to 31, every one with a `TASKS.md` row
 (`reports/bug_status.md`); 12 of the 31 are lows the release's sampled reviews found (BUG-1453 to BUG-1464, T-357).
 No open bug of medium or high severity is confirmed by a ruling, and the release allowed none.
