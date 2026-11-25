@@ -544,25 +544,39 @@
    ]
   },
   "ny_it201.ask.it225": {
-   "subject_sha": "ddb693ff8258fe9c873b2ebc1189615d7b73920aa1a3defcadeebc58016f3097",
+   "subject_sha": "c0f32c2dbf47629661a7991653729176acd4ac23bf55408a46927d400059ce3f",
    "samples": [
     {
-     "verdict": "WIDE",
+     "verdict": "NARROW",
      "findings": [
       {
-       "kind": "WIDE",
-       "situation": "A partner or S corporation shareholder whose only pass-through modifications are interest on non-New York state and local bonds (EA-113) or interest on U.S. government bonds (ES-125) would truthfully answer yes, although those amounts go on Form IT-201 lines 20 and 28 and not on Form IT-225.",
-       "source_text": "ny_it201i p. 7: \"If you have either of the addition or subtraction modifications in the chart below, relating to your partnership or S corporation income, include the amount on the corresponding line of Form IT-201. ... EA-113 ... 20 ... ES-125 ... 28. For all other additions and subtractions relating to your partnership and S corporation income, complete Form IT-225.\"",
-       "why": "The question names \"modifications passed through from a partnership, S corporation, estate or trust\" without excluding EA-113 and ES-125. A filer with only those items opens the IT-225 gate even though no IT-225 entry is needed, and the amounts may also be counted on lines 20 and 28.",
+       "kind": "NARROW",
+       "situation": "A partner or S corporation shareholder whose entity reports New York modifications other than state/local bond interest (EA-113) or U.S. bond interest (ES-125), with no small business modification, would answer No.",
+       "source_text": "ny_it201i p. 7: \"For all other additions and subtractions relating to your partnership and S corporation income, complete Form IT-225.\"",
+       "why": "The question and its help never show the filer what is on the IT-225 list. The only pass-through example is the 15% small business subtraction, so a filer with other entity-reported modifications has no prompt to answer Yes, even though the gate needs it.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "An estate or trust beneficiary whose K-1 shows a net fiduciary adjustment (addition or subtraction), with no accumulation distribution, would answer No.",
+       "source_text": "ny_it201i p. 7: \"If the adjustment is a net addition, enter the amount and addition modification number EA-901 on Form IT-225, line 5. • If the adjustment is a net subtraction, enter the amount and subtraction modification number ES-901 on Form IT-225, line 14.\"",
+       "why": "The help mentions only a trust's accumulation distribution, not the much more common fiduciary adjustment passed through to beneficiaries. That adjustment always goes on IT-225, so the gate needs a Yes.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer who amortizes bond premium attributable to a trade or business would answer No.",
+       "source_text": "ny_it201i p. 7: \"You must report it: • as a subtraction modification on Form IT-225—if the bond premium is attributable to a trade or business\"",
+       "why": "The question frames IT-225 as \"less common income changes\" and gives no example like this one. A filer with nothing in the listed examples would reasonably answer No, even though an IT-225 subtraction applies.",
        "bound": ""
       }
      ],
-     "prompt_sha": "29100fffad893c2a331b57e3f909ceb0f15b626e6806416e99d7598147949b0d",
+     "prompt_sha": "8e09a05b1fa06668aee7c93c491469298d882cd6fc5c548e4a1abfa037cd7580",
      "system_sha": "3565bfab8d6ba5e25d0b798144f207dfb73d2da60c5fc33bd719583dd2323eed",
      "model": "claude-opus-5-5",
-     "cost": 0.043256,
-     "date": "2026-11-10",
-     "response": ".transcription/ny/questions/ny_it201.ask.it225.ddb693ff8258.1.response.txt"
+     "cost": 0.052568000000000004,
+     "date": "2026-11-24",
+     "response": ".transcription/ny/questions/ny_it201.ask.it225.c0f32c2dbf47.1.response.txt"
     }
    ],
    "type": "Bool",

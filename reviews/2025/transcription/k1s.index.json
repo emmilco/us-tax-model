@@ -116,122 +116,122 @@
   },
   {
    "key": "k1s.p4_income",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "46b90b07a4048af20743e7157d0e5f689ed651f64e0c94123456db07e363be52"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "382181f61c11197986672de08e34f798df19a1b84d794c6cfd026d53c94c67ca"
   },
   {
    "key": "k1s.p4_loss",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "e209ad4c0a9804e06f20a7f5e0cea97e54d1da8b97a152ea148ffc3d52649738"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "7e5ac3f72533deb3e52c4d9f64dd8d223e53f155033c41f7485878630e995ad4"
   },
   {
    "key": "k1s.p4_prior",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "e2d460bdbdf5c208e4c1bd72e98d33cc6ce542b25934969f5227f1ff01ac06c9"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "58cd01ef6c0c3ef38afed2ae3940917d71bdcf00b50916403432a0925032fe06"
   },
   {
    "key": "k1s.p5_income",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "7dddc47d3370ef0f5ceca60e4b6b286ebec30fc2a92422f8fb8dcf35b9cc251a"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "c794831f42b8a71929dd18d0e2eba08f8f81a6c41b33e9c1cf7cafdbc4c6ab2a"
   },
   {
    "key": "k1s.p5_loss",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "54090e086a96ed06a672bceb699deb1c54f9d62df29ab42f144e2c641fb3f33b"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "3096658c761ee8e5d7daa8a9c759b1ba54ca9255a03a9c2a4cc15f3d5eea2bfc"
   },
   {
    "key": "k1s.p5_prior",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "f48a857cf0209559419c571263e6f160a384a0f8c0611ea6a05d7b68a0717d4c"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "0e49b1470b16ebc0f4a2185b7bc0e353feef2e8a5d91b807ecaed770bbfc958a"
   },
   {
    "key": "k1s.int",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "daeb7217257a784883d63c6296469da49d324f574830f2d5ae71b42f0fb1631c"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "1d86201067e7889c699261d6251dfb7cf3a1b00464ef2ebf7f5f471161080c73"
   },
   {
    "key": "k1s.ord_div",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "eaaace3d6b68aae8d2322359edadb769b2d7440872788e2696a0711672718f85"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "0f1d5668c9044f1be157f2115efbfda0accb769247fab7f318ec0e392ed9f11d"
   },
   {
    "key": "k1s.qual_div",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "7ccdad3c95e3f28a5f4738949734209bebbc5f0f729d8343f227eedf4bc405f8"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "ab119e79baa108468d82fe10d8eeaf1d8d881e098ae0fab2d29e0f2f53648371"
   },
   {
    "key": "k1s.st",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "53549ce228cbee0652f97f915773a9790690b05465aeeb3dbc593b74b5634399"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "b5735fdc1d4e9f98455f5300456dcb00f051f37346a7f3e24a7eeb64349f1e76"
   },
   {
    "key": "k1s.lt",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "2e4f8a905ceae71cbf7d5376589d15d7bb21ddc4e74785c0639853b21500ce52"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "36c89a84d4744a882ef01f623585cc739676c5b2e34a5da20120dca0733bb71f"
   },
   {
    "key": "k1s.g28",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "1ff270157d4df2cfa90e65abc3652936b97cfb4783badff14fc88bae1d36c0ed"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "8a46b80d1860accd476b9011152e378cb05c67b4b334e7cf81ae48596b0fe361"
   },
   {
    "key": "k1s.u1250",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "b63cf699b9b9731aa145989905fe26adeec0c1eb09dcfaf552d0f955b056f5ed"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "c24e4810a09128e2c1a3b5b43c3488f287fb1bcd3aeacf1c57bee811e8c23c79"
   },
   {
    "key": "k1s.backup",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "3b53f61e260e902c7765519ae41159bab54e8007c69852c39cc5478a75ca7a82"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "ea5740539cc9fa375443851ff88d4774fb568403567c2f7201688f1ab48dd8cd"
   },
   {
    "key": "k1s.taxexempt",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "fa3de553619674e2fdb89aa9b8b1bdbc78c6bfaa9d4f209c681394478c59a5be"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "1fcd30327e015356733c6ce779c804c4a0f6d3acf712157e5dd86a5996450b28"
   },
   {
    "key": "k1s.nonpassive",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "a75c97031c41ea103c1dfecb30f7dd30812b35d0371c872d06cb300fd162ceec"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "2fe58eea809641529d91c06e938bf9a7aaa15cb739813025b2ba30259faa1a10"
   },
   {
    "key": "k1s.qbi",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "964ee80db4da9d8522e61c22147500a72b75ba47ddc032ea47c072bddab18bb5"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "925e76c322ce67ccf2a3382eb29224396c0ec76035309c4c40f6d9b7fcfb8bba"
   },
   {
    "key": "k1s.one",
@@ -247,24 +247,24 @@
   },
   {
    "key": "28 (k)",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "08583fc029bbbecf9887943a74f041e1e8b213c3db88d079d1af399adcebf233"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "ab60de6649bd8929be26480690e8f2ec927cdbf370855368e749dc24fe86b6f4"
   },
   {
    "key": "28 (i)",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "b6cce36035fded611022d663d4c7b251eba33170c2c73c5a5137345d1101ab7c"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "2f9589d2e34919122575471e23261a411010fca5bede6fae8c0d303bced33afa"
   },
   {
    "key": "28 (h)",
-   "record": "1c86ea4c8b7433880ceb6a7441331b18230d803bc4b7ef3cb44b65984aa96d97",
+   "record": "9bdbd8a492e1d6ee7bd072360d79073ca39b07fd4af1c747c0ea91f95eb2f636",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; executable triage (k1s.json, 694 inputs): no value differs on any input. The differences are project-refuses (the project refuses on k1s.ok's screens, among them the new k1s.fiscal, k1s.credit_carry, k1s.prior_not_active_if and k1s.b2_prior_blank, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen of k1s.ok awaits an answer the reply does not read). Latent while scope.k1 refuses every K-1 return.",
-   "subject_key": "c4672eee79f9a11b4b0ae0fafba2d9aa2521f4b2083d282a9d6b066f9c0ec390"
+   "ruling": "Ruling: representation; executable triage (k1s.json, this pass): no value differs on any input. The differences are project-refuses (k1s.ok's screens, which the reply's line-scoped lines do not restate) and project-unknown or candidate-unknown (a screen awaits an answer the other side does not read); the project's outer choice on the Form 7203 count is always its first alternative, since the evaluator accepts only the implicit roster (BUG-0928 in part). The lines were rerun because k1s.ask_prior_active now tests k1s.tenth_if_active (BUG-1411), equal in value to k1s.part4. Latent while scope.k1 refuses every K-1 return.",
+   "subject_key": "3576a48e159f0110cc7830471c7e62ed7c8fdb976a732623c3fa74dc36e19a10"
   }
  ],
  "subjects": {
@@ -285,28 +285,28 @@
   "k1s.gain8": "56925af37c1b49d15ecb568ff9c749fc457680c71a03715598f0ecb7adb2f8aa",
   "k1s.loss8": "53584ef696d0d2aa33984bff2a0a857e4290f8895f6f8e7520125b02f69bf58e",
   "k1s.f7203_required": "b22e49cc87fe89280110bfe334bf00411e33b1338d3eed7eb55c71e1c811d402",
-  "k1s.p4_income": "fbdb5c43660cf87f7a9c1b57c3482fd0f970caae34712bf9e3dd9bb044311384",
-  "k1s.p4_loss": "00180fc834c20a69c315613ee687d826c66a626a0e45113d318015cdc10acac3",
-  "k1s.p4_prior": "c87450b1fc258b2a7b00caca6921d65038487dcac7f0d451982f9b98813fb802",
-  "k1s.p5_income": "7ebf1c1869cba383986a7a64e55dc7f0693faa644d2d97ee361ec0fb5bc525dd",
-  "k1s.p5_loss": "40194b7545f6f4552a3f0637466facf9ac9edf3f512501c68022ca7baa4fe47d",
-  "k1s.p5_prior": "7f483285f3a6882daafa55759d38c86204225a7b483aad432c367b7e5808d40f",
-  "k1s.int": "8df8fc52b7fc5e61789d4692efee1007e18d05d4b615ae66e653de7dd76af8fd",
-  "k1s.ord_div": "52a026ac308b759145b1f552bb3495ed64f2faec7d473fc18119972bb9280633",
-  "k1s.qual_div": "6b57015ef753c60874f5734935264b19e84b6441d3eeae31408150b1681ef23f",
-  "k1s.st": "3eb21afaf00ca3499cbdef35c881bde2a10e1c48d228420ef63117daec6e81bf",
-  "k1s.lt": "f0e7bd56aa349a99e25684df1ee7ca0afbd874011c7156b8e74740157f9785bc",
-  "k1s.g28": "06b82075e73428d4f37f3f99e9bec930442b7340c310c0a99b0dcb73503c736f",
-  "k1s.u1250": "1ba660856c5ae4900e45e8eeb717f9e8920dc198fcde851c55de76641c5977fb",
-  "k1s.backup": "a4719cf132324c1034e396e3cac00a4259e24c17b52515795e3cde05a47b3f51",
-  "k1s.taxexempt": "a44da26baf31afeeae61706c4d50dd8b85b642464464545973d40c845bc32aea",
-  "k1s.nonpassive": "9eb8e36054212d1825758f47e0dca21c701b25b7856848ff920fe323aaa667a4",
-  "k1s.qbi": "82190d2798a1ad650626f24248089b753bb161e8d70ffee33bb4f9a09ccab47a",
+  "k1s.p4_income": "717b8692f89e48e99d5927ae9606ba13bf3331372b5252005e845ff23fbbd193",
+  "k1s.p4_loss": "00303fdc56819c065ce46af71a92da168ebcd4a1b79c1f811e7b4953327c0284",
+  "k1s.p4_prior": "b89d762629f8f1f22130eea3aef83d24f94f598651de45ab9b7aa8e97d3a03c5",
+  "k1s.p5_income": "0e2628fb09084f9973fc0764f4ef64cb1aae77f3c7408c5f199fcfcf1a11c001",
+  "k1s.p5_loss": "4ee586412a80cd51d7a75106bebe5d7796921ca4a4862aa227542f1559697da1",
+  "k1s.p5_prior": "cd294d6ab9cddabed847331853e490dfd9fc3c6310315f5a20dd810afaca49ad",
+  "k1s.int": "96f33df1062cf3b03dcf61d7d7203a2b19ebcd566988eed371364c701e61ee96",
+  "k1s.ord_div": "a30c624254121e9c9c46a1cdb81541ae68f6e6fc1cde93486981ac9b6faf5559",
+  "k1s.qual_div": "1cb2bd2682aae627b4eabd9fd94b148ea9263bf35eaf1793d6b09abf48a34cbc",
+  "k1s.st": "0acb7fc5f7aa23354031dbdb68615fee437392e371132243abe9db86a4b35af9",
+  "k1s.lt": "9be456831c1688f7018c1bd707f85b915734a8b163bcd680a3e2d25377f00e03",
+  "k1s.g28": "41654034f17f5e25f01e55f87777dd74036ad69cec3346baf75cd5018ff194ff",
+  "k1s.u1250": "470294858d36f0089ef16c38ec4f7165ce2bc71911461583ff87d2cf4074c9f6",
+  "k1s.backup": "ccc9f998899cf9444753126ca4ed922cf4789d1f71e6cc2124dab7d2dd5720b5",
+  "k1s.taxexempt": "68fa93bb9659ffa5d031bff86666bcb5bd7334598d2c7ffec97407f25fea525c",
+  "k1s.nonpassive": "b4d14e7fc1e0ba7dfec096e97e6aec336569c0e68114736f36a7e47fbc6313a5",
+  "k1s.qbi": "da25b2553b56db3f1f20c77fa8c54daf1bdd54962f31f9ac2cc6068e4b5c879f",
   "k1s.one": "a4539b0fcfe48eac2a8abd0473a64279ef8fb635bf653b6ee744b055458aa4c2",
   "k1s.sche_any": "b66760d1cd526042f6c86ea89735b88b0795a58e532757f4bf45c96a1202373c",
-  "28 (k)": "712cc505157b5442887b0fbc5e51ba868e7ef2e463c35883266541017e88bc46",
-  "28 (i)": "147f91a717177b5c54d60eafdbbbf489f47c9c14ff0f91dec30eb2c597395717",
-  "28 (h)": "c1d05cce6efaf74c3d994c41841e6118acf7254f9d508d2a7f924fba867a382a"
+  "28 (k)": "7a8905db8c61add77636634dbd030b5694749cc12e20f33ef7fd7054f257ccdf",
+  "28 (i)": "a36a215f679a7d5bfdc430bd8f6d04c8bfd922023df72516ff94ecaf289c9cd7",
+  "28 (h)": "84c321872cacb450a47f9850d72c1d441ad3da31cdb27fee3414bcb51653bc25"
  },
  "__rest__": "cb4444dd95a7f30256efd51e76058f0657248dc45ed516f8feaba0c3c0b51037",
  "foreign": {

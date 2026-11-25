@@ -714,8 +714,8 @@
 ## (gate) — `k1s.ask_prior_active`
 
 - **Authored helper label:** A held-back box 2 loss that would go to Form 8582 Part IV (active participation this year)
-- **Encoded (Bool):** helper "Prior-year unallowed loss of the box 2 activity, asked only when a loss was held back (zero otherwise)" > $0 and helper "Box 2 activity with active participation (Form 8582 Part IV)" = true
-- Expr: `{"all":[{"gt":["k1s.b2_prior_if_any",{"const":0}],"op":"test"},{"eq":["k1s.part4",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "Prior-year unallowed loss of the box 2 activity, asked only when a loss was held back (zero otherwise)" > $0 and helper "At least a tenth all year, asked only when you helped make management decisions (false otherwise)" = true
+- Expr: `{"all":[{"gt":["k1s.b2_prior_if_any",{"const":0}],"op":"test"},{"eq":["k1s.tenth_if_active",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i8582] p. 10, Column (c), "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year" (2025; sha256 76787e11)
 
 ## (gate) — `k1s.prior_not_active_if`

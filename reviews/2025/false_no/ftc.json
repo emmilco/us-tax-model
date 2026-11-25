@@ -321,88 +321,68 @@
    ]
   },
   "gate:ftc.has_tax": {
-   "subject_sha": "04c2c370ff5d8e46dd2bdfae4ad8e3bbd49ab17b7bfb357b253c25b4ee4579ff",
+   "subject_sha": "647bf0ec42a33a6de6a9df32b75eaa55b9e018bc37fd9a6544dfc9f08605262b",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A U.S. citizen, or their spouse on a joint return, paid income tax to Puerto Rico, Guam, the CNMI or American Samoa. They do not own shares, received no Form 1099-DIV and were paid no taxable interest.",
+       "why_no": "The only route into the gate is \"ever paid income tax to another country.\" A U.S. territory is not another country, so a truthful no leaves creditable foreign taxes at zero.",
+       "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax (and the credit they feed)",
+       "irs_text": "i1116 p. 2: \"You paid or accrued certain foreign taxes to a foreign country or U.S. territory\"; \"For purposes of the credit, U.S. territories include Puerto Rico, the U.S. Virgin Islands, Guam, the Commonwealth of the Northern Mariana Islands, and American Samoa.\"",
+       "severity": "high",
+       "fix": "Ask: \"Did you or your spouse ever pay (or have withheld) income tax to another country or a U.S. territory such as Puerto Rico, Guam, the Northern Mariana Islands or American Samoa, or to a city, state or province there?\" Route U.S. Virgin Islands tax to Form 8689 instead."
+      },
+      {
+       "kind": "UNCLEAR",
        "pattern": "5",
-       "who": "A partner in a partnership, an S corporation shareholder, or an estate or trust beneficiary whose Schedule K-1 or K-3 shows foreign taxes paid by the entity. The filer has no brokerage shares, no Form 1099-DIV, no taxable interest, and never paid foreign tax personally.",
-       "why_no": "The pre-gate asks only whether you 'owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country'. A partnership interest or trust interest is not 'shares', and the entity, not the filer, paid the tax. So the helper is zero and the gate is false.",
-       "line": "ftc.statements_if_tax, ftc.all_passive_if_tax, ftc.eligible_if_tax, sa.foreign_tax_deduct_if_tax",
-       "irs_text": "i1116 p. 1: 'Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S)'",
-       "severity": "high",
-       "fix": "Broaden the pre-gate: 'Did you or your spouse receive a Schedule K-1 or K-3 from a partnership, S corporation, estate or trust, or any statement showing foreign tax paid on your behalf?'"
+       "who": "A partner in a partnership, or a beneficiary of an estate or trust, whose Schedule K-3 or Schedule K-1 (Form 1041) shows foreign taxes. The filer does not own corporate shares, received no Form 1099-DIV and was paid no taxable interest.",
+       "why_no": "A partnership interest or a trust share is not \"shares.\" The entity, not the filer, paid the tax, so they answer no to \"paid income tax to another country.\"",
+       "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 1: \"Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S)\"",
+       "severity": "medium",
+       "fix": "Widen the gate. Add \"or received a Schedule K-1 or K-3 from a partnership, S corporation, estate or trust that shows foreign taxes.\" Alternatively ask \"Does any form you received show foreign tax paid?\""
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer who paid income tax to Puerto Rico, Guam, the CNMI or American Samoa, for example on wages or a business there, with no other foreign link.",
-       "why_no": "'Ever paid income tax to another country.' A U.S. territory is not another country.",
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer had foreign income tax withheld at source and never wrote a payment to a foreign government. Examples are a foreign pension or annuity, foreign royalties or rent, or wages earned abroad, with no shares, Form 1099-DIV or taxable interest.",
+       "why_no": "\"Paid income tax to another country\" reads as making a payment or filing a foreign return, not tax taken out before the money arrived.",
        "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
-       "irs_text": "i1116 p. 2: 'You paid or accrued certain foreign taxes to a foreign country or U.S. territory'; 'U.S. territories include Puerto Rico, ... Guam, the Commonwealth of the Northern Mariana Islands, and American Samoa.'",
-       "severity": "high",
-       "fix": "Ask 'paid or had withheld income tax to another country, or to Puerto Rico, Guam, the Northern Mariana Islands or American Samoa (including a province, state or city there)'. Route U.S. Virgin Islands tax to Form 8689."
+       "irs_text": "i1116 p. 2: \"You can take a credit for income, war profits, and excess profits taxes paid or accrued during your tax year to any foreign country or U.S. territory\"",
+       "severity": "medium",
+       "fix": "Ask: \"Did another country (or a U.S. territory) withhold or charge income tax on any of your or your spouse's income, or did you pay it yourself?\""
       },
       {
        "kind": "UNCLEAR",
        "pattern": "2",
-       "who": "A filer whose foreign tax was withheld at source and who never filed or paid anything abroad. Examples: tax withheld from a foreign pension, royalties, rent, or wages paid by a foreign employer.",
-       "why_no": "'Ever paid income tax to another country' reads as paying a foreign tax bill yourself, not tax a payer withheld. 'Taxable interest' and 'shares' do not cover pensions, royalties or rents.",
+       "who": "A filer who claims the credit on an accrual basis, or who owes contested foreign tax for 2025 that is not yet paid. The provisional-credit election (Form 7204) covers the contested case.",
+       "why_no": "The gate says \"paid.\" The tax was accrued but not yet paid, so the filer answers no.",
        "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
-       "irs_text": "i1116 p. 2: 'You can take a credit for income, war profits, and excess profits taxes paid or accrued ... This includes taxes paid or accrued in lieu of a foreign or territory income ... tax'",
+       "irs_text": "i1116 p. 2: \"You paid or accrued certain foreign taxes to a foreign country or U.S. territory\"; \"Use Form 7204 ... if you are electing to claim a provisional foreign tax credit for the contested foreign income taxes.\"",
        "severity": "medium",
-       "fix": "Say 'paid, owed, or had withheld from any payment (wages, pension, rent, royalties, interest, dividends)'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "An accrual-basis or accrual-election filer whose 2025 foreign tax accrued in 2025 but is paid in 2026. The filer has no shares or interest.",
-       "why_no": "'Ever paid income tax to another country.' Nothing has been paid yet.",
-       "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
-       "irs_text": "i1116 p. 2: 'You paid or accrued certain foreign taxes to a foreign country or U.S. territory'",
-       "severity": "medium",
-       "fix": "Use 'paid or owe (accrued) for 2025'."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer whose only foreign taxes are not creditable but are still deductible. Examples: tax on dividends from shares held too briefly, tax paid to a sanctioned (section 901(j)) country, or a boycott-denied tax.",
-       "why_no": "The gate tests 'Total creditable foreign taxes after required reductions' > $0. When none is creditable the computed condition is false, so the deduction choice is never asked.",
-       "line": "sa.foreign_tax_deduct_if_tax",
-       "irs_text": "i1116 p. 2: 'even if you take the credit for eligible foreign taxes for the year, you can take a deduction for ... Taxes on income or gain that aren't creditable because you don't meet the holding period requirement'; i1040sca p. 7: 'Include on this line income taxes you paid to a foreign country'",
-       "severity": "high",
-       "fix": "Gate the Schedule A question on any foreign income tax paid or accrued, before creditability reductions, and not on creditable taxes."
+       "fix": "Ask \"paid, owe, or had withheld,\" and add a follow-up on whether the filer claims foreign taxes as they accrue."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who paid only provincial, cantonal or city income tax abroad, for example Swiss cantonal tax or Canadian provincial tax withheld on a pension.",
-       "why_no": "'Income tax to another country' reads as national tax, not a subdivision's tax.",
+       "who": "A filer who paid income tax only to a foreign province, state or city, such as a Canadian province or a Swiss canton, and has none of the other triggers.",
+       "why_no": "The filer reads \"to another country\" as national tax only and leaves out tax paid to a political subdivision.",
        "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
-       "irs_text": "i1116 p. 2: 'to any foreign country or U.S. territory, or any political subdivision (for example, city, state, or province) of the country or territory'",
-       "severity": "medium",
-       "fix": "Add 'including a state, province, canton or city of that country'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer with foreign tax withheld on original issue discount or interest credited but not paid out on a foreign bond or deposit, reported on Form 1099-OID or not reported at all. The filer has no shares.",
-       "why_no": "'Were paid taxable interest.' The interest was accrued or credited, not paid.",
-       "line": "ftc.all_passive_if_tax, ftc.statements_if_tax, ftc.eligible_if_tax, sa.foreign_tax_deduct_if_tax",
-       "irs_text": "i1116 p. 1: 'All of your foreign source gross income was \"passive category income\" (which includes most interest and dividends)'",
+       "irs_text": "i1116 p. 2: \"or any political subdivision (for example, city, state, or province) of the country or territory\"",
        "severity": "low",
-       "fix": "Use 'had taxable interest (including OID or interest credited to an account)'."
+       "fix": "Add \"including a state, province or city there\" to the gate question or its help."
       }
      ],
-     "prompt_sha": "efa88baa56a8d50463717dc534fd5e6008af980ceeb321cfa521112d8cff8638",
+     "prompt_sha": "b767bf666dc756ab7284a2cffc525f529f8b263906e6800f74a54f9feda78554",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.147768,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_ftc.has_tax.04c2c370ff5d.1.response.txt"
+     "cost": 0.125164,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_ftc.has_tax.647bf0ec42a3.1.response.txt"
     }
    ],
    "condition": "ftc.has_tax",

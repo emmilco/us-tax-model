@@ -296,9 +296,10 @@
 
 ## (helper) — `person.hsa_step1`
 
-- **Authored helper label:** This persons Step 1 limit under the spouse rule of line 6
-- **Encoded (NonNegDollars):** Add f8889.step1 over every confirmed f8889 entry for which helper "Spouses with separate HSAs, both treated as having family coverage at some time during 2025" = true, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"f8889","field":"f8889.step1","op":"sum_over","where":{"eq":["f8889.split",{"const":true}],"op":"test"}}`
+- **Authored helper label:** This persons Step 1 limits under the spouse rule of line 6, all of this persons Forms 8889
+- **Encoded (NonNegDollars):** Add f8889.step1 over every confirmed f8889 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Note: Every Form 8889 is added. Its only reader, household.hsa_step1_sum, is read by f8889.allocation_bad on a form whose split is true; then the spouses are married and both have a Form 8889, so any form with a family amount in a month both spouses had family coverage (a Step 1 limit above zero) also splits, and a form that does not split has a Step 1 limit of zero.
+- Expr: `{"collection":"f8889","field":"f8889.step1","op":"sum_over"}`
 - Cite: [i8889] p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Steps 1 to 3, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6", "Step 1. Refigure the contribution limit that would have been entered on line 5 if you had entered on line 3 the total of the worksheet amounts only for the months you were treated as having family coverage", "Step 2. Divide the refigured contribution limit from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1" (2025; sha256 da6f2f58)
 
 ## (helper) — `person.hsa_share`
@@ -955,6 +956,27 @@
 - **Encoded (Count):** Add sc.one over every confirmed sc entry, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.one","op":"sum_over"}`
 - Cite: [i1040sc] p. 14, Line 31; i4562 p. 4, Part I (2025; sha256 b5536db9)
+
+## (helper) — `person.sc_employer_count`
+
+- **Authored helper label:** Number of this person's Schedules C for a business with employees
+- **Encoded (Count):** Add sc.one over every confirmed sc entry for which helper "Did this business have employees in 2025?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"eq":["sc.employees",{"const":true}],"op":"test"}}`
+- Cite: [f1040sc] Schedule C (2025), lines 14, 19 and 26 (2025; created 2025-04-03; sha256 ddf401db)
+
+## (helper) — `person.sc_employer_profit_count`
+
+- **Authored helper label:** Number of this person's Schedules C for a business with employees and a net profit (line 31 more than zero)
+- **Encoded (Count):** Add sc.one over every confirmed sc entry for which helper "Did this business have employees in 2025?" = true and line 31 > $0 (sales.zero), within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"all":[{"eq":["sc.employees",{"const":true}],"op":"test"},{"gt":["sc.line31",{"param":"sales.zero"}],"op":"test"}],"op":"test"}}`
+- Cite: [f1040sc] Schedule C (2025), line 31, "Net profit or (loss)" (2025; created 2025-04-03; sha256 ddf401db)
+
+## (helper) — `person.sc_employer_profit`
+
+- **Authored helper label:** Total net profit (line 31) of this person's Schedules C for a business with employees and a net profit
+- **Encoded (Dollars):** Add sc.line31 over every confirmed sc entry for which helper "Did this business have employees in 2025?" = true and line 31 > $0 (sales.zero), within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"sc","field":"sc.line31","op":"sum_over","where":{"all":[{"eq":["sc.employees",{"const":true}],"op":"test"},{"gt":["sc.line31",{"param":"sales.zero"}],"op":"test"}],"op":"test"}}`
+- Cite: [f1040sc] Schedule C (2025), line 31, "Net profit or (loss)" (2025; created 2025-04-03; sha256 ddf401db)
 
 ## (helper) — `person.ho_count`
 
@@ -2235,15 +2257,44 @@
 
 ## (helper) — `person.ira_limit_screens`
 
-- **Authored helper label:** This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount
-- **Encoded (Bool):** (helper "This person's traditional and Roth IRA contributions for 2025 together are more than the applicable amount" = true or ira helper "Traditional and Roth IRA contributions for 2025 more than the compensation on line 10" = true or ira helper "Married filing jointly with traditional or Roth IRA contributions and line 10 less than the amount in the caution" = true)
-- Expr: `{"any":[{"eq":["person.ira_over_limit",{"const":true}],"op":"test"},{"eq":["ira.over_comp",{"const":true}],"op":"test"},{"eq":["ira.kbh_short",{"const":true}],"op":"test"}],"op":"test"}`
+- **Authored helper label:** This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return this person's are more than their own compensation and their compensation may not be the smaller of the two
+- **Encoded (Bool):** (helper "This person's traditional and Roth IRA contributions for 2025 together are more than the applicable amount" = true or ira helper "Traditional and Roth IRA contributions for 2025 more than the compensation on line 10" = true or helper "On a joint return, this person's traditional and Roth IRA contributions are more than this person's own compensation, and this person's compensation may not be less than the spouse's (twice the most it can be is at least line 10 of the IRA Deduction Worksheet), so the spousal limit cannot raise this person's limit" = true)
+- Expr: `{"any":[{"eq":["person.ira_over_limit",{"const":true}],"op":"test"},{"eq":["ira.over_comp",{"const":true}],"op":"test"},{"eq":["person.ira_own_comp_over",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules" (2025; sha256 735fb7ae)
+
+## (helper) — `person.ira_comp`
+
+- **Authored helper label:** This person's part of lines 8 and 9 of the IRA Deduction Worksheet, without alimony (wages, household employee wages, unreported tips, Form 8919 wages and self-employment earned income)
+- **Encoded (NonNegDollars):** Add helper "Total W-2 box 1 for this person", helper "Household employee wages not on a W-2 (asked only when such wages are reported for the return; otherwise zero)", helper "This person's tip income not reported on line 1a (Form 4137 line 4 and noncash tips)", helper "This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)", and helper "This person's part of worksheet line 9 (zero without a Schedule C)".
+- Expr: `{"of":["person.box1","person.household_wages_if_pay","person.line1c","person.f8919_wages","person.ira_se"],"op":"sum"}`
+- Cite: [p590a] p. 10, Kay Bailey Hutchison Spousal IRA Limit, "if you file a joint return and your taxable compensation is less than that of your spouse"; i1040gi p. 98, IRA Deduction Worksheet—Continued, lines 8 and 9 (2025; sha256 ca0e4287)
+
+## (helper) — `person.ira_comp_most`
+
+- **Authored helper label:** The most this person's compensation can be (this person's part of lines 8 and 9 with all the alimony on Schedule 1, line 2a, which a joint return does not divide between the spouses)
+- **Encoded (NonNegDollars):** Add helper "This person's part of lines 8 and 9 of the IRA Deduction Worksheet, without alimony (wages, household employee wages, unreported tips, Form 8919 wages and self-employment earned income)" and s1 line 2a.
+- Expr: `{"of":["person.ira_comp","s1.line2a"],"op":"sum"}`
+- Cite: [p590a] p. 10, Kay Bailey Hutchison Spousal IRA Limit, "if you file a joint return and your taxable compensation is less than that of your spouse"; i1040gi p. 98, IRA Deduction Worksheet—Continued, line 8, "alimony and separate maintenance payments reported on Schedule 1, line 2a" (2025; sha256 ca0e4287)
+
+## (helper) — `person.ira_comp_most_x2`
+
+- **Authored helper label:** Twice the most this person's compensation can be
+- **Encoded (NonNegDollars):** Add helper "The most this person's compensation can be (this person's part of lines 8 and 9 with all the alimony on Schedule 1, line 2a, which a joint return does not divide between the spouses)" and helper "The most this person's compensation can be (this person's part of lines 8 and 9 with all the alimony on Schedule 1, line 2a, which a joint return does not divide between the spouses)".
+- Expr: `{"of":["person.ira_comp_most","person.ira_comp_most"],"op":"sum"}`
+- Cite: [p590a] p. 10, Kay Bailey Hutchison Spousal IRA Limit, "if you file a joint return and your taxable compensation is less than that of your spouse" (2025; sha256 ca0e4287)
+
+## (helper) — `person.ira_own_comp_over`
+
+- **Authored helper label:** On a joint return, this person's traditional and Roth IRA contributions are more than this person's own compensation, and this person's compensation may not be less than the spouse's (twice the most it can be is at least line 10 of the IRA Deduction Worksheet), so the spousal limit cannot raise this person's limit
+- **Encoded (Bool):** ira helper "Married filing jointly" = true and helper "This person's traditional and Roth IRA contributions for 2025" > helper "This person's part of lines 8 and 9 of the IRA Deduction Worksheet, without alimony (wages, household employee wages, unreported tips, Form 8919 wages and self-employment earned income)" and helper "Twice the most this person's compensation can be" ≥ ira line 10
+- Note: For the spouse with less compensation the spousal limit is the couple's compensation less the other spouse's contributions, which ira.over_comp tests for the return; the spouse whose compensation is not less keeps the general limit of their own compensation, tested here. Alimony is counted toward this person's compensation only when deciding whether it may be the larger, so a joint return with alimony refuses on the safe side.
+- Expr: `{"all":[{"eq":["ira.joint",{"const":true}],"op":"test"},{"gt":["person.ira_own_total","person.ira_comp"],"op":"test"},{"ge":["person.ira_comp_most_x2","ira.line10"],"op":"test"}],"op":"test"}`
+- Cite: [p590a] p. 10, Kay Bailey Hutchison Spousal IRA Limit, "For 2025, if you file a joint return and your taxable compensation is less than that of your spouse, the most that can be contributed for the year to your IRA is the smaller of the following two amounts. 1. $7,000 ($8,000 if you are age 50 or older). 2. The total compensation includible in the gross income of both you and your spouse for the year, reduced by the following two amounts. a. Your spouse's IRA contribution for the year to a traditional IRA. b. Any contributions for the year to a Roth IRA on behalf of your spouse." (2025; sha256 ca0e4287)
 
 ## (gate) — `person.ira_roth_over`
 
-- **Authored helper label:** This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount
-- **Encoded (Bool):** Choose — [helper "This person made Roth IRA contributions for 2025" = true → helper "This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount"] [helper "This person made Roth IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- **Authored helper label:** This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return more than this person's own compensation where the spousal limit cannot raise it
+- **Encoded (Bool):** Choose — [helper "This person made Roth IRA contributions for 2025" = true → helper "This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return this person's are more than their own compensation and their compensation may not be the smaller of the two"] [helper "This person made Roth IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.ira_roth_has",{"const":true}],"op":"test"},"then":"person.ira_limit_screens"},{"guard":{"eq":["person.ira_roth_has",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
 - Cite: [i8606] p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation" and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules"; p590a p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; sha256 735fb7ae)
 
@@ -2637,12 +2688,19 @@
 - Expr: `{"op":"param","ref":"edu.no"}`
 - Cite: [f8863] p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student." (2025; sha256 a251a1cf)
 
-## (helper) — `person.edu_aoc`
+## (helper) — `person.edu_aoc_rules`
 
-- **Authored helper label:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available
+- **Authored helper label:** Lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution's EIN is available
 - **Encoded (Bool):** Choose — [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = true → helper "For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years), and lines 24 to 26, the TINs and the EIN allow the credit"] [helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = false → helper "Year parameter edu.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_student",{"const":true}],"op":"test"},"then":"person.edu_aoc23"},{"guard":{"eq":["person.edu_student",{"const":false}],"op":"test"},"then":"person.edu_no"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications, "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)." (2025; sha256 a251a1cf)
+
+## (helper) — `person.edu_aoc`
+
+- **Authored helper label:** An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)
+- **Encoded (Bool):** helper "Lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution's EIN is available" = true and f8863 helper "The American opportunity credit is barred, or needs Form 8862 and is not claimed (asked only when it can be figured; otherwise no)" = false
+- Expr: `{"all":[{"eq":["person.edu_aoc_rules",{"const":true}],"op":"test"},{"eq":["f8863.ban_if_aoc",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i8863] p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud."; p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements are met." (2025; sha256 195cfd5e)
 
 ## (helper) — `person.edu_aoc23`
 
@@ -2683,7 +2741,7 @@
 ## (helper) — `person.edu_llc`
 
 - **Authored helper label:** A lifetime learning credit student: an eligible student who is not an American opportunity credit student
-- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = true and helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false
+- **Encoded (Bool):** helper "An eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T (or an exception)" = true and helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = false
 - Expr: `{"all":[{"eq":["person.edu_student",{"const":true}],"op":"test"},{"eq":["person.edu_aoc",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i8863] p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements are met." (2025; sha256 195cfd5e)
 
@@ -2704,36 +2762,36 @@
 ## 27 — `person.edu_line27`
 
 - **Authored helper label:** Adjusted qualified education expenses. Don't enter more than $4,000
-- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line27" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = true → "line27" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = false → line zero]
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
-- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`person.edu_aoc`)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban) (`person.edu_aoc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.edu_mat"},"def":"aqee","line":"line27"}},{"guard":{"eq":["person.edu_aoc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 27, "Adjusted qualified education expenses (see instructions). Don’t enter more than $4,000"; i8863 p. 9, Line 27 (2025; sha256 a251a1cf)
 
 ## 28 — `person.edu_line28`
 
 - **Authored helper label:** Subtract $2,000 from line 27. If zero or less, enter -0-
-- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line28" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = true → "line28" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = false → line zero]
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
-- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`person.edu_aoc`)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban) (`person.edu_aoc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.edu_mat"},"def":"aqee","line":"line28"}},{"guard":{"eq":["person.edu_aoc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 28, "Subtract $2,000 from line 27. If zero or less, enter -0-" (2025; sha256 a251a1cf)
 
 ## 29 — `person.edu_line29`
 
 - **Authored helper label:** Multiply line 28 by 25% (0.25)
-- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line29" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = true → "line29" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = false → line zero]
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
-- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`person.edu_aoc`)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban) (`person.edu_aoc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.edu_mat"},"def":"aqee","line":"line29"}},{"guard":{"eq":["person.edu_aoc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 29, "Multiply line 28 by 25% (0.25)" (2025; sha256 a251a1cf)
 
 ## 30 — `person.edu_line30`
 
 - **Authored helper label:** American opportunity credit for this student. If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29
-- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line30" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = true → "line30" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban)" = false → line zero]
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
-- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available (`person.edu_aoc`)
+- **Shown on the values sheet only when:** An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules), and the credit is not barred or given up after a denial (f8863.ban) (`person.edu_aoc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_aoc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.edu_mat"},"def":"aqee","line":"line30"}},{"guard":{"eq":["person.edu_aoc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f8863] p. 2, Part III, line 30, "If line 28 is zero, enter the amount from line 27.", "Include the total of all amounts from all Parts III, line 30, on Part I, line 1" (2025; sha256 a251a1cf)
 
@@ -2902,7 +2960,7 @@
 
 - **Authored helper label:** This person's Form 5329 taxes
 - **Encoded (NonNegDollars):** Add f5329.tax over every confirmed f5329 entry, within the current person when parent-bound. An unanswered roster is unknown.
-- **Refusal:** when person.ira_roth_over is true, cannot complete Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A). Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool. Cite: [p590a] p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; sha256 ca0e4287)
+- **Refusal:** when person.ira_roth_over is true, cannot complete Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A). Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool. Cite: [p590a] p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA" (2025; sha256 ca0e4287)
 - **Refusal:** when person.ira_roth_income is true, cannot complete Roth IRA contributions limited by modified AGI (Maximum Roth IRA Contribution Worksheet, Form 5329 Part IV). Roth IRA contributions are reduced or not allowed when modified AGI is $236,000 or more (married filing jointly or qualifying surviving spouse), $150,000 or more (single, head of household, or married filing separately and apart from your spouse all year) or more than zero (married filing separately and living with your spouse at any time in 2025). This return is at or above that point (figured here without subtracting any Roth conversion), so its Roth contributions are outside this tool. Cite: [i8606] p. 4, Maximum Roth IRA Contribution Worksheet, line 6, "If zero or less, stop here; you may not contribute to a Roth IRA for 2025" (2025; sha256 735fb7ae)
 - Expr: `{"collection":"f5329","field":"f5329.tax","op":"sum_over"}`
 - Cite: [f1040s2] p. 1, Part II, line 8, "Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required." (2025; created 2025-05-08; sha256 64d867b6)

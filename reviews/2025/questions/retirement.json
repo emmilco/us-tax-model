@@ -661,32 +661,25 @@
    ]
   },
   "retirement.exception": {
-   "subject_sha": "7764526e860a38e97d77cad1f0b5f0b500a9a788e0c84f12b71313e1e987ea53",
+   "subject_sha": "531f72d2d09dfd124a91144d86fdbc73495b27b5ede947f44eb7fe090f1efa01",
    "samples": [
     {
-     "verdict": "WIDE",
+     "verdict": "TYPE",
      "findings": [
       {
-       "kind": "WIDE",
-       "situation": "A filer took an IRA distribution meant for a first-time homebuyer's main home but did not spend it on qualified acquisition costs (buying, building or rebuilding costs, or settlement, financing or closing costs) within 120 days, and still answers 09.",
-       "source_text": "p590b p. 27: \"To qualify for treatment as a first-time homebuyer distribution, the distribution must meet all the following requirements. 1. It must be used to pay qualified acquisition costs (defined next) before the close of the 120th day after the day you received it.\"",
-       "why": "The question's help for 09 lists only who the homebuyer must be and the 2-year no-ownership test. It leaves out the 120-day deadline and the qualified-acquisition-cost requirement, so a truthful filer can pick 09 for a distribution that doesn't qualify.",
-       "bound": ""
-      },
-      {
        "kind": "TYPE",
-       "situation": "More than one exception applies to the same distribution (for example, disability (03) and medical expenses (05)), and Form 5329 line 2 needs exception number 99.",
-       "source_text": "i5329 p. 5, Line 2: \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\"",
-       "why": "The accepted answers run only from e01 to e23 plus none. There is no 99, so the filer has to pick a single exception and line 2 gets the wrong code.",
-       "bound": "01–23, 99, or none"
+       "situation": "More than one exception applies to the distribution, for example a disabled filer who also has unreimbursed medical expenses above 7.5% of AGI, or a reservist distribution used for a first home.",
+       "source_text": "i5329 p. 5, Line 2: \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\" and \"Enter this exception number if more than one exception applies. ... 99\"",
+       "why": "The text needs code 99 when several exceptions apply, but the accepted answers stop at e23 and have no e99. A truthful filer has to pick just one exception, so f5329 line 2 gets the wrong code, and the excluded amount may come only from that one exception's limit.",
+       "bound": "none, 01–23, or 99 (more than one exception applies)"
       }
      ],
-     "prompt_sha": "c985b65552214eb78bde620a23281d739c40fa8a37f96844e48982bca74f3f6f",
+     "prompt_sha": "1dae55bba9465b21b25cf4941e6fb8fef9056a809380511b4683ebc35cf76b2f",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.08476,
+     "cost": 0.072292,
      "date": "2026-11-24",
-     "response": ".transcription/questions/retirement.exception.7764526e860a.1.response.txt"
+     "response": ".transcription/questions/retirement.exception.531f72d2d09d.1.response.txt"
     }
    ],
    "type": "Enum(early_exception)",
@@ -704,10 +697,10 @@
      "locators": [
       "p. 5, Line 2, \"A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted.\"",
       "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\"",
-      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\", \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or 25 years of service under the plan, whichever is earlier.\", \"(if from an employer plan, payments must begin after separation from service)\", \"You are considered disabled if you can furnish proof that you can’t do any substantial gainful activity because of your physical or mental condition.\", \"Distributions due to death (doesn’t apply to modified endowment contracts).\" and \"IRA distributions made for qualified higher education expenses.\"; , \"The education must be for you, your spouse, or the children or grandchildren of you or your spouse.\", \"who is any of the following.\", \"Your or your spouse's child.\", \"Your or your spouse's grandchild.\" and \"Your or your spouse's parent or other ancestor.\"; , First-time homebuyer, \"you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home which the distribution is being used to buy, build, or rebuild. If you are married, your spouse must also meet this no-ownership requirement.\", \"You enter into a binding contract to buy the main home\", \"You were ordered or called to active duty after September 11, 2001.\", \"of more than 179 days or for an indefinite period because you are a member of a reserve component.\", \"The distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement.\", \"the date of the order or call to active duty and no later than the close of the active duty period.\", \"if made during the 1-year period beginning on the date on which your child was born or the date on which the legal adoption of your child was finalized\" and \"an eligible adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable of self-support.\"",
+      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\", \"In the space provided, enter the applicable exception number (01–23). If more than one exception applies, enter 99.\", \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or 25 years of service under the plan, whichever is earlier.\", \"(if from an employer plan, payments must begin after separation from service)\", \"You are considered disabled if you can furnish proof that you can’t do any substantial gainful activity because of your physical or mental condition.\", \"Distributions due to death (doesn’t apply to modified endowment contracts).\" and \"IRA distributions made for qualified higher education expenses.\"; , \"The education must be for you, your spouse, or the children or grandchildren of you or your spouse.\", \"It must be used to pay qualified acquisition costs (defined next) before the close of the 120th day after the day you received it.\", \"who is any of the following.\", \"Your or your spouse's child.\", \"Your or your spouse's grandchild.\" and \"Your or your spouse's parent or other ancestor.\"; , Qualified acquisition costs, \"Costs of buying, building, or rebuilding a home.\" and \"Any usual or reasonable settlement, financing, or other closing costs.\"; First-time homebuyer, \"you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home which the distribution is being used to buy, build, or rebuild. If you are married, your spouse must also meet this no-ownership requirement.\", \"You enter into a binding contract to buy the main home\", \"You were ordered or called to active duty after September 11, 2001.\", \"of more than 179 days or for an indefinite period because you are a member of a reserve component.\", \"The distribution is from an IRA or from amounts attributable to elective deferrals under a section 401(k) or 403(b) plan or a similar arrangement.\", \"the date of the order or call to active duty and no later than the close of the active duty period.\", \"if made during the 1-year period beginning on the date on which your child was born or the date on which the legal adoption of your child was finalized\" and \"an eligible adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable of self-support.\"",
       "p. 5, Line 2, \"IRA distributions made for the purchase of a first home, up to $10,000.\"",
       "p. 5, Line 2, \"Qualified distributions to victims of domestic abuse.\"",
-      "p. 5, Line 2, \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service\"",
+      "p. 5, Line 2, \"Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service\", \"Distributions from a section 457 plan\", \"Distributions from a plan maintained by an employer if\", \"Distributions from annuity contracts\", \"phased retirement annuity payments made to federal employees\", \"Permissible withdrawals under section 414(w)\"; , Exceptions, \"There are several exceptions to the age\" (the IRA exceptions listed there include none of 13 to 18)",
       "p. 5, Line 2, \"Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.\"",
       "p. 5, Line 2, \"meeting the unforeseeable or immediate financial needs relating to necessary personal or family emergency expenses\""
      ],
@@ -721,12 +714,14 @@
      "revision": "2025",
      "text_sha256": "24de404e77c2a3d1f0540b91ac8c28ca4d45c7fcf968de613407419eba9266f4",
      "pages": [
+      24,
       27,
       28
      ],
      "how": "pages named by another document's citation",
      "locators": [],
      "cols_pages": [
+      24,
       27,
       28
      ],

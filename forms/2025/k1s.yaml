@@ -1506,7 +1506,7 @@ form:
         - const: 0
       - op: test
         eq:
-        - k1s.part4
+        - k1s.tenth_if_active
         - const: true
     cite: *k1s_p4prior
   - id: k1s.prior_not_active_if

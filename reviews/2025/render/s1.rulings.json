@@ -19,12 +19,32 @@
   {
    "printed": "10",
    "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
+   "model": "The IRS line reads \"Combine lines 1 through 7 and 9\", but the restatement adds only lines 1, 2a, 3, 5, 7 and 9. Line 4 (\"Other gains or (losses)\") and line 6 (\"Farm income or (loss)\") are missing, even though the helper's label claims lines 1 through 4 and 6, and no refusal covers them.",
+   "ruling": "Ruling: scope; as the earlier rulings: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10, 'Combine lines 1 through 7 and 9'). Project stands.",
+   "context": "bad0b3056b3313fdb472063e83763d863b0d09ae7ee6d30d8882d9189aeef2df",
+   "date": "2026-11-24",
+   "run": "5edf36162fa6e19c6b34ad65ddfe86a5363f630bb82cee8b23e478f381edfd85",
+   "subject_key": "48d3bb1004e8245d99e6e27f1cf71d3c3a66b3994e2423670e520efdf10dc516"
+  },
+  {
+   "printed": "10",
+   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
    "model": "The IRS line reads 'Combine lines 1 through 7 and 9.' The helper is labeled 'Lines 1 through 4, 6, 7 and 9', but it adds only lines 1, 2a, 3, 7 and 9. Lines 4 (other gains or losses) and 6 (farm income or loss) are left out, and no refusal names that exclusion.",
    "ruling": "Ruling: scope; f1040s1 line 10. Line 4 (Form 4797 gains) is refused by sd.other_forms on Schedule D and line 6 (farm income) by scope.farm through scope.schedule1, as the line's cite says ('line 4 is refused by sd.other_forms ..., line 6 by scope.schedule1'); the helper adds the lines the tool computes.",
    "context": "0589e0ece4f7d7da2be18301eae854bda67d17f68248831edf479b98fe95f9d8",
    "date": "2026-11-22",
    "run": "c33974c9ae0e6560bdb8b8e72c155018ea5710289bd0083e48bd6f310c0e285b",
    "subject_key": "914367c9966520b3aec1988bbd18a1df137f8e3eadbd8cd964db541a561fc1e5"
+  },
+  {
+   "printed": "10",
+   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
+   "model": "The IRS line says \"Combine lines 1 through 7 and 9\", but the helper adds only lines 1, 2a, 3, 7 and 9, and line 5 is added separately. Lines 4 (Other gains or (losses)) and 6 (Farm income or (loss)) are missing, even though the helper's own label claims to include them, and no refusal for line 10 names Form 4797/4684 or Schedule F.",
+   "ruling": "Ruling: scope; as the earlier rulings: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10, 'Combine lines 1 through 7 and 9'). Project stands.",
+   "context": "3d11fbd5941b08c93a179e078801ec0d40f0d39bbb81c7a6f9e85de92ba94021",
+   "date": "2026-11-24",
+   "run": "eea0e254fb1d7ec64ed7979a9680ee6f041fd36cf5db035118c7c2cf368d5a0e",
+   "subject_key": "a337a9e3d5251a998f3f5ef3d996cbe5e83f1799de8ba74ebfc28eff7b416370"
   },
   {
    "printed": "10",
@@ -39,12 +59,32 @@
   {
    "printed": "10",
    "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
+   "model": "The IRS line says 'Combine lines 1 through 7 and 9.' The helper is labeled 'Lines 1 through 4, 6, 7 and 9', but it adds only lines 1, 2a, 3, 7 and 9, so lines 4 ('Other gains or (losses)') and 6 ('Farm income or (loss)') are left out. No refusal is shown that excludes Form 4797/4684 gains or Schedule F income.",
+   "ruling": "Ruling: scope; as the ruling of 2026-11-22: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10). Project stands.",
+   "context": "11eba3755b0655a673f7fc2e1f592f1331247c48b4100da7da128098da5be94d",
+   "date": "2026-11-23",
+   "run": "67e7f39a4561ab37575cdfe803f9c4919f4cca513e46831fce1e841b84b4ae48",
+   "subject_key": "a20c3d0be4835397e965266edcfea1b02374c8efe9db933becce8891d2604ff8"
+  },
+  {
+   "printed": "10",
+   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
    "model": "The form says 'Combine lines 1 through 7 and 9'. The helper's label claims lines 1 through 4, 6, 7 and 9, but the computation adds only lines 1, 2a, 3, 7 and 9 (plus line 5). Line 4 (Form 4797/4684 gains or losses) and line 6 (Schedule F) are omitted, and no refusal is shown for them.",
    "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". The model says lines 4 and 6 are omitted with no refusal shown. Line 4 (Form 4797 / 4684) is refused through sd.other_forms (sd.business_property_if_sold) on Schedule D and Form 1040 line 7a; line 6 (Schedule F) by scope.farm in scope.schedule1, refused at Form 1040 line 8 (which copies this line). Within scope they are zero. Line 5 (Schedule E) is now added (lane x1-sche). The helper's label \"Lines 1 through 4, 6, 7 and 9\" names lines 4 and 6 that it sums only as zero; in value it is right, since both are zero on every computed return.",
    "context": "7d662c68d34fcbeeeed2732152f2010265819dc6fe91f72b3414840528de413c",
    "date": "2026-11-15",
    "run": "5659125f232e1fb9cc0cdf6ab4810702b86df98fad4bfbf84e96edf70d98800f",
    "subject_key": "c331027f1b23e94fdcf9dc9eee116922890e72ad3047371285169470537b2a10"
+  },
+  {
+   "printed": "10",
+   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
+   "model": "The form says 'Combine lines 1 through 7 and 9.' The helper's label says it covers lines 1 through 4, 6, 7 and 9, but it adds only lines 1, 2a, 3, 7 and 9. It omits line 4 (other gains or losses) and line 6 (farm income), and no refusal names those exclusions.",
+   "ruling": "Ruling: scope; as the earlier ruling: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10, \"Combine lines 1 through 7 and 9\"). Project stands.",
+   "context": "1336b42f9ca97e84511a06436c13c9099c430474df2cb95b52c47f947c793d61",
+   "date": "2026-11-22",
+   "run": "efba1c9c8065b6087b8fb951fbd8a8ce747ebab36d40ef24286082a105187a5f",
+   "subject_key": "9d716505258ba1bc7df1481a6639708687b3eafee277487ee98a2fe8e0ec91ec"
   },
   {
    "printed": "10",
@@ -400,6 +440,16 @@
   {
    "printed": "8a",
    "restated": "Subtract helper \"The net operating loss carried into 2025, asked only after a Yes to the question on a loss carried into 2025 (zero otherwise)\" from helper \"Year parameter sales.zero\".",
+   "model": "The restatement enters the full unused NOL carried into 2025 as a negative amount and refuses only pre-2018 losses. For losses from 2018 on, Form 172 says the deduction 'cannot exceed the sum of ... (2) the lesser of: (a) the NOLs carried to the year from tax years beginning after December 31, 2017, or (b) 80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions'. The 80% limit is neither applied nor refused.",
+   "ruling": "Ruling: scope; as the earlier ruling: i172 p. 2, the 80% limit on post-2017 NOLs is not applied as arithmetic; the return is refused at Form 1040 line 15 wherever the limit may bind (s1.nol_limit, amb.2025.s1_nol_limit_test, owner decision D3), so every computed return deducts an NOL the limit does not reduce. Project stands.",
+   "context": "1336b42f9ca97e84511a06436c13c9099c430474df2cb95b52c47f947c793d61",
+   "date": "2026-11-22",
+   "run": "efba1c9c8065b6087b8fb951fbd8a8ce747ebab36d40ef24286082a105187a5f",
+   "subject_key": "6ade29ed999f5760cfb3ddfc7487f5903f47738f3a71393d8f47f8fb15893c06"
+  },
+  {
+   "printed": "8a",
+   "restated": "Subtract helper \"The net operating loss carried into 2025, asked only after a Yes to the question on a loss carried into 2025 (zero otherwise)\" from helper \"Year parameter sales.zero\".",
    "model": "The restatement enters the full unused NOL carried into 2025, but for losses from 2018 or later the deduction 'cannot exceed ... the lesser of: (a) the NOLs carried to the year from tax years beginning after December 31, 2017, or (b) 80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions'. No refusal excludes cases where the 80% limit applies; the sign ('Enter the amount in the preprinted parentheses (as a negative number)') and the other refusals are otherwise consistent with the text.",
    "ruling": "Ruling: scope; i1040gi p. 91, Line 8a, and the 80% limit. The limit is handled on s1.nol_limit (forms/2025/s1.yaml; amb.2025.s1_nol_limit_test): the deduction is computed where the 80% limit cannot bind and refused where it may. The restatement of line 8a does not show that line. (carried over from reviews/2025/render/s1.index.json at f4d8ea31, review of 2026-11-03)",
    "context": "4c8b02ee2f78a57444b1e5a4661492e668d862d36b1b25b383ecc9bd89fbad76",
@@ -458,6 +508,26 @@
   {
    "printed": "9",
    "restated": "Add line 8a, line 8b, line 8c, line 8e, line 8f, line 8g, line 8h, line 8i, line 8j, line 8k, line 8r, line 8v, helper \"Line 8s as the negative number added on line 9\", and line 8z.",
+   "model": "The IRS line reads \"Total other income. Add lines 8a through 8z\", but the restatement leaves out lines 8d, 8l, 8m, 8n, 8o, 8p, 8q, 8t and 8u. The line8_other gate refuses only for answers on 8m, 8t and 8u, so 8d (Form 2555 exclusion), 8l, 8n, 8o, 8p and 8q are dropped with no refusal, even though the refusal text says it covers them.",
+   "ruling": "Ruling: scope; as the earlier rulings: each line the sum leaves out refuses the return elsewhere (8d sa.excluded_income; 8l scope.rent_personal through scope.schedule1; 8n and 8o scope.cfc through scope.other_line16; 8p s1.ebl on line 3; 8q person.x_edu_taxable through Form 5329; 8m, 8t and 8u s1.line8_other), so line 9 is right on every completed return (f1040s1 line 9, 'Add lines 8a through 8z'). The line now also refuses on s1.state_disability (BUG-1405), state disability or medical leave benefits not on a W-2. Project stands.",
+   "context": "bad0b3056b3313fdb472063e83763d863b0d09ae7ee6d30d8882d9189aeef2df",
+   "date": "2026-11-24",
+   "run": "5edf36162fa6e19c6b34ad65ddfe86a5363f630bb82cee8b23e478f381edfd85",
+   "subject_key": "1246a0d63f8188bf635be08d25c3ceda79e1860c643f5266d61fd97297d469e6"
+  },
+  {
+   "printed": "9",
+   "restated": "Add line 8a, line 8b, line 8c, line 8e, line 8f, line 8g, line 8h, line 8i, line 8j, line 8k, line 8r, line 8v, helper \"Line 8s as the negative number added on line 9\", and line 8z.",
+   "model": "The IRS line says \"Total other income. Add lines 8a through 8z\", but the restatement leaves out lines 8d, 8l, 8n, 8o, 8p and 8q. The line8_other gate only fires for the 8m, 8t and 8u items, so a filer with an amount on any of the other omitted lines gets no refusal, and a negative 8d exclusion would change the total.",
+   "ruling": "Ruling: scope; as the earlier rulings: each line the sum leaves out refuses the return elsewhere (8d sa.excluded_income; 8l scope.rent_personal through scope.schedule1; 8n and 8o scope.cfc through scope.other_line16; 8p s1.ebl on line 3; 8q person.x_edu_taxable through Form 5329; 8m, 8t and 8u s1.line8_other), so line 9 is right on every completed return (f1040s1 line 9, 'Add lines 8a through 8z'). The line now also refuses on s1.state_disability (BUG-1405), state disability or medical leave benefits not on a W-2. Project stands.",
+   "context": "3d11fbd5941b08c93a179e078801ec0d40f0d39bbb81c7a6f9e85de92ba94021",
+   "date": "2026-11-24",
+   "run": "eea0e254fb1d7ec64ed7979a9680ee6f041fd36cf5db035118c7c2cf368d5a0e",
+   "subject_key": "ccad254f592527936b4a30223266733c03107c5ddfe8be38c1633d27d51989e0"
+  },
+  {
+   "printed": "9",
+   "restated": "Add line 8a, line 8b, line 8c, line 8e, line 8f, line 8g, line 8h, line 8i, line 8j, line 8k, line 8r, line 8v, helper \"Line 8s as the negative number added on line 9\", and line 8z.",
    "model": "The IRS line says \"Total other income. Add lines 8a through 8z,\" but the restatement leaves out lines 8d, 8l, 8n, 8o, 8p and 8q. Its refusal gate fires only for 8m (Olympic), 8t (NQDC pension) and 8u (inmate wages), so a filer with, for example, a Form 2555 exclusion (\"Foreign earned income exclusion from Form 2555\"), 8l rental income or an 8p \"Section 461(l) excess business loss adjustment\" is neither refused nor counted. The refusal's prose implies all other line 8 items are excluded, but the gate does not enforce that.",
    "ruling": "Ruling: scope; the restatement leaves out lines 8d, 8l, 8n, 8o, 8p and 8q, as the model says, but each of them refuses the return at another gate, which the line's citation names: 8d by sa.excluded_income (Form 2555 or 4563, Puerto Rico exclusion), 8l by scope.rental through scope.schedule1, 8n and 8o by scope.cfc (read through scope.cfc_if_foreign_shares in the scope gate), 8p by the excess business loss refusal of s1.line3 (s1.ebl), and 8q by person.x_other (Form 5329, ABLE account). 8m, 8t and 8u are refused by s1.line8_other (s1.olympic_if_winnings, s1.nqdc_pension_if_w2, s1.inmate_wages; line 8u's refusal restored by the revert). So no filer with an amount on those lines is computed; the line 9 total is right on every return the tool completes (f1040s1 line 9, 'Add lines 8a through 8z'). Same ruling as the earlier round (adjudication/s1.md, render line 9, scope).",
    "context": "4210f9ab86a7172f909d60169366a5e84addf9c96ee74669e77e099e4ae9c0c7",
@@ -475,36 +545,6 @@
    "run": "2c5415e8f6162d6dc449262582f1da40d781239ace0ae86e6a90453269bf2cf3",
    "severity": "low",
    "subject_key": "3bab8f2dc10d5b780706ee29a480af8d7f17c16e63e6899eef726efa30896026"
-  },
-  {
-   "printed": "10",
-   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
-   "model": "The IRS line says 'Combine lines 1 through 7 and 9.' The helper is labeled 'Lines 1 through 4, 6, 7 and 9', but it adds only lines 1, 2a, 3, 7 and 9, so lines 4 ('Other gains or (losses)') and 6 ('Farm income or (loss)') are left out. No refusal is shown that excludes Form 4797/4684 gains or Schedule F income.",
-   "ruling": "Ruling: scope; as the ruling of 2026-11-22: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10). Project stands.",
-   "context": "11eba3755b0655a673f7fc2e1f592f1331247c48b4100da7da128098da5be94d",
-   "date": "2026-11-23",
-   "run": "67e7f39a4561ab37575cdfe803f9c4919f4cca513e46831fce1e841b84b4ae48",
-   "subject_key": "a20c3d0be4835397e965266edcfea1b02374c8efe9db933becce8891d2604ff8"
-  },
-  {
-   "printed": "10",
-   "restated": "Add helper \"Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)\" and line 5.",
-   "model": "The form says 'Combine lines 1 through 7 and 9.' The helper's label says it covers lines 1 through 4, 6, 7 and 9, but it adds only lines 1, 2a, 3, 7 and 9. It omits line 4 (other gains or losses) and line 6 (farm income), and no refusal names those exclusions.",
-   "ruling": "Ruling: scope; as the earlier ruling: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10, \"Combine lines 1 through 7 and 9\"). Project stands.",
-   "context": "1336b42f9ca97e84511a06436c13c9099c430474df2cb95b52c47f947c793d61",
-   "date": "2026-11-22",
-   "run": "efba1c9c8065b6087b8fb951fbd8a8ce747ebab36d40ef24286082a105187a5f",
-   "subject_key": "9d716505258ba1bc7df1481a6639708687b3eafee277487ee98a2fe8e0ec91ec"
-  },
-  {
-   "printed": "8a",
-   "restated": "Subtract helper \"The net operating loss carried into 2025, asked only after a Yes to the question on a loss carried into 2025 (zero otherwise)\" from helper \"Year parameter sales.zero\".",
-   "model": "The restatement enters the full unused NOL carried into 2025 as a negative amount and refuses only pre-2018 losses. For losses from 2018 on, Form 172 says the deduction 'cannot exceed the sum of ... (2) the lesser of: (a) the NOLs carried to the year from tax years beginning after December 31, 2017, or (b) 80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions'. The 80% limit is neither applied nor refused.",
-   "ruling": "Ruling: scope; as the earlier ruling: i172 p. 2, the 80% limit on post-2017 NOLs is not applied as arithmetic; the return is refused at Form 1040 line 15 wherever the limit may bind (s1.nol_limit, amb.2025.s1_nol_limit_test, owner decision D3), so every computed return deducts an NOL the limit does not reduce. Project stands.",
-   "context": "1336b42f9ca97e84511a06436c13c9099c430474df2cb95b52c47f947c793d61",
-   "date": "2026-11-22",
-   "run": "efba1c9c8065b6087b8fb951fbd8a8ce747ebab36d40ef24286082a105187a5f",
-   "subject_key": "6ade29ed999f5760cfb3ddfc7487f5903f47738f3a71393d8f47f8fb15893c06"
   }
  ]
 }

@@ -2,108 +2,78 @@
  "form": "k1p",
  "reviews": {
   "gate:k1p.any_loss": {
-   "subject_sha": "51be35d8158ceec9ffadc66c15047270a18a329b024580e5e5bf741b12d75de1",
+   "subject_sha": "a6ad7b28afdcc7c06b8f5c01aab30e8f2f7ed937405ec22bef7ad7e371ebe32d",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A partner whose only partnership loss is reported in Box 10 (net section 1231 loss) or Box 11 (other loss), with no negative amount in Boxes 1, 2, 3, 8, 9a, or 14A.",
-       "why_no": "The gate lists only Boxes 1, 2, 3, 8, 9a and 14A, so the tool computes no loss and never asks the gated questions.",
-       "line": "k1p.not_at_risk_if_loss",
-       "irs_text": "i1065sk1 p. 8: These losses and deductions include a loss on the disposition of assets and the section 179 expense deduction.",
+       "pattern": "5",
+       "who": "A partner whose K-1 shows a section 179 deduction in box 12, with positive or blank boxes 1-3, 8, 9a and 14A. Their basis or at-risk amount is smaller than the deduction, for example because the property was bought with nonrecourse debt or their basis is near zero.",
+       "why_no": "The computed gate checks only boxes 1, 2, 3, 8, 9a and 14A for a negative amount. Box 12 is a deduction, so the gate is false and neither question is asked.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 8: \"These losses and deductions include a loss on the disposition of assets and the section 179 expense deduction\"; p. 3: \"Other limitations may apply to specific deductions (for example, the section 179 expense deduction)\"",
        "severity": "high",
-       "fix": "Broaden the gate to any partnership loss or deduction, including Box 10 and Box 11, not just the enumerated loss boxes."
+       "fix": "Make the gate true when box 12 shows any amount, as well as for losses in the listed boxes."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A partner whose only relevant K-1 item is a section 179 expense deduction in Box 12 and who has amounts in the activity for which they are not at risk.",
-       "why_no": "Box 12 is not one of the gate's listed boxes, so a section 179 deduction alone never opens the at-risk question.",
-       "line": "k1p.not_at_risk_if_loss",
-       "irs_text": "i1065sk1 p. 8: These losses and deductions include a loss on the disposition of assets and the section 179 expense deduction.",
+       "pattern": "5",
+       "who": "A partner whose only loss is a net section 1231 loss in box 10, or a loss in box 11 (such as a section 1256 contracts loss or another portfolio or ordinary loss). Their basis or at-risk amount is exhausted.",
+       "why_no": "Boxes 10 and 11 are not in the computed condition, so a negative amount there leaves the gate false.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 3: \"a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn't exceed their adjusted basis\"; p. 8: \"These losses and deductions include a loss on the disposition of assets\"",
        "severity": "high",
-       "fix": "Broaden the gate to any loss or other deduction, including Box 12 section 179, and ask the at-risk question whenever such a deduction is present."
+       "fix": "Add a negative box 10 and any loss code in box 11 to the gate."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A partner with only a charitable contribution in Box 13 or foreign taxes in Box 16 and insufficient adjusted basis to cover the contribution or tax.",
-       "why_no": "No listed loss box is negative, so the gate never asks about basis; even if asked, the question says losses, not deductions, so the filer would answer no.",
+       "pattern": "5",
+       "who": "A partner with no loss in any box who receives box 13 deductions (charitable contributions, investment interest expense, portfolio deductions, other deductions) or box 21 foreign taxes paid or accrued. Their adjusted basis is too low to absorb these amounts.",
+       "why_no": "These are deductions and credits, not losses in the listed boxes, so the computed gate is false.",
        "line": "k1p.basis_short_if_loss",
-       "irs_text": "i1065sk1 p. 3: a partner’s share of the adjusted basis in partnership charitable contributions ... and taxes ... is subject to this basis limitation.",
+       "irs_text": "i1065sk1 p. 3: \"a partner's share of the adjusted basis in partnership charitable contributions (defined in section 170(c)) and taxes, described in section 901, paid or accrued to foreign countries and to U.S. territories is subject to this basis limitation (defined in section 704(d))\"",
        "severity": "high",
-       "fix": "Broaden the gate to deductions subject to basis limitation and ask whether losses or deductions exceed basis."
+       "fix": "Make the gate true when box 13 or box 21 shows any amount. Ask the basis question about 'your losses and deductions from it', not only 'losses'."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A partner with a prior-year suspended partnership loss carried into 2025 and no current-year K-1 loss in any listed box.",
-       "why_no": "The gate looks only at current 2025 K-1 boxes; the prior-year disallowed loss is deducted in 2025 but is invisible to the gate.",
-       "line": "k1p.basis_short_if_loss",
-       "irs_text": "i1065sk1 p. 3: Any losses and deductions not allowed can be carried forward.",
-       "severity": "medium",
-       "fix": "Ask whether any partnership loss carryforward is being claimed and broaden the gate to prior-year suspended losses."
+       "who": "A partner whose losses or deductions from this partnership were disallowed in an earlier year for lack of basis or amount at risk. In 2025 the K-1 shows income in every box.",
+       "why_no": "The gate looks only at this year's K-1 boxes. A carried-forward suspended loss appears on no 2025 box, so neither question is asked.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 3: \"Any losses and deductions not allowed can be carried forward.\"",
+       "severity": "high",
+       "fix": "Add a filer question: 'Do you have losses or deductions from this partnership that were not allowed in an earlier year because of basis or at-risk limits?' Make the gate true on a yes."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A joint filer whose spouse, not the filer, is the partner with the K-1 loss and insufficient basis or at-risk amount.",
-       "why_no": "The gated questions say your 2025 losses and what you put in, so the filer may answer no because the investment belongs to the spouse.",
-       "line": "k1p.basis_short_if_loss",
-       "irs_text": "i1065sk1 p. 3: a partner may only claim their share of a partnership loss ... to the extent it doesn’t exceed their adjusted basis.",
+       "pattern": "other",
+       "who": "A partner in a partnership with several activities. Box 1 nets to a positive amount, but the attached per-activity statement shows a loss from one activity in which part of the investment is nonrecourse or guaranteed.",
+       "why_no": "Box 1 shows a positive net amount, so the computed gate is false. The at-risk rules apply activity by activity, using the separate statements.",
+       "line": "k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 8: \"if you have (a) a loss or other deduction from any activity ... and (b) amounts in the activity for which you aren't at risk, you'll have to complete Form 6198\"; \"You should get a separate statement of income, expenses, and other items for each activity from the partnership.\"",
        "severity": "medium",
-       "fix": "Use you or your spouse in both gated questions and in any related gate wording."
+       "fix": "When box 22 is checked or an activity statement is attached, ask whether any activity shows a loss or deduction. Include a yes in the gate."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A partner whose basis is reduced by nondeductible expenses, depletion, or other decreases omitted from the help's parenthetical formula.",
-       "why_no": "The help says basis is what you put in, plus your share of its income and debts, less losses and money taken out, so the filer computes a higher basis and answers no.",
-       "line": "k1p.basis_short_if_loss",
-       "irs_text": "i1065sk1 p. 3: Use the Worksheet for Adjusting the Basis of a Partner’s Interest in the Partnership to figure the basis of your interest.",
+       "who": "A partner whose K-1 prints a loss in parentheses, for example '(12,500)' in box 1. The partner enters the digits as shown, without a minus sign.",
+       "why_no": "The helper asks for the box amount. Typed without a sign, the amount is positive, so the computed comparison '< $0' fails.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 3: \"a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn't exceed their adjusted basis\"",
        "severity": "medium",
-       "fix": "Replace the incomplete formula with a instruction to use the Schedule K-1 basis worksheet and note that nondeductible expenses and other items reduce basis."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A partner with a K-1 loss in a listed box whose activity was financed by partnership nonrecourse debt allocated to them, but who did not personally contribute borrowed money.",
-       "why_no": "The question asks whether what you put in was borrowed without personal liability; the partner truthfully reads no because the borrowing was by the partnership, not a contribution by them.",
-       "line": "k1p.not_at_risk_if_loss",
-       "irs_text": "i1065sk1 p. 8: Nonrecourse loans used to finance the activity, to acquire property used in the activity, or to acquire your interest in the activity that aren’t secured by your own property.",
-       "severity": "high",
-       "fix": "Ask about any nonrecourse partnership debt allocated to the partner or any amount in the activity not at risk, not only amounts the partner put in."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A partner whose amount is protected by an indemnity, put, or other similar loss-protection arrangement that is not literally a guarantee or stop-loss agreement.",
-       "why_no": "The question lists only a guarantee or stop-loss agreement, so the filer reads the list as complete and answers no.",
-       "line": "k1p.not_at_risk_if_loss",
-       "irs_text": "i1065sk1 p. 8: protected against loss by a guarantee, a stop-loss agreement, or other similar arrangement.",
-       "severity": "medium",
-       "fix": "Add or other similar arrangement to the question."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A partner with a nonrecourse real-estate loan that is not qualified nonrecourse financing, for example a loan from a related party, but who sees it as a real-estate loan.",
-       "why_no": "The parenthetical other than qualified real estate loans invites the filer to treat any real-estate loan as excepted, though only qualified nonrecourse financing secured by real property is excepted.",
-       "line": "k1p.not_at_risk_if_loss",
-       "irs_text": "i1065sk1 p. 8: See the instructions for item K1, later, for the exception for qualified nonrecourse financing secured by real property.",
-       "severity": "medium",
-       "fix": "Ask whether the loan is qualified nonrecourse financing secured by real property, or ask a broad yes and classify later from the instructions."
+       "fix": "For each box, ask 'Is this amount a loss (shown in parentheses or with a minus sign)?' as a separate yes/no, or tell the filer to enter amounts in parentheses as negative."
       }
      ],
-     "prompt_sha": "b6e25e4dafc92b3dbff2adaf6bfe95fefc1ca2984918f913e88dbfd73cea9a19",
+     "prompt_sha": "86a1b354c72854d15ea18ff5a80ca18de3d07d094d68cf4ccb1a387a387eaa9c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_k1p.any_loss.51be35d8158c.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.092608,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.any_loss.a6ad7b28afdc.1.response.txt"
     }
    ],
    "condition": "k1p.any_loss",
@@ -484,48 +454,68 @@
    ]
   },
   "gate:k1p.ask_other": {
-   "subject_sha": "ff5682c493ba983bfa601d7ce31e971f58150f0cdae7e1393e35e50f90b10e3c",
+   "subject_sha": "11fb39f6cbeb357dfc1e7eb031074b7ff168097721afe6b1b46a597a6e4d724e",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A partner in an unlisted personal-service trade or business where capital is not a material income-producing factor, such as an advertising agency, public-relations firm, insurance agency, or similar service business outside the parenthetical fields.",
-       "why_no": "The question lists only health, law, engineering, architecture, accounting, actuarial science, performing arts, and consulting; the filer reads that list as the whole definition and says no because their business is not one of those named fields.",
+       "pattern": "5",
+       "who": "A general partner in a consulting partnership in which they materially participated for many earlier years, but not in 3 of the last 10 years. This year the K-1 leaves box 1 blank and reports the activity's items elsewhere, such as section 179 in box 12, deductions in box 13, other income in box 11 or credits in box 15.",
+       "why_no": "The computed gate needs \"Box 1 shows an amount\". With box 1 blank the gate is false, so test 6 is never asked.",
        "line": "k1p.t6_if_asked",
-       "irs_text": "i1065sk1 p. 9: 'A personal service activity involves the performance of personal services in the field of health, law, engineering, architecture, accounting, actuarial science, performing arts, or consulting, or any other trade or business in which capital isn’t a material income-producing factor.'",
+       "irs_text": "\"You must determine if you materially participated (a) in each trade or business activity held through the partnership\" and \"Income (loss), deductions, and credits from an activity are nonpassive if you determine that: • You materially participated\" (i1065sk1 2025 p. 9)",
        "severity": "high",
-       "fix": "Add the catch-all 'or any other trade or business in which capital isn’t a material income-producing factor' to the question, or ask whether the activity is a personal service activity and show the full definition."
+       "fix": "Run the material participation tests for any trade or business activity with an amount in any box (box 1, 4c-related items, 11, 12, 13, 15, 20 statements), not only box 1. Gate on \"this K-1 reports any income, loss, deduction or credit from a trade or business activity\"."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "other",
-       "who": "A filer with a single Schedule K-1 that reports more than one activity, only one of which is a personal service activity in which they materially participated for any 3 earlier years.",
-       "why_no": "The question says 'On this Schedule K-1 — Is it a service business' at the form level, so the filer answers no because the K-1 as a whole includes a non-service activity, even though the IRS requires the determination activity by activity.",
+       "who": "A general partner whose K-1 has a box 23 statement listing two trade or business activities: a consulting practice they have worked in for years and a capital-heavy equipment-leasing or manufacturing activity.",
+       "why_no": "The question asks \"On this Schedule K-1 (Form 1065) — Is it a service business ... in which capital is not a major source of income?\" The partnership as a whole relies on capital, so the filer truthfully answers no, and the consulting activity's test 6 is lost.",
        "line": "k1p.t6_if_asked",
-       "irs_text": "i1065sk1 p. 9: 'If the partnership had more than one activity, it’ll attach a statement to your Schedule K-1 that identifies each activity' and 'You must determine if you materially participated (a) in each trade or business activity held through the partnership'.",
+       "irs_text": "\"If the partnership had more than one activity, it'll attach a statement ... that identifies each activity\"; \"You must determine if you materially participated (a) in each trade or business activity held through the partnership\" (i1065sk1 2025 p. 9)",
        "severity": "high",
-       "fix": "Ask the question per activity, using the attached statement, and word it 'For this activity' rather than 'On this Schedule K-1'."
+       "fix": "Ask tests 1 to 6 once per activity on the box 23 statement: \"For each activity listed on the partnership's statement ...\". Also ask whether box 23 is checked or a statement lists more than one activity."
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer whose Schedule K-1 has no Box 1 amount but has a deduction or credit, such as Box 13 credits, from a personal service activity in which they materially participated for any 3 earlier years.",
-       "why_no": "The gate itself requires 'Box 1 shows an amount'; with Box 1 zero, the computed condition is false, so the tool never asks the test-6 question and treats the gated line as no.",
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A physician or lawyer partner, or their spouse, who worked 150 to 400 hours a year in earlier years. They qualified in those years under test 3, test 7 (regular, continuous and substantial), test 4, or test 5 or 6 itself, but never worked more than 500 hours.",
+       "why_no": "\"Materially participated in any 3 earlier years\" is a legal classification. The filer thinks of it as full-time or 500-plus hours and answers no.",
        "line": "k1p.t6_if_asked",
-       "irs_text": "i1065sk1 p. 9: 'Income (loss), deductions, and credits from an activity are nonpassive if you determine that: • You materially participated in a trade or business activity of the partnership'.",
-       "severity": "high",
-       "fix": "Broaden the gate to ask whenever the K-1 reports any income, loss, deduction, or credit affected by material participation, not only when Box 1 has an amount."
+       "irs_text": "\"you materially participated in an activity only if one or more of the following apply\" (tests 1 to 7); \"6. ... you materially participated in the activity for any 3 tax years (whether or not consecutive) preceding the tax year\" (i1065sk1 2025 p. 9)",
+       "severity": "medium",
+       "fix": "Ask about facts the filer can check for each earlier year: \"In any 3 earlier years (any years, not necessarily in a row or recent), did you or your spouse work in this activity more than 500 hours, more than 100 hours and at least as much as anyone else, do substantially all the work, or work in it regularly, continuously and substantially?\" Then classify."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A partner who materially participated in a law or consulting activity for 3 or more years long ago, more than 10 years back or not in a row, and has been a passive partner since.",
+       "why_no": "The filer reads \"any 3 earlier years\" as recent or consecutive years, perhaps by analogy with test 5's 10-year window, and answers no.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "\"any 3 tax years (whether or not consecutive) preceding the tax year\" (i1065sk1 2025 p. 9)",
+       "severity": "medium",
+       "fix": "Add \"any 3 years at any time before this year, whether or not in a row and however long ago\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "Any filer for whom test 6 is met.",
+       "why_no": "The help says \"A Yes ends the interview here\". A filer may read this as cutting off questions they think matter, or as a warning against yes, and answer no or hesitate.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "\"6. The activity was a personal service activity and you materially participated ...\" (i1065sk1 2025 p. 9)",
+       "severity": "low",
+       "fix": "Change the help to \"A Yes means you materially participated this year; no more participation questions are needed.\""
       }
      ],
-     "prompt_sha": "76cc64fba97cf40ba86ada77b2c600bfb5a76a913cd30f45f60e9a15766ef748",
+     "prompt_sha": "fcb731dff58551b9d353c4c514321305c9b228022ee0278e0e35bd5c37f78e46",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_k1p.ask_other.ff5682c493ba.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.09163600000000001,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.ask_other.11fb39f6cbeb.1.response.txt"
     }
    ],
    "condition": "k1p.ask_other",
@@ -661,68 +651,58 @@
    ]
   },
   "gate:k1p.ask_prior_active": {
-   "subject_sha": "385c4d9bdc61e13d6a688ac75a8733f05bb56deeae3f7616b0333b21f46cfe7c",
+   "subject_sha": "7777c7a81ad72ad369f1e31dd8ec1386474c1378f8137c863c52aa660716687e",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer whose held-back rental loss built up over several years, for example from 2019 through 2024. They actively participated only from 2022 on. Before that they held the interest passively or were not involved in decisions.",
-       "why_no": "\"The held-back rental real estate loss\" reads as last year's single carryover. Form 8582 Part VII column (c) pools all prior years into one figure, so the filer checks only 2024, when they did participate, and answers no without looking at the older years inside the amount.",
-       "line": "k1p.prior_not_active_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV: \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
-       "severity": "medium",
-       "fix": "Ask: \"The held-back loss may include losses from several earlier years. For any of those years, did you not help make decisions for this rental, or own less than a tenth of it at any time that year?\" Help: \"Check every year whose loss is still carried forward, not only last year.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A married filer who filed separately in the year the loss arose and lived with their spouse at some point that year. They made the management decisions and owned well over 10%.",
-       "why_no": "The question asks only about decisions and ownership. Both were true for this filer, so they answer no. Married filing separately while living with a spouse also disqualifies that year from the active participation rule, and the question never mentions it.",
-       "line": "k1p.prior_not_active_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don't qualify under the active participation rule and must use Part V instead of Part IV.\"",
-       "severity": "medium",
-       "fix": "Add a separate question: \"In any year the held-back loss arose, did you file married filing separately and live with your spouse at any time that year?\" Treat a yes the same as a yes to the participation question."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who in a loss year owned 10% or more for most of the year but fell below a tenth for part of it. Another example is a filer who held the interest as a limited partner that year and still weighed in on decisions informally.",
-       "why_no": "\"Owned less than a tenth of it\" without \"at any time\" reads as the year-end or typical share. \"Help make decisions\" invites a limited partner who gave informal input to answer no.",
-       "line": "k1p.prior_not_active_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV: \"unless you actively participated in the activity in both the year the loss arose and the current tax year. If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.\"",
-       "severity": "medium",
-       "fix": "Ask: \"…or owned less than a tenth of it (counting your spouse's share) at any time that year, or held it only as a limited partner?\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "Any filer who is unsure how to answer.",
-       "why_no": "The help says \"A Yes ends the interview here.\" That pushes an uncertain filer toward no to keep going, and a no silently places the prior-year loss in Part IV.",
-       "line": "k1p.prior_not_active_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV: \"If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.\"",
-       "severity": "low",
-       "fix": "Replace the help with what the answer decides: \"If yes, part of this loss belongs in Part V and can't use the special allowance. This tool can't split it, so a yes stops here.\""
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer now filing jointly whose held-back rental loss on this K-1 arose in a year they filed married filing separately and lived with their spouse. In that year they were a general partner, owned 20%, and made the management decisions.",
+       "why_no": "The question lists only three disqualifiers: not helping make decisions, owning less than a tenth, and holding the share as a limited partner. None applied to that year, so a truthful answer is no. The question never says that married filing separately while living with a spouse also bars active participation for that year.",
+       "line": "k1p.prior_not_active_if (should be true; the missed refusal leaves the prior-year loss in Part IV column (c) instead of Part V)",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don't qualify under the active participation rule and must use Part V instead of Part IV.\" Also \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
+       "severity": "high",
+       "fix": "Add a fourth clause: \"...or a year in which you filed married filing separately and lived with your spouse at any time during that year?\" Alternatively, ask the filing status for each year that produced a held-back loss and decide the result from that."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A joint filer whose spouse made the rental decisions, or held the larger share, in the loss year. The filer personally did neither.",
-       "why_no": "The singular \"you\" leads this filer to answer yes, the opposite error. The interview is wrongly refused even though their spouse's participation and share can count toward the requirement.",
+       "who": "A joint filer answering for the spouse's K-1. In the year the loss arose, the spouse held the interest as a limited partner or left all decisions to others, while the filer was the one who handled the household's rental decisions.",
+       "why_no": "The question asks whether \"you\" did not help make decisions or \"held your share\" as a limited partner. The person answering thinks of their own role: they helped decide, and they held no limited partner share themselves. So they answer no, although the owner's status that year was not active participation.",
        "line": "k1p.prior_not_active_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV: \"unless you actively participated in the activity in both the year the loss arose and the current tax year\"",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
+       "severity": "medium",
+       "fix": "Name the partner whose K-1 this is: \"Did any of the held-back loss come from a year when the partner named on this K-1 held the interest as a limited partner, or when neither you nor your spouse helped make management decisions or together owned at least a tenth?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose held-back loss on this K-1 has carried forward for several years. They actively participated in 2024. They were a limited partner in 2019, when part of the loss arose, and converted to general partner later.",
+       "why_no": "The amount comes as a single total from Part VII column (c) of the 2024 Form 8582. A filer may think only of last year, when the loss was \"held back\" on the most recent return, and not of the earlier year when part of it originally arose.",
+       "line": "k1p.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"...unless you actively participated in the activity in both the year the loss arose and the current tax year. If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.\"",
+       "severity": "medium",
+       "fix": "Make the timing explicit: \"Held-back losses can include losses from several earlier years. Think of every year in which any part of this held-back loss first arose, not only last year.\" Add this to the help text and to the question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who in the loss year formally approved decisions that a manager or general partner had already made, with no significant or bona fide role.",
+       "why_no": "The words \"help make decisions\" are loose enough that nominal sign-offs read as helping, so the filer answers no.",
+       "line": "k1p.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"...unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
        "severity": "low",
-       "fix": "Ask: \"…a year when neither you nor your spouse helped make decisions for it, or the two of you together owned less than a tenth of it?\""
+       "fix": "Give examples in the help text: \"Helping make decisions means management decisions in a real sense, such as approving tenants, setting rents, or approving capital spending. Signing off on decisions others made does not count.\""
       }
      ],
-     "prompt_sha": "0524183f3afbba0b57022c637b2da726dde89f59bcc245f6dc17d3744a866f90",
+     "prompt_sha": "d882c3346db0f6f1d69ab6e0a89c135a3cb6ae6266e93b9c52cbf3281477c3a2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.080444,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1p.ask_prior_active.385c4d9bdc61.1.response.txt"
+     "cost": 0.078704,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.ask_prior_active.7777c7a81ad7.1.response.txt"
     }
    ],
    "condition": "k1p.ask_prior_active",
@@ -827,6 +807,109 @@
      ],
      "cols_pages": [
       14
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.ask_sp": {
+   "subject_sha": "daa5b810c2f49f1443f42b6ff72f36599bbe43ae89a96f0197f79fe2869905f1",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner in a fiscal-year partnership whose tax year runs July 2024 through June 2025. They worked 140 hours in the business, mostly between July and December 2024, and under 100 hours in calendar 2025. Box 1 shows income, and none of tests 1, 2, 3 or 5 is met.",
+       "why_no": "The question asks about work 'in 2025'. Their calendar-2025 hours are under 100, so a truthful no follows, even though they worked more than 100 hours during the partnership's tax year.",
+       "line": "k1p.over100_if_income (the refusal for significant participation income subject to recharacterization is missed)",
+       "irs_text": "i1065sk1 p. 9: \"All determinations of material participation are based on your participation during the partnership's tax year.\" Also: \"A significant participation activity is any trade or business activity in which you participated for more than 100 hours during the year and in which you didn't materially participate\"",
+       "severity": "high",
+       "fix": "Ask: 'During the partnership's tax year shown at the top of this Schedule K-1, did you and your spouse together work in this business more than 100 hours?' Show the K-1 tax-year dates in the question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married partner filing jointly worked 60 hours in the partnership's business, and the spouse, who is not a partner, also worked 60 hours. Combined participation is 120 hours.",
+       "why_no": "'Did you (or your spouse ...) work in it more than 100 hours' reads as asking whether either person alone passed 100 hours. Neither did, so they answer no and never add the hours together.",
+       "line": "k1p.over100_if_income",
+       "irs_text": "i1065sk1 p. 9: \"Generally, any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation.\"",
+       "severity": "medium",
+       "fix": "Ask: 'Counting your hours and your spouse's hours together, did you work in this business more than 100 hours ...?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A general partner who is not an employee or paid worker. They spent about 150 hours on hands-on management of operations: hiring, vendor decisions, supervising staff. Box 1 shows income.",
+       "why_no": "They read 'work in it' as employment or paid labor and see themselves as an owner, not a worker. The help text does not say that owner management and operational involvement count.",
+       "line": "k1p.over100_if_income",
+       "irs_text": "i1065sk1 p. 9: \"Generally, any work that you or your spouse does in connection with an activity held through a partnership (where you own your partnership interest at the time the work is done) is counted toward material participation.\"",
+       "severity": "medium",
+       "fix": "Ask about 'time spent working in or managing this business's day-to-day operations, paid or unpaid'. Say in the help that only investor-type review of financial statements is excluded."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any partner with more than 100 hours in the business, no material participation, and box 1 income, who wants to finish the return in the tool.",
+       "why_no": "The help says 'A Yes ends the interview here.' This gives the filer a reason to read the hours question narrowly and answer no to keep going.",
+       "line": "k1p.over100_if_income",
+       "irs_text": "i1065sk1 p. 11: \"If you have net income subject to recharacterization under Temporary Regulations section 1.469-2T(f) ... report such amounts according to the Instructions for Form 8582\"",
+       "severity": "medium",
+       "fix": "Explain why the tool stops: this income may be treated as nonpassive and needs Form 8582 worksheets. Do not phrase the stop as a bare consequence of answering yes. Or ask the hours as a count and apply the 100-hour threshold in the tool."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A limited partner who worked 150 hours, more than anyone else, in the partnership's business. Box 1 shows income. They have no 500 hours and no 5-of-10-year history.",
+       "why_no": "The gate excludes anyone who meets test 2 or 3. If the tool takes the limited partner's yes to test 3 at face value, the gate is false and the hours question is never asked. But limited partners can meet only tests 1, 5 or 6, so they did not materially participate.",
+       "line": "k1p.over100_if_income",
+       "irs_text": "i1065sk1 p. 9: \"Limited partners. If you're a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated.\"",
+       "severity": "medium",
+       "fix": "For limited partners (without a general partnership interest held all year), ignore tests 2 and 3 in the gate. Compute it as 'none of tests 1 and 5 met' (and handle test 6 if it is modeled)."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A partner whose box 1 is zero, but whose K-1 reports net rental income from property the partnership rents to a business the partner materially participates in (self-rental), or other income recharacterized under Regs. 1.469-2(f)(6) or 1.469-2T(f).",
+       "why_no": "The gate requires a box 1 amount, so the recharacterization refusal tied to the cited sentence is never reached for income reported outside box 1.",
+       "line": "k1p.over100_if_income (refusal for net income subject to recharacterization)",
+       "irs_text": "i1065sk1 p. 11: \"If you have net income subject to recharacterization under Temporary Regulations section 1.469-2T(f) and Regulations sections 1.469-2(f)(5) and (6), report such amounts according to the Instructions for Form 8582\"",
+       "severity": "medium",
+       "fix": "Add a separate gate: does the K-1 or its statement identify amounts subject to recharacterization or special rules (for example, self-rental), or do you rent property to a business you work in? A yes leads to the same refusal."
+      }
+     ],
+     "prompt_sha": "71ca672b3017d5b53df5eb19357d980bbf2fc1755455236027522926d5d47c4a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.113348,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.ask_sp.daa5b810c2f4.1.response.txt"
+    }
+   ],
+   "condition": "k1p.ask_sp",
+   "lines": [
+    "k1p.over100_if_income"
+   ],
+   "inputs": [
+    "k1p.over100"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9,
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Special rules for certain other activities, \"If you have net income subject to recharacterization under Temporary Regulations section 1.469-2T(f) and Regulations sections 1.469-2(f)(5) and (6), report such amounts according to the Instructions for Form 8582\"; p. 9, \"A significant participation activity is any trade or business activity in which you participated for more than 100 hours during the year and in which you didn’t materially participate\""
+     ],
+     "cols_pages": [
+      9,
+      11
      ],
      "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
     }
@@ -949,6 +1032,93 @@
      ],
      "cols_pages": [
       11
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.general": {
+   "subject_sha": "085ba70152a2028aa762c64841bc7d8334f7b9ce1540bfc65165ea50e9f0f1e8",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner was a general partner in an oil and gas drilling partnership for part of 2025 and held a working interest in its wells. Mid-year the partner converted the interest to a limited partner interest, or sold the general partner interest, so the year-end Schedule K-1 checks the second box in item G.",
+       "why_no": "The question asks only whether the first box is checked, and it is not. The help says to answer Yes only for a general partner's share held 'all through 2025' and to answer No 'if the second box ... is checked.'",
+       "line": "k1p.oil_gas_gp_if_gp",
+       "irs_text": "i1065sk1 p. 8: 'Passive activities don't include the following ... 3. Working interests in oil or gas wells if you were a general partner.'",
+       "severity": "high",
+       "fix": "Gate on the fact, not the box: 'At any time in 2025 (or in an earlier year, for this same interest) were you a general partner, or did you hold this working interest in a form that did not limit your liability?' If yes, ask the working-interest question. Remove 'all through 2025' from the help."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A partner holds both a general partner interest and a limited partner interest in the same oil and gas partnership. The partnership checks only the limited partner box in item G, or reports the general partner interest in an attachment.",
+       "why_no": "The first box is not checked. The help covers only a general partner's share held all year and tells the filer to answer No when the second box is checked.",
+       "line": "k1p.oil_gas_gp_if_gp",
+       "irs_text": "i1065sk1 p. 8: 'Working interests in oil or gas wells if you were a general partner.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Answer Yes if you held any general partner interest in this partnership during 2025, even if item G checks the limited partner box or if you also hold a limited interest.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "The filer's Schedule K-1 has neither box in item G checked, for example a K-1 left blank there or a substitute K-1 without item G, and the filer is in fact a general partner holding an oil or gas working interest.",
+       "why_no": "The question asks whether the first box is checked, and it is not. The help speaks only to the second box, so the filer defaults to No.",
+       "line": "k1p.oil_gas_gp_if_gp",
+       "irs_text": "i1065sk1 p. 2: 'A general partner is a partner who is personally liable for partnership debts'; p. 8: 'Working interests in oil or gas wells if you were a general partner.'",
+       "severity": "medium",
+       "fix": "Add a third choice, 'Neither box is checked,' and follow it with a fact question: 'Are you personally liable for the partnership's debts?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "An LLC member-manager has an amount in box 1 or box 2. Item G's first box is checked, so the gate is Yes.",
+       "why_no": "On this inverted branch, the silent answer is Yes. A Yes fixes k1p.is_llc at false, so the filer is never asked whether the partnership is an LLC. The refusal the help describes for an LLC member with an amount in box 1 or 2 never fires, even though the partnership is an LLC.",
+       "line": "k1p.is_llc_if_not_gp",
+       "irs_text": "i1065sk1 p. 2: 'Some members of other entities, such as ... limited liability companies (LLCs) that are classified as partnerships, may be treated as limited partners for certain purposes.'",
+       "severity": "medium",
+       "fix": "Ask 'Is this partnership an LLC?' on both branches, since an LLC member-manager is still an LLC member. Alternatively, split the gate into 'general partner' and 'LLC member-manager' and ask the LLC question on the member-manager branch."
+      }
+     ],
+     "prompt_sha": "16d126592dfdfe49b42a147aff73a6f6f0736ad004748d92674ee54c197b297b",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08384,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.general.085ba70152a2.1.response.txt"
+    }
+   ],
+   "condition": "k1p.general",
+   "lines": [
+    "k1p.is_llc_if_not_gp",
+    "k1p.oil_gas_gp_if_gp"
+   ],
+   "inputs": [
+    "k1p.is_llc",
+    "k1p.oil_gas_gp"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      2,
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, General Partner, \"A general partner is a partner who is personally liable for partnership debts\"",
+      "p. 2, Limited Partner, \"Some members of other entities, such as domestic or foreign business trusts or limited liability companies (LLCs) that are classified as partnerships, may be treated as limited partners for certain purposes\"",
+      "p. 8, Passive activities don't include the following, \"Working interests in oil or gas wells if you were a general partner\""
+     ],
+     "cols_pages": [
+      2,
+      8
      ],
      "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
     }
@@ -1451,58 +1621,48 @@
    ]
   },
   "gate:k1p.has_b19": {
-   "subject_sha": "44294e4a0dc092a5a0e2593d95b211021169710b139233181cf55bbde950d4da",
+   "subject_sha": "31e02af9d918d14b08f2ab7356b7dee8e28483203358fb6c303995f2fc25e38c",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A partner whose partnership enters '*' or 'STMT' in box 19 and lists the codes and amounts on an attached statement. Large investment partnerships often do this.",
-       "why_no": "Box 19 itself holds no number, only a code letter or 'see statement', so 'Does box 19 (distributions) show an amount?' is truthfully no.",
-       "line": "k1p.b19_other_if_any; k1p.dist_over_if_any",
-       "irs_text": "i1065sk1 p. 25, Box 19: 'The partnership will also attach a statement separately identifying the following...' (distributions reported by code, with supporting statements)",
-       "severity": "high",
-       "fix": "Ask: 'Does box 19 of this Schedule K-1, or any statement attached for box 19, show a distribution code or an amount (including \"STMT\" or \"*\")?'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A partner whose share of partnership liabilities went down during 2025, for example when the partnership paid down a mortgage or refinanced away recourse debt. The partnership did not enter code D in box 19, and the drop appears only in Item K (beginning versus ending liabilities).",
-       "why_no": "No cash came out and box 19 is blank, so the filer truthfully answers no. A decrease in liability share is a deemed distribution of money under section 752(b) and can exceed basis.",
+       "pattern": "5",
+       "who": "A partner whose share of partnership liabilities fell during the year, for example because the partnership paid down or refinanced debt or the partner's allocation changed. Item K shows the decrease, but box 19 is blank because the partnership reported no deemed distribution there. The decrease exceeds the partner's low or zero basis, which is common after large depreciation losses in real estate.",
+       "why_no": "The gate asks only whether box 19 shows an amount. Box 19 is empty, so the truthful answer is no. The gated question itself counts 'any fall in your share of its debts (item K)', but the filer never reaches it.",
        "line": "k1p.dist_over_if_any",
-       "irs_text": "i1065sk1 p. 25, Box 19, Code A: 'Code A, however, doesn't include deemed distributions of money under section 752(b); see Code D, later.' Also 'To the extent the cash ... received exceed the adjusted basis of your partnership interest immediately before the distribution, the excess is treated as gain'",
+       "irs_text": "i1065sk1 p. 25, Box 19: 'Code A, however, doesn't include deemed distributions of money under section 752(b)'. The same page says that where the amount received 'exceed[s] the adjusted basis of your partnership interest immediately before the distribution, the excess is treated as gain from the sale or exchange of your partnership interest'.",
        "severity": "high",
-       "fix": "Broaden the gate: 'Does box 19 show any code or amount, OR did your share of liabilities in Item K go down from the beginning to the end of the year?' Treat a Yes to the Item K part as a possible deemed distribution and route it to the basis comparison."
+       "fix": "Widen the gate to: 'Does box 19 show an amount, or does item K show your share of liabilities at year end lower than at the beginning of the year?' Alternatively, ask the item K comparison as a separate gate that also leads to k1p.dist_over."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A partner who received property with a zero (or fully reduced) partnership basis. Box 19 shows code C (or code B) with 0, or code A for marketable securities reduced to zero by the section 731(c)(3)(B) reduction amount.",
-       "why_no": "The box shows a code but the amount is 0, so 'show an amount' reads as no. Yet a code other than A should end the interview.",
+       "who": "A partner who received a distribution of property other than money, such as land, equipment or non-money securities. Box 19 code C, or code B for section 737 property, reports the partnership's adjusted basis in that property, and that basis is zero or blank because the property was fully depreciated or had zero basis.",
+       "why_no": "The gate is phrased 'show an amount', and its citation points only to Code A (cash and marketable securities). A filer who sees 'C 0', or a code with no dollar figure, reads it as no amount and answers no.",
        "line": "k1p.b19_other_if_any",
-       "irs_text": "i1065sk1 p. 25, Box 19, Code C: 'Code C is used to report the partnership's adjusted basis in property other than money immediately before the property was distributed to you'",
+       "irs_text": "i1065sk1 p. 25, Code C: 'Code C is used to report the partnership's adjusted basis in property other than money immediately before the property was distributed to you'. Code B: 'you may be required to recognize gain under section 737'.",
        "severity": "medium",
-       "fix": "Ask whether box 19 shows any code letter (A, B, C, D, E, F, G), even with a zero or blank amount, rather than 'an amount'."
+       "fix": "Ask: 'Does box 19 show any code (A, B, C or another letter), even with a zero amount?' Add help saying that any code in box 19 counts, including property reported at zero basis."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A partner who received only property or a payment for services (code C, F or G) and no cash.",
-       "why_no": "The gate's citation and help center on code A, 'Cash and marketable securities'. A filer can read 'distributions' as money only and answer no when box 19 shows only non-money codes.",
-       "line": "k1p.b19_other_if_any",
-       "irs_text": "i1065sk1 p. 25, Box 19, Code C: 'Other property' and Code A: 'doesn't include distributions the partnership made to you for performing services. See the instructions later for codes F and G.'",
-       "severity": "medium",
-       "fix": "State in the help: 'Answer yes if box 19 shows any code, including property (C), section 737 property (B), liability decreases (D), or services (F, G), not only cash.'"
+       "pattern": "8",
+       "who": "A partner who received marketable securities that are treated as money. The partnership reported them under code A at fair market value reduced by the section 731(c)(3)(B) reduction amount, which brought the figure to zero. The attached statement still shows the securities and their fair market value.",
+       "why_no": "Box 19 code A shows 0, so the filer answers that box 19 shows no amount. Any money distributed alongside the securities, or a later correction to the statement, never reaches the basis comparison.",
+       "line": "k1p.dist_over_if_any",
+       "irs_text": "i1065sk1 p. 25, Code A: 'the partnership will use code A in box 19 to report its marketable securities at their FMVs on the date of distribution reduced (but not below zero) by the reduction amount'. The partnership 'will also attach a statement separately identifying' them.",
+       "severity": "low",
+       "fix": "Ask: 'Does box 19 show any code, or does an attached statement report a distribution to you?'"
       }
      ],
-     "prompt_sha": "9dd52a4348da83c78f517cac9d9c3e15bca2fd89e8f1d28a92c1c4309af61d39",
+     "prompt_sha": "5ba88201b4b5abd968e58212d0322011388df2215e18b85d5b70596066598e49",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.071876,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1p.has_b19.44294e4a0dc0.1.response.txt"
+     "cost": 0.066384,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.has_b19.31e02af9d918.1.response.txt"
     }
    ],
    "condition": "k1p.has_b19",
@@ -1606,7 +1766,7 @@
    ]
   },
   "gate:k1p.has_b20z": {
-   "subject_sha": "e5e25f0a182e73c36ee9a1f9124746ab9ba3781f131c46d763c5bfb22f5cfecf",
+   "subject_sha": "e451c1447dabc6a46f0ca1c959ba2652951b3513f1afae3001b01d1a3c739047",
    "samples": [
     {
      "verdict": "UNCLEAR",
@@ -1614,50 +1774,40 @@
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A partner in a partnership, often a publicly traded partnership or a large fund, whose K-1 box 20 has more codes than fit. Box 20 shows only an asterisk or \"STMT\", and the supplemental statement lists code Z with per-business QBI, W-2 wages and UBIA.",
-       "why_no": "The question asks whether \"box 20 show[s] code Z\". The printed box shows no letter Z, only \"*\" or \"See Statement\", so the filer reads the face of the form literally and answers no.",
-       "line": "k1p.box20z_if_any (QBI dropped to zero); k1p.z_other_if_z (section 199A dividends or cooperative items never asked, so the refusal is missed)",
-       "irs_text": "i1065sk1 p. 29, Code Z: \"The partnership will provide the information you need to figure your deduction.\"",
+       "who": "A partner whose Schedule K-1 box 20 has more codes than fit. The face of box 20 shows only an asterisk or \"STMT\" / \"See attached statement\". Code Z appears only on the continuation statement, which carries the 199A schedule showing QBI, W-2 wages, UBIA and possibly section 199A dividends.",
+       "why_no": "The question asks whether \"box 20 show[s] code Z\". The filer looks at the printed box 20, sees no letter Z there, and answers no without reading the attached box 20 continuation pages.",
+       "line": "k1p.box20z_if_any (QBI dropped to zero); k1p.z_other_if_z (section 199A dividends or cooperative refusal missed)",
+       "irs_text": "i1065sk1 p. 29, Code Z: \"The partnership will provide the information you need to figure your deduction.\" p. 30: \"Section 199A dividends. The amount reported reflects your distributive share of the partnership's net section 199A dividends.\"",
        "severity": "medium",
-       "fix": "Ask: \"Does box 20, or any statement attached for box 20, show code Z or section 199A information (QBI, W-2 wages, UBIA, section 199A dividends, PTP or cooperative items)? Check the attached statements as well as the box itself.\""
+       "fix": "Ask: \"Does box 20, or any statement attached for box 20 (it may show only an asterisk or 'STMT'), list code Z or a section 199A / QBI schedule?\" Add help telling the filer to check the attached statements."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A partner whose box 20 shows code Z followed by \"*\" or \"STMT\" instead of a dollar amount, because all section 199A figures are on the attached statement.",
-       "why_no": "The gated line's printed label reads \"asked only when the box shows an amount\". A filer who sees code Z with no amount next to it takes that as the condition for a yes, and answers no.",
+       "pattern": "4",
+       "who": "A unitholder in a publicly traded partnership (or a large fund) who gets a substitute Schedule K-1 in the issuer's own layout. That K-1 reports section 199A information (qualified PTP income, QBI, section 199A dividends) on a separate supplemental schedule titled, for example, \"Section 199A Information\", without a recognizable \"box 20, code Z\" entry.",
+       "why_no": "The filer reads the question literally as \"box 20 shows code Z\". The substitute form has no such label, or uses its own line numbering, so the filer answers no even though the partnership furnished section 199A information.",
        "line": "k1p.box20z_if_any; k1p.z_other_if_z",
-       "irs_text": "i1065sk1 p. 30: \"W-2 wages. The amounts reported reflect your distributive share of the partnership's W-2 wages allocable to the QBI of each qualified trade, business, or aggregation.\" The figures are on the statement, not in the box.",
+       "irs_text": "i1065sk1 p. 29, Code Z: \"Generally, you may be allowed a deduction of up to 20% of your net qualified business income (QBI) plus 20% of your qualified REIT dividends, also known as section 199A dividends, and qualified PTP income from your partnership. The partnership will provide the information you need to figure your deduction.\"",
        "severity": "medium",
-       "fix": "Drop \"when the box shows an amount\" from the label. Say in the help: \"Answer Yes if code Z appears, even if the amount column shows only '*' or 'STMT'.\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A partner whose code Z statement reports only section 199A dividends, qualified PTP income, or cooperative items (a section 199A(g) deduction or qualified payments) and no QBI line.",
-       "why_no": "The filer reads the gate and the first gated question as being about qualified business income. Seeing no QBI on the statement, they answer the gate no rather than yes.",
-       "line": "k1p.z_other_if_z (the refusal for section 199A dividends or cooperative items is missed)",
-       "irs_text": "i1065sk1 p. 30: \"Section 199A dividends. The amount reported reflects your distributive share of the partnership's net section 199A dividends.\" Also: \"Patrons of specified agricultural or horticultural cooperatives ... you must use Form 8995-A.\"",
-       "severity": "medium",
-       "fix": "Ask the gate as the presence of code Z for any item, and add to the help: \"Answer Yes even if the statement shows no QBI, for example only section 199A dividends, PTP income, or cooperative items.\""
+       "fix": "Broaden the gate: \"Does this K-1 (box 20 code Z, or any attached or supplemental statement) give section 199A, qualified business income (QBI), qualified PTP income, or section 199A dividend information?\""
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A partner whose code Z statement shows a section 199A(g) deduction, \"qualified payments from specified cooperatives\", or W-2 wages allocable to qualified payments, from a grain, fruit or similar marketing cooperative.",
-       "why_no": "The gated question says \"payments from a farm or garden cooperative\", and its help says \"A Yes ends the interview here.\" The filer does not see the statement's statutory terms as matching, or prefers to avoid ending the interview, and answers no.",
-       "line": "k1p.z_other_if_z",
-       "irs_text": "i1065sk1 p. 30: \"Section 199A(g) deduction from specified cooperatives. The amount reported reflects your distributive share of the partnership's net section 199A(g) deduction.\"",
+       "who": "A partner whose box 20 lists code Z with \"STMT\" in the amount column instead of a dollar figure, which is the usual way code Z is reported.",
+       "why_no": "The gated line is labeled \"asked only when the box shows an amount (zero otherwise)\". A filer who sees that label, or reads the gate with it in mind, may treat a code Z with no dollar amount as not counting and answer no.",
+       "line": "k1p.box20z_if_any",
+       "irs_text": "i1065sk1 p. 29, Code Z: \"The partnership will provide the information you need to figure your deduction.\"",
        "severity": "low",
-       "fix": "Use the statement's own terms: \"Does the code Z statement show section 199A dividends, or any item for a specified agricultural or horticultural cooperative (qualified payments, W-2 wages allocable to qualified payments, or a section 199A(g) deduction)?\""
+       "fix": "Drop \"when the box shows an amount\" from the line label. Add help: \"Code Z usually shows 'STMT' rather than an amount; answer yes if the code appears at all.\""
       }
      ],
-     "prompt_sha": "718d34627ae962a135c73290668d782a4b7104133fff97031e74ccce02f94ad1",
+     "prompt_sha": "e9df29ef27db37d25b0a2a767750f2a6c69b337827126d6d28ec74e49baca700",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.09412799999999999,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1p.has_b20z.e5e25f0a182e.1.response.txt"
+     "cost": 0.075288,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.has_b20z.e451c1447dab.1.response.txt"
     }
    ],
    "condition": "k1p.has_b20z",
@@ -2179,69 +2329,174 @@
     }
    ]
   },
-  "gate:k1p.prior_b1_any_if": {
-   "subject_sha": "ca7e5d0c9dea34b9ab0035f9b8a2e32eed3239009ca55336586f224525eb3a52",
+  "gate:k1p.prior_any": {
+   "subject_sha": "fda36a57eb3df3e67641f12f1a19f44190bcee27b3d3a42bf6bd719726c9f7d2",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A partner with passive losses from this partnership suspended on the 2024 Form 8582 who sold their entire interest in 2025. The final K-1 shows the sale (for example, box 9a/10 or a sale reported on Form 8949/4797) but nothing in boxes 1, 2 or 3.",
-       "why_no": "The gate is computed. Boxes 1-3 are blank, so the helper is false and the tool never asks about the held-back loss. The filer gives no answer at all.",
-       "line": "k1p.prior_b1_if (prior years unallowed loss, box 1 activity)",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "pattern": "3",
+       "who": "A couple files jointly for 2025, and the K-1 belongs to one spouse. That spouse filed single or married filing separately for 2024, and that separate 2024 Form 8582 shows an unallowed loss from this partnership. The other spouse is answering the questions.",
+       "why_no": "The gate asks about a loss held back on 'your 2024 return' and points to 'your 2024 Form 8582'. The person answering filed no 2024 return with that loss and no Form 8582. Read literally, the answer is no.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
        "severity": "high",
-       "fix": "Don't condition on boxes 1-3. Ask for every K-1: \"Does your (or your spouse's) 2024 Form 8582, Part VII (or any prior-year passive loss worksheet), show an unallowed loss for this partnership, even if this year's K-1 shows no amount in box 1, 2 or 3 or you disposed of your interest?\""
+       "fix": "Ask: 'Was a loss from this partnership held back (not deducted) because of the passive activity rules on a 2024 or earlier return filed by you or your spouse, jointly or separately?' Add help text: 'Look at Part VII, column (c), of the 2024 Form 8582 filed by whichever of you owns this interest, or at your joint one.'"
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A partner in a still-held passive partnership with a 2024 suspended loss whose 2025 K-1 shows zero or blank in boxes 1-3. The only amounts are in other boxes, such as box 10 net section 1231 gain, box 4 guaranteed payments or box 11 other income, or it is a break-even year.",
-       "why_no": "The computed gate \"box 1, 2 or 3 shows an amount\" is false, so the prior-year loss is never asked. That loss must still enter column (c) and can offset other passive income.",
-       "line": "k1p.prior_b1_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity... Enter the total of column (c) from your 2025 Part V on Part I, line 2c\"",
-       "severity": "high",
-       "fix": "Gate the prior-year question on the existence of a prior-year unallowed loss for the activity, not on current-year amounts in boxes 1-3."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A couple filing jointly in 2025 whose partnership interest belongs to the spouse. The spouse filed single or MFS in 2024, so the suspended loss is on the spouse's own 2024 Form 8582. Or the couple married in 2025.",
-       "why_no": "The question says \"from your 2024 Form 8582\". The filer looks at their own 2024 return, finds no Form 8582 and answers no.",
-       "line": "k1p.prior_b1_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV/V, Column (c): \"You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "pattern": "4",
+       "who": "A filer had a passive loss from this partnership suspended in 2021. Their 2024 return left out Form 8582, either by mistake or because a preparer or software skipped it, so no 2024 Form 8582 lists the carryover.",
+       "why_no": "The help says 'A 2024 Form 8582 (Part VII, column (c)) lists such a loss.' The filer finds no 2024 Form 8582 and concludes there was no such loss. The suspended loss still carries forward by statute whether or not the form was filed.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): 'Enter the prior-year unallowed losses for each activity.'",
        "severity": "medium",
-       "fix": "Ask: \"Did your or your spouse's 2024 Form 8582 (from a joint or separate 2024 return) show an unallowed loss for this partnership?\""
+       "fix": "Make the form one source among several: 'Usually shown in Part VII, column (c), of your 2024 Form 8582. If you didn't file one, check earlier years' Forms 8582 or ask your preparer. The loss still carries forward.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A partner whose 2024 Form 8582 Part VII lists the partnership by name with an unallowed loss, without reference to K-1 boxes. Or the partner's 2024 loss came through a different K-1 box than this year's activity line.",
-       "why_no": "The question asks about a \"held-back loss from the business (box 1)\". The 2024 form shows an \"unallowed loss\" per activity, not per box. The filer doesn't see \"held back\" or \"box 1\" anywhere and answers no, or attributes the loss to another box.",
-       "line": "k1p.prior_b1_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity.\"",
+       "who": "In 2024 some of this partnership's loss was allowed, for example under the $25,000 rental allowance or against other passive income, and the rest was suspended. The filer saw a loss from the partnership on their 2024 Schedule E.",
+       "why_no": "The filer reads 'held back (not deducted)' as asking whether the loss was disallowed outright. Because a loss from this partnership appeared and reduced their income, they answer no, missing the partially suspended remainder.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
        "severity": "medium",
-       "fix": "Use the form's own words and ask by activity: \"Does Part VII, column (c) ('Unallowed loss') of your 2024 Form 8582 show an amount for this partnership's trade or business activity?\" Then classify by box afterward."
+       "fix": "Say: 'Was any part of a loss from this partnership held back (not deducted), even if the rest was deducted?'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A partner who used software or a preparer in 2024 that carried the suspended loss on a worksheet. The partner has only a summary or doesn't have the 2024 Form 8582 at hand.",
-       "why_no": "The question names only \"your 2024 Form 8582, Part VII, column (c)\". A filer who can't find that specific form answers no, although the unallowed loss exists.",
+       "pattern": "other",
+       "who": "The partnership changed its name or EIN, merged into a successor, or was grouped with another activity on the filer's 2024 Form 8582. Part VII therefore lists the suspended loss under a different name or under the grouped activity.",
+       "why_no": "The question says 'a loss from this partnership'. The filer finds no line on the 2024 Form 8582 matching the name on this K-1 and answers no.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity.'",
+       "severity": "medium",
+       "fix": "Add help text: 'Include a loss listed under this partnership's former name, a predecessor partnership, or an activity you grouped it with.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A preparer or software prepared the filer's earlier returns. The filer knows a K-1 loss 'didn't count' but not why, and does not recognize 'passive activity rules'.",
+       "why_no": "The filer cannot classify the reason the loss was held back. They answer no because they don't think of it as a passive activity matter, or because they assume a basis or at-risk limit applied.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): 'You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
+       "severity": "low",
+       "fix": "Ask first about the fact the filer can check: 'Does any 2024 or earlier Form 8582 (yours or your spouse's) list this partnership in its unallowed-loss worksheet?' Treat 'not sure' as yes and follow with the box questions."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer has a prior-year unallowed commercial revitalization deduction (CRD) from rental real estate held through this partnership.",
+       "why_no": "The gate asks about a held-back 'loss'. A filer carrying a CRD may not count a deduction as a loss and answers no.",
+       "line": "k1p.prior_b2_any_if",
+       "irs_text": "i8582 (2025) p. 10, Line 3: 'If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d.'",
+       "severity": "low",
+       "fix": "Add: 'Include a held-back commercial revitalization deduction (marked CRD on your Form 8582).' Alternatively, have the tool state that CRD is out of scope and refuse."
+      }
+     ],
+     "prompt_sha": "f71ce7000065cc706fa32cdb7bae3752afadd53d93351fe7edd10c041b06329f",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.105016,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.prior_any.fda36a57eb3d.1.response.txt"
+    }
+   ],
+   "condition": "k1p.prior_any",
+   "lines": [
+    "k1p.prior_b1_any_if",
+    "k1p.prior_b2_any_if",
+    "k1p.prior_b3_any_if"
+   ],
+   "inputs": [
+    "k1p.prior_b1_any",
+    "k1p.prior_b2_any",
+    "k1p.prior_b3_any"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:k1p.prior_b1_any_if": {
+   "subject_sha": "80b48cca5033ffbc8c6eb14e31b15419f3b3c384537618ad97007cfc64f05fa1",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A partner whose 2024 return was prepared by a paid preparer or software. The partnership's box 1 loss exceeded their passive income, so Form 8582 suspended part of it and listed the carryover in Part VII, column (c). The filer never saw this as a separate decision.",
+       "why_no": "\"Held back\" is a classification the filer must make without seeing it. They remember entering the K-1 loss and believe it was deducted, so they answer no.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Ask a fact the filer can check: \"Did your 2024 return include Form 8582 (Passive Activity Loss Limitations)? If so, does Part VII, column (c) show an amount for this partnership?\" Add help that this is common for losses from partnerships where the filer does not work."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose 2024 Form 8582 allowed part of the partnership loss and suspended the rest, for example by netting it against other passive income or through the worksheets in Parts VII and VIII.",
+       "why_no": "Part of the loss did reduce their 2024 tax, so they read \"a loss ... held back\" as \"was the loss denied\" and answer no.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Say \"any part of a loss, even if the rest was allowed,\" and point to Part VII, column (c) of the 2024 Form 8582 as the test."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A partner whose box 1 loss was suspended in 2019–2022 and carried through every later Form 8582. The 2025 K-1 shows income, or the 2024 K-1 showed income.",
+       "why_no": "They read \"an earlier return\" as last year's return, or tie \"a loss from this partnership\" to a recent K-1 loss. Last year's K-1 had no loss, so they answer no.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity.\"",
+       "severity": "medium",
+       "fix": "Say \"held back on any earlier year's return and not yet used, even if this year's or last year's K-1 shows income. Losses carry forward until used or the interest is disposed of.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Spouses filing jointly for 2025. In 2024 the partner spouse filed separately, or filed before the marriage, and that separate Form 8582 suspended the partnership loss.",
+       "why_no": "The gate says \"an earlier return\" with no owner. The filer reads it as the couple's own earlier joint return, which does not exist, and answers no.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Say \"held back on any earlier return of yours or your spouse's, including a separate or pre-marriage return.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A partner whose interest continued after the partnership merged, converted, or changed its name or EIN. The 2024 Form 8582, Part VII lists the activity under the old partnership's name.",
+       "why_no": "\"This partnership\" doesn't match any name in their 2024 Part VII, so they answer no.",
        "line": "k1p.prior_b1_if",
        "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity.\"",
        "severity": "low",
-       "fix": "Add help text: \"Losses from this partnership that were not allowed in earlier years because of the passive activity rules. They usually appear on your 2024 Form 8582 or your preparer's carryover worksheet.\""
+       "fix": "Add help: \"Include losses listed under a former name of this partnership or a predecessor partnership whose business it continues.\""
       }
      ],
-     "prompt_sha": "963493cc30a714f31c95df8736d6a2bba42c948bf9112e6b964232dae2ce0226",
+     "prompt_sha": "f23cb7f99b78b7f9b39983115d5b4ea58064de3e29a418423f4488617cda02fa",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.083784,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1p.prior_b1_any_if.ca7e5d0c9dea.1.response.txt"
+     "cost": 0.078148,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.prior_b1_any_if.80b48cca5033.1.response.txt"
     }
    ],
    "condition": "k1p.prior_b1_any_if",
@@ -2271,78 +2526,58 @@
    ]
   },
   "gate:k1p.prior_b2_any_if": {
-   "subject_sha": "a714cad58d924152cb8c5daf0741a173f99c5b724a69c9d6b7f2d7a4de3b00bb",
+   "subject_sha": "179914ac31baad025b11467b7e75400441f6e183a2a7ee71659ef3df19a366f0",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A partner whose partnership sold its rental building in 2025. The final 2025 K-1 reports the sale in box 9a/9c/10 or Form 4797 detail, and boxes 1, 2 and 3 are blank. The partner's 2024 Form 8582, Part VII, column (c), carries a suspended rental real estate loss for this activity.",
-       "why_no": "The parent gate is computed from this year's K-1 alone (\"box 1, 2 or 3 shows an amount\"). With all three boxes blank, it is false, so the held-back question is never asked, even though a carryover from an earlier year exists.",
-       "line": "k1p.prior_b2_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
-       "severity": "high",
-       "fix": "Do not gate prior-year unallowed losses on current-year box 1–3 amounts. Ask for every K-1, including a final one: \"Did your 2024 Form 8582 (Part VII, column (c)) or carryover worksheet show an unallowed loss for this partnership's rental real estate activity, even if box 2 is blank this year or this is a final K-1?\""
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A partner whose partnership's rental real estate broke even, or whose 2025 box 2 is blank because the activity was idle. The partner still has losses suspended from 2022–2024 on the 2024 Form 8582.",
-       "why_no": "The computed parent condition is false because box 2 shows no amount this year. The suspended loss carries forward regardless of current-year activity, and current-year income from another passive activity could release it.",
-       "line": "k1p.prior_b2_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV, Columns (d) and (e): \"Combine income and losses in columns (a) through (c) for each activity\"; column (c) prior-year unallowed losses are entered for each activity.",
-       "severity": "high",
-       "fix": "Ask about carryovers whenever the filer had this partnership in any prior year (or simply always). The condition should be the existence of a 2024 Part VII column (c) amount, not a current box amount."
-      },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "Spouses filing jointly in 2025 where the K-1 belongs to the spouse, or where the couple filed separately (or the spouse filed single before marriage) in 2024. The suspended loss sits on the spouse's own 2024 Form 8582.",
-       "why_no": "The filer reads \"was a loss held back\" or \"your 2024 Form 8582\" as their own return and sees nothing on it.",
+       "who": "A couple filing jointly for 2025 who filed separate returns for 2024, or married in 2025. The spouse is the partner, and the spouse's own 2024 Form 8582 carried an unallowed box 2 rental real estate loss from this partnership. The other spouse is the one answering the tool.",
+       "why_no": "\"A loss from this partnership held back on an earlier return\" reads as the joint filer's own prior return. The prior joint return did not exist, or did not include the loss. The answering spouse never saw the spouse's separate 2024 Form 8582.",
        "line": "k1p.prior_b2_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
        "severity": "medium",
-       "fix": "Say \"you or your spouse\" and \"any 2024 Form 8582 filed by you or your spouse (joint or separate)\"."
+       "fix": "Ask: \"Did you or your spouse have a loss from this partnership that wasn't allowed on a 2024 return, whether joint or separate? Check Part VII, column (c), of any 2024 Form 8582 either of you filed.\""
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose 2024 software suspended the loss in its carryover worksheet, or who never attached a Form 8582 in 2024 although a loss was limited. The filer sees no \"held back\" amount on anything they recognize.",
-       "why_no": "\"Held-back loss\" is a classification the filer cannot check, and the cited source (Part VII, column (c) of a 2024 Form 8582) may not be in their records. They answer no instead of reconstructing the amount.",
+       "pattern": "8",
+       "who": "A filer whose preparer or software labeled the amount \"suspended passive loss\", \"passive activity loss carryover\" or \"unallowed loss\". The 2024 Form 8582 Part VII, column (c), shows an amount for this partnership's rental real estate.",
+       "why_no": "The filer does not connect \"held back\" with \"suspended\", \"carryover\" or \"unallowed\". They may also read \"held back\" as the partnership withholding a distribution or tax, which did not happen.",
        "line": "k1p.prior_b2_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity.\"",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
        "severity": "medium",
-       "fix": "Ask a checkable fact first: \"In any earlier year, did this partnership report a rental real estate loss (box 2) that was not fully deducted on your return?\" Then direct the filer to the 2024 Form 8582 Part VII, the software carryover report, or a recomputation."
+       "fix": "Use the IRS term and point to the document: \"Does your 2024 Form 8582, Part VII, column (c), show an unallowed (suspended or carryover) loss for this partnership?\" Add help text: \"This is sometimes called a suspended passive loss or a passive loss carryover.\""
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer whose box 2 loss was suspended in 2021 and never released. The amount carried through every later Form 8582.",
-       "why_no": "\"A loss was held back\", asked on the 2025 K-1, reads as a limitation on this year's box 2 loss. The filer thinks of the old loss as an earlier year's matter, not one held back \"from it\".",
+       "who": "A filer whose rental real estate loss from this partnership was first disallowed in 2020 and carried forward each year since. It sits in Part VII, column (c), of the 2024 Form 8582.",
+       "why_no": "\"Held back on an earlier return\" can read as \"last year's loss was limited\". In 2024 the partnership's box 2 showed income or a fully allowed loss, so the filer thinks nothing was held back then. Yet the older carryover was still listed on the 2024 form.",
        "line": "k1p.prior_b2_if",
-       "irs_text": "i8582 (2025) p. 10, Part IV: \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
        "severity": "medium",
-       "fix": "Word it as \"from any earlier year, still not deducted as of the end of 2024\", not \"held back\"."
+       "fix": "Say \"from any earlier year, still not used as of your 2024 return\". Prefer the document check: \"Is this partnership listed with an amount in Part VII, column (c), of your 2024 Form 8582?\""
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A partner who did not actively participate, or who lived with their spouse and filed separately, so their box 2 loss was suspended in Part V of the 2024 Form 8582 rather than Part IV.",
-       "why_no": "The cited help text is from Part IV (active participation). The filer reads the question as covering only the Part IV special-allowance case and answers no for a Part V carryover.",
+       "pattern": "other",
+       "who": "A filer whose 2024 Form 8582 lists this activity under a different name. The partnership may have renamed, merged into a successor, or been grouped with other activities as one activity.",
+       "why_no": "\"From this partnership\" leads the filer to look for this partnership's current name in the 2024 Part VII. The name is not there, so they answer no.",
        "line": "k1p.prior_b2_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity.\"",
        "severity": "low",
-       "fix": "State that the question covers the box 2 rental real estate carryover whether it was figured in Part IV or Part V, and cite both columns (c)."
+       "fix": "Add help text: \"Include a loss listed under a former name, a predecessor partnership, or a grouped activity that includes this partnership's rental real estate.\""
       }
      ],
-     "prompt_sha": "c6acfa56b7eb677c042aa8db22e0fc784987b7a6e1217b33d882fd53c75b91eb",
+     "prompt_sha": "a3d7678955b591027828605470efb64e413305e379bc992671a97c5cf40bc937",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.0879,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1p.prior_b2_any_if.a714cad58d92.1.response.txt"
+     "cost": 0.077364,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.prior_b2_any_if.179914ac31ba.1.response.txt"
     }
    ],
    "condition": "k1p.prior_b2_any_if",
@@ -2372,78 +2607,58 @@
    ]
   },
   "gate:k1p.prior_b3_any_if": {
-   "subject_sha": "c75916bd8f176733a4811c7f150517e4a9976066f5fdce3a41474a154565ebee",
+   "subject_sha": "b2397fc5626a9fae145c522f8b6a4bb2511ab8becad365041c436d466d1551d3",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A partner in a partnership that rents equipment or other non-real-estate property. Their 2024 box 3 loss was disallowed and appears in 2024 Form 8582, Part VII, column (c). Their 2025 K-1 shows nothing in boxes 1, 2 or 3: the activity broke even, or the only 2025 amounts are elsewhere, such as box 9/10 section 1231 gain or box 19 distributions.",
-       "why_no": "The parent helper 'Asked only when box 1, 2 or 3 shows an amount' is truthfully false. So the gate is false and the held-back loss question is never asked, even though the activity still carries a prior-year unallowed loss.",
-       "line": "k1p.prior_b3_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
-       "severity": "high",
-       "fix": "Do not make the prior-year question depend on current boxes 1-3. Ask for every Form 1065 K-1, including a final K-1: 'Did your 2024 Form 8582 (Part VII, column (c)) show an unallowed loss for this partnership's activity, whether or not this year's K-1 shows an amount in boxes 1-3?'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A partner who disposed of their entire interest during 2025 in a fully taxable transaction. The final K-1 reports the sale or only a box 9/10/11 gain or loss, with boxes 1-3 blank. They have suspended box 3 losses from earlier years.",
-       "why_no": "Boxes 1, 2 and 3 are empty, so the computed gate is false. The suspended loss, which the disposition frees in full, is treated as zero.",
-       "line": "k1p.prior_b3_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
-       "severity": "high",
-       "fix": "Ask the prior-year unallowed loss question whenever the filer had a 2024 Form 8582 entry for the activity. Also ask it when the K-1 is marked final or the filer reports a disposition, regardless of boxes 1-3."
-      },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose 2024 return carried a box 3 rental loss forward on Form 8582. They know it as a 'suspended', 'carryover' or 'unallowed passive' loss.",
-       "why_no": "The help text 'Held-back loss from other rentals' does not use the IRS words 'prior-year unallowed loss'. A filer may also read 'held back' as something the partnership withheld or did not distribute, not a loss limited on their own 2024 Form 8582.",
+       "who": "A limited partner whose box 3 rental loss was suspended on the 2024 return by the passive activity rules. Software or a paid preparer filled in Form 8582 automatically, so the filer never saw a loss 'held back'.",
+       "why_no": "The filer deducted what the software allowed and does not think of a passive suspension as a loss 'held back'. The IRS terms 'unallowed' and 'Form 8582, Part VII' do not appear in the gate, so the filer reads it as about something they chose to defer.",
        "line": "k1p.prior_b3_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity.'",
+       "irs_text": "Column (c). Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582. (i8582 2025, p. 10, Part V)",
        "severity": "medium",
-       "fix": "Word it as: 'Does your 2024 Form 8582, Part VII, column (c), show a prior-year unallowed (suspended passive) loss for this partnership's other rental activity (box 3)?'"
+       "fix": "Ask: 'Did your 2024 Form 8582 (passive activity loss limitations) list a prior-year unallowed or suspended loss for this partnership in Part VII, column (c)? If you used software or a preparer, check the 2024 Form 8582 or its carryover worksheet.' Explain that 'held back' includes losses the passive activity rules disallowed automatically."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A couple filing jointly for 2025 who filed separately, or were unmarried, in 2024. The K-1 belongs to the spouse, whose unallowed box 3 loss is on the spouse's own 2024 Form 8582.",
-       "why_no": "'Your 2024 Form 8582' is read by the filer completing the interview as their own 2024 return, which had no Form 8582 or no entry for this activity.",
+       "who": "Spouses filing jointly in 2025 where the K-1 belongs to the spouse. The spouse's box 3 loss was suspended on the spouse's own 2024 return, filed single or married filing separately before the joint return.",
+       "why_no": "The filer completing the return reads 'held back on an earlier return' as their own or the couple's earlier joint return. Neither shows a suspended loss for this partnership, so the filer answers no.",
        "line": "k1p.prior_b3_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
+       "irs_text": "Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582. (i8582 2025, p. 10, Part V)",
        "severity": "medium",
-       "fix": "Say 'your or your spouse's 2024 Form 8582 (including a separate 2024 return of the K-1 owner)'."
+       "fix": "Ask: 'Was a loss from this partnership held back (unallowed) on any earlier return filed by you or your spouse, including a separate or single return either of you filed?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose loss from this partnership was suspended in 2019 and carried forward unchanged on each later Form 8582. Nothing was 'held back' from the 2024 activity itself.",
+       "why_no": "The filer reads 'held back on an earlier return' as last year's loss being limited. Their 2024 share showed income or no loss, so they answer no, even though the old suspended amount is still in 2024 Part VII, column (c).",
+       "line": "k1p.prior_b3_if",
+       "irs_text": "Column (c). Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582. (i8582 2025, p. 10)",
+       "severity": "medium",
+       "fix": "State that the gate covers a loss suspended in any earlier year and still carried forward, including one shown again on the 2024 Form 8582 although it arose years ago."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "other",
-       "who": "A partner whose activity reported a loss in box 3 in 2024 but reports in box 1 or 2 in 2025, for example after a change in rental classification. The prior-year unallowed loss belongs to the activity, not to the box.",
-       "why_no": "The question is tied to '(box 3)'. Because this year's box 3 is empty, the filer answers no to the box 3 held-back loss even though the activity's prior-year unallowed loss carries forward.",
+       "who": "A partner whose partnership merged, converted, or was restructured into the entity that issued this K-1. The 2024 Form 8582 lists the suspended loss under the predecessor's name, or under a grouped activity name.",
+       "why_no": "The filer reads 'a loss from this partnership' as requiring the same name or EIN. The suspended loss appears under a different activity name, so the filer answers no.",
        "line": "k1p.prior_b3_if",
-       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity.'",
+       "irs_text": "Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582. (i8582 2025, p. 10)",
        "severity": "low",
-       "fix": "Ask per activity: 'Any prior-year unallowed loss for this activity, whatever box it was reported in.' Then route it by the activity's current classification."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "Any filer reviewing the help text who reads the citation.",
-       "why_no": "The citation quotes Part IV, which covers rental real estate with active participation. Box 3 other rental activities belong in Part V. A filer who has no actively participated real estate may conclude that the question does not apply to them.",
-       "line": "k1p.prior_b3_if",
-       "irs_text": "i8582 (2025) p. 10, Part V: 'Use Part V ... for: ... Rental activities other than rental real estate activities.'",
-       "severity": "low",
-       "fix": "Cite i8582 p. 10, Part V, Column (c), instead of Part IV."
+       "fix": "Add help text: 'Include losses listed under a predecessor entity or a grouped activity that includes this partnership.'"
       }
      ],
-     "prompt_sha": "1b5760bdef0722fdbcdf36c078be15c7a55a669a06b88afc71073174766a1f4f",
+     "prompt_sha": "86878829a8678fc68e02e13b6856fa4803edd9d386d7cb3c351fe943643256fc",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.08970800000000001,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_k1p.prior_b3_any_if.c75916bd8f17.1.response.txt"
+     "cost": 0.070272,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1p.prior_b3_any_if.b2397fc5626a.1.response.txt"
     }
    ],
    "condition": "k1p.prior_b3_any_if",

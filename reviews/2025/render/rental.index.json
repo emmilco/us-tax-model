@@ -3,6 +3,10 @@
  "form": "rental",
  "family": "claude",
  "base": "79426320574dcb8c617b48fc7912763a8ba2b73cfdb9a3f5484875d24802671d",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "28 / 2 / 1 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1b",
@@ -176,9 +180,9 @@
   },
   {
    "key": "VIII (c)",
-   "record": "79426320574dcb8c617b48fc7912763a8ba2b73cfdb9a3f5484875d24802671d",
+   "record": "f31d2994900cd48a17d4d4146209c90f98f5578b7ab66aec81028ee1806c6061",
    "status": "MATCH",
-   "subject_key": "e5010d66c0cceb4646f8f3cae2743f883029eb2c6bfa8848d0a62928f40f8f97"
+   "subject_key": "6f19aebf18fe674dfb8dfef29fac824cc69a458b5c940b9e5043722c58e755c3"
   },
   {
    "key": "VIII (b)",
@@ -188,9 +192,10 @@
   },
   {
    "key": "22",
-   "record": "79426320574dcb8c617b48fc7912763a8ba2b73cfdb9a3f5484875d24802671d",
-   "status": "MATCH",
-   "subject_key": "7b6c2c5d1eb0c8921d9e88d6630da19b2d2be7e0ee1c0dca08310662939ee2a8"
+   "record": "f31d2994900cd48a17d4d4146209c90f98f5578b7ab66aec81028ee1806c6061",
+   "status": "MISMATCH",
+   "ruling": "Ruling: model error; the helper subtracted is the loss with its prior-year unallowed loss less the Part VII unallowed loss, and the Part VII unallowed loss is $0 for an activity not carried into Part VII, so line 22 is then the whole loss, as the model says the IRS text requires (i8582 Part VI, 'allowed in full and aren't carried over to Part VII'). The hand-predicted fixtures with a loss absorbed by the special allowance (for example mrental.f8582.part5_income_and_loss, -$6,000) show it. The line changed only in its refusal gate (rental.not_at_risk_if_reported, BUG-1341). Project stands.",
+   "subject_key": "130e6468f428d77f75aff52f59f6f417c1b273e2736c18f7de2f8f1580d862c8"
   }
  ],
  "subjects": {
@@ -222,9 +227,9 @@
   "VI (c)": "7984157f999c2ee5b62e60cce0823dc99c1ef49a12d156093ac6f49a91db1cf1",
   "VII (a)": "b7ecd6ca9bc2bee8caded4a1b91a10347a8c7722f9f218e805d07029ae7281d6",
   "VII (c)": "0d7811a92c8bb66f010506e9855dab0c48b10915f2fe281f20abd97b2254ce0a",
-  "VIII (c)": "ff6216b5135bd69769588eac185f92d95c2e8d758b7ab5a5879590b2d5ecb408",
+  "VIII (c)": "076bdde6d5d74fa595b2295f161bebe25dd84b67a7f8108789dc5e934b3bafba",
   "VIII (b)": "f5b6747aa9f3c680e0ef7120120ec4f8b6ccf1b7947ae843b13c15e01a8b85ac",
-  "22": "b9716bc69f65d0e9a4da654d00aafd3d9930c2459d795e27de817aead6edeedd"
+  "22": "9497b03c9aad1e89f6ae6e486251a99642110c4a7cbb70117ffedd7d15c0b9ad"
  },
  "__rest__": "661c1b540efcc8beaa080338daf6df5f804692e5274c21f4a4c79528638f4475"
 }

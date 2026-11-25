@@ -400,11 +400,11 @@
    "printed": "9",
    "project_expr_sha256": "e2c64aa48e7663a4b230bdfd267095e97e0202f606488e2797654e3fb1769b8c",
    "second_expr_sha256": "073ff0cc21e310f9d0e00bee6931822604028046bebd618b50292a790739e1c0",
-   "ruling": "Ruling: representation; both add lines 8a, 8b, 8c, 8e to 8k, 8r, 8v and 8z and take away line 8s. The project adds the helper 0 - s1.line8s (s1.line8s_neg, 'Line 8s as the negative number added on line 9'), and the reply subtracts s1.line8s from the sum of the others; with the unfloored subtract the two are the same number on every return (sum + (0 - s) = sum - s). f1040s1 line 9, 'Add lines 8a through 8z'; line 8s is printed in parentheses (i1040gi pp. 91-92, Line 8s, \"in the entry space in the preprinted parentheses (as a negative number)\"). The lines both leave out (8d, 8l, 8m to 8q, 8t, 8u) are refused elsewhere, as the line's citation lists.",
-   "context": "511ed84a1333724bde463a2d24074c6b51bc21afd7d46d68999bb0943779a12d",
-   "date": "2026-11-15",
-   "run": "9a811916e2cd65cb4e88e62fced5b86658c4922ffb421e2fd8685d7631bab57b",
-   "subject_key": "3500c8e7553950aa63e2cde9e905cfd6c557e9f2521a7e3c8583874a4e416a34"
+   "ruling": "Ruling: representation; the project adds 0 less line 8s to the sum of the other lines, the reply subtracts line 8s from that sum: the same value for every amount (f1040s1 line 9, 'Add lines 8a through 8z', with 8s entered as a negative). The line changed only by its new refusal entry (s1.state_disability, BUG-1405), which the reply does not restate; a refusal at line entry gives no value to compare.",
+   "context": "a8c34cafdd11bab27806c8e9714451af26aba13b1c0de1d911ea5e225eb40349",
+   "date": "2026-11-24",
+   "run": "12ba40e663e4c690f6a3f94123fdf2985400cd7c5927474228c358c1b0fbf30d",
+   "subject_key": "adbbdbe0723b46a377eb526abe1a58abdd7131f87e1226a47e8a0282004064e0"
   },
   {
    "printed": "9",

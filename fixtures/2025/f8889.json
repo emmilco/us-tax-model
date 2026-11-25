@@ -5869,6 +5869,56 @@
           }
         }
       }
+    },
+    {
+      "id": "mut.f8889.three_forms_one_person_allocation_check",
+      "covers": [
+        "household",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-1348), predicted by hand before recording: mut.f8889.two_forms_one_person_allocation_check (single filer, family coverage all year, the allocation unanswered) with a third Form 8889 of the same coverage. No form uses the spouse rule (not married), so f8889.allocation_bad is false. Each form's Step 1 limit is the smaller of its own family amount and the others' ($8,550 each, i8889 p. 7), so person.hsa_step1, which now adds every form, is $25,650 against twice one form's $17,100: a check that read the sum on a form that does not split would turn on the unanswered allocation.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa_a",
+          "hsa_b",
+          "hsa_c"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa_a].line2": 300000,
+        "person[taxpayer].f8889[hsa_a].coverage_year": "family",
+        "person[taxpayer].f8889[hsa_a].allocation": null,
+        "person[taxpayer].f8889[hsa_b].line2": 200000,
+        "person[taxpayer].f8889[hsa_b].coverage_year": "family",
+        "person[taxpayer].f8889[hsa_b].allocation": null,
+        "person[taxpayer].f8889[hsa_c].line2": 100000,
+        "person[taxpayer].f8889[hsa_c].coverage_year": "family",
+        "person[taxpayer].f8889[hsa_c].allocation": null
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa_a].step1": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "household.hsa_step1_sum": {
+          "kind": "money",
+          "cents": 2565000
+        },
+        "person[taxpayer].f8889[hsa_a].split": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa_a].allocation_bad": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

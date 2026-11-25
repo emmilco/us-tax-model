@@ -45,6 +45,86 @@
      "cols_sha256": "68baa3fca122caa06dfcadad5d675d530287f6d61aa9a18c1659ba11481498e5"
     }
    ]
+  },
+  "royalty.not_at_risk": {
+   "subject_sha": "fb04a82cc369e64a4cb1983095e08a0b848eeca37f04c27d000dcaeadfbbcb6e",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer contributed property, not cash, to the royalty activity, and that property is protected against loss by a guarantee or stop-loss agreement.",
+       "source_text": "i1040se p. 3: \"Cash, property, or borrowed amounts used in the activity (or contributed to the activity, or used to acquire your interest in the activity) that are protected against loss by a guarantee, stop-loss agreement, or other similar arrangement\"",
+       "why": "The question asks only whether any 'money you put in' was protected. A filer who contributed protected property would truthfully answer No, but the lines need a Yes.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer borrowed money for the activity from their own relative, and that relative has no interest in the activity other than as a creditor.",
+       "source_text": "i1040se p. 3: \"from a person who has an interest in the activity (other than as a creditor) or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest\"; help: \"A loan from the payer of the royalty, a relative, or a company either controls is a Yes.\"",
+       "why": "The text treats a loan as not at risk only if the lender is related to someone other than the filer who has an interest in the activity. The help's bare 'a relative' reads naturally as the filer's own relative, which wrongly turns an at-risk loan into a Yes and a refusal.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer has a nonrecourse loan for the activity that is secured by their own property outside the activity, such as their home.",
+       "source_text": "i1040se p. 3: \"Nonrecourse loans used to finance the activity ... that are not secured by your own property (other than property used in the activity)\"; question: \"borrowed without personal liability (from any lender, a bank included)\"",
+       "why": "A nonrecourse loan secured by the filer's own property outside the activity is at risk. The question still makes 'without personal liability' a Yes, so this filer would answer Yes and be refused.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "The filer has a loan from a company that a relative controls, or a loan from the royalty payer, and neither lender has an interest in the activity.",
+       "source_text": "help: \"A loan from the payer of the royalty, a relative, or a company either controls is a Yes.\"; i1040se p. 3: \"a person who has an interest in the activity (other than as a creditor)\"",
+       "why": "'Either controls' can be read as the filer or the relative controlling the company, or the payer or the relative controlling it. The text ties the rule to an interest in the activity, not to these lenders as such, so different readings give different answers.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "acf1c7ff8ebffbb39cc031543f9bbc093e8f04c276f49a92287d9b90f69d4e90",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.056771999999999996,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/royalty.not_at_risk.fb04a82cc369.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, At-Risk Rules, \"In most cases, you must complete Form 6198 to figure your loss if you have\"",
+      "p. 3, At-Risk Rules; , At-Risk Limits, \"If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    },
+    {
+     "doc": "p925",
+     "revision": "2025",
+     "text_sha256": "3b1ff7c5ced72cbd4ae594b07eea50189f0886c32e47a3349a7359f852d0b971",
+     "pages": [
+      19
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "68baa3fca122caa06dfcadad5d675d530287f6d61aa9a18c1659ba11481498e5"
+    }
+   ]
   }
  }
 }

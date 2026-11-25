@@ -229,11 +229,11 @@
    "printed": "person[taxpayer].wages",
    "project": "$0.00",
    "model": "$30,000.00",
-   "ruling": "Ruling: model error; person.wages totals w2.wages, social security wages and tips (boxes 3 and 7), which are $0 on this case's W-2; the model added box 1 ($30,000).",
+   "ruling": "Ruling: model error; person.wages totals w2.wages, social security wages and tips (boxes 3 and 7), which are $0 on this case's W-2; the model added box 1 ($30,000). (carried over from reviews/2025/classm/person.index.json at 4c8ebd83, review of 2026-11-23)",
    "drop": true,
-   "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
-   "date": "2026-11-23",
-   "run": "4cb4438d06be510fb48d53a83ba443410cda10fe47e37a6ec96906a774183362",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "a850df93cf4f373de01ff0cc2fb1dc0104a49bb362eb5dcf56224aaf77a0951c",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -337,11 +337,11 @@
    "printed": "person[taxpayer].wages",
    "project": "$0.00",
    "model": "$38,000.00",
-   "ruling": "Ruling: model error; project retained; model value dropped from the fixture, as ruled on this line in earlier rounds (classm.person.10, .12). person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The case's W-2 (emp_a) has box 3 $0 and box 7 $0, so the project's $0.00 is right; the model summed box 1 ($38,000.00).",
+   "ruling": "Ruling: model error; project retained; model value dropped from the fixture, as ruled on this line in earlier rounds (classm.person.10, .12). person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The case's W-2 (emp_a) has box 3 $0 and box 7 $0, so the project's $0.00 is right; the model summed box 1 ($38,000.00). (carried over from reviews/2025/classm/person.index.json at 8175c23d, review of 2026-11-22)",
    "drop": true,
-   "context": "56b60b691ca81eb981d4c44c8131bf5b4198475f4518d73344f9b3a8950aa509",
-   "date": "2026-11-22",
-   "run": "5c7b0a8395d4da4f659c53027acb6d7c102af6374d8515ec18d05845c2a92921",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "deda710053b5ca540986d95ce9d99cb2bb08e6031204691dc50e518446a86370",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -351,9 +351,9 @@
    "model": "$22,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture, as ruled on this line in earlier rounds (classm.person.10, .12). person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The case's W-2 (emp_a) has box 3 $0 and box 7 $0, so the project's $0.00 is right; the model summed box 1 ($22,000.00). (carried over from reviews/2025/classm/person.index.json at 8175c23d, review of 2026-11-22)",
    "drop": true,
-   "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
-   "date": "2026-11-23",
-   "run": "300d4175a47367975aa8cdb20a14d628203a9f6c0b16a213bee89d2b60320914",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "a7bbb66263f5a386e9e3507ecfd1f224d141b4c96c30bf9f70013022a714858d",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -480,6 +480,18 @@
    "case": "classm.person.19",
    "printed": "person[taxpayer].wages",
    "project": "$0.00",
+   "model": "$30,000.00",
+   "ruling": "Ruling: model error; as the prior rulings on this line: w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The case's Form W-2 has boxes 3 and 7 at $0 (box 1 $30,000), so the project's total is $0; the model added box 1 instead.",
+   "drop": true,
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "0e13372cbbd3d78d0c82fb5e1b972c9998dd331659fa27dd932d74f129649be1",
+   "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
+  },
+  {
+   "case": "classm.person.19",
+   "printed": "person[taxpayer].wages",
+   "project": "$0.00",
    "model": "$48,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.19.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($48,000.00) instead of the amount given, the error ruled the same way on classm.person.1, classm.person.5 and classm.person.9 in earlier rounds (person class M sidecar). The sum of the given w2.wages is $0.00, the project's value. (carried over from reviews/2025/classm/person.index.json at b607a5f5, review of 2026-11-10)",
    "drop": true,
@@ -588,6 +600,18 @@
    "case": "classm.person.20",
    "printed": "person[taxpayer].wages",
    "project": "$0.00",
+   "model": "$120,000.00",
+   "ruling": "Ruling: model error; as the prior rulings on this line: w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The case's Form W-2 has boxes 3 and 7 at $0 (box 1 $120,000), so the project's total is $0; the model added box 1 instead.",
+   "drop": true,
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "9d5bd9881e4a8bb7287ad6e825c1932ce383e7436d058af9a7dfa323aa7ae6b9",
+   "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
+  },
+  {
+   "case": "classm.person.20",
+   "printed": "person[taxpayer].wages",
+   "project": "$0.00",
    "model": "$47,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture, as ruled on this line in earlier rounds (classm.person.10, .12). person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The case's W-2 (emp_a) has box 3 $0 and box 7 $0, so the project's $0.00 is right; the model summed box 1 ($47,000.00). (carried over from reviews/2025/classm/person.index.json at 8175c23d, review of 2026-11-22)",
    "drop": true,
@@ -660,12 +684,36 @@
    "case": "classm.person.22",
    "printed": "person[taxpayer].wages",
    "project": "$0.00",
+   "model": "$48,000.00",
+   "ruling": "Ruling: model error; as the prior rulings on this line: w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The case's Form W-2 has boxes 3 and 7 at $0 (box 1 $48,000), so the project's total is $0; the model added box 1 instead.",
+   "drop": true,
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "b83f88c269b1b6756a4fab187f8caaf6670d3392044979579f05267d7c2d3966",
+   "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
+  },
+  {
+   "case": "classm.person.22",
+   "printed": "person[taxpayer].wages",
+   "project": "$0.00",
    "model": "$50,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture, as ruled on this line in earlier rounds (classm.person.10, .12). person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The case's W-2 (emp_a) has box 3 $0 and box 7 $0, so the project's $0.00 is right; the model summed box 1 ($50,000.00). (carried over from reviews/2025/classm/person.index.json at 8175c23d, review of 2026-11-22)",
    "drop": true,
    "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
    "date": "2026-11-23",
    "run": "38c0caac7a0c0ef18c502cec2311e878ed70d26b4260ffb0030e78462dd55302",
+   "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
+  },
+  {
+   "case": "classm.person.23",
+   "printed": "person[taxpayer].wages",
+   "project": "$0.00",
+   "model": "$50,000.00",
+   "ruling": "Ruling: model error; as the prior rulings on this line: w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The case's Form W-2 has boxes 3 and 7 at $0 (box 1 $50,000), so the project's total is $0; the model added box 1 instead.",
+   "drop": true,
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "6bf4fea6528c25e001f2185e75ddc4f5d0eedeecadb14968637d2b1d7a7ef92d",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -690,6 +738,18 @@
    "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
    "date": "2026-11-23",
    "run": "dff5952fbe56423bcd1ac32b756f1663d6b48e2c5928e3fef662f95002cc233a",
+   "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
+  },
+  {
+   "case": "classm.person.24",
+   "printed": "person[taxpayer].wages",
+   "project": "$0.00",
+   "model": "$62,000.00",
+   "ruling": "Ruling: model error; as the prior rulings on this line: w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The case's Form W-2 has boxes 3 and 7 at $0 (box 1 $62,000), so the project's total is $0; the model added box 1 instead.",
+   "drop": true,
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "01669669b903c81b93299d5f5d73c8941d2df89602b79f65ca8b1f4578d36eea",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -771,9 +831,9 @@
    "model": "$26,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.4.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($26,000.00) instead of the amount given, as in the classm.person.1 ruling. The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has no box 3 entered (a test-data default of zero), which leaves person.eligible and the excess credit at their single-employer values; no amount changes. (carried over from reviews/2025/classm/person.index.json at 03090615, review of 2026-11-09)",
    "drop": true,
-   "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
-   "date": "2026-11-23",
-   "run": "9df08ba545350c97f8df1e80d463f2a4d057499ac822856b544f8985063b5291",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "395c2c97435e5d744b539b057626c324f4c810f5230daffaf63e27ff61be3873",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -807,9 +867,21 @@
    "model": "$50,000.00",
    "ruling": "Ruling: model error; project $0.00, model W-2 box 1 ($50,000). person.wages totals w2.wages, social security wages plus tips (boxes 3 and 7), which the prompt states; the model summed box 1. iw2w3 p. 18, Box 3; amb.2025.ss_wages; i1040gi p. 117. Same pattern as the Goal-1 round class M ruling. (carried over from reviews/2025/classm/person.index.json at deca6831, review of 2026-11-15)",
    "drop": true,
-   "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
-   "date": "2026-11-23",
-   "run": "99f277ebd7924f17940602d0a33b122938cad207f8935d8c24a0b4c23ffdbe46",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "63192a1c40bcaf11031c8c1051ea87f10c060498f0d7018fdd92fc82bd7a5a4f",
+   "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
+  },
+  {
+   "case": "classm.person.6",
+   "printed": "person[taxpayer].wages",
+   "project": "$0.00",
+   "model": "$149,000.00",
+   "ruling": "Ruling: model error; as the prior rulings on this line: w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The case's Form W-2 has boxes 3 and 7 at $0 (box 1 $149,000), so the project's total is $0; the model added box 1 instead.",
+   "drop": true,
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "7c99c29a087539df4e32b1873c8cbfca72d8587a003844c948a9a32a1252565c",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -822,6 +894,18 @@
    "context": "07a96969f1476f7ebc9b94ec8993624064a9f65bfe9581706ce1ea27edb599b2",
    "date": "2026-11-14",
    "run": "54755592827f3a23cb341adf161ee07101edc7dea0f0fecddf9462ac8d7e79f1",
+   "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
+  },
+  {
+   "case": "classm.person.7",
+   "printed": "person[taxpayer].wages",
+   "project": "$0.00",
+   "model": "$4,000.00",
+   "ruling": "Ruling: model error; as the prior rulings on this line: w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The case's Form W-2 has boxes 3 and 7 at $0 (box 1 $4,000), so the project's total is $0; the model added box 1 instead.",
+   "drop": true,
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "c788ea4c751482705165ae4b47f384e54efef70f2e38d195e6f3d41a53d6096a",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -843,9 +927,9 @@
    "model": "$50,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.8.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($50,000.00) instead of the amount given, the error ruled the same way on classm.person.1, classm.person.5 and classm.person.9 in earlier rounds (person class M sidecar). The sum of the given w2.wages is $0.00, the project's value. (carried over from reviews/2025/classm/person.index.json at b607a5f5, review of 2026-11-10)",
    "drop": true,
-   "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
-   "date": "2026-11-23",
-   "run": "5cd83e0881134b2143359ef5419fd3b12a9962d4bcdef950ab09f8069162b49d",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "7a21519fdb98a5318569f7748e3a7e0a082f5867767f1788255f18c0b08f13d3",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -867,9 +951,9 @@
    "model": "$60,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.8.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1); the model summed box 1 ($60,000.00) instead of the amount given, the error ruled the same way on classm.person.1, classm.person.5 and classm.person.9 in earlier rounds (person class M sidecar). The sum of the given w2.wages is $0.00, the project's value. (carried over from reviews/2025/classm/person.index.json at b607a5f5, review of 2026-11-10)",
    "drop": true,
-   "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
-   "date": "2026-11-23",
-   "run": "5cd83e0881134b2143359ef5419fd3b12a9962d4bcdef950ab09f8069162b49d",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "7a21519fdb98a5318569f7748e3a7e0a082f5867767f1788255f18c0b08f13d3",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   },
   {
@@ -891,9 +975,9 @@
    "model": "$55,000.00",
    "ruling": "Ruling: model error; project retained; model value dropped from the fixture. person.wages is the sum of w2.wages, social security wages plus social security tips, W-2 boxes 3 and 7 (iw2w3 p. 18, Box 3, \"Show the total wages paid ... subject to employee social security tax\"; amb.2025.ss_wages, owner approved: \"Use boxes 3 plus 7\"; i1040gi p. 117, Schedule 3 line 11). The prompt (.classm/classm.person.9.prompt.txt) gives this person's W-2 entry as 'Add social security wages and social security tips = $0.00' beside 'Wages, tips, other compensation' (box 1) $55,000.00; the model summed box 1 ($55,000.00) instead of the amount given, as in the earlier rulings on this line (classm.person.1, .12 and others). The sum of the given w2.wages is $0.00, the project's value. The case's W-2 has box 3 entered as zero (a test-data default), which leaves person.eligible and the excess credit at their single-employer values; no other line disagrees. (carried over from reviews/2025/classm/person.index.json at f457604f, review of 2026-11-14)",
    "drop": true,
-   "context": "5b942277c16d8e5773779663d0eda21529c43839844ff27008254b1b9ba75d82",
-   "date": "2026-11-23",
-   "run": "2da79bceea5f79884b96a6bdb16ffbe3cf2318f8ec27d3f3edb4104c645de187",
+   "context": "ef656d37137e59d9d9161f6282d8dfda710f04d030912f6ff4f4ed264d43ef5f",
+   "date": "2026-11-24",
+   "run": "21ccf1b2277b94c26cec546de147bc3f16eb5670327cae199d020fd931d891df",
    "subject_key": "7dcd8639cc95e53a2389de1e2e14bb34581d4ba491757c9163c85a91c29f3ed5"
   }
  ]

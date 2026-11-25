@@ -170,6 +170,104 @@
      "cols_sha256": "617419bd079b1520174ceca8549065c9e4001f2b06a16d1425c5469bbe49fa3d"
     }
    ]
+  },
+  "sd.special_any": {
+   "subject_sha": "15b0007abb985f61f156b8a3e27702c2e5f3f637499a3a672228c3e9b593eaae",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer sold a long-held collectible that is not on the question's closed list, such as sports memorabilia or a historical artifact, and answers No.",
+       "source_text": "i1040sd p. 11, Line 18: \"Collectibles include works of art, rugs, antiques, metals (such as gold, silver, and platinum bullion), gems, stamps, coins, alcoholic beverages, and certain other tangible property.\"",
+       "why": "The question's collectible bullet is a closed list and drops \"certain other tangible property.\" The label keeps it (\"or other tangible property of that kind\"), so a truthful No misses a sale the line must flag.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer has a gain on a forward contract or swap that gave them the return of S corporation stock or a non-fund trust interest, and answers No because the bullet names only a fund or partnership.",
+       "source_text": "p550 p. 79: \"A financial asset, for this purpose, is any equity interest in a pass-through entity. Pass-through entities include partnerships, S corporations, trusts, regulated investment companies, and REITs.\"",
+       "why": "The question says \"a fund's or partnership's return,\" which leaves out S corporations and trusts that are not funds. The label and the tax text include both.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer sold an interest in a partnership or S corporation that holds collectibles or depreciated real property only through a lower-tier entity, and answers No.",
+       "source_text": "i1040sd p. 11, Line 18: \"gain ... from the sale or exchange of an interest in a partnership, S corporation, or trust ... attributable to unrealized appreciation of collectibles\"; p. 12, Line 19: \"an interest in a partnership that owned section 1250 property\"",
+       "why": "The label covers holdings \"directly or through another entity\" and covers all section 1250 real property. The question asks only whether the entity \"owns collectibles or depreciated buildings,\" so an ordinary filer would read it as direct ownership of buildings.",
+       "bound": ""
+      },
+      {
+       "kind": "NARROW",
+       "situation": "A filer sold real property that was depreciated for a use other than renting it out or a home office, such as a home used partly for a licensed daycare business, and answers No.",
+       "source_text": "i1040sd p. 11, Line 19: \"section 1250 property (generally, real property that you depreciated)\"; p. 12: \"the depreciation allowed or allowable\"",
+       "why": "The question limits this bullet to real estate \"you once rented out or took a home office deduction for.\" The text and label cover any real property for which depreciation was allowed or allowable.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a9feab440b892fcd332a0bdfad731abc051d48cd89a243932257621603b2f663",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.11684800000000001,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/sd.special_any.15b0007abb98.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040sd",
+     "revision": "2025; printed date 2025-12-11",
+     "text_sha256": "145b3d02ba6ce4257939dfbd8f99d519875224cb4ceb4237a1aa24ed862360f1",
+     "pages": [
+      4,
+      10,
+      11,
+      12
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 11–12, lines 18 and 19; p. 11, Line 19, \"section 1250 property (generally, real property that you depreciated)\"; p. 12, \"Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale.\"; p. 11, line 18, \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\"; p. 12, line 19, \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property\"; p. 10, Disposal of QOF Investment, \"If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements.\"; p. 4, \"If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the extraordinary dividends. An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of preferred stock) of your basis in the stock.\"; , Gains From Certain Constructive Ownership Transactions, \"all or part of the gain may be treated instead as ordinary income\" and Financial asset, \"any equity interest in a pass-through entity\"; , Digital Assets, \"digital assets include non-fungible tokens (NFTs)\""
+     ],
+     "cols_pages": [
+      4,
+      11,
+      12
+     ],
+     "cols_sha256": "0120691acc1fa8bf63941916a3b9423db8fba10d67f098a580fdc518c5fd08ec"
+    },
+    {
+     "doc": "p550",
+     "revision": "2025 returns; printed date 2026-03-05",
+     "text_sha256": "e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26",
+     "pages": [
+      79
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      79
+     ],
+     "cols_sha256": "7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      15
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
   }
  }
 }

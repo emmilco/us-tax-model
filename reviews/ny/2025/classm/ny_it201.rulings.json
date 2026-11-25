@@ -42,12 +42,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$67.00",
    "model": "$66.60",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The rate reduction amount from the table for the filing status: the model's work NYC TI over 12000, so high bracket gives $66.60 in cents, which the project rounds half-up to $67.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $66.60 (work: Taxable income over 12,000: 66.60) is the same amount in cents, which the project rounds half-up to $67.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "7bf5aed1774485d8cdd7af75ec68662447758556ba5a59f9abf97ac9ef01b4f4",
-   "subject_key": "b2b12e308df2e7ceca60fb3f458fce7077b4bcbc3a229985df70a11534cd8676"
+   "run": "01779f7ce0673728549824bd18c665f868ade871db314114bd5b560e3d1abb16",
+   "subject_key": "ee937e11004027a04d12bf538e864d06ac0bb7cb7796dcc434af7eb336892750"
   },
   {
    "case": "classm.ny_it201.1",
@@ -78,24 +78,24 @@
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$46.00",
    "model": "$45.60",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.228% of the excess: the model's work 20000 x 0.00228 gives $45.60 in cents, which the project rounds half-up to $46.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $45.60 (work: 20,000 x 0.00228) is the same amount in cents, which the project rounds half-up to $46.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "7bf5aed1774485d8cdd7af75ec68662447758556ba5a59f9abf97ac9ef01b4f4",
-   "subject_key": "7913b719fd236b348a9becedffbb73e210dc51ed71afd03d95c19433d6fd52ce"
+   "run": "01779f7ce0673728549824bd18c665f868ade871db314114bd5b560e3d1abb16",
+   "subject_key": "84d2f3853a309dfa5c3de46aba7d7dfc8d04a89b62a24aa9e5a1f6701cb7ca39"
   },
   {
    "case": "classm.ny_it201.1",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$67.00",
    "model": "$66.60",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The base amount plus 0.228% of the excess: the model's work 21 + 45.60 gives $66.60 in cents, which the project rounds half-up to $67.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $66.60 (work: 21 + 45.60) is the same amount in cents, which the project rounds half-up to $67.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "7bf5aed1774485d8cdd7af75ec68662447758556ba5a59f9abf97ac9ef01b4f4",
-   "subject_key": "a0cc0e8efb8fdc49ed505a54e5437ec1b62a37d803226dc3a8214b41879a770f"
+   "run": "01779f7ce0673728549824bd18c665f868ade871db314114bd5b560e3d1abb16",
+   "subject_key": "bcd4d40b79f958e9b5c8071f0ace5e665cddab1451f0bdd8e936e9cf109ccd4c"
   },
   {
    "case": "classm.ny_it201.1",
@@ -114,12 +114,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$55.00",
    "model": "$54.72",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.171% of taxable income: the model's work 32000 x 0.00171 gives $54.72 in cents, which the project rounds half-up to $55.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $54.72 (work: 32,000 x 0.00171) is the same amount in cents, which the project rounds half-up to $55.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "7bf5aed1774485d8cdd7af75ec68662447758556ba5a59f9abf97ac9ef01b4f4",
-   "subject_key": "ec6591a06a7d46944d1b482beefe2c49effaa5c0ffb3d06748ffaeb6cf815360"
+   "run": "01779f7ce0673728549824bd18c665f868ade871db314114bd5b560e3d1abb16",
+   "subject_key": "881bc60b389e7060fb5fe9d7133bcd087933565c0820e99fa78664da40c4836a"
   },
   {
    "case": "classm.ny_it201.1",
@@ -388,12 +388,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$21.00",
    "model": "$20.52",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The rate reduction amount from the table for the filing status: the model's work MFJ, city taxable income 12000 <= 21600: 0.171% bracket gives $20.52 in cents, which the project rounds half-up to $21.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $20.52 (work: MFJ, city taxable income <= 21600, so 0.171% rate) is the same amount in cents, which the project rounds half-up to $21.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "5df4aeffd11482b5c73a2dee7b8e3f802e243f31d46f53d7409efb3f0d6836a0",
-   "subject_key": "b2b12e308df2e7ceca60fb3f458fce7077b4bcbc3a229985df70a11534cd8676"
+   "run": "015a6611a942a688ceaf1dc357efd0f112a112c6c5c18cf09e77f9cefd8bfc5b",
+   "subject_key": "ee937e11004027a04d12bf538e864d06ac0bb7cb7796dcc434af7eb336892750"
   },
   {
    "case": "classm.ny_it201.2",
@@ -448,12 +448,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$21.00",
    "model": "$20.52",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.171% of taxable income: the model's work 12000 x 0.00171 gives $20.52 in cents, which the project rounds half-up to $21.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $20.52 (work: 12000 x 0.00171) is the same amount in cents, which the project rounds half-up to $21.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "5df4aeffd11482b5c73a2dee7b8e3f802e243f31d46f53d7409efb3f0d6836a0",
-   "subject_key": "ec6591a06a7d46944d1b482beefe2c49effaa5c0ffb3d06748ffaeb6cf815360"
+   "run": "015a6611a942a688ceaf1dc357efd0f112a112c6c5c18cf09e77f9cefd8bfc5b",
+   "subject_key": "881bc60b389e7060fb5fe9d7133bcd087933565c0820e99fa78664da40c4836a"
   },
   {
    "case": "classm.ny_it201.2",
@@ -508,12 +508,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$5.00",
    "model": "$4.91",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income, or $125, whichever amount is smaller: the model's work Smaller of 4.91 or 125 gives $4.91 in cents, which the project rounds half-up to $5.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $4.91 (work: Smaller of 4.91 or 125) is the same amount in cents, which the project rounds half-up to $5.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "5df4aeffd11482b5c73a2dee7b8e3f802e243f31d46f53d7409efb3f0d6836a0",
-   "subject_key": "d6aac87e1a13475f70bb69391d4c169f904224defe8cd14a34327a1993da3108"
+   "run": "015a6611a942a688ceaf1dc357efd0f112a112c6c5c18cf09e77f9cefd8bfc5b",
+   "subject_key": "8c36b876e2fb9362fb47dbac6fa0e7b7def794b5ee34d7571abd2cf849fbf862"
   },
   {
    "case": "classm.ny_it201.2",
@@ -532,12 +532,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$5.00",
    "model": "$4.91",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income: the model's work 28050 x 0.000175 gives $4.91 in cents, which the project rounds half-up to $5.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $4.91 (work: 28050 x 0.000175) is the same amount in cents, which the project rounds half-up to $5.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "5df4aeffd11482b5c73a2dee7b8e3f802e243f31d46f53d7409efb3f0d6836a0",
-   "subject_key": "65e60d357d6a9d28ab32e2ab59eaacfaa8fc75dfb382ccab28b3344c071c5b66"
+   "run": "015a6611a942a688ceaf1dc357efd0f112a112c6c5c18cf09e77f9cefd8bfc5b",
+   "subject_key": "96e328f7fce6a72764da6deb0b1f3db9fe0d41c88f79f73964b16f72e6b68f5f"
   },
   {
    "case": "classm.ny_it201.2",
@@ -890,36 +890,36 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$78.00",
    "model": "$77.77",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The rate reduction amount from the table for the filing status: the model's work Single, over 12000 gives $77.77 in cents, which the project rounds half-up to $78.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $77.77 (work: Single, over 12000 bracket) is the same amount in cents, which the project rounds half-up to $78.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "34cb0c1e4ba326658c36f1c9967aea5caefe2a48fd4f1ab5735df3c786cdb6ae",
-   "subject_key": "b2b12e308df2e7ceca60fb3f458fce7077b4bcbc3a229985df70a11534cd8676"
+   "run": "4ee020a9b3a8bb125bab4d8a41ebd3e26b7337acbe563c76891e824754635b6f",
+   "subject_key": "ee937e11004027a04d12bf538e864d06ac0bb7cb7796dcc434af7eb336892750"
   },
   {
    "case": "classm.ny_it201.3",
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$57.00",
    "model": "$56.77",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.228% of the excess: the model's work 24900 x 0.00228 gives $56.77 in cents, which the project rounds half-up to $57.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $56.77 (work: 24900 x 0.00228) is the same amount in cents, which the project rounds half-up to $57.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "34cb0c1e4ba326658c36f1c9967aea5caefe2a48fd4f1ab5735df3c786cdb6ae",
-   "subject_key": "7913b719fd236b348a9becedffbb73e210dc51ed71afd03d95c19433d6fd52ce"
+   "run": "4ee020a9b3a8bb125bab4d8a41ebd3e26b7337acbe563c76891e824754635b6f",
+   "subject_key": "84d2f3853a309dfa5c3de46aba7d7dfc8d04a89b62a24aa9e5a1f6701cb7ca39"
   },
   {
    "case": "classm.ny_it201.3",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$78.00",
    "model": "$77.77",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The base amount plus 0.228% of the excess: the model's work 21 + 56.77 gives $77.77 in cents, which the project rounds half-up to $78.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $77.77 (work: 21 + 56.77) is the same amount in cents, which the project rounds half-up to $78.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "34cb0c1e4ba326658c36f1c9967aea5caefe2a48fd4f1ab5735df3c786cdb6ae",
-   "subject_key": "a0cc0e8efb8fdc49ed505a54e5437ec1b62a37d803226dc3a8214b41879a770f"
+   "run": "4ee020a9b3a8bb125bab4d8a41ebd3e26b7337acbe563c76891e824754635b6f",
+   "subject_key": "bcd4d40b79f958e9b5c8071f0ace5e665cddab1451f0bdd8e936e9cf109ccd4c"
   },
   {
    "case": "classm.ny_it201.3",
@@ -1308,36 +1308,36 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$85.00",
    "model": "$84.84",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The rate reduction amount from the table for the filing status: the model's work City taxable income over 12000: high formula gives $84.84 in cents, which the project rounds half-up to $85.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $84.84 (work: Single, NYC taxable income over 12000) is the same amount in cents, which the project rounds half-up to $85.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "c70ed4bf9dc098cee87fd12090261c25b421e9227b81df8c8b4511990e6bc662",
-   "subject_key": "b2b12e308df2e7ceca60fb3f458fce7077b4bcbc3a229985df70a11534cd8676"
+   "run": "4346fea635fd9aed75e66ba9ef073eb5746cff6b4459669320bd5c6e02336269",
+   "subject_key": "ee937e11004027a04d12bf538e864d06ac0bb7cb7796dcc434af7eb336892750"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$64.00",
    "model": "$63.84",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.228% of the excess: the model's work 28000 x 0.00228 gives $63.84 in cents, which the project rounds half-up to $64.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $63.84 (work: 28000 x 0.00228) is the same amount in cents, which the project rounds half-up to $64.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "c70ed4bf9dc098cee87fd12090261c25b421e9227b81df8c8b4511990e6bc662",
-   "subject_key": "7913b719fd236b348a9becedffbb73e210dc51ed71afd03d95c19433d6fd52ce"
+   "run": "4346fea635fd9aed75e66ba9ef073eb5746cff6b4459669320bd5c6e02336269",
+   "subject_key": "84d2f3853a309dfa5c3de46aba7d7dfc8d04a89b62a24aa9e5a1f6701cb7ca39"
   },
   {
    "case": "classm.ny_it201.4",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$85.00",
    "model": "$84.84",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The base amount plus 0.228% of the excess: the model's work 21 + 63.84 gives $84.84 in cents, which the project rounds half-up to $85.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $84.84 (work: 21 + 63.84) is the same amount in cents, which the project rounds half-up to $85.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "c70ed4bf9dc098cee87fd12090261c25b421e9227b81df8c8b4511990e6bc662",
-   "subject_key": "a0cc0e8efb8fdc49ed505a54e5437ec1b62a37d803226dc3a8214b41879a770f"
+   "run": "4346fea635fd9aed75e66ba9ef073eb5746cff6b4459669320bd5c6e02336269",
+   "subject_key": "bcd4d40b79f958e9b5c8071f0ace5e665cddab1451f0bdd8e936e9cf109ccd4c"
   },
   {
    "case": "classm.ny_it201.4",
@@ -1356,12 +1356,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$68.00",
    "model": "$68.40",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.171% of taxable income: the model's work 40000 x 0.00171 gives $68.40 in cents, which the project rounds half-up to $68.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $68.40 (work: 40000 x 0.00171 (not used; income over 12000)) is the same amount in cents, which the project rounds half-up to $68.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "c70ed4bf9dc098cee87fd12090261c25b421e9227b81df8c8b4511990e6bc662",
-   "subject_key": "ec6591a06a7d46944d1b482beefe2c49effaa5c0ffb3d06748ffaeb6cf815360"
+   "run": "4346fea635fd9aed75e66ba9ef073eb5746cff6b4459669320bd5c6e02336269",
+   "subject_key": "881bc60b389e7060fb5fe9d7133bcd087933565c0820e99fa78664da40c4836a"
   },
   {
    "case": "classm.ny_it201.4",
@@ -1404,12 +1404,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$8.00",
    "model": "$8.40",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income, or $125, whichever amount is smaller: the model's work Smaller of 8.40 and 125 gives $8.40 in cents, which the project rounds half-up to $8.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $8.40 (work: Smaller of 8.40 or 125) is the same amount in cents, which the project rounds half-up to $8.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "c70ed4bf9dc098cee87fd12090261c25b421e9227b81df8c8b4511990e6bc662",
-   "subject_key": "d6aac87e1a13475f70bb69391d4c169f904224defe8cd14a34327a1993da3108"
+   "run": "4346fea635fd9aed75e66ba9ef073eb5746cff6b4459669320bd5c6e02336269",
+   "subject_key": "8c36b876e2fb9362fb47dbac6fa0e7b7def794b5ee34d7571abd2cf849fbf862"
   },
   {
    "case": "classm.ny_it201.4",
@@ -1428,12 +1428,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$8.00",
    "model": "$8.40",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income: the model's work 48000 x 0.000175 gives $8.40 in cents, which the project rounds half-up to $8.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $8.40 (work: 48000 x 0.000175) is the same amount in cents, which the project rounds half-up to $8.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "c70ed4bf9dc098cee87fd12090261c25b421e9227b81df8c8b4511990e6bc662",
-   "subject_key": "65e60d357d6a9d28ab32e2ab59eaacfaa8fc75dfb382ccab28b3344c071c5b66"
+   "run": "4346fea635fd9aed75e66ba9ef073eb5746cff6b4459669320bd5c6e02336269",
+   "subject_key": "96e328f7fce6a72764da6deb0b1f3db9fe0d41c88f79f73964b16f72e6b68f5f"
   },
   {
    "case": "classm.ny_it201.4",
@@ -1775,12 +1775,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$75.00",
    "model": "$75.02",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The rate reduction amount from the table for the filing status: the model's work Married filing jointly table, over 21600 gives $75.02 in cents, which the project rounds half-up to $75.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $75.02 (work: MFJ table, 21600-500000 bracket) is the same amount in cents, which the project rounds half-up to $75.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "085f4e4fb4f6bdf30121978481c6736a17c12c212d22dba8165849d62bd4858f",
-   "subject_key": "b2b12e308df2e7ceca60fb3f458fce7077b4bcbc3a229985df70a11534cd8676"
+   "run": "a54785b660b4811ca4790ef2e1727cf58a825f8c951353bfaef1ee8f53dd56a9",
+   "subject_key": "ee937e11004027a04d12bf538e864d06ac0bb7cb7796dcc434af7eb336892750"
   },
   {
    "case": "classm.ny_it201.5",
@@ -1799,12 +1799,12 @@
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$38.00",
    "model": "$38.02",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.228% of the excess: the model's work 16675 x 0.00228 gives $38.02 in cents, which the project rounds half-up to $38.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $38.02 (work: 16675 x 0.00228) is the same amount in cents, which the project rounds half-up to $38.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "085f4e4fb4f6bdf30121978481c6736a17c12c212d22dba8165849d62bd4858f",
-   "subject_key": "7913b719fd236b348a9becedffbb73e210dc51ed71afd03d95c19433d6fd52ce"
+   "run": "a54785b660b4811ca4790ef2e1727cf58a825f8c951353bfaef1ee8f53dd56a9",
+   "subject_key": "84d2f3853a309dfa5c3de46aba7d7dfc8d04a89b62a24aa9e5a1f6701cb7ca39"
   },
   {
    "case": "classm.ny_it201.5",
@@ -1847,12 +1847,12 @@
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$75.00",
    "model": "$75.02",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The base amount plus 0.228% of the excess: the model's work 37 + 38.02 gives $75.02 in cents, which the project rounds half-up to $75.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $75.02 (work: 37 + 38.02) is the same amount in cents, which the project rounds half-up to $75.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "085f4e4fb4f6bdf30121978481c6736a17c12c212d22dba8165849d62bd4858f",
-   "subject_key": "a0cc0e8efb8fdc49ed505a54e5437ec1b62a37d803226dc3a8214b41879a770f"
+   "run": "a54785b660b4811ca4790ef2e1727cf58a825f8c951353bfaef1ee8f53dd56a9",
+   "subject_key": "bcd4d40b79f958e9b5c8071f0ace5e665cddab1451f0bdd8e936e9cf109ccd4c"
   },
   {
    "case": "classm.ny_it201.5",
@@ -1919,12 +1919,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$10.00",
    "model": "$9.51",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income, or $125, whichever amount is smaller: the model's work Smaller of 9.51 and 125 gives $9.51 in cents, which the project rounds half-up to $10.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $9.51 (work: Smaller of 9.51 or 125) is the same amount in cents, which the project rounds half-up to $10.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "085f4e4fb4f6bdf30121978481c6736a17c12c212d22dba8165849d62bd4858f",
-   "subject_key": "d6aac87e1a13475f70bb69391d4c169f904224defe8cd14a34327a1993da3108"
+   "run": "a54785b660b4811ca4790ef2e1727cf58a825f8c951353bfaef1ee8f53dd56a9",
+   "subject_key": "8c36b876e2fb9362fb47dbac6fa0e7b7def794b5ee34d7571abd2cf849fbf862"
   },
   {
    "case": "classm.ny_it201.5",
@@ -1943,12 +1943,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$10.00",
    "model": "$9.51",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income: the model's work 54325 x 0.000175 gives $9.51 in cents, which the project rounds half-up to $10.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $9.51 (work: 54325 x 0.000175) is the same amount in cents, which the project rounds half-up to $10.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "085f4e4fb4f6bdf30121978481c6736a17c12c212d22dba8165849d62bd4858f",
-   "subject_key": "65e60d357d6a9d28ab32e2ab59eaacfaa8fc75dfb382ccab28b3344c071c5b66"
+   "run": "a54785b660b4811ca4790ef2e1727cf58a825f8c951353bfaef1ee8f53dd56a9",
+   "subject_key": "96e328f7fce6a72764da6deb0b1f3db9fe0d41c88f79f73964b16f72e6b68f5f"
   },
   {
    "case": "classm.ny_it201.5",
@@ -2144,6 +2144,18 @@
   },
   {
    "case": "classm.ny_it201.6",
+   "printed": "(39) (ny_it201.tcw.top)",
+   "project": "$7,085.00",
+   "model": "$7,084.89",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $7,084.89 (work: 64999 x 0.109) is the same amount in cents, which the project rounds half-up to $7,085.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
+   "drop": true,
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
+   "date": "2026-11-24",
+   "run": "525bad5a868f02fa0c8a9c18841b41f243e1165844f4d18780c81cb829969bb2",
+   "subject_key": "630ab587280a6498b562a7ee1415a0dd9888351e1961aa9c9b4d52bca1697b3d"
+  },
+  {
+   "case": "classm.ny_it201.6",
    "printed": "(47a)",
    "project": "$1,432.00",
    "model": "$1,431.00",
@@ -2169,12 +2181,12 @@
    "printed": "(69a) (ny_it201.stc_rr)",
    "project": "$136.00",
    "model": "$135.95",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The rate reduction amount from the table for the filing status: the model's work MFJ table, over 21600 bracket gives $135.95 in cents, which the project rounds half-up to $136.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $135.95 (work: MFJ, taxable income over 21600) is the same amount in cents, which the project rounds half-up to $136.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "ed2e5f840a2c160cea7f0867b6fb9633c2f2bbff05788bf619b37e7c990ba11a",
-   "subject_key": "b2b12e308df2e7ceca60fb3f458fce7077b4bcbc3a229985df70a11534cd8676"
+   "run": "525bad5a868f02fa0c8a9c18841b41f243e1165844f4d18780c81cb829969bb2",
+   "subject_key": "ee937e11004027a04d12bf538e864d06ac0bb7cb7796dcc434af7eb336892750"
   },
   {
    "case": "classm.ny_it201.6",
@@ -2229,24 +2241,24 @@
    "printed": "(69a) (ny_it201.stc_rr_excess_product)",
    "project": "$99.00",
    "model": "$98.95",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, 0.228% of the excess: the model's work 43399 x 0.00228 gives $98.95 in cents, which the project rounds half-up to $99.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $98.95 (work: 43399 x 0.00228) is the same amount in cents, which the project rounds half-up to $99.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "ed2e5f840a2c160cea7f0867b6fb9633c2f2bbff05788bf619b37e7c990ba11a",
-   "subject_key": "7913b719fd236b348a9becedffbb73e210dc51ed71afd03d95c19433d6fd52ce"
+   "run": "525bad5a868f02fa0c8a9c18841b41f243e1165844f4d18780c81cb829969bb2",
+   "subject_key": "84d2f3853a309dfa5c3de46aba7d7dfc8d04a89b62a24aa9e5a1f6701cb7ca39"
   },
   {
    "case": "classm.ny_it201.6",
    "printed": "(69a) (ny_it201.stc_rr_high)",
    "project": "$136.00",
    "model": "$135.95",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 20, Line 69a, New York City school tax credit (rate reduction amount) table, The base amount plus 0.228% of the excess: the model's work 37 + 98.95 gives $135.95 in cents, which the project rounds half-up to $136.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $135.95 (work: 37 + 98.95) is the same amount in cents, which the project rounds half-up to $136.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "ed2e5f840a2c160cea7f0867b6fb9633c2f2bbff05788bf619b37e7c990ba11a",
-   "subject_key": "a0cc0e8efb8fdc49ed505a54e5437ec1b62a37d803226dc3a8214b41879a770f"
+   "run": "525bad5a868f02fa0c8a9c18841b41f243e1165844f4d18780c81cb829969bb2",
+   "subject_key": "bcd4d40b79f958e9b5c8071f0ace5e665cddab1451f0bdd8e936e9cf109ccd4c"
   },
   {
    "case": "classm.ny_it201.6",
@@ -2277,12 +2289,12 @@
    "printed": "(69a) (ny_it201.stc_rr_low)",
    "project": "$111.00",
    "model": "$111.15",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $111.15 (64999 x 0.00171) is the same computation kept in cents; the project's $111.00 is it rounded half-up to the dollar. The model kept cents (the register's reading that rounds only final lines), as ruled on this line in earlier rounds. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $111.15 (work: 64999 x 0.00171) is the same amount in cents, which the project rounds half-up to $111.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "ca424fe3a0aa85987c31398bc5c27bc871bdb8b1f01eedc8414d879d79b105b0",
-   "date": "2026-11-10",
-   "run": "9bb0342022d88f4b1f2a24b8bda7e52edf0293140c0e7731abac783555d2cea9",
-   "subject_key": "8bda734f43bb899e0e260515f89c0c17c5bc896fd52eed6b5f42a3b77c90fcc9"
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
+   "date": "2026-11-24",
+   "run": "525bad5a868f02fa0c8a9c18841b41f243e1165844f4d18780c81cb829969bb2",
+   "subject_key": "881bc60b389e7060fb5fe9d7133bcd087933565c0820e99fa78664da40c4836a"
   },
   {
    "case": "classm.ny_it201.6",
@@ -2337,12 +2349,12 @@
    "printed": "(chart) (ny_it201.sut.top)",
    "project": "$14.00",
    "model": "$14.18",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income, or $125, whichever amount is smaller: the model's work Smaller of 14.18 and 125 gives $14.18 in cents, which the project rounds half-up to $14.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $14.18 (work: Smaller of 14.18 and 125) is the same amount in cents, which the project rounds half-up to $14.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "ed2e5f840a2c160cea7f0867b6fb9633c2f2bbff05788bf619b37e7c990ba11a",
-   "subject_key": "d6aac87e1a13475f70bb69391d4c169f904224defe8cd14a34327a1993da3108"
+   "run": "525bad5a868f02fa0c8a9c18841b41f243e1165844f4d18780c81cb829969bb2",
+   "subject_key": "8c36b876e2fb9362fb47dbac6fa0e7b7def794b5ee34d7571abd2cf849fbf862"
   },
   {
    "case": "classm.ny_it201.6",
@@ -2373,12 +2385,12 @@
    "printed": "(chart) (ny_it201.sut.top_product)",
    "project": "$14.00",
    "model": "$14.18",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I p. 18, Sales and use tax chart, 0.0175% (0.000175) of income: the model's work 81049 x 0.000175 gives $14.18 in cents, which the project rounds half-up to $14.00; the same amount. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low of BUG-0424, open under T-244). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"Increase amounts that are 50 cents or more to the next dollar.\" The model's $14.18 (work: 81049 x 0.000175) is the same amount in cents, which the project rounds half-up to $14.00. The model kept cents; the class M prompt carries neither the whole-dollar page nor the register entry (BUG-0424). Recomputed from the model's work, not from the engine.",
    "drop": true,
-   "context": "e98ac521d09429630cd0d3092f20ec0164c9f91ee04961f621f92e6c5b6dc8b3",
+   "context": "76e56cfa06ee963dd80a866ead3c294a6d484ecbecc44bb5faf0f82c721f7926",
    "date": "2026-11-24",
-   "run": "ed2e5f840a2c160cea7f0867b6fb9633c2f2bbff05788bf619b37e7c990ba11a",
-   "subject_key": "65e60d357d6a9d28ab32e2ab59eaacfaa8fc75dfb382ccab28b3344c071c5b66"
+   "run": "525bad5a868f02fa0c8a9c18841b41f243e1165844f4d18780c81cb829969bb2",
+   "subject_key": "96e328f7fce6a72764da6deb0b1f3db9fe0d41c88f79f73964b16f72e6b68f5f"
   },
   {
    "case": "classm.ny_it201.6",

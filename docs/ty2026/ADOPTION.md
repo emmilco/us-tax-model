@@ -13,9 +13,9 @@ to date on 2026-11-15, after the 2026 preparation lanes (`docs/provisional/lanes
 |---|---|---|
 | 1 | `sources/2026/` (122 documents, 69 IRS drafts), `tools/sources/2026.json`, `reports/2026/archive_refresh_2026-11-04.md`, the refresh of 2026-11-14 (`archive_refresh_2026-11-14.md`: three finals, two reposted drafts, five new drafts), the 22 documents added on 2026-11-15 for the coverage expansion, and the refresh of 2026-11-22 (ten finals, posted 2026-11-17 to 2026-11-20: f8889, f8880, f8863, f5329, i1040sb, f7206, p915, f8919, f1045 and i1045; two new drafts, p969 and i6251; Notice 2026-5; the catalog rows name the drafts they supersede), and the refresh of 2026-11-24 (`docs/ty2026/2026-11-24_refresh_and_rehearsal.md`: no new final, no reposted draft, no gating document; the Form 6251 draft of 2026-05-28 added) | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
 | 2 | `reports/2026/year_diff_from_2025.{md,html}`; `reports/2026/worklist_split.md` and `research/ty2026/worklist.json` (`research/ty2026/split_worklist.py`) | 2,236 worklist items: 426 of kind (a), 1,810 of kind (b) as the script splits them; counting the 16 items of C-PEOP-23 and C-PEOP-24 as kind (b) (owner decision 2026-11-04), 410 of kind (a) and 1,826 of kind (b) |
-| 3 | `research/ty2026/changes.md` (135 entries, with C-LAW-01 and C-LAW-02 and the statute read) and `changes.verification.md` (2 high, 11 medium, 7 low; all applied) | 827 quotes checked by `research/ty2026/check_quotes.py`, 0 not printed (2026-11-23, against the refreshed archive; C-LAW-02 rewritten with its operations) |
+| 3 | `research/ty2026/changes.md` (136 entries, with C-LAW-01 and C-LAW-02, the statute read, and C-SCHED-40, the final car loan regulations) and `changes.verification.md` (2 high, 11 medium, 7 low; all applied) | 836 quotes checked by `research/ty2026/check_quotes.py`, 0 not printed (2026-11-24, against the refreshed archive; C-LAW-02 rewritten with its operations) |
 | 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`), merged with the mechanical proposal `reports/2026/params_proposal_from_2025.{md,yaml}` (`tools/propose_params.py`); the staged tables `research/ty2026/tables-2026/` (`dc_rate`, `ltc_limit`, `savers_rate`, `rate_schedule`) | 349 values (2026-11-24, with the parameters added to 2025 since): 168 from final sources, 82 from drafts, 16 derived (the `age.*` years of birth, `moves_with_year`), 83 with no 2026 source (`amt.rate_25`, now line 37 only, filled on 2026-11-24 from the Form 6251 draft, p. 3, 25%; the phase-out reads `amt.phaseout_rate`, BUG-1031; `sa.gift_total_limit_rate` and `sa.gift_property_limit_rate` wait for the 2026 Pub. 526); 13 of them new in 2026 (every parameter the operations read that 2025 lacks); filled on 2026-11-23 from final sources the audit of 2026-11-22 named: `sdtw.ordinary_ceiling`, `sli.divisor_*` (from rp-25-32), `clcw.prior_limit*` (the Schedule D draft, line 21), and six re-cited from draft to final (`qbi.threshold`, `sa.salt_threshold`, `ira.limit_50`, `f5329.cap_abuse`, `f5329.simple_rate`, `ctc.age_limit`); `refund.std_*` and `refund.box_*` stay unsourced until the 2026 Form 1040 instructions (their inferred values are in their notes); `savers_rate` and `ltc_limit` re-extracted from the final Forms 8880 and 7206 (values unchanged); 15 retired (`sc.mileage_rate`, `sc.bonus_rate_40`, `ptc.repay_*`, ten `f5695.*`) |
-| 5 | `changes/2026/` (164 entries, 1,348 operations, carrying out 91 of the change map's entries; `changes/2026/README.md`), from the proposals of `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines) and the change map; `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | `python3 tools/year_changes.py --check`: all apply to the 2025 forms; 129 of the 164 entries rest on drafts (2026-11-24; no entry has had all its documents turn final since 2026-11-22; on 2026-11-22: eight entries flipped to `verified: final` after their evidence and locators were checked against the finals: C-PEOP-02, C-SCHED-16, C-CRED-16 (three files), C-PEOP-17, C-PEOP-19, C-PEOP-21) |
+| 5 | `changes/2026/` (166 entries, 1,405 operations, carrying out 92 of the change map's entries; `changes/2026/README.md`), from the proposals of `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines) and the change map; `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | `python3 tools/year_changes.py --check`: all apply to the 2025 forms; 130 of the 166 entries rest on drafts (2026-11-24, after lane ty26b's additions; no entry has had all its documents turn final since 2026-11-22; on 2026-11-22: eight entries flipped to `verified: final` after their evidence and locators were checked against the finals: C-PEOP-02, C-SCHED-16, C-CRED-16 (three files), C-PEOP-17, C-PEOP-19, C-PEOP-21) |
 
 ## Order of work when the final documents publish
 
@@ -84,8 +84,8 @@ tools take `--year` and refuse a year with no New York data (`tools/README.md`, 
 the day New York publishes, after the federal adoption (New York reads federal lines), and what a rehearsal on the
 2025 documents showed, are in `docs/ny/2026-11-14_ny_year_handling.md`, sections 3 and 6. Federal 2026 can be
 adopted first: for a year `years.json` does not list in `ny_adopted`, check-all skips every New York step, naming it
-and the reason, and the build skips the conflict checks that name a New York gate (tools/README.md, "New York
-years").
+and the reason, the build skips the conflict checks that name a New York gate, and its reader check counts as read
+the federal lines the 2025 New York forms read (BUG-1409; tools/README.md, "New York years").
 
 ## Definition changes in the order to do them (from `changes.md`)
 
@@ -127,16 +127,26 @@ No document has turned final since the refresh of 2026-11-22, so the list is tha
   instructions' EIC steps), and the 83 with no 2026 source (`check_params.py` lists them; most wait on i1040gi). The
   dependent care exclusion: the final W-2 instructions (p. 19) print "$5,000 exclusion" against the Form 2441 draft's
   $7,500 (C-CRED-11; recorded 2026-11-04, not re-read today).
-- **Operations**: the 129 of the 164 entries of `changes/2026/` marked `verified: draft`. The drafts most often left
+- **Operations**: the 130 of the 166 entries of `changes/2026/` marked `verified: draft`. The drafts most often left
   alone in an entry: Schedule 1-A (12 entries), Form 1040 (11), the Schedule C instructions (10), the Form 8863
-  instructions (9), Schedule A (7), the Form 5329 instructions (7). Before adoption, also the entries the rehearsal of
-  2026-11-24 found wanting (BUG-1408: `person.edu_tin_missing` left with no reader) and the Schedule 2 AMT
-  citations that quote the 2025 Form 6251 (20 citation findings now that the Form 6251 draft is archived: line 1a's
-  Schedule 1-A line 37 is line 43 in 2026, and the 2026 amounts of lines 4, 7, 18, 19, 25 and 39).
-- **Car loan interest**: the final regulations (T.D. 10054, Federal Register 2026-18219, archived 2026-11-24 as
-  `fr-2026-18219`) replace the proposed ones (`fr-2025-24154`) that `forms/2025/carloan.yaml` cites 20 times; 8 of
-  the quoted passages are not printed as quoted in the final (among them the refinancing and negative-equity
-  passages). Read the final against `carloan` and re-cite before adoption.
+  instructions (9), Schedule A (7), the Form 5329 instructions (7). The entries the rehearsals of 2026-11-24 found
+  wanting are written (lane ty26b): `person.edu_tin_missing` removed with its reader (BUG-1408); the two Roth IRA
+  refusals of `person.x_tax` moved to `person.x_tax_excess` with the 2026 amounts (they carry the 2025 refusals of
+  BUG-1154: a change to those refusals in 2025 is to be made in `changes/2026/person.retirement.yaml` too); the
+  Schedule 2 AMT citations of Form 6251 itself requoted from the 2026 draft (`changes/2026/s2.f6251.yaml`, C-LAW-02;
+  `f6251` draft, so they are rechecked at the final). `year_changes.py --check` now fails on a helper or gate line
+  left with no reader by the operations, the build's reader check, so this class is caught before adoption.
+  The rehearsal of the result (`docs/ty2026/2026-11-24_refresh_and_rehearsal.md`, section 6) adopts and builds 2026
+  with no workaround but the unpublished sources stood in: 2,400 of 2,403 fixtures pass, review estimate $240.22
+  for 215 jobs with class M priced.
+- **Car loan interest**: the final regulations (T.D. 10054, `fr-2026-18219`) replace the proposed ones
+  (`fr-2025-24154`) for 2026: every citation of the proposed regulations in `carloan`, the `carloan_kind` enum and the
+  two register entries moves to the final (`changes/2026/carloan.regs.yaml`, C-SCHED-40, `verified: final`;
+  `build_params.py`). The rules computed read the same. The final applies to taxable years beginning after
+  December 31, 2024, so to 2025 too, and counts credit insurance products and GAP as qualifying, which
+  `carloan.nonqualifying`'s question ("insurance") does not say: a 2025 defect (BUG-1441), whose fix
+  the year carries. Line 28(1) for a loan taken over at a death is decided and registered for 2026
+  (`amb.2026.carloan_heir_original_use`, BUG-0734), to recheck against the 2026 Form 1040 instructions.
 - **Statute-sourced rules** (decisions 2 and 6): the 0.5% charitable floor (C-PRI-15; `sa.gift_floor`,
   `amb.2026.gift_floor_base`) against the 2026 Schedule A instructions' Charitable Contribution Limitation Worksheet;
   C-LAW-01 (hazardous duty areas) and C-LAW-02 (AMT) against the 2026 Form 1040 instructions; and every entry the statute

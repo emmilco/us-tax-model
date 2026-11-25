@@ -878,11 +878,11 @@
    "printed": "household.qss_fails",
    "project_expr_sha256": "28b3cbbd296b4f3c1833b514781f6bc121068ae2f866e7125d08f51b29252ff6",
    "second_expr_sha256": "536e28f08259475f4b1de3a394eec17bbc6862d7a3a66b16e2a335ffd686b0a5",
-   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse, \"You can check the 'Qualifying surviving spouse' box ... if all of the following apply\". Ruled by reading. This pass re-reviews the line because a refusal was added to it (household.qss_child_not_all_year, a child listed but none who lived with the filer all year); the line's expression is unchanged. The reply's test is the project's test without its first operand, f1040.status = qss: it is true on any return whose household.qss_eligible is No, and unknown on every other filing status, where household.qss_eligible is never asked. The gate is the qualifying-surviving-spouse status line's own test, so the status condition belongs to it, as the reply's note itself reads it (\"the qualifying surviving spouse status\"). As the same omission was ruled on household.hoh_fails. Project stands.",
-   "context": "f538060ac6c17e4e892742e0d6a4d9646c5384666628e6aa76620fb91e0df757",
-   "date": "2026-11-23",
-   "run": "eed3dc450db27b495876a210a94f7867924adcfcbbf648398a9adc5536989303",
-   "subject_key": "548bf509f00aef2d7fc291dc04e76e771c8b8ef8baea6561db6df50351ca93ab"
+   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse. The line is 'Qualifying surviving spouse checked without meeting its tests': the project tests f1040.status qss first, so on any other status it is No without asking household.qss_eligible, which the interview asks only on such a return. The reply drops the status test, so on every other return it reads an answer never asked (unknown) where the project is No; on a qualifying-surviving-spouse return the two agree.",
+   "context": "36f1b58f7cecd5a712927ae5a93dc724669e9c65de13bcb011191c672f354b20",
+   "date": "2026-11-24",
+   "run": "44f512c6dea8c4489b7fa35513df6a2363afbac597dc6d1773d0d823933e0619",
+   "subject_key": "802dc9e0162782e2dcf758ce0826152c6d77e6b186247fbec7d2961b31359d58"
   },
   {
    "printed": "household.rdp_community_property",

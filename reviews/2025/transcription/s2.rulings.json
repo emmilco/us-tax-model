@@ -342,6 +342,52 @@
   },
   {
    "printed": "s2.other",
+   "project_expr_sha256": "8ed5c70668ee57f9728c9f664abc623c7d2203314f998968f2cda24f07c401ef",
+   "second_expr_sha256": "c385c56a09de7f199ff88278b8379aaf19cfe8bc25054913b1a9e61a11dce38f",
+   "ruling": "Ruling: model error; s2.other is the project's screen for Schedule 2 amounts the tool does not figure (its label lists the ones it does: Schedule SE, Additional Medicare Tax, NIIT and the Form 8889 line 17b tax), so it is true only when one of the named screens is Yes. The reply reads it as 'line 21 above zero', which is true for every return with self-employment tax (the stage14.asset fixtures, a Schedule C with SE tax), giving the 221 value differences in the executable triage (s2.json, this pass). The line changed only by s2.lookback_ask's royalty leg (BUG-1332). Project stands.",
+   "context": "4863bbaae033bd655d2100e4d00dd0ce0928cca671b6aba125a2f1052d0b7216",
+   "date": "2026-11-24",
+   "run": "a708fed37c0622dd1fe546e006958d39d3a3efb77f6d1af47dc55a689207a8e1",
+   "subject_key": "028624dc6551c63897fef0e7ad9b4cd5ce2ebc3cafc93d0703006789c4511e51",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s2",
+     "fixture:stage14.asset.mq_7yr@s2",
+     "fixture:stage14.asset.mq_mixed@s2",
+     "fixture:stage14.asset.mq_not@s2",
+     "fixture:stage14.asset.bonus_100@s2",
+     "fixture:mut.asset.prior_bonus_assets.this_year_ignored@s2",
+     "fixture:stage14.asset.refuse_qip_2017@s2",
+     "fixture:stage14.asset.refuse_ads_past_gds@s2",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@s2",
+     "fixture:stage14.asset.refuse_class@s2",
+     "fixture:stage14.asset.refuse_listed_low@s2",
+     "fixture:stage14.asset.refuse_s179_over@s2",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s2",
+     "fixture:classm.f2441.1.deepseek@s2",
+     "fixture:classm.f2441.2.deepseek@s2",
+     "fixture:classm.f2441.3.deepseek@s2",
+     "fixture:classm.f2441.4.deepseek@s2",
+     "fixture:classm.f2441.5.deepseek@s2",
+     "partial:stage14.asset.hy_5yr-s2.household_help@s2",
+     "partial:stage14.asset.hy_5yr-s2.hsa_testing@s2",
+     "partial:stage14.asset.hy_5yr-s2.lookback@s2",
+     "partial:stage14.asset.hy_5yr-s2.other_tax@s2",
+     "partial:stage14.asset.bonus_100-s2.household_help@s2",
+     "partial:stage14.asset.bonus_100-s2.hsa_testing@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s2.other",
    "project_expr_sha256": "d62506e2ff0574905727c3b934e8161ae16616c8ef4c13471f2ad0fb992bbe79",
    "second_expr_sha256": "76b9ec2efa58bde3dd52f3a32eb5d47a21de8530c8a0edf9e1854a5f14fe24fa",
    "ruling": "Ruling: model error; i1040gi p. 113, Lines 9 and 13 (household employment taxes; uncollected social security and Medicare tax on W-2 box 12 codes A, B, M, N). As in the landing round: the reply's screen for Schedule 2 amounts the tool does not figure leaves out s2.household_employee and s2.w2_marks (both in its input list), so the line other forms rely on (s8812 line 22, s1a, tipjob) would not refuse a Schedule H or uncollected-tax return. It also reads s2.mortgage_subsidy and s2.lookback raw (the project asks them only of a home owner and of a Schedule C filer). Triage (pass fbc614250ee5): 2,669/2,922 agree; no value in the bank; completed: 35 candidate-unknown (s2.mortgage_subsidy not asked); 218 candidate-/project-unknown on incomplete or refused records.",

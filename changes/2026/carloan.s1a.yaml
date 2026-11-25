@@ -47,10 +47,16 @@ changes:
     - doc: f1040s1a
       page: 4
       quote: Did final assembly of this vehicle occur within the United States
+    - doc: fr-2026-18219
+      page: 24
+      quote: If a change in obligor is by reason of the death of an obligor of an SPVL, then the indebtedness is treated as an
+        SPVL with respect to the new obligor.
     verified: draft
     note: The two per-vehicle questions the 2026 form prints are shown for a qualifying loan, from carloan.vehicle, whose
       question already asks both conditions (a Yes means both hold); a loan that does not qualify has no amount on line 28.
-      The interest question names Form 1098-VLI box 1.
+      The interest question names Form 1098-VLI box 1. A borrower who took the loan over at a death answers
+      carloan.vehicle for the borrower who died, so line 28(1) prints Yes for that borrower's original use
+      (amb.2026.carloan_heir_original_use).
     operations:
     - add_line:
         after: carloan.col_iii
@@ -70,6 +76,34 @@ changes:
             locator: Schedule 1-A (2026), line 28 (draft), "(1) Did the original use of this vehicle start with you, or your
               spouse if married filing jointly"; asked with carloan.vehicle, whose Yes includes it
           shown_when: carloan.eligible
+          ambiguity: amb.2026.carloan_heir_original_use
+    - add_ambiguity:
+        entry:
+          id: amb.2026.carloan_heir_original_use
+          text_at_issue: Schedule 1-A (2026) line 28(1) asks "Did the original use of this vehicle start with you, or your
+            spouse if married filing jointly (a used vehicle does not qualify)?". A borrower who became the obligor at a
+            previous obligor's death may deduct the interest (the indebtedness "is treated as an SPVL with respect to the
+            new obligor"), but the original use of the vehicle started with the borrower who died. No archived 2026 source
+            says how that borrower answers line 28(1); the 2026 Form 1040 instructions are not posted.
+          readings:
+          - The borrower who took the loan over at the death answers for the borrower who died, as carloan.vehicle asks,
+            so line 28(1) prints Yes when the vehicle qualified for that borrower.
+          - Line 28(1) is answered literally for the filer, so it prints No for a loan taken over at a death while the
+            interest is still deducted on line 28.
+          chosen: The first (carloan.original_use is carloan.vehicle).
+          reason: Decided by the coordinator under the owner's delegation of 2026-11-24. The final regulations treat the
+            loan taken over at a death as the new obligor's qualifying loan, and its qualification rests on the vehicle's
+            purchase by the borrower who died; line 28(1)'s parenthesis makes it an eligibility question, and the first
+            reading keeps the printed answer consistent with the deduction the regulations allow. The tax is the same under
+            both readings; only the printed answer differs, for a loan with carloan.kind death. To reverse, derive
+            carloan.original_use from carloan.vehicle and carloan.kind other than death. To recheck against the 2026 Form
+            1040 instructions for line 28 when they are posted (BUG-0734).
+          cite:
+            doc: fr-2026-18219
+            locator: p. 24, § 1.163-16(d)(5)(ii)(A), "If a change in obligor is by reason of the death of an obligor of an
+              SPVL, then the indebtedness is treated as an SPVL with respect to the new obligor"
+          status: Decided by the coordinator under the owner's delegation of 2026-11-24 (lane ty26b, BUG-0734); to be
+            rechecked against the 2026 Form 1040 instructions.
     - add_line:
         after: carloan.original_use
         line:

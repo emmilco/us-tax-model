@@ -16,12 +16,24 @@ changes:
       page: 2
       quote: Additional tax. Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2026 (including
         2026 contributions made in 2027). Include this amount on Schedule 2 (Form 1040), line 18
+    - doc: p590a
+      page: 47
+      quote: A 6% excise tax applies to any excess contribution to a Roth IRA
+    - doc: i8606
+      page: 5
+      quote: If zero or less, stop here; you may not contribute to a Roth IRA for 2026
+    - doc: n-25-67
+      page: 5
+      quote: the adjusted gross income phase-out range for taxpayers making contributions to a Roth IRA is between $242,000
+        and $252,000 for married couples filing jointly
     verified: draft
     note: 'Schedule 2 line 8 becomes two lines: line 5 takes Form 5329 line 4 (with the box for code 1 tax entered without
       the form) and new line 18 takes line 49. f5329.tax keeps line 4 only and f5329.tax_excess carries line 49; the per-person
       totals person.x_tax_early and person.x_tax_excess are the ones lane O1''s Schedule 2 lines 5 and 18 (s2.excess_contrib)
       read. person.x_tax is read only by the 2025 s2.tax_favored_accounts; it is removed once O1''s operations no longer read it (a remove_line
-      at the merge).'
+      at the merge). The two Roth IRA refusals person.x_tax carries in 2025 (person.ira_roth_over and person.ira_roth_income,
+      Form 5329 Part IV) move to person.x_tax_excess, the excess-contribution tax, with the 2026 amounts (ira.limit,
+      ira.limit_50, ira.roth_start_*, as staged); a change to those refusals in 2025 is to be made here too.'
     operations:
     - add_line:
         after: person.x_tax
@@ -53,6 +65,29 @@ changes:
             doc: f1040s2
             locator: p. 3, Part II, line 18, "Additional tax on excess contributions or accumulations in IRAs or other tax-favored
               accounts. Attach Form 5329"
+          refuses:
+          - when: person.ira_roth_over
+            form: Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)
+            remedy: Your Roth IRA contributions for 2026, with any traditional IRA contributions, are more than $7,500 ($8,600
+              if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your
+              spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's
+              (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it
+              (Form 5329 Part IV) are outside this tool.
+            cite:
+              doc: p590a
+              locator: p. 47, What if You Contribute Too Much?, "A 6% excise tax applies to any excess contribution to a Roth
+                IRA"
+          - when: person.ira_roth_income
+            form: Roth IRA contributions limited by modified AGI (Maximum Roth IRA Contribution Worksheet, Form 5329 Part IV)
+            remedy: Roth IRA contributions are reduced or not allowed when modified AGI is $242,000 or more (married filing
+              jointly or qualifying surviving spouse), $153,000 or more (single, head of household, or married filing
+              separately and apart from your spouse all year) or more than zero (married filing separately and living with
+              your spouse at any time in 2026). This return is at or above that point (figured here without subtracting any
+              Roth conversion), so its Roth contributions are outside this tool.
+            cite:
+              doc: i8606
+              locator: p. 5, Maximum Roth IRA Contribution Worksheet, line 6, "If zero or less, stop here; you may not
+                contribute to a Roth IRA for 2026"
     - remove_line:
         line: person.x_tax
   - change: C-PEOP-04

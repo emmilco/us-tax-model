@@ -3009,6 +3009,29 @@ register:
         locator: 'p. 27, More than one distribution, "Enter the total amount of those distributions on line 4a."'
       status: decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1118; behaviour changed on line 4a
         only).
+    - id: amb.2025.aoc_form8862_case
+      text_at_issue: 'i8863 p. 1, Form 8862 may be required: after a denial or reduction of the American opportunity credit
+        (other than for a math or clerical error) "you must attach a completed Form 8862 ... to your tax return for the
+        next tax year for which you claim the credit". The question f8863.ban asks this together with the 2-year and 10-year
+        bans of p. 3, which bar the credit outright.'
+      readings:
+        - A filer who answers Yes does not claim the American opportunity credit this year, so the students' expenses go
+          to the lifetime learning credit (Part III line 31).
+        - A filer who needs Form 8862 claims the American opportunity credit with it, which the tool does not prepare, so
+          the return is refused.
+      chosen: The first; the notice f8863.ban_notice and the question's help tell a filer after a denial (not a bar) that
+        the credit can be claimed with Form 8862 instead.
+      reason: >
+        Decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1136). Not claiming the American
+        opportunity credit is always allowed, and the lifetime learning credit is never more than the American
+        opportunity credit the filer gives up, so the first reading does not understate tax; it also gives a return to
+        the banned filer, for whom the credit is barred. To reverse it, split f8863.ban into a ban question and a
+        Form 8862 question and restore a refusal of f8863.line7 on the second.
+      cite:
+        doc: i8863
+        locator: 'p. 1, Form 8862 may be required, "you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit"'
+        quote: "for the next tax year for which you claim the credit"
+      status: decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1136).
     - id: amb.2025.pfml_benefits_contributions
       text_at_issue: 'Form 1099-G (Rev. March 2024), the revision for 2025, tells the recipient of benefits from a governmental
         paid family leave program "If you do not itemize, only include in income the amount that is in excess of your
@@ -3037,3 +3060,46 @@ register:
           you will now include the full amount of those contributions in your income"'
       status: decided by the coordinator under the owner's delegation of 2026-11-24 (lane screens, BUG-1150); behaviour
         unchanged except that the benefits are now named in the question.
+    - id: amb.2025.state_medical_leave_benefits
+      text_at_issue: 'Rev. Rul. 2025-4 holds that medical leave benefits a state pays under a paid family and medical leave
+        statute are excluded to the extent attributable to the employee''s contributions and included under section 105 to
+        the extent attributable to the employer''s, and that for 2025 a state or employer need not follow the third-party
+        sick pay withholding and reporting rules for that part. Pub. 525 includes sick pay from a state sickness or
+        disability fund. No 2025 instruction says how a filer whose benefits were not reported on a Form W-2 finds the
+        taxable part.'
+      readings:
+      - Refuse a return with state disability or medical leave benefits not reported on a Form W-2.
+      - Include the whole amount received as wages.
+      - Leave the benefits out (treat them as not reported, so not income).
+      chosen: The first. s1.state_disability, a box in the money_b group, refuses at Schedule 1 line 9.
+      reason: 'Decided by the coordinator under the owner''s delegation of 2026-11-24 (lane fx-lows, BUG-1405). The taxable part
+        depends on the split of contributions, which the filer''s papers do not show in the transition year; the third
+        reading understates tax and the second can overstate it, so the tool refuses. To reverse: compute the benefits as
+        wages (a new amount input) and drop the refusal on s1.line9.'
+      cite:
+        doc: rr-2025-4
+        locator: 'p. 32, "a State or an employer is not required to follow the income tax withholding and reporting
+          requirements applicable to third-party sick pay"; p525 p. 4, Sick pay, "A state sickness or disability fund."'
+      status: decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1405); a new refusal.
+    - id: amb.2025.ftc_foreign_payee_statement
+      text_at_issue: 'The Form 1116 instructions allow the election without Form 1116 only when all the income and foreign tax
+        were reported on a qualified payee statement: "Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3
+        (Form 1065), Schedule K-3 (Form 1120-S), or similar substitute statements". They do not say whether a statement
+        from a foreign bank or broker is a similar substitute statement.'
+      readings:
+      - A substitute statement is a substitute for one of the listed forms; a foreign institution's statement is not one.
+      - Any statement showing the income and the tax withheld counts.
+      chosen: The first. ftc.statements asks for the listed forms or a substitute for one of them, and its help says a
+        statement from a foreign bank or broker does not count, so such a filer answers No and goes to Form 1116.
+      reason: 'Decided by the coordinator under the owner''s delegation of 2026-11-24 (lane fx-lows, BUG-1260). The list names
+        U.S. information returns and their substitutes; the narrower reading sends the filer to Form 1116, whose limit can
+        only lower the credit, so it does not understate tax. To reverse: drop the help sentence and say "or a similar
+        statement" in the prompt.'
+      cite:
+        doc: i1116
+        locator: 'p. 1, Election To Claim the Foreign Tax Credit Without Filing Form 1116, "Qualified payee statements include
+          Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S), or
+          similar substitute statements."'
+      status: decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1260); wording only.
+      unlinked: The reading is applied in the interview's wording of ftc.statements (its prompt and help), not in a line's
+        expression; the line's own source is unchanged.

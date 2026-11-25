@@ -659,8 +659,9 @@ def extend_year_labels(bank_text, typed, before, f, t):
     """The question bank's text with y<t>: '<t>' labelled first (the labels run newest first) in the value_labels
     of every question whose input is typed by an enum adoption extended with the year (`typed`: input id -> enum,
     from enum_typed_ids; `before`: enum -> its from-year values), and the inputs labelled. Each such question's
-    labels must be exactly the enum's from-year values, each labelled with its own year, newest first: otherwise
-    the rule does not apply and it is an error."""
+    labels must be exactly the enum's from-year values, y<f> first, each year member (yNNNN) labelled with its own
+    year: otherwise the rule does not apply and it is an error. A member that is not a year (realty_year's
+    before1987) keeps whatever label it has."""
     bank = ((yaml.safe_load(bank_text) or {}).get("bank") or {}).get("questions") or []
     lines = bank_text.split("\n")
     done = []
@@ -669,7 +670,7 @@ def extend_year_labels(bank_text, typed, before, f, t):
         if name is None or not q.get("value_labels"):
             continue
         labels = q["value_labels"]
-        if sorted(labels) != sorted(before[name]) or any(labels[k] != k[1:] for k in labels) or next(iter(labels)) != f"y{f}":
+        if sorted(labels) != sorted(before[name]) or any(labels[k] != k[1:] for k in labels if re.fullmatch(r"y\d{4}", k)) or next(iter(labels)) != f"y{f}":
             raise ValueError(f"question {q['input']}: its value_labels are not the {name} years each labelled by its "
                              f"year, newest (y{f}) first; label y{t} by hand")
         i = next(i for i, l in enumerate(lines) if re.match(rf"^\s*- input: {re.escape(q['input'])}\s*$", l))
@@ -1176,8 +1177,21 @@ def self_test_year_rules():
                 ok = False
             except ValueError:
                 pass
+        # an enum with a member that is not a year: the year members follow the rule, the other keeps its label
+        nparams = params.replace("[y2024, y2025]", "[before2024, y2024, y2025]")
+        nbank = bank.replace("      y2024: '2024'\n", "      y2024: '2024'\n      before2024: Before 2024\n")
+        _, _, nbtext, nlabelled = year_enum_rules(nparams, tmp, nbank, 2025, 2026)
+        nqs = {q["input"]: q.get("value_labels") for q in yaml.safe_load(nbtext)["bank"]["questions"]}
+        ok = ok and nlabelled == ["x.placed"] and list(nqs["x.placed"]) == ["y2026", "y2025", "y2024", "before2024"]
+        ok = ok and nqs["x.placed"]["before2024"] == "Before 2024"
+        try:
+            year_enum_rules(nparams, tmp, nbank.replace("y2024: '2024'", "y2024: 'last year'"), 2025, 2026)
+            ok = False
+        except ValueError:
+            pass
     print("year-diff self-test: adoption labels the extended year in the value_labels of the questions asking that enum "
-          "(other questions untouched; labels off the rule refused): " + ("as expected" if ok else f"WRONG\n{btext}"))
+          "(other questions untouched; a non-year member keeps its label; labels off the rule refused): "
+          + ("as expected" if ok else f"WRONG\n{btext}"))
     status = status or (0 if ok else 1)
     # Adoption copies every definition file the year operations read, subdirectories of interview/<year>/ included.
     import year_changes

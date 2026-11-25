@@ -2859,10 +2859,10 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
-    - id: dependent.edu_aoc
+    - id: dependent.edu_aoc_rules
       printed: (helper)
-      label: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s EIN
-        is available'
+      label: 'Lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution''s
+        EIN is available'
       type: Bool
       expr:
         op: choose
@@ -2883,6 +2883,30 @@ form:
         doc: f8863
         locator: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
           "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
+    - id: dependent.edu_aoc
+      printed: (helper)
+      label: 'An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules),
+        and the credit is not barred or given up after a denial (f8863.ban)'
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_aoc_rules
+          - const: true
+        - op: test
+          eq:
+          - f8863.ban_if_aoc
+          - const: false
+      cite:
+        doc: i8863
+        locator: 'p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after
+          there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years
+          after there was a final determination that your claim was due to fraud."; p. 4, Tip, "If the requirements above aren’t
+          met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the
+          lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements
+          are met."'
     - id: dependent.edu_aoc23
       printed: (helper)
       label: 'For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years),

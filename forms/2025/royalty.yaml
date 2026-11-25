@@ -316,39 +316,18 @@ form:
       doc: f1040se
       locator: Schedule E (2025), line 25, "Add royalty losses from line 21"
     refuses:
-    - when: royalty.not_at_risk_if_loss
+    - when: royalty.not_at_risk
       form: Form 6198 (at-risk limits)
-      remedy: A royalty loss with an amount not at risk is outside this tool.
+      remedy: A royalty with an amount not at risk is outside this tool, in a year with a loss and in a year with income
+        (when the amount at risk falls below zero, losses deducted earlier are recaptured).
       cite:
         doc: i1040se
-        locator: p. 3, At-Risk Rules
-  - id: royalty.has_loss
-    printed: (helper)
-    label: Line 21 is a loss
-    type: Bool
-    expr:
-      op: test
-      lt:
-      - royalty.line21
-      - const: 0
-    cite:
-      doc: i1040se
-      locator: p. 7, Line 21
-  - id: royalty.no
-    printed: (helper)
-    label: No (false)
-    type: Bool
-    expr:
-      op: param
-      ref: household.no
-    cite:
-      doc: i1040se
-      locator: p. 7, Line 21
+        locator: p. 3, At-Risk Rules; p925 p. 19, At-Risk Limits, "If your losses from an at-risk activity are allowed, they’re subject
+          to recapture in later years if your amount at risk is reduced below zero"
   - id: royalty.not_at_risk
     printed: (helper)
     label: Some investment not at risk
     type: Bool
-    gated_by: royalty.not_at_risk_if_loss
     expr:
       op: input
       source: Was any money you put in borrowed without personal liability (from any lender, a bank included), protected from
@@ -357,29 +336,6 @@ form:
     cite:
       doc: i1040se
       locator: p. 3, At-Risk Rules, "In most cases, you must complete Form 6198 to figure your loss if you have"
-  - id: royalty.not_at_risk_if_loss
-    printed: (gate)
-    label: Asked only when the royalty has a loss (false otherwise)
-    type: Bool
-    expr:
-      op: choose
-      alternatives:
-      - guard:
-          op: test
-          eq:
-          - royalty.has_loss
-          - const: true
-        then: royalty.not_at_risk
-      - guard:
-          op: test
-          eq:
-          - royalty.has_loss
-          - const: false
-        then: royalty.no
-    cite:
-      doc: i1040se
-      locator: p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of
-        your deductible loss"
   collection:
     cite:
       doc: i1040se

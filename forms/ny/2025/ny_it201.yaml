@@ -215,9 +215,9 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 8, Line 22, "Did you make a nonqualified withdrawal during 2025 from an account established under New York’s 529 college savings program?"; ny_it225i p. 8, A-103, "If you are filing a joint return, include the applicable amounts from all existing accounts owned by you and your spouse"' }
     - id: ny_it201.ask.it225
       printed: '(question)'
-      label: 'Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a sole proprietor with employees (S-201), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?'
+      label: 'Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a business with employees (S-201), railroad sickness benefits (S-122), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?'
       type: Bool
-      expr: { op: input, source: 'Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a sole proprietor with employees (S-201), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?' }
+      expr: { op: input, source: 'Does any other New York addition or subtraction on Form IT-225 apply to you (or, on a joint return, your spouse), for example modifications passed through from a partnership, S corporation, estate or trust, the small business modification for a business with employees (S-201), railroad sickness benefits (S-122), the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?' }
       cite: { doc: ny_it201i, locator: 'p. 8, Line 23, "Use this line to report other additions that are not specifically listed on Form IT-201."' }
     - id: ny_it201.ask.gov_pension
       printed: '(question)'
@@ -1247,6 +1247,36 @@ form:
       type: Bool
       expr: { op: test, eq: ["ny_it201.railroad_uc_if_uc", { const: true }] }
       cite: { doc: ny_it225i, locator: 'p. 17, S-122, "Enter supplemental annuity or Tier 2 benefits received under the Railroad Retirement Act of 1974, or benefits received under the Railroad Unemployment Insurance Act"' }
+    - id: ny_it201.small_business_people
+      printed: '(helper)'
+      label: 'Number of persons with a Schedule C business that may be a small business: a business with employees and a net profit under $250,000, two or more businesses with employees and a net profit, or a business with employees and a combined Schedule C net profit of more than zero and under $250,000'
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          any:
+            - { op: test, ge: ["person.sc_employer_profit_count", { const: 2, type: Count }] }
+            - op: test
+              all:
+                - { op: test, eq: ["person.sc_employer_profit_count", { const: 1, type: Count }] }
+                - { op: test, lt: ["person.sc_employer_profit", { param: "ny.small_business.limit" }] }
+            - op: test
+              all:
+                - { op: test, gt: ["person.sc_employer_count", { const: 0, type: Count }] }
+                - { op: test, gt: ["person.sc_total", { const: 0 }] }
+                - { op: test, lt: ["person.sc_total", { param: "ny.small_business.limit" }] }
+      cite: { doc: ny_it225i, locator: 'p. 19, S-201, "a small business means: • a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000"' }
+      ambiguity: amb.ny.2025.small_business_scope
+      note: 'The instructions do not say whether the $250,000 test applies to each business or to all of a sole proprietor''s businesses together, so the gate takes both readings: one business with employees and a profit under $250,000, or businesses with employees whose owner''s combined Schedule C result is more than zero and under $250,000. With two or more businesses that have employees and a profit, the gate refuses without testing each, since only the total of their profits is figured here. Farm income is refused by the federal screens (scope.farm); a partner''s or S corporation shareholder''s small business is left to ny_it201.ask.it225.'
+    - id: ny_it201.gate.small_business
+      printed: '(gate)'
+      label: 'You (or, on a joint return, your spouse) may have a small business (IT-225 subtraction S-201)'
+      type: Bool
+      expr: { op: test, gt: ["ny_it201.small_business_people", { const: 0, type: Count }] }
+      cite: { doc: ny_it225i, locator: 'p. 19, S-201, "a small business means: • a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000"' }
     - id: ny_it201.line31
       printed: '31'
       label: 'Other (Form IT-225, line 18)'
@@ -1270,6 +1300,10 @@ form:
           form: 'Form IT-225 (subtraction S-122, railroad unemployment insurance benefits)'
           remedy: 'New York subtracts benefits paid under the Railroad Unemployment Insurance Act that are in federal income; this tool does not compute Form IT-225.'
           cite: { doc: ny_it225i, locator: 'p. 17, S-122, "benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)"' }
+        - when: ny_it201.gate.small_business
+          form: 'Form IT-225 (subtraction S-201, small business modification)'
+          remedy: 'A sole proprietor with employees and a net business profit under $250,000 may subtract 15% of the net income of that business; this tool does not compute Form IT-225.'
+          cite: { doc: ny_it225i, locator: 'p. 19, S-201, "then you may deduct an amount equal to 15% of the net items of income, gain, loss, and deduction attributable to that business that are included in your federal adjusted gross income"' }
         - when: ny_it201.gate.it225
           form: 'Form IT-225, New York State Modifications'
           remedy: 'Other New York additions and subtractions are not computed by this tool.'

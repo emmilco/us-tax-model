@@ -1056,6 +1056,15 @@ Notable points:
     1062 or left inside the supplied total.
   - **s3.line9.** Its form text is unchanged. Its i1040gi p. 117 citation cannot be checked.
 
+### C-SCHED-40. Car loan interest: the final regulations (T.D. 10054) replace the proposed ones the 2025 citations name
+
+- **Kind:** citation change (final regulations; operations in `changes/2026/carloan.regs.yaml`)
+- **2026 (final):** `fr-2026-18219` p. 22: "existing indebtedness on a vehicle traded in as part of a purchase transaction for an APV, to the extent such indebtedness exceeds the vehicle’s trade-in value specified by the contract for the purchase of the APV"; p. 24: "to purchase collision and liability insurance that is not a credit insurance product"; "credit insurance products (including credit-related accident, health, and life products)"; "The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan as of the date of the refinancing"; p. 25: "Example 4: Negative equity and a down payment"; "only 90 percent of each interest payment on the loan may be QPVLI"; p. 27: "Independently deductible interest is limited to interest that is QPVLI"; p. 28: "This section applies to taxable years beginning after December 31, 2024, and before January 1, 2029."
+- **2025:** `fr-2025-24154` (proposed regulations, cited by `forms/2025/carloan.yaml` 20 times and by two register entries): "to purchase collision and liability insurance, or to purchase any property or services unrelated to an APV"
+- **Touches:** the cites of `carloan.kind`, `carloan.mixed`, `carloan.financed`, `carloan.nonqualifying`, `carloan.down`, `carloan.nonqualifying_debt`, `carloan.mixed_qualifying`, `carloan.refi_balance`, `carloan.refi_whole`, `carloan.refi_qualifying` (and its refusal), `carloan.refi_nested`, `carloan.allocated`, `carloan.refi_interest`, `carloan.mixed_interest`, `carloan.mixed_prorated`, `carloan.sc_mixed_prorated`, `carloan.sc_mixed`, `carloan.sc_refi`, `carloan.sc_allocated`; the locators of `carloan.requirements`, `carloan.vehicle`, `carloan.col_ii`; the form note; `amb.2025.carloan_ratio_places`, `amb.2025.carloan_rebate`
+- **Worklist items:** none (the final was archived after the worklist was made)
+- **Notes:** The proposed regulations are not in the 2026 archive, so every citation of them moves to the final: paragraph (d) on p. 24, its examples on pp. 24 and 25, (e) on p. 25, (g) on p. 27; negative equity is defined in (b)(9) (was (b)(8)). Two passages are not printed as the proposed regulations printed them: Example 4's heading ("Negative equity and a down payment") and the insurance passage of (d)(2)(ii). The rules the lines compute read the same, except that the final names credit insurance products and GAP among the amounts that qualify, which bears on the wording of `carloan.nonqualifying`'s question ("insurance"). The final applies to taxable years beginning after December 31, 2024, so it governs 2025 too: that wording is a defect of the 2025 form, filed as a bug, whose fix the year carries.
+
 ### Worklist coverage
 
 | item id | entry |

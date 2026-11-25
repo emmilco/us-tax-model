@@ -16531,3 +16531,360 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix lines:** household.qss_child_not_all_year, household.qss_child_conflict_if_claimed, k1s.ask_prior_active
 - **Severity:** low
 - **Tags:** forms, household, k1s, f7203, mutation, open
+
+## BUG-1412 — Closure: BUG-1151 is fixed (New York line 31 refuses a sole proprietor with employees and a profit under $250,000)
+
+- **Closes:** BUG-1151
+- **Closure:** fixed
+- **Caught by:** lane fx-people of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Source:** ny_it225i p. 19, S-201, "a small business means: • a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000"; "then you may deduct an amount equal to 15% of the net items of income, gain, loss, and deduction attributable to that business"
+- **Fix:** Reproduced first: the taxpayer of ny.refuse.mctmt with one Schedule C (receipts $100,000, wages paid $20,000, employees Yes, line 31 $80,000) and the IT-225 question answered No had IT-201 line 31 $0 with no refusal. Three person helpers count and total the Schedules C of a business with employees (person.sc_employer_count, person.sc_employer_profit_count, person.sc_employer_profit, all read only by New York); ny_it201.small_business_people counts the persons with one such business whose profit is under $250,000 (new parameter ny.small_business.limit), with two or more such businesses with a profit, or with a business with employees and a combined Schedule C result (person.sc_total) more than zero and under $250,000; ny_it201.gate.small_business refuses line 31. The instructions do not say whether the $250,000 test is per business or per proprietor, so the refusal takes both readings (decided under the owner's delegation of 2026-11-24 as refusal, the safe side: no amount is computed). The IT-225 question's help now names a business with employees through a partnership or S corporation as well. Fixture ny.refuse.small_business (predicted by hand before evaluating). The federal fixture sc.employer_counts_for_ny pins the three person helpers (the federal mutation run reads no New York fixture). New York mutation fixtures, predicted by hand: ny.small_business.mfj, ny.small_business.hoh and ny.small_business.qss (the refusal on each filing status), ny.small_business.at_limit (a profit of exactly $250,000 is not refused). The reading is registered as amb.ny.2025.small_business_scope.
+- **Fix lines:** ny_it201.line31, ny_it201.gate.small_business, ny_it201.small_business_people, person.sc_employer_count, person.sc_employer_profit_count, person.sc_employer_profit
+- **Siblings checked:** ny_it201.line23 (the additions catch-all; S-201 is a subtraction); ny_it201.line25, ny_it201.line26, ny_it201.line27, ny_it201.line28, ny_it201.line29, ny_it201.line30, ny_it201.line32, ny_it201.line33 (same page anchor; unchanged rules); ny_it201.ask.railroad_uc, ny_it201.railroad_uc_if_uc, ny_it201.has_unemployment, ny_it201.gate.railroad_uc, ny_it201.ask.alimony_later (the other line 31 refusals and their questions; unchanged); ny_it201.ask.it225 (the catch-all; its help now names a business with employees through a partnership or S corporation); farm income (scope.farm refuses it federally); a partner's or shareholder's small business (left to the catch-all: K-1s are refused federally by scope.k1).
+- **Tags:** ny, it201, it225, fixed, lane-fx-people
+
+## BUG-1413 — Closure: BUG-1348 is fixed (person.hsa_step1 adds every Form 8889)
+
+- **Closes:** BUG-1348
+- **Closure:** fixed
+- **Caught by:** lane fx-people of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Source:** i8889 p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, Step 1
+- **Fix:** The where-test (f8889.split eq true) is dropped from person.hsa_step1, with a note saying why: its only reader, household.hsa_step1_sum, is read by f8889.allocation_bad only on a form whose split is true, which requires household.married and household.hsa_both; then a form's Step 1 limit is above zero only with a family amount in a month both spouses had family coverage (f8889.step1_shared, the smaller of the form's step1_total and spouse_family_total), and such a form is itself married_family with spouse_family_any true, so it splits; a form that does not split adds $0. The Step 1 inputs are the line 3 coverage answers every form needs, so dropping the filter makes no sum unknown that was known. The OPEN_DEFECT_SURVIVORS entry filter.person.person.hsa_step1 is removed (the mutant no longer exists). person.hsa_share keeps its filter (mut.f8889.split_household_unsplit_form_share pins it). With the filter dropped, f8889.allocation_bad's split operand (f8889.split replaced by f8889.family_any_time) was no longer killed by mut.f8889.two_forms_one_person_allocation_check, whose two equal Step 1 limits now give a sum equal to twice either; the new hand-predicted case mut.f8889.three_forms_one_person_allocation_check (three forms, sum $25,650 against $17,100) kills it.
+- **Fix lines:** person.hsa_step1
+- **Siblings checked:** household.hsa_step1_sum (its only reader; unchanged); person.hsa_share (keeps its filter, which changes a value); f8889.allocation_bad (unchanged).
+- **Tags:** forms, person, f8889, mutation, fixed, lane-fx-people
+
+## BUG-1414 — Closure: BUG-1411's household part is fixed (household.qss_child_not_all_year tests the conflict directly)
+
+- **Closes:** BUG-1411 in part (the household part; the k1s and f7203 parts stay open)
+- **Closure:** fixed
+- **Caught by:** lane fx-people of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Source:** i1040gi p. 15, Qualifying Surviving Spouse, "3. This child lived in your home for all of 2025"
+- **Fix:** household.qss_child_not_all_year is now the test that household.qss_child_conflict was (a child listed, none listed all year); household.qss_child_conflict and household.qss_child_conflict_if_claimed are removed. A child is counted only through dependent.own_child_if_qss, which is false unless household.qss_claimed (qss and qss_eligible both true), so the guards on household.qss and household.qss_eligible chose between equal values on every answered return; on a partly answered return the test is known no later than the guarded form. The two OPEN_DEFECT_SURVIVORS entries for household.qss_child_not_all_year are removed. The existing household fixtures (lane hh M2 and BUG-1277) still give the refusal. Replacing household.no in household.widowed_this_year (married filing jointly and separately) by the collapsed gate survived the first run; the hand-predicted cases mut.household.widowed_mfj_roster_unknown and mut.household.widowed_mfs_roster_unknown (the people list not given) kill both.
+- **Fix lines:** household.qss_child_not_all_year
+- **Siblings checked:** household.qss_fails (the reader; unchanged); household.qss_no_child and its notice (they test qss_children_listed through household.qss_claimed; a different rule, unchanged); dependent.own_child_if_qss (unchanged).
+- **Tags:** forms, household, mutation, fixed, lane-fx-people
+
+## BUG-1415 — Closure: BUG-1136 is fixed (a ban or a Form 8862 case gives the lifetime learning credit instead of refusing)
+
+- **Closes:** BUG-1136
+- **Closure:** fixed
+- **Caught by:** lane fx-people of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Source:** i8863 p. 3, American Opportunity Credit, Caution (no credit for 2 years after reckless or intentional disregard, 10 years after fraud); p. 1, Form 8862 may be required; p. 4, Tip, "If the requirements above aren't met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit"
+- **Fix:** Reproduced first on stage19.refuse.ban (single, wages $84,567, one student with $3,100 of tuition): line 7 was refused at f8863.ban_refused and no credit figured. The cycle is broken by asking the ban question from the student rules rather than from line 1: person.edu_aoc and dependent.edu_aoc are now 'lines 23 to 26 allow it' (the former chain, renamed person.edu_aoc_rules and dependent.edu_aoc_rules) and f8863.ban_if_aoc false; f8863.ban_if_aoc asks f8863.ban only when f8863.aoc_possible (line 4 above zero and some student passes the rules, f8863.aoc_rules_count). A Yes makes every student a lifetime learning credit student (Part III line 31), so line 1 is $0 and lines 10 to 19 are figured; f8863.ban_refused, f8863.aoc_claimed and line 7's refusal are removed. A Form 8862 case is treated as the filer not claiming the American opportunity credit (decided under the owner's delegation of 2026-11-24: computing the smaller credit does not understate tax; reverse by restoring the line 7 refusal for that case, which needs a second question to tell it from a ban); the new notice f8863.ban_notice (an interview target) and the question's help say that after a denial (not a bar) the credit can be claimed with Form 8862, which this tool does not prepare. Fixture stage19.refuse.ban revised (predicted by hand: line 31 $3,100, line 12 $620, line 18 $336.66, notice true); stage19.mut.aoc_line4_zero_ban now pins f8863.ban_if_aoc false. Mutation fixtures, predicted by hand: f8863.ban_not_asked_without_aoc_student and f8863.ban_not_asked_dependent_llc (no student passes lines 23 to 26, so the ban question is not asked), f8863.ban_dependent_aoc_student_llc (a dependent student under a ban goes to line 31, $4,300). The reading is registered as amb.2025.aoc_form8862_case. Two operations of changes/2026 (person.edu.yaml, dependent.edu.yaml) that relabel the student test now name person.edu_aoc_rules and dependent.edu_aoc_rules.
+- **Fix lines:** f8863.ban, f8863.ban_if_aoc, f8863.aoc_possible, f8863.aoc_rules_count, f8863.aoc_rules_people, f8863.aoc_rules_deps, f8863.ban_notice, f8863.line7, person.edu_aoc, person.edu_aoc_rules, dependent.edu_aoc, dependent.edu_aoc_rules
+- **Siblings checked:** person.edu_llc and dependent.edu_llc (read edu_aoc; now true for a banned student, as intended); person.edu_line27, person.edu_line28, person.edu_line29, person.edu_line30, person.edu_line31, dependent.edu_line27, dependent.edu_line28, dependent.edu_line29, dependent.edu_line30, dependent.edu_line31 (figured from edu_aoc and edu_llc; a banned student goes to line 31); person.edu_aoc_tin, person.edu_aoc23 to person.edu_aoc26 and person.edu_line23 to person.edu_line26, with their dependent twins, dependent.edu_aoc_tin, dependent.edu_aoc23, dependent.edu_aoc24, dependent.edu_aoc25, dependent.edu_aoc26, dependent.edu_line23, dependent.edu_line24, dependent.edu_line25, dependent.edu_line26, dependent.edu_show24, dependent.edu_show25, dependent.edu_show26, dependent.edu_no, person.edu_aoc23, person.edu_aoc24, person.edu_aoc25, person.edu_aoc26, person.edu_line23, person.edu_line24, person.edu_line25, person.edu_line26 (the chain under edu_aoc_rules; unchanged); f8863.line1, f8863.aoc_sum, f8863.aoc_person, f8863.aoc_dep, f8863.line2, f8863.line3, f8863.line4, f8863.line5, f8863.show_after4, f8863.no (unchanged; line 1 is $0 under a ban); f8863.kid_needed, f8863.line7_40, f8863.line8, f8863.line9, f8863.refund_rate (read line 7, now $0 under a ban); the EIC and child tax credit Form 8862 cases (other forms and questions, unchanged).
+- **Tags:** forms, f8863, person, dependent, over-refusal, fixed, lane-fx-people
+
+## BUG-1416 — The Kay Bailey Hutchison test on the Roth path refuses every Roth contributor on a joint return with compensation under $14,000, and misses an excess when the spouses' compensation is equal
+
+- **Caught by:** the 2026-11-24 wave coordinator (claude-opus-5-5) in the batch-2b review of lane people's BUG-1154 work; reproduced and fixed by lane fx-people (claude-opus-5-5, judgment), 2026-11-24.
+- **Source:** p590a p. 10, Kay Bailey Hutchison Spousal IRA Limit, "if you file a joint return and your taxable compensation is less than that of your spouse, the most that can be contributed for the year to your IRA is the smaller of ... 1. $7,000 ($8,000 if you are age 50 or older). 2. The total compensation includible in the gross income of both you and your spouse for the year, reduced by ... a. Your spouse's IRA contribution for the year to a traditional IRA. b. Any contributions for the year to a Roth IRA on behalf of your spouse."; p. 43, Excess Contributions
+- **Symptom:** person.ira_limit_screens (read only by person.ira_roth_over, which refuses Schedule 2 line 8) held whenever ira.kbh_short held: on a joint return with worksheet line 10 under $14,000 ($15,000 or $16,000 with spouses 50 or older) any Roth contribution refused, e.g. wages $6,000 and $5,000 and a $3,000 Roth contribution (no excess). Conversely, with line 10 at or above the caution amount, a spouse 50 or older with compensation equal to the other's ($7,500 each) and an $8,000 Roth contribution has a $500 excess (own compensation is the limit when it is not less than the spouse's) that no screen caught.
+- **Fix:** On the Roth path ira.kbh_short is replaced by person.ira_own_comp_over: a joint return on which this person's traditional and Roth contributions are more than this person's own compensation (person.ira_comp: W-2 box 1, household employee wages, unreported tips, Form 8919 wages and the self-employment earned income of worksheet line 9) while this person's compensation may not be the smaller (twice person.ira_comp_most, which adds all of Schedule 1 line 2a since a joint return does not divide alimony, is at least line 10). For the spouse with less compensation the Pub. 590-A limit is the couple's compensation less the other spouse's contributions, which ira.over_comp already tests; for the other spouse it is their own compensation, tested here. The traditional (deduction) path keeps ira.kbh_short, as the IRA Deduction Worksheet's caution says. The refusal's remedy is reworded. Fixtures (predicted by hand): roth.kbh_own_comp_within and roth.kbh_lower_spouse_within (no refusal), roth.kbh_higher_spouse_over_own and roth.equal_comp_over_own (refused at person.ira_roth_over). Mutation fixtures, predicted by hand: roth.kbh_alimony_may_be_higher (alimony leaves open which spouse has more, refused on the safe side) and ira.trad_over_own_comp_no_roth (no Roth contribution, so the Roth screen is false).
+- **Fix lines:** person.ira_limit_screens, person.ira_roth_over, person.ira_own_comp_over, person.x_tax
+- **Siblings checked:** person.ira_comp, person.ira_comp_most, person.ira_comp_most_x2 (new helpers read only by person.ira_own_comp_over; their inputs' other readers, f1040.line1b and person.earned_not_w2, are unchanged); person.ira_line11 (the deduction path keeps ira.kbh_short, as the worksheet caution says; unchanged); ira.all_total, ira.any_contrib, person.ira_own_total, person.ira_roth_has (unchanged, read); ira.roth_reduced (MAGI; unchanged); f5329.tax, s2.line8_box, s2.tax_favored_accounts (read person.x_tax; unchanged); alimony (counted toward a person only when deciding which spouse may have more, so a joint return with alimony refuses on the safe side).
+- **Severity:** low
+- **Tags:** forms, person, ira, over-refusal, under-refusal, fixed, lane-fx-people
+
+## BUG-1417 — Closure: BUG-1375 is fixed (the IT-225 question names railroad sickness benefits; most recipients are refused by person.rrta)
+
+- **Closes:** BUG-1375
+- **Closure:** fixed
+- **Caught by:** lane fx-people of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Source:** ny_it225i p. 17, S-122; p525 p. 19, Railroad sick pay; fct2 p. 2, Compensation, "For purposes of Tier 1 taxes, compensation doesn't include sickness or accident disability payments received ... (b) under section 2(a) of the Railroad Unemployment Insurance Act for days of sickness due to an on-the-job injury"
+- **Fix:** Reproduced by reading: ny_it201.ask.railroad_uc is gated on unemployment compensation (line 14), and sickness benefits reach line 1. No answered input tells a Railroad Retirement Board sickness statement from other wages, so no mechanical gate is possible without a new question for every New York wage earner. The catch-all ny_it201.ask.it225 (asked of every New York return) now names railroad sickness benefits (S-122) in its wording and in its help (sickness benefits paid by the Railroad Retirement Board), so a recipient is asked. The federal person.rrta question refuses most recipients first: the archived Form CT-2 instructions treat RUIA sickness payments other than for on-the-job injury as Tier 1 compensation (for employee representatives), so the statement is expected to carry railroad retirement amounts; no archived source shows the RRB's Form W-2 box 14 itself, which is why the catch-all is worded rather than relied on.
+- **Fix lines:** ny_it201.ask.it225
+- **Siblings checked:** ny_it201.gate.it225 (the reader; unchanged); ny_it201.line23 (same anchor; unchanged); ny_it201.ask.railroad_uc (unemployment benefits; unchanged); person.rrta (federal; unchanged).
+- **Tags:** ny, it225, railroad, fixed, lane-fx-people
+
+## BUG-1418 — Closure: BUG-1411 is fixed (its household, k1s and f7203 parts)
+
+- **Closes:** BUG-1411
+- **Closure:** fixed
+- **Caught by:** the batch-3 integration of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24.
+- **Evidence:** The household part is fixed by BUG-1414 (household.qss_child_not_all_year tests the conflict directly) and the k1s and f7203 parts by BUG-1430 (k1s.ask_prior_active tests k1s.tenth_if_active; f7203.line14 argued in EQUIVALENT_IF). On the integrated tree engine/src/mutate.ts OPEN_DEFECT_SURVIVORS_ALL names BUG-1411 for no mutant, and the federal mutation run on the integrated tree reports none of the four survivors unexplained.
+- **Tags:** mutation, household, k1s, f7203, closure
+
+## BUG-1419 — Closure: BUG-1259 is fixed
+
+- **Closes:** BUG-1259
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced: the f4952.line1 prompt left out a home, tax-exempt bonds and a business, not a rental or a passive activity.
+- **Change:** interview/2025/questions.yaml f4952.line1: the prompt now leaves out interest on money that went into tax-exempt bonds, a rental property or a business, and the help adds 'Also leave out money that bought a share in a business you are not active in.' (f4952 p. 3, Line 1, 'Interest expense that is properly allocable to a passive activity'; Property held for investment, 'However, it doesn’t include an interest in a passive activity.') Wording only; the form line's source already excluded interest allocable to a passive activity; no value changes.
+- **Evidence:** Read against sources/2025/f4952.cols.txt (Line 1 and Property held for investment); fixtures unchanged.
+- **Tags:** Form 4952, wording, fixed
+
+## BUG-1420 — Closure: BUG-1260 is fixed
+
+- **Closes:** BUG-1260
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced: the ftc.statements prompt ended 'or a similar statement' and listed 'a Schedule K-1 or K-3' (the instructions list only Schedule K-1 (Form 1041)).
+- **Change:** interview/2025/questions.yaml ftc.statements: prompt 'on a Form 1099-DIV or 1099-INT, a Schedule K-3, an estate's or trust's Schedule K-1, or a substitute for one of these forms?'; help adds 'A statement from a foreign bank or broker does not count.' Decided under the owner's delegation: amb.2025.ftc_foreign_payee_statement (a No goes to Form 1116, whose limit can only lower the credit). Wording only.
+- **Evidence:** i1116 p. 1, 'Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S), or similar substitute statements.' Fixtures unchanged.
+- **Tags:** foreign tax credit, wording, ambiguity, fixed
+
+## BUG-1421 — Closure: BUG-1261 is fixed
+
+- **Closes:** BUG-1261
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced: the 09 item of retirement.exception named the first-time homebuyer test only.
+- **Change:** forms/2025/retirement.yaml retirement.exception: 09 now reads 'only if used before the close of the 120th day after you received it to pay qualified acquisition costs (the costs of buying, building or rebuilding the home, and any usual or reasonable settlement, financing or other closing costs) of the main home of a first-time homebuyer ...', cited to p590b p. 27 ('It must be used to pay qualified acquisition costs (defined next) before the close of the 120th day after the day you received it.') and p. 28, Qualified acquisition costs. Input text only; no value changes; the retirement transcription review was rerun on the changed line.
+- **Evidence:** Read against sources/2025/p590b.cols.txt pp. 27-28. The sibling lines (f5329.l2, person.x_*, s2.e05_*, sa.e05_*: the other readers of the exception codes) read the code, not the 09 wording, so none changes; their forms' reviews would be ceremonial (owner rule 2026-11-15).
+- **Tags:** retirement, Form 5329, wording, fixed
+
+## BUG-1422 — Closure: BUG-1262 is fixed
+
+- **Closes:** BUG-1262
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced: the rec.medical prompt asked about 'your 2024 medical and dental bills'.
+- **Change:** interview/2025/questions.yaml rec.medical: prompt 'How much of the medical and dental bills you paid in 2024 was repaid to you (or, on a joint return, your spouse) in 2025?' (the form line's own wording, expenses paid in 2024), with the help 'Count bills you paid for a dependent as well as your own.' Wording only; rec.medical_deducted still caps the recovery at the 2024 Schedule A line 4 amount.
+- **Evidence:** p525 p. 27, Worksheet 2, line 2, 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements'; fixtures unchanged.
+- **Tags:** recoveries, wording, fixed
+
+## BUG-1423 — Closure: BUG-1263 is fixed
+
+- **Closes:** BUG-1263
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced: the s2.household_employee help said 'Do not count pay to a student who was under 18 in 2025.' for every test.
+- **Change:** interview/2025/questions.yaml s2.household_employee: the help now says 'For the $2,800 test only, do not count pay to a student who was under 18 in 2025.' Wording only.
+- **Evidence:** i1040sh Line A (the under-18 exclusion, for the $2,800 test) and Line 9 ('Did you pay total cash wages of $1,000 or more in any calendar quarter of 2024 or 2025 to all household employees?', with no such exclusion); fixtures unchanged.
+- **Tags:** Schedule 2, Schedule H, wording, fixed
+
+## BUG-1424 — Closure: BUG-1376 is fixed
+
+- **Closes:** BUG-1376
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced: the s1.alimony_any prompt asked about 'alimony or other spousal support after divorce or separation', naming neither a temporary order nor maintenance.
+- **Change:** interview/2025/questions.yaml s1.alimony_any: prompt 'In 2023 or later, did you (or, on a joint return, your spouse) pay or receive alimony, maintenance or other support for a spouse or former spouse under a court order or a written separation agreement?'; tick 'Alimony or other spousal support (maintenance) paid or received since January 2023'; help 'A temporary order while a divorce is pending counts, and so does family support not all set apart as child support. Child support and a division of property are not alimony. ...'. The question is a gate (a Yes asks the federal and New York alimony questions), so the wider Yes changes no value.
+- **Evidence:** p504 p. 12, Divorce or separation instrument: 'A decree or any type of court order requiring a spouse to make payments for the support or maintenance of the other spouse. This includes a temporary decree, an interlocutory (not final) decree, and a decree of alimony pendente lite'; fixtures unchanged.
+- **Tags:** s1, alimony, wording, fixed
+
+## BUG-1425 — Closure: BUG-1342 is fixed
+
+- **Closes:** BUG-1342
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced: the sche.qbi_business source ended '(for example, 250 hours or more a year of rental services, with separate books)'.
+- **Fix:** forms/2025/sche.yaml sche.qbi_business: the example is dropped from the source, which keeps the section 162 standard (for profit, regularly and continuously); interview/2025/questions.yaml: the help says 'Fewer hours than the rental safe harbor's (usually 250 a year, with separate books) can still count. Yes also if your 2024 Form 8995 or 8995-A listed a rental, or if you use the safe harbor.' Wording only; a Yes still refuses.
+- **Fix lines:** sche.qbi_business
+- **Siblings checked:** sche.line26 (the refusing line; unchanged).
+- **Tags:** sche, f8995, wording, fixed
+
+## BUG-1426 — At-risk recapture is neither asked nor refused for a Schedule C business (or a K-1 activity) in a year without a loss
+
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24, checking the siblings of BUG-1341 (the exit-gate reread of the rental and royalty change).
+- **Source:** p925 (2025) p. 19, At-Risk Limits, 'If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero'; p. 23, Recapture Rule.
+- **Symptom:** sc.at_risk (box 32) is read only through sc.not_at_risk, the refusal gate of sc.loss_allowed, which Schedule C reads only when line 31 is a loss; k1p.not_at_risk and k1s.not_at_risk are asked through k1p.not_at_risk_if_loss and k1s.not_at_risk_if_loss, which ask them only of a loss. A sole proprietor whose losses were allowed in full in earlier years and whose amount at risk falls below zero in 2025 (for example, a recourse loan made nonrecourse) in a year with a profit is not asked and owes recapture the return leaves out. Not reproduced by walking; a reading of the gates against the cited rule. The K-1 cases are behind scope.k1, which refuses every K-1 today (T-352 rewiring).
+- **Where:** forms/2025/sc.yaml (sc.at_risk, sc.not_at_risk, sc.loss_allowed); forms/2025/k1p.yaml and k1s.yaml (not_at_risk_if_loss)
+- **Proposed fix:** As for rentals and royalties (BUG-1341): ask the at-risk question of every Schedule C business (and, when K-1s are wired, of every K-1 activity) and refuse a Yes in any year; or ask first whether a loss from it was deducted on an earlier return. Hand-off: sc is not in lane fx-lows; k1p/k1s at the K-1 wiring.
+- **Proposed fix lines:** sc.not_at_risk, sc.loss_allowed, k1p.not_at_risk_if_loss, k1s.not_at_risk_if_loss
+- **Severity:** low
+- **Tags:** sc, k1p, k1s, Form 6198, at-risk, missed refusal, hand-off, open
+
+## BUG-1427 — Closure: BUG-1405 is fixed: state disability and medical leave benefits not on a Form W-2 refuse
+
+- **Closes:** BUG-1405
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; confirmed by reading: no input of forms/2025 or interview/2025 named state disability or medical leave benefits (s1.uc_any names family leave; s1.uc_unsupported's help says disability insurance does not count).
+- **Change:** New refusing input s1.state_disability, a box in the money_b group ('State disability or paid medical leave benefits, not on a W-2'; prompt 'In 2025, did you (or, on a joint return, your spouse) get disability or paid medical leave benefits from a state program, or from a plan a state requires, that are not on a Form W-2?'; help names state disability insurance and paid leave for one's own illness or injury, paid by a state or an insurer under a state's law, and excludes workers' compensation). A Yes refuses at s1.line9 (first refusal entry, its own form and remedy), so AGI refuses. Decided under the owner's delegation: amb.2025.state_medical_leave_benefits (refuse; the taxable part depends on the contribution split, not shown in the 2025 transition year). Default false; stated false in the class M and mutation files (federal and New York) wherever they state s1.inmate_wages; NOT_DRAWN in engine/src/generate.ts and the s1.line8_other tuple of tools/engines/generate_cases.py; coverage row other.state_disability; tree gate s1.state_disability.
+- **Evidence:** Fixture s1.state_disability.refused (predicted before running: s1.line9 refused at gate s1.state_disability); test-fixtures 2814/2814 on the lane tree. Sources: p525 p. 4, Sick pay ('A state sickness or disability fund.'); rr-2025-4 p. 27, holding (4), and p. 32, the 2025 transition.
+- **Siblings checked:** s1.line8_other and s1.inmate_wages (same refusing line, unchanged); s1.uc_any (family leave benefits on line 7, unchanged; a state's Form 1099-G for medical leave still goes there by its help, which overstates rather than understates); scope.pay_no_w2 (wages not on a W-2; sick pay from a state fund is not asked there).
+- **Tags:** s1, PFML, refusal, ambiguity, fixed
+
+## BUG-1428 — Closure: BUG-1332 is fixed: the look-back question is asked of a filer who lists a royalty
+
+- **Closes:** BUG-1332
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced by reading s2.lookback_ask (any of s1.has_sc and scope.business_before).
+- **Fix:** forms/2025/s2.yaml s2.lookback_ask gains a third leg, all of scope.rental true and sche.royalty_count above zero. The royalty roster is asked only under scope.rental (s1.line5 reads Schedule E only then), so the leg tests scope.rental first and a return without rentals or royalties never reads the roster: no return that stated nothing about royalties becomes unknown. Label updated.
+- **Fix lines:** s2.lookback_ask
+- **Siblings checked:** s2.lookback_if_business (the gate line on it, unchanged); s2.lookback (the question, unchanged).
+- **Evidence:** Fixtures s2.lookback.royalty_only (a listed royalty, no business, s2.lookback true: s2.lookback_ask true and s2.line21 refused at s2.other) and s2.lookback.no_royalty_not_asked (empty rosters: s2.lookback_ask false), both predicted before running; test-fixtures 2814/2814.
+- **Tags:** s2, Form 8866, missed refusal, fixed
+
+## BUG-1429 — Closure: BUG-1341 is fixed: the rental and royalty at-risk questions are asked in a year with income too
+
+- **Closes:** BUG-1341
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; reproduced by reading rental.not_at_risk_if_loss and royalty.not_at_risk_if_loss (asked only when line 21 is a loss).
+- **Fix:** forms/2025/rental.yaml: rental.not_at_risk_if_loss and rental.has_loss removed; rental.not_at_risk is gated by the new rental.not_at_risk_if_reported (asked of every rental reported on Schedule E, false for an excluded one) and rental.line22 refuses on it. forms/2025/royalty.yaml: royalty.not_at_risk_if_loss, royalty.has_loss and royalty.no removed; royalty.not_at_risk is asked of every royalty and royalty.loss_abs refuses on it. Both remedies say the refusal holds in a year with income too, citing p925 p. 19 (recapture). Over-refusal accepted: a filer with an amount not at risk but no loss ever deducted is refused.
+- **Fix lines:** rental.not_at_risk_if_reported, rental.line22, royalty.not_at_risk, royalty.loss_abs
+- **Siblings checked:** rental.not_at_risk and royalty.not_at_risk (the questions); rental.at_risk_prior and royalty.at_risk_prior (unchanged); sc.at_risk, k1p.not_at_risk_if_loss and k1s.not_at_risk_if_loss (the same gap, filed as BUG-1426, hand-off).
+- **Evidence:** Fixtures rental.not_at_risk.income_year and royalty.not_at_risk.income_year (income years refused, predicted before running); x1sche.r6.not_at_risk and the royalty loss case restated to the new gate, remedy and citation; mrental.rental.excluded_home_with_costs (excluded home: the question is not asked, gate false); coverage row rental.not_at_risk_income; 22 class M rental entries state not_at_risk false. Mutation arguments for royalty.loss_abs, rental.net_loss and the sche.rents, rent_income and rent_netloss filters re-read and re-pinned (only reader sets changed). test-fixtures 2814/2814.
+- **Tags:** rental, royalty, Form 6198, at-risk, refusal, fixed
+
+## BUG-1430 — Closure: BUG-1411 is partly fixed: the k1s and f7203 survivors
+
+- **Closes:** BUG-1411, in part: the two household survivors stay open (lane fx-people)
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24, from the entry; checked against the expressions on the lane tree.
+- **Fix:** forms/2025/k1s.yaml k1s.ask_prior_active now tests k1s.tenth_if_active (true only when k1s.active_if_b2 is true and k1s.tenth true) in place of k1s.part4 (all of active_if_b2 and tenth_if_active), which equals it on every value, unknowns included; the mutant operand.k1s.k1s.ask_prior_active.part4.all.1.eq.0 is no longer generated. f7203.line14 keeps reading line 11, the printed line: engine/src/mutate.ts gains a pinned argument for operand.f7203.f7203.line14.line11 (c35 to c38 are kept within line 10 line by line, so c47 is at most line 10 wherever line 10 is known; line 14's only reader, line 15, reads line 10 first, so where line 10 is incomplete both routes give its value). Both entries removed from OPEN_DEFECT_SURVIVORS_ALL.
+- **Fix lines:** k1s.ask_prior_active
+- **Siblings checked:** k1s.prior_not_active_if (the gate on it, unchanged); k1s.part4 (still read by the Form 8582 Part IV lines, unchanged).
+- **Evidence:** node engine/dist/main.js mutate-arguments (federal and New York): every keyed argument holds. No mutation run (the slot is held by lane fx-people): the next federal run must confirm the f7203 argument by the sampled check and that no new k1s survivor appears.
+- **Tags:** k1s, f7203, mutation, fixed in part
+
+## BUG-1431 — Closure: BUG-1313 is fixed by BUG-1404 (scope.fiscal_year)
+
+- **Closes:** BUG-1313
+- **Closure:** fixed
+- **Caught by:** lane fx-lows of the 2026-11-24 wave (claude-opus-5-5, judgment), 2026-11-24; the open status was bookkeeping only: BUG-1404 records the fix of the hand-off but names no closed entry.
+- **Evidence:** On the lane tree (from next 6b3a9a03): forms/2025/scope.yaml scope.fiscal_year refuses through scope.other_income; interview/2025/questions.yaml asks it as a box of the about_you group; fixture scope.fiscal_year.refused passes (test-fixtures 2814/2814). The depreciation quarter questions need no fiscal-year wording since a fiscal-year return is refused.
+- **Tags:** scope, fiscal year, fixed
+
+## BUG-1432 — sb.fbar_required: a cash-value insurance policy or annuity, foreign fund shares and an account at a U.S. bank's foreign branch are not named as accounts
+
+- **Caught by:** the sampled reviews run by lane fx-lows of the 2026-11-24 wave (claude-opus-5-5), adjudicated in the lane (claude-opus-5-5, judgment), 2026-11-24: screen review sb.fbar_required#1, findings 0 and 1.
+- **Source:** i1040sb p. 2-3, Line 7a: 'A financial account also includes a commodity futures or options account, an insurance policy with a cash value (such as a whole life insurance policy), an annuity policy with a cash value, and shares in a mutual fund or similar pooled fund'; p. 3, 'an account maintained with a branch of a U.S. bank that is physically located outside of the United States is a foreign financial account.'
+- **Symptom:** The question speaks of 'accounts outside the United States'. A filer whose foreign holdings over $10,000 are a cash-value policy, an annuity or fund shares, or an account at a U.S. bank's foreign branch, may answer No, and the FBAR refusal is missed (the return's amounts are unaffected; the refusal exists to send the filer to FinCEN Form 114 and line 7b). Not reproduced by walking.
+- **Proposed fix:** Help: 'A foreign insurance policy or annuity with a cash value, shares in a foreign fund, and an account at a foreign branch of a U.S. bank count as accounts.' Hand-off: sb is not in lane fx-lows.
+- **Proposed fix lines:** sb.fbar_required
+- **Severity:** low
+- **Tags:** sb, FBAR, screen review, wording, hand-off, open
+
+## BUG-1433 — sb.foreign_trust_any: a loan from a foreign trust or free use of its property is not named as receiving something from it
+
+- **Caught by:** the sampled reviews run by lane fx-lows of the 2026-11-24 wave (claude-opus-5-5), adjudicated in the lane (claude-opus-5-5, judgment), 2026-11-24: false-no review gate:sb.foreign_trust_any#1, findings 2 and 5.
+- **Source:** i1040sb p. 3, Line 8, 'If you received a distribution from a foreign trust ... you may have to file Form 3520'; i3520 (archived) treats a loan of cash or marketable securities from a foreign trust and the uncompensated use of its property as distributions.
+- **Symptom:** The gate asks whether the filer 'received or may receive anything from it in any way'. A filer who borrowed from a relative's foreign trust or used its house rent-free does not read that as receiving something and answers No, so sb.line8 and sb.trust_owner are never asked. A foreign pension or savings arrangement set up as a trust (finding 5) is a rarer case of the same kind. Not reproduced by walking; the i3520 page was not re-read in this lane.
+- **Proposed fix:** Help: 'A loan from the trust, or living in or using its property for free, counts as receiving something.' Check i3520 for the exact wording first. Hand-off: sb is not in lane fx-lows.
+- **Proposed fix lines:** sb.foreign_trust_any
+- **Severity:** low
+- **Tags:** sb, Form 3520, false-no review, wording, hand-off, open
+
+## BUG-1434 — sa.property_tax_leave_out: 'Tax is billed when it is assessed' lets a filer keep a 2025 prepayment of tax assessed in 2026
+
+- **Caught by:** the sampled reviews run by lane fx-lows of the 2026-11-24 wave (claude-opus-5-5), adjudicated in the lane (claude-opus-5-5, judgment), 2026-11-24: question review sa.property_tax_leave_out#1, finding 0 (findings 1 to 3 overstate tax only and are accepted).
+- **Source:** i1040sca p. 6, Line 5b: 'Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025. State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed.'
+- **Symptom:** A filer who prepaid in 2025 a property tax billed in 2025 but for which local law makes the owner liable only in 2026 follows the help ('Tax is billed when it is assessed'), does not leave the prepayment out, and the 2025 deduction is overstated. Not reproduced by walking.
+- **Proposed fix:** Help: 'Tax is assessed when local law makes you liable for it, usually the date on the bill; leave out a payment of tax you were not yet liable for in 2025.' Hand-off: sa is not in lane fx-lows.
+- **Proposed fix lines:** sa.property_tax_leave_out
+- **Severity:** low
+- **Tags:** sa, property tax, question review, wording, hand-off, open
+
+## BUG-1435 — sd.special_any: the collectibles list is closed, the section 1260 bullet names only funds and partnerships, and the real property bullet only rentals and home offices
+
+- **Caught by:** the sampled reviews run by lane fx-lows of the 2026-11-24 wave (claude-opus-5-5), adjudicated in the lane (claude-opus-5-5, judgment), 2026-11-24: question review sd.special_any#1, findings 0 to 3.
+- **Source:** i1040sd p. 11, Line 18, 'Collectibles include works of art, rugs, antiques, metals ..., gems, stamps, coins, alcoholic beverages, and certain other tangible property'; p. 11, Line 19, 'section 1250 property (generally, real property that you depreciated)'; p550 p. 79, 'Pass-through entities include partnerships, S corporations, trusts, regulated investment companies, and REITs.'
+- **Symptom:** sd.special_any's bullets are narrower than its label: a sale of other collectible tangible property (sports memorabilia), a constructive-ownership gain on S corporation or trust interests, an entity holding collectibles or buildings through a lower tier, and real property depreciated for another business use (a home day care) can each be answered No, so a 28% rate or unrecaptured section 1250 gain sale is computed at the 0/15/20% rates (tax understated). Not reproduced by walking.
+- **Proposed fix:** Reword the bullets to the label: 'or other tangible property collected for its value'; 'an interest in a fund, partnership, S corporation or trust'; 'owns, directly or through another company, collectibles or depreciated buildings'; 'real estate you depreciated, for example a rental, a home office or a home day care'. Hand-off: sd is not in lane fx-lows.
+- **Proposed fix lines:** sd.special_any
+- **Severity:** low
+- **Tags:** sd, question review, missed refusal, hand-off, open
+
+## BUG-1436 — s2.household_help: a worker at a second home, a carer the filer pays in a relative's home, or one paid through a program's fiscal agent may be answered No
+
+- **Caught by:** the sampled reviews run by lane fx-lows of the 2026-11-24 wave (claude-opus-5-5), adjudicated in the lane (claude-opus-5-5, judgment), 2026-11-24: false-no review gate:s2.household_help#1, findings 0, 1 and 3.
+- **Source:** i1040sh (archived), Who Must File: household work is work done in or around 'your home' by a household employee; the household employer is the person who controls the work.
+- **Symptom:** The gate asks about work 'in or around your home'. A filer who pays a caretaker at a vacation home, hires and directs a carer for a parent in the parent's home, or directs a carer paid through a self-directed care program's fiscal agent may answer No, and the Schedule H refusal (s2.household_employee) is never reached. Not reproduced by walking; whether the in-the-parent's-home case makes the filer the household employer turns on facts (who controls the work), so the remedy is a broader help line that sends such filers to the child question, which refuses.
+- **Proposed fix:** Help: 'Count a second home, and a carer you hire and direct for a relative in the relative's home, even when a program or agency pays the worker for you.'
+- **Proposed fix lines:** s2.household_help
+- **Severity:** low
+- **Tags:** s2, Schedule H, false-no review, wording, open
+
+## BUG-1437 — A check-all green record can name a tree whose committed content fails the tier-paths scan or the placeholder check: both read tracked files only
+
+- **Caught by:** the batch-1 integrator of the 2026-11-24 wave (reproduced), recorded by lane fx-tools (claude-opus-5-5, judgment).
+- **Symptom:** Lanes recorded light-green trees whose committed tree then failed tools/check_bug_inventory.py and tools/tier_paths.py --self-test. A green record names the tree a full git add -A would commit (tools/green.sh, worktree_tree: untracked files included, ignored excluded), but tier_paths.py listed the code it scans with git ls-files (tracked only) and check_bug_inventory.py found BUG-NEW placeholders with git grep (tracked only). A run of check-all before git add therefore never scanned a new, untracked tool or a placeholder in a new, untracked file, and recorded green for a tree that held them. Reproduced on this lane: with tools/worktree_files.py untracked, the old tier_paths.py --self-test passed; after the change it reported the file's five unregistered enumeration idioms.
+- **Where:** tools/tier_paths.py (surface, self_test), tools/check_bug_inventory.py (placeholders_in_tracked), tools/new_bug.py (--assign rewrote placeholders in tracked files only); the same class: tools/siblings.py (git diff of the working tree, which omits untracked forms, pending files and review logs) and tools/doc_figures.py (git diff --quiet HEAD, blind to untracked files, decides whether the tree is the release commit's).
+- **Tags:** tool, check-all, green record, verification; open
+
+## BUG-1438 — Closure: BUG-1437 is fixed: the checks that list or search files read the tree the green record names
+
+- **Closes:** BUG-1437
+- **Closure:** fixed
+- **Caught by:** BUG-1437; lane fx-tools of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** see BUG-1437 (the untracked tools/worktree_files.py passed the old tier-paths scan unseen). A grep of tools/ and engine/src for git ls-files, git grep, git diff and diff-tree found the other readers: siblings.py and doc_figures.py read the working tree through git diff, which omits untracked files; check_all.sh, change_scope.py, claims.py and commit_tested.sh compare trees or the index (already exact); worktree_gc.py, worktree_data.py, ny_fixtures.py and defaults_guard.mjs list untracked or ignored data, one path, or staged fixtures at commit (not a green-record check).
+- **Change:** new tools/worktree_files.py: files (git ls-files --cached --others --exclude-standard, deleted files left out), tree (the git add -A tree through a temporary index, as green.sh) and grep (git grep --untracked), with a self-test (self_tests bookkeeping group) planting an untracked, an ignored and a deleted file. tier_paths.py scans worktree_files.files and its unit test plants an untracked and an ignored code file; check_bug_inventory.py finds placeholders with worktree_files.grep (placeholders_in_tree) and its self-test plants an untracked placeholder, an ignored one and one in docs/records; new_bug.py --assign rewrites them in the same files; siblings.py measures form, pending-file and review-log changes against worktree_files.tree (changed_paths); doc_figures.py compares that tree with HEAD's. tools/README.md (check tiers; bug inventory) says so.
+- **Evidence:** worktree_files.py, tier_paths.py, check_bug_inventory.py, siblings.py and doc_figures.py --self-test ok; check_bug_inventory.py, siblings.py --check and doc_figures.py --check pass on this tree; the light tier of check-all on the lane's tree, staged (the commit message names it).
+- **Fix lines:** none (tool change: tools/worktree_files.py, tier_paths.py, check_bug_inventory.py, new_bug.py, siblings.py, doc_figures.py)
+- **Tags:** tool, check-all, green record, verification, fixed
+
+## BUG-1439 — siblings.py --check makes every fix entry of a commit due for sibling review refreshes once the commit changes any form of the year
+
+- **Caught by:** lanes lints, rentals and others of the 2026-11-24 wave (reported; the coordinator accepted Evidence: in place of Fix: on rentals-03, -06, -07 and -08 to avoid ceremonial reruns); recorded by lane fx-tools (claude-opus-5-5, judgment).
+- **Symptom:** The review-refresh test of an entry under test was skipped only when no file under forms/<year> changed since HEAD; once any did, every entry under test with a Fix field needed changed review logs for all its sibling forms, whether or not its own fix changed a form. Lanes split commits or wrote Evidence: for Fix: to get past it. Reproduced on this lane: two pending entries, one with Fix lines eic.step4_dependent and one with sa.standard_amount, and a comment appended to forms/2025/eic.yaml: the check failed both, the second for dependent, eic, f2441, f8962, ny_it201, person and sa although sa was unchanged.
+- **Where:** tools/siblings.py, check (year_forms_changed per base, not per entry).
+- **Tags:** tool, siblings, review guards; open
+
+## BUG-1440 — Closure: BUG-1439 is fixed: an entry's sibling reviews are due only when a form defining one of its Fix lines changed
+
+- **Closes:** BUG-1439
+- **Closure:** fixed
+- **Caught by:** BUG-1439; lane fx-tools of the 2026-11-24 wave (claude-opus-5-5, judgment).
+- **Reproduced:** see BUG-1439. The forms/<year> test came in with the TY2026 preparation (a fix written as next year's operations changes no form, so no review is due); at that time an entry was measured from the commit that added it, so the test was per change; measuring every entry under test from HEAD (BUG-1269) made it per commit. Nothing in the docstring or the entries that introduced it asks for the coarser test.
+- **Change:** tools/siblings.py: changed_year_forms maps each changed forms/<year>/<doc>.yaml to its document (a changed path naming no current document makes every entry due, as before), and entry_touched holds an entry under test to the refresh test only when one of those documents defines one of its Fix lines (the document that defines the line, as review_logs_due attributes it). Self-test: entry_touched cases in siblings.py --self-test. tools/README.md (Bug inventory) and the module docstring say so.
+- **Evidence:** the reproduction with the changed siblings.py: only the eic entry fails (for eic); the sa entry passes. siblings.py --self-test ok; --check passes on this tree. Soundness: Fix lines are the lines the fix changed (tools/README.md, Proposed fix lines), and the sibling set is computed from them, so a fix that changed none of their forms changed no line the sibling set is drawn from.
+- **Fix lines:** none (tool change: tools/siblings.py)
+- **Tags:** tool, siblings, review guards, fixed
+
+## BUG-1441 — carloan.nonqualifying asks for 'insurance' as not qualifying; the final car loan regulations (T.D. 10054, applicable from 2025) count credit insurance products and GAP as qualifying
+
+- **Date:** 2026-11-24
+- **Caught by:** lane ty26b of the 2026-11-24 wave (claude-opus-5-5, judgment), requoting the car loan citations from the final regulations for 2026 (changes/2026/carloan.regs.yaml).
+- **Source:** fr-2026-18219 (T.D. 10054, archived for 2026 only) p. 24, § 1.163-16(d)(2)(i), "guaranteed asset protection (GAP) waiver or insurance that covers the difference between an APV’s value and the outstanding balance of the indebtedness in the event of a total loss, credit insurance products (including credit-related accident, health, and life products)"; (d)(2)(ii), "to purchase collision and liability insurance that is not a credit insurance product"; p. 28, (i), "This section applies to taxable years beginning after December 31, 2024, and before January 1, 2029." The proposed regulations (fr-2025-24154, the 2025 archive) listed only "vehicle service plans, extended warranties, sales taxes, and vehicle-related fees" and excluded "collision and liability insurance".
+- **Symptom:** The question of carloan.nonqualifying (interview/2025/questions.yaml prompt and the line's source) lists 'insurance' among the amounts that do not qualify. Under the final regulations, which apply to 2025, GAP and credit insurance products financed with the vehicle qualify; only collision and liability insurance that is not a credit insurance product does not. A filer who counts a financed GAP or credit insurance product there moves part of the loan out of the deduction: the deduction is understated (tax overstated). carloan.mixed's question already says 'collision or liability insurance'. Not evaluated on a case; read from the prompt and the regulation.
+- **Where:** forms/2025/carloan.yaml carloan.nonqualifying (expr.source); interview/2025/questions.yaml carloan.nonqualifying (prompt); the cites of forms/2025/carloan.yaml still name the proposed regulations, which the final supersedes for 2025 as well (fr-2026-18219 is not in the 2025 archive).
+- **Proposed fix:** Archive the final regulations for 2025, word the question 'collision or liability insurance (not GAP or credit insurance)', and re-cite the 2025 form on the final as changes/2026/carloan.regs.yaml does for 2026 (that file then becomes page moves only).
+- **Severity:** low
+- **Tags:** carloan, wording, sources, TY2025, TY2026; open
+
+## BUG-1442 — Closure: BUG-1407 is fixed (the year label rule applies to the year members of an enum)
+
+- **Closes:** BUG-1407
+- **Closure:** fixed
+- **Caught by:** lane ty26b of the 2026-11-24 wave (claude-opus-5-5, judgment)
+- **Tool change:** tools/year_diff.py extend_year_labels tests the label-equals-year rule only on members of the form yNNNN; a member that is not a year (realty_year's before1987) keeps its label, and the rest of the rule holds (the labels are exactly the from-year members, y<from> first). Applied to this tree's params/2025.yaml, forms/2025 and question bank, year_enum_rules extends placed_year and realty_year and labels scveh.placed, asset.placed and rprop.year. Self-test: an enum with a non-year member is labelled with its member's label kept, and the same question with a year member mislabelled is refused (year_diff.py --self-test).
+- **Tool files:** tools/year_diff.py (extend_year_labels, self_test_year_rules)
+- **Evidence:** The rehearsal (docs/ty2026/2026-11-24_refresh_and_rehearsal.md, section 6) adopts without the stand-in.
+- **Tags:** tool, adoption, TY2026, fixed
+
+## BUG-1443 — Closure: BUG-1408 is fixed (the 2026 operations remove person.edu_tin_missing)
+
+- **Closes:** BUG-1408
+- **Closure:** fixed
+- **Caught by:** lane ty26b of the 2026-11-24 wave (claude-opus-5-5, judgment)
+- **Fix:** changes/2026/person.edu.yaml, entry C-CRED-18+C-PEOP-16: a remove_line of person.edu_tin_missing after that of person.edu_llc_tin_refused, its only reader (operation edit authorized by the coordinator, not from a final document); the entry's note names it among the removed lines. year_changes.py --check: all apply. forms/2025 is unchanged.
+- **Fix lines:** person.edu_tin_missing (removed in 2026 by operation)
+- **Siblings checked:** the sibling tool, run on person.edu_tin_missing: (a) person.edu_student_tin, person.tin_or_itin_applied, person.work_ssn_or_tin (readers of person.tin, kept in 2026: they have other readers); (b) dependent.edu_line31, dependent.edu_llc_tin_refused, dependent.edu_student_tin, dependent.edu_tin_issued, f8863.claimed_count, f8863.eligible, f8863.eligible_figured, f8863.line14, f8863.line3, f8863.none_claimed, person.edu_line31, person.edu_llc_tin_refused, person.edu_student, person.edu_student_itin, person.edu_student_tin (the twin: dependent.edu_llc_tin_refused reads the input dependent.edu_tin_issued, which the dependent education operations of 2026 removes with it, so no dependent line is left unread; the 2026 build of the rehearsal reports no unread line).
+- **Tags:** TY2026, year changes, adoption, fixed
+
+## BUG-1444 — Closure: BUG-1409 is fixed (the reader check counts the latest New York year's reads for a year with no New York forms)
+
+- **Closes:** BUG-1409
+- **Closure:** fixed
+- **Caught by:** lane ty26b of the 2026-11-24 wave (claude-opus-5-5, judgment)
+- **Tool change:** engine/src/build.ts: for a year with no forms/ny/<year>/, the reader check counts as read every federal line that the forms of the latest earlier New York year read (nyReadIds, which walks the New York documents outside their citations and text, as the federal reader walk does), and the build output names those lines ('reader check: N line(s) read only by forms/ny/<y>/ counted as read'). A year with its own New York forms is checked as before. Chosen over display reasons on the three person lines, which the 2025 build would refuse (they are read there) and which would have to be removed again when New York 2026 is adopted. Documented in tools/README.md, 'New York years', and docs/ty2026/ADOPTION.md. Check self-test: nyReadIds names the federal ids a New York line reads through its expression and refusals, not those in its citation or label.
+- **Tool files:** engine/src/build.ts (nyReadIds, the reader check); engine/src/check-selftest.ts; tools/README.md
+- **Evidence:** The 2025 build (New York forms present) is unchanged. In the rehearsal the 2026 build passes with person.bonus_all, person.prior_bonus_assets and person.suv179 named in that line (docs/ty2026/2026-11-24_refresh_and_rehearsal.md, section 6).
+- **Tags:** TY2026, New York, build, adoption, fixed
+
+## BUG-1445 — Closure: BUG-0734 is disposed (heir's line 28(1) decided and registered for 2026)
+
+- **Closes:** BUG-0734
+- **Closure:** disposed
+- **Caught by:** lane ty26b of the 2026-11-24 wave (claude-opus-5-5, judgment)
+- **Evidence:** The 2026 Form 1040 instructions are not posted, so no archived 2026 source says how a borrower who took the loan over at a death answers Schedule 1-A line 28(1). The final regulations (fr-2026-18219 p. 24, § 1.163-16(d)(5)(ii)(A)) treat the indebtedness as an SPVL with respect to the new obligor. Decided by the coordinator under the owner's delegation of 2026-11-24: carloan.original_use stays carloan.vehicle (the heir answers for the borrower who died, so 28(1) prints Yes), registered as amb.2026.carloan_heir_original_use by an add_ambiguity operation in changes/2026/carloan.s1a.yaml (C-SCHED-06), with the literal reading (No for a loan with carloan.kind death) as the alternative and how to reverse it. The tax is the same under both readings; to recheck against the 2026 instructions for line 28.
+- **Tags:** year rollover, 2026, carloan, ambiguity, disposed
+
+## BUG-1446 — The 2026 operations remove person.x_tax, and with it the Roth IRA refusals batch 2 added there (person.ira_roth_over, person.ira_roth_income): the 2026 build fails and 2026 would figure excess Roth contributions
+
+- **Date:** 2026-11-24
+- **Caught by:** lane ty26b of the 2026-11-24 wave (claude-opus-5-5, judgment), the adoption rehearsal (/tmp/ty26b-reh, out/09_build_to_standin.log).
+- **Symptom:** node engine/dist/main.js build --year 2026 on the adopted copy fails: 'person.person.ira_roth_over: no line reads this choose line ...' and the same for person.ira_roth_income. In forms/2025/person.yaml their only readers are the two refusals on person.x_tax (added by lane people, BUG-1154, after the 2026 operations were written); changes/2026/person.retirement.yaml (C-SCHED-11+C-PEOP-03) removes person.x_tax, so the refusals went with it. Had the gates been given another reader, 2026 would still have figured a return with excess or income-limited Roth contributions without the 6% tax (understating tax). year_changes.py --check did not see it: it checks references to removed lines, not lines left with no reader (the class of BUG-1408).
+- **Where:** changes/2026/person.retirement.yaml, entry C-SCHED-11+C-PEOP-03 (remove_line person.x_tax, add_line person.x_tax_excess); tools/year_changes.py finish.
+- **Fix:** The add_line of person.x_tax_excess (the excess-contribution tax, Schedule 2 line 18 in 2026, Form 5329 Part IV's home) carries the two refusals, their remedies with the 2026 amounts (ira.limit $7,500, ira.limit_50 $8,600, ira.kbh_* $15,000/$16,100/$17,200, ira.roth_start_joint $242,000, ira.roth_start_other $153,000, as staged) and cites p590a p. 47 and i8606 p. 5 (2026), with three evidence quotes; the entry's note says a change to these refusals in 2025 is to be made there too. Tool: year_changes.py --check now fails on a marked computed line of a form that the from-year reads and no line reads once the operations are applied ('unread: ...', naming the operation that removed or rewrote its reader), with a self-test case; on this tree it found exactly these two lines (and would have found BUG-1408).
+- **Fix lines:** person.ira_roth_over, person.ira_roth_income (2026 readers by operation); forms/2025 unchanged
+- **Siblings checked:** the sibling tool, run on person.ira_roth_over person.ira_roth_income: (a) person.x_tax (their only reader, removed in 2026; its refusals move to the 2026 excess-contribution total); (b) ira.all_total, ira.any_contrib, person.ira_limit_screens, person.ira_own_total, person.ira_roth_has, ira.roth_reduced, ira.roth_start_joint, ira.roth_start_other (unchanged readers or parameters, still read in 2026). the 2026 early-distribution total carries no refusal; the unread check over every 2026 operation finds no other line.
+- **Severity:** medium
+- **Tags:** TY2026, year changes, adoption, retirement, refusal, tool, fixed
+
+## BUG-1447 — Closure: BUG-1410 is fixed (the fixture carry answers from-year inputs the year newly reads; the three classm.tcw cases are refused in 2026)
+
+- **Closes:** BUG-1410
+- **Closure:** fixed
+- **Caught by:** lane ty26b of the 2026-11-24 wave (claude-opus-5-5, judgment)
+- **Tool change:** tools/fixtures_year.py: after the first evaluation, a case of a file that takes no defaults is given, as stated answers, the carried default of each input it does not answer on which an expectation known in the from-year now waits (newly_read: the unknown value names its input; an expectation already unknown in the from-year does not count), resolved as a file that takes the carried defaults with only those keys kept, then evaluated again, round by round (at most five) since an answer may let the evaluation reach another such input; each case's evidence note and the report (section 'From-year inputs the year newly reads') list them. An expectation still re-recorded to unknown with no derivation is listed with the gates of the refusals that stop the return (not_reached). Self-tests for both.
+- **Tool files:** tools/fixtures_year.py (newly_read, not_reached, main, self_test, docstring)
+- **Evidence:** The rehearsal of 2026-11-24 (lane ty26b, /tmp/ty26b-reh, out/12_fixtures_year.log): 15 answers to newly read 2025 inputs given to 11 class M cases (person.work_ssn 10, person.born_jan1 3, dependent.work_ssn 2); expectations re-recorded from known to unknown fell from 86 to 3. The 3 are classm.tcw.9, .11 and .15, evaluated on the adopted 2026 tree: each return is refused before line 15 by a 2026 refusal (f1040.gate.itemized_limit for .9 and .15, the 2/37 limitation, Schedule A instructions not posted; f1040.gate.nonitemizer_gifts for .11, line 12f), so the tcw key is never reached: the year's own refusals, not the carry. They are to be re-derived when those instructions post.
+- **Tags:** tool change, fixtures, adoption, class M, TY2026, fixed

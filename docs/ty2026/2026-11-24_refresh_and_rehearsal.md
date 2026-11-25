@@ -113,10 +113,74 @@ from-year inputs a year newly reads.
 [I] The review estimate rose from R7's $88.45 (179 jobs, 2026-11-15) to $142.48 for 153 priced jobs. The forms added
 by the coverage expansion since then are the likely cause; this was not broken down.
 
-## 5. What remains blocked on the IRS
+## 5. What remains blocked on the IRS (as lane ty26 left it; section 6 updates it)
 
 Every gating document: the 2026 Form 1040 instructions above all (most of the 83 unsourced parameters, C-PEOP-23,
 the Tax Table, EIC tables and refund worksheet), then the Schedule A, Schedule D, Form 8949, Form 8995-A and Form 4562
 instructions and Publications 463, 501, 526, 560, 946 and 970; the finals of the 69 drafts (129 operation entries and
 82 parameters rest on them); the final Schedule 3-A and Form 1062 instructions. Not blocked on the IRS, and to do
 before adoption: BUG-1407 to -04, BUG-0644 (class M pricing), the s2 and carloan re-citations (section 3).
+
+## 6. Lane ty26b (batch 3): the defects fixed and the rehearsal rerun with no workaround
+
+Lane ty26b of the same wave (claude-opus-5-5, judgment; year 2026, jurisdiction us), branch `lane-ty26b` from `next`
+6b3a9a03. No paid review, no model call. Pending entries `BUG-1441` to `-07`.
+
+**Fixed** [M]:
+
+- BUG-1407: `year_diff.py` applies the year label rule only to the year members of an enum (`realty_year`'s
+  `before1987` keeps its label); self-test case added.
+- BUG-1408: `changes/2026/person.edu.yaml` removes `person.edu_tin_missing` with its reader (operation edit
+  authorized by the coordinator).
+- BUG-1409: the build's reader check counts as read, for a year with no `forms/ny/<year>/`, the federal lines the
+  latest earlier New York year's forms read, and names them in its output (`engine/src/build.ts` `nyReadIds`).
+- BUG-1410: `fixtures_year.py` answers, in the cases that take no defaults, the from-year inputs the year newly reads
+  (the input an expectation known in 2025 now waits on), and names the refusing gates of an expectation the year's own
+  refusals no longer reach.
+- New (BUG-1446): the 2026 operations removed `person.x_tax`, and with it the two Roth IRA refusals batch 2
+  added there (BUG-1154); they move to `person.x_tax_excess` with the 2026 amounts. `year_changes.py --check` now
+  fails on a helper or gate line the operations leave with no reader, which found exactly these two (and would have
+  found BUG-1408).
+- BUG-0644's remaining effect (class M unpriced): `engine/src/generate.ts` fits a generated return to a year other
+  than 2025 (answers to undeclared inputs dropped, enum answers no longer listed set to the enumeration's first value:
+  `f5695.any`, `bonus_choice: forty`); 2025 is unchanged.
+- Citations: the 22 Schedule 2 AMT citations of Form 6251 itself (the 20 of section 3, `s2.amt_l19` and `s2.amt_l25`)
+  and `s2.amt_part3`'s Form 6251 segment are requoted from the 2026 draft (`changes/2026/s2.f6251.yaml`, C-LAW-02);
+  every citation of the proposed car loan regulations (20 cites, 3 locator mentions, the form note, the `carloan_kind`
+  enum, two register entries) moves to the final regulations (`changes/2026/carloan.regs.yaml`, new change-map entry
+  C-SCHED-40; `build_params.py`). In a scratch adoption of the final tree, `citations.py --strict --year 2026` reports no
+  finding on `f6251` or `fr-2026-18219`, and nothing in the adopted 2026 tree cites `fr-2025-24154`.
+- BUG-0734: decided under the owner's delegation and registered as `amb.2026.carloan_heir_original_use` (line 28(1)
+  prints Yes for a loan taken over at a death; the tax is the same either way); to recheck against the 2026 Form 1040
+  instructions.
+
+A 2025 defect found on the way (BUG-1441): the final car loan regulations apply from 2025 and count
+credit insurance products and GAP as qualifying; `carloan.nonqualifying`'s question says "insurance". Not fixed here
+(forms/2025 belongs to other lanes).
+
+**Rehearsal** [M]: `tools/year_rehearse.sh --dest /tmp/ty26b-reh --stand-in-sources` under `nice -n 10` (the second
+run with `--reuse-build`), with no change to the copy. The only stand-in is the script's own: the 39 cited documents
+with no 2026 edition copied from 2025 (unpublished; `fr-2025-24154` among them in that run, cited only by the
+`carloan_kind` enum, which the staged parameters now re-cite).
+
+| Step | Outcome |
+|---|---|
+| `year_diff.py --adopt` | rc 0: no stand-in needed (BUG-1407 fixed) |
+| `citations.py --strict` | 1,263 findings, as expected before adoption's review (i8962 377, i8889 95, i8863 84, p525 79, i8582 72, ...); after the last operations (scratch copy) 1,257, none on f6251 or fr-2026-18219 |
+| build 2026 | fails only on the cited documents not archived for 2026; with them stood in, build OK (the three New York-read lines named) |
+| `fixtures_year.py --no-hand-work` | 321 kept, 2,082 re-recorded, 371 not evaluated (365 stating a removed input, 6 rejected); 3,631 new-input answers in 549 cases; 15 answers to newly read 2025 inputs in 11 cases (`person.work_ssn` 10, `person.born_jan1` 3, `dependent.work_ssn` 2); 3 expectations known to unknown (was 86) |
+| `test-fixtures --year 2026` | 2,400 of 2,403 pass; the 3 failures are classm.tcw.9, .11, .15, each refused in 2026 before line 15 (`f1040.gate.itemized_limit`, `f1040.gate.nonitemizer_gifts`), to re-derive when the Schedule A and Form 1040 instructions post |
+| `year_carry.py` (dry) | transcription 272 lines carry, 1,520 to review; render 338 and 1,693; class M 285 and 7,400 |
+| `year_carry.py --write` | rc 0 (25 min) |
+| `check_logs.py` | rc 1 as designed before reviews (transcription 3 of 82 forms satisfied, render 4 of 82, class M 6 of 73) |
+| `rerun_all.py --dry-run` | in the run: $142.64 for 153 jobs, class M not priced (the generator still drew `bonus_choice: forty`, which 2026 drops); rerun in the same copy with the final `generate.ts`: **$240.22 for 215 jobs**, class M priced (about $97.58); 13 jobs not run (their logs answer); 6 not built: transcription dependent and f8889 (their input-contract banks, carried from 2025, pin the 2025 text of i2441, p503, i8889 and f8889: to re-pin at adoption after their cases are rechecked) and class M carloan, otjob, scveh and tipjob (classm-jobs selects no case on the interview's route for them in 2026; not traced) |
+
+[I] The estimate is a lower bound for the forms citing the 39 stood-in documents and assumes today's drafts.
+
+## 7. What still blocks adoption
+
+Only IRS documents: the 2026 Form 1040 instructions (most of the 83 unsourced parameters, C-PEOP-23, the Tax Table,
+EIC tables, refund worksheet, line 28(1) for heirs), the Schedule A, Schedule D, Form 8949, Form 8995-A and Form 4562
+instructions, Publications 463, 501, 526, 560, 946 and 970, the finals of the 69 drafts (130 operation entries and 82
+parameters rest on them), the final Schedule 3-A and Form 1062 instructions. Then the adoption's own work
+(ADOPTION.md steps 1 to 9): the review rounds and the citation findings above.

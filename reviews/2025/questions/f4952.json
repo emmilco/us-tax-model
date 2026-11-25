@@ -58,53 +58,32 @@
    ]
   },
   "f4952.line1": {
-   "subject_sha": "da9a416a3af7dcfec39901db3dae9446181c7925184330731e37142f465a452e",
+   "subject_sha": "232ca6568f08c66b27fada5779a8f0c350658a8a27b9a23f50e65b3f129c1d0f",
    "samples": [
     {
      "verdict": "NARROW",
      "findings": [
       {
        "kind": "NARROW",
-       "situation": "A filer holds a partnership or S corporation interest whose Schedule K-1 reports investment interest expense, but the filer did not borrow any money personally.",
+       "situation": "A filer's partnership or S corporation reports investment interest expense to them on Schedule K-1, but the filer took out no loan and paid no interest themselves.",
        "source_text": "f4952 p. 3, Line 1: \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation.\"",
-       "why": "The question asks only about interest the filer or spouse paid on money they borrowed, and the help mentions only broker margin statements. A truthful filer would leave out K-1 investment interest, which line 1 must include.",
+       "why": "The question asks how much interest 'you' paid on money 'you' borrowed, and the help points only to a broker's margin statement. A truthful filer would leave out the K-1 amount that line 1 must include.",
        "bound": ""
       },
       {
        "kind": "NARROW",
-       "situation": "A filer accrued investment interest in 2025 but did not pay it in 2025.",
-       "source_text": "f4952 p. 3, Line 1: \"Enter the investment interest expense paid or accrued during the tax year\"",
-       "why": "The question asks only for interest paid, so accrued but unpaid investment interest is left out of the answer.",
-       "bound": ""
-      },
-      {
-       "kind": "NARROW",
-       "situation": "A filer borrowed to buy a working interest in an oil or gas property with unlimited liability and did not materially participate, and does not see it as 'investments'.",
-       "source_text": "f4952 p. 3, Property held for investment: \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment, but only if you didn't materially participate\"",
-       "why": "An ordinary filer would see an oil or gas working interest as a business, not as 'investments', and might leave it out. The text counts it as property held for investment, so its interest belongs on line 1.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "A filer borrowed money to buy a rental property or an interest in a passive partnership, which they think of as an investment, and reports that interest.",
-       "source_text": "Question: \"pay in 2025 on money borrowed to buy investments? Leave out interest on money used to buy, build or improve your home, and on money that went into tax-exempt bonds or a business.\" vs f4952 p. 3, Line 1: \"Investment interest expense doesn't include ... Interest expense that is properly allocable to a passive activity ... any rental activity\"",
-       "why": "The list of things to leave out does not mention rentals or passive activities. Filers usually call a rental property an 'investment', so that interest would wrongly go on line 1.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "A filer borrowed against a life insurance or annuity contract issued after June 8, 1997 to buy stocks, or paid capitalized construction interest on land held for investment, and reports that interest.",
-       "source_text": "f4952 p. 3, Line 1: \"Any interest expense that is capitalized, such as construction interest subject to section 263A\" and \"Interest expense, disallowed under section 264 ... even if the proceeds were used to purchase any property held for investment\"",
-       "why": "The question does not tell the filer to leave out capitalized interest or interest disallowed under section 264. Both meet the question's 'money borrowed to buy investments' wording but are excluded from line 1.",
+       "situation": "A filer holds a working interest in an oil or gas property, directly or through an entity that does not limit liability, does not materially participate, and paid interest on a loan used to acquire it.",
+       "source_text": "f4952 p. 3, Property held for investment: \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment, but only if you didn't materially participate in the activity.\"",
+       "why": "The question tells the filer to leave out interest on money that 'went into ... a business'. A working interest is an oil or gas business, so the filer would exclude interest that the text counts as investment interest.",
        "bound": ""
       }
      ],
-     "prompt_sha": "a7224aa722304a968db9e6bf38659c8f4d908e6ddbdcd8141079ef15b8a01200",
+     "prompt_sha": "b48f385f908a092bba1227c9d621e3026ca5aeaa0fea50acc5032c95359d8f48",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.081624,
+     "cost": 0.05844,
      "date": "2026-11-24",
-     "response": ".transcription/questions/f4952.line1.da9a416a3af7.1.response.txt"
+     "response": ".transcription/questions/f4952.line1.232ca6568f08.1.response.txt"
     }
    ],
    "type": "NonNegDollars",

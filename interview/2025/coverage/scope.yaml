@@ -154,6 +154,7 @@ rows:
   design: "MAP 2.1 item 7; end changed by lane x1-sche (Schedule E Part I computed, owner decision D12 as delegated)"
   situation: "A person rents out a house she owns."
   answers:
+    rental[house].not_at_risk: false
     "scope.rental": true
     "scope.rent_personal": false
     "$rental": [house]
@@ -217,6 +218,8 @@ rows:
   design: "MAP 2.1 item 7 (royalties); end changed by lane x1-sche (royalties computed, owner decision D12 as delegated)"
   situation: "A person receives royalties from a book."
   answers:
+    s2.lookback: false
+    royalty[book].not_at_risk: false
     "scope.rental": true
     "scope.rent_personal": false
     "$rental": []

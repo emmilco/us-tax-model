@@ -2911,13 +2911,13 @@
     {
       "id": "stage19.refuse.ban",
       "covers": [
-        "f8863",
         "aqee",
-        "person",
-        "dependent"
+        "dependent",
+        "f8863",
+        "person"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 19 mutation scenario: blind return E1 claiming the American opportunity credit after a denial that needs Form 8862 (or within a ban), refused (D1).",
+      "evidence_note": "Stage 19 mutation scenario: blind return E1 (single, wages $84,567, one American opportunity credit student with $3,100 of tuition and $450 of other course materials) whose filer answers that an earlier American opportunity credit was denied (Form 8862) or is barred. BUG-1136, predicted by hand before recording: i8863 p. 3, American Opportunity Credit, Caution (no credit within a ban), and p. 4, Tip (a student who does not qualify for the American opportunity credit may qualify for the lifetime learning credit). The answer makes the student a lifetime learning credit student: line 1 is $0, line 31 is the $3,100 of tuition (other course materials count for the American opportunity credit only), line 12 is 20% of $3,100, $620, and line 18 is $620 times ($90,000 - $84,567) / $10,000 = 0.543, $336.66; the notice tells of Form 8862. Before the fix line 7 was refused (f8863.ban_refused) and no credit was figured.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -2938,18 +2938,45 @@
         "s179.carryover": null
       },
       "expect": {
+        "f8863.line4": {
+          "kind": "money",
+          "cents": 543300
+        },
+        "f8863.ban_if_aoc": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].edu_aoc": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].edu_llc": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8863.line1": {
+          "kind": "money",
+          "cents": 0
+        },
         "f8863.line7": {
-          "kind": "refusal",
-          "gate": "f8863.ban_refused",
-          "form": "Form 8862, Information To Claim Certain Credits After Disallowance, or a ban on the American opportunity credit",
-          "remedy": "An American opportunity credit after a denial or reduction (other than for a math or clerical error) needs Form 8862, and a credit within a 2- or 10-year ban is not allowed; this tool does not prepare either.",
-          "cite": {
-            "doc": "i8863",
-            "locator": "p. 1, Form 8862 may be required, \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.\"",
-            "revision": "2025",
-            "snapshot": "195cfd5e93892f0db4162c5b8882236c4d27b26e2934ed99493743ceccf9ea29",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].edu_line31": {
+          "kind": "money",
+          "cents": 310000
+        },
+        "f8863.line12": {
+          "kind": "money",
+          "cents": 62000
+        },
+        "f8863.line18": {
+          "kind": "money",
+          "cents": 33666
+        },
+        "f8863.ban_notice": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -3390,7 +3417,7 @@
         "f8863"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (T-159: the line 4 operand of f8863.ban_refused and the line 7 operand of f8863.kid_needed), predicted from the archived f8863 and i8863 before evaluating: stage19.blind.e1 (single, an American opportunity credit student, line 1 $2,387.50) with wages of $95,000 (W-2 boxes 1, 3 and 5) and the filer answering that an earlier American opportunity credit was denied (Form 8862) or is within a ban. Line 3 (modified AGI) $95,000 is more than line 2 ($90,000), so line 4 is zero and Part I stops (f8863 line 4, \"If zero or less, stop; you can't take any education credit\"): no credit is claimed, so the Form 8862 question for claiming it does not arise, and line 7 is $0, so the line 7 conditions for a filer under 24 are not asked.",
+      "evidence_note": "Mutation fixture (T-159: the line 4 operand of f8863.aoc_possible and the line 7 operand of f8863.kid_needed), predicted from the archived f8863 and i8863 before evaluating: stage19.blind.e1 (single, an American opportunity credit student, line 1 $2,387.50) with wages of $95,000 (W-2 boxes 1, 3 and 5) and the filer answering that an earlier American opportunity credit was denied (Form 8862) or is within a ban. Line 3 (modified AGI) $95,000 is more than line 2 ($90,000), so line 4 is zero and Part I stops (f8863 line 4, \"If zero or less, stop; you can't take any education credit\"): no credit can be figured, so the question about an earlier denial or a ban is not asked (f8863.ban_if_aoc false), and line 7 is $0, so the line 7 conditions for a filer under 24 are not asked.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -3414,11 +3441,11 @@
           "kind": "money",
           "cents": 0
         },
-        "f8863.ban_refused": {
+        "f8863.kid_needed": {
           "kind": "bool",
           "value": false
         },
-        "f8863.kid_needed": {
+        "f8863.ban_if_aoc": {
           "kind": "bool",
           "value": false
         }
@@ -3991,6 +4018,188 @@
         "f8863.adj_total": {
           "kind": "money",
           "cents": 0
+        }
+      }
+    },
+    {
+      "id": "f8863.ban_not_asked_without_aoc_student",
+      "covers": [
+        "f8863",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1136 mutation fixture, predicted by hand before recording: stage19.refuse.ban with line 23 answered Yes (the American opportunity credit claimed for 4 earlier years), so the only student is a lifetime learning credit student (Part III line 23, 'Yes—Stop! Go to line 31'). No student passes lines 23 to 26, so the question about a denial or a ban is not asked (f8863.aoc_possible false, f8863.ban_if_aoc false) and no notice is shown, though the case states a Yes.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "f8863.ban": true,
+        "f8863.paid": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_ein": true,
+        "person[taxpayer].edu_inst": 310000,
+        "person[taxpayer].edu_line24": true,
+        "person[taxpayer].edu_mat": 45000,
+        "person[taxpayer].w2[emp_a].box1": 8456700,
+        "person[taxpayer].w2[emp_a].box2": 676500,
+        "person[taxpayer].w2[emp_a].box5": 8456700,
+        "person[taxpayer].w2[emp_a].box6": 122622,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].edu_line23": true
+      },
+      "expect": {
+        "f8863.aoc_rules_people": {
+          "kind": "count",
+          "value": 0
+        },
+        "f8863.aoc_possible": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8863.ban_if_aoc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8863.ban_notice": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].edu_llc": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "f8863.ban_not_asked_dependent_llc",
+      "covers": [
+        "dependent",
+        "f8863"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1136 mutation fixture, predicted by hand before recording: f1.t113.dep_aoc_applied (married filing jointly, wages $70,000, a dependent student with $4,300 of tuition) with the student's TIN issued and line 23 answered Yes, and a Yes stated for the ban question. The dependent is a lifetime learning credit student and no student passes lines 23 to 26, so the ban question is not asked: f8863.ban_if_aoc false.",
+      "inputs": {
+        "f8863.paid": true,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$dependent": [
+          "k0"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "dependent[k0].age": 20,
+        "dependent[k0].student": true,
+        "dependent[k0].months": 12,
+        "dependent[k0].edu": true,
+        "dependent[k0].edu_1098t": true,
+        "dependent[k0].edu_inst": 430000,
+        "dependent[k0].edu_line24": true,
+        "dependent[k0].edu_ein": true,
+        "dependent[k0].edu_tin_issued": true,
+        "dependent[k0].edu_line23": true,
+        "f8863.ban": true
+      },
+      "expect": {
+        "f8863.aoc_rules_deps": {
+          "kind": "count",
+          "value": 0
+        },
+        "f8863.ban_if_aoc": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[k0].edu_llc": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "f8863.ban_dependent_aoc_student_llc",
+      "covers": [
+        "dependent",
+        "f8863"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1136, predicted by hand before recording: f1.t113.dep_aoc_applied (married filing jointly, wages $70,000, a dependent student with $4,300 of tuition who passes lines 23 to 26) with the student's TIN issued and the ban question answered Yes. i8863 p. 3, Caution, and p. 4, Tip: the student is not an American opportunity credit student and goes to line 31 ($4,300) for the lifetime learning credit; the notice is shown.",
+      "inputs": {
+        "f8863.paid": true,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$dependent": [
+          "k0"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 7000000,
+        "person[taxpayer].w2[e0].box4": 434000,
+        "person[taxpayer].w2[e0].box5": 7000000,
+        "person[taxpayer].w2[e0].box6": 101500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "dependent[k0].age": 20,
+        "dependent[k0].student": true,
+        "dependent[k0].months": 12,
+        "dependent[k0].edu": true,
+        "dependent[k0].edu_1098t": true,
+        "dependent[k0].edu_inst": 430000,
+        "dependent[k0].edu_line24": true,
+        "dependent[k0].edu_ein": true,
+        "dependent[k0].edu_tin_issued": true,
+        "f8863.ban": true
+      },
+      "expect": {
+        "f8863.aoc_rules_deps": {
+          "kind": "count",
+          "value": 1
+        },
+        "f8863.aoc_possible": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8863.ban_if_aoc": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[k0].edu_aoc": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[k0].edu_llc": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[k0].edu_line31": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "f8863.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8863.ban_notice": {
+          "kind": "bool",
+          "value": true
         }
       }
     }

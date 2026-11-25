@@ -118,48 +118,48 @@
    ]
   },
   "gate:s1.alimony_any": {
-   "subject_sha": "44ff3f6a87c2ca4406f581e621b464432f30a892fa93ab6657b58a3f446ecb2c",
+   "subject_sha": "ebcebf2859ff37ca037c1a1d5656b27d1c7d8aead811e3c88c31f96bebd945d9",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "SOUND",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose pre-2019 divorce or separation agreement was modified in 2025—either to increase support without expressly applying the post-2018 rules, or to apply those rules mid-year—and who pays or receives support after the modification.",
-       "why_no": "They read 'alimony' as tax alimony and answer no because the agreement was changed after 2018 or now says the new rules apply; they do not see that pre-modification payments (or all 2025 payments if the modification did not expressly apply the new rules) remain alimony.",
-       "line": "s1.alimony_if_any",
-       "irs_text": "Pub. 504 (2025) p. 16: Example 1 says a 2025 modification that did not expressly provide that the post-2018 rules apply means 'all alimony payments made in 2025 are includible in the recipient’s income and deductible from the payer’s income'; Example 2 says a modification expressly applying the post-2018 rules still leaves the January 2025 through May 2025 payments 'includible in the recipient’s income and deductible from the payer’s income.'",
-       "severity": "medium",
-       "fix": "Broaden the gate to ask whether any spousal support was paid or received in 2025 under a pre-2019 agreement, including before a 2025 modification, and add help that a later modification does not automatically make all 2025 payments nontaxable."
+       "pattern": "8",
+       "who": "A payer under a 2016 divorce decree who must pay the mortgage or real estate tax on a home the former spouse owns or co-owns, or the premiums on a life insurance policy the former spouse owns. They make no direct cash payments to the former spouse in 2023–2025.",
+       "why_no": "The help mentions only rent ('Count payments made for the other person, such as rent'). The filer sees mortgage, tax or insurance payments as upkeep of property or a property-division duty, not 'support for a spouse or former spouse.' Help that also says 'a division of property' is not alimony reinforces that reading.",
+       "line": "s1.alimony_if_any (Schedule 1 line 19a alimony paid; line 2a for the recipient)",
+       "irs_text": "i1040gi p. 95, Line 19a: 'If you made payments to or for your spouse or former spouse under a divorce or separation agreement entered into on or before December 31, 2018, you may be able to take this deduction.'",
+       "severity": "low",
+       "fix": "Extend the help: 'Count payments the order or agreement requires you to make for the other person, such as rent, mortgage, property tax, medical bills or premiums on insurance they own, even if paid to a lender or insurer.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose separation agreement was entered into on or before December 31, 2018, but whose divorce decree was entered later, and who pays or receives support under that agreement in 2025.",
-       "why_no": "They look at the divorce date, not the agreement date, and answer no because the divorce was after 2018 and they believe post-2018 alimony rules apply.",
-       "line": "s1.alimony_if_any",
-       "irs_text": "i1040gi (2025) p. 89, Line 2a: 'pursuant to a divorce or separation agreement entered into on or before December 31, 2018'; p. 95, Line 19a: 'under a divorce or separation agreement entered into on or before December 31, 2018.'",
-       "severity": "medium",
-       "fix": "Ask by the date the divorce or separation agreement was entered into, not the divorce date, and clarify that a later divorce decree does not by itself move a pre-2019 agreement to the post-2018 rules."
+       "pattern": "6",
+       "who": "A recipient under a pre-2019 agreement whose former spouse pays cash in monthly installments called an 'equalization' or 'settlement' payment. The agreement does not say the payments are not alimony, and the payments end at the recipient's death.",
+       "why_no": "The help says flatly 'a division of property are not alimony,' so the filer treats any payment named as part of the settlement as outside the question, even when the cash payments may meet the alimony requirements.",
+       "line": "s1.alimony_if_any (Schedule 1 line 2a)",
+       "irs_text": "i1040gi p. 89, Line 2a: 'Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018'",
+       "severity": "low",
+       "fix": "Change the help to: 'A transfer of property is not alimony. Count cash payments under the order or agreement, even if they are called part of the settlement, unless the agreement says they are not alimony; Pub. 504 explains the tests.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer whose alimony payments ended in 2024 under a pre-2019 agreement and who must include or deduct a recapture of alimony on the 2025 return, but who paid or received no alimony in 2025.",
-       "why_no": "They answer no because they did not pay or receive alimony in 2025; the gate does not mention a recapture, and they do not treat the recapture as a payment or receipt.",
-       "line": "s1.alimony_if_any",
-       "irs_text": "Pub. 504 (2025) p. 16: 'If you must include a recapture amount in income, show it on Schedule 1 (Form 1040), line 2a (Alimony received). Cross out received and enter recapture.' and 'If you can deduct a recapture amount, show it on Schedule 1 (Form 1040), line 19a (Alimony paid). Cross out paid and enter recapture.'",
-       "severity": "medium",
-       "fix": "Add to the gate: 'or must you include or deduct a recapture of alimony in 2025?' and mention recapture in the help."
+       "pattern": "1",
+       "who": "A payer under a pre-2019 decree whose payments fell after the first year, with that first year in 2023. In 2025 they owe recapture (line 2a) and paid little or nothing in 2025.",
+       "why_no": "The gate reaches this filer only because it starts in 2023. A filer who reads the question as being about the current year ('did you pay') and paid nothing in 2025 might answer no. The words 'In 2023 or later' make that a weak misreading.",
+       "line": "s1.alimony_if_any (recapture on Schedule 1 line 2a or 19a)",
+       "irs_text": "p504 p. 16, Recapture of Alimony: 'If your alimony payments decrease or end during the first 3 calendar years, you may be subject to the recapture rule... you have to include in income (in the third year) part of the alimony payments you previously deducted.'",
+       "severity": "low",
+       "fix": "Add to the help: 'Answer Yes if any such payment was made in 2023, 2024 or 2025, even if none was made in 2025; alimony that fell or stopped can still need to be reported.'"
       }
      ],
-     "prompt_sha": "ff740d5afa455964122e654e34b6b79989f25a21fb5fd5e95901ebe1bc35ae7f",
+     "prompt_sha": "1449dfc2e76ef1ce5acf046c56140c1670ce9e979bd6d97745b5e2b12e6c1082",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_s1.alimony_any.44ff3f6a87c2.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.111368,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_s1.alimony_any.ebcebf2859ff.1.response.txt"
     }
    ],
    "condition": "s1.alimony_any",

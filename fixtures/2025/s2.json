@@ -1556,6 +1556,76 @@
           "value": false
         }
       }
+    },
+    {
+      "id": "s2.lookback.royalty_only",
+      "covers": [
+        "s2.other",
+        "s2"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the archived sources before evaluating: single, Form W-2 wages $40,000; no Schedule C and no business, farm, rental or partnership or S corporation share owned before 2025; one source of royalties (rights to a film, $5,000 of royalties, no expenses) whose cost is depreciated under the income forecast method, with look-back interest owed for 2025. f1040s2 (2025) line 17n, 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'. The listed royalty opens the look-back question; the Yes makes s2.other true, which refuses Schedule 2 line 21 as for any other Schedule 2 amount this tool does not figure. BUG-1332.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 4000000,
+        "person[taxpayer].w2[a].box3": 4000000,
+        "person[taxpayer].w2[a].box5": 4000000,
+        "scope.rental": true,
+        "scope.business_before": false,
+        "$royalty": [
+          "film"
+        ],
+        "royalty[film].line4": 500000,
+        "royalty[film].expenses_any": false,
+        "s2.lookback": true
+      },
+      "expect": {
+        "s2.lookback_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.line21": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "s2.lookback.no_royalty_not_asked",
+      "covers": [
+        "s2"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted before evaluating: the same filer with rent offered but no royalty listed (an empty rental and royalty list) and no business: the look-back question is not opened (s2.lookback_ask false), so s2.lookback is not read even when stated. BUG-1332, the other side of the royalty leg.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 4000000,
+        "person[taxpayer].w2[a].box3": 4000000,
+        "person[taxpayer].w2[a].box5": 4000000,
+        "scope.rental": true,
+        "scope.business_before": false,
+        "$royalty": [],
+        "$rental": []
+      },
+      "expect": {
+        "s2.lookback_ask": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

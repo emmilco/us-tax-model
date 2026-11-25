@@ -23,16 +23,16 @@
   },
   {
    "key": "royalty.loss",
-   "record": "9b5f9ef3d600a3808b324d4b4a12efbb025e4e842b67808b6e6b49e060ed3ccc",
+   "record": "b881a8dd7e6f20c8132406fd90f4ecab957f510b1647f75355a38a4c9523de1b",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage (.transcription/triage/2025/royalty.json: 68 of 68 agree). Project stands.",
-   "subject_key": "d9964d14ecfae184a714be58a7a1a21d638958f9a0fbdc9d16d14d4c7096394d"
+   "ruling": "Ruling: representation; royalty.loss is 0 less royalty.loss_abs, and royalty.loss_abs is max(0, 0 less line 21), so royalty.loss is min(line 21, 0), which is the reply's choice (line 21 when below zero, else 0). Executable triage (royalty.json, this pass): no value differs; the differences are project-refuses (royalty.not_at_risk, now asked of every royalty, BUG-1341) and project-unknown on partial records. f1040se line 25, 'Add royalty losses from line 21'.",
+   "subject_key": "5ee4e0741d4430e715e3b86487df72b171c09fb27eece094a889934e40139f6d"
   },
   {
    "key": "royalty.loss_abs",
-   "record": "9b5f9ef3d600a3808b324d4b4a12efbb025e4e842b67808b6e6b49e060ed3ccc",
+   "record": "b881a8dd7e6f20c8132406fd90f4ecab957f510b1647f75355a38a4c9523de1b",
    "status": "AGREE",
-   "subject_key": "231b2449c7721b524c5ba1ee93de725ca4d0826ee6785a6f0031143b5251f770"
+   "subject_key": "9e695300a19ebe269169f096d357b602246d3d61569c67ce4980b966957c82bc"
   },
   {
    "key": "10",
@@ -68,8 +68,8 @@
  "subjects": {
   "royalty.one": "087790c7e4150ce46c970eabedf9b63c93b709cbdef844aba99e24a357de0e80",
   "royalty.income": "a1e317697ca5eb57c9382a11b74ced3ed528b61f590036798863bb0014035ded",
-  "royalty.loss": "8d17ca5f64981a92451b2d90103b511cb0078114f2ba412fd0be2aa5e56ece6b",
-  "royalty.loss_abs": "223dd4b6ca04dfad33aae27967c2eebf635dc22763efd958911a361ec74a59dd",
+  "royalty.loss": "1dd6a094fb409a1fbd23f99247cb90daa5c042ec1fe0842a2af9698c96146624",
+  "royalty.loss_abs": "75343a3bf7dfb00921ae9a3dbddd2774ce61ccecdd3e7d1c8b424049d47564f4",
   "10": "649aa7cadec046bbf5ba132740ed0654be5421a0016bf84accb415ae5e07c041",
   "16": "653da24140ab654bf2e9248880ee105cb1e0ff032ce72797629a379b7cb40690",
   "19": "427df5ca9db4218f96005b72d18d557450e8cc0c29ce310817f721853cff4edd",
@@ -80,8 +80,8 @@
  "foreign": {
   "royalty.one": "b73e7687d788af2c790018fb776ff120b6a1d1a416c0ce64bf3da4e4fba466df",
   "royalty.income": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "royalty.loss": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
-  "royalty.loss_abs": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "royalty.loss": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "royalty.loss_abs": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "16": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "19": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

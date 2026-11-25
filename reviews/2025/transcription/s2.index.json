@@ -6,15 +6,15 @@
  "head_rows": {
   "printed lines compared": "17",
   "agree / disagree / missing": "14 / 3 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "s2.other",
-   "record": "d69a83d4ea315d7b3969704a461abb39bb19a372f439050feacd94897e62d275",
+   "record": "984e33ab7c34f01559db4b38e5d42c02c152709e340731d8e0d491084f5ca9b8",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as the earlier rulings: s2.other is the project's screen ('Any amount on Schedule 2 other than the following?', the lines this tool figures), which the IRS pages do not define, as the reply says; its reading 'line 21 above zero' would refuse or flag every return with self-employment tax, Additional Medicare Tax or net investment income tax, which the tool computes (the 273 completed value differences of triage, for example stage14.asset.hy_5yr with line 21 $6,980 of SE tax). Executable triage (.transcription/triage/2025/s2.json, this pass): 2,035/3,645 agree. Rerun because the look-back operand s2.lookback_if_business now chooses on s2.lookback_ask (Schedule C or a business before 2025, BUG-1092).",
-   "subject_key": "4cf805074a63f0c5043dcd5cb6ceb94aff98bd25c5c48cbee6e57e8ebee5ff79"
+   "ruling": "Ruling: model error; s2.other is the project's screen for Schedule 2 amounts the tool does not figure (its label lists the ones it does: Schedule SE, Additional Medicare Tax, NIIT and the Form 8889 line 17b tax), so it is true only when one of the named screens is Yes. The reply reads it as 'line 21 above zero', which is true for every return with self-employment tax (the stage14.asset fixtures, a Schedule C with SE tax), giving the 221 value differences in the executable triage (s2.json, this pass). The line changed only by s2.lookback_ask's royalty leg (BUG-1332). Project stands.",
+   "subject_key": "acc0340bf556d61475ab1bec9e762ba69579ec9393b709255775e30333a467f8"
   },
   {
    "key": "s2.line8_file",
@@ -31,9 +31,9 @@
   },
   {
    "key": "1z",
-   "record": "d69a83d4ea315d7b3969704a461abb39bb19a372f439050feacd94897e62d275",
+   "record": "984e33ab7c34f01559db4b38e5d42c02c152709e340731d8e0d491084f5ca9b8",
    "status": "AGREE",
-   "subject_key": "14a28d8c3c7fe0420d538322440db0cd1dca8f58a9b0e79d1ef667e65984d62b"
+   "subject_key": "3eace80c342e29334affaffa820ef1af977ea8a3e1f216b076ecabdb39ea715c"
   },
   {
    "key": "2",
@@ -185,16 +185,16 @@
   },
   {
    "key": "21",
-   "record": "d69a83d4ea315d7b3969704a461abb39bb19a372f439050feacd94897e62d275",
+   "record": "984e33ab7c34f01559db4b38e5d42c02c152709e340731d8e0d491084f5ca9b8",
    "status": "AGREE",
-   "subject_key": "6321033e0cc518730d239a93603ec43ef67553f7e1c4f7acb3004ad1c834d16b"
+   "subject_key": "4cb1f9f1a2ccc65c2fbca59285602b675fc71d6b533ac39dc66bcafe579d8e30"
   }
  ],
  "subjects": {
-  "s2.other": "1990de6577ff2f78dc3077e259511b169f408aa49ad9228f031579fc70ef1fe3",
+  "s2.other": "e2fe19d2b9b2d5a7e299ac7196aeb535c6d505b1fee1529f0e387a14354b9848",
   "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
-  "1z": "333e371aa64f0206c57a755cd973b560aa7d832aee294baa2f6a26f08906b092",
+  "1z": "d310ad25c001bdc4bc0bfc72f2ad9b95f6cc39dbc882a0357f038fd80b9e7c72",
   "2": "5f6498b556760af7ff2f738b672fb1d83aa53ce72d9b9a1274b293b1878863a1",
   "3": "7ab9b1b03d4566d66f61819570d3d1f50e8cef92e15293d3637f871dfcc2e150",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
@@ -207,17 +207,17 @@
   "12": "dcebc04d534b7cfe51c700ebf7de0880c5e311091e65226487dcc99dd1b85895",
   "17c": "e690fa9eac7cdc3d3d9c750d7d27edfddad825c027545d6790fe4a3cde22486e",
   "18": "7e4ec44f9b9fd2bdda3be26dc6e2d52f22050c4f890fe94143cc8c9f8fa26dc5",
-  "21": "afb5c9fc40bcb3ea17adab12d153b67cfc60d4be147ca5cc0657b1c0b933da12"
+  "21": "dc9482d235bdbf99b5ad9522cfc4bde999e6ea191e7aedc5d8e37c99e4a2991c"
  },
  "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
  "foreign": {
-  "s2.other": "d3e80914c253301175ef6c4d09cdb0e59d9b1bfe18b0f44b0c99d152fff0f7d2",
-  "1z": "d3e80914c253301175ef6c4d09cdb0e59d9b1bfe18b0f44b0c99d152fff0f7d2",
+  "s2.other": "e383f530043c3cbc4964541c047a7f9a07af9bf4e9ae7f5a236eef350e638f8a",
+  "1z": "e383f530043c3cbc4964541c047a7f9a07af9bf4e9ae7f5a236eef350e638f8a",
   "2": "e38f99ece4985ad2c609d4a6d934daaebcc02a0035093d746a76b398e13e46ee",
   "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "5": "cd35aebd2a8b869daeb60aaf1dec8855c88d4feae9e81366508b9f396e5e9d42",
   "6": "e6901d0a1d64fd79f936339dd644932cafe3d09f2213f4d3b5d604b809e5949e",
   "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "21": "d3e80914c253301175ef6c4d09cdb0e59d9b1bfe18b0f44b0c99d152fff0f7d2"
+  "21": "e383f530043c3cbc4964541c047a7f9a07af9bf4e9ae7f5a236eef350e638f8a"
  }
 }

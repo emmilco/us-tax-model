@@ -5,8 +5,8 @@
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
   "printed lines compared": "28",
-  "agree / disagree / missing": "8 / 20 / 0",
-  "line-scoped reviews": "11 (latest 2026-11-24); see Line-scoped reviews"
+  "agree / disagree / missing": "7 / 21 / 0",
+  "line-scoped reviews": "12 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -124,9 +124,10 @@
   },
   {
    "key": "household.qss_fails",
-   "record": "d47711a1c4e8a6351a6e7364c38b3b3d66d7e7c635d7f3b98677706d5ca977d1",
-   "status": "AGREE",
-   "subject_key": "cf72b5e8bcb199ce86075b26d3a33daf425046689fd56e1970969b11eb7dd930"
+   "record": "97cb1e2df5e63e3a6d19f73ea0d57cbad415628a3a2fda5e8b7d45048e2fad47",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse. The line is 'Qualifying surviving spouse checked without meeting its tests': the project tests f1040.status qss first, so on any other status it is No without asking household.qss_eligible, which the interview asks only on such a return. The reply drops the status test, so on every other return it reads an answer never asked (unknown) where the project is No; on a qualifying-surviving-spouse return the two agree.",
+   "subject_key": "36c24a5fd9a82a7498744cd273bb547ba796fb3984fb7e67b5fa4a66e326c5e8"
   },
   {
    "key": "household.qss_claimed",
@@ -216,7 +217,7 @@
   "household.ctc_disallowed_claim": "ee3b3554dd5ac6ccdd4664421c2c2092138a851d7d7937b4db24eb21ddf724ba",
   "household.eic_disallowed_claim": "77b822135b27ab6e7b5c950dad556162237369336af8b5aa9426e04536558108",
   "household.hoh_fails": "78be1f3fb849fc1015efc7fbef5e7c7d192b46124952cb1ea3c4fdddfdedd54a",
-  "household.qss_fails": "ad62584d0d71793cf9b58bd99c23413c046e25fb487b2e9a2b916fb1e6917c62",
+  "household.qss_fails": "af6b08396e3f071145d004351047b0b47753a705f1ac169de336a194b94020f8",
   "household.qss_claimed": "5702b61ee60279d2dd008d7551c760c18aed0c075b13997940c03b1c6115214c",
   "household.spouse_died_this_year_if_ever_married": "c47630b66376787b8aa888d400bf067c82242387e2cf1e3fe3d14a0f3a49dc35",
   "household.widowed_this_year": "347d939680abe973db94855127363b0bbee1c68dd03d73feda50f169d3feea80",

@@ -21,6 +21,34 @@
   {
    "printed": "royalty.loss",
    "project_expr_sha256": "4a811cb927e274fecf8a4230624cb368416492e4f7f804e4a7d94c5947c990e6",
+   "second_expr_sha256": "112a28bde1b6ee9d8981444fbc693200fc72cc9e0d77b8ab17d6cc8778d78b6d",
+   "ruling": "Ruling: representation; royalty.loss is 0 less royalty.loss_abs, and royalty.loss_abs is max(0, 0 less line 21), so royalty.loss is min(line 21, 0), which is the reply's choice (line 21 when below zero, else 0). Executable triage (royalty.json, this pass): no value differs; the differences are project-refuses (royalty.not_at_risk, now asked of every royalty, BUG-1341) and project-unknown on partial records. f1040se line 25, 'Add royalty losses from line 21'.",
+   "context": "81844203abaeebfce9375b3f07d7abfa32f13fc70f43faeba8834ab7d30c432f",
+   "date": "2026-11-24",
+   "run": "2bbf4fb1b680f5dd1f12a63787772fe319a9ea99a8e50a96c8b0c2d3ce6c4a48",
+   "subject_key": "d731176e4ca08a667623e484b4495f456c0af41bb825d1ee2b733483c465ccf8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.royalty.1.deepseek@royalty[r]",
+     "fixture:classm.royalty.2.deepseek@royalty[r]",
+     "fixture:classm.royalty.1@royalty[r]",
+     "fixture:classm.royalty.2@royalty[r]",
+     "fixture:rentals25.royalty_at_risk_prior_refused@royalty[r]",
+     "fixture:royalty.not_at_risk.income_year@royalty[s]",
+     "partial:classm.royalty.1.deepseek-royalty[s].line4@royalty[r]",
+     "partial:classm.royalty.1.deepseek-royalty[s].expenses_any@royalty[r]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "royalty.loss",
+   "project_expr_sha256": "4a811cb927e274fecf8a4230624cb368416492e4f7f804e4a7d94c5947c990e6",
    "second_expr_sha256": "509e5f85fd0a11ce8bcc067428eb5708e083aec129d0b607b9eff6bf20a1d667",
    "ruling": "Ruling: representation; equivalent on executable triage (8 of 8 inputs agree, too few generated royalty entries for the mechanical rule): line 21 is line 4 less line 20, so the reply's line 4 less line 20 floored at zero (or its negation) is the project's line 21 form exactly.",
    "context": "efa5f3a3f9425d565816790c7078fa7841b317c9ee57411f5bbdf6a12d019476",

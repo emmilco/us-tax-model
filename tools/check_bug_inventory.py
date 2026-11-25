@@ -6,13 +6,14 @@ the working file, and entry ids run from BUG-0001 with no gaps or repeats. A bra
 defect as a pending entry, one file `bug_pending/<name>.md` holding one entry headed
 `## BUG-NEW-<name> — <title>`, and cites it elsewhere as `BUG-NEW-<name>`. Pending entries get their
 ids in the merge that brings them onto main (`tools/new_bug.py --assign`): appended to the
-inventory in name order, the placeholders rewritten to the ids in every tracked file, the files
-deleted. So lanes working at once never write the inventory and never collide.
+inventory in name order, the placeholders rewritten to the ids in every file of the tree (tracked or
+untracked, not ignored), the files deleted. So lanes working at once never write the inventory and never collide.
 
     check_bug_inventory.py                       the working tree against HEAD: the inventory extends HEAD's
                                                  and is gapless; every pending file is well formed; every
                                                  pending file committed at HEAD is present and unchanged;
-                                                 every BUG-NEW placeholder in a tracked file names a pending file.
+                                                 every BUG-NEW placeholder in a file of the tree check-all's green
+                                                 record names (tracked or untracked, not ignored) names a pending file.
                                                  While a merge is being concluded (MERGE_HEAD), the tree is held
                                                  to --merge's rule against HEAD and the MERGE_HEADs instead of
                                                  HEAD's pending files, so the merge may assign them
@@ -27,6 +28,8 @@ import pathlib
 import re
 import subprocess
 import sys
+
+import worktree_files
 
 root = pathlib.Path(__file__).resolve().parent.parent
 INVENTORY = "BUG_INVENTORY.md"
@@ -85,7 +88,7 @@ def assign(inventory, pending):
 
 def working_problems(head_inv, head_pending, inv, pending, placeholders):
     """Problems of a working tree (inventory text, pending {name: text}, placeholder names found in
-    tracked files) against HEAD's inventory and pending files."""
+    the tree's files) against HEAD's inventory and pending files."""
     out = []
     if head_inv is not None and not inv.startswith(head_inv):
         out.append(f"{INVENTORY}: committed content was modified or removed; the file is append-only")
@@ -157,11 +160,12 @@ def working_pending():
     return {p.stem: p.read_text(encoding="utf-8") for p in sorted(d.glob("*.md"))} if d.is_dir() else {}
 
 
-def placeholders_in_tracked():
-    """{name: [files]} for every BUG-NEW placeholder in the tracked files of the working tree."""
+def placeholders_in_tree(cwd=root):
+    """{name: [files]} for every BUG-NEW placeholder in the files of the working tree a green record names: the
+    tracked and the untracked, ignored files excluded (tools/worktree_files.py)."""
     out = {}
-    r = git("grep", "-I", "-o", "-E", PLACEHOLDER_ERE, "--", ".", RECORDS_PATHSPEC)
-    for line in r.stdout.splitlines():
+    found = worktree_files.grep(["-I", "-o", "-E", PLACEHOLDER_ERE], [".", RECORDS_PATHSPEC], cwd=cwd)
+    for line in found.splitlines():
         f, _, token = line.partition(":")
         out.setdefault(PLACEHOLDER.match(token).group(1), []).append(f)
     return out
@@ -177,7 +181,7 @@ def check_working():
     head_inv, head_pending = state_at("HEAD")
     inv = path.read_text(encoding="utf-8")
     pending = working_pending()
-    placeholders = placeholders_in_tracked()
+    placeholders = placeholders_in_tree()
     problems = working_problems(head_inv, head_pending, inv, pending, placeholders)
     if (heads := merge_heads()):
         # Concluding a merge: HEAD's pending entries may be assigned, so the tree is held to the merge's rule against
@@ -264,6 +268,17 @@ def self_test():
     case("same name, two entries", merge_problems(main, {}, [(main, {"x-1": f"## {N}x-1 — p\n"}),
                                                              (head, {"x-1": f"## {N}x-1 — q\n"})]),
          "two parents hold different entries")
+    # The placeholder search sees the tree a green record names: an untracked file's placeholder is found.
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        worktree_files.scratch_repo(tmp)
+        tmp = pathlib.Path(tmp)
+        (tmp / "planted.txt").write_text(f"see {N}planted-01\n")
+        (tmp / "ign.txt").write_text(f"see {N}ignored-01\n")
+        (tmp / "docs" / "records").mkdir(parents=True)
+        (tmp / "docs" / "records" / "r.md").write_text(f"see {N}record-01\n")
+        found = placeholders_in_tree(cwd=tmp)
+        case("untracked placeholder found", [] if found == {"planted-01": ["planted.txt"]} else [str(found)], None)
     bad = [(label, got) for label, ok, got in cases if not ok]
     print("bug inventory self-test: " + ("ok" if not bad else f"FAILED: {bad}"))
     return 1 if bad else 0

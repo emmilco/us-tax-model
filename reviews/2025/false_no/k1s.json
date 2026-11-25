@@ -184,6 +184,87 @@
     }
    ]
   },
+  "gate:k1s.ask_prior_active": {
+   "subject_sha": "c3b3b3a823a16205342f414554a0666185389fe356d3c7e9476cfef823d75fd3",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A shareholder whose held-back box 2 loss partly arose in a year when they filed married filing separately and lived with their spouse for part of the year. They helped make management decisions that year, and they and their spouse together owned at least 10% all year.",
+       "why_no": "The question lists only two disqualifiers: not helping make decisions, and owning less than a tenth. The filer meets both tests for the loss year, so they read the list as complete and answer no. Nothing mentions the separate-return-and-lived-together rule.",
+       "line": "k1s.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don't qualify under the active participation rule and must use Part V instead of Part IV.\" Column (c): \"If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.\"",
+       "severity": "medium",
+       "fix": "Add a third disqualifier to the question: \"...or in that year you filed married filing separately and lived with your spouse at any time during the year?\" Also confirm that the current-year helper excludes MFS filers who lived with their spouse."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A shareholder whose held-back loss has built up over several years, for example from 2019 through 2024. They actively participated in 2023 and 2024 but owned under 10% (counting their spouse) in 2019, before buying more shares.",
+       "why_no": "\"Held-back loss\" and \"a year\" read as last year's carryover. The filer checks only 2024, or sees that the 2024 Form 8582 put the activity in Part IV, and answers no. The pre-2023 part of the carryover has no active participation.",
+       "line": "k1s.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Column (c): \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
+       "severity": "medium",
+       "fix": "Ask: \"Think of every earlier year in which any part of this held-back loss arose, not only last year. In any of those years did you...\" Add help text: \"A carried-over loss can include amounts from many years back, even if an earlier Form 8582 put it in Part IV.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A shareholder with box 2 losses held back for more than one reason: some by stock or debt basis (or at-risk) limits, and some by the passive-loss rules on an earlier Form 8582. The basis-limited part arose in a year when they actively participated.",
+       "why_no": "\"Held-back\" is not tied to Form 8582. The filer thinks of the basis-suspended loss, recalls participating that year, and answers no. The question was meant to cover the passive carryover from an earlier year without participation.",
+       "line": "k1s.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "low",
+       "fix": "Name the amount: \"the prior-year unallowed loss for this activity shown in Part VII, column (c), of your 2024 Form 8582 (the passive-loss carryover).\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A shareholder who in the loss year left nearly all decisions to a property manager or to other shareholders, and only nominally approved them, for example by signing off on a budget.",
+       "why_no": "\"Help make decisions\" is loose wording for the active participation test. A nominal sign-off feels like helping, so the filer answers no. Under the active participation standard, that year may not count.",
+       "line": "k1s.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Column (c): \"...unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
+       "severity": "low",
+       "fix": "Add help text with checkable acts: \"Helping make decisions means you, or your spouse, made or approved real management decisions, such as approving tenants, setting rents, or approving major repairs or capital spending, rather than leaving them all to others.\""
+      }
+     ],
+     "prompt_sha": "6ebecc7a711bf48ee2ba0fb6f3d8e546fba22240b6042b1798345175443ccfa6",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.092616,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_k1s.ask_prior_active.c3b3b3a823a1.1.response.txt"
+    }
+   ],
+   "condition": "k1s.ask_prior_active",
+   "lines": [
+    "k1s.prior_not_active_if"
+   ],
+   "inputs": [
+    "k1s.prior_not_active"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Column (c), \"Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
   "gate:k1s.ask_re_pro": {
    "subject_sha": "76572b57202e8f2c316db914bb340b913aa0a8a315bd1af56be850addb455a88",
    "samples": [

@@ -6,7 +6,7 @@ import { carryoverProblems } from "./carryover.js";
 import type { CarryoverMap } from "./carryover.js";
 import { entrySyntax } from "./interview.js";
 import { gateProblems } from "./gates.js";
-import { dropNyConflicts } from "./build.js";
+import { dropNyConflicts, nyReadIds } from "./build.js";
 import { evaluate } from "./eval.js";
 import type { CanonicalData, Line, RegisterEntry, TableDoc } from "./types.js";
 import { flatText, indentRest, parseStructured, textSummary } from "./text.js";
@@ -479,7 +479,11 @@ export function runCheckSelfTest(): void {
   assert.deepEqual(Object.keys(conflicts), ["w2.g_bad", "ny_it201.gate.x"]);
   assert.deepEqual(dropNyConflicts(conflicts, false), ["ny_it201.gate.x"]);
   assert.deepEqual(conflicts, { "w2.g_bad": "a" });
+  // The federal ids a New York form reads, outside citations and text.
+  const nyDoc = { form: { id: "ny_x", lines: [{ id: "ny_x.l1", label: "person.c", cite: { doc: "person.d" },
+    expr: { op: "sum_over", collection: "person", field: "person.a" }, refuses: [{ when: "person.b" }] }] } };
+  assert.deepEqual([...nyReadIds(new Set(["person.a", "person.b", "person.c", "person.d", "person.e"]), [nyDoc])].sort(), ["person.a", "person.b"]);
   console.log(`fixtures self-test: ${markedCasesSelfTest()} cases passed (a case marked not evaluated by the year carry is left out and listed)`);
   console.log(`defaults self-test: ${defaultsSelfTest()} cases passed (conditional withholding, condition and rule validation, consistency violations)`);
-  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + forgetCount + idsCount + 10 + bad.length + 2} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, forgotten evaluations and exact products, implicit rosters, line ids and the carryover map, structured text, New York conflict checks without New York definitions)`);
+  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + forgetCount + idsCount + 10 + bad.length + 3} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, forgotten evaluations and exact products, implicit rosters, line ids and the carryover map, structured text, New York conflict checks and reads without New York definitions)`);
 }

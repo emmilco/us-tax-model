@@ -3170,7 +3170,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_roth_over",
           "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
-          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
           "cite": {
             "doc": "p590a",
             "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
@@ -3183,7 +3183,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_roth_over",
           "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
-          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
           "cite": {
             "doc": "p590a",
             "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
@@ -3196,7 +3196,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_roth_over",
           "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
-          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
           "cite": {
             "doc": "p590a",
             "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
@@ -3474,7 +3474,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_roth_over",
           "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
-          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
           "cite": {
             "doc": "p590a",
             "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
@@ -3487,7 +3487,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_roth_over",
           "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
-          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
           "cite": {
             "doc": "p590a",
             "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
@@ -3672,6 +3672,388 @@
         "person[taxpayer].ira_roth_over": {
           "kind": "bool",
           "value": false
+        }
+      }
+    },
+    {
+      "id": "roth.kbh_own_comp_within",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Married filing jointly, wages $6,000 (taxpayer, born 1970) and $5,000 (spouse), a Roth IRA contribution of $3,000 by the taxpayer, none by the spouse, no traditional contributions. Worksheet line 10 is $11,000, under the $15,000 of the caution (one spouse 50 or older), which used to refuse every Roth contributor on such a return. p590a p. 10: the Kay Bailey Hutchison limit only raises the limit of the spouse with less compensation; the taxpayer's own limit is the smaller of $8,000 and $6,000 of compensation, and $3,000 is within it, and $3,000 is within the couple's $11,000. No excess, so no refusal.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 600000,
+        "person[taxpayer].w2[e0].box5": 600000,
+        "person[taxpayer].w2[e0].box6": 8700,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250,
+        "person[taxpayer].birth_year": 1970,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_roth": 300000,
+        "person[taxpayer].ira_extra_left": false,
+        "person[spouse].ira_owner": true,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].ira_extra_left": false,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1100000
+        },
+        "person[taxpayer].ira_own_comp_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].ira_roth_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[spouse].ira_roth_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.kbh_short": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "roth.kbh_lower_spouse_within",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Married filing jointly, wages $6,000 (taxpayer) and $5,000 (spouse), both under 50; the spouse contributes $5,500 to a Roth IRA, more than the spouse's own $5,000 of compensation. p590a p. 10, Kay Bailey Hutchison Spousal IRA Limit: the spouse's compensation is less than the taxpayer's, so the spouse's limit is the smaller of $7,000 and the couple's $11,000 less the taxpayer's contributions ($0), $7,000; $5,500 is within it. The spouse's compensation doubled ($10,000) is less than line 10 ($11,000), so the own-compensation test does not apply, and no refusal.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 600000,
+        "person[taxpayer].w2[e0].box5": 600000,
+        "person[taxpayer].w2[e0].box6": 8700,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250,
+        "person[taxpayer].birth_year": 1980,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].ira_extra_left": false,
+        "person[spouse].ira_owner": true,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_roth": 550000,
+        "person[spouse].ira_extra_left": false,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "person[spouse].ira_own_comp_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[spouse].ira_roth_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.over_comp": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "roth.kbh_higher_spouse_over_own",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Married filing jointly, wages $6,000 (taxpayer, born 1970, so 50 or older) and $5,000 (spouse); the taxpayer contributes $6,500 to a Roth IRA. p590a p. 10: the Kay Bailey Hutchison limit applies only to a spouse whose compensation is less than the other's; the taxpayer's compensation is the larger, so the taxpayer's limit is the smaller of $8,000 and $6,000, and $500 is an excess contribution (p590a p. 43, the 6% tax of Form 5329 Part IV). Within the couple's $11,000 and within $8,000, so only the own-compensation test (twice $6,000 is at least line 10's $11,000, and $6,500 is more than $6,000) refuses Schedule 2 line 8 (person.x_tax) at person.ira_roth_over.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 600000,
+        "person[taxpayer].w2[e0].box5": 600000,
+        "person[taxpayer].w2[e0].box6": 8700,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250,
+        "person[taxpayer].birth_year": 1970,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_roth": 650000,
+        "person[taxpayer].ira_extra_left": false,
+        "person[spouse].ira_owner": true,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].ira_extra_left": false,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "person[taxpayer].ira_own_comp_over": {
+          "kind": "bool",
+          "value": true
+        },
+        "ira.over_comp": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].ira_over_limit": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].x_tax": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_roth_over",
+          "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "roth.equal_comp_over_own",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Married filing jointly, wages of $7,500 each, the taxpayer born 1970 (50 or older), a Roth IRA contribution of $8,000 by the taxpayer. Worksheet line 10 is $15,000, not less than the $15,000 of the caution, so ira.kbh_short is false. p590a p. 10: the Kay Bailey Hutchison limit applies only when your compensation is less than your spouse's; with equal compensation the taxpayer's limit is the smaller of $8,000 and $7,500, so $500 is an excess contribution (p590a p. 43). The own-compensation test refuses Schedule 2 line 8 at person.ira_roth_over (it was not refused before, since the contribution is within $8,000 and within line 10).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 750000,
+        "person[taxpayer].w2[e0].box5": 750000,
+        "person[taxpayer].w2[e0].box6": 10875,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 750000,
+        "person[spouse].w2[e0].box5": 750000,
+        "person[spouse].w2[e0].box6": 10875,
+        "person[taxpayer].birth_year": 1970,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_roth": 800000,
+        "person[taxpayer].ira_extra_left": false,
+        "person[spouse].ira_owner": true,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].ira_extra_left": false,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "ira.kbh_short": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].ira_own_comp_over": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].x_tax": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_roth_over",
+          "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "roth.kbh_alimony_may_be_higher",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Married filing jointly, wages $5,000 (taxpayer) and $6,000 (spouse), $2,000 of alimony received (Schedule 1 line 2a, which a joint return does not divide between the spouses), a Roth IRA contribution of $5,500 by the taxpayer. Worksheet line 10 is $13,000. The taxpayer's own compensation is $5,000, and with all the alimony $7,000, more than the spouse's $6,000, so the taxpayer's compensation may not be the smaller (twice $7,000 is at least $13,000); $5,500 is more than $5,000, so the own-compensation test refuses Schedule 2 line 8 at person.ira_roth_over on the safe side (p590a p. 10: whether the spousal limit applies turns on whose compensation is less, which the alimony leaves open).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 500000,
+        "person[taxpayer].w2[e0].box5": 500000,
+        "person[taxpayer].w2[e0].box6": 7250,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 600000,
+        "person[spouse].w2[e0].box5": 600000,
+        "person[spouse].w2[e0].box6": 8700,
+        "s1.alimony": true,
+        "s1.alimony_any": true,
+        "s1.alimony_received": 200000,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_roth": 550000,
+        "person[taxpayer].ira_extra_left": false,
+        "person[spouse].ira_owner": true,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].ira_extra_left": false,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "ira.line10": {
+          "kind": "money",
+          "cents": 1300000
+        },
+        "person[taxpayer].ira_comp": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].ira_comp_most": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "person[taxpayer].ira_comp_most_x2": {
+          "kind": "money",
+          "cents": 1400000
+        },
+        "person[taxpayer].ira_own_comp_over": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].x_tax": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].ira_roth_over",
+          "form": "Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)",
+          "remedy": "Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.",
+          "cite": {
+            "doc": "p590a",
+            "locator": "p. 43, Excess Contributions, \"A 6% excise tax applies to any excess contribution to a Roth IRA\"",
+            "revision": "2025",
+            "snapshot": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ira.trad_over_own_comp_no_roth",
+      "covers": [
+        "ira",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Married filing jointly, wages $6,000 (taxpayer, born 1970) and $5,000 (spouse), a traditional IRA contribution of $6,500 by the taxpayer and no Roth contribution. The taxpayer's contributions are more than the taxpayer's own compensation, which is the larger (person.ira_own_comp_over true), but with no Roth contribution the Roth-path screen person.ira_roth_over is false (the deduction path refuses at ira.kbh_short instead, as the worksheet caution says).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 600000,
+        "person[taxpayer].w2[e0].box5": 600000,
+        "person[taxpayer].w2[e0].box6": 8700,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "person[spouse].w2[e0].box1": 500000,
+        "person[spouse].w2[e0].box5": 500000,
+        "person[spouse].w2[e0].box6": 7250,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].ira_extra_left": false,
+        "person[spouse].ira_owner": true,
+        "person[spouse].sav_trad": false,
+        "person[spouse].sav_roth": 0,
+        "person[spouse].ira_extra_left": false,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].birth_year": 1970,
+        "person[taxpayer].ira_trad": 650000
+      },
+      "expect": {
+        "person[taxpayer].ira_own_comp_over": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].ira_roth_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "ira.kbh_short": {
+          "kind": "bool",
+          "value": true
         }
       }
     }

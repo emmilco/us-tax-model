@@ -1,0 +1,255 @@
+changes:
+  tax_year: 2026
+  form: s2
+  entries:
+  - change: C-LAW-02
+    evidence:
+    - doc: f6251
+      page: 2
+      quote: Subtract Schedule 1-A (Form 1040), line 43, from Form 1040, 1040-SR, or 1040-NR, line 14
+    - doc: f6251
+      page: 2
+      quote: (If married filing separately and line 4 is more than $640,200, see instructions.)
+    - doc: f6251
+      page: 2
+      quote: If you reported capital gain distributions directly on Form 1040 or 1040-SR, line 7a; you reported qualified
+        dividends on Form 1040 or 1040-SR, line 3a
+    - doc: f6251
+      page: 2
+      quote: 'All others: If line 6 is $244,500 or less ($122,250 or less if married filing separately), multiply line 6 by
+        26% (0.26). Otherwise, multiply line 6 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately) from
+        the result.'
+    - doc: f6251
+      page: 3
+      quote: If line 17 is $244,500 or less ($122,250 or less if married filing separately), multiply line 17 by 26% (0.26).
+        Otherwise, multiply line 17 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately) from the result
+    - doc: f6251
+      page: 3
+      quote: If line 12 is $244,500 or less ($122,250 or less if married filing separately), multiply line 12 by 26% (0.26).
+        Otherwise, multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately) from the result
+    - doc: f6251
+      page: 3
+      quote: $98,900 if married filing jointly or qualifying surviving spouse
+    - doc: f6251
+      page: 3
+      quote: $49,450 if single or married filing separately
+    - doc: f6251
+      page: 3
+      quote: $66,200 if head of household
+    - doc: f6251
+      page: 3
+      quote: $545,500 if single
+    - doc: f6251
+      page: 3
+      quote: $306,850 if married filing separately
+    - doc: f6251
+      page: 3
+      quote: $613,700 if married filing jointly or qualifying surviving spouse
+    - doc: f6251
+      page: 3
+      quote: $579,600 if head of household
+    verified: draft
+    note: 'The citations of the Schedule 2 AMT screen that quote Form 6251 itself, requoted from the 2026 Form 6251 draft
+      (archived as f6251): Schedule 1-A line 37 is line 43, Form 1040 line 7 is line 7a, and the amounts printed on lines
+      4, 7, 18, 19, 25 and 39 are the 2026 ones; lines 19 and 25 print each amount as a bullet, so each is quoted apart. The
+      labels of s2.amt_l1a, s2.amt_l21 and s2.amt_l29 print the same numbers. The amounts the lines compute are parameters
+      (amt.bracket, amt.bracket_subtract, the capital gain breakpoints), staged for 2026 in research/ty2026/params-2026.proposed.yaml
+      with the same values. The labels of the other lines that print these amounts are set by s2.labels.yaml. In s2.amt_part3,
+      an i6251 citation, the Form 6251 segment names its document (f6251).'
+    operations:
+    - set:
+        line: s2.amt_l1a
+        field: label
+        from: 'Form 6251 line 1a: Form 1040 line 14 less Schedule 1-A line 37'
+        to: 'Form 6251 line 1a: Form 1040 line 14 less Schedule 1-A line 43'
+    - set:
+        line: s2.amt_l1a
+        field: cite.locator
+        from: Form 6251 (2025), line 1a, "Subtract Schedule 1-A (Form 1040), line 37, from Form 1040, 1040-SR, or 1040-NR,
+          line 14"; i6251 p. 2, Line 1a
+        to: Form 6251 (2026), line 1a, "Subtract Schedule 1-A (Form 1040), line 43, from Form 1040, 1040-SR, or 1040-NR, line
+          14"; i6251 p. 2, Line 1a
+    - set:
+        line: s2.amt_l4m
+        field: cite.locator
+        from: Form 6251 (2025), line 4, "(If married filing separately and line 4 is more than $900,350, see instructions.)"
+        to: Form 6251 (2026), line 4, "(If married filing separately and line 4 is more than $640,200, see instructions.)"
+    - set:
+        line: s2.amt_l6_high
+        field: cite.locator
+        from: Form 6251 (2025), line 39, "If line 12 is $239,100 or less ($119,550 or less if married filing separately),
+          multiply line 12 by 26% (0.26)"
+        to: Form 6251 (2026), line 39, "If line 12 is $244,500 or less ($122,250 or less if married filing separately), multiply
+          line 12 by 26% (0.26)"
+    - set:
+        line: s2.amt_l39_product
+        field: cite.locator
+        from: Form 6251 (2025), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"
+        to: Form 6251 (2026), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married filing
+          separately) from the result"
+    - set:
+        line: s2.amt_l39_high
+        field: cite.locator
+        from: Form 6251 (2025), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"
+        to: Form 6251 (2026), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married filing
+          separately) from the result"
+    - set:
+        line: s2.amt_l39
+        field: cite.locator
+        from: 'Form 6251 (2025), line 7, "All others: If line 6 is $239,100 or less ($119,550 or less if married filing separately),
+          multiply line 6 by 26% (0.26). Otherwise, multiply line 6 by 28% (0.28) and subtract $4,782 ($2,391 if married filing
+          separately) from the result"; line 39, "If line 12 is $239,100 or less ($119,550 or less if married filing separately),
+          multiply line 12 by 26% (0.26). Otherwise, multiply line 12 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"'
+        to: 'Form 6251 (2026), line 7, "All others: If line 6 is $244,500 or less ($122,250 or less if married filing separately),
+          multiply line 6 by 26% (0.26). Otherwise, multiply line 6 by 28% (0.28) and subtract $4,890 ($2,445 if married filing
+          separately) from the result"; line 39, "If line 12 is $244,500 or less ($122,250 or less if married filing separately),
+          multiply line 12 by 26% (0.26). Otherwise, multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married
+          filing separately) from the result"'
+    - set:
+        line: s2.amt_l17_high
+        field: cite.locator
+        from: Form 6251 (2025), line 18, "If line 17 is $239,100 or less ($119,550 or less if married filing separately),
+          multiply line 17 by 26% (0.26)"
+        to: Form 6251 (2026), line 18, "If line 17 is $244,500 or less ($122,250 or less if married filing separately), multiply
+          line 17 by 26% (0.26)"
+    - set:
+        line: s2.amt_l18_product
+        field: cite.locator
+        from: Form 6251 (2025), line 18, "Otherwise, multiply line 17 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"
+        to: Form 6251 (2026), line 18, "Otherwise, multiply line 17 by 28% (0.28) and subtract $4,890 ($2,445 if married filing
+          separately) from the result"
+    - set:
+        line: s2.amt_l18_high
+        field: cite.locator
+        from: Form 6251 (2025), line 18, "Otherwise, multiply line 17 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"
+        to: Form 6251 (2026), line 18, "Otherwise, multiply line 17 by 28% (0.28) and subtract $4,890 ($2,445 if married filing
+          separately) from the result"
+    - set:
+        line: s2.amt_l18
+        field: cite.locator
+        from: Form 6251 (2025), line 18, "If line 17 is $239,100 or less ($119,550 or less if married filing separately),
+          multiply line 17 by 26% (0.26). Otherwise, multiply line 17 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"
+        to: Form 6251 (2026), line 18, "If line 17 is $244,500 or less ($122,250 or less if married filing separately), multiply
+          line 17 by 26% (0.26). Otherwise, multiply line 17 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately)
+          from the result"
+    - set:
+        line: s2.amt_l21
+        field: label
+        from: 'Form 6251 line 21 (and line 26): line 19 ($48,350, $96,700 or $64,750 by filing status) less line 20, zero
+          if zero or less'
+        to: 'Form 6251 line 21 (and line 26): line 19 ($49,450, $98,900 or $66,200 by filing status) less line 20, zero if
+          zero or less'
+    - set:
+        line: s2.amt_l21
+        field: cite.locator
+        from: Form 6251 (2025), line 19, "$96,700 if married filing jointly or qualifying surviving spouse, $48,350 if single
+          or married filing separately, or $64,750 if head of household"; line 21, "Subtract line 20 from line 19. If zero
+          or less, enter -0-"; line 26, "Enter the amount from line 21"
+        to: Form 6251 (2026), line 19, "$98,900 if married filing jointly or qualifying surviving spouse", "$49,450 if single
+          or married filing separately", "$66,200 if head of household"; line 21, "Subtract line 20 from line 19. If zero
+          or less, enter -0-"; line 26, "Enter the amount from line 21"
+    - set:
+        line: s2.amt_l29
+        field: label
+        from: 'Form 6251 line 29: line 25 ($533,400, $300,000, $600,050 or $566,700 by filing status) less line 28, zero if
+          zero or less'
+        to: 'Form 6251 line 29: line 25 ($545,500, $306,850, $613,700 or $579,600 by filing status) less line 28, zero if
+          zero or less'
+    - set:
+        line: s2.amt_l29
+        field: cite.locator
+        from: Form 6251 (2025), line 25, "$533,400 if single, $300,000 if married filing separately, $600,050 if married filing
+          jointly or qualifying surviving spouse, or $566,700 if head of household"; line 29, "Subtract line 28 from line
+          25. If zero or less, enter -0-"
+        to: Form 6251 (2026), line 25, "$545,500 if single", "$306,850 if married filing separately", "$613,700 if married
+          filing jointly or qualifying surviving spouse", "$579,600 if head of household"; line 29, "Subtract line 28 from
+          line 25. If zero or less, enter -0-"
+    - set:
+        line: s2.amt_part3_form
+        field: cite.locator
+        from: Form 6251 (2025), line 7, "If you reported capital gain distributions directly on Form 1040 or 1040-SR, line
+          7; you reported qualified dividends on Form 1040 or 1040-SR, line 3a; or you had a gain on both lines 15 and 16
+          of Schedule D (Form 1040) (as refigured for the AMT, if necessary), complete Part III on the back and enter the
+          amount from line 40 here"
+        to: Form 6251 (2026), line 7, "If you reported capital gain distributions directly on Form 1040 or 1040-SR, line 7a;
+          you reported qualified dividends on Form 1040 or 1040-SR, line 3a; or you had a gain on both lines 15 and 16 of
+          Schedule D (Form 1040) (as refigured for the AMT, if necessary), complete Part III on the back and enter the amount
+          from line 40 here"
+    - set:
+        line: s2.amt_l7
+        field: cite.locator
+        from: Form 6251 (2025), line 7, "If you reported capital gain distributions directly on Form 1040 or 1040-SR, line
+          7; you reported qualified dividends on Form 1040 or 1040-SR, line 3a; or you had a gain on both lines 15 and 16
+          of Schedule D (Form 1040) (as refigured for the AMT, if necessary), complete Part III on the back and enter the
+          amount from line 40 here"
+        to: Form 6251 (2026), line 7, "If you reported capital gain distributions directly on Form 1040 or 1040-SR, line 7a;
+          you reported qualified dividends on Form 1040 or 1040-SR, line 3a; or you had a gain on both lines 15 and 16 of
+          Schedule D (Form 1040) (as refigured for the AMT, if necessary), complete Part III on the back and enter the amount
+          from line 40 here"
+    - set:
+        line: s2.amt_h4m
+        field: cite.locator
+        from: Form 6251 (2025), line 4, "(If married filing separately and line 4 is more than $900,350, see instructions.)"
+        to: Form 6251 (2026), line 4, "(If married filing separately and line 4 is more than $640,200, see instructions.)"
+    - set:
+        line: s2.amt_h6_high
+        field: cite.locator
+        from: Form 6251 (2025), line 39, "If line 12 is $239,100 or less ($119,550 or less if married filing separately),
+          multiply line 12 by 26% (0.26)"
+        to: Form 6251 (2026), line 39, "If line 12 is $244,500 or less ($122,250 or less if married filing separately), multiply
+          line 12 by 26% (0.26)"
+    - set:
+        line: s2.amt_h39_product
+        field: cite.locator
+        from: Form 6251 (2025), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"
+        to: Form 6251 (2026), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married filing
+          separately) from the result"
+    - set:
+        line: s2.amt_h39_high
+        field: cite.locator
+        from: Form 6251 (2025), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,782 ($2,391 if married
+          filing separately) from the result"
+        to: Form 6251 (2026), line 39, "Otherwise, multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married filing
+          separately) from the result"
+    - set:
+        line: s2.amt_h39
+        field: cite.locator
+        from: Form 6251 (2025), line 40, "Enter the smaller of line 38 or line 39 here and on line 7"; line 39, "If line 12
+          is $239,100 or less ($119,550 or less if married filing separately), multiply line 12 by 26% (0.26). Otherwise,
+          multiply line 12 by 28% (0.28) and subtract $4,782 ($2,391 if married filing separately) from the result"
+        to: Form 6251 (2026), line 40, "Enter the smaller of line 38 or line 39 here and on line 7"; line 39, "If line 12
+          is $244,500 or less ($122,250 or less if married filing separately), multiply line 12 by 26% (0.26). Otherwise,
+          multiply line 12 by 28% (0.28) and subtract $4,890 ($2,445 if married filing separately) from the result"
+    - set:
+        line: s2.amt_part3
+        field: cite.locator
+        from: p. 13, Lines 13, 14, and 15, "2. You didn’t complete either the Qualified Dividends and Capital Gain Tax Worksheet
+          or the Schedule D Tax Worksheet because Form 1040, 1040-SR, or 1040-NR, line 15, is zero", "Only statement (2) applies",
+          "Complete lines 2 through 4 of an AMT Qualified Dividends and Capital Gain Tax Worksheet or lines 2 through 13 of
+          an AMT Schedule D Tax Worksheet, whichever applies"; Form 6251 (2025), line 40, "Enter the smaller of line 38 or
+          line 39"
+        to: p. 14, Lines 13, 14, and 15, "2. You didn’t complete either the Qualified Dividends and Capital Gain Tax Worksheet
+          or the Schedule D Tax Worksheet because Form 1040, 1040-SR, or 1040-NR, line 15, is zero", "Only statement (2) applies",
+          "Complete lines 2 through 4 of an AMT Qualified Dividends and Capital Gain Tax Worksheet or lines 2 through 13 of
+          an AMT Schedule D Tax Worksheet, whichever applies"; f6251 line 40, "Enter the smaller of line 38 or line 39"
+    - set:
+        line: s2.amt_l19
+        field: cite.locator
+        from: Form 6251 (2025), line 19, "$96,700 if married filing jointly or qualifying surviving spouse, $48,350 if single
+          or married filing separately, or $64,750 if head of household"
+        to: Form 6251 (2026), line 19, "$98,900 if married filing jointly or qualifying surviving spouse", "$49,450 if single
+          or married filing separately", "$66,200 if head of household"
+    - set:
+        line: s2.amt_l25
+        field: cite.locator
+        from: Form 6251 (2025), line 25, "$533,400 if single, $300,000 if married filing separately, $600,050 if married filing
+          jointly or qualifying surviving spouse, or $566,700 if head of household"
+        to: Form 6251 (2026), line 25, "$545,500 if single", "$306,850 if married filing separately", "$613,700 if married
+          filing jointly or qualifying surviving spouse", "$579,600 if head of household"

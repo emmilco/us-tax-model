@@ -91,7 +91,7 @@
    ]
   },
   "gate:f4952.has_interest": {
-   "subject_sha": "c1206f05f5bb84a49d3341dc75045bcdc2ace2d6ac999dbca67aaa0635aa6e87",
+   "subject_sha": "0baf901a0967e6df1ea6f255044f060d6692617695c13303d3be0ae170fa9dbe",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -99,70 +99,60 @@
       {
        "kind": "FALSE_NO",
        "pattern": "4",
-       "who": "A partner or S corporation shareholder whose Schedule K-1 reports investment interest expense. The entity borrowed and paid the interest; the filer personally borrowed nothing.",
-       "why_no": "The gate asks whether 'you (or your spouse) pay interest on money borrowed to buy investments'. The filer took no loan and paid no interest, so a truthful answer is no. Neither the gate nor its help mentions K-1 pass-through interest.",
-       "line": "f4952.line1_if_interest (and f4952.carryover_if_interest for a K-1 amount disallowed in 2024)",
+       "who": "A filer, or a spouse on a joint return, owns an interest in a partnership or S corporation, such as a hedge fund, fund of funds or trading partnership, that borrowed to buy securities. The Schedule K-1 reports the filer's share of investment interest expense. The filer personally borrowed nothing.",
+       "why_no": "The gate asks whether 'you (or ... your spouse) pay interest on money borrowed to buy investments'. The entity borrowed and paid, not the filer, so a truthful answer is no. The help 'Any loan counts if the money went into investments' still reads as the filer's own loan.",
+       "line": "f4952.line1_if_interest (and, through it, f4952.line4g_if_interest and f4952.carryover_if_interest)",
        "irs_text": "f4952 p. 3, Line 1: \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation.\"",
        "severity": "high",
-       "fix": "Add to the gate: 'or does a Schedule K-1 you or your spouse received report investment interest expense?' Also say in the help that K-1 amounts count even if you never borrowed."
+       "fix": "Add to the gate: 'or does a Schedule K-1 from a partnership or S corporation report investment interest expense to you or your spouse?' Or reword the gate to 'did you or your spouse pay, accrue, or have reported to you on a Schedule K-1 any interest on money borrowed for investments'."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "2",
-       "who": "A filer who bought investment property, such as land held for appreciation or stock in a private company, on a note to the seller, and paid interest on that note in 2025.",
-       "why_no": "No money was 'borrowed'; the seller deferred the purchase price. The words 'money borrowed' and 'loan from a broker' make a no truthful.",
-       "line": "f4952.line1_if_interest",
-       "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\"",
-       "severity": "medium",
-       "fix": "Ask about 'interest on any debt (a loan, margin account, or note to a seller) used to buy or hold investments'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer whose interest on investment debt was accrued in 2025 but not paid, such as interest added to a loan balance or accrual-method interest.",
-       "why_no": "The gate asks only whether they 'pay interest'. Interest that was capitalized into the balance or accrued is not perceived as paid.",
+       "who": "A filer who accrued investment interest in 2025 that is properly taken into account for 2025 but was not paid in cash during the year, for example under an accrual method.",
+       "why_no": "The gate asks only whether the filer did 'pay interest'. Interest that was accrued but not paid gives a truthful no.",
        "line": "f4952.line1_if_interest",
        "irs_text": "f4952 p. 3, Line 1: \"Enter the investment interest expense paid or accrued during the tax year, regardless of when you incurred the indebtedness.\"",
-       "severity": "medium",
-       "fix": "Use 'pay or owe (accrue) interest' in the gate, matching the helper wording."
+       "severity": "low",
+       "fix": "Use 'pay or accrue' in the gate, as the helper condition already does."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer who borrowed to buy a working interest in an oil or gas well, held directly without material participation, or who borrowed to buy into a partnership or S corporation that holds investment assets.",
-       "why_no": "They think of an oil well or an entity stake as a business, not as 'investments' like those in a broker margin account. The example of a broker loan reinforces that narrow reading.",
+       "pattern": "6",
+       "who": "A filer who borrowed to buy raw land held for appreciation, or who holds a working interest in an oil or gas well directly or through a general partnership without materially participating, and who paid interest on that debt.",
+       "why_no": "The words 'to buy investments' and the example 'such as a margin loan from a broker' suggest stocks and brokerage accounts. A filer reads land bought on a seller note, or a working interest they see as a business venture, as outside 'investments'.",
        "line": "f4952.line1_if_interest",
-       "irs_text": "f4952 p. 3, Property held for investment: \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment, but only if you didn't materially participate in the activity.\"",
+       "irs_text": "f4952 p. 3, Property held for investment: \"It also includes property that produces gain or loss ... from the disposition of property that ... is held for investment\" and \"A working interest in an oil or gas property that you held directly or through an entity that didn't limit your liability is property held for investment, but only if you didn't materially participate in the activity.\"",
        "severity": "medium",
-       "fix": "List broader examples in the help: land held for appreciation, an oil or gas working interest you don't actively run, and a loan used to buy into a partnership or S corporation. Then classify after a yes."
+       "fix": "Widen the examples in the help: 'such as a margin loan, a loan or seller note to buy land held for appreciation, a loan to buy stock or bonds, or a loan to buy an oil or gas working interest you don't actively run'."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who paid margin interest in 2024 that exceeded 2024 net investment income, took the standard deduction, and paid no investment interest in 2025.",
-       "why_no": "The help says earlier-year interest counts 'only if you could not deduct all of it then'. The filer reasons that they could have deducted it by itemizing and chose the standard deduction, so they answer no. A carryforward that a correct 2024 Form 4952 would show is then lost.",
+       "who": "A filer who paid margin or other investment interest in 2024 or earlier that exceeded that year's net investment income, took the standard deduction, and filed no Form 4952. The carryforward on a correct 2024 line 7 is still available.",
+       "why_no": "The help says 'Interest of an earlier year counts only if you could not deduct all of it then.' The filer thinks they could have deducted it by itemizing and simply chose not to, so they answer no. The clarifying help about standard-deduction filers appears only on the gated child question, which this filer never sees.",
        "line": "f4952.carryover_if_interest",
-       "irs_text": "f4952 p. 1, Part I, line 2: \"Disallowed investment interest expense from 2024 Form 4952, line 7\"; line 7: \"Subtract line 6 from line 3. If zero or less, enter -0-\"",
+       "irs_text": "f4952 p. 1, line 7: \"Disallowed investment interest expense to be carried forward to 2026. Subtract line 6 from line 3. If zero or less, enter -0-\"; line 2: \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
        "severity": "medium",
-       "fix": "Reword the help: 'Interest of an earlier year counts if it was more than that year's investment income and has not been used since, even if you took the standard deduction or filed no Form 4952.'"
+       "fix": "Move the child's help into the gate: 'Interest of an earlier year counts if it was more than that year's investment income and has not been used since, even if you took the standard deduction or filed no Form 4952.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A spouse on a 2025 joint return who has a carryforward of disallowed investment interest from their own return of a year before the marriage.",
-       "why_no": "The gate's 'In 2025 or an earlier year ... pay interest' plus 'could not deduct all of it then' covers this. But the filer answering may not know the spouse's old separate-return carryforward, and nothing names a carryforward from a separate or pre-marriage return.",
-       "line": "f4952.carryover_if_interest",
-       "irs_text": "f4952 p. 3, Who Must File: \"You don't have any carryover of disallowed investment interest expense from 2024.\"",
-       "severity": "low",
-       "fix": "Add to the help: 'Include a carryforward on line 7 of either spouse's 2024 Form 4952, including one from a separate return.'"
+       "pattern": "6",
+       "who": "A filer who borrowed to buy an interest in a partnership or S corporation whose assets are partly investment property, for example an entity holding securities or portfolio assets. Part of the interest on that loan is allocable to property held for investment.",
+       "why_no": "The filer sees the loan as paying for a share of a business, not for 'investments', and the help speaks only of money that 'went into investments'.",
+       "line": "f4952.line1_if_interest",
+       "irs_text": "f4952 p. 3, Allocation of Interest Expense: \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest ... See ... Notice 89-35\"; Line 1: \"interest paid or accrued on a loan or part of a loan that is allocable to property held for investment\"",
+       "severity": "medium",
+       "fix": "Add to the gate help: 'Also answer Yes if you borrowed to buy an interest in a partnership or S corporation that holds stocks, bonds or other investments; part of that interest may count.'"
       }
      ],
-     "prompt_sha": "0e8766fdb194a0ecce3f3721b349946c17407f348417fc56a384a094e7c49d89",
+     "prompt_sha": "3cb8b2b0da7ab74056e3e20e5a4efe1b1c468df6a84e1e1dfd8900f57dd2e5f3",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.11748,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_f4952.has_interest.c1206f05f5bb.1.response.txt"
+     "cost": 0.112056,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_f4952.has_interest.0baf901a0967.1.response.txt"
     }
    ],
    "condition": "f4952.has_interest",

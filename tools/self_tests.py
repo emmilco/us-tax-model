@@ -109,6 +109,7 @@ TESTS = [
     ("claude_hooks_self_test", "bookkeeping", False, ["bash", "-c", "python3 tools/claude_hooks/bash_guard.py --self-test && python3 tools/claude_hooks/agents.py --self-test"]),
     ("worktree_gc_self_test", "bookkeeping", False, ["python3", "tools/worktree_gc.py", "--self-test"]),
     ("change_scope_self_test", "bookkeeping", False, ["python3", "tools/change_scope.py", "--self-test"]),
+    ("worktree_files_self_test", "bookkeeping", False, ["python3", "tools/worktree_files.py", "--self-test"]),
 ]
 GROUPS = ("bookkeeping", "code")
 

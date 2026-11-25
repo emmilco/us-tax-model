@@ -154,23 +154,9 @@
 
 - **Authored helper label:** Royalty loss as a positive amount
 - **Encoded (NonNegDollars):** Subtract line 21 from helper "Zero". If zero or less, enter -0-.
-- **Refusal:** when royalty.not_at_risk_if_loss is true, cannot complete Form 6198 (at-risk limits). A royalty loss with an amount not at risk is outside this tool. Cite: [i1040se] p. 3, At-Risk Rules (2025; sha256 ad71de35)
+- **Refusal:** when royalty.not_at_risk is true, cannot complete Form 6198 (at-risk limits). A royalty with an amount not at risk is outside this tool, in a year with a loss and in a year with income (when the amount at risk falls below zero, losses deducted earlier are recaptured). Cite: [i1040se] p. 3, At-Risk Rules; p925 p. 19, At-Risk Limits, "If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero" (2025; sha256 ad71de35)
 - Expr: `{"from":"royalty.zero","op":"subtract_floor0","take":"royalty.line21"}`
 - Cite: [f1040se] Schedule E (2025), line 25, "Add royalty losses from line 21" (2025; sha256 c5e2c8fa)
-
-## (helper) — `royalty.has_loss`
-
-- **Authored helper label:** Line 21 is a loss
-- **Encoded (Bool):** line 21 < $0
-- Expr: `{"lt":["royalty.line21",{"const":0}],"op":"test"}`
-- Cite: [i1040se] p. 7, Line 21 (2025; sha256 ad71de35)
-
-## (helper) — `royalty.no`
-
-- **Authored helper label:** No (false)
-- **Encoded (Bool):** Enter false (household.no).
-- Expr: `{"op":"param","ref":"household.no"}`
-- Cite: [i1040se] p. 7, Line 21 (2025; sha256 ad71de35)
 
 ## (helper) — `royalty.not_at_risk`
 
@@ -178,10 +164,3 @@
 - **Encoded (Bool):** Input — Was any money you put in borrowed without personal liability (from any lender, a bank included), protected from loss by a guarantee, stop-loss agreement or similar arrangement, or lent by someone with a stake in it or a relative of such a person?
 - Expr: `{"op":"input","source":"Was any money you put in borrowed without personal liability (from any lender, a bank included), protected from loss by a guarantee, stop-loss agreement or similar arrangement, or lent by someone with a stake in it or a relative of such a person?"}`
 - Cite: [i1040se] p. 3, At-Risk Rules, "In most cases, you must complete Form 6198 to figure your loss if you have" (2025; sha256 ad71de35)
-
-## (gate) — `royalty.not_at_risk_if_loss`
-
-- **Authored helper label:** Asked only when the royalty has a loss (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Line 21 is a loss" = true → helper "Some investment not at risk"] [helper "Line 21 is a loss" = false → helper "No (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["royalty.has_loss",{"const":true}],"op":"test"},"then":"royalty.not_at_risk"},{"guard":{"eq":["royalty.has_loss",{"const":false}],"op":"test"},"then":"royalty.no"}],"op":"choose"}`
-- Cite: [i1040se] p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss" (2025; sha256 ad71de35)

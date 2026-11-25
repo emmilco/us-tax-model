@@ -69,6 +69,44 @@
     }
    ]
   },
+  "s1.alimony_any": {
+   "subject_sha": "2999394e3c36230323fb18e1f7a6e32f4c94e5ec1cf0e91311a4e13d42d7d1a6",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "73b1f98a22caae424f3c87db1694f1537437b58c7bbe71d6ce984a00cb605f07",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.036696,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/s1.alimony_any.2999394e3c36.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89,
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Line 2a; p. 95, Line 19a"
+     ],
+     "cols_pages": [
+      89,
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
   "s1.alimony_paid": {
    "subject_sha": "2011457fddc3d61887858b9036e07c14037bd11928db782cb162c540c50f0cb5",
    "samples": [
@@ -616,6 +654,56 @@
       34
      ],
      "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "s1.state_disability": {
+   "subject_sha": "504232b4fe948c8cc2fef6c1a28cf56f76ff8890475d9637954d9efbd58cb264",
+   "samples": [
+    {
+     "verdict": "MATCH",
+     "findings": [],
+     "prompt_sha": "af77deea25e0aa451a0ff55fc156633875a17eded4e18853f8ef9c28fcaa4d26",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.041932,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/s1.state_disability.504232b4fe94.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Sick pay, \"A state sickness or disability fund.\"",
+      "p. 4, Sick pay, \"you must include in your income sick pay benefits received from any of the following payers\" and \"A state sickness or disability fund.\"; , Holdings, \"Amounts paid to the employee by the State as medical leave benefits that are attributable to the employer’s contribution pursuant to the State’s PFML statute are included in Employee B’s gross income under § 105\"; , \"a State or an employer is not required to follow the income tax withholding and reporting requirements applicable to third-party sick pay\""
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    },
+    {
+     "doc": "rr-2025-4",
+     "revision": "Rev. Rul. 2025-4 (IRB 2025-7); not year-specific; effective for payments made on or after January 1, 2025, with 2025 a transition period for reporting",
+     "text_sha256": "a684c9ce673a677027737d3c1c78e24dddb1556fff2ca5bf6dd6dc812f427729",
+     "pages": [
+      27,
+      32
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "4233122a946ea3d6cd361f346161d519a2b38d24c27217f96555d2df37a5d4e8"
     }
    ]
   },

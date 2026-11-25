@@ -231,6 +231,15 @@ from the parent, so a commit cannot widen the list it is judged by. `tools/tier_
 that every reference to a docs-tier path in the code check-all runs is listed with the
 steps that read it, and that those steps are in the docs tier.
 
+A green record names the tree `git add -A` would commit (`tools/green.sh`, `worktree_tree`): tracked
+files as they are in the working tree, untracked files included, ignored files excluded. A check that
+lists or searches the repository's files therefore reads that same set, through `tools/worktree_files.py`
+(`files`, `tree`, `grep`, with a self-test that plants an untracked, an ignored and a deleted file):
+`tier_paths.py --self-test` scans untracked code, `check_bug_inventory.py` finds placeholders in untracked
+files (and `new_bug.py --assign` rewrites them there), `siblings.py --check` measures form and review-log
+changes against that tree, and `doc_figures.py` treats an untracked file as a change from the release
+commit. So a run made before `git add` checks what the commit will hold.
+
 `npm run check-all-bg` (`tools/check_all_bg.sh`) runs the same suite on a snapshot of
 the working tree in `.git/check-all-worktree`, detached, so the main tree can be
 edited while it runs (`--wait` runs it in the foreground; `--tier` as above; `--status`
@@ -638,8 +647,10 @@ A federal year can be adopted before New York's. `years.json` lists New York's a
 check-all checks New York for a year. For a year not listed, check-all skips every `ny_*` step, listing each in its
 wave as skipped with the reason and counting them at the run's start and end, and the New York render runs only
 when `forms/ny/<year>/` exists. Without `forms/ny/<year>/` the build skips, with a note in its output, every
-conflict check (`interview/<year>/conflict_checks.yaml`) that names a New York gate. Adopting New York for a year
-is adding it to `ny_adopted`.
+conflict check (`interview/<year>/conflict_checks.yaml`) that names a New York gate, and its reader check counts as
+read every federal line that the latest earlier year's New York forms read (`nyReadIds`, `engine/src/build.ts`;
+the output names them), so lines New York alone reads are kept. Adopting New York for a year is adding it to
+`ny_adopted`.
 
 - The New York-only tools (`ny_predict.py`, `ny_fixtures.py`, `extract_ny_tax_table.py`,
   `extract_ny_household_tables.py`, `engines/ny_policyengine.py`) are in New York mode without the flag and refuse
@@ -1029,7 +1040,7 @@ note and checked once a value is staged, so the relabel goes in with the staging
   given in the merge that brings the entries onto main, by whoever merges: `git merge --no-ff --no-commit
   <branch>`, then `python3 tools/new_bug.py --assign`, which appends every pending entry in the tree to the
   inventory in name order (numbers compared as numbers) with the next ids, rewrites each placeholder to its
-  id in every tracked file, deletes the pending files and prints `BUG-NEW-<name> -> BUG-NNNN` per entry for
+  id in every file of the tree (tracked or untracked, not ignored), deletes the pending files and prints `BUG-NEW-<name> -> BUG-NNNN` per entry for
   the merge's commit message; then `git add -A`, a check-all run of that tree, and `git commit` (pre-commit
   refuses a tree no green run tested, and runs the merge check; `tools/commit_tested.sh` refuses a staged
   index, so it does not conclude a merge). Many findings at one landing go
@@ -1042,7 +1053,7 @@ note and checked once a value is staged, so the relabel goes in with the staging
   `tools/siblings.py --check` requires such an entry to have `- **Fix lines:**` and `- **Siblings checked:**`.
   What the checks hold: on every tree, the inventory extends HEAD's byte for byte with ids gapless from
   BUG-0001; every pending file is one well-formed entry under its own name; every pending file committed at
-  HEAD is present and unchanged; every placeholder in a tracked file names a pending file. On a merge
+  HEAD is present and unchanged; every placeholder in a file of the tree (tracked or untracked, not ignored) names a pending file. On a merge
   (pre-commit, which runs on a merge concluded with `git commit`, so a merge that assigns must be made with
   `--no-commit`): every parent's inventory is a prefix of the merge's, so no entry is rewritten, dropped or
   renumbered and no id is reused; what the merge appends after the longest parent's inventory is exactly
@@ -1052,6 +1063,10 @@ note and checked once a value is staged, so the relabel goes in with the staging
   merge that assigned it. Its review-refresh test (a sibling form's review log changed) applies only to the
   entries the tree under test adds or changes over HEAD, measured from HEAD; a committed entry keeps the
   verdict of the commit that added it, so a later change to another form does not make its siblings due again.
+  An entry under test is due only when the tree changes a form of the year (`forms/<year>/<doc>.yaml`) that
+  defines one of its Fix lines, so one commit may carry several fixes without each making the others'
+  sibling forms due; a changed path under `forms/<year>/` that names no current document (a removed or
+  renamed form) makes every entry under test due.
 - **Bug status** (`tools/bug_status.py`, step `bug_status`, docs tier). The inventory is append-only, so an
   entry's status is derived, never edited in: from its own fields (`Status`, `Disposition`, a fix field), then
   from later entries that close it (a `Closes:` field, or the title conventions older entries used, such as

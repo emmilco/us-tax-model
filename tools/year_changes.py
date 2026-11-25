@@ -718,6 +718,23 @@ def finish(tree, st, r, added_inputs):
             for rid, op in r.removed.items():
                 if rid in strings and rid not in bank_inputs:
                     r.fail(op, f"dangling: interview/{name} still names the removed {rid}")
+    # A marked computed line of a form (printed "(...)", engine/src/build.ts's reader check) that the from-year reads
+    # and no line reads once the operations are applied: the operations removed or rewrote its readers, and the build
+    # would refuse it as unread. Remove it too, or give it a reader (or a display reason).
+    read_before, readers = set(), {}
+    for f in tree.forms.values():
+        for l in f["doc"].get("lines") or []:
+            for ref in reads_of(l):
+                read_before.add(norm(ref))
+                readers.setdefault(norm(ref), []).append(l["id"])
+    read_after = {norm(ref) for l in lines.values() for ref in reads_of(l)}
+    for lid in sorted(read_before - read_after):
+        if (lid in idx and st.forms[idx[lid][0]]["key"] == "form" and not is_input(lines[lid])
+                and str(lines[lid].get("printed", "")).startswith("(") and not lines[lid].get("display")):
+            by = readers.get(lid, [])
+            op = next((r.removed.get(x) or r.touched.get(x) for x in by if r.removed.get(x) or r.touched.get(x)), None)
+            r.fail(op, f"unread: {lid}, read in the earlier year by {', '.join(sorted(by))}, is read by no line once the "
+                       "operations are applied (remove_line it, or give it a reader)")
     bank_inputs = {q.get("input") for q in st.bank}
     asked = {lid for lid, (f, _) in idx.items() if st.forms[f]["key"] == "form"}  # a definition's inputs are bound
     r.new_inputs = sorted(lid for lid in r.touched if lid in asked and is_input(lines[lid]) and lid not in base_inputs(tree))
@@ -1804,6 +1821,12 @@ def self_test():
             ("a removed line still read", {"changes": GOOD + "    - remove_line: {line: fa.wages}\n"
                                            "    - remove_question: {input: fa.wages}\n"},
              "dangling: fa.line2 still reads the removed fa.wages"),
+            ("a computed line left with no reader", {"changes": GOOD + "    - set:\n        line: fa.flag_if\n"
+                                                    "        field: expr\n        from: {op: choose, alternatives: [{guard: "
+                                                    "{op: test, gt: [fa.wages, {const: 0}]}, then: fa.flag}, {guard: {op: "
+                                                    "test, le: [fa.wages, {const: 0}]}, then: fa.no}]}\n"
+                                                    "        to: {op: test, gt: [fa.wages, {const: 0}]}\n"},
+             "unread: fa.no, read in the earlier year by fa.flag_if"),
             ("a removed input still asked", {"changes": GOOD + "    - remove_line: {line: fa.bonus}\n"
                                              "    - set: {line: fa.line2, field: label, from: Add line 1 and the bonus, to: x}\n"},
              "question left"),

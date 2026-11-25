@@ -249,6 +249,74 @@
     }
    ]
   },
+  "rental.not_at_risk": {
+   "subject_sha": "c276d5ec4704f78e38fa32d7e93728f1decb1d3f5b1c7aa2e43b9eecd971a635",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "The filer has a nonrecourse mortgage from a bank that also receives a fee because of the filer's investment in the property (for example, a lender tied to the promoter or broker). The filer reads it as a mortgage from a regular lender and answers No.",
+       "source_text": "i1040se p. 3, Qualified person: \"A qualified person cannot be: ... A person who receives a fee due to your investment in real property (or a person related to that person).\"",
+       "why": "Such a lender is not a qualified person, so the loan is not qualified nonrecourse financing and is not at risk. Neither the question nor its help excludes fee-receiving lenders from \"regular lender\".",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The rental real property was placed in service before 1987 and has seller financing or other nonrecourse debt. The filer truthfully answers Yes.",
+       "source_text": "i1040se p. 3, At-Risk Rules: \"the at-risk rules do not apply to losses from an activity of holding real property placed in service before 1987.\"",
+       "why": "For pre-1987 real property, the at-risk rules and Form 6198 do not apply. The question never excludes these properties, so a Yes wrongly sends the filer to Form 6198 and ends the interview.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer has a nonrecourse loan for the rental that is secured by the filer's own home or other property not used in the rental. The filer answers Yes because no one owes it personally.",
+       "source_text": "i1040se p. 3: \"Nonrecourse loans ... that are not secured by your own property (other than property used in the activity)\"",
+       "why": "Only nonrecourse loans not secured by the filer's own outside property are listed as not at risk. The question's \"owed by no one personally\" also catches loans that are secured by the filer's other property.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "The filer has a nonrecourse loan from the seller, or from a related nonbank, that is guaranteed by a federal, state or local government. The help tells the filer to answer Yes for a seller loan.",
+       "source_text": "i1040se p. 3, Qualified nonrecourse financing: \"Loaned or guaranteed by any federal, state, or local government, or borrowed by you from a qualified person.\"",
+       "why": "A government-guaranteed nonrecourse loan is qualified nonrecourse financing whoever the lender is. The question only spares a mortgage \"from a bank, government or other regular lender\", and the help says \"Yes for a loan from the seller\".",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "066cdb0f5f1da5f9657cf04de267487f9bbf5418f77a688d9232e0c96d0ea3fa",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.076564,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/rental.not_at_risk.c276d5ec4704.1.response.txt"
+    }
+   ],
+   "type": "Bool",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      3,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, At-Risk Rules, \"In most cases, you are not at risk for amounts such as the following\", and Qualified nonrecourse financing",
+      "p. 7, Line 21, \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss\""
+     ],
+     "cols_pages": [
+      3,
+      7
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
   "rental.prerental": {
    "subject_sha": "11226c24933ab152effb70360110ffdaa8a2342abccbc2f609aee885990a805a",
    "samples": [

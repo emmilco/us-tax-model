@@ -653,25 +653,12 @@
 - Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"all":[{"eq":["dependent.own_child_if_qss",{"const":true}],"op":"test"},{"eq":["dependent.child_all_year",{"const":true}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `household.qss_child_conflict`
-
-- **Authored helper label:** A child is listed, but no child listed lived with you for all of 2025
-- **Encoded (Bool):** helper "Number of people listed as your son, daughter or stepchild (not a foster child, grandchild or other descendant)" > 0 (a count) and helper "Number of people listed as your son, daughter or stepchild who lived with you for all of 2025" = 0 (a count)
-- Expr: `{"all":[{"gt":["household.qss_children_listed",{"const":0,"type":"Count"}],"op":"test"},{"eq":["household.qss_children_all_year",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
-
-## (helper) — `household.qss_child_conflict_if_claimed`
-
-- **Authored helper label:** Qualifying surviving spouse tests answered Yes, and a child is listed but none lived with you all of 2025 (false when the tests were answered No)
-- **Encoded (Bool):** Choose — [helper "Do all five qualifying surviving spouse tests apply to you?" = true → helper "A child is listed, but no child listed lived with you for all of 2025"] [helper "Do all five qualifying surviving spouse tests apply to you?" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["household.qss_eligible",{"const":true}],"op":"test"},"then":"household.qss_child_conflict"},{"guard":{"eq":["household.qss_eligible",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
-- Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
-
 ## (gate) — `household.qss_child_not_all_year`
 
 - **Authored helper label:** Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children listed lived with you for all of 2025
-- **Encoded (Bool):** Choose — [helper "Filing status qualifying surviving spouse" = true → helper "Qualifying surviving spouse tests answered Yes, and a child is listed but none lived with you all of 2025 (false when the tests were answered No)"] [helper "Filing status qualifying surviving spouse" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["household.qss",{"const":true}],"op":"test"},"then":"household.qss_child_conflict_if_claimed"},{"guard":{"eq":["household.qss",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- **Encoded (Bool):** helper "Number of people listed as your son, daughter or stepchild (not a foster child, grandchild or other descendant)" > 0 (a count) and helper "Number of people listed as your son, daughter or stepchild who lived with you for all of 2025" = 0 (a count)
+- Note: A child is counted only through dependent.own_child_if_qss, which is asked only when qualifying surviving spouse is checked and its tests answered Yes and is false otherwise, so no child is listed on any other return.
+- Expr: `{"all":[{"gt":["household.qss_children_listed",{"const":0,"type":"Count"}],"op":"test"},{"eq":["household.qss_children_all_year",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.rdp`

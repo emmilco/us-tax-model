@@ -1065,19 +1065,12 @@
 - Expr: `{"op":"input","source":"Is any money you put in, or any debt on it, owed by no one personally (other than a mortgage on it from a bank, government or other regular lender), protected from loss by a guarantee, stop-loss or similar arrangement, or lent by someone with a stake in it?"}`
 - Cite: [i1040se] p. 3, At-Risk Rules, "In most cases, you are not at risk for amounts such as the following", and Qualified nonrecourse financing (2025; sha256 ad71de35)
 
-## (gate) — `rental.not_at_risk_if_loss`
+## (gate) — `rental.not_at_risk_if_reported`
 
-- **Authored helper label:** Asked only when the property has a loss (false otherwise)
-- **Encoded (Bool):** Choose — [helper "Line 21 is a loss" = true → helper "Some investment not at risk"] [helper "Line 21 is a loss" = false → helper "No (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["rental.has_loss",{"const":true}],"op":"test"},"then":"rental.not_at_risk"},{"guard":{"eq":["rental.has_loss",{"const":false}],"op":"test"},"then":"rental.no"}],"op":"choose"}`
+- **Authored helper label:** Asked of every rental reported on Schedule E, in a year with a loss or with income (false otherwise)
+- **Encoded (Bool):** Choose — [helper "The property is reported on Schedule E (not excluded)" = true → helper "Some investment not at risk"] [helper "The property is reported on Schedule E (not excluded)" = false → helper "No (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["rental.reported",{"const":true}],"op":"test"},"then":"rental.not_at_risk"},{"guard":{"eq":["rental.reported",{"const":false}],"op":"test"},"then":"rental.no"}],"op":"choose"}`
 - Cite: [i1040se] p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss" (2025; sha256 ad71de35)
-
-## (helper) — `rental.has_loss`
-
-- **Authored helper label:** Line 21 is a loss
-- **Encoded (Bool):** line 21 < $0
-- Expr: `{"lt":["rental.line21",{"const":0}],"op":"test"}`
-- Cite: [i1040se] p. 7, Line 21 (2025; sha256 ad71de35)
 
 ## (helper) — `rental.nondep`
 
@@ -1104,7 +1097,7 @@
 
 - **IRS:** Deductible rental real estate loss after limitation, if any, on Form 8582
 - **Encoded (Dollars):** Subtract helper "Loss with prior-year unallowed loss, less the Part VII unallowed loss (the loss line 22 reports)" from helper "Zero".
-- **Refusal:** when rental.not_at_risk_if_loss is true, cannot complete Form 6198 (at-risk limits). A rental loss with an amount not at risk is outside this tool. Cite: [i1040se] p. 2, At-Risk Rules (2025; sha256 ad71de35)
+- **Refusal:** when rental.not_at_risk_if_reported is true, cannot complete Form 6198 (at-risk limits). A rental with an amount not at risk is outside this tool, in a year with a loss and in a year with income (when the amount at risk falls below zero, losses deducted earlier are recaptured). Cite: [i1040se] p. 2, At-Risk Rules; p925 p. 19, At-Risk Limits, "If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero" (2025; sha256 ad71de35)
 - **Refusal:** when rental.nondep_income is true, cannot complete Form 8582 (rental of nondepreciable property, income recharacterized as nonpassive). Net income from renting land, or property whose buildings were under 30% of its cost, is treated as nonpassive when Form 8582 limits other losses, and is outside this tool. Cite: [p925] p. 16, Rental of Nondepreciable Property, "less than 30% of the unadjusted basis of the property is subject to depreciation" (2025; sha256 dda751f0)
 - Expr: `{"from":"rental.zero","op":"subtract","take":"rental.loss_after_p7"}`
 - Cite: [i1040se] p. 8, Line 22 (2025; sha256 ad71de35)

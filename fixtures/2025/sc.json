@@ -1508,6 +1508,43 @@
           }
         }
       }
+    },
+    {
+      "id": "sc.employer_counts_for_ny",
+      "covers": [
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1151 mutation fixture, predicted by hand before recording: three Schedules C: (a) receipts $100,000, wages paid $20,000, employees, net profit $80,000; (b) receipts $30,000, no employees, net profit $30,000; (c) receipts $10,000, wages paid $10,000, employees, net profit $0. The New York small business helpers count the businesses with employees (a and c: 2), those with employees and a profit (a: 1), and total those profits ($80,000).",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "a",
+          "b",
+          "c"
+        ],
+        "person[taxpayer].sc[a].line1": 10000000,
+        "person[taxpayer].sc[a].employees": true,
+        "person[taxpayer].sc[a].line26": 2000000,
+        "person[taxpayer].sc[b].line1": 3000000,
+        "person[taxpayer].sc[b].employees": false,
+        "person[taxpayer].sc[c].line1": 1000000,
+        "person[taxpayer].sc[c].employees": true,
+        "person[taxpayer].sc[c].line26": 1000000
+      },
+      "expect": {
+        "person[taxpayer].sc_employer_count": {
+          "kind": "count",
+          "value": 2
+        },
+        "person[taxpayer].sc_employer_profit_count": {
+          "kind": "count",
+          "value": 1
+        },
+        "person[taxpayer].sc_employer_profit": {
+          "kind": "money",
+          "cents": 8000000
+        }
+      }
     }
   ]
 }

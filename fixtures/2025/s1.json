@@ -1634,6 +1634,38 @@
           }
         }
       }
+    },
+    {
+      "id": "s1.state_disability.refused",
+      "covers": [
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the archived sources before evaluating: single, Form W-2 wages $40,000; the filer also received medical leave benefits from a state paid family and medical leave program, not reported on a Form W-2. p525 p. 4, Sick pay: sick pay benefits from 'A state sickness or disability fund' are income; rr-2025-4 p. 27, Holdings: the part of state medical leave benefits attributable to employer contributions is included in gross income under section 105, and for 2025 the state need not report it as third-party sick pay (p. 32). The taxable part is not known from the filer's papers, so the Yes refuses at Schedule 1 line 9, the line the refusal is placed on. BUG-1405.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 4000000,
+        "person[taxpayer].w2[a].box3": 4000000,
+        "person[taxpayer].w2[a].box5": 4000000,
+        "s1.state_disability": true
+      },
+      "expect": {
+        "s1.line9": {
+          "kind": "refusal",
+          "gate": "s1.state_disability",
+          "form": "State disability or medical leave benefits not on a Form W-2 (Pub. 525, Sick pay; Rev. Rul. 2025-4)",
+          "remedy": "Disability or medical leave benefits from a state program or a plan a state requires, when not reported on a Form W-2, are outside this tool, since the taxable part depends on who paid for the coverage.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 4, Sick pay, \"A state sickness or disability fund.\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
     }
   ]
 }

@@ -477,88 +477,78 @@
    ]
   },
   "gate:sb.foreign_trust_any": {
-   "subject_sha": "9126c379e845289466cddf720564d94170563306de48d77c92ff792147267d6c",
+   "subject_sha": "cc9b1ea91dd55ed5d919d5025defd04c5f2eefef0f566c392bdcb757ffd46701",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer or spouse is a beneficiary of, or set up, a trust run from New York. A co-trustee or protector who can veto distributions is a nonresident alien living in the U.S., such as a parent on a long-term visa. Or the trustee is the U.S. branch of a foreign bank, or a foreign-organized company with a U.S. office.",
-       "why_no": "The gate asks only about a trust 'outside the United States', one that 'has a trustee abroad', or one where 'anyone abroad can make or veto a decision'. Here the trust is administered in the U.S. and everyone involved is physically in the U.S., so the filer truthfully answers no. The trust is still foreign because a non-U.S. person can veto a substantial decision.",
+       "pattern": "7",
+       "who": "A filer who set up, funds, or benefits from a trust that has only U.S. trustees and only U.S. decision-makers and is run day to day in a U.S. state. Its instrument names a foreign court or foreign governing law, or has a flight clause that moves the trust abroad if a U.S. court acts, so no court in the 50 states or D.C. has primary supervision.",
+       "why_no": "The gate asks only about a trust 'that is outside the United States, has a trustee abroad, or in which anyone other than a U.S. citizen, U.S. resident or U.S. company can make or veto a decision.' This trust is administered in the U.S. by U.S. trustees with no foreign decision-maker, so each clause is truthfully no. The gate never states the court test, which the line 8 help does explain.",
        "line": "sb.line8_if_foreign; sb.trust_owner_if_foreign",
-       "irs_text": "cfr-26-301-7701-7 p. 4: 'Control ... to make all of the substantial decisions of the trust, with no other person having the power to veto any of the substantial decisions'; p. 2: 'One or more United States persons have the authority to control all substantial decisions of the trust (control test)'; Example 1: 'C is a nonresident alien ... The control test is not satisfied'",
+       "irs_text": "cfr-26-301-7701-7 p. 1-2: 'A trust is a United States person if— (i) A court within the United States is able to exercise primary supervision over the administration of the trust (court test)'; the safe harbor requires that '(iii) The trust is not subject to an automatic migration provision'; 'The term foreign trust means any trust other than a domestic trust.'",
        "severity": "high",
-       "fix": "Ask whether anyone who is not a U.S. citizen, green-card holder or U.S. company (wherever they live), or anyone outside the 50 states and DC, is a trustee or can make or veto any decision of the trust. Also ask whether any court outside the 50 states and DC supervises it."
+       "fix": "Add to the gate: 'or a trust whose governing documents name a court or law outside the 50 states and D.C., direct that it be run outside the U.S., or move it abroad on some event (if you are not sure, answer Yes).' Better, state the court test and the control test in the gate's help, as the line 8 help already does."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer set up or funded a foreign trust in 2012 and has had no contact with it since. The trust still existed in 2025.",
-       "why_no": "The gate asks whether they 'have, or did you have at any time in 2025, anything to do with a trust'. The filer reads this as active involvement during 2025 and answers no, because the funding happened long before 2025.",
+       "who": "A filer, or the filer's spouse, who created a foreign trust or transferred assets to one years ago (for example in 2012). The trust still existed in 2025, but the filer had no dealings with it during 2025.",
+       "why_no": "The gate reads 'have, or did you have at any time in 2025, anything to do with a trust ... as the person who set it up, gave, sold or lent anything to it.' Many filers will take 'in 2025' to apply to the setting up or giving, and answer no because nothing happened that year.",
        "line": "sb.line8_if_foreign; sb.trust_owner_if_foreign",
-       "irs_text": "i1040sb p. 3, Line 8: 'If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520'",
+       "irs_text": "i1040sb p. 3, Line 8: 'If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520'; i3520 p. 1, item 2: 'Note: You are required to complete Part II even if there have been no transactions involving the trust during the tax year.'",
        "severity": "medium",
-       "fix": "Add: 'This includes a trust you set up or gave, sold or lent anything to in any earlier year, if the trust still existed at any time in 2025, even if you had no contact with it in 2025.'"
+       "fix": "Reword the gate as 'Have you (or your spouse) ever set up, or at any time given, sold or lent anything to, such a trust that still existed at any time in 2025, whether or not anything happened in 2025?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer is not a named beneficiary of a foreign trust. A foreign trust guarantees the filer's bank loan, or secures or pays the filer's credit card charges, for example a family trust abroad backing a relative's mortgage.",
-       "why_no": "The money came from a bank, so the filer believes they 'received' nothing from the trust. Because they are not a beneficiary, they also see no 'may receive'.",
+       "who": "A filer who stayed rent-free in a family villa or apartment abroad that a relative's foreign trust owns, or who borrowed from such a trust. It also covers a filer whose bank loan or credit card is guaranteed or secured by the trust's assets, or whose card charges the trust pays.",
+       "why_no": "The gate's 'received or may receive anything from it in any way' does not mention loans, free use of property or guarantees. Filers see a borrowed sum, a bank loan or a family holiday home as not 'receiving' anything from a trust, and may not see themselves as having 'anything to do with' it. Unlike the line 8 question, the gate shows no examples.",
        "line": "sb.line8_if_foreign",
-       "irs_text": "i3520 p. 4, Distribution: 'if charges you make on a credit card are paid by a foreign trust or guaranteed or secured by the assets of a foreign trust, the amount charged will be treated as a distribution'; 'without regard to whether the recipient is designated as a beneficiary'; 'a loan by an unrelated third party that is guaranteed by a foreign trust is generally treated as a loan from the trust'",
+       "irs_text": "i3520 p. 4: 'used any property owned by a foreign trust without paying FMV within a reasonable amount of time, the amount of such loan or the FMV of the use of trust property will be treated as a distribution'; 'a loan by an unrelated third party that is guaranteed by a foreign trust is generally treated as a loan from the trust'; 'if charges you make on a credit card are paid by a foreign trust or guaranteed or secured by the assets of a foreign trust, the amount charged will be treated as a distribution.'",
        "severity": "medium",
-       "fix": "Add to the gate: 'or did it pay, guarantee or secure any loan, credit card or bill of yours, or let you use its property, even if you are not a beneficiary?'"
+       "fix": "List these in the gate itself: 'including a loan from it, a loan or credit card it guarantees or secures or pays, or free or below-market use of a home, car or other property it owns, even if a relative arranged it.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer receives an inheritance from a relative abroad. Under foreign law, the inheritance is held and paid out by a testamentary trust or similar fiduciary arrangement, not paid directly by the estate.",
-       "why_no": "The filer thinks of it as an inheritance from an estate, not as anything to do with 'a trust or family foundation', and answers no.",
+       "who": "A U.S. lawyer, consultant or seller who was paid by a foreign trust for services or property worth less than the payment, for example $100 for services worth $20. The filer is not a beneficiary.",
+       "why_no": "The filer sees the payment as a fee or a sale price, not as 'receiving anything' from the trust. The filer is not a family member, grantor or beneficiary, so 'anything to do with a trust or family foundation' reads as not applying to an arm's-length business dealing.",
        "line": "sb.line8_if_foreign",
-       "irs_text": "i3520 p. 4, Distribution: 'A distribution includes the receipt of a trust corpus and the receipt of a gift or bequest described in section 663(a)'",
+       "irs_text": "i3520 p. 4, Distribution: 'if you receive a payment from a foreign trust in exchange for property transferred to the trust or services rendered to the trust, and the FMV of the payment you received exceeds the FMV of the property transferred or services rendered, the excess will be treated as a distribution to you'; 'without regard to whether the recipient is designated as a beneficiary.'",
        "severity": "medium",
-       "fix": "Add: 'This includes an inheritance or gift paid to you by a trustee, executor or similar arrangement abroad; if you are not sure whether it was a trust, answer Yes.'"
+       "fix": "Add to the gate: 'including payments for work or property you provided to such a trust, even as an outside professional or buyer.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who received gifts, money or paid expenses from a foreign relative or an intermediary, where the money actually came from a foreign trust. A second case is a filer who is a partner or shareholder of a company that gave property to a foreign trust without a business purpose.",
+       "why_no": "The filer knows only of a gift from a person or of the company's act, and not of any trust, so 'anything to do with a trust or family foundation' is answered no. The phrase 'directly or through another person or company' is attached to giving, not to receiving, and filers do not see a company's transfer as their own.",
+       "line": "sb.line8_if_foreign",
+       "irs_text": "i3520 p. 1, item 3: 'received, directly or indirectly, a distribution from a foreign trust'; i3520 p. 5, Grantor: 'If a partnership or corporation makes a gratuitous transfer to a trust, the partners or shareholders are generally treated as the grantors of the trust'; i3520 p. 6, Reportable Event: 'The transfer of any money or property, directly or indirectly, to a foreign trust by a U.S. person.'",
+       "severity": "medium",
+       "fix": "Add 'including money or property that reached you through a relative, another person or a company, and transfers to such a trust by a company or partnership you own part of; if you are not sure where a gift came from, answer Yes.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer is a U.S. resident with a foreign retirement or savings arrangement organized as a trust, or holds a foreign fixed 'unit trust' investment classified as a trust. They contributed to it or received payments from it in 2025.",
-       "why_no": "The gate's examples, 'trust or family foundation', suggest a family arrangement. The filer sees a pension or an investment fund, not a trust, and answers no. The territory part of the gate does not reach foreign countries.",
-       "line": "sb.line8_if_foreign; sb.trust_owner_if_foreign",
-       "irs_text": "i3520 p. 4: 'A foreign trust is any trust other than a domestic trust'; p. 6, Owner: 'the person that is treated as owning any of the assets of a foreign trust under the rules of sections 671 through 679'; p. 6, Reportable Event: 'The transfer of any money or property, directly or indirectly, to a foreign trust by a U.S. person'",
+       "who": "A filer, or the filer's spouse, who holds a foreign tax-favored savings or pension arrangement set up legally as a trust that the filer can draw on, such as a Canadian TFSA or an individual foreign pension trust that is not exempt. Such an arrangement can make the filer the owner of a foreign grantor trust.",
+       "why_no": "The filer thinks of it as a savings or retirement account, not a 'trust or family foundation,' and may already have reported it as a foreign account elsewhere. The gate's wording suggests family estate planning.",
+       "line": "sb.trust_owner_if_foreign; sb.line8_if_foreign",
+       "irs_text": "i3520 p. 1, item 2: 'is treated as the owner of any part of the assets of a foreign trust under the rules of sections 671 through 679'; i3520 p. 5: 'A grantor trust is any trust to the extent that the assets of the trust are treated as owned by a person other than the trust'; i8938 p. 8: 'Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans.'",
        "severity": "medium",
-       "fix": "Name these in the gate: 'including a pension, retirement, savings or investment plan or fund abroad that is set up as a trust (if you are not sure, answer Yes)'. Classify after a broad yes."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer or spouse is a beneficiary of a trust governed by a Puerto Rico or Guam court and receives distributions from it in 2025.",
-       "why_no": "The first part of the gate says 'outside the United States', and the filer counts Puerto Rico as inside it. The territory part asks whether they 'have ... a trust in Puerto Rico'. A beneficiary does not 'have' a trust (the settlor or trustee does), so the filer answers no to both parts.",
-       "line": "sb.line8_if_foreign",
-       "irs_text": "cfr-26-301-7701-7 p. 2: 'a court within a territory or possession of the United States or within a foreign country is not a court within the United States'",
-       "severity": "medium",
-       "fix": "Change the territory part to: 'have, receive anything from, give anything to, or have any role in a trust governed or run in Puerto Rico, Guam or another U.S. territory'. Also state in the first part that territories count as outside the United States."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer earlier funded a domestic trust. In 2025 that trust transferred property to a foreign trust, so the filer is treated as the grantor of the foreign trust.",
-       "why_no": "The gate mentions giving 'through another person or company'. The filer does not see a trust as a person or company, and they made no transfer to anything foreign themselves.",
-       "line": "sb.line8_if_foreign",
-       "irs_text": "i3520 p. 5, Grantor: 'If a trust makes a gratuitous transfer to another trust, the grantor of the transferor trust is treated as the grantor of the transferee trust'",
-       "severity": "low",
-       "fix": "Change to 'directly or through another person, company or trust (including a trust you set up that later gave to a foreign trust)'."
+       "fix": "Add to the gate: 'This includes a foreign savings, pension, education or investment plan set up as a trust (for example a Canadian TFSA or RESP), even if you think of it as an account; if you are not sure, answer Yes.'"
       }
      ],
-     "prompt_sha": "01d8f1efd96771309614fee69942f6e114239a1ee292feda6660413aeb053289",
+     "prompt_sha": "2ccdf929ebb6394ab2041579f28f200791a97d221a9dd034340860112fb60855",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.260436,
+     "cost": 0.28346799999999994,
      "date": "2026-11-24",
-     "response": ".transcription/false_no/gate_sb.foreign_trust_any.9126c379e845.1.response.txt"
+     "response": ".transcription/false_no/gate_sb.foreign_trust_any.cc9b1ea91dd5.1.response.txt"
     }
    ],
    "condition": "sb.foreign_trust_any",

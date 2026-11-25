@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "8fd72a7d39055c993bf1c46ae4705708b18c1216159ecc3e21c3eaf6becfcfce",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,9 +15,9 @@
   },
   {
    "key": "1z",
-   "record": "b78cea891198fec1bcb100f4a1435e4ddce039d00089298ac4d5e0ced7904c86",
+   "record": "2cf0ad27602f6ba6b92cfbef70cd1cb64a57a9a2e02d9a07044d78fe69adbf15",
    "status": "MATCH",
-   "subject_key": "9560beb0441fc3ac81bf890a99ce22ce15ce6ba7dd460dd3164a2bfa67019ce4"
+   "subject_key": "10b5cba8b67bed6b543ec66826dbac9a61013ce47eb6a218cff87f4bffb86a4f"
   },
   {
    "key": "2",
@@ -168,14 +168,14 @@
   },
   {
    "key": "21",
-   "record": "b78cea891198fec1bcb100f4a1435e4ddce039d00089298ac4d5e0ced7904c86",
+   "record": "2cf0ad27602f6ba6b92cfbef70cd1cb64a57a9a2e02d9a07044d78fe69adbf15",
    "status": "MATCH",
-   "subject_key": "5c9ce759f9d7602d57feedb262f5d28c4341626725e1bdf3d9e32555780f3550"
+   "subject_key": "8a5877e3d849c71d3e435c3de053bb1b9e27b731fcf4b0951777f56aa0431102"
   }
  ],
  "subjects": {
   "1a": "948c5bdb2766ad5ed74cbb3ecc7e370cef081b3b5fc0e996e63782a1b301ec54",
-  "1z": "f58833d533fc98aca10d6810d2fd2ee5d24bd991cecfc8baf24400d94ec47378",
+  "1z": "c4db1b8e37c5562c8122ee5073a3e20a84edbef6f565e60ac3351072ec5f176e",
   "2": "858c5741670d944da4a7a875a8da1b965f3723a58ab724abf4fbbe32acb85f5e",
   "3": "092dce3698e41b666202e25927d6d429a51b8315eb175bfae2cf9419b6e941ae",
   "4": "9cd8a4c296c43b06d436f6de558fe38ee0931e30d2d7f91c46bde228c1854ab2",
@@ -188,7 +188,7 @@
   "12": "6dbad47708090452ab64badbfae748c2775653d7f1abc4bddc60b27e8667b8eb",
   "17c": "a634180d4d96db525cb16d296104480aba08fef9c4715e22d96515cb216272e5",
   "18": "fd1ecf75160d713065c2e2e6a006b979e93d58cd0f0d70a13fac86bc885396d9",
-  "21": "2e487761f3be65a4180d1c8073918d12f15d32db99489867b05eab51014ab8aa"
+  "21": "919ec3c16d982d97b851037632963e2075c6686fc64e6874a1e768a91ecb72d7"
  },
  "__rest__": "62e1e78bc43403c82fc8dd83ac8b2f3e5535a2a722b2af4193ee0376b12e6cd6"
 }

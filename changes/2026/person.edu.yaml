@@ -37,7 +37,7 @@ changes:
       own, i8863 Tip) and tests the dependent student''s own valid SSN (dependent.work_ssn_known). The American opportunity
       credit''s fifth requirement now says one spouse suffices, which settles amb.2025.edu_filer_tin; its register entry is
       to be retired with the register operations (plan D4, lane R3). Both sides are changed in step: reviews/2026/twins.json
-      must drop the differences of the removed lines (person.edu_student_itin, the edu_llc_tin_refused pair, edu_line31''s
+      must drop the differences of the removed lines (person.edu_student_itin, the edu_llc_tin_refused pair and person.edu_tin_missing, edu_line31''s
       first refusal, dependent.edu_tin_issued) and restate the label differences with these values.'
     operations:
     - set:
@@ -152,14 +152,14 @@ changes:
     - remove_line:
         line: person.edu_student_itin
     - set:
-        line: person.edu_aoc
+        line: person.edu_aoc_rules
         field: label
-        from: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s
+        from: 'Lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution''s
           EIN is available'
-        to: 'An American opportunity credit student: lines 23 to 26 allow it, you, or your spouse if filing jointly, have
-          a valid SSN, and the institution''s EIN is available'
+        to: 'Lines 23 to 26 allow the American opportunity credit for this student, you, or your spouse if filing jointly,
+          have a valid SSN, and the institution''s EIN is available'
     - set:
-        line: person.edu_aoc
+        line: person.edu_aoc_rules
         field: cite.locator
         from: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
           "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
@@ -275,6 +275,8 @@ changes:
               as having paid) qualified education expenses in 2026."
     - remove_line:
         line: person.edu_llc_tin_refused
+    - remove_line:
+        line: person.edu_tin_missing
   - change: C-CRED-20
     evidence:
     - doc: i8863

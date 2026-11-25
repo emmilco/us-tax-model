@@ -1422,6 +1422,50 @@
   },
   {
    "printed": "22",
+   "project_expr_sha256": "d0c28a42bd8da7e00b2cd86405c748f3bfdf9ae178d865d9aa7a201ed0b2e310",
+   "second_expr_sha256": "c4b538b6ef67ccf20742faaa7344b5f8d951cf00c470fbdef4b0199e6443ee0b",
+   "ruling": "Ruling: model error; the project's line 22 is 0 less the larger of zero and (Part IV/V column (b) plus column (c)) less Part VII column (c), as Form 8582 directs, and the hand-predicted fixtures mrental.f8582.part5_income_and_loss (-$6,000), mrental.f8582.magi_one_cent_over (-$2,000) and x1sche.f7.royalty_magi (-$10,000) give the project's values; the reply restates Form 8582 from scratch and returns $0 there (executable triage rental.json, this pass: 24 value differences, all on such fixtures). The line changed only in its refusal gate (rental.not_at_risk_if_reported, BUG-1341), which the reply does not restate. Project stands.",
+   "context": "665ec1d31c095011f0747c2aba060ba75a3c74c877a51cf1117e522e623329b1",
+   "date": "2026-11-24",
+   "run": "986539a1391ac1ef2104f9b447754cf94e7db393fdd69ffd481332dde924eadd",
+   "subject_key": "434139254a17a075bd6b4435158c49a535863e604e4c88b16101aacbd737f67a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2.deepseek@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:mrental.f8582.part5_income_and_loss@rental[a]",
+     "fixture:mrental.f8582.magi_one_cent_over@rental[a]",
+     "fixture:x1sche.f7.royalty_magi@rental[a]",
+     "fixture:x1sche.f13.part4_and_part5@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "fixture:mrental.rental.excluded_home_beside_a_loss@rental[a]",
+     "fixture:bfr.rental.nondep_land_income_refused@rental[a]",
+     "fixture:bfr.rental.nondep_house_on_costly_land_refused@rental[a]",
+     "fixture:rental.not_at_risk.income_year@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[a].active@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[a].not_at_risk@rental[a]",
+     "partial:classm.f8582.1.deepseek-rental[b].land_heavy@rental[b]",
+     "partial:classm.f8582.1.deepseek-rental[b].not_at_risk@rental[b]",
+     "partial:classm.rental.2.deepseek-rental[a].not_at_risk@rental[a]",
+     "partial:f8582.refuse.prior_crd-rental[a].rents@rental[a]",
+     "partial:f8582.refuse.prior_crd-rental[a].active@rental[b]",
+     "partial:f8582.refuse.prior_crd-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f7.royalty_magi-rental[a].days_fair@rental[a]",
+     "partial:x1sche.f7.royalty_magi-rental[a].days_personal@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22",
    "project_expr_sha256": "e0f0da295d48ae3a1d81660ad692f34042fb4ab3da9d44ee3a22f3a003b566f2",
    "second_expr_sha256": "79a8ed5067851418da07003f928fc1b8f2a8830f8ff2dd160fe88019751f36e5",
    "ruling": "Ruling: representation; triage 505/596: the one completed difference is the ratio rounding (x1sche.f8 -$1,332.57 vs -$1,333.08, amb.2025.rental_use_ratio_places); the rest are project refusals (home, self-rental, rental.ws51) or the reply's refusal of a real estate professional where the project refuses at sche.re_pro, and partial records. The reply's shown_when (h_show22) hides nothing the project shows on a completed return.",

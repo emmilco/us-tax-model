@@ -35,8 +35,13 @@ Copies fixtures/<from>/ to fixtures/<to>/ (refusing to overwrite) and re-derives
     takesDefaults) states every input its return reads, so an input the year adds would be unanswered in it and
     every value reading it unknown. It is given, as stated answers, the defaults the add_question operations
     state for the new inputs, at every key those defaults give the case that it does not answer (new_answers: the
-    engine resolves the case against those defaults alone, as for a file that takes them); the report lists them. An expectation the carry would
-    re-record from a known value to unknown is listed in the report, never re-recorded silently.
+    engine resolves the case against those defaults alone, as for a file that takes them); the report lists them.
+    Such a case is also given the carried default of a from-year input it does not answer where the new year newly
+    reads it: an input that an expectation known in the from-year now waits on (newly_read: the unknown value names
+    the input); the case is resolved as a file that takes the carried defaults, only those keys are kept, and it is
+    evaluated again, until no such input is left; the report lists them. An expectation the carry would still
+    re-record from a known value to unknown is listed in the report, never re-recorded silently, with the input it
+    waits on or, when the year's own refusals stop the return before it, the refusing gates.
 
 Writes reports/<to>/fixtures_from_<from>.md.
 
@@ -164,7 +169,21 @@ def self_test():
     ok5 = got5 == {"a": {"f1040.status": "single"}}
     print("fixtures-year self-test: a no-defaults case is given a new input's default it does not answer: "
           + ("as expected" if ok5 else f"WRONG ({got5})"))
-    return 0 if ok and all(refused) and ok2 and ok3 and ok5 else 1
+    # The inputs a year newly reads: those an expectation known before now waits on, and the case does not answer.
+    money, unk = {"kind": "money", "cents": 1}, {"kind": "unknown", "reason": "r"}
+    cases6 = [{"id": "a", "inputs": {"x.b": 1}, "expect": {"l1": money, "l2": money, "l3": unk, "l4": money}},
+              {"id": "e", "inputs": {}, "expect": {"l1": money}}]
+    results6 = {"a": {"l1": {"value": {**unk, "input": "x.a"}}, "l2": {"value": {**unk, "input": "x.b"}},
+                      "l3": {"value": {**unk, "input": "x.c"}}, "l4": {"value": money}},
+                "e": {"error": "bad"}}
+    got6 = newly_read(cases6, results6)
+    ok6 = got6 == {"a": {"x.a"}}
+    ref = {"kind": "refusal", "gate": "g.one"}
+    ok6 = ok6 and not_reached({"l1": {"value": ref}, "l2": {"value": ref}}, "k") == "not reached: the return is refused (g.one)"
+    ok6 = ok6 and not_reached({"k": {"value": money}}, "k") == ""
+    print("fixtures-year self-test: the from-year inputs a year newly reads (an expectation known before now waits on "
+          "an unanswered input; one unknown before, or answered, is not): " + ("as expected" if ok6 else f"WRONG ({got6})"))
+    return 0 if ok and all(refused) and ok2 and ok3 and ok5 and ok6 else 1
 
 
 def carry_defaults(d, ops):
@@ -209,6 +228,40 @@ def new_answers(cases, year, entries, ny=False):
     finally:
         Path(path).unlink()
     return {cid: added for cid in own if (added := {k: v for k, v in taking[cid].items() if k not in own[cid]})}
+
+
+def newly_read(cases, results):
+    """{case id: input keys}: for each case, the input keys it does not answer on which an expectation that is known
+    in the case (the from-year's value) waits in `results` (the to-year's derivations): an unknown value naming its
+    input. A from-year value that was already unknown does not count, so an input a case leaves open on purpose stays
+    open."""
+    out = {}
+    for c in cases:
+        r = results.get(c["id"]) or {}
+        if "error" in r:
+            continue
+        keys = set()
+        for key, old in (c.get("expect") or {}).items():
+            new = (r.get(key) or {}).get("value") or {}
+            if old.get("kind") != "unknown" and new.get("kind") == "unknown" and new.get("input"):
+                keys.add(new["input"])
+        keys -= set(c["inputs"])
+        if keys:
+            out[c["id"]] = keys
+    return out
+
+
+def not_reached(derivations, key):
+    """Why an expected key has no derivation: the return refuses before reaching it (the gates of the refusals the
+    evaluation records, most frequent first), or nothing recorded."""
+    if key in derivations:
+        return ""
+    gates = collections.Counter(v["value"].get("gate") for v in derivations.values()
+                                if isinstance(v, dict) and isinstance(v.get("value"), dict)
+                                and v["value"].get("kind") == "refusal" and v["value"].get("gate"))
+    if not gates:
+        return "not reached (no derivation, no refusal recorded)"
+    return "not reached: the return is refused (" + ", ".join(g for g, _ in gates.most_common(3)) + ")"
 
 
 def plain_defaults(d):
@@ -374,10 +427,43 @@ def main():
             resolved.update(resolve_cases(refill, t, jurisdiction.J == "ny", defaults))
         except ValueError as e:
             sys.exit(f"fixtures {f} -> {t}: {e}")
-    Path(carried.name).unlink()
     for c in all_cases:
         c["resolved"] = resolved[c["id"]]
     results = evaluate(all_cases, t)
+    # A case that takes no defaults is given the carried default of a from-year input the year newly reads
+    # (newly_read), round by round, since an answer may let the evaluation reach another such input.
+    read_filled = collections.defaultdict(dict)
+    for _ in range(5):
+        wants = newly_read([c for c in all_cases if no_default_file(c["file"])], results)
+        if not wants:
+            break
+        round_cases = [c for c in all_cases if c["id"] in wants]
+        try:
+            taking = resolve_cases([{**c, "file": "carry-read-inputs.json"} for c in round_cases], t,
+                                   jurisdiction.J == "ny", defaults)
+        except ValueError as e:
+            sys.exit(f"fixtures {f} -> {t}: {e}")
+        given = {c["id"]: g for c in round_cases if (g := {k: taking[c["id"]][k] for k in sorted(wants[c["id"]])
+                                                             if k in taking[c["id"]]})}
+        if not given:
+            break
+        refill = [c for c in round_cases if c["id"] in given]
+        for c in refill:
+            c["inputs"].update(given[c["id"]])
+            read_filled[c["id"]].update(given[c["id"]])
+        try:
+            again = resolve_cases(refill, t, jurisdiction.J == "ny", defaults)
+        except ValueError as e:
+            sys.exit(f"fixtures {f} -> {t}: {e}")
+        for c in refill:
+            c["resolved"] = again[c["id"]]
+        results.update(evaluate(refill, t))
+    for c in all_cases:
+        if c["id"] in read_filled:
+            c["evidence_note"] = (f"Carried from {f}: answered {', '.join(sorted(read_filled[c['id']]))} with the {f} "
+                                  f"default(s) of the input(s) the {t} definitions newly read. "
+                                  + c.get("evidence_note", "")).strip()
+    Path(carried.name).unlink()
 
     failed, expect_dropped, to_unknown = [], [], []
     for c in all_cases:
@@ -403,7 +489,7 @@ def main():
             if comparable(new) != comparable(old):
                 changed.append(key)
                 if new.get("kind") == "unknown" and old.get("kind") != "unknown":
-                    to_unknown.append((c["id"], key, new.get("reason", "")))
+                    to_unknown.append((c["id"], key, new.get("reason", "") or not_reached(derivations, key)))
             lines, ps = rests_on(derivations, key)
             resting |= (lines & work_lines) | {"#" + p for p in ps & work_params}
         c["expect"] = new_expect
@@ -462,6 +548,12 @@ def main():
                 f"{len(filled)} cases)", "",
                 "Each answer is the default the year's add_question states for the input: "
                 + ", ".join(f"`{k}` {n}" for k, n in by_input.most_common()) + ".", ""]
+    if read_filled:
+        by_input = collections.Counter(template(k) for answers in read_filled.values() for k in answers)
+        out += [f"## From-year inputs the year newly reads, answered in cases that take no defaults "
+                f"({sum(by_input.values())} answers in {len(read_filled)} cases)", "",
+                f"Each answer is the carried default of an input the case did not answer, on which an expectation "
+                f"known in {f} waited in {t}: " + ", ".join(f"`{k}` {n}" for k, n in by_input.most_common()) + ".", ""]
     if to_unknown:
         out += [f"## Expectations re-recorded from a known value to unknown ({len(to_unknown)})", "",
                 "A value the case asserted is unknown in the new year: an input the year reads that the case does not "
@@ -500,7 +592,8 @@ def main():
           f"({sum(len(x[2]) for x in answers_dropped)} case answers to a removed input were its default and dropped; "
           f"{len(stating)} differ from it; {len(expect_dropped)} expectations on removed lines dropped; "
           f"{sum(len(x) for x in filled.values())} new-input answers given to {len(filled)} cases that take no "
-          f"defaults; {len(to_unknown)} expectations re-recorded from a known value to unknown)")
+          f"defaults; {sum(len(x) for x in read_filled.values())} answers to newly read {f} inputs given to "
+          f"{len(read_filled)} such cases; {len(to_unknown)} expectations re-recorded from a known value to unknown)")
     print(f"fixtures {f} -> {t}: {kept} kept, {rerecorded} re-recorded, {len(failed) + len(marked)} not evaluated "
           f"({len(marked)} stating a removed input, {len(failed)} rejected), {len(dropped)} official examples dropped; "
           f"hand-work: {'skipped' if a.no_hand_work else len(hand)} document(s); report: {report.relative_to(ROOT)}")

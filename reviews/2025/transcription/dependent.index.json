@@ -2,195 +2,208 @@
  "kind": "transcription",
  "form": "dependent",
  "family": "claude",
- "base": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+ "base": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
  "lines": [
   {
    "key": "dependent.dc_lived_half",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as ruled on this line on 2026-11-15 and 2026-11-23: the reply tests the months only (months >= 7, or the born-or-died part-year answer), while the project's line also holds for a person other than a qualifying child who lived with the filer all year as a member of the household (i1040gi p. 21, Exception to time lived with you). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,701 of 5,436 agree; completed value witness xleak.spouse_relative.household_member_all_year_unanswered (months 0, lived all year): project Yes, reply No.",
+   "ruling": "Ruling: model error; as ruled on this line on 2026-11-15 and 2026-11-23: the reply tests the months only (months >= 7, or the born-or-died part-year answer), while the project's line also holds for a person other than a qualifying child who lived with the filer all year as a member of the household (i1040gi p. 21, Exception to time lived with you). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,701 of 5,436 agree; completed value witness xleak.spouse_relative.household_member_all_year_unanswered (months 0, lived all year): project Yes, reply No. (carried over from reviews/2025/transcription/dependent.index.json at 6b3a9a03, review of 2026-11-24)",
    "subject_key": "6f5ee32b94711ed8e40d4e3f90c48746ae23da91bd7505ce5c01d51765f4083d"
   },
   {
    "key": "dependent.one",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "AGREE",
    "subject_key": "36a9e4cdf461fbe353aff7dbe06def65892970175b715f9ff9990899ec1f06b9"
   },
   {
    "key": "dependent.claimed",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 18, Step 2, joint return. The reply tests dependent.joint_return directly; the project reads the joint-return test through dependent.married, whose question includes 'is a joint return being filed for 2025 that includes this person'. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 3,263 of 5,436 agree; the completed value witnesses (classm.f8960.1, classm.ssb.4, classm.clcw_next_year.3, stage21.f1.lower_bound_still_decides) answer married No and joint_return Yes, a contradiction of the two questions (the married question already counts a joint return); the remaining differences are unknowns on inputs one side reads without the other's parent question, or refusals on refused returns.",
+   "ruling": "Ruling: model error; i1040gi p. 19, Step 4, \"Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn't violate local law\". The reply accepts relationship household_member as a Step 4 relative without the all-year answer (dependent.qr_all_year, which counts temporary absences) and the local-law answer (dependent.lawful) that the project asks; the completed value witnesses (generated returns 135 and 269) answer household_member with qr_all_year No: project No, reply Yes. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,209 agree.",
    "subject_key": "bfd57c8f1388aa63b0c87993a45963d6b901240b8307aeaf6f7dec6cc7452a10"
   },
   {
    "key": "dependent.ctc_child",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where one side is unknown or refuses on a partial or generated input state (completed: 2 candidate-refuses on generated return 126, 6 candidate-unknown); no value differs on any completed return. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,227 of 5,436 agree.",
+   "ruling": "Ruling: representation; no value differs on any completed return: the differences are unknowns where one side reads an answer the other asks only behind its parent question, refusals on refused or generated returns; 2 values differ only on refused returns. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,657 agree.",
    "subject_key": "97d381143a1bf6a7d2008f43b2a42bdba7776b923492f8fea133f8bda0ee0f13"
   },
   {
    "key": "dependent.odc_person",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as dependent.claimed: the completed value witnesses (classm.f8960.1 and others) answer the person's married question No and the joint-return question Yes, which contradict each other; the project reads the joint-return test through dependent.married. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 3,388 of 5,436 agree; no difference on consistent answers.",
+   "ruling": "Ruling: model error; follows dependent.claimed (the reply's Step 4 household member without the all-year and local-law answers, i1040gi p. 19); the same completed witnesses (generated returns 135 and 269): project No, reply Yes. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,380 agree.",
    "subject_key": "d41e7b6e83e7afdc372a190fb842e2e758da29b3ec43ede2861661c3b4d73d4d"
   },
   {
    "key": "dependent.ctc_amount",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; follows dependent.ctc_child; no value differs on any completed return. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,227 of 5,436 agree.",
+   "ruling": "Ruling: representation; no value differs on any completed return: the differences are unknowns where one side reads an answer the other asks only behind its parent question, refusals on refused or generated returns; 2 values differ only on refused returns; follows dependent.ctc_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,657 agree.",
    "subject_key": "a9e59e1933e64ced49272d8cbbcba3fd2094496590804b40df8607f7fdb5720a"
   },
   {
    "key": "dependent.odc_amount",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; follows dependent.odc_person (same witnesses with contradictory married and joint-return answers). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 3,388 of 5,436 agree.",
+   "ruling": "Ruling: model error; follows dependent.odc_person and dependent.claimed (i1040gi p. 19, Step 4 household member); the same completed witnesses (generated returns 135 and 269). executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,380 agree.",
    "subject_key": "c52daeae352a078e92f0352beec420774f556c2eca548c34c092145c575681fa"
   },
   {
    "key": "dependent.actc_amount",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; follows dependent.ctc_child; no value differs on any completed return. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,227 of 5,436 agree.",
+   "ruling": "Ruling: representation; no value differs on any completed return: the differences are unknowns where one side reads an answer the other asks only behind its parent question, refusals on refused or generated returns; 2 values differ only on refused returns; follows dependent.ctc_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,657 agree.",
    "subject_key": "fbae4626bb6ab0104e423c298fee464d69d38a33395e5ab4efbea17e62b7cab2"
   },
   {
    "key": "dependent.hoh_test2_lived",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as ruled on this line on 2026-11-23: the reply takes the months lived with the filer alone, without the person being the filer's dependent or qualifying child (i1040gi p. 15, Test 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): completed value witness stage8.single.dependent.household_and_ssn (12 months, not a Test 2 person): project No, reply Yes.",
+   "ruling": "Ruling: model error; as ruled on this line on 2026-11-23: the reply takes the months lived with the filer alone, without the person being the filer's dependent or qualifying child (i1040gi p. 15, Test 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): completed value witness stage8.single.dependent.household_and_ssn (12 months, not a Test 2 person): project No, reply Yes. (carried over from reviews/2025/transcription/dependent.index.json at 6b3a9a03, review of 2026-11-24)",
    "subject_key": "f307aa5e4e9cb91ce38f79277d33fc1233441725527581f54d6554c547a4faf1"
   },
   {
    "key": "dependent.hoh_absence",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; no value differs on any compared input; the differences are unknowns and refusals on partial or refused states. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,222 of 5,436 agree.",
+   "ruling": "Ruling: representation; no value differs on any completed return: the differences are unknowns where one side reads an answer the other asks only behind its parent question, refusals on refused or generated returns. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,770 agree.",
    "subject_key": "a43d69cc6efafc97508bd6445b9dafc487e6b42002b4d3e09a6a4c5c11639517"
   },
   {
    "key": "dependent.hoh_test2",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as ruled on this line on 2026-11-23: the reply leaves out the absence rule (p501 p. 9, temporary absences count only if the person is expected to return). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): completed value witness t091r.absence.second_child_clean: project No, reply Yes.",
+   "ruling": "Ruling: model error; as ruled on this line before: the reply leaves out the absence rule (p501 p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence\"). Completed value witness t091r.absence.second_child_clean: project No (dependent.absence_no_return Yes), reply Yes. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,498 agree.",
    "subject_key": "d0a3b777b60caca740554d89d2455f9e5b4cfbca723e015dae48ebf2a5297b5d"
   },
   {
    "key": "dependent.hoh_test1",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage except where one side is unknown or refuses on a partial state; no completed-return difference. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 5,125 of 5,436 agree.",
+   "ruling": "Ruling: representation; no value differs on any completed return: the differences are unknowns where one side reads an answer the other asks only behind its parent question, refusals on refused or generated returns. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 4,510 agree.",
    "subject_key": "332017268ceed29f37ff0455aab78532b7d3b200a992530e3ee8ffb1c10ed183"
   },
   {
    "key": "dependent.eic_child",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on this line on 2026-11-23: the reply's EIC tests are the project's (i1040gi p. 41, Step 3); no completed-return value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,386 of 5,436 agree.",
+   "ruling": "Ruling: representation; as ruled on this line on 2026-11-15: the reply's EIC tests (relationship, age, not filing a joint return, lived with you in the United States over half the year, i1040gi p. 41, Step 3) are the project's; the project refuses the tie-breaker, married child and kidnapped child cases (i1040gi p. 44) where the reply reads more answers. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,830 of 5,766 agree; on completed returns 86 candidate-unknown, 1 project-unknown, no value difference.; every difference is an unknown or a refusal. No change to the data. (carried over from reviews/2025/transcription/dependent.index.json at deca6831, review of 2026-11-16)",
    "subject_key": "153b21f8b279ef055a153ece736f28479f1437aa281b8e4e28859fcd8dc99a9a"
   },
   {
    "key": "dependent.eic_ssn_child",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; dependent.eic_child with a valid SSN; no completed-return value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): 4,373 of 5,436 agree.",
+   "ruling": "Ruling: representation; dependent.eic_child with a valid SSN (i1040gi p. 41); the same differences as eic_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,810 of 5,766 agree; on completed returns 85 candidate-unknown, 1 project-unknown, no value difference.; every difference is an unknown or a refusal. No change to the data. (carried over from reviews/2025/transcription/dependent.index.json at deca6831, review of 2026-11-16)",
    "subject_key": "941349a1a296876feb34a12b7bc54841fc09429d7dbbd08e1ce826ac14477a66"
   },
   {
    "key": "dependent.dc_qp",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the line's condition includes 'you have care expenses' (f2441.care); where the filer reports none (stage8.single.dependent.boundaries) the project is No and the reply, which leaves that condition to Form 2441's own gate, Yes. Form 2441 is not completed there, so no printed value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records).",
+   "ruling": "Ruling: representation; as ruled before: the line's condition includes 'you have care expenses' (f2441.care); on every completed value witness the filer reports none (stage8.single.dependent.boundaries, stage8.single.dependent.household_and_ssn, t091.absence.other_tests_unchanged, f1.kidnapped.returned_11, mfsl4.spouse_not_claiming, stage9.eic.one_child.line5: f2441.care No), the project is No and the reply, which leaves that condition to Form 2441's own gate, Yes. Form 2441 is not completed there, so no printed value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 1,855 agree.",
    "subject_key": "b30f6a1bac66eb106d713b7918018291f870385c5cc2a5460e932d5ec124e313"
   },
   {
    "key": "dependent.dc_count",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the project's line is one for every entry and its reader filters on dependent.dc_qp (sum_over where), while the reply folds the qualifying-person test into the count itself; the completed value witnesses (classm.s2.3, classm.f2441.7, classm.f1040.6 and others: project 1, reply 0) are entries the reader's filter excludes or counts the same way. No printed value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records).",
+   "ruling": "Ruling: representation; as ruled before: the project's line is one for every entry and its reader filters on dependent.dc_qp (sum_over where), while the reply folds the qualifying-person test into the count; the completed value witnesses (classm.s2.4, classm.f2441.7, classm.f2441.8, classm.f1040.6, classm.dependent.3: project 1, reply 0) are entries the reader's filter excludes. No printed value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 803 agree.",
    "subject_key": "28c4896a449aa1d2c61aaf367d006d4a6cb1ac45e02be6f49192c1d6b8036958"
   },
   {
    "key": "dependent.ptc_magi_counted",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as ruled on 2026-11-23: the reply leaves out a dependent who had to file: stage18.mut.unclaimed_relative (dependent.ptc_files Yes, MAGI $30,000) gives the project $30,000 and the reply $0 (i8962 household income counts the modified AGI of dependents required to file). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records).",
+   "ruling": "Ruling: model error; the candidate leaves out a dependent who had to file: stage18.mut.unclaimed_relative (dependent.ptc_files Yes, MAGI $30,000) gives the project $30,000 and the candidate $0 (i8962 household income counts the modified AGI of dependents required to file a return). One value witness; the rest are unknowns on partial input states. (carried over from dependent.rulings.json, matched by triage kinds and witnesses, review of 2026-11-23)",
    "subject_key": "dd10004047f7df6787584fd3246b248ac4ea5d3c2f801a666199adc66af29fc7"
   },
   {
-   "key": "dependent.edu_adj",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "key": "dependent.edu_student",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, line 3. Both add lines 2a, 2b and 2c; the project counts them only for an eligible student of the return (dependent.edu_student), zero otherwise. Part III reads the line only for an eligible student, and the new reader f8863.adj_dep (the BUG-0932 notice) should not count a student no credit is figured for. The one completed value witness (generated return 279: project $0, reply $3,840.14) is a student who is not an eligible student of the return. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records).",
-   "subject_key": "fe37d83eb0c13a7a8f140644a8f0cd38f12ab762be3a59da821aedce593c4678"
+   "ruling": "Ruling: model error; i8863 p. 1, Form 1098-T requirement, \"the law requires a taxpayer (or a dependent) to have received Form 1098-T\" (with its exceptions), and p. 4, Student qualifications, 6. The reply leaves out the Form 1098-T answer (dependent.edu_1098t); completed value witness f8863.adj_notice_not_eligible_student (dependent k0, edu_1098t No): project No, reply Yes. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 2,096 agree.",
+   "subject_key": "3adfcec085110b0b6c7ae6d5fb6645a40588dc365749bd6846b3b25a42e66575"
+  },
+  {
+   "key": "dependent.edu_adj_sum",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
+   "status": "AGREE",
+   "subject_key": "84561ae353973bd08912a82e36b4ed91d6df7fc3b78e9e83e54c62ff34639f7f"
+  },
+  {
+   "key": "dependent.edu_aoc_rules",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; follows dependent.edu_student (i8863 p. 1, Form 1098-T requirement): the same completed witness f8863.adj_notice_not_eligible_student, project No, reply Yes; the reply also leaves the filers' TINs and the EIN (i8863 p. 4, Student qualifications 5 and 7) to other lines. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 2,098 agree.",
+   "subject_key": "67f5a8fb237323a5a0ca5c5499de72f81b29e26e28080813a86d2fc4a6c25fd5"
   },
   {
    "key": "dependent.own_child_if_qss",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 15, Qualifying Surviving Spouse, \"2. You have a child or stepchild (not a foster child)\". The line asks dependent.own_child (son, daughter or stepchild) only for a person listed as a child on a qualifying-surviving-spouse return with its tests answered Yes, and is No otherwise (BUG-1277). The reply replaces it with the qualifying-child tests (age, residency, support, claimants), which do not decide whether the person is the filer's own child or stepchild and never read dependent.own_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return difference (the line is read only on such returns).",
+   "ruling": "Ruling: representation; i1040gi p. 15, Qualifying Surviving Spouse, test 2. The reply asks dependent.own_child for a child on every qualifying-surviving-spouse return; the project asks it only when the tests were answered Yes (household.qss_claimed). They differ only where the tests were answered No, a return refused by household.qss_fails (9 values, all on refused returns); no completed-return value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 4,704 agree.",
    "subject_key": "e6bad732dec0fa389b925d4bd0f641f180eef174dba417c68d0ada0750139880"
   },
   {
    "key": "dependent.child_all_year",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the line is 'listed as your child, and lived with you for all of 2025' (relationship child and dependent.lived_all_year); the son-daughter-stepchild filter of BUG-1277 is applied where it is read (household.qss_children_all_year), not here. The reply makes the line depend on dependent.own_child_if_qss and the qualifying-child tests, so on every return other than a qualifying-surviving-spouse one it is No: completed value witness classm.f8960.1.deepseek, project Yes, reply No. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records).",
+   "ruling": "Ruling: model error; as ruled on this line before: the line is 'listed as your child, and lived with you for all of 2025' (relationship child and dependent.lived_all_year); the son-daughter-stepchild filter is applied where it is read (household.qss_children_all_year). The reply makes it depend on dependent.own_child_if_qss, so it is No on every return other than a qualifying-surviving-spouse one: completed value witnesses classm.f8960.1.deepseek, classm.f1040.1.deepseek and others, project Yes, reply No. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 3,418 agree.",
    "subject_key": "84235914c16f5adc6dec9bc65d0f52d2deadfe41369d4206ce82a46e52dc4db8"
   },
   {
    "key": "2(d)",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the second transcription writes the printed line in terms of the other printed lines and the person tests, the project writes out the gates on the student or qualifying person and the credit choice. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return value differs; the differences are unknowns, refusals on generated return 126, and shown-or-hidden display states on classm.f8960.1 where both have no amount.",
+   "ruling": "Ruling: representation; no value differs on any completed return: the differences are unknowns where one side reads an answer the other asks only behind its parent question, refusals on refused or generated returns; the reply writes the printed line in terms of the other printed lines and the person tests. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 2,514 agree.",
    "subject_key": "6608c493bdc3d6b1d45dcfda0bb392785f7fcdc35af410641d9391bfd73fa451"
   },
   {
    "key": "2(c)",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the second transcription writes the printed line in terms of the other printed lines and the person tests, the project writes out the gates on the student or qualifying person and the credit choice. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return value differs; the differences are unknowns, refusals on generated return 126, and shown-or-hidden display states on classm.f8960.1 where both have no amount.",
+   "ruling": "Ruling: representation; no value differs on any completed return: the differences are unknowns where one side reads an answer the other asks only behind its parent question, refusals on refused or generated returns; one shown-or-hidden display state where both have no amount. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 2,522 agree.",
    "subject_key": "b432d76d539d664b603c0c13f50da18eec4d6f44a613b209b47634d6e54c0b20"
   },
   {
    "key": "27",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the second transcription writes the printed line in terms of the other printed lines and the person tests, the project writes out the gates on the student or qualifying person and the credit choice. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return value differs; the differences are unknowns, refusals on generated return 126, and shown-or-hidden display states on classm.f8960.1 where both have no amount.",
-   "subject_key": "3e7e7ca94035a4a4c801fe79bd962b4d8e646f6a4eba9297686a9fcadee780ee"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution. The reply's lines 27 to 30 follow lines 23 to 26 alone and leave out the ban of i8863 p. 3 (\"Caution: Don't claim the American opportunity credit for 2 years ... or 10 years\") that the project applies through dependent.edu_aoc (f8863.ban_if_aoc; a banned student goes to line 31); no fixture has a dependent student under a ban, so triage does not reach it. Otherwise as ruled before: no completed-return value differs; the differences are unknowns, refusals on generated returns and one shown-or-hidden state where both have no amount. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 1,943 agree.",
+   "subject_key": "82d602166103e006991a0897f0dd34d769524de9919799573f6f56d458a69f71"
   },
   {
    "key": "28",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the second transcription writes the printed line in terms of the other printed lines and the person tests, the project writes out the gates on the student or qualifying person and the credit choice. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return value differs; the differences are unknowns, refusals on generated return 126, and shown-or-hidden display states on classm.f8960.1 where both have no amount.",
-   "subject_key": "108c3922dad4d688a52b72a126a96ae8f42e18cdfd4fcb8825e9b440aae1617e"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution. The reply's lines 27 to 30 follow lines 23 to 26 alone and leave out the ban of i8863 p. 3 (\"Caution: Don't claim the American opportunity credit for 2 years ... or 10 years\") that the project applies through dependent.edu_aoc (f8863.ban_if_aoc; a banned student goes to line 31); no fixture has a dependent student under a ban, so triage does not reach it. Otherwise as ruled before: no completed-return value differs; the differences are unknowns, refusals on generated returns and one shown-or-hidden state where both have no amount. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 1,943 agree.",
+   "subject_key": "e2f8a5308b37ca68c92385e4753326cbed1b96f07575c58eb430accbcabeeb5f"
   },
   {
    "key": "29",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the second transcription writes the printed line in terms of the other printed lines and the person tests, the project writes out the gates on the student or qualifying person and the credit choice. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return value differs; the differences are unknowns, refusals on generated return 126, and shown-or-hidden display states on classm.f8960.1 where both have no amount.",
-   "subject_key": "02ed83197dc24000d60c3fca39eb3ce49b088ae46d0361b940d8a0e69d3cda48"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution. The reply's lines 27 to 30 follow lines 23 to 26 alone and leave out the ban of i8863 p. 3 (\"Caution: Don't claim the American opportunity credit for 2 years ... or 10 years\") that the project applies through dependent.edu_aoc (f8863.ban_if_aoc; a banned student goes to line 31); no fixture has a dependent student under a ban, so triage does not reach it. Otherwise as ruled before: no completed-return value differs; the differences are unknowns, refusals on generated returns and one shown-or-hidden state where both have no amount. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 1,943 agree.",
+   "subject_key": "0e61d79d09a5f3a9c4a657c71995f335d72725b6a3afdff605ee2abe5b5fc2c2"
   },
   {
    "key": "30",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the second transcription writes the printed line in terms of the other printed lines and the person tests, the project writes out the gates on the student or qualifying person and the credit choice. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return value differs; the differences are unknowns, refusals on generated return 126, and shown-or-hidden display states on classm.f8960.1 where both have no amount.",
-   "subject_key": "d406146a991fda4574fc691d00aeee4a9e710822ca8cb5f8d65ae82000c74ae3"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution. The reply's lines 27 to 30 follow lines 23 to 26 alone and leave out the ban of i8863 p. 3 (\"Caution: Don't claim the American opportunity credit for 2 years ... or 10 years\") that the project applies through dependent.edu_aoc (f8863.ban_if_aoc; a banned student goes to line 31); no fixture has a dependent student under a ban, so triage does not reach it. Otherwise as ruled before: no completed-return value differs; the differences are unknowns, refusals on generated returns and one shown-or-hidden state where both have no amount. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 1,943 agree.",
+   "subject_key": "19646592c5d5680ecab7ede3626b93376eca3e89d914ecc68924c3213ee0fe45"
   },
   {
    "key": "31",
-   "record": "3dda4bb35b125a2dca86fce8c0cb4637d5c4f71f473cccdd12b45589ba054c66",
+   "record": "73e22538cad513d081bf456ecec6489b47cf95a0946e56ab26aa2ab8fe713bbd",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; as ruled on 2026-11-23: the second transcription writes the printed line in terms of the other printed lines and the person tests, the project writes out the gates on the student or qualifying person and the credit choice. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,761 fixtures, 500 generated returns seed 20261026, 1,724 partial records): no completed-return value differs; the differences are unknowns, refusals on generated return 126, and shown-or-hidden display states on classm.f8960.1 where both have no amount.",
-   "subject_key": "ed206aee94dcabca82c043de25781f93df649e6e1716fbd50ab834cecc864650"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution, and p. 4, Tip (a student who cannot have the American opportunity credit may have the lifetime learning credit). The reply completes line 31 only for a student sent there by lines 23 to 26, so a student under a ban (f8863.ban_if_aoc) gets neither credit; the project sends that student to line 31. No fixture has a dependent student under a ban, so triage does not reach it; otherwise no completed-return value differs. executable-triage-v2 (.transcription/triage/2025/dependent.json; fixtures, 500 generated returns seed 20261026, partial records; 4,871 compared): 1,936 agree.",
+   "subject_key": "0d6c4140b88500cad1566ab1c66e762d1b5bbb0f66be018e2eef126ae0c11ed9"
   }
  ],
  "subjects": {
@@ -211,16 +224,18 @@
   "dependent.dc_qp": "fe3a52c909642fe6cd1b6d819f08781be4971f8d5f22e192847ca05746de410a",
   "dependent.dc_count": "6e8b475ab185eebd8f897a7b2cceeb2d4e5cd73e196df35ea0733c70f0d819bd",
   "dependent.ptc_magi_counted": "36df5490d8f688e7658883a287843703bab79f3f934b09b65ce08c22d8b425d8",
-  "dependent.edu_adj": "ac5b280890bdc4b0d84b952e3034aefa9c7cffd58350f6acd250352e932f2710",
+  "dependent.edu_student": "e71f2c3a5b7b499648964c5c71830f46bf02ca3cdfec3bf9353bdd6130d5e42a",
+  "dependent.edu_adj_sum": "bd90557359d6a9dfdbb6f0fa29a1d3714d0b4193ca7e238511a7d7fb05a4420b",
+  "dependent.edu_aoc_rules": "178c98ff23ed4a81f2b36c78a873cade5a18dbe6b2b5265f6a31559885ffa86a",
   "dependent.own_child_if_qss": "effb8b930f89160e49ffeb175186a1798bc3b6240d71db240aaec19bf0f15ddc",
   "dependent.child_all_year": "a8a372e104187c679558a4b763ba9f6c79c85421eaf4529497bb75071f51cb54",
   "2(d)": "6faf1113aa356288a673539fcea4f79987679379134872eaaa4cb6b8e4be2418",
   "2(c)": "b068413b089cbddaa6649279b8e7b37737d074ba655e1385ba2ae91866afbf44",
-  "27": "b7af0a0423e31f859f294c54e80b41cce6de870d08bfb9273cb01c97c8fe7e98",
-  "28": "1c43346b39bb98fa860501d10661e1947acbaac41566f46bc38df77b3b0d206c",
-  "29": "d4f8921d65dba9909445581b4c444563fd4f8a71e46156129ad53f7d16e874cd",
-  "30": "396cb5f8c1a717e723a483658bb184079174170364391c60d597eeff4e4edda7",
-  "31": "f1d7fc1c397516ed4554ae4f696364a50608f4ee8bb29c57d821ba366b0371ea"
+  "27": "2e258dad4c3a8c3d12f8898982d9f69b0ce2c342f88cd071f8d5b082eda5b1bd",
+  "28": "873ca9ffcb7af5d5e90099c5843d9b8bc4a5ac6f26ad32d55ee4cb6a570d6002",
+  "29": "f0919f6cb4be8255c55109e3dc28babdacd198c2a225f1a5ad5b7a1fa88d99a9",
+  "30": "f7b2814c61cbfd55356ad9e9e962a8e8e4bada48eed40f11f646bf4026cb79b6",
+  "31": "3fedc9aee7a863d8e80aaa79730b225fd8427d3e1fc3d56a16f99bc00804c0f2"
  },
  "__rest__": "f028e8ebb7d35d80df5faee4808d2ffdf5d99bfea35f697361138bde2dc82f12",
  "foreign": {
@@ -241,15 +256,17 @@
   "dependent.dc_qp": "3522426ad77b9b0fe78b252bef2b0efcecc93e54468c8484a4d8bb7529f12222",
   "dependent.dc_count": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "dependent.ptc_magi_counted": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
-  "dependent.edu_adj": "d5ee2916a55a52e0df3d1695731ee59710e80f9b48fc143c36f4f10909536ad1",
+  "dependent.edu_student": "75d4f2bcc785178c5a6ea64e7c0454a37bf9fb3a36159c4698321543e8a0c7ce",
+  "dependent.edu_adj_sum": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "dependent.edu_aoc_rules": "91acc4cb2e8431ae7d7b27a246d9a939af64742a785cc2e7d5709e050451aa6f",
   "dependent.own_child_if_qss": "8707624a994cb4c172663d861bf29e8cbacc349ba0001b5a8cae420b8aa68ed7",
   "dependent.child_all_year": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "2(d)": "3522426ad77b9b0fe78b252bef2b0efcecc93e54468c8484a4d8bb7529f12222",
   "2(c)": "3522426ad77b9b0fe78b252bef2b0efcecc93e54468c8484a4d8bb7529f12222",
-  "27": "d645d0d729c7728c8539d3fb97c1f9117b98e2bddd33a7909bc92a523a058e80",
-  "28": "77b1fc3898d5ff4ff7f335480992daafba84bc0a1f2146d10dd76e8112f60f79",
-  "29": "c4bceba80b88fba7891658cd0f1ba85699ba79b378ff13100c03c3094df01a70",
-  "30": "6a82eef6eb425f39a38dc20512bb24e9c69aea30431eabf1af532f56731de9f7",
-  "31": "6e6a4a1ca8541afa68bc185a055ad9fed62689f13ed91971409579999e345691"
+  "27": "740f65d9da7a6bfed1e17ebbfea86bd9b5d52ee3c3b8c019cc0ffe6b4b791067",
+  "28": "5e973a3df8631b8611a5b155ee92000e3e8ae61e0d5f0880258ba612f6b2bc4e",
+  "29": "4f0d1d7e7a096b6f13cfdfff8c525957ee8cc8b45eef1f5c11837d8b65ec7707",
+  "30": "16d1ae0656bb7c94e35e7930a7ce21edd7e1390a2bb883348e0ac6271269336e",
+  "31": "c1d4088c937df024425c6490c01bf7d05cb4ab5207cd3f9cb808194c519a7475"
  }
 }

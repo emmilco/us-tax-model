@@ -287,10 +287,10 @@
   },
   {
    "key": "22",
-   "record": "4f46113da1047f8c2121d237ded400c792462c5af3634808c7e63ea4ed39d27c",
+   "record": "7957ecd6310b88e482ad3efc8b1a1d9f00419fa90de65039aebb32213cc8a332",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8582 p. 13, Part VIII (BUG-0934, owner-approved 2026-11-22). As the ruling of 2026-11-22: the reply takes line 22 from Part VIII column (c) or hides it, so a fully allowed loss becomes $0 or is not shown (mrental.f8582.part5_income_and_loss, -$6,000.00 vs $0; classm.f8582.1, -$2,000.00 vs hidden), against hand-predicted fixtures. Triage executable-triage-v2 (.transcription/triage/2025/rental.json, pass ebf7da51095d): 1244 of 1908 agree; {\"candidate-hides-shown\": 230, \"candidate-refuses\": 20, \"candidate-unknown\": 85, \"project-refuses\": 18, \"project-unknown\": 306, \"value\": 5}; completed {\"candidate-hides-shown\": 103, \"candidate-unknown\": 1, \"project-refuses\": 1, \"value\": 4}. Re-reviewed because the landing merged next's rental lines with advfix's. Project stands.",
-   "subject_key": "2f900c4c9b20520e21e1ecab61fa19ef2836295bd05ef6162b950669b8317f67"
+   "ruling": "Ruling: model error; the project's line 22 is 0 less the larger of zero and (Part IV/V column (b) plus column (c)) less Part VII column (c), as Form 8582 directs, and the hand-predicted fixtures mrental.f8582.part5_income_and_loss (-$6,000), mrental.f8582.magi_one_cent_over (-$2,000) and x1sche.f7.royalty_magi (-$10,000) give the project's values; the reply restates Form 8582 from scratch and returns $0 there (executable triage rental.json, this pass: 24 value differences, all on such fixtures). The line changed only in its refusal gate (rental.not_at_risk_if_reported, BUG-1341), which the reply does not restate. Project stands.",
+   "subject_key": "518809e7a78d58a8cadc1f2dbfdbea6d4873daf704769ef670caa5154871efb0"
   }
  ],
  "subjects": {
@@ -329,7 +329,7 @@
   "VII (c)": "19ce1ac193efe6604091fe89d23df8a0bbdad91daa9031ddd2526162d8680912",
   "VIII (c)": "5ea4d10e2d3101facbde66aa224080d8e2b45f52aac0df83edd1a252c311e944",
   "VIII (b)": "1fe4a47bc248dbc9d1513a53c124a0a0544bc85c085c749bf044bd9de9ad7cec",
-  "22": "fd55e00761e7cbbf3189eb50ee8365cc43e9cf6abacc95281bb788eaad089d9b"
+  "22": "caddb1302f6fd4af001a1d3612a66f7c894a01d81d42ff7f05f04f633f25dea5"
  },
  "__rest__": "681b60bdc083dd78ae7323ddba5dff4f81f79a641a3270f0466ad5585a33a196",
  "foreign": {

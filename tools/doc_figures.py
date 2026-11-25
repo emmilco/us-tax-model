@@ -42,6 +42,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+import worktree_files  # noqa: E402
 
 HANDOFF = Path("HANDOFF-NEXT-SESSION.md")
 README = Path("README.md")
@@ -243,12 +244,11 @@ def git(*args):
 
 
 def releases():
-    """(the release tags reachable from HEAD, newest first; whether the newest is on HEAD with the tracked files
-    unchanged from HEAD's)."""
+    """(the release tags reachable from HEAD, newest first; whether the newest is on HEAD and the tree a green record
+    names, untracked files included (tools/worktree_files.py), is HEAD's)."""
     tags = release_tags((git("tag", "--merged", "HEAD", "--list", "r*") or "").splitlines())
     on_head = bool(tags) and git("rev-parse", f"{tags[0]}^{{commit}}") == git("rev-parse", "HEAD")
-    clean = subprocess.run(["git", "diff", "--quiet", "HEAD", "--"], cwd=ROOT).returncode == 0
-    return tags, on_head and clean
+    return tags, on_head and worktree_files.tree(cwd=ROOT) == git("rev-parse", "HEAD^{tree}")
 
 
 def accepted_tags(tags, release_commit):

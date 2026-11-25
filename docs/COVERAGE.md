@@ -30,14 +30,14 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
 - [Social Security](#social-security) (3)
 - [Self-employment](#self-employment) (31)
 - [State and local tax refunds](#state-and-local-tax-refunds) (9)
-- [Other income and alimony](#other-income-and-alimony) (51)
+- [Other income and alimony](#other-income-and-alimony) (52)
 - [IRA contributions](#ira-contributions) (14)
 - [Health savings accounts](#health-savings-accounts) (13)
 - [Itemized deductions](#itemized-deductions) (11)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (8)
 - [Earned income credit](#earned-income-credit) (3)
 - [Child and dependent care](#child-and-dependent-care) (11)
-- [Education credits](#education-credits) (5)
+- [Education credits](#education-credits) (4)
 - [Home energy credits](#home-energy-credits) (8)
 - [Premium tax credit](#premium-tax-credit) (8)
 - [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (70)
@@ -1041,10 +1041,10 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
   - *Not covered:* Form 8582, Part IV and Part V (prior-year loss from a year without active participation). A held-back loss from a year in which you did not actively participate is outside this tool.
     *Source:* [i8582] p. 4, Part IV
   - *Refused at:* `rental.prior_loss`
-- **`rental.not_at_risk_if_loss`**: Does the rental have a loss with an investment not at risk (Form 6198)?
-  - *The data asks or tests:* Asked only when the property has a loss (false otherwise) (`choose`)
-  - *Not covered:* Form 6198 (at-risk limits). A rental loss with an amount not at risk is outside this tool.
-    *Source:* [i1040se] p. 2, At-Risk Rules
+- **`rental.not_at_risk_if_reported`**: Does a rental have an investment not at risk (Form 6198), in a year with a loss or with income?
+  - *The data asks or tests:* Asked of every rental reported on Schedule E, in a year with a loss or with income (false otherwise) (`choose`)
+  - *Not covered:* Form 6198 (at-risk limits). A rental with an amount not at risk is outside this tool, in a year with a loss and in a year with income (when the amount at risk falls below zero, losses deducted earlier are recaptured).
+    *Source:* [i1040se] p. 2, At-Risk Rules; p925 p. 19, At-Risk Limits, "If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero"
   - *Refused at:* `rental.line22`
 - **`rental.held_for_sale`**: Is the rental property held mainly to sell (as an investment or as a real estate dealer), or open in set business hours for use by many customers, such as a parking lot?
   - *The data asks or tests:* Held mainly for sale (as an investment or by a real estate dealer), or made available in business hours for nonexclusive use by many customers (`input`)
@@ -1141,10 +1141,10 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
   - *Not covered:* Form 6198 (at-risk limits, earlier year). A royalty with Form 6198 on an earlier return, or a loss held back because amounts were not at risk, can carry that loss into 2025 or owe recapture of losses allowed before; this tool does not prepare Form 6198.
     *Source:* [p925] p. 19, At-Risk Limits, "You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year"
   - *Refused at:* `royalty.line21`
-- **`royalty.not_at_risk_if_loss`**: Does a royalty have a loss with an investment not at risk (Form 6198)?
-  - *The data asks or tests:* Asked only when the royalty has a loss (false otherwise) (`choose`)
-  - *Not covered:* Form 6198 (at-risk limits). A royalty loss with an amount not at risk is outside this tool.
-    *Source:* [i1040se] p. 3, At-Risk Rules
+- **`royalty.not_at_risk`**: Does a royalty have an investment not at risk (Form 6198), in a year with a loss or with income?
+  - *The data asks or tests:* Some investment not at risk (`input`)
+  - *Not covered:* Form 6198 (at-risk limits). A royalty with an amount not at risk is outside this tool, in a year with a loss and in a year with income (when the amount at risk falls below zero, losses deducted earlier are recaptured).
+    *Source:* [i1040se] p. 3, At-Risk Rules; p925 p. 19, At-Risk Limits, "If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero"
   - *Refused at:* `royalty.loss_abs`
 - **`sche.re_pro`**: Did you work over 750 hours, and most of your work time, in real estate?
   - *The data asks or tests:* Real estate professional (`input`)
@@ -1185,6 +1185,11 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
   - *The data asks or tests:* Do you have any income for Schedule 1 line 8 other than the items this tool computes? (`test`)
   - *Not covered:* Schedule 1, line 8 (other income this tool does not compute). Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.
     *Source:* [i1040gi] pp. 91–92, Lines 8a Through 8z
+  - *Refused at:* `s1.line9`
+- **`s1.state_disability`**: Did you get state disability or paid medical leave benefits not reported on a Form W-2?
+  - *The data asks or tests:* Did you (or, on a joint return, your spouse) receive in 2025 disability or medical leave benefits under a state program or a plan a state requires, other than amounts reported on a Form W-2? (`input`)
+  - *Not covered:* State disability or medical leave benefits not on a Form W-2 (Pub. 525, Sick pay; Rev. Rul. 2025-4). Disability or medical leave benefits from a state program or a plan a state requires, when not reported on a Form W-2, are outside this tool, since the taxable part depends on who paid for the coverage.
+    *Source:* [p525] p. 4, Sick pay, "A state sickness or disability fund."
   - *Refused at:* `s1.line9`
 - **`s1.uc_unsupported`**: Did you contribute to a governmental unemployment program, or repay unemployment benefits taxed in an earlier year?
   - *The data asks or tests:* Did you (or, on a joint return, your spouse), in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year? (`input`)
@@ -1292,8 +1297,8 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 98, IRA Deduction Worksheet—Continued, Caution, "stop here and use the worksheet in Pub. 590-A to figure your IRA deduction"
   - *Refused at:* `person.ira_line11`
 - **`person.ira_roth_over`**: Are a person's Roth IRA contributions, with any traditional ones, above $7,000 ($8,000 at age 50 or older) or above the compensation, or on a joint return with compensation under $14,000?
-  - *The data asks or tests:* This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay Bailey Hutchison amount (`choose`)
-  - *Not covered:* Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A). Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.
+  - *The data asks or tests:* This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return more than this person's own compensation where the spousal limit cannot raise it (`choose`)
+  - *Not covered:* Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A). Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or, on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.
     *Source:* [p590a] p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA"
   - *Refused at:* `person.x_tax`
 - **`person.ira_roth_income`**: With Roth IRA contributions, is modified AGI $236,000 or more on a joint return, $150,000 or more for single, head of household or separate filers living apart, or above zero for separate filers living together?
@@ -1591,11 +1596,6 @@ The data holds **407 refusal gates**: 354 tax situations the tool does not prepa
 
 ### Education credits
 
-- **`f8863.ban_refused`**: Are you claiming the American opportunity credit after an earlier denial (Form 8862), or within a ban period?
-  - *The data asks or tests:* An American opportunity credit claimed that needs Form 8862 or is barred (`choose`)
-  - *Not covered:* Form 8862, Information To Claim Certain Credits After Disallowance, or a ban on the American opportunity credit. An American opportunity credit after a denial or reduction (other than for a math or clerical error) needs Form 8862, and a credit within a 2- or 10-year ban is not allowed; this tool does not prepare either.
-    *Source:* [i8863] p. 1, Form 8862 may be required, "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit."
-  - *Refused at:* `f8863.line7`
 - **`person.edu_over_refused`**: For you or your spouse as a student: did tax-free assistance and refunds exceed one academic period's own expenses?
   - *The data asks or tests:* Adjustments that exceed one academic period's expenses (`choose`)
   - *Not covered:* Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.
@@ -2121,7 +2121,7 @@ These refuse a return when entered figures contradict each other, or when an ent
     *Source:* [i1040gi] p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."
   - *Refused at:* `f1040.line12e`
 - **`household.qss_child_not_all_year`**
-  - *The data asks or tests:* Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children listed lived with you for all of 2025 (`choose`)
+  - *The data asks or tests:* Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children listed lived with you for all of 2025 (`test`)
   - *Not covered:* Qualifying surviving spouse filing status. Qualifying surviving spouse needs a child or stepchild of yours who lived in your home for all of 2025, but none of the children you listed lived with you all year. Correct the answer about where the child lived, or choose another filing status.
     *Source:* [i1040gi] p. 15, Qualifying Surviving Spouse, "3. This child lived in your home for all of 2025"
   - *Refused at:* `household.qss_fails`

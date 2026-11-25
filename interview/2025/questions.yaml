@@ -730,10 +730,10 @@ bank:
     order: 276
     seq: 3
     help: Your broker's year-end statement shows margin interest. If one loan paid for investments and for something else,
-      count only the investments' share.
+      count only the investments' share. Leave out interest on a loan against a life insurance policy or annuity bought after June 8, 1997.
     prompt: How much interest did you (or, on a joint return, your spouse) pay in 2025 on money borrowed to buy investments?
-      Leave out interest on money used to buy, build or improve your home, and on money that went into tax-exempt bonds or a
-      business.
+      Leave out interest on money used to buy, build or improve your home, and on money that went into tax-exempt bonds, a
+      rental property or a business.
   - input: f4952.carryover
     order: 276
     seq: 4
@@ -813,8 +813,8 @@ bank:
   - input: ftc.statements
     order: 280
     seq: 3
-    help: "Answer No if you paid any of the tax to another country yourself."
-    prompt: "Was all of that income, and the foreign tax on it, reported to you (or, on a joint return, your spouse) on a Form 1099-DIV, a Form 1099-INT, a Schedule K-1 or K-3, or a similar statement?"
+    help: "A statement from a foreign bank or broker does not count. Answer No if you paid any of the tax to another country yourself."
+    prompt: "Was all of that income, and the foreign tax on it, reported to you (or, on a joint return, your spouse) on a Form 1099-DIV or 1099-INT, a Schedule K-3, an estate's or trust's Schedule K-1, or a substitute for one of these forms?"
   - input: ftc.eligible
     order: 280
     seq: 4
@@ -1110,7 +1110,7 @@ bank:
   - input: s2.household_employee
     order: 155
     seq: 4
-    help: "Count only people who work as you direct them, not people who run their own business. Do not count pay to a student who was under 18 in 2025. A Yes means household employment taxes (Schedule H). A Yes ends the interview here."
+    help: "Count cash pay (checks included), not meals or lodging, to people who work as you direct them, not people who run their own business. Leave out your spouse and your child under 21. For the $2,800 test only, leave out a student under 18. A Yes means household employment taxes (Schedule H) and ends the interview here."
     prompt: Did you (or, on a joint return, your spouse) pay any one of them $2,800 or more in 2025, or all of them together
       $1,000 or more in any calendar quarter of 2024 or 2025, or hold back income tax from their pay?
   - input: s2.hsa_testing
@@ -3598,8 +3598,10 @@ bank:
     order: 242
     seq: 1
     help: 'Count only a denial or reduction for 2016 or a later year. Answer No only if, after the last denial or bar, you
-      filed Form 8862 for this credit with a later year''s return and it was allowed. A bar running out is not enough. A Yes
-      ends the interview here.'
+      filed Form 8862 for this credit with a later year''s return and it was allowed. A bar running out is not enough. With
+      a Yes, this return claims no American opportunity credit and figures the lifetime learning credit instead; after a
+      denial (not a bar) you could claim the American opportunity credit by attaching Form 8862, which this tool does not
+      prepare.'
     prompt: Has the IRS ever denied or reduced an American opportunity credit you (or, on a joint return, your spouse)
       claimed, for more than a math or clerical error, or barred you (or, on a joint return, your spouse) from claiming it?
   - input: person.edu_fulltime
@@ -4031,9 +4033,9 @@ bank:
     order: 161
     seq: 1
     group: "money_b"
-    tick: "Alimony paid or received since the start of 2023"
-    help: Child support and a division of property are not alimony. Count payments made for the other person, such as their rent or tuition. Payments between the two people on a joint return do not count.
-    prompt: In 2023 or later, did you (or, on a joint return, your spouse) pay or receive alimony or other spousal support after divorce or separation?
+    tick: "Alimony or other spousal support (maintenance) paid or received since January 2023"
+    help: A temporary order while a divorce is pending counts, and so does family support not all set apart as child support. Child support and a division of property are not alimony. Count payments made for the other person, such as rent. Payments between the two people on a joint return do not count.
+    prompt: In 2023 or later, did you (or, on a joint return, your spouse) pay or receive alimony, maintenance or other support for a spouse or former spouse under a court order or a written separation agreement?
   - input: s1.nqdc_pension
     order: 145
     seq: 2
@@ -4070,6 +4072,13 @@ bank:
       readjustment allowances, back pay for earlier weeks and amounts withheld, taken for a debt or later paid back. Any
       amount in box 1 of a Form 1099-G counts; it is often sent only online.
     prompt: In 2025, did you (or, on a joint return, your spouse) get unemployment benefits, or benefits from a government (such as a state's) paid family leave program?
+  - input: s1.state_disability
+    order: 161
+    seq: 5
+    group: "money_b"
+    tick: "State disability or paid medical leave benefits, not on a W-2"
+    help: "Such as state disability insurance, or paid leave for your own illness or injury, paid by a state or by an insurer under a state's law. Answer Yes if any part was not on a W-2. A disability pension on a Form 1099-R and workers' compensation are not this. A Yes ends the interview here."
+    prompt: In 2025, did you (or, on a joint return, your spouse) get disability or paid medical leave benefits from a state program, or from a plan a state requires, that are not on a Form W-2?
   - input: s1.gambling_winnings
     order: 160
     seq: 13
@@ -4368,7 +4377,9 @@ bank:
   - input: rec.medical
     order: 165
     seq: 27
-    prompt: How much of your 2024 medical and dental bills was repaid to you (or, on a joint return, your spouse) in 2025?
+    help: Count bills you paid for a dependent as well as your own.
+    prompt: How much of the medical and dental bills you paid in 2024 was repaid to you (or, on a joint return, your spouse)
+      in 2025?
   - input: rec.medical_deducted
     order: 165
     seq: 28
@@ -7759,7 +7770,8 @@ bank:
     order: 130
     seq: 79
     help: A lender's mortgage is at risk only if it cannot be turned into a share of ownership. Yes for a loan from the
-      seller, a co-owner, a relative of either, or a company one of them controls. A Yes ends the interview here.
+      seller, a co-owner, a relative of either, or a company one of them controls. Ordinary property or liability insurance
+      does not count. A Yes ends the interview here.
   - input: $royalty
     order: 130
     seq: 82
@@ -7827,8 +7839,8 @@ bank:
     order: 130
     seq: 94
     help: A loan you must repay yourself is at risk; one repaid only from the property or its royalties is not, whoever lent
-      it. A loan from the payer of the royalty, a relative, or a company either controls is a Yes. A Yes ends the interview
-      here.
+      it. A loan from the payer of the royalty, a relative, or a company either controls is a Yes. Ordinary property or
+      liability insurance does not count. A Yes ends the interview here.
   - input: sche.re_pro
     order: 130
     seq: 102
@@ -7850,8 +7862,8 @@ bank:
     seq: 104
     group: rental_return
     tick: "A rental run as a business: for profit, regularly and continuously"
-    help: Yes also if your 2024 Form 8995 or 8995-A listed a rental, or if you use the rental safe harbor. A Yes ends the
-      interview here.
+    help: Fewer hours than the rental safe harbor's (usually 250 a year, with separate books) can still count. Yes also if
+      your 2024 Form 8995 or 8995-A listed a rental, or if you use the safe harbor. A Yes ends the interview here.
   - input: sche.accrual
     order: 130
     seq: 105

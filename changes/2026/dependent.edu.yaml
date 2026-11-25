@@ -143,14 +143,14 @@ changes:
           credit. This is true even when one spouse on a joint return is the student for whom qualified education expenses
           were paid and does not have a valid SSN."
     - set:
-        line: dependent.edu_aoc
+        line: dependent.edu_aoc_rules
         field: label
-        from: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s
+        from: 'Lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution''s
           EIN is available'
-        to: 'An American opportunity credit student: lines 23 to 26 allow it, you, or your spouse if filing jointly, have
-          a valid SSN, and the institution''s EIN is available'
+        to: 'Lines 23 to 26 allow the American opportunity credit for this student, you, or your spouse if filing jointly,
+          have a valid SSN, and the institution''s EIN is available'
     - set:
-        line: dependent.edu_aoc
+        line: dependent.edu_aoc_rules
         field: cite.locator
         from: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
           "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."

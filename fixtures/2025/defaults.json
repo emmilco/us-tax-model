@@ -4413,6 +4413,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "s1.state_disability",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "s1.jury_any",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."

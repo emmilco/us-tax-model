@@ -27,9 +27,9 @@
 ## (helper) — `sche.qbi_business`
 
 - **Authored helper label:** A rental that is a trade or business
-- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously (for example, 250 hours or more a year of rental services, with separate books)?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously?
 - Interpretation: amb.2025.rental_not_qbi
-- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously (for example, 250 hours or more a year of rental services, with separate books)?"}`
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously?"}`
 - Cite: [i8995] p. 1, Trade or business, "an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you’re involved in the activity with continuity and regularity", "Rental real estate that doesn’t meet the requirements of the safe harbor may still be treated as a trade or business for purposes of the QBI deduction if it’s a section 162 trade or business", and "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
 
 ## (helper) — `sche.accrual`

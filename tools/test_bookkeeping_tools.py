@@ -146,7 +146,7 @@ class PendingMergeFlow(TempCase):
     def setUp(self):
         super().setUp()
         (self.dir / "tools").mkdir()
-        for f in ("check_bug_inventory.py", "new_bug.py"):
+        for f in ("check_bug_inventory.py", "new_bug.py", "worktree_files.py"):
             shutil.copy(TOOLS / f, self.dir / "tools" / f)
         (self.dir / "BUG_INVENTORY.md").write_text("# Bug inventory\n\n---\n\n## BUG-0001 — one\n\n- **S:** s\n")
         self.git("init", "-q", "-b", "main")

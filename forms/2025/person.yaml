@@ -750,16 +750,11 @@ form:
     - id: person.hsa_step1
       printed: (helper)
       type: NonNegDollars
-      label: 'This persons Step 1 limit under the spouse rule of line 6'
+      label: 'This persons Step 1 limits under the spouse rule of line 6, all of this persons Forms 8889'
       expr:
         op: sum_over
         collection: f8889
         field: f8889.step1
-        where:
-          op: test
-          eq:
-          - f8889.split
-          - const: true
       cite:
         doc: i8889
         locator: p. 7, Line 6, Spouses who have separate HSAs and had family coverage under an HDHP at any time during
@@ -770,6 +765,10 @@ form:
           from Step 1 equally between you and your spouse, unless you both agree on a different allocation (such as
           allocating nothing to one spouse)", "Step 3. Subtract the part of the contribution limit allocated to your
           spouse in Step 2 from the amount determined in Step 1"
+      note: Every Form 8889 is added. Its only reader, household.hsa_step1_sum, is read by f8889.allocation_bad on a form
+        whose split is true; then the spouses are married and both have a Form 8889, so any form with a family amount in a
+        month both spouses had family coverage (a Step 1 limit above zero) also splits, and a form that does not split has
+        a Step 1 limit of zero.
     - id: person.hsa_share
       printed: (helper)
       type: NonNegDollars
@@ -2248,6 +2247,66 @@ form:
       cite:
         doc: i1040sc
         locator: p. 14, Line 31; i4562 p. 4, Part I
+    - id: person.sc_employer_count
+      printed: (helper)
+      label: Number of this person's Schedules C for a business with employees
+      type: Count
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.one
+        where:
+          op: test
+          eq:
+          - sc.employees
+          - const: true
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), lines 14, 19 and 26
+    - id: person.sc_employer_profit_count
+      printed: (helper)
+      label: Number of this person's Schedules C for a business with employees and a net profit (line 31 more than zero)
+      type: Count
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - sc.employees
+            - const: true
+          - op: test
+            gt:
+            - sc.line31
+            - param: sales.zero
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 31, "Net profit or (loss)"
+    - id: person.sc_employer_profit
+      printed: (helper)
+      label: Total net profit (line 31) of this person's Schedules C for a business with employees and a net profit
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: sc
+        field: sc.line31
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - sc.employees
+            - const: true
+          - op: test
+            gt:
+            - sc.line31
+            - param: sales.zero
+      cite:
+        doc: f1040sc
+        locator: Schedule C (2025), line 31, "Net profit or (loss)"
     - id: person.ho_count
       printed: (helper)
       label: Number of this person's Schedules C that claim the business use of the home
@@ -5138,8 +5197,8 @@ form:
     - id: person.ira_limit_screens
       printed: (helper)
       label: This person's traditional and Roth IRA contributions are more than the applicable amount, or the return's are more
-        than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the Kay
-        Bailey Hutchison amount
+        than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return this person's are more than
+        their own compensation and their compensation may not be the smaller of the two
       type: Bool
       expr:
         op: test
@@ -5154,18 +5213,96 @@ form:
           - const: true
         - op: test
           eq:
-          - ira.kbh_short
+          - person.ira_own_comp_over
           - const: true
       cite:
         doc: i8606
         locator: 'p. 5, Overall Contribution Limit for Traditional and Roth IRAs, "your limit on contributions to traditional
           and Roth IRAs is generally the smaller of $7,000 ($8,000 if age 50 or older at the end of 2025) or your taxable compensation"
           and "see Kay Bailey Hutchison Spousal IRA Limit in Pub. 590-A for special rules"'
+    - id: person.ira_comp
+      printed: (helper)
+      label: This person's part of lines 8 and 9 of the IRA Deduction Worksheet, without alimony (wages, household employee
+        wages, unreported tips, Form 8919 wages and self-employment earned income)
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.box1
+        - person.household_wages_if_pay
+        - person.line1c
+        - person.f8919_wages
+        - person.ira_se
+      cite:
+        doc: p590a
+        locator: 'p. 10, Kay Bailey Hutchison Spousal IRA Limit, "if you file a joint return and your taxable compensation is
+          less than that of your spouse"; i1040gi p. 98, IRA Deduction Worksheet—Continued, lines 8 and 9'
+    - id: person.ira_comp_most
+      printed: (helper)
+      label: The most this person's compensation can be (this person's part of lines 8 and 9 with all the alimony on Schedule
+        1, line 2a, which a joint return does not divide between the spouses)
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.ira_comp
+        - s1.line2a
+      cite:
+        doc: p590a
+        locator: 'p. 10, Kay Bailey Hutchison Spousal IRA Limit, "if you file a joint return and your taxable compensation is
+          less than that of your spouse"; i1040gi p. 98, IRA Deduction Worksheet—Continued, line 8, "alimony and separate
+          maintenance payments reported on Schedule 1, line 2a"'
+    - id: person.ira_comp_most_x2
+      printed: (helper)
+      label: Twice the most this person's compensation can be
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+        - person.ira_comp_most
+        - person.ira_comp_most
+      cite:
+        doc: p590a
+        locator: 'p. 10, Kay Bailey Hutchison Spousal IRA Limit, "if you file a joint return and your taxable compensation is
+          less than that of your spouse"'
+    - id: person.ira_own_comp_over
+      printed: (helper)
+      label: On a joint return, this person's traditional and Roth IRA contributions are more than this person's own
+        compensation, and this person's compensation may not be less than the spouse's (twice the most it can be is at
+        least line 10 of the IRA Deduction Worksheet), so the spousal limit cannot raise this person's limit
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - ira.joint
+          - const: true
+        - op: test
+          gt:
+          - person.ira_own_total
+          - person.ira_comp
+        - op: test
+          ge:
+          - person.ira_comp_most_x2
+          - ira.line10
+      cite:
+        doc: p590a
+        locator: 'p. 10, Kay Bailey Hutchison Spousal IRA Limit, "For 2025, if you file a joint return and your taxable compensation
+          is less than that of your spouse, the most that can be contributed for the year to your IRA is the smaller of the
+          following two amounts. 1. $7,000 ($8,000 if you are age 50 or older). 2. The total compensation includible in the
+          gross income of both you and your spouse for the year, reduced by the following two amounts. a. Your spouse''s IRA
+          contribution for the year to a traditional IRA. b. Any contributions for the year to a Roth IRA on behalf of your
+          spouse."'
+      note: For the spouse with less compensation the spousal limit is the couple's compensation less the other spouse's
+        contributions, which ira.over_comp tests for the return; the spouse whose compensation is not less keeps the general
+        limit of their own compensation, tested here. Alimony is counted toward this person's compensation only when
+        deciding whether it may be the larger, so a joint return with alimony refuses on the safe side.
     - id: person.ira_roth_over
       printed: (gate)
       label: This person made Roth IRA contributions for 2025, and the contributions are more than the applicable amount, or
-        more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return line 10 is less than the
-        Kay Bailey Hutchison amount
+        more than the compensation on line 10 of the IRA Deduction Worksheet, or on a joint return more than this person's
+        own compensation where the spousal limit cannot raise it
       type: Bool
       expr:
         op: choose
@@ -6152,10 +6289,10 @@ form:
       cite:
         doc: f8863
         locator: p. 2, Part III, line 23, "Yes—Stop! Go to line 31 for this student."
-    - id: person.edu_aoc
+    - id: person.edu_aoc_rules
       printed: (helper)
-      label: 'An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution''s EIN
-        is available'
+      label: 'Lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution''s
+        EIN is available'
       type: Bool
       expr:
         op: choose
@@ -6176,6 +6313,30 @@ form:
         doc: f8863
         locator: p. 2, Part III, line 26, "No—Complete lines 27 through 30 for this student."; i8863 p. 3, Student qualifications,
           "5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)."
+    - id: person.edu_aoc
+      printed: (helper)
+      label: 'An American opportunity credit student: lines 23 to 26 and the identification rules allow it (edu_aoc_rules),
+        and the credit is not barred or given up after a denial (f8863.ban)'
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - person.edu_aoc_rules
+          - const: true
+        - op: test
+          eq:
+          - f8863.ban_if_aoc
+          - const: false
+      cite:
+        doc: i8863
+        locator: 'p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after
+          there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years
+          after there was a final determination that your claim was due to fraud."; p. 4, Tip, "If the requirements above aren’t
+          met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the
+          lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements
+          are met."'
     - id: person.edu_aoc23
       printed: (helper)
       label: 'For an eligible student, line 23 is No (the American opportunity credit was not claimed for 4 prior tax years),
@@ -6942,9 +7103,10 @@ form:
       - when: person.ira_roth_over
         form: Excess Roth IRA contributions (Form 5329 Part IV, Pub. 590-A)
         remedy: Your Roth IRA contributions for 2025, with any traditional IRA contributions, are more than $7,000 ($8,000 if
-          age 50 or older) or more than your taxable compensation, or, on a joint return, the couple's compensation is under
-          $14,000 ($15,000 or $16,000 with spouses age 50 or older), where the spousal limit of Pub. 590-A applies. An excess
-          contribution and the 6% tax on it (Form 5329 Part IV) are outside this tool.
+          age 50 or older), more than the taxable compensation on the return (yours and, on a joint return, your spouse's), or,
+          on a joint return, more than your own compensation when it may not be less than your spouse's (the spousal limit of
+          Pub. 590-A then does not raise your limit). An excess contribution and the 6% tax on it (Form 5329 Part IV) are
+          outside this tool.
         cite:
           doc: p590a
           locator: 'p. 43, Excess Contributions, "A 6% excise tax applies to any excess contribution to a Roth IRA"'

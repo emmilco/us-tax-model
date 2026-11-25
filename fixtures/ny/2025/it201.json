@@ -21790,6 +21790,353 @@
           "cents": 0
         }
       }
+    },
+    {
+      "id": "ny.refuse.small_business",
+      "covers": [
+        "ny_it201",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1151, predicted by hand before recording. The taxpayer of ny.refuse.mctmt (two Forms W-2, one Schedule C) with the business's gross receipts at $100,000, $20,000 of wages paid to employees (line 26, the business has employees) and the MCTMT question answered No. Schedule C line 31 is $80,000, more than zero and less than $250,000, and the business employs persons, so it is a small business (IT-225-I p. 19, S-201: \"a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000\"), whose 15% subtraction is not computed: IT-201 line 31 is refused at ny_it201.gate.small_business though the IT-225 question is answered No. Before the fix line 31 was $0. The spouse-itemizes question is asked only married filing separately (ny_it201.spouse_itemizes_if_mfs false).",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 3800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 3800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "$sc@person[taxpayer]": [
+          "big"
+        ],
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.mctmt": false,
+        "$ny_it2": [
+          "w0"
+        ],
+        "ny_it2[w0].state_withheld": 300000,
+        "ny_it2[w0].city_withheld": 200000,
+        "person[taxpayer].sc[big].line1": 10000000,
+        "person[taxpayer].sc[big].employees": true,
+        "person[taxpayer].sc[big].line26": 2000000
+      },
+      "expect": {
+        "person[taxpayer].sc_employer_count": {
+          "kind": "count",
+          "value": 1
+        },
+        "person[taxpayer].sc_employer_profit_count": {
+          "kind": "count",
+          "value": 1
+        },
+        "person[taxpayer].sc_employer_profit": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "ny_it201.small_business_people": {
+          "kind": "count",
+          "value": 1
+        },
+        "ny_it201.gate.small_business": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.small_business",
+          "form": "Form IT-225 (subtraction S-201, small business modification)",
+          "remedy": "A sole proprietor with employees and a net business profit under $250,000 may subtract 15% of the net income of that business; this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 19, S-201, \"then you may deduct an amount equal to 15% of the net items of income, gain, loss, and deduction attributable to that business that are included in your federal adjusted gross income\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        },
+        "ny_it201.spouse_itemizes_if_mfs": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ny.small_business.mfj",
+      "covers": [
+        "ny_it201"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1151 mutation fixture, predicted by hand before recording: ny.official.tax_table_38275 (filing status mfj) with a Schedule C for the taxpayer: receipts $40,000, wages paid to employees $10,000, net profit $30,000. A business with employees and a profit under $250,000 is a small business (IT-225-I p. 19, S-201), so line 31 is refused at ny_it201.gate.small_business; the spouse-itemizes question is asked only married filing separately (ny_it201.spouse_itemizes_if_mfs false).",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5432500,
+        "person[taxpayer].w2[e0].box4": 744000,
+        "person[taxpayer].w2[e0].box5": 5432500,
+        "person[taxpayer].w2[e0].box6": 174000,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "f5695.any": true,
+        "f5695.doors": true,
+        "f5695.windows": true,
+        "f5695.central_ac": true,
+        "f5695.line19a": 100000,
+        "f5695.line19d_i": 100000,
+        "f5695.line20a_i": 220000,
+        "f5695.line22a": 500000,
+        "f5695.line17a": true,
+        "f5695.line17b": true,
+        "f5695.line17c": true,
+        "f5695.line21a": true,
+        "f5695.line21b": true,
+        "f5695.qmid_doors": true,
+        "f5695.qmid_windows": true,
+        "f5695.qmid_ac": true,
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.spouse_resident": true,
+        "ny_it201.ask.prior_full_year": true,
+        "$ny_it2": [
+          "w0"
+        ],
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 4000000,
+        "person[taxpayer].sc[shop].employees": true,
+        "person[taxpayer].sc[shop].line26": 1000000
+      },
+      "expect": {
+        "ny_it201.gate.small_business": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.spouse_itemizes_if_mfs": {
+          "kind": "bool",
+          "value": false
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.small_business",
+          "form": "Form IT-225 (subtraction S-201, small business modification)",
+          "remedy": "A sole proprietor with employees and a net business profit under $250,000 may subtract 15% of the net income of that business; this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 19, S-201, \"then you may deduct an amount equal to 15% of the net items of income, gain, loss, and deduction attributable to that business that are included in your federal adjusted gross income\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.small_business.hoh",
+      "covers": [
+        "ny_it201"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1151 mutation fixture, predicted by hand before recording: ny.table.hoh.0 (filing status hoh) with a Schedule C for the taxpayer: receipts $40,000, wages paid to employees $10,000, net profit $30,000. A business with employees and a profit under $250,000 is a small business (IT-225-I p. 19, S-201), so line 31 is refused at ny_it201.gate.small_business; the spouse-itemizes question is asked only married filing separately (ny_it201.spouse_itemizes_if_mfs false).",
+      "inputs": {
+        "f1040.status": "hoh",
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1220000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 1220000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "parent"
+        ],
+        "household.considered_unmarried": true,
+        "dependent[parent].relationship": "parent",
+        "dependent[parent].age": 70,
+        "dependent[parent].gross_income": 400000,
+        "dependent[parent].supported": true,
+        "dependent[parent].parent_home_paid": true,
+        "ny_it201.ask.city_resident": true,
+        "f1040.tax_exempt_any": false,
+        "f1040.tax_exempt_interest": 0,
+        "eic.died_this_year": null,
+        "eic.us_home": null,
+        "eic.qc_of_another": null,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 4000000,
+        "person[taxpayer].sc[shop].employees": true,
+        "person[taxpayer].sc[shop].line26": 1000000
+      },
+      "expect": {
+        "ny_it201.gate.small_business": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.spouse_itemizes_if_mfs": {
+          "kind": "bool",
+          "value": false
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.small_business",
+          "form": "Form IT-225 (subtraction S-201, small business modification)",
+          "remedy": "A sole proprietor with employees and a net business profit under $250,000 may subtract 15% of the net income of that business; this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 19, S-201, \"then you may deduct an amount equal to 15% of the net items of income, gain, loss, and deduction attributable to that business that are included in your federal adjusted gross income\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.small_business.qss",
+      "covers": [
+        "ny_it201"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1151 mutation fixture, predicted by hand before recording: ny.status.qss.30000 (filing status qss) with a Schedule C for the taxpayer: receipts $40,000, wages paid to employees $10,000, net profit $30,000. A business with employees and a profit under $250,000 is a small business (IT-225-I p. 19, S-201), so line 31 is refused at ny_it201.gate.small_business; the spouse-itemizes question is asked only married filing separately (ny_it201.spouse_itemizes_if_mfs false).",
+      "inputs": {
+        "$dependent": [
+          "daughter"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "dependent[daughter].age": 22,
+        "dependent[daughter].edu": true,
+        "dependent[daughter].edu_1098t": true,
+        "dependent[daughter].edu_tin_issued": true,
+        "dependent[daughter].edu_inst": 720000,
+        "dependent[daughter].edu_line24": true,
+        "dependent[daughter].edu_line25": true,
+        "dependent[daughter].months": 12,
+        "dependent[daughter].student": true,
+        "dependent[daughter].supported": true,
+        "f1040.status": "qss",
+        "f8863.paid": true,
+        "person[taxpayer].edu": true,
+        "person[taxpayer].edu_1098t": true,
+        "person[taxpayer].edu_inst": 500000,
+        "person[taxpayer].w2[emp_a].box1": 4705000,
+        "person[taxpayer].w2[emp_a].box2": 496000,
+        "person[taxpayer].w2[emp_a].box4": 384400,
+        "person[taxpayer].w2[emp_a].box5": 4705000,
+        "person[taxpayer].w2[emp_a].box6": 89900,
+        "household.qss_eligible": true,
+        "ny_it201.ask.city_resident": true,
+        "dependent[daughter].lived_all_year": true,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 4000000,
+        "person[taxpayer].sc[shop].employees": true,
+        "person[taxpayer].sc[shop].line26": 1000000
+      },
+      "expect": {
+        "ny_it201.gate.small_business": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.spouse_itemizes_if_mfs": {
+          "kind": "bool",
+          "value": false
+        },
+        "ny_it201.line31": {
+          "kind": "refusal",
+          "gate": "ny_it201.gate.small_business",
+          "form": "Form IT-225 (subtraction S-201, small business modification)",
+          "remedy": "A sole proprietor with employees and a net business profit under $250,000 may subtract 15% of the net income of that business; this tool does not compute Form IT-225.",
+          "cite": {
+            "doc": "ny_it225i",
+            "locator": "p. 19, S-201, \"then you may deduct an amount equal to 15% of the net items of income, gain, loss, and deduction attributable to that business that are included in your federal adjusted gross income\"",
+            "revision": "2025",
+            "snapshot": "4a2de3cfa181bb29fc61a47065b1766334bd4c7ca5940f9777c64c2a5936cb67",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "ny.small_business.at_limit",
+      "covers": [
+        "ny_it201",
+        "person"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-1151 mutation fixture, predicted by hand before recording: ny.refuse.small_business with the business's receipts at $270,000 and wages paid $20,000, so its net profit is exactly $250,000. IT-225-I p. 19, S-201: a small business has net business income \"greater than zero but less than $250,000\"; $250,000 is not less, on either reading, so line 31 is not refused at ny_it201.gate.small_business.",
+      "inputs": {
+        "$interest": [
+          "bank_a"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3800000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box3": 3800000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 3800000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].w2[emp_b].box1": 4000000,
+        "person[taxpayer].w2[emp_b].box2": 500000,
+        "person[taxpayer].w2[emp_b].box3": 4000000,
+        "person[taxpayer].w2[emp_b].box4": 248000,
+        "person[taxpayer].w2[emp_b].box5": 4000000,
+        "person[taxpayer].w2[emp_b].box6": 58000,
+        "$sc@person[taxpayer]": [
+          "big"
+        ],
+        "ny_it201.ask.city_resident": true,
+        "ny_it201.ask.mctmt": false,
+        "$ny_it2": [
+          "w0"
+        ],
+        "ny_it2[w0].state_withheld": 300000,
+        "ny_it2[w0].city_withheld": 200000,
+        "person[taxpayer].sc[big].line1": 27000000,
+        "person[taxpayer].sc[big].employees": true,
+        "person[taxpayer].sc[big].line26": 2000000
+      },
+      "expect": {
+        "person[taxpayer].sc_employer_profit": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "ny_it201.small_business_people": {
+          "kind": "count",
+          "value": 0
+        },
+        "ny_it201.gate.small_business": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

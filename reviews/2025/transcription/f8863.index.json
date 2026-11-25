@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "3820de89b16e07ec18b8f2948a1ba4c707e6b244b7c5f94165ef67ba0ac1f02b",
  "head_rows": {
-  "agree / disagree / missing": "2 / 26 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-22); see Line-scoped reviews"
+  "printed lines compared": "29",
+  "agree / disagree / missing": "2 / 27 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -20,6 +21,13 @@
    "status": "DISAGREE",
    "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,920/2,930 agree; kinds {\"project-unknown\": 2, \"value\": 8}; on completed returns {\"value\": 4}. Project right under the source; no change.",
    "subject_key": "192a36b018f11344fc84a3fd18d4237d4a2b8a58eaa3132892d4e99fda043cc5"
+  },
+  {
+   "key": "f8863.ban_if_aoc",
+   "record": "080c02ddedbf68926a8394854a29774cbf37950d64ed0a0fc045487bd4ff17b9",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution, and p. 1, Form 8862 may be required. The reply asks the ban only when Part I line 1 is more than zero; line 1 totals the students' lines 30, which are figured only for American opportunity credit students, and a student under a ban is not one (person.edu_aoc and dependent.edu_aoc read this gate), so the reply's gate reads itself: triage evaluates the reply's line 7 as 'cycle at f8863.ban_if_aoc'. The project asks it when line 4 is more than zero and some student passes lines 23 to 26 with the TINs and EIN (f8863.aoc_possible); the two differ only on a return whose AOC students have $0 of adjusted expenses, where line 1 is $0 either way. executable-triage-v2 (.transcription/triage/2025/f8863.json): 3,284 of 3,368 agree; completed: 7 candidate-unknown, no value differs.",
+   "subject_key": "f59f6f25cd1dbc462a54d584bb71cd87876e4cd18e4998a292a2d83efebd3b83"
   },
   {
    "key": "f8863.kid_needed",
@@ -64,10 +72,10 @@
   },
   {
    "key": "7",
-   "record": "58b7b5f6c4cdb3eb8407cf841313ba2d07d54580045bef54e767ada0fb3c2c0b",
+   "record": "080c02ddedbf68926a8394854a29774cbf37950d64ed0a0fc045487bd4ff17b9",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 6 and 7 ('rounded to at least three places'; amb.2025.edu_ratio_places on both sides), as the earlier rulings. This line was rerun only for the spouse wording of f8863.ban (BUG-0986); executable triage (.transcription/triage/2025/f8863.json, this pass): 3,196/3,199 agree; differences {\"project-refuses\": 1, \"project-unknown\": 2}; on completed returns none; no value differs.",
-   "subject_key": "b17c761e94ed17c676d60404ebf16baea616b96a179db240888e24eb8d5d17d2"
+   "ruling": "Ruling: representation; the reply's shown_when names line 4 by its id (f8863.line4) where the project names the printed line ('4'); the same line. executable-triage-v2 (.transcription/triage/2025/f8863.json): 3,367 of 3,368 agree; the one difference is the reply's unknown through its own f8863.ban_if_aoc cycle.",
+   "subject_key": "f4fb978c7f45e9e352cc004c666d935c3415911a1ce553f40cace1eb110fa3ec"
   },
   {
    "key": "7 (box)",
@@ -206,13 +214,14 @@
  "subjects": {
   "f8863.zero": "d543b93adb53afde75f226bfad3857796495cc45eb2149582e7ab7f1cae32c96",
   "f8863.eligible": "2071614e3ec317f7629300d26d2317ed20bc57cc1388bd40de7774c94ce07599",
+  "f8863.ban_if_aoc": "cae810334ae655751ac04da72449184141a3ba1a08580cd0a4b693d530ab9039",
   "f8863.kid_needed": "b04ded11aed0bea5ebf3017548dab9235158fc20066bf1545a9699b8f21cf2eb",
   "1": "fa53e7cc101f7c70578af6ff939c49084a23641c0a803b157b107f0b75409a0a",
   "2": "f722a18eb99e21d0d7abbce41a643ae48024def3dc04ad86e259382eb898880c",
   "3": "a8a4db3ef1d9a06fecebd936e0269a0a7a59fbeaf55d387369613bfc0dfc7f49",
   "4": "e3b45c194532d4cca221d75a9664d0a99ee2bf4f3573823f016a6f651a084413",
   "5": "11fe58bdc70fc6b8e454633634f77823a6bf08bc1fbf2cabd17c9fb9fdcdcd19",
-  "7": "aa51f4a6a426cf1dc6ef84e553f2028a59044854442d4d73c4ecd3741387ea56",
+  "7": "371671cc5cc8c615d1e49421992a9d82cc07595e21da866c61ae5cafc57f246d",
   "7 (box)": "f6a93660c154c4f09258270cb9549ce6499189b8a28e2959011cd34710a864b7",
   "8": "4e0975c1c20a0f9935f9a3d1ef8ec1a5eeefd86ce1d2a3a0079e7b22bd3b71b3",
   "9": "8ec862d147e41f337fefabeab5d9da25470cb192d0d0799535718cb913530bc5",
@@ -236,6 +245,7 @@
  "__rest__": "bd80fc5be489be58cf339e45b85ce5d43a64f4185cc0cc17d42d804812fda0a5",
  "foreign": {
   "f8863.eligible": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
+  "f8863.ban_if_aoc": "013b6e582eafb154fa6685f12b094deeb8dcc155e03d7f8b98a5ee2bb6dacf74",
   "1": "d319b0b4381761f646debe67429e3d5d4e2ae55be8e0fdf097631718badfb439",
   "2": "797e0efc7ed789ffcad48dd37ce01b5f1e5b7aaf659d03c97d1765327338ff76",
   "3": "01638eb3220f712f311aa2e5dd0dd452191120f7ca17175ec03f43bf691577da",

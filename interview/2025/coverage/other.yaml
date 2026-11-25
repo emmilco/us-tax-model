@@ -198,6 +198,13 @@ rows:
     s1.inmate_wages: true
   expect:
     refused: s1.line8_other
+- id: other.state_disability
+  design: s1.state_disability (BUG-1405)
+  situation: A person got paid medical leave benefits from a state program, not on a W-2.
+  answers:
+    s1.state_disability: true
+  expect:
+    refused: s1.state_disability
 - id: other.niit_6013g
   design: BUG-0828 (Form 8960 with a section 6013(g) election)
   situation: A U.S. citizen and her spouse, a nonresident alien she chose to treat as a resident, file jointly with $300,000 of pay.
@@ -343,6 +350,7 @@ rows:
   situation: A person gambles for a living.
   uses: [won]
   answers:
+    s1.state_disability: false
     s1.gambling_winnings: 9000000
     s1.gambling_pro: true
     s1.olympic: false

@@ -22,7 +22,7 @@ git config user.email test@example.com
 git config user.name test
 mkdir -p tools/hooks docs engine/src
 cp "$ROOT/tools/green.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" \
-  "$ROOT/tools/commit_tested.sh" "$ROOT/tools/release.sh" "$ROOT/tools/worktree_gc.py" "$ROOT/tools/worktree_data.py" tools/
+  "$ROOT/tools/commit_tested.sh" "$ROOT/tools/release.sh" "$ROOT/tools/worktree_gc.py" "$ROOT/tools/worktree_data.py" "$ROOT/tools/worktree_files.py" tools/
 cp "$ROOT/tools/hooks/pre-push" "$ROOT/tools/hooks/pre-commit" tools/hooks/
 chmod +x tools/hooks/pre-push tools/hooks/pre-commit tools/commit_tested.sh tools/release.sh
 echo a > docs/a.md; echo m > engine/src/mutate.ts

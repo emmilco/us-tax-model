@@ -105,9 +105,10 @@ const NOT_DRAWN = new Set([
   "refund.exc_tax", "refund.exc_who", "refund.line5d_prior_year", "refund.line5e_prior_year", "refund.line17_prior_year",
   "refund.mfs_spouse_itemized", "refund.you_born", "refund.you_blind", "refund.spouse_born", "refund.spouse_blind",
   "s1.gambling_winnings", "s1.gambling_pro", "s1.alaska_dividend", "s1.jury_pay", "s1.prizes", "s1.hobby_income", "s1.scholarship_taxable",
-  // The yes or no parents of those amounts and of alimony, and the items the Schedule 1 line 8 screen was taken apart into.
+  // The yes or no parents of those amounts and of alimony, the items the Schedule 1 line 8 screen was taken apart into,
+  // and the state disability benefits screen (Schedule 1 line 9 refuses on it).
   "s1.winnings_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.alimony_any", "s1.uc_any",
-  "s1.ltc_payout", "s1.stock_options", "s1.olympic", "s1.nqdc_pension", "s1.inmate_wages", "s1.digital_income",
+  "s1.ltc_payout", "s1.stock_options", "s1.olympic", "s1.nqdc_pension", "s1.inmate_wages", "s1.digital_income", "s1.state_disability",
   // The items the Schedule 2 screens were taken apart into, except one each (s2.amt_business, s2.other_tax, and
   // f8959.territory_w2 for Form 8959), which are drawn where the screens were. The alternative minimum tax is figured
   // from the return; of its remaining questions, s2.amt_business stands where s2.amt_owed was drawn, and the
@@ -505,7 +506,36 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
         amount: money(1_500_000) }), { minLength: 1, maxLength: 2 }) }),
     stream: fc.noBias(fc.nat({ max: 0x7fffffff })),
   });
-  return spec.map((s) => capGifts(data, buildInputs(data, s)));
+  return spec.map((s) => capGifts(data, dropUndeclared(data, buildInputs(data, s))));
+}
+
+/** The tax year whose definitions this generator is written for: every input it sets must be declared there, and an
+ * undeclared one is an error at evaluation, so a renamed or removed id is never skipped silently in that year. */
+export const GENERATOR_YEAR = 2025;
+
+/** The line id an input key answers: `person[taxpayer].f8889[hsa].x` answers `f8889.x`, a root key itself. */
+export function inputLineId(key: string): string {
+  const m = /([a-z0-9_]+)\[[^\]]*\]\.([^.[\]]+)$/.exec(key);
+  return m ? `${m[1]}.${m[2]}` : key;
+}
+
+/** For a year other than GENERATOR_YEAR, the inputs fitted to the year's definitions, so the generator serves that
+ * year's checks before it is rewritten for it: an answer to an input the year does not declare is removed (an input a
+ * later year's operations remove, such as Form 5695's Part I and II answers in 2026; tools/year_shared_refs.py lists
+ * every such id at adoption), and an enumerated answer the year's enumeration no longer lists (bonus_choice's forty in
+ * 2026) becomes the enumeration's first value, the answer defaultFor gives. Roster keys (`$...`) are kept. In
+ * GENERATOR_YEAR the inputs are returned unchanged. */
+export function dropUndeclared(data: CanonicalData, inputs: Inputs): Inputs {
+  if (data.params.tax_year === GENERATOR_YEAR) return inputs;
+  const declared = new Map(data.forms.flatMap((d) => d.lines.filter((l) => l.expr.op === "input").map((l) => [l.id, l] as const)));
+  for (const key of Object.keys(inputs)) {
+    if (key.startsWith("$")) continue;
+    const line = declared.get(inputLineId(key));
+    if (!line) { delete inputs[key]; continue; }
+    const values = line.type.startsWith("Enum(") ? data.params.enums[line.type.slice(5, -1)]?.values : undefined;
+    if (values && typeof inputs[key] === "string" && !values.includes(inputs[key] as string)) inputs[key] = values[0];
+  }
+  return inputs;
 }
 
 /** Charitable gifts within the income limits that always bind (p526 pp. 22 and 25, as sa.charity_over_test applies

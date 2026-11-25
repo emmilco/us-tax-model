@@ -21,6 +21,7 @@ sets:
     says: 'Rents out one house all year: rent $18,000, mortgage interest $6,000, property tax $2,400, the building ($160,000)
       placed in service February 2020.'
     answers:
+      rental[house].not_at_risk: false
       scope.rental: true
       scope.rent_personal: false
       $rental:
@@ -313,6 +314,7 @@ rows:
   - one_w2
   - rents_house
   answers:
+    rental[lot].not_at_risk: false
     $rental:
     - house
     - lot
@@ -363,6 +365,7 @@ rows:
   uses:
   - one_w2
   answers:
+    rental[lot].not_at_risk: false
     scope.rental: true
     scope.rent_personal: false
     $rental:
@@ -606,7 +609,17 @@ rows:
     rental[house].rents: 200000
     rental[house].not_at_risk: true
   expect:
-    refused: rental[house].not_at_risk_if_loss
+    refused: rental[house].not_at_risk_if_reported
+- id: rental.not_at_risk_income
+  design: rental.not_at_risk asked of every rental (BUG-1341)
+  situation: A person bought a rental with a loan from the seller and has income from it ($18,000 of rent).
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].not_at_risk: true
+  expect:
+    refused: rental[house].not_at_risk_if_reported
 - id: rental.re_pro
   design: scout-schedule-e.md §4 (lane x1-sche)
   situation: A full-time real estate agent owns a rental.
@@ -654,6 +667,8 @@ rows:
   - one_w2
   - royalty_only
   answers:
+    s2.lookback: false
+    royalty[book].not_at_risk: false
     $royalty:
     - book
     royalty[book].line4: 240000
@@ -674,6 +689,7 @@ rows:
   - one_w2
   - royalty_only
   answers:
+    royalty[songs].not_at_risk: false
     $royalty:
     - songs
     royalty[songs].line4: 100000
@@ -687,6 +703,7 @@ rows:
   - one_w2
   - royalty_only
   answers:
+    royalty[oil].not_at_risk: false
     $royalty:
     - oil
     royalty[oil].line4: 100000
@@ -701,6 +718,7 @@ rows:
   - one_w2
   - royalty_only
   answers:
+    royalty[patent].not_at_risk: false
     $royalty:
     - patent
     royalty[patent].line4: 100000
@@ -716,6 +734,7 @@ rows:
   - one_w2
   - royalty_only
   answers:
+    royalty[oil].not_at_risk: false
     $royalty:
     - oil
     royalty[oil].line4: 100000
@@ -732,6 +751,7 @@ rows:
   - one_w2
   - royalty_only
   answers:
+    royalty[book].not_at_risk: false
     $royalty:
     - book
     royalty[book].line4: 100000
@@ -764,4 +784,4 @@ rows:
     royalty[lease].amt19: 150000
     royalty[lease].not_at_risk: true
   expect:
-    refused: royalty[lease].not_at_risk_if_loss
+    refused: royalty[lease].not_at_risk

@@ -209,10 +209,11 @@ bank:
     seq: 60
     prompt: Does any item on New York's list of less common income changes (Form IT-225) apply to you (or, on a joint
       return, your spouse)? Most people have none.
-    help: 'For example: a business of your own with employees and a profit under $250,000 (New York subtracts 15% of
-      the profit), moving expenses you paid or were repaid for by an employer, a disability income exclusion, a trust''s
-      accumulation distribution, or Holocaust reparations or a wrongful-conviction award. This tool does not compute them; a
-      Yes ends the New York part here.'
+    help: 'For example: a business with employees and a profit under $250,000, through a partnership or S corporation
+      or of your own (New York subtracts 15% of the profit), sickness benefits paid by the Railroad Retirement Board, moving
+      expenses you paid or were repaid for by an employer, a disability income exclusion, a trust''s accumulation
+      distribution, or Holocaust reparations or a wrongful-conviction award. This tool does not compute them; a Yes ends the
+      New York part here.'
   # ---- 1020 Deductions
   - input: ny_it201.ask.itemize
     order: 1020

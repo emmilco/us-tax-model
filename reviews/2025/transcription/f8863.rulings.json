@@ -3240,21 +3240,18 @@
    "printed": "7",
    "project_expr_sha256": "845eadcd1fd6c66f8c19b7421ae42dc42ea9bf64e1991d600296fba08501f33c",
    "second_expr_sha256": "3b37536f6c0b5590578d31fe20098621be6203321d841b2ac8ce24e3ed9d775c",
-   "ruling": "Ruling: representation and scope; f8863 p. 1, lines 6 and 7 ('rounded to at least three places'; amb.2025.edu_ratio_places on both sides), as the earlier rulings. This line was rerun only for the spouse wording of f8863.ban (BUG-0986); executable triage (.transcription/triage/2025/f8863.json, this pass): 3,196/3,199 agree; differences {\"project-refuses\": 1, \"project-unknown\": 2}; on completed returns none; no value differs.",
-   "context": "9ff7ca9a9d552ddbdb2c16e0788dec3cf4d06a107f53bd799bf85882fc51103b",
-   "date": "2026-11-22",
-   "run": "2a53f94396b59f1b1b9671e22ec96cdf4c079611e3463c19158ac2227e90960d",
-   "subject_key": "cd6b47b4df48c89683624d7531abd2d6a9bb551d43c936e1d09681014f3080a5",
+   "ruling": "Ruling: representation; the reply's shown_when names line 4 by its id (f8863.line4) where the project names the printed line ('4'); the same line. executable-triage-v2 (.transcription/triage/2025/f8863.json): 3,367 of 3,368 agree; the one difference is the reply's unknown through its own f8863.ban_if_aoc cycle.",
+   "context": "c6bfefadc5c66d82c0410ef0a3e7fc1b7c66b4ebd498cb71babed6927c27ac69",
+   "date": "2026-11-24",
+   "run": "a82d2a0c8f61851fe196ebeed15f94e8d4c55f244bbe18bf1ed8b7474e7c73af",
+   "subject_key": "51bfa8bcd2d32173313f0e3cf2a0b0ac672d1a7e6836d93a14b730fc00e7de64",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "project-refuses",
-     "project-unknown"
+     "candidate-unknown"
     ],
     "witnesses": [
-     "fixture:stage19.refuse.ban@f8863",
-     "partial:classm.s3.2.deepseek-f8863.ban@f8863",
-     "partial:classm.f8962.1.deepseek-f8863.ban@f8863"
+     "fixture:stage19.refuse.ban@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -3879,6 +3876,45 @@
      "generated:20261026.184@f8863",
      "generated:20261026.200@f8863",
      "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f8863.ban_if_aoc",
+   "project_expr_sha256": "14464965c1ec8ca22a764780483b0baae003c14365e5dfb21bb2eeda07383f1d",
+   "second_expr_sha256": "702ba713aeb7a600ce55baa8820510590397d0392b9e959ac224f28860eba20d",
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution, and p. 1, Form 8862 may be required. The reply asks the ban only when Part I line 1 is more than zero; line 1 totals the students' lines 30, which are figured only for American opportunity credit students, and a student under a ban is not one (person.edu_aoc and dependent.edu_aoc read this gate), so the reply's gate reads itself: triage evaluates the reply's line 7 as 'cycle at f8863.ban_if_aoc'. The project asks it when line 4 is more than zero and some student passes lines 23 to 26 with the TINs and EIN (f8863.aoc_possible); the two differ only on a return whose AOC students have $0 of adjusted expenses, where line 1 is $0 either way. executable-triage-v2 (.transcription/triage/2025/f8863.json): 3,284 of 3,368 agree; completed: 7 candidate-unknown, no value differs.",
+   "context": "c6bfefadc5c66d82c0410ef0a3e7fc1b7c66b4ebd498cb71babed6927c27ac69",
+   "date": "2026-11-24",
+   "run": "a82d2a0c8f61851fe196ebeed15f94e8d4c55f244bbe18bf1ed8b7474e7c73af",
+   "subject_key": "9587fd2edc260dcd206bf1cd5e1d1ae5b702d008133ff1318cac7aab4f3b38fd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.s2.4.deepseek@f8863",
+     "fixture:classm.f1040.2.deepseek@f8863",
+     "fixture:classm.f8863.2.deepseek@f8863",
+     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.s3.8@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:mutation.t3.person_edu_1098t_unanswered@f8863",
+     "fixture:mutation.t3.dependent_edu_1098t_unanswered@f8863",
+     "fixture:mutation.t4.dependent_edu_paid_unanswered_no_1098t@f8863",
+     "generated:20261026.15@f8863",
+     "generated:20261026.22@f8863"
     ],
     "policy": "executable-triage-v2"
    }

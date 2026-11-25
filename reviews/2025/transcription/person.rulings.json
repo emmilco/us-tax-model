@@ -217,6 +217,16 @@
   },
   {
    "printed": "27",
+   "project_expr_sha256": "bc53cee81cadcc9d1c3a804a810c84f691de62f04f37e554c9d51eb6875aed3d",
+   "second_expr_sha256": "64b4731da163b2c49b446ead7dc1a7c28844e8433bc7c35b2864494181f1288a",
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "context": "929b3f70623a57bc1cb702a72a1d87f211fa4129f87479ccc53f9210e074a6d0",
+   "date": "2026-11-24",
+   "run": "33805c4c04100a2ae49a88b2fc1378b2518c3213f1cf31fbd6eb291207b02928",
+   "subject_key": "073fc1a40c518a7d8ebe78cd2a6cec00a00ca164dccf44adef7f9adc51369a80"
+  },
+  {
+   "printed": "27",
    "project_expr_sha256": "e2e63f81a3a51719bc0fe559bbab3d0992f6c82a663a513aa9943f31b5042a10",
    "second_expr_sha256": "d444a037b0b60f1fdb46e12626b1cd215160431405d09ffc25653f6a542fc2be",
    "ruling": "Ruling: model error; f8863 p. 2, line 27; i8863 p. 3. The project line is new in this round (edu_aoc became a nested choice in the form's order, BUG-0460), which changes no value on a complete return. As the prior rulings on this line: the reply reads person.edu_over (and person.edu) for every person, with no f8863.paid gate, so it is unknown on returns with no education credit where the project hides the line; and it shows the credit where the project's line 23 to 26, TIN or EIN test stops it (classm.f1040.2.deepseek spouse, completed: institution EIN not available, project hidden, candidate $4,000.00), against Form 8863 lines 23 to 26 (\"Stop! Go to line 31\") and i8863 p. 3. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 1,504 of 4,066 agree; 2,530 candidate-unknown, 31 candidate-shows-skipped, 1 candidate-refuses; on returns the full interview completes: 348 candidate-unknown, 3 candidate-shows-skipped. Project stands.",
@@ -465,6 +475,16 @@
   },
   {
    "printed": "28",
+   "project_expr_sha256": "f294db39f4a738885067b8e3b24cce3b4a56ff76bfaf29b7863520768c153324",
+   "second_expr_sha256": "f44d88ab3ed06d475d48b748f39eb415f3a55f73a8e5a329587b7e06eca893f5",
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "context": "929b3f70623a57bc1cb702a72a1d87f211fa4129f87479ccc53f9210e074a6d0",
+   "date": "2026-11-24",
+   "run": "33805c4c04100a2ae49a88b2fc1378b2518c3213f1cf31fbd6eb291207b02928",
+   "subject_key": "4a9e642564b3b2da4ef6b34d7943648787542d88fcc3a91463bd482efffd44d1"
+  },
+  {
+   "printed": "28",
    "project_expr_sha256": "f7208345e0fdcf4c1b494f153a97bd425649437603753433d1029d6be62ebe2d",
    "second_expr_sha256": "f44d88ab3ed06d475d48b748f39eb415f3a55f73a8e5a329587b7e06eca893f5",
    "ruling": "Ruling: model error; f8863 p. 2, line 28; p970 p. 11. This pass reviews the American opportunity credit test (edu_aoc) rewritten from one all-test into a nested choice in the form's order (lines 23 to 26, then the filers' TINs, then the EIN; BUG-0460), which changes no value on a complete return. As the prior rulings: the reply reads person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line; and it requires an issued TIN, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\" (owner decision T-113). f1.t113.person_aoc_itin_applied (an American opportunity credit student whose ITIN was applied for) gives $0.00 where the project gives $2,000.00. mutation.t3.person_edu_1098t_unanswered is refused by the reply on its own edu_over declaration where the project is unknown (edu_1098t unanswered). executable-triage-v2 on this pass's reply (`.transcription/person.lines-01b5c635c5d7.response.txt`, merged over the whole review's reply; a scratch run of triage.mjs with the witness cap lifted, since triage.py evaluates the whole review's reply; 1,640 fixtures; 500 generated returns seed 20261026; 1,420 partial records; 4,399 comparisons): 1,842 of 4,399 agree; 2,555 candidate-unknown, 1 candidate-refuses, 1 value; on returns the full interview completes: 289 candidate-unknown person.edu_over (for example classm.f8889.1.deepseek); no completed-return value difference. Project stands.",
@@ -516,6 +536,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "29",
+   "project_expr_sha256": "8e62182876c1184bb877a19b7ec82d567564d7dab33097dcad9e18f990255ab3",
+   "second_expr_sha256": "bd7a465eeba8148388921a59e7853bf42f6cfef0d6f4766c0e7e6447a064e8f7",
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "context": "929b3f70623a57bc1cb702a72a1d87f211fa4129f87479ccc53f9210e074a6d0",
+   "date": "2026-11-24",
+   "run": "33805c4c04100a2ae49a88b2fc1378b2518c3213f1cf31fbd6eb291207b02928",
+   "subject_key": "2938727bd16030cba0543e4c66746ae606bdb6d7c541719a21ef8cced744edda"
   },
   {
    "printed": "29",
@@ -787,6 +817,16 @@
    "subject_key": "df419548b375f57e46b2afb7351cee8ae248a4125feb310bc1f27e5cf039d802"
   },
   {
+   "printed": "30",
+   "project_expr_sha256": "c7b581baf9add0538e3f33185f35233d61cc35d05411b371ea2afc1ce5da2048",
+   "second_expr_sha256": "6ca58ee473cdd3589a32c7b4a07677cf3db9fbf76df6536691b6b339f8d9ff05",
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "context": "929b3f70623a57bc1cb702a72a1d87f211fa4129f87479ccc53f9210e074a6d0",
+   "date": "2026-11-24",
+   "run": "33805c4c04100a2ae49a88b2fc1378b2518c3213f1cf31fbd6eb291207b02928",
+   "subject_key": "4927fb76d28dbef46e194002e32cbb916e6bd78b9dc435d5a3595e82a743b0c3"
+  },
+  {
    "printed": "31",
    "project_expr_sha256": "399a5717f0884692909aad9d9ae275e2bc224452758987d9ec048c30fb8e4276",
    "second_expr_sha256": "19b0ec5aae9a9aac499441bc669802b047337f04dafdd0ecc82610f49783eabd",
@@ -858,6 +898,16 @@
    "date": "2026-11-23",
    "run": "2b6731e582ec0cf829bfc7404ba4cffb91e7107c000f4602fd3b6fb80176bd0a",
    "subject_key": "1361969b5df38032a5594ef65e85ea062400194d3b6e959726beebd0d684f163"
+  },
+  {
+   "printed": "31",
+   "project_expr_sha256": "4ba6a66d6d7b7db7d60754b65cbfd56cf0f20565c37a67b92ee6a962de6ba4f7",
+   "second_expr_sha256": "0ecaaedf01f1505ea9a7a04a6cd903bd675df1629889b70dbc30efe2fd805a55",
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution (the ban), and p. 4, Tip, \"If the requirements above aren't met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit\". The reply completes line 31 only for a student sent there by lines 23 to 26, so a student under a ban gets neither credit; the project's person.edu_llc sends that student to line 31 (stage19.refuse.ban: project line 31 $3,100, reply $0). Elsewhere both give line 31 only for a lifetime learning credit student, as ruled before.",
+   "context": "929b3f70623a57bc1cb702a72a1d87f211fa4129f87479ccc53f9210e074a6d0",
+   "date": "2026-11-24",
+   "run": "33805c4c04100a2ae49a88b2fc1378b2518c3213f1cf31fbd6eb291207b02928",
+   "subject_key": "02c24212a49a5aa5a670d7bb9ed893448509cd1fbce7c26e0ed47f90f6608902"
   },
   {
    "printed": "31",
@@ -2144,6 +2194,16 @@
    "subject_key": "f1c999f24dd0032aaac3453b80cc0179e0309cd179edf2cb9abf12fd0631574f"
   },
   {
+   "printed": "person.edu_aoc_rules",
+   "project_expr_sha256": "38e8765fbf52bf38593454506e299022b99b77cca717eabced1835d097e2c968",
+   "second_expr_sha256": "8bfe4ee385f6d586a7fa5e449304858e9feabb274b45dc9c719a2f512ff588c0",
+   "ruling": "Ruling: model error; the line is 'lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution's EIN is available' (i8863 p. 3, Student qualifications 5, and p. 4, 7, \"You must provide the educational institution's employer identification number (EIN)\"). The reply tests lines 23 to 26 only and leaves the TINs and the EIN to Form 8863 lines that do not test them.",
+   "context": "929b3f70623a57bc1cb702a72a1d87f211fa4129f87479ccc53f9210e074a6d0",
+   "date": "2026-11-24",
+   "run": "33805c4c04100a2ae49a88b2fc1378b2518c3213f1cf31fbd6eb291207b02928",
+   "subject_key": "4849ce70baeed84ac097f4640e9e3799589bed5368edcc9053b368b77b34a89c"
+  },
+  {
    "printed": "person.edu_kid",
    "project_expr_sha256": "e232cf8a6f2a52c97603e98e435fa09417b3c13c1dc2c85c204c0ce558f3c27f",
    "second_expr_sha256": "4416f12076916e9d0f089cf0f761a2888620c78f795011a3d9611c8c870ba76a",
@@ -2349,6 +2409,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "person.edu_student",
+   "project_expr_sha256": "1b5a7e5cf62d2270455e06092cdf6253862f768504f4c2a853ec19488abbe02e",
+   "second_expr_sha256": "c3b2f744b8be7b5d8074003fe586ea79ed9675551e9862f4328bf7b7fe63a685",
+   "ruling": "Ruling: model error; the line is 'an eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T' (i8863 p. 3, Who cannot claim a credit, 5, \"The student has not been issued a TIN by the due date\"; p. 1, Form 1098-T requirement). As the prior rulings on this line: the reply leaves the student's TIN (person.tin, or an ITIN applied for by the due date and issued, p970 p. 11) and the return-level screen f8863.paid to other lines that do not test them, so it is Yes for a student the project excludes for want of a TIN.",
+   "context": "929b3f70623a57bc1cb702a72a1d87f211fa4129f87479ccc53f9210e074a6d0",
+   "date": "2026-11-24",
+   "run": "33805c4c04100a2ae49a88b2fc1378b2518c3213f1cf31fbd6eb291207b02928",
+   "subject_key": "7a257752b14e17c7128f484a898ce5284b7297df729bf7794dada5ba5ce541b9"
   },
   {
    "printed": "person.educator_deduction",

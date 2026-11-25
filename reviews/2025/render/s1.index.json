@@ -133,18 +133,10 @@
   },
   {
    "key": "9",
-   "record": "e72a2ad6a335bb022500e9d5c6680bec5b4cc2ebeacecb56691ab922400c83a1",
+   "record": "792e984c4629511bf90bab1308536616e307e51f8e439dd903d12dd2bee57e14",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; the restatement leaves out lines 8d, 8l, 8n, 8o, 8p and 8q, as the model says, but each of them refuses the return at another gate, which the line's citation names: 8d by sa.excluded_income (Form 2555 or 4563, Puerto Rico exclusion), 8l by scope.rental through scope.schedule1, 8n and 8o by scope.cfc (read through scope.cfc_if_foreign_shares in the scope gate), 8p by the excess business loss refusal of s1.line3 (s1.ebl), and 8q by person.x_other (Form 5329, ABLE account). 8m, 8t and 8u are refused by s1.line8_other (s1.olympic_if_winnings, s1.nqdc_pension_if_w2, s1.inmate_wages; line 8u's refusal restored by the revert). So no filer with an amount on those lines is computed; the line 9 total is right on every return the tool completes (f1040s1 line 9, 'Add lines 8a through 8z'). Same ruling as the earlier round (adjudication/s1.md, render line 9, scope).",
-   "subject_key": "f406814aa2b3fed12439e41cc6b8085216a603784f00773b78b9b8d887418d73",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "s1.nol_pre2018_if_nol": "s1.nol_before_limit_date_if_nol"
-    },
-    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
-    "was": "b15dc249102a34ed364876970d83a27961ed9a9c9decb5a36810055eadf6eed3"
-   }
+   "ruling": "Ruling: scope; as the earlier rulings: each line the sum leaves out refuses the return elsewhere (8d sa.excluded_income; 8l scope.rent_personal through scope.schedule1; 8n and 8o scope.cfc through scope.other_line16; 8p s1.ebl on line 3; 8q person.x_edu_taxable through Form 5329; 8m, 8t and 8u s1.line8_other), so line 9 is right on every completed return (f1040s1 line 9, 'Add lines 8a through 8z'). The line now also refuses on s1.state_disability (BUG-1405), state disability or medical leave benefits not on a W-2. Project stands.",
+   "subject_key": "ab82d894a541ad5cd6968c788580d7ee7d2d1b79be0605b3c2c14bcae8cabdf8"
   },
   {
    "key": "5",
@@ -154,10 +146,10 @@
   },
   {
    "key": "10",
-   "record": "fc1b1c92e47aa21c4554164ca81e2c22959ec24d9cb932b616d0280af961458b",
+   "record": "792e984c4629511bf90bab1308536616e307e51f8e439dd903d12dd2bee57e14",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; as the ruling of 2026-11-22: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10). Project stands.",
-   "subject_key": "76caf16b55c30d733409f6232a5c16ec105dd215cf133aa619b3dd27c29dac6b"
+   "ruling": "Ruling: scope; as the earlier rulings: line 4 (Form 4797) is refused by sd.other_forms and line 6 (Schedule F) by scope.farm through scope.schedule1, so the line 10 total is right on every completed return (f1040s1 line 10, 'Combine lines 1 through 7 and 9'). Project stands.",
+   "subject_key": "ad0cac59ddefb4667deb055f4045824c0785bea4826b1d91681776d39796c5b3"
   },
   {
    "key": "11",
@@ -261,9 +253,9 @@
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
   "8a": "1b42defca06ecbacbe76c62c0e716d767b70283958705a8b73b1ac01aa9c3817",
   "8s": "0c94351cf75aec1a858c09699d1d65a754072228774a78b3179d6fce37a0be19",
-  "9": "643e9ab07699d048abd15c9a3bf998b00858c85f8491cec4dbe072f89090712d",
+  "9": "809240cd0dfd94388c2b79faa09df3ffafb842e109393db262695ce3be161c76",
   "5": "a9e6ebdb42b6de6c103d705147060752e0721ae895bbde2559b255c1d05abd39",
-  "10": "fcc54cf49f3e59dda55b153b56dd977fa4cf17c82f08e751b73a1d3bdb3f7a40",
+  "10": "cab860bc4ef188a877406075fbfcffd78ca9dfb7cbafe897b011053f79c74a6b",
   "11": "444b97633e80dc22f7362c42b60b247a91d3290a3d4917b7429f07dec9ebf99d",
   "13": "d28511b7f2c281e110c89fdb0b05daddf7fd81c5cd68febefceddfd95320e99c",
   "15": "2862a9af51da579f2eeae0fca7a1e5fd656c4e385c5dde00e4cedea04abf6f88",

@@ -430,6 +430,10 @@ ENUMS = {
  "bonus_choice": {"values": [v for v in E25["bonus_choice"]["values"] if v != "forty"],
      "cite": E25["bonus_choice"]["cite"],
      "note": "loses forty: the 40% election is not offered in 2026 (C-BUS-04, lane O9); the cite stays i4562 (2025) until the 2026 edition posts"},
+ "carloan_kind": {"values": E25["carloan_kind"]["values"],
+     "cite": {"doc": "fr-2026-18219", "locator": "p. 24, § 1.163-16(d)(4) (refinancing of an SPVL) and (d)(5) (whether the SPVL "
+              "was incurred by the taxpayer; change in obligor by reason of death)"},
+     "note": "values unchanged; the cite moves from the proposed regulations (fr-2025-24154) to the final, T.D. 10054 (C-SCHED-40)"},
  "placed_year": {"values": E25["placed_year"]["values"] + ["y2026"], "cite": E25["placed_year"]["cite"],
      "extends_with_year": True, "note": "gains y2026 at adoption (tools/year_diff.py --adopt, extends_with_year)"},
 }

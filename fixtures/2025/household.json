@@ -3047,6 +3047,48 @@
           "value": true
         }
       }
+    },
+    {
+      "id": "mut.household.widowed_mfj_roster_unknown",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture, predicted by hand before recording: filing status mfj, married at the end of 2025, and the list of the people who lived with you not given. household.widowed_this_year takes household.no (false) for mfj without reading the list (the widowed question is asked for single and head of household only); a Bool line that counts listed people, such as household.qss_child_not_all_year, would be unknown here.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "household.married_dec31": true,
+        "$dependent": null,
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ]
+      },
+      "expect": {
+        "household.widowed_this_year": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "mut.household.widowed_mfs_roster_unknown",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture, predicted by hand before recording: filing status mfs, married at the end of 2025, and the list of the people who lived with you not given. household.widowed_this_year takes household.no (false) for mfs without reading the list (the widowed question is asked for single and head of household only); a Bool line that counts listed people, such as household.qss_child_not_all_year, would be unknown here.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$dependent": null
+      },
+      "expect": {
+        "household.widowed_this_year": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

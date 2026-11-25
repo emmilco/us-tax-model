@@ -793,58 +793,68 @@
    ]
   },
   "gate:retirement.is_ira": {
-   "subject_sha": "2ba4458022d42d1305a1375fb3428e69f94dd537252377cb581a6f9437a772b2",
+   "subject_sha": "0e7fc749ba5d9e10be331a0f1fbfea2363df8c963cac59c3ea92ddedcf789e9d",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A self-employed person or employee whose employer funds a SEP-IRA or SIMPLE IRA. Their 2025 Form 1099-R reports an excess contribution returned to them, or a direct transfer to a charity or an HSA from a SEP or SIMPLE IRA that is no longer ongoing.",
-       "why_no": "They think of the account as their employer's retirement plan ('simplified employee pension', 'SIMPLE plan') and pick 'plan' for 'Kind of account the distribution came from'. That makes is_ira false, so the IRA questions are never asked.",
-       "line": "retirement.ira_returned_if_ira; retirement.charity_hsa_if_ira",
-       "irs_text": "i1040gi p. 26: 'an IRA includes a traditional IRA (which includes a traditional IRA that receives contributions from a simplified employee pension (SEP) arrangement)... and a SIMPLE IRA'; p. 27 Exception 2(4)-(5): 'You had a 2024 or 2025 IRA contribution returned to you'; Exception 3: 'A QCD is a distribution made directly by the trustee of your IRA (other than an ongoing SEP or SIMPLE IRA)'",
+       "pattern": "5",
+       "who": "A filer age 70 1/2 or older whose employer funded a SEP-IRA or SIMPLE IRA had the trustee send part of it directly to a charity. Or a filer made a one-time HSA funding distribution from that account.",
+       "why_no": "The account came through the employer and is called a 'SEP plan' or 'SIMPLE plan', so the filer picks 'plan' as the kind of account. The IRA branch is then false, and the charity/HSA question is never asked.",
+       "line": "retirement.charity_hsa_if_ira",
+       "irs_text": "i1040gi p. 26: 'an IRA includes a traditional IRA (which includes a traditional IRA that receives contributions from a simplified employee pension (SEP) arrangement)... and a SIMPLE IRA'; p. 27 Exception 3: 'If all or part of the distribution is a qualified charitable distribution (QCD)...'",
        "severity": "medium",
-       "fix": "Derive the account kind from the Form 1099-R 'IRA/SEP/SIMPLE' checkbox (between boxes 7 and 8) rather than the filer's label. If the helper is asked, state that SEP-IRAs and SIMPLE IRAs count as IRAs, not plans."
+       "fix": "Classify the account from Form 1099-R box 7: an X in the 'IRA/SEP/SIMPLE' checkbox means IRA. Or say in the helper's options: 'SEP-IRA and SIMPLE IRA accounts from an employer count as IRAs, not plans.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer whose employer SIMPLE IRA or SEP-IRA paid back an excess contribution, or a 2024 or 2025 contribution, in 2025.",
+       "why_no": "The filer reads the employer arrangement as a 'plan', so the IRA branch is false and the returned-contribution question, which leads to a refusal, is never asked.",
+       "line": "retirement.ira_returned_if_ira",
+       "irs_text": "i1040gi p. 27, Exception 2: '4. You had a 2024 or 2025 IRA contribution returned to you... 5. You made excess contributions to your IRA for an earlier year and had them returned to you in 2025.'",
+       "severity": "medium",
+       "fix": "Use the box 7 IRA/SEP/SIMPLE checkbox to decide the branch, not the filer's word 'plan'."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A participant with a designated Roth account in a 401(k), 403(b) or governmental 457(b). They received a distribution that includes a plan loan offset, after-tax Roth contributions (box 5), or employer stock with NUA (box 6).",
-       "why_no": "They read 'Roth' as an IRA and pick an IRA or non-'plan' answer. Every plan-branch question is then skipped and set to false.",
-       "line": "retirement.loan_offset_if_plan; retirement.cost_any_if_plan; retirement.box6_if_plan",
-       "irs_text": "i1040gi p. 28: 'Pension and annuity payments include distributions from 401(k), 403(b), and governmental 457(b) plans'; p. 30: 'subtract any contributions (usually shown in box 5) that were taxable to you when made'; 'special rules that apply to rollovers from designated Roth accounts'",
+       "who": "A retiree receiving one of these on a Form 1099-R or CSA 1099-R: military retired pay, a federal civil service annuity, a state or local government pension, or a 403(b) annuity contract with an insurer. Or a beneficiary receiving a deceased parent's pension.",
+       "why_no": "The filer does not think of a government pension, military retired pay or an insurance annuity as a 'plan'. They choose another kind of account, and because the gate is '≠ plan', any non-plan choice is treated as an IRA. The plan questions are then skipped.",
+       "line": "retirement.cost_any_if_plan; retirement.disability_if_plan; retirement.pso_exclusion_if_plan; retirement.box6_if_plan; retirement.born_before_averaging_date_if_plan; retirement.loan_offset_if_plan",
+       "irs_text": "i1040gi p. 28: 'Fully taxable pensions and annuities also include military retirement pay'; 'An eligible retirement plan is a governmental plan that is a qualified trust or a section 403(a), 403(b), or 457(b) plan'; p. 30 Cost: 'Your net investment may be shown in box 9b of Form 1099-R.'",
        "severity": "medium",
-       "fix": "Use the 1099-R IRA/SEP/SIMPLE checkbox as the gate. In the helper's wording, say that a Roth 401(k), Roth 403(b) or Roth 457(b) is an employer plan, not an IRA."
+       "fix": "Compute the gate as 'kind = IRA' (an IRA/SEP/SIMPLE checkbox on Form 1099-R), not '≠ plan'. Label the plan option broadly: 'pension, annuity, 401(k)/403(b)/457(b), military or civil service retired pay, or any other employer or government plan'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose traditional or Roth IRA is held as an individual retirement annuity issued by an insurance company. They took a QCD or an HFD from it, or had an excess contribution returned.",
-       "why_no": "The contract and the Form 1099-R come from an insurer and pay as an 'annuity', so they pick 'plan' (pension, annuity or plan). The IRA questions are never asked.",
-       "line": "retirement.charity_hsa_if_ira; retirement.ira_returned_if_ira",
-       "irs_text": "i1040gi p. 27 Exception 3: 'If all or part of the distribution is a qualified charitable distribution (QCD), enter the total distribution on line 4a... Check box 2 on line 4c'; Exception 4 (HFD)",
+       "pattern": "6",
+       "who": "A Form 1099-R box 7 shows code 8, P or G, and box 2b 'Total distribution' is checked, so the filer reads the form as a refund or a rollover. Or a 401(k) loan was offset on separation, with code M or L, and no cash was paid out.",
+       "why_no": "No money arrived and the form looks unlike a pension payment, so the filer chooses a non-plan or 'other' option. The '≠ plan' gate then routes the form to the IRA branch.",
+       "line": "retirement.loan_offset_if_plan",
+       "irs_text": "i1040gi p. 28: 'Pension and annuity payments include distributions from 401(k), 403(b), and governmental 457(b) plans'; p. 30 Rollovers: 'Use lines 5a and 5b to report a rollover, including a direct rollover, from one qualified employer's plan to another or to an IRA.'",
        "severity": "medium",
-       "fix": "Gate on the 1099-R IRA/SEP/SIMPLE checkbox. If asked, say 'an IRA held as an annuity contract is still an IRA'."
+       "fix": "Decide the branch from the 1099-R itself (the IRA/SEP/SIMPLE checkbox), with no fallback that treats unrecognized kinds as IRA."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A retired federal civil service employee with Form CSA 1099-R, a railroad retiree, a retired government police officer or firefighter with a 457(b) or governmental plan, or a holder of an annuity reported on Form 1099-R. Any of these may answer the account-kind helper with something other than 'plan', or be unsure.",
-       "why_no": "The gate is '≠ plan', so any answer other than 'plan' (for example annuity, other, or not sure) sends the filer to the IRA branch. A civil service annuity or a pension paid by a government retirement system may not read to them as a 'plan'. The cost, disability, pre-1936 birth and retired-public-safety-officer questions are then never asked.",
-       "line": "retirement.cost_any_if_plan; retirement.disability_if_plan; retirement.pso_exclusion_if_plan; retirement.born_before_averaging_date_if_plan",
-       "irs_text": "i1040gi p. 28: 'Insurance Premiums for Retired Public Safety Officers... An eligible retirement plan is a governmental plan that is a qualified trust or a section 403(a), 403(b), or 457(b) plan'; p. 30: 'see Pub. 721 for U.S. Civil Service retirement benefits'; 'If you or the plan participant was born before January 2, 1936... See Form 4972.'",
-       "severity": "medium",
-       "fix": "Invert the default: compute is_ira as true only when the 1099-R IRA/SEP/SIMPLE box is checked, and send every other answer (including 'not sure') to the pension/plan branch. Add 'government pension, civil service annuity, or other employer pension or annuity' to the 'plan' option."
+       "pattern": "3",
+       "who": "On a joint return, the spouse owns the IRA or the plan, and the 'kind of account' helper is asked in the second person.",
+       "why_no": "The filer answers about their own accounts ('I have a 401(k)'), not about the spouse's account on this 1099-R, and so picks the wrong branch.",
+       "line": "retirement.charity_hsa_if_ira; retirement.born_before_averaging_date_if_plan",
+       "irs_text": "i1040gi p. 27: 'If you file a joint return, the same rules apply to your spouse'; p. 30: 'If you or the plan participant was born before January 2, 1936, you could pay less tax on the distribution.'",
+       "severity": "low",
+       "fix": "Word the helper as 'What kind of account paid out the money on this Form 1099-R (yours or your spouse's)?'"
       }
      ],
-     "prompt_sha": "a916e27f87eb1a4ba9b94c62f05d6b72dab5e865dc9418c45e66c2da0118dca5",
+     "prompt_sha": "0a490be36e9130fb2332b0ca2765dee9adb7d3ab5c7f6971c9a6e95f62d2facc",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.134372,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_retirement.is_ira.2ba4458022d4.1.response.txt"
+     "cost": 0.120932,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_retirement.is_ira.0e7fc749ba5d.1.response.txt"
     }
    ],
    "condition": "retirement.is_ira",

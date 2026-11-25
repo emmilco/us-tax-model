@@ -15,8 +15,9 @@ The full tier's other steps are the release's (tools/release.sh): no path makes 
 A path is compared with `git diff-tree -r --no-renames`, so a rename counts its old and its new path.
 
 The docs tier is sound only if no check-all step outside it reads an allowlisted path. The self-test
-checks that on the code check-all runs: every tracked file under tools/, engine/ and lean/, and the
-root package.json and tsconfig.json. Every reference in that code to an allowlisted path (its file
+checks that on the code check-all runs: every file under tools/, engine/ and lean/, and the root
+package.json and tsconfig.json, of the tree the green record names (tracked or untracked, not ignored:
+tools/worktree_files.py), so a run before `git add` scans what the commit will hold. Every reference in that code to an allowlisted path (its file
 stem, its directory prefix, or its first directory as a quoted path component) and every idiom that
 enumerates files beyond a named directory must be listed below, in READERS or WALKERS; an unlisted
 one fails, and so does a listed one that is gone. A reader is listed with the check-all steps that
@@ -32,6 +33,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import worktree_files  # noqa: E402
 DOCS = "tools/docs_paths.txt"
 STEPS = ROOT / "tools" / "check_all_steps.sh"
 TIERS = ("docs", "light", "full")
@@ -147,11 +150,9 @@ WALKERS = {
     ("tools/claims.py", "--name-only"): "pre-commit: the forms a commit changes; its self-test uses a temporary repository",
     ("tools/claims.py", "ls-tree"): "pre-commit, root commit only: the forms of the first tree; not a check-all step",
     ("tools/build_fresh.py", ".rglob("): "the model sources and canonical/ by modification time; reads no docs-tier path",
-    ("tools/check_bug_inventory.py", '"grep"'): "git grep for placeholders over every tracked file; a docs-tier step",
-    ("tools/check_bug_inventory.py", "git grep"): "as above (named in its docstring)",
+    ("tools/check_bug_inventory.py", "git grep"): "named in a comment; the search for placeholders over every file is worktree_files.grep (below), a docs-tier step",
     ("tools/check_bug_inventory.py", "ls-tree"): "lists bug_pending/ at a revision",
     ("tools/check_bug_inventory.py", "--name-only"): "the ls-tree listing above",
-    ("tools/new_bug.py", '"grep"'): "--assign: the tracked files citing a placeholder; not a check-all step",
     ("tools/siblings.py", '"grep"'): "git grep over forms/<year> only",
     ("tools/siblings.py", "--name-only"): "git diff over reviews/<year> logs; the unscoped one serves --reviews-since, not a step",
     ("tools/siblings.py", ".rglob("): "the --input ripple over its listed source directories; not a step",
@@ -170,6 +171,12 @@ WALKERS = {
     ("tools/worktree_data.py", "ls-files"): "lists the tracked files under the git-ignored data folders",
     ("tools/worktree_gc.py", "ls-files"): "lists a linked worktree's untracked files to archive them; reads no docs-tier path",
     ("tools/worktree_gc.py", '"archive"'): "the archive command's name; writes only under .claude/worktree-archive/",
+    # The listing and search the checks above use, over the paths their callers name.
+    ("tools/worktree_files.py", "ls-files"): "files(): the paths of the green record's tree under the caller's pathspecs (tier_paths: tools, engine, lean)",
+    ("tools/worktree_files.py", "git grep"): "grep(): the callers' git grep over the green record's tree: check_bug_inventory (placeholders over every file but docs/records, a docs-tier step) and new_bug --assign (not a check-all step)",
+    ("tools/worktree_files.py", '"grep"'): "as above",
+    ("tools/worktree_files.py", "ls-tree"): "its self-test lists the tree it wrote in a temporary repository",
+    ("tools/worktree_files.py", "--name-only"): "the ls-tree listing above",
     ("tools/defaults_guard.mjs", "ls-files"): "lists the staged fixture files in the commit-msg hook; its self-test (the check-all step) lists none",
 }
 
@@ -260,8 +267,8 @@ def reference_res(pattern):
     return [re.compile(rf"(?<![A-Za-z0-9_]){re.escape(stem)}(?![A-Za-z0-9_])")]
 
 
-def surface():
-    files = git("ls-files", "tools", "engine", "lean", "package.json", "tsconfig.json").stdout.splitlines()
+def surface(cwd=ROOT):
+    files = worktree_files.files("tools", "engine", "lean", "package.json", "tsconfig.json", cwd=cwd)
     out = []
     for f in files:
         if f in SCAN_EXCLUDED:
@@ -368,13 +375,21 @@ def unit_tests():
         assert len(problems) == len(want), problems
     finally:
         READERS, WALKERS = saved
+    # The scan covers the tree a green record names: an untracked code file is scanned, an ignored one is not.
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        worktree_files.scratch_repo(tmp)
+        (Path(tmp) / "tools").mkdir()
+        (Path(tmp) / "tools" / "planted.py").write_text("x = 1\n")
+        (Path(tmp) / "tools" / "ign.txt").write_text("x\n")
+        assert surface(cwd=tmp) == ["tools/planted.py"], surface(cwd=tmp)
     assert check_lists(["docs/*", "tools/x/*", "a*.md"], ["docs/a", "lean/b", "tools/x/y.py"])
     assert not check_lists(["docs/*"], ["docs/a", "lean/b"])
 
 
 def self_test():
     unit_tests()
-    tracked = git("ls-files").stdout.splitlines()
+    tracked = worktree_files.files()
     allow = parse((ROOT / DOCS).read_text(encoding="utf-8"))
     release_only, docs_tier = tier_steps()
     problems = check_lists(allow, tracked)

@@ -50,6 +50,16 @@
 - Reason: Owner decision B9 (docs/ny/DECISIONS.md); the federal limit is the encoded federal one (eic.limit_*).
 - Cite: [ny_it201i] p. 19, Line 65, "Did you claim the federal earned income credit for 2025 on your federal income tax return, or could you have claimed it based on your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
+## amb.ny.2025.small_business_scope
+
+- Text at issue: IT-225-I S-201 defines a small business as "a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000", and the subtraction as 15% of the net items "attributable to that business". It does not say whether the $250,000 test applies to each business or to all of a sole proprietor's businesses together.
+- Candidate readings: Each Schedule C business with employees is tested on its own net profit. | The proprietor is tested on the combined net business income of all their businesses, with any one employing persons.
+- **Chosen:** Neither is computed; line 31 is refused where either reading can make a business a small business (ny_it201.small_business_people).
+- Reason: Decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1151). The text supports both readings, and the tool computes no IT-225 modification, so refusing where either applies understates nothing. The gate also refuses, without testing each business, a person with two or more businesses that have employees and a profit. To narrow it once a reading is settled, drop the per-business or the combined conjunct of ny_it201.small_business_people.
+
+- Status: decided by the coordinator under the owner's delegation of 2026-11-24 (BUG-1151); refusal.
+- Cite: [ny_it225i] p. 19, S-201, "a small business means: • a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000" (2025; sha256 4a2de3cf)
+
 ## amb.ny.2025.withholding_forms
 
 - Text at issue: Lines 72 to 74 credit "your total New York State, New York City, and Yonkers tax withheld from any of the following" and list Form IT-2 (Forms W-2), Form IT-1099-R (Forms 1099-R), Form 1099-G and Form W-2G; they do not name Form 1099-NEC, 1099-MISC, 1099-INT, 1099-DIV or another information return.

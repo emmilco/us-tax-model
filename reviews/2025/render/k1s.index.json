@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "68",
   "match / mismatch / unclear / missing": "68 / 0 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-24); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -401,21 +401,21 @@
   },
   {
    "key": "28 (k)",
-   "record": "0dcd5b7e62726ca0adeb0255935502664034b154a822de2ec9d70444fe7f8456",
+   "record": "53deae137553736ea0cac6043e73ca4719cb6a0b7c3733963db0013ef141eee5",
    "status": "MATCH",
-   "subject_key": "4dc354464c2d8111211518d4a0725eaaf5610e38bf47472932c0c85e78954511"
+   "subject_key": "6ec584ae608883369526929ffda7173ac83ba3e468a83056bcc8003c63d351d9"
   },
   {
    "key": "28 (i)",
-   "record": "0dcd5b7e62726ca0adeb0255935502664034b154a822de2ec9d70444fe7f8456",
+   "record": "53deae137553736ea0cac6043e73ca4719cb6a0b7c3733963db0013ef141eee5",
    "status": "MATCH",
-   "subject_key": "ef123d1cc24ef0c7fa549d5d04922082968753fba08c60366062e696ee336045"
+   "subject_key": "dc21f1996ca4a81c5c5cdfb66b54be9f37b6f92ecca5498898c3958675cef3bf"
   },
   {
    "key": "28 (h)",
-   "record": "0dcd5b7e62726ca0adeb0255935502664034b154a822de2ec9d70444fe7f8456",
+   "record": "53deae137553736ea0cac6043e73ca4719cb6a0b7c3733963db0013ef141eee5",
    "status": "MATCH",
-   "subject_key": "09063bba3f6c285b84773028f1d0911c5dd257b7a33c1b24c32bd213e02b5f95"
+   "subject_key": "a1d09d8a9401843fd18550b06ac6346fe1c9cf086442b749622b04d89f8e613d"
   }
  ],
  "subjects": {
@@ -484,9 +484,9 @@
   "(screen) (k1s.re_pro)": "baa4edd112ca775ed67c847a57f0578e1fbe90d89a721c11b36ba43e80742a5a",
   "(screen) (k1s.dwelling)": "bb54c917d41df516833b86b17bb6157d8124506845c262f68c801599512a1dc0",
   "(screen) (k1s.interest_buy)": "1e3e65f24da22b0e3be3c8874db65d0fa46295a3369f50c2ad58e41f7d00f380",
-  "28 (k)": "c372be556580a0527b59e896450a9b6574c6926df55b9f8903c807ea131442eb",
-  "28 (i)": "d960b3a8f6f2cbb5877ac0c55f72ecbf1263c75aa4deb173faa2f628adfe72a5",
-  "28 (h)": "18e11b48cabedad8ae05b597227463a1c02581341f47e95b5d45bdae50cdcf73"
+  "28 (k)": "29cdb85dfb74c48d1fb2b06c4f12442c0a63e0dc14e6a940d9962947fccc7449",
+  "28 (i)": "d791d558e1db4945ea7eae98b6f1b878715ba8e2ea5919feba97591f6f10dbbf",
+  "28 (h)": "0c9d92bad7829e2cd6f97c9ddde2e1dfd09c8b6fc5ae4943a8c6d29fab8147f0"
  },
  "__rest__": "6264dea79c7c944b6cf8c12045eb164efb7b562c76503892898afa0e53ecd9db"
 }

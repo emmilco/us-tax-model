@@ -3,13 +3,14 @@
 The operations that take the 2025 definitions to 2026, one file per form they act on, applied by
 `tools/year_changes.py` (format and checks: `tools/README.md`, "Year changes as operations"; design:
 `docs/2026-11-14_year_change_operations.md`). check-all applies them to `forms/2025`, `interview/2025`,
-`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (164 entries, 1,348 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
+`ambiguities/2025.yaml` and the archived pages of `sources/2026` on every run (166 entries, 1,405 operations); `tools/year_diff.py --from 2025 --to 2026 --adopt` applies them to the
 adopted copy. Nothing here is read by the build.
 
 | File | Entries | Operations | Change-map entries |
 |---|---:|---:|---|
 | `asset.yaml` | 2 | 12 | C-BUS-11, C-BUS-12 |
-| `carloan.s1a.yaml` | 2 | 6 | C-SCHED-01, C-SCHED-06 |
+| `carloan.regs.yaml` | 1 | 26 | C-SCHED-40 |
+| `carloan.s1a.yaml` | 2 | 7 | C-SCHED-01, C-SCHED-06 |
 | `carloan.sc.yaml` | 1 | 1 | C-BUS-02 |
 | `carloan.wording.yaml` | 1 | 1 | C-SCHED-07 |
 | `dcprov.yaml` | 1 | 12 | C-CRED-12 |
@@ -47,7 +48,7 @@ adopted copy. Nothing here is read by the build.
 | `ira.yaml` | 1 | 5 | C-PEOP-08 |
 | `otjob.yaml` | 1 | 5 | C-SCHED-05 |
 | `person.ambiguity.yaml` | 3 | 7 | C-CRED-18+C-PEOP-16, C-CRED-20, C-CRED-16 |
-| `person.edu.yaml` | 3 | 39 | C-CRED-18+C-PEOP-16, C-CRED-20, C-PEOP-17 |
+| `person.edu.yaml` | 3 | 40 | C-CRED-18+C-PEOP-16, C-CRED-20, C-PEOP-17 |
 | `person.ira.yaml` | 1 | 7 | C-PEOP-08+BUG-1032 |
 | `person.labels.yaml` | 7 | 7 | BUG-1240 to BUG-1246 |
 | `person.page1.yaml` | 1 | 2 | C-PRI-06 |
@@ -63,6 +64,7 @@ adopted copy. Nothing here is read by the build.
 | `s1a.yaml` | 6 | 188 | C-SCHED-01, C-SCHED-02, C-SCHED-03, C-SCHED-04, C-SCHED-05, C-SCHED-08 |
 | `s2.labels.yaml` | 8 | 8 | BUG-1249 to BUG-1256 |
 | `s2.x2-paynow2.yaml` | 1 | 9 | C-X2-S2-01 |
+| `s2.f6251.yaml` | 1 | 25 | C-LAW-02 |
 | `s2.yaml` | 6 | 66 | C-SCHED-10, C-SCHED-11, C-PEOP-03, C-SCHED-13, C-PEOP-12, C-LAW-02+BUG-1031, BUG-1167 |
 | `s3.yaml` | 2 | 12 | C-SCHED-12, C-SCHED-39 |
 | `s3a.yaml` | 1 | 2 | C-PRI-05 |
@@ -90,7 +92,9 @@ and `ty26-w1.md`, the wording-only entries); `tcw.yaml` carries a defect the par
 change-map entry (BUG-0647: the 2026 joint 12% bracket ends above the Tax Table's $100,000 boundary). Three entries
 also carry defects: in `s2.yaml`, C-LAW-02 with BUG-1031 (the AMT exemption phase-out and separate-return add-back
 read the new `amt.phaseout_rate`, 50% in 2026, while Form 6251 line 37 keeps `amt.rate_25`) and BUG-1167
-(two locators whose quotes the 2026 drafts reword); in `person.ira.yaml`, C-PEOP-08 with BUG-1032 (the IRA deduction
+(two locators whose quotes the 2026 drafts reword); `s2.f6251.yaml` requotes, for C-LAW-02, the Schedule 2
+AMT citations of Form 6251 itself from the 2026 Form 6251 draft; `carloan.regs.yaml` (C-SCHED-40) moves the car loan
+citations from the proposed regulations to the final ones (T.D. 10054); in `person.ira.yaml`, C-PEOP-08 with BUG-1032 (the IRA deduction
 reduction labels print the 2026 rates, which follow the 2026 contribution limits). The `*.labels.yaml` files carry
 one defect each (BUG-1236 to BUG-1258): a label that prints the 2025 amount of a dollar
 parameter the line reads, rewritten to print the staged 2026 amount; `tools/check_label_year.py` (check-all) finds a
@@ -121,7 +125,8 @@ The operations read thirteen parameters the 2025 file does not define (`amt.phas
 `sc.mileage_rate_h1`, `sc.mileage_rate_h2` and the new joint Tax Computation Worksheet row `tcw.mfj.b0.*`): the 2026
 parameters must define them, and the staged `research/ty2026/params-2026.proposed.yaml` does. The ambiguity register
 is changed by operations too: `amb.2026.gift_floor_base`, which `sa.gift_floor` and `sa.line13_ws` name, is added in
-`sa.yaml` (C-PRI-15), and other entries are set or removed where their lines change (`f2441.yaml`, `f5695.yaml`,
+`sa.yaml` (C-PRI-15), `amb.2026.carloan_heir_original_use` (`carloan.original_use`, BUG-0734) in `carloan.s1a.yaml`
+(C-SCHED-06), and other entries are set or removed where their lines change (`f2441.yaml`, `f5695.yaml`,
 `f8960.yaml`, `person.ambiguity.yaml`). Each new input's `add_question` carries its test-data `default` and `reason`,
 which `tools/fixtures_year.py` writes to `fixtures/2026/defaults.json` at adoption. `f5695.interview.yaml` changes the
 interview files beside the question bank's questions (the `full` profile's targets, the coverage rows, the gate
@@ -130,10 +135,10 @@ frequencies, the bank's tick-box groups and a persona) with the interview-file o
 A form several lanes change may take split files, `<form>.<topic>.yaml`, each with `form: <form>`; they apply after
 the form's own file (`tools/README.md`, "Year changes as operations").
 
-## The 135 change-map entries by operation kind
+## The 136 change-map entries by operation kind
 
 Each entry of `research/ty2026/changes.md` by the operations it needs and what it needs outside them, read from the
-entry's kind, touched ids and notes, before any operation was written. "Written" marks the 91 entries whose
+entry's kind, touched ids and notes, before any operation was written. "Written" marks the 92 entries whose
 operations are in this directory; the files, not this classification, say what the operations are (written against
 the current forms, several entries classified "—" took citation or wording operations).
 
@@ -207,6 +212,7 @@ the current forms, several entries classified "—" took citation or wording ope
 | C-SCHED-37 | Student loan repayment assistance text moved (p4681) | — | page moves |  |
 | C-SCHED-38 | Form 1116 instructions: 2026 What's New and Reminders (election pat... | — | not encoded |  |
 | C-SCHED-39 | Schedule 3: new line 13e (Form 1062 line 14) among other payments; ... | add_line, set expr | — | yes |
+| C-SCHED-40 | Car loan interest: the final regulations (T.D. 10054) replace the ... | set cite, set_form, set_ambiguity | — | yes |
 | C-CRED-01 | Form 5695 becomes a carryforward-only form | set_form | — | yes |
 | C-CRED-02 | Part I current-year property costs (lines 1 to 11) removed | remove_line, remove_question | ambiguity register | yes |
 | C-CRED-03 | Carryforward lines renumbered and rolled forward (2025 lines 12, 13... | set printed, set expr | — | yes |

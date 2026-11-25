@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
  "head_rows": {
-  "printed lines compared": "144",
-  "agree / disagree / missing": "56 / 88 / 0",
+  "printed lines compared": "146",
+  "agree / disagree / missing": "57 / 89 / 0",
   "line-scoped reviews": "16 (latest 2026-11-24); see Line-scoped reviews"
  },
  "lines": [
@@ -118,9 +118,9 @@
   },
   {
    "key": "person.hsa_step1",
-   "record": "ce2d73db44e9e0642a1f95e81d758ddd43bc93568689e10989d56c325ccbfaa3",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "AGREE",
-   "subject_key": "a04e2c259aa977f9c3efa01ba3680e1bbe23d4da5a5d840728181d7e6b43b95a"
+   "subject_key": "d376a397556c476e32d9b6d261f236e687c4e63247aa8fb11b7ad1fad920aff9"
   },
   {
    "key": "person.hsa_share",
@@ -689,11 +689,24 @@
    "subject_key": "833061893ab89c06600c757a7fa395978a0583f1e602388ed7f49ad80dbac5e8"
   },
   {
-   "key": "person.edu_adj",
-   "record": "c545700581036a72770a66499ae7397e3096482d215cdc3a207a52d0b5af58f7",
+   "key": "person.edu_student",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8863 p. 9, Adjusted Qualified Education Expenses Worksheet, line 3. Both add lines 2a, 2b and 2c; the reply opens the sum on person.edu (expenses paid for this person), the project on person.edu_student (an eligible student of the return: expenses paid, a TIN by the due date, a Form 1098-T or an exception). They differ only for a person with expenses who is not an eligible student; Part III reads the line only for an eligible student, and the new reader f8863.adj_person (the notice of BUG-0932) should not count a student no credit is figured for, so the project's zero there is the intended value.",
-   "subject_key": "c941e7bf529c287a4ce550a184bfd750e83b1e4537d620b4bdaf2830c8d67fd3"
+   "ruling": "Ruling: model error; the line is 'an eligible student of this return: expenses paid, a TIN by the due date and a Form 1098-T' (i8863 p. 3, Who cannot claim a credit, 5, \"The student has not been issued a TIN by the due date\"; p. 1, Form 1098-T requirement). As the prior rulings on this line: the reply leaves the student's TIN (person.tin, or an ITIN applied for by the due date and issued, p970 p. 11) and the return-level screen f8863.paid to other lines that do not test them, so it is Yes for a student the project excludes for want of a TIN.",
+   "subject_key": "c9ba2898ef2e4e80655253be9214fd309bcf9440a598653c1d3b60ca910c9093"
+  },
+  {
+   "key": "person.edu_adj_sum",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
+   "status": "AGREE",
+   "subject_key": "950afd5bf152009296d99afe24322fba5f54767e1d4cafd6f9e8c9e892210086"
+  },
+  {
+   "key": "person.edu_aoc_rules",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the line is 'lines 23 to 26 allow the American opportunity credit for this student, the filers have TINs, and the institution's EIN is available' (i8863 p. 3, Student qualifications 5, and p. 4, 7, \"You must provide the educational institution's employer identification number (EIN)\"). The reply tests lines 23 to 26 only and leaves the TINs and the EIN to Form 8863 lines that do not test them.",
+   "subject_key": "6f57fefa4553ed10036be90c0bad70028fdc9f9c549ff2a7984d4251ea68d334"
   },
   {
    "key": "person.edu_kid",
@@ -735,9 +748,9 @@
   },
   {
    "key": "person.x_tax",
-   "record": "c545700581036a72770a66499ae7397e3096482d215cdc3a207a52d0b5af58f7",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "AGREE",
-   "subject_key": "ae198741741ab528a2c58c2dc1d6ba2281ca06fc5a344db242c289ac9487a7c1"
+   "subject_key": "b4853f93e4127e4bab534773a11b195cb5f10cdcbf903d1e3e41c70ca215027d"
   },
   {
    "key": "person.x_must",
@@ -928,38 +941,38 @@
   },
   {
    "key": "27",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
-   "subject_key": "f6f48287265e7a7e8a52157fde4fbddfa7f8d31140dbde3834bdd8dedaebcf7e"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "subject_key": "e46df30d7809a18b69a4c3a09d40dc39e1e3ba55abea557eac9ee59964a26167"
   },
   {
    "key": "28",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
-   "subject_key": "4b931a12c9d63587c3a322708f33e848556d7f60a169fda570531565a6391d64"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "subject_key": "3d13a5d47f596bd6263ec6233c899a675d6ac362697062eca3e3d944c879c7ac"
   },
   {
    "key": "29",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
-   "subject_key": "c2d3e8042096891e293fd3d304c9b494258333e55b6944c71e1e1cadad7aef71"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "subject_key": "883cf02c087d7eb87e16b5f6a6c0255687ea618df4e75266da8720bdf05badce"
   },
   {
    "key": "30",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
-   "subject_key": "1182863fcbd014728cd7cb12564f568b915d8de3253bc687241428e76daa9291"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, \"Caution: Don't claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\" The reply completes lines 27 to 30 whenever lines 23 to 26 permit, leaving out the ban (and a Form 8862 case the filer does not claim) that the project applies through person.edu_aoc (f8863.ban_if_aoc). On stage19.refuse.ban (a ban answered Yes; tuition $3,100, other course materials $450) the project's lines 27 to 30 are not completed ($0) and the student goes to line 31, while the reply's line 27 would be $3,550 and line 30 $2,387.50. As the prior rulings, the reply's AOC test also differs on a student whose ITIN was applied for by the due date (p970 p. 11; T-113).",
+   "subject_key": "703fb5d76a5246fcdd3cea1a12b3fbd58609d12bfeec03bd6550eb1396e47dcc"
   },
   {
    "key": "31",
-   "record": "07016f9df7b581d72092f7a46aac3ebc4c59777c5f502d6e2b66668bb44478c1",
+   "record": "90745e7104f217d621ea7a6ce0becd0709d8b1124c80af71a9984be83c693ded",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; both give line 31 only for a lifetime learning credit student and zero where lines 27 to 30 are completed ('If you complete lines 27 through 30 for this student, don't complete line 31'); the project writes it as a choice on person.edu_llc.",
-   "subject_key": "fc3c2bb4ca1d4baed7ca876889458c3a87513b209a41c76ddc62d21dd2a20c77"
+   "ruling": "Ruling: model error; i8863 p. 3, American Opportunity Credit, Caution (the ban), and p. 4, Tip, \"If the requirements above aren't met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit\". The reply completes line 31 only for a student sent there by lines 23 to 26, so a student under a ban gets neither credit; the project's person.edu_llc sends that student to line 31 (stage19.refuse.ban: project line 31 $3,100, reply $0). Elsewhere both give line 31 only for a lifetime learning credit student, as ruled before.",
+   "subject_key": "b73c8867be2c9be45456e0d3d1072a69f6b4c59122a0cf1cab86dfe260ad6ea2"
   }
  ],
  "subjects": {
@@ -979,7 +992,7 @@
   "person.hsa_family": "b0b5e44c680fbab09101daa3a0fe3cc12ed8762712d931e7fb933d0051daadb4",
   "person.hsa_self": "26d8ac8946a937f3eaf8cd81244f4b3636267d2576213d2bb069859811aa630f",
   "person.hsa_agreed": "d6c6cc72d7f021042ab4eaffa5da8ba28547d71235cc8421d8debed2e21a328a",
-  "person.hsa_step1": "5531abe365e1684a202b58b6c2b833bcdab20870089a91b7a3876281b67357f7",
+  "person.hsa_step1": "45c258e890d0fedc7b37b40d0726de28d7c246021e7953d193a3d36cbd2b91e4",
   "person.hsa_share": "a1d05ce975be491360d6936709754e399c110cf198d1f19291ffadbec37392ea",
   "person.hsa_deduction": "1956484df58c7d1aeed094c8efa59ee93c6a0c68dbee62afba4a87c8b80708a7",
   "person.hsa_taxable": "503c05c6d871485c2aea293262dbce3c1659ec18c7a556d3ad5d5bc169e889a6",
@@ -1065,14 +1078,16 @@
   "person.ira_8606_line14": "47c89972f50bf49fc1746168b164510319590ea9e1dcc1d1c82092b28218a51a",
   "person.ira_ssb": "4f5749ac769fffeb9a2181aa6739d2ff5ee7e9571e3b5c913701e6411d43625b",
   "person.ira_se": "c86b9bc4ff77167b9c15f74a482bcef8097e16aad2314b7293c00b84141f7605",
-  "person.edu_adj": "6ee773db6d2bb9ab224f629e43feb24407d078c39e0930032e36ec2f461bbfa4",
+  "person.edu_student": "6b4b1cf73d67cd05c94556b91ddbbe02a8472f8b3da969d1cb16db32baef456b",
+  "person.edu_adj_sum": "4c277a7bd0130a904a4d12044c336f5563a45eb0d5e03e77fc6ae55cd92a506e",
+  "person.edu_aoc_rules": "fc03c214ce8ba4a1f7ed53ae8f064b076e5c479d6ab9778c01ae32c19b803e21",
   "person.edu_kid": "dda6d091300fdcd05ec49fcbb1708ff62619bcb6635115e6dd5d252f33f9bc49",
   "person.x_l1": "8918e95355b7587c0094978375825c55dd25c581cfa70928c887960e7353036a",
   "person.x_l2_all": "72a762c9f410531c028cda2c2c18402a79833e8ff9528c6ee38688017e1890cb",
   "person.x_l1_s": "24267bbbdb0337d89c5f3079e53acba0824dba00bbb8d1bccd2c19a7cf91abde",
   "person.x_l2_s": "ba325c3404635d9d716c53648c75ad1e72c363da9fbb778fa326f90a035d2c15",
   "person.x_e05": "d4596ea2b6aa21d7a5afecdceaf735294a809021c7656dd88ce5811ab7d46a32",
-  "person.x_tax": "063126836c7436fd1023e0235245acb2c55e835ba0fcbc4a5501b40cbf28bc9e",
+  "person.x_tax": "8280991c9e3b11e5fda50a57e1afa0804885ed3193dc4c2203d77a6f275b44cb",
   "person.x_must": "9429d6b3783328f7049e6217d9dd8e0bdea36c5ceaece059947c15881f33ba97",
   "person.x_c05": "47a6b7e1b81e44437ae565e021699f1a4f8cca6f29f9ab87213a4296b16682ce",
   "person.x_two23": "9821f822eb859949bfc972c200e714cd131129bbef06e1223935b7d8277fe444",
@@ -1102,11 +1117,11 @@
   "Step 21": "9ffcf25cdd3c05e804f113dc4829fe6830c892c9f27958844f9fcb077134c932",
   "(screen) (person.sav_excess)": "7161524684defde8e4ac1110fb75cd9faf970fb4cbda658f6a7055601ecded15",
   "(screen) (person.ira_excess)": "025cc95bf70008f85fc4bbabab9dbe99e449f91f34ddc832aa093b2ff262b5b9",
-  "27": "d6ce6035848d4843eeffa7ac56ddb336e781f771d6b85f1f69c7228c70eb4312",
-  "28": "22a2549aed04e3f902f0f45bc8ea2889e571720d87a98236de170bfb15d3c0da",
-  "29": "cb0a4a754aca953d9446512addb86f362bbd4cf8680521bd7c9a6885e79ad7e5",
-  "30": "de4a93e13482929e09eb47269cb33de0af4eea51b14f73fe7d8c6da1f859f625",
-  "31": "c8a66ec4ed21ebaf6caf9368148a43dd87015a6eb83a7248c17a1646487465b0"
+  "27": "8642916dd5cef8bffcfe2416522f3c8d060a0be9d293ac24eee8de9d4424410a",
+  "28": "5eec6fd4f2da7c82f48c38cdc9bcff0411ac5aa55aac51fc25ef4756c8afbe19",
+  "29": "775fb8d330dd2fb2c0a0c2232bb3a052b88f2ddbde41e3399b686e26b94d283b",
+  "30": "b6b46188f01988d9fbd8e4dbbf7e9615c0ed6895011b95bdd73ffab5e61975da",
+  "31": "62557117fe3f74d5e8320138d887ecd11494415088dc14db36b2666b98f05e1e"
  },
  "__rest__": "d28e22d3400268c696f00ac5cb2cb4acf80222dd6ee55c48f68bb684d57f0110",
  "foreign": {
@@ -1126,7 +1141,7 @@
   "person.hsa_family": "ad5c941962c021ccedb1345acad7a4ac358827dd0dfa74286959ec81b7cc1b48",
   "person.hsa_self": "4b0b615e80614c5878357c96cdc5a0dd9cd7a34db6f2c7b086071851ba49fce8",
   "person.hsa_agreed": "85a7fb101e4a88ec39b2040911f13c29bae4df6eb73ea9e836bcf7a61ffc13ab",
-  "person.hsa_step1": "e7a31b6d0bb270bd03e766e8ff76875ac817f7e7f89ae73143a964760679c2f6",
+  "person.hsa_step1": "5ad63ad7f2267957eca7e39b5b96277950ebac8c021f4e1dce96212b0f2e7c66",
   "person.hsa_share": "d2fb4aaccc540bfe21255afe80cb82c5c394597642ffd3079f80da2e648e9679",
   "person.hsa_deduction": "583c8221c4e3ae95043d997637565de2e6769f505b5edc170648cc219dba8dd2",
   "person.hsa_taxable": "45a1873b958d39f07d2a4ae5d01a595c6fd6112532439b5443e114ef4e9b9f24",
@@ -1212,14 +1227,16 @@
   "person.ira_8606_line14": "6e2ce5ce3a4d7488f1072f6e52b16e7c4487402bffff8f75af0f51dbcb2894c6",
   "person.ira_ssb": "89cc2dbadcdaf1cbaea6b7b46f724f5776e52364ca6b2e2524491de067f1cd69",
   "person.ira_se": "a17d60654b9587f3bd0fd46cb2e975e716e65e8b97b4565afc804e649cb90f77",
-  "person.edu_adj": "b076d8c0a2ba0bed10bc3bc20be48154cc34568a6fdf6227a3e455e3e09999ec",
+  "person.edu_student": "b076d8c0a2ba0bed10bc3bc20be48154cc34568a6fdf6227a3e455e3e09999ec",
+  "person.edu_adj_sum": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "person.edu_aoc_rules": "ea74812d33a3b87216a4d01e4d0b2633d2b809d84675568538489010a3057313",
   "person.edu_kid": "2fc0552361d594c319941e9c2cf899ab31969a61a9ceee40ed239ff6887498f0",
   "person.x_l1": "13ac39d5ad3ecc7f0161ea320bdf8c0a5471b6438ea0ac203a4e9b895534e72b",
   "person.x_l2_all": "72e265fbc505d3f4560c064945578f14f548cba5a15f41ed1a2b3b5e276ce237",
   "person.x_l1_s": "e7c02f28453d8d91c959feb2726a7c4aed9dd05be3c12bcab647c7d1cdbbfcee",
   "person.x_l2_s": "8e39af352f37448f186ea41b90065c219dd9fd4fd222289a9da0aa06eaac30cc",
   "person.x_e05": "af9a50efbab9ab1fb39bcca9e8219f810d1af944517350a0fea667280fa043a5",
-  "person.x_tax": "7bd37d8bceefa9c56183187769e27c57d8bd11c29e3ba8a95e6af1c56c3bbb00",
+  "person.x_tax": "a1babb884c75f478adc2d5fe0e719edb7bc83055506945b4487a29bcb540c53d",
   "person.x_must": "41852e914e15b179389ac2e6d1148f167c1f88e24373ca2848c3945012f60fc8",
   "person.x_c05": "21738db4e419adf9d161b08cca6ebbe74b17006290364ac41dcbf44334f161b4",
   "person.x_two23": "dece55903f12df3118eda53b2b741560f34dd23c6a57affd4c329f5b21e1fbe7",
@@ -1249,10 +1266,10 @@
   "Step 21": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(screen) (person.sav_excess)": "ab5d2dcbc6fea16793195d16840e90afe343ad4eb8d3ef7b4aee96352657a559",
   "(screen) (person.ira_excess)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "27": "88a20b209f5bd9eaf50f72a4fb0913f1b64fa513030df15c6a46b9c16eab32f2",
-  "28": "04ade2990566c93653f53d9149d35a507df7d8bcac1d8c798034e2df9d0bfbff",
-  "29": "a0731f9f73641383c55b0266f4035801c34912c301ed5b3650e071b6e29471f1",
-  "30": "f6ad556e49ce314571e7ad2b80d8e31a82697ad6e25383e17e12fb8ad2bedf8d",
-  "31": "dbe9baee7bb99322e049d919a2380e48d7b3f4df11cb8e075e11288a76bc3854"
+  "27": "d92c691695573b5c761bb15b9cfc21a209f89c541309b14f02f4d6084c914669",
+  "28": "4b186d99568ac1b20c1a3b13081e49336344557d014039f2aee58cd1b349771a",
+  "29": "f188d16b858d77397a29160fef17b80cd2161436dda9e32195162f548371c1da",
+  "30": "95b49345133e7665002a4f9d93ab77e75b1ee2f1ebd2c0ae33f3f05b84258942",
+  "31": "5f1e041f827c9bfc4eeffb0df38c4d041754100099b0692a243a98868fa4d6fc"
  }
 }

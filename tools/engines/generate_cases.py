@@ -733,7 +733,7 @@ SCREENS_NO = {
     "qbi.unsupported": ("qbi.coop_patron", "qbi.prior_form", "qbi.reit_loss", "qbi.suspended"),
     "f8959.unsupported": ("f8959.territory_w2",),
     "s1.line8_other": ("s1.inmate_wages", "s1.ltc_payout", "s1.nqdc_pension", "s1.olympic", "s1.stock_options",
-                       "s1.winnings_any"),
+                       "s1.winnings_any", "s1.state_disability"),
     "s1.line8g": ("s1.alaska_any",), "s1.line8h": ("s1.jury_any",), "s1.line8i": ("s1.winnings_any",),
     "s1.line8j": ("s1.hobby_any",), "s1.line8r": ("s1.scholarship_any",),
     "s2.amt": ("s2.amt_business", "s2.amt_boat", "s2.options_any", "s2.iso", "s2.iso_vested"),

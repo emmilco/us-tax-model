@@ -1738,10 +1738,11 @@ form:
         doc: i1040gi
         locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
           as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025"'
-    - id: household.qss_child_conflict
-      printed: (helper)
+    - id: household.qss_child_not_all_year
+      printed: (gate)
       type: Bool
-      label: A child is listed, but no child listed lived with you for all of 2025
+      label: Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children
+        listed lived with you for all of 2025
       expr:
         op: test
         all:
@@ -1759,54 +1760,8 @@ form:
         doc: i1040gi
         locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
           as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025"'
-    - id: household.qss_child_conflict_if_claimed
-      printed: (helper)
-      type: Bool
-      label: 'Qualifying surviving spouse tests answered Yes, and a child is listed but none lived with you all of 2025 (false
-        when the tests were answered No)'
-      expr:
-        op: choose
-        alternatives:
-        - guard:
-            op: test
-            eq:
-            - household.qss_eligible
-            - const: true
-          then: household.qss_child_conflict
-        - guard:
-            op: test
-            eq:
-            - household.qss_eligible
-            - const: false
-          then: household.no
-      cite:
-        doc: i1040gi
-        locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
-          as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025"'
-    - id: household.qss_child_not_all_year
-      printed: (gate)
-      type: Bool
-      label: Qualifying surviving spouse checked and its tests answered Yes, but a child is listed and none of the children
-        listed lived with you for all of 2025
-      expr:
-        op: choose
-        alternatives:
-        - guard:
-            op: test
-            eq:
-            - household.qss
-            - const: true
-          then: household.qss_child_conflict_if_claimed
-        - guard:
-            op: test
-            eq:
-            - household.qss
-            - const: false
-          then: household.no
-      cite:
-        doc: i1040gi
-        locator: 'p. 15, Qualifying Surviving Spouse, "2. You have a child or stepchild (not a foster child) whom you can claim
-          as a dependent or could claim as a dependent" and "3. This child lived in your home for all of 2025"'
+      note: A child is counted only through dependent.own_child_if_qss, which is asked only when qualifying surviving spouse
+        is checked and its tests answered Yes and is false otherwise, so no child is listed on any other return.
     - id: household.rdp
       printed: (helper)
       type: Bool

@@ -1179,12 +1179,16 @@ form:
     - id: s2.lookback_ask
       printed: (gate)
       type: Bool
-      label: "The return has a Schedule C, or you (or, on a joint return, your spouse) owned a business, farm, rental or share of a partnership or S corporation before 2025 (a contract of a business closed before 2025 can still be adjusted in 2025)"
+      label: "The return has a Schedule C, or you (or, on a joint return, your spouse) owned a business, farm, rental or share of a partnership or S corporation before 2025 (a contract of a business closed before 2025 can still be adjusted in 2025), or the return lists a source of royalties (property such as a film or book may be depreciated by the income it is expected to earn)"
       expr:
         op: test
         any:
         - { op: test, eq: [s1.has_sc, { const: true }] }
         - { op: test, eq: [scope.business_before, { const: true }] }
+        - op: test
+          all:
+          - { op: test, eq: [scope.rental, { const: true }] }
+          - { op: test, gt: [sche.royalty_count, { const: 0, type: Count }] }
       cite:
         doc: i6251
         locator: 'p. 7, Line 2p, "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted"; f1040s2 Schedule 2 (2025), line 17n, "Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866"'

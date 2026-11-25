@@ -167,15 +167,26 @@
    ]
   },
   "unruled:ny_it201.ask.it225#1": {
-   "subject_sha": "ddb693ff8258fe9c873b2ebc1189615d7b73920aa1a3defcadeebc58016f3097",
-   "reason": "No defect: partnership and S corporation income is refused for the federal return.",
+   "subject_sha": "c0f32c2dbf47629661a7991653729176acd4ac23bf55408a46927d400059ce3f",
+   "reason": "No defect: K-1 pass-throughs are refused for the federal return; a business bond premium is a residual on the safe side.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
+     "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "The New York return is built on the tool's federal return, where partnership and S corporation income is refused by scope.schedule1 ('partnerships, S corporations ... (Schedule E or a Schedule K-1)'); EA-113 and ES-125 pass-throughs cannot arise.",
-     "gate": "scope.schedule1 (refusal on scope.ready: partnerships, S corporations, estates or trusts, Schedule E or a Schedule K-1)"
+     "evidence": "scope.k1 ('income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it') and scope.schedule1 refuse a K-1 for the federal return, on which the New York return is built; a partnership's or S corporation's New York modifications cannot arise."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "As finding 0: an estate or trust beneficiary's K-1 is refused by scope.k1, so a fiduciary adjustment (EA-901, ES-901) cannot arise."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "IT-225-I S-204 (amortized premium on federally tax-exempt bonds taxable to New York, attributable to a business the filer carries on) is a subtraction; a filer who misses it answers No and New York tax is overstated, not understated. The question asks whether any item on the IT-225 list applies, and its help gives examples rather than the list."
     }
    ],
    "bugs": []

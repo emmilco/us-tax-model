@@ -2,46 +2,32 @@
  "form": "s2",
  "reviews": {
   "s2.household_employee": {
-   "subject_sha": "b08395f81928943682bff126ca0ef78dfa8d8969660768951735d50c6dfc9a51",
+   "subject_sha": "aa5e92f163665ba40bf65fb78920db52f51bd650c6464714eaef57cef2ce4c60",
    "samples": [
     {
-     "verdict": "NARROW",
+     "verdict": "WIDE",
      "findings": [
       {
-       "kind": "NARROW",
-       "situation": "In a 2025 quarter the filer paid $1,200 in cash to a 17-year-old student babysitter and paid no other household workers. The help tells the filer to leave this pay out, so the answer is No, but the pay still meets the $1,000-per-quarter federal unemployment (FUTA) test.",
-       "source_text": "f1040s2 Schedule 2 (2025) p.1, line 9: \"Household employment taxes. Attach Schedule H\"",
-       "why": "Schedule H leaves out pay to workers under 18 only for the $2,800 social security and Medicare test. That pay still counts toward the $1,000 quarterly FUTA test. The help drops it from every test, so some filers who owe Schedule H tax answer No.",
+       "kind": "WIDE",
+       "situation": "A filer paid their own parent $3,000 in cash in 2025 to care for the filer's child, and the conditions that make a parent's wages taxable do not apply, so no other test is met.",
+       "source_text": "f1040s2 Schedule 2 (2025), page 1, line 9: \"Household employment taxes. Attach Schedule H\"",
+       "why": "The help excludes only a spouse and a child under 21, so this filer answers Yes. Under the Schedule H rules that line 9 relies on, a parent's wages are generally excluded from the $2,800 test and from the $1,000 quarterly test, so no household employment tax is due. The question's own label also asks whether the filer 'owe[s] household employment taxes', which conflicts with the help.",
        "bound": ""
       },
       {
        "kind": "WIDE",
-       "situation": "The filer paid their own 19-year-old child, their spouse or their parent $3,000 in 2025 to babysit or do housework. The filer answers Yes, but these wages are not counted for Schedule H.",
-       "source_text": "Question: \"Did you ... pay any one of them $2,800 or more in 2025 ...\"; f1040s2 (2025) p.1, line 9: \"Household employment taxes. Attach Schedule H\"",
-       "why": "Schedule H does not count wages paid to your spouse, your child under 21 or your parent (with narrow exceptions for a parent). The question and help never leave these people out, so the filer answers Yes and the return wrongly owes Schedule H tax.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "A live-in carer received $1,500 in cash plus room and board worth $2,000 in 2025. Counting all of that as pay, the filer answers Yes.",
-       "source_text": "Question: \"pay any one of them $2,800 or more\"; Label: \"cash wages of $2,800 or more\"; f1040s2 (2025) p.1, line 9",
-       "why": "The Schedule H thresholds count only cash wages. The question asks about \"pay\" in general, so food, lodging and other non-cash pay get counted toward the thresholds.",
-       "bound": ""
-      },
-      {
-       "kind": "WIDE",
-       "situation": "In 2025 the filer paid $3,000 to a 17-year-old who is not a student, and household work is not that person's main job. The help leaves out only students, so the filer answers Yes.",
-       "source_text": "Help: \"Do not count pay to a student who was under 18 in 2025.\"; f1040s2 (2025) p.1, line 9",
-       "why": "For the $2,800 test, Schedule H leaves out pay to any worker under 18 unless household work is their main job, whether or not they are a student. Limiting the exclusion to students brings in this case, which should not count.",
+       "situation": "A filer paid a 17-year-old who is not a student $3,000 for occasional yard work, and that work is not the young person's main occupation.",
+       "source_text": "f1040s2 Schedule 2 (2025), page 1, line 9: \"Household employment taxes. Attach Schedule H\"",
+       "why": "Under the Schedule H rule, wages to anyone under 18 are left out of the $2,800 test unless household work is that person's principal occupation. Being a student is only one sign that it is not. The help says 'leave out a student under 18', so this filer counts the pay and answers Yes when the line needs No.",
        "bound": ""
       }
      ],
-     "prompt_sha": "5fecf51442cb986a86b3f72d21fd8a011fba22ae89bbf641599b987dadd0a736",
+     "prompt_sha": "32db7fda49150a56bb0dada6868eee7b6ae7afb0ecc0a963a98bb0607229b920",
      "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
      "model": "claude-opus-5-5",
-     "cost": 0.073996,
+     "cost": 0.051052,
      "date": "2026-11-24",
-     "response": ".transcription/questions/s2.household_employee.b08395f81928.1.response.txt"
+     "response": ".transcription/questions/s2.household_employee.aa5e92f16366.1.response.txt"
     }
    ],
    "type": "Bool",

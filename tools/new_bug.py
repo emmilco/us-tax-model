@@ -16,7 +16,7 @@ runs alongside others records its defects this way and never writes the inventor
 --assign, run in the merge that brings pending entries onto main (`git merge --no-ff --no-commit`,
 then this, `git add -A`, check-all and `git commit`), appends every pending entry to the inventory
 in name order (numbers compared as numbers), each with the next id, rewrites each placeholder to
-its id in every tracked file, deletes the pending files, and prints one line per entry,
+its id in every file of the tree (tracked or untracked, not ignored), deletes the pending files, and prints one line per entry,
 `BUG-NEW-<name> -> BUG-NNNN`, for the merge's commit message. tools/check_bug_inventory.py --merge
 (pre-commit) accepts a merge only when it appends exactly this.
 
@@ -81,7 +81,8 @@ def write_pending(pending_dir, prefix, title, fields, body):
 
 
 def assign_pending(inventory, pending_dir):
-    """Append every pending entry to `inventory`, rewrite placeholders in tracked files, delete the files."""
+    """Append every pending entry to `inventory`, rewrite placeholders in the tree's files (tracked or untracked, not
+    ignored: the files tools/check_bug_inventory.py searches), delete the pending files."""
     files = {p.stem: p for p in sorted(pending_dir.glob("*.md"))} if pending_dir.is_dir() else {}
     pending = {name: p.read_text(encoding="utf-8") for name, p in files.items()}
     text = inventory.read_text(encoding="utf-8")
@@ -98,7 +99,7 @@ def assign_pending(inventory, pending_dir):
         return
     new, mapping = rule.assign(text, pending)
     cwd = inventory.parent
-    cited = git("grep", "-I", "-l", "-E", rule.PLACEHOLDER_ERE, "--", ".", rule.RECORDS_PATHSPEC, cwd=cwd).stdout.split()
+    cited = rule.worktree_files.grep(["-I", "-l", "-E", rule.PLACEHOLDER_ERE], [".", rule.RECORDS_PATHSPEC], cwd=cwd).split()
     for rel in cited:
         f = cwd / rel
         if f.resolve() == inventory.resolve() or f.parent.resolve() == pending_dir.resolve():

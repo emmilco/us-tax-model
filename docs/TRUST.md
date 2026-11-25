@@ -224,5 +224,5 @@ The IRS forms and instructions are not the law. They embed judgments about the I
 that are not announced, and this project encodes the published procedure, judgments included; where the
 text is ambiguous or silent, the reading chosen is recorded in `ambiguities/<year>.yaml` and shown to
 the user when the entry is linked to a line that affects their return
-(<!-- figures:trust-ambiguities -->162 of the 166 entries for 2025 are linked that way; each of the others says why it stands unlinked<!-- /figures:trust-ambiguities -->). No lawyer has reviewed the legal position the project operates
+(<!-- figures:trust-ambiguities -->164 of the 169 entries for 2025 are linked that way; each of the others says why it stands unlinked<!-- /figures:trust-ambiguities -->). No lawyer has reviewed the legal position the project operates
 under (`spec/spec.md` section 9).

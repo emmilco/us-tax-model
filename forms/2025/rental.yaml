@@ -2236,7 +2236,7 @@ form:
     printed: (helper)
     label: Some investment not at risk
     type: Bool
-    gated_by: rental.not_at_risk_if_loss
+    gated_by: rental.not_at_risk_if_reported
     expr:
       op: input
       source: Is any money you put in, or any debt on it, owed by no one personally (other than a mortgage on it from a bank,
@@ -2246,9 +2246,9 @@ form:
       doc: i1040se
       locator: p. 3, At-Risk Rules, "In most cases, you are not at risk for amounts such as the following", and Qualified
         nonrecourse financing
-  - id: rental.not_at_risk_if_loss
+  - id: rental.not_at_risk_if_reported
     printed: (gate)
-    label: Asked only when the property has a loss (false otherwise)
+    label: Asked of every rental reported on Schedule E, in a year with a loss or with income (false otherwise)
     type: Bool
     expr:
       op: choose
@@ -2256,31 +2256,19 @@ form:
       - guard:
           op: test
           eq:
-          - rental.has_loss
+          - rental.reported
           - const: true
         then: rental.not_at_risk
       - guard:
           op: test
           eq:
-          - rental.has_loss
+          - rental.reported
           - const: false
         then: rental.no
     cite:
       doc: i1040se
       locator: p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of
         your deductible loss"
-  - id: rental.has_loss
-    printed: (helper)
-    label: Line 21 is a loss
-    type: Bool
-    expr:
-      op: test
-      lt:
-      - rental.line21
-      - const: 0
-    cite:
-      doc: i1040se
-      locator: p. 7, Line 21
   - id: rental.nondep
     printed: (helper)
     label: 'Rental of nondepreciable property: land only, or less than 30% of the unadjusted basis subject to depreciation'
@@ -2346,12 +2334,14 @@ form:
       doc: i1040se
       locator: p. 8, Line 22
     refuses:
-    - when: rental.not_at_risk_if_loss
+    - when: rental.not_at_risk_if_reported
       form: Form 6198 (at-risk limits)
-      remedy: A rental loss with an amount not at risk is outside this tool.
+      remedy: A rental with an amount not at risk is outside this tool, in a year with a loss and in a year with income
+        (when the amount at risk falls below zero, losses deducted earlier are recaptured).
       cite:
         doc: i1040se
-        locator: p. 2, At-Risk Rules
+        locator: p. 2, At-Risk Rules; p925 p. 19, At-Risk Limits, "If your losses from an at-risk activity are allowed, they’re subject
+          to recapture in later years if your amount at risk is reduced below zero"
     - when: rental.nondep_income
       form: Form 8582 (rental of nondepreciable property, income recharacterized as nonpassive)
       remedy: Net income from renting land, or property whose buildings were under 30% of its cost, is treated as

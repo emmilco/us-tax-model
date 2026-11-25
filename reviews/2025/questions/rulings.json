@@ -3179,25 +3179,17 @@
    ]
   },
   "unruled:ftc.statements#1": {
-   "subject_sha": "d6e7fe31dbf0035045437be1cc2f52572d85677d5511ac074e8152ca881b96d2",
-   "reason": "Finding 0 out of scope (K-1 and K-3 refused); finding 1 real (BUG-1260).",
+   "reason": "A Schedule K-3 comes with a K-1, refused by scope.k1.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "out of scope",
-     "evidence": "Schedules K-1 (Form 1065, 1120-S) and K-3 come only with partnership or S corporation income, refused by scope.schedule1."
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "real, low",
-     "evidence": "i1116 p. 1: the election requires a qualified payee statement (Forms 1099-DIV, 1099-INT, Schedule K-1 (Form 1041), Schedule K-3, or a similar substitute statement); a foreign institution's certificate is none. BUG-1260."
+     "evidence": "Any Schedule K-3 (Form 8865 included) comes with a K-1 or a foreign partnership interest; scope.k1 refuses every K-1 return."
     }
    ],
-   "bugs": [
-    "BUG-1260"
-   ]
+   "subject_sha": "0ec5f0adb66f7e0f06a85bd7b77814156508edea64552aa8c24ee92f8fe17af1",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:ftc.taxes#1": {
    "subject_sha": "1d75c080079dbc4bad0b0227220efa92376b1078ad0a744dff45e5e1d084900b",
@@ -5114,25 +5106,17 @@
    "bugs": []
   },
   "unruled:retirement.exception#1": {
-   "subject_sha": "7764526e860a38e97d77cad1f0b5f0b500a9a788e0c84f12b71313e1e987ea53",
-   "reason": "Finding 0 real (BUG-1261); finding 1 covered by the early-distribution screen.",
+   "reason": "Several exceptions are refused by the early-distribution screen.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
-     "class": "real, low",
-     "evidence": "p590b (2025) p. 27, First home, item 1: \"It must be used to pay qualified acquisition costs (defined next) before the close of the 120th day after the day you received it.\" BUG-1261."
-    },
-    {
-     "n": 1,
      "kind": "TYPE",
      "class": "covered",
-     "evidence": "retirement.early_screen ends \"or more than one exception to the additional tax applies to it?\"; a Yes refuses through retirement.screen_refused, so code 99 is never needed."
+     "evidence": "retirement.early_screen, asked before the exception, refuses 'more than one exception to the 10% additional tax applies to it', so code 99 is never needed."
     }
    ],
-   "bugs": [
-    "BUG-1261"
-   ]
+   "subject_sha": "531f72d2d09dfd124a91144d86fdbc73495b27b5ede947f44eb7fe090f1efa01",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:retirement.months#1": {
    "subject_sha": "43443c7b40865b0f9ae9f89eecc7a163d949dd24edcc47337f8d6d0d57905676",
@@ -6610,43 +6594,23 @@
    ]
   },
   "unruled:f4952.line1#1": {
-   "subject_sha": "da9a416a3af7dcfec39901db3dae9446181c7925184330731e37142f465a452e",
-   "reason": "Finding 2 is covered by the parent; finding 3 is real (BUG-1259); the rest are out of scope or accepted.",
+   "reason": "K-1 interest is refused; the working interest case is rare.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "scope.schedule1 lists \"partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\"; a K-1 is refused for the return."
+     "evidence": "K-1 investment interest is refused by scope.k1."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "accepted residual",
-     "evidence": "The parent f4952.has_interest asks whether you or your spouse \"pay or accrue\" interest; an individual on the cash method deducts interest when paid, and accrued-unpaid investment interest of an individual is rare."
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "The parent f4952.has_interest lists \"an oil or gas working interest you do not materially participate in\" among the loans that count, so the filer who answered Yes there includes it here."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "real, low",
-     "evidence": "f4952 p. 3, Property held for investment, \"However, it doesn\u2019t include an interest in a passive activity.\"; the prompt does not leave out a rental or passive activity. BUG-1259."
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted residual",
-     "evidence": "Capitalized interest and section 264 interest on loans against post-1997 insurance contracts used to buy investments are rare for this tool's filers; f4952 p. 3 Line 1 excludes them."
+     "evidence": "A directly held non-operating working interest financed by a loan is rare; a No loses a deduction (tax overstated)."
     }
    ],
-   "bugs": [
-    "BUG-1259"
-   ]
+   "subject_sha": "232ca6568f08c66b27fada5779a8f0c350658a8a27b9a23f50e65b3f129c1d0f",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f8863.ban#1": {
    "subject_sha": "654316c623f944716dc5bb57ae1245d2dd184803d07f69ff439b8b5868e89a3a",
@@ -7824,58 +7788,36 @@
    "bugs": []
   },
   "unruled:rec.medical#1": {
-   "subject_sha": "8117f2ff7b0fe0290b60fc51a3832e850ae82efb58a26c8e6a429edd076101ef",
-   "reason": "Finding 0 real (BUG-1262); finding 1 covered by rec.medical_counted.",
+   "reason": "The cap is applied by rec.medical_capped.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "p525 p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\"; \"your 2024 medical and dental bills\" can be read to leave out a dependent's. BUG-1262."
-    },
-    {
-     "n": 1,
      "kind": "WIDE",
-     "class": "covered",
-     "evidence": "rec.medical_counted takes the smaller of rec.medical_if_has and rec.medical_deducted_if_has (p525 p. 26, Recovery limited to deduction; p. 27, Worksheet 2, footnote 2)."
+     "class": "model error",
+     "evidence": "rec.medical_capped is smaller_of rec.medical_if_has and rec.medical_deducted_if_has (the 2024 Schedule A line 4 amount), p525 p. 26 and Worksheet 2 footnote 2."
     }
    ],
-   "bugs": [
-    "BUG-1262"
-   ]
+   "subject_sha": "b17ccd6d8234c627855439f6ca88a4f25a2b8d6cd439368503b150838d1370a5",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:s2.household_employee#1": {
-   "subject_sha": "b08395f81928943682bff126ca0ef78dfa8d8969660768951735d50c6dfc9a51",
-   "reason": "Finding 0 real (BUG-1263); findings 1 to 3 only refuse.",
+   "reason": "Both only widen a refusal.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "i1040sh Line 9, \"Did you pay total cash wages of $1,000 or more in any calendar quarter of 2024 or 2025 to all household employees?\"; the under-18 exclusion is Line A's ($2,800 test) only. BUG-1263."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A parent's wages are generally left out; the help leaves out only the spouse and a child under 21 because a parent's wages count in some cases (i1040sh, Exception for parents). A Yes refuses: coverage only."
     },
     {
      "n": 1,
      "kind": "WIDE",
-     "class": "accepted (over-refusal)",
-     "evidence": "A Yes ends the interview (Schedule H refused); counting pay to a spouse, a child under 21 or a parent only refuses."
-    },
-    {
-     "n": 2,
-     "kind": "WIDE",
-     "class": "accepted (over-refusal)",
-     "evidence": "Counting non-cash pay only refuses."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted (over-refusal)",
-     "evidence": "Counting pay to a non-student under 18 only refuses."
+     "class": "accepted WIDE",
+     "evidence": "A non-student under 18 whose main work is not household work answers Yes and is refused: coverage only."
     }
    ],
-   "bugs": [
-    "BUG-1263"
-   ]
+   "subject_sha": "aa5e92f163665ba40bf65fb78920db52f51bd650c6464714eaef57cef2ce4c60",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f5695.water_heater#1": {
    "subject_sha": "62a50e95873d28e94f08ec56921ef2524f107d4b173a7be073251e0008c5038c",
@@ -8029,25 +7971,17 @@
    ]
   },
   "unruled:sche.qbi_business#1": {
-   "subject_sha": "ca72aa487b15c3da1c9e5d3df86c262d80d9277e38ff48a2f78732b230670383",
-   "reason": "One low residual, filed; one accepted over-refusal.",
+   "reason": "The prior-year test only widens the refusal.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "real, low",
-     "evidence": "The safe-harbor example can read as the bar (i8995 p. 1, a section 162 trade or business qualifies without the safe harbor). BUG-1342."
-    },
-    {
-     "n": 1,
      "kind": "WIDE",
-     "class": "accepted (over-refusal)",
-     "evidence": "A rental listed on a 2024 Form 8995 that is no longer a trade or business is refused; the refusal leaves every amount right."
+     "class": "accepted WIDE",
+     "evidence": "As ruled in the screen review: the 2024 Form 8995 test refuses a filer with no 2025 claim; coverage only."
     }
    ],
-   "bugs": [
-    "BUG-1342"
-   ]
+   "subject_sha": "ac5e9f658bc9d45cead89308629a7d742b785b995a6413be52c501027bf1cac0",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:rprop.basis#1": {
    "subject_sha": "907dca76ab8e3fa8d162d91564d156c8b0e1468bce9e65279b0ae851e1103a7a",
@@ -8084,6 +8018,130 @@
      "evidence": "A low-income housing credit claimed for 2025 is refused anyway by rental.business_credit (Form 3800); a Yes here also only refuses, leaving every amount right."
     }
    ]
+  },
+  "unruled:rental.not_at_risk#1": {
+   "reason": "Fee-receiving lenders are rare; the rest only widen.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "A fee-receiving lender is rare; cost an at-risk limit missed."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Only adds questions or refuses: no amount wrong."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Only adds questions or refuses: no amount wrong."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Only adds questions or refuses: no amount wrong."
+    }
+   ],
+   "subject_sha": "c276d5ec4704f78e38fa32d7e93728f1decb1d3f5b1c7aa2e43b9eecd971a635",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:royalty.not_at_risk#1": {
+   "reason": "Property contributions are rare; the rest only widen.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "accepted residual",
+     "evidence": "A protected non-cash contribution is rare."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Only adds questions or refuses: no amount wrong."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Only adds questions or refuses: no amount wrong."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "Only adds questions or refuses: no amount wrong."
+    }
+   ],
+   "subject_sha": "fb04a82cc369e64a4cb1983095e08a0b848eeca37f04c27d000dcaeadfbbcb6e",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:sa.property_tax_leave_out#1": {
+   "reason": "Finding 0 filed; the others overstate tax only.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "low defect",
+     "evidence": "Filed as BUG-1434 (hand-off: sa)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Leaving out a 2026 refund keeps the deduction lower: tax overstated, not understated."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "Reducing the deduction by an earlier year's refund overstates tax only."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "Leaving out a deductible maintenance charge overstates tax only."
+    }
+   ],
+   "subject_sha": "0f809fac4d581e81821a7fce902a72ec8d3c07b9c8d3072dfe043ce961d5af58",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:sd.special_any#1": {
+   "reason": "All four filed as one low (hand-off: sd).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "low defect",
+     "evidence": "Filed as BUG-1435 (hand-off: sd)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "low defect",
+     "evidence": "Filed as BUG-1435 (hand-off: sd)."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "low defect",
+     "evidence": "Filed as BUG-1435 (hand-off: sd)."
+    },
+    {
+     "n": 3,
+     "kind": "NARROW",
+     "class": "low defect",
+     "evidence": "Filed as BUG-1435 (hand-off: sd)."
+    }
+   ],
+   "subject_sha": "15b0007abb985f61f156b8a3e27702c2e5f3f637499a3a672228c3e9b593eaae",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   }
  },
  "baseline": {}

@@ -1,53 +1,41 @@
 {
  "rulings": {
   "unruled:gate:ftc.has_tax#1": {
-   "class": "no gate defect; as the earlier ruling, rechecked",
-   "reason": "K-1 refused; territory income asked; the deduction of non-creditable tax is not prepared; the rest known residuals.",
+   "reason": "As ruled before: territory income is named in the trigger; K-1 tax is refused; the rest are rare readings.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "Any Schedule K-1 (partnership, S corporation, estate or trust) is a Yes to scope.k1 ('A Yes ends the interview here'), refused through scope.schedule1; a K-3 is refused too (k1p.r_b16, k1s.box14). The entity-level case never reaches this question."
+     "class": "model error",
+     "evidence": "As ruled before: s3.foreign_any asks about having 'paid income tax to another country, had income from a U.S. territory, or owned 10% or more of a foreign company'."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "model error",
-     "evidence": "s3.foreign_any as asked: 'had income from a U.S. territory'."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Schedule K-3 and K-1 (Form 1041) foreign tax comes with a K-1, refused by scope.k1."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "Withholding read as not 'paid': BUG-0620."
+     "evidence": "Tax withheld abroad is tax paid to that country in plain reading; a filer who answers No loses a credit (tax overstated)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "Accrued, unpaid tax is paid directly; refused by f1116.not_on_statement. Low."
+     "evidence": "Accrual-basis credits and contested tax (Form 7204) are rare; a No loses a credit (tax overstated)."
     },
     {
      "n": 4,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "Non-creditable foreign tax may be deducted, an elective deduction the tool does not prepare (sa.foreign_tax_deduct's help); leaving it out does not understate tax."
-    },
-    {
-     "n": 5,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "Provincial or cantonal income tax: as the earlier ruling, low."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "Interest credited is interest received; low."
+     "evidence": "Tax paid to a province or canton is tax paid in that country; a No loses a credit (tax overstated)."
     }
    ],
-   "subject_sha": "04c2c370ff5d8e46dd2bdfae4ad8e3bbd49ab17b7bfb357b253c25b4ee4579ff"
+   "subject_sha": "647bf0ec42a33a6de6a9df32b75eaa55b9e018bc37fd9a6544dfc9f08605262b",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:household.claims_8862_credit#1": {
    "reason": "The computed gate covers ODC-only returns, and the tool always figures the EIC.",
@@ -986,36 +974,35 @@
    "subject_sha": "66f9b217fcc0742121c41192dc65071cad692072b7a886bc33005584489f041d"
   },
   "unruled:gate:f7203.required#1": {
-   "class": "no false no: each trigger is refused on the K-1",
-   "reason": "no false no: each trigger is refused on the K-1",
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "k1s.basis_carry (asked on every K-1) refuses (Form 7203 Part III column (b))."
+     "class": "out of scope",
+     "evidence": "Form 7203 is reached only through an S corporation K-1, and scope.k1 refuses every K-1 return (T-352)."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "k1s.disposed (asked on every K-1) refuses."
+     "class": "out of scope",
+     "evidence": "Form 7203 is reached only through an S corporation K-1, and scope.k1 refuses every K-1 return (T-352)."
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "Box 16 code E refuses through k1s.box16ef_if_16."
+     "class": "out of scope",
+     "evidence": "Form 7203 is reached only through an S corporation K-1, and scope.k1 refuses every K-1 return (T-352)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "f7203 is one implicit entry per k1s entry; each spouse's K-1 has its own gate and Form 7203."
+     "class": "out of scope",
+     "evidence": "Form 7203 is reached only through an S corporation K-1, and scope.k1 refuses every K-1 return (T-352)."
     }
    ],
-   "bugs": [],
-   "subject_sha": "faaeca7424e13f78864c7c69d7743c71ae6f21367b1db9bd0d3e47f8424811fc"
+   "subject_sha": "cc640b258333828991169c4dd848055210b5ad5737a0d1d0d3ff72de88e25b1c",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.any_loss#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -1024,59 +1011,41 @@
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 3,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
-    },
-    {
-     "n": 6,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
-    },
-    {
-     "n": 8,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "subject_sha": "51be35d8158ceec9ffadc66c15047270a18a329b024580e5e5bf741b12d75de1",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
+   "subject_sha": "a6ad7b28afdcc7c06b8f5c01aab30e8f2f7ed937405ec22bef7ad7e371ebe32d",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.ask_active#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -1184,23 +1153,35 @@
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352)."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "subject_sha": "ff5682c493ba983bfa601d7ce31e971f58150f0cdae7e1393e35e50f90b10e3c",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
+   "subject_sha": "11fb39f6cbeb357dfc1e7eb031074b7ff168097721afe6b1b46a597a6e4d724e",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.ask_other_gp#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -1246,45 +1227,35 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude Opus agents, RUBRIC2)"
   },
   "unruled:gate:k1p.ask_prior_active#1": {
-   "class": "false no only for the limited-partner and at-any-time wording",
-   "reason": "false no only for the limited-partner and at-any-time wording",
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "k1p.prior_not_active asks whether 'any of the held-back rental real estate loss' came from such a year."
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "Living with the spouse on a separate return denies the special allowance that year, not active participation; Part IV column (c) turns on active participation in both years (i8582 p. 10)."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "No 'at any time', and no limited-partner bar, in k1p.prior_not_active.",
-     "bug": "BUG-0847"
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'A Yes ends the interview here' is the project's standard notice on every refusing question; it states the consequence, not the answer."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "The singular 'you' errs toward Yes, a refusal; safe."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "bugs": [
-    "BUG-0847"
-   ],
-   "subject_sha": "385c4d9bdc61e13d6a688ac75a8733f05bb56deeae3f7616b0333b21f46cfe7c"
+   "subject_sha": "7777c7a81ad72ad369f1e31dd8ec1386474c1378f8137c863c52aa660716687e",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.decisions_if_asked#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -1606,80 +1577,54 @@
    "subject_sha": "93ed551723a99d1465dd9892358396ecbba0a24a150df1387cae104053ab7555"
   },
   "unruled:gate:k1p.has_b19#1": {
-   "class": "false no: STMT or zero code; deemed distributions",
-   "reason": "false no: STMT or zero code; deemed distributions",
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "i1065sk1 p. 14, entries shown as '*' and 'STMT'. The tick asks whether the box 'show[s] an amount'; nothing says a code with STMT counts.",
-     "bug": "BUG-0846"
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "A fall in the share of liabilities is a deemed distribution (i1065sk1 p. 25, code A excludes section 752(b) amounts) not asked anywhere.",
-     "bug": "BUG-0845"
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1065sk1 p. 14, entries shown as '*' and 'STMT'. The tick asks whether the box 'show[s] an amount'; nothing says a code with STMT counts. A code with 0 is the same reading.",
-     "bug": "BUG-0846"
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'Does box 19 (distributions) show an amount?' counts property codes; not filed."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "bugs": [
-    "BUG-0846",
-    "BUG-0845"
-   ],
-   "subject_sha": "44294e4a0dc092a5a0e2593d95b211021169710b139233181cf55bbde950d4da"
+   "subject_sha": "31e02af9d918d14b08f2ab7356b7dee8e28483203358fb6c303995f2fc25e38c",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.has_b20z#1": {
-   "class": "false no: STMT and cooperative items (low)",
-   "reason": "false no: STMT and cooperative items (low)",
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1065sk1 p. 14, entries shown as '*' and 'STMT'. The tick asks whether the box 'show[s] an amount'; nothing says a code with STMT counts.",
-     "bug": "BUG-0846"
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "i1065sk1 p. 14, entries shown as '*' and 'STMT'. The tick asks whether the box 'show[s] an amount'; nothing says a code with STMT counts.",
-     "bug": "BUG-0846"
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "k1p.z_other asks only about 'section 199A dividends, or payments from a farm or garden cooperative'; i1065sk1 p. 30, a patron of a specified cooperative 'must use Form 8995-A', and the section 199A(g) deduction is not a payment. A code Z statement with only 199A dividends or cooperative items is still code Z.",
-     "bug": "BUG-0846"
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "k1p.z_other asks only about 'section 199A dividends, or payments from a farm or garden cooperative'; i1065sk1 p. 30, a patron of a specified cooperative 'must use Form 8995-A', and the section 199A(g) deduction is not a payment.",
-     "bug": "BUG-0846"
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "bugs": [
-    "BUG-0846"
-   ],
-   "subject_sha": "e5e25f0a182e73c36ee9a1f9124746ab9ba3781f131c46d763c5bfb22f5cfecf"
+   "subject_sha": "e451c1447dabc6a46f0ca1c959ba2652951b3513f1afae3001b01d1a3c739047",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.has_b5#1": {
    "class": "false no only for STMT",
@@ -1866,139 +1811,103 @@
    "subject_sha": "bfeecf598fcb08e90e25cc093dcec65177e03a04ced5638c89899c586e9b3fe2"
   },
   "unruled:gate:k1p.prior_b1_any_if#1": {
-   "class": "open residual: registered reading",
-   "reason": "open residual: registered reading",
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "k1p.r_disposed ('did you sell, trade or give up any of your share of this partnership?') is asked on every K-1, with no gate, and refuses."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "Registered reading amb.2025.k1p_prior_with_activity: the held-back loss is asked only when box 1, 2 or 3 shows an amount; a carryover of a K-1 with those boxes blank stays held back (understated deduction); coordinator's decision open to the owner's review.",
-     "bug": "BUG-0847"
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A spouse's own earlier return; rare; not filed."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Activity versus box: the tick groups name the box; not filed."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The question names the record to consult; not filed."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "bugs": [
-    "BUG-0847"
-   ],
-   "subject_sha": "ca7e5d0c9dea34b9ab0035f9b8a2e32eed3239009ca55336586f224525eb3a52"
+   "subject_sha": "80b48cca5033ffbc8c6eb14e31b15419f3b3c384537618ad97007cfc64f05fa1",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.prior_b2_any_if#1": {
-   "class": "open residual: registered reading",
-   "reason": "open residual: registered reading",
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "A partnership's sale of its building gives section 1231 gain in box 10, refused at k1p.r_b10."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "Registered reading amb.2025.k1p_prior_with_activity: the held-back loss is asked only when box 1, 2 or 3 shows an amount; a carryover of a K-1 with those boxes blank stays held back (understated deduction); coordinator's decision open to the owner's review.",
-     "bug": "BUG-0847"
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A spouse's own earlier return; rare; not filed."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The question names the record to consult; not filed."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "k1p.prior_any asks 'on your 2024 return or an earlier one'; not filed."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "k1p.prior_b2 takes Part VII column (c), which covers Parts IV and V; not filed."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "bugs": [
-    "BUG-0847"
-   ],
-   "subject_sha": "a714cad58d924152cb8c5daf0741a173f99c5b724a69c9d6b7f2d7a4de3b00bb"
+   "subject_sha": "179914ac31baad025b11467b7e75400441f6e183a2a7ee71659ef3df19a366f0",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.prior_b3_any_if#1": {
-   "class": "open residual: registered reading",
-   "reason": "open residual: registered reading",
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "open residual",
-     "evidence": "Registered reading amb.2025.k1p_prior_with_activity: the held-back loss is asked only when box 1, 2 or 3 shows an amount; a carryover of a K-1 with those boxes blank stays held back (understated deduction); coordinator's decision open to the owner's review.",
-     "bug": "BUG-0847"
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "k1p.r_disposed ('did you sell, trade or give up any of your share of this partnership?') is asked on every K-1, with no gate, and refuses."
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The help names Form 8582 Part VII column (c); not filed."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A spouse's own earlier return; rare; not filed."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Box change between years; rare; not filed."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Citation text only."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
    ],
-   "bugs": [
-    "BUG-0847"
-   ],
-   "subject_sha": "c75916bd8f176733a4811c7f150517e4a9976066f5fdce3a41474a154565ebee"
+   "subject_sha": "b2397fc5626a9fae145c522f8b6a4bb2511ab8becad365041c436d466d1551d3",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:k1p.work_if_b1#1": {
    "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
@@ -3220,41 +3129,41 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_mortgage#1": {
-   "reason": "Mortgage gate.",
+   "reason": "Covered by other screens and boxes; the rest are rare readings.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "A home with personal use is refused (rental.ws51) or its interest divided; the rental.amt12 help says the rest goes with home mortgage interest."
+     "class": "covered",
+     "evidence": "A room or unit of the filer's own home is refused by rental.part_home."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The box reads \"Mortgage interest on a Form 1098\", whatever the loan is called."
+     "class": "covered",
+     "evidence": "Interest on a home equity loan on another home is asked by the other-interest box ('Other interest on money borrowed for it, even a home equity loan')."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The screen heading reads \"In 2025, did you pay any of these\"."
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per rental entry of a roster that lists the spouse's properties too."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Rule 4: asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too."
+     "class": "accepted residual",
+     "evidence": "A credit union or servicer is a lender like a bank in plain reading; rare."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Form 1098 box 1 shows the interest; the amount question names it."
+     "class": "accepted residual",
+     "evidence": "Amortized points with no 2025 payment are rare; a No loses a deduction (tax overstated)."
     }
    ],
-   "subject_sha": "2eeced2be1108a0d8dfb19f448ef5ab0be47a5c1f7e48ba2df8b1345a534643d",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "6d65e1601aa9bbedf6b69220eea53f741daf62fe1c1ea8d704fe8f07cc26b165",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:rental.has_other#1": {
    "reason": "Other-costs gate.",
@@ -3282,47 +3191,29 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rental.has_other_interest#1": {
-   "reason": "Other-interest gate: the box names borrowed money and a home equity loan.",
+   "reason": "As ruled before: the box names a home equity loan and loans with no Form 1098.",
    "findings": [
     {
      "n": 0,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "The box reads \"Other interest on money borrowed for it\", which a seller-financed or private loan is; rental.amt13 names a loan with no Form 1098 in the filer's name."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The box reads 'Other interest on money borrowed for it, even a home equity loan'; rental.amt13 names a seller loan with no Form 1098."
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "class": "covered",
-     "evidence": "rental.amt13 names \"a loan with no Form 1098 in your name\", the co-borrower case of i1040se p. 7."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The box names a home equity loan; rental.amt13 names one on another home."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "\"even a home equity loan\" in the box; rental.amt13 asks for interest on money borrowed and spent on it."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "rental.amt13 names points and loan fees spread over the loan."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "out of scope",
-     "evidence": "Vehicle costs are refused by rental.vehicle."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "Rule 4: the question is asked per rental entry (\"For this rental property —\") of a roster that lists the spouse's properties too ($rental: \"you (or, on a joint return, your spouse) rented out\"), so the bare \"you\" is not a defect."
+     "class": "accepted residual",
+     "evidence": "An earlier year's points with no new payment are rare; a No loses a deduction (tax overstated)."
     }
    ],
-   "subject_sha": "3a65f21cb5d3b04e0666eeaec640edf00d9a3281e137014d944c9a062ec9cefc",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "61d0d4c86f430d3eb3f1d717e573c55fd4b4cb733d3e7e0631a1c0c7ffb86c39",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:rental.has_repairs#1": {
    "reason": "Repairs gate.",
@@ -5997,48 +5888,47 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:rec.has_medical_if_path#1": {
-   "class": "defect: on a joint 2025 return with separate 2024 returns, the itemizing question does not say whose return (BUG-0899); the other findings are covered or residual",
-   "reason": "rec.path = scope.recovery and refund.itemized ('Did you itemize deductions on your 2024 federal return?'); recoveries for years before 2024 are refused by rec.not_2024.",
+   "reason": "A 2023 recovery is asked in the rare-recoveries group; the rest are readings capped by the 2024 deduction.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "p525 p. 25, a recovered itemized deduction is income. rec.two_returns is answered No when only one of you got money back (its help), and refund.itemized then asks 'Did you itemize ...' with nothing on the recovery path saying it means the spouse's separate 2024 return.",
-     "bug": "BUG-0899"
+     "class": "covered",
+     "evidence": "A recovery of a deduction from a year before 2024 is asked by rec.before_prior_year (group rec_rare), which refuses."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The parent question is scope.recovery: 'paid back an amount whose deduction or credit on an earlier year's return lowered your tax', help 'For example ... a medical bill repaid by insurance'. The 'money was paid back' text is a line label, not shown wording."
+     "class": "accepted residual",
+     "evidence": "The gated question asks for 'bills you paid in 2024'; rare."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "rec.has_medical asks 'a reimbursement, for example from insurance, of 2024 medical or dental expenses you deducted'; a provider's refund of an overpayment is a reimbursement in plain reading. Low."
+     "evidence": "A provider refund or settlement is money paid back for the bills in plain reading; rare."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "A refund of medical insurance premiums deducted, or the medical part of a settlement, is a reimbursement of medical expenses; the tick reads 'Medical or dental bills, repaid by insurance or someone else'. Low."
+     "evidence": "Premium refunds of deducted premiums are rare; the recovery is capped by the 2024 medical deduction."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "rec.not_2024 ('Was any of the money paid back in 2025 for something paid or deducted before 2024?', 'A Yes ends the interview here') refuses an earlier-year recovery."
+     "class": "presentation",
+     "evidence": "The box 'Medical or dental bills, repaid by insurance or someone else' does not exclude a spouse's or dependent's bills; the gated question's help names a dependent (BUG-1262)."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "rec.path is true whenever money was paid back and the filer itemized for 2024 (scope.recovery and refund.itemized); it does not depend on whether full inclusion applies. Worksheet 2 computes both cases."
+     "class": "presentation",
+     "evidence": "The box names medical bills repaid by insurance, which is this case."
     }
    ],
-   "subject_sha": "7ea2d86f781bb0d47be0eebd538d94acd04f8de7f481287e734e6d350f515433"
+   "subject_sha": "e11f8bc77b26a03f9d4eaf919437debdbd71d093ab4f1301b7caa0597f172f07",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:rec.has_mortgage_if_path#1": {
    "class": "defect: the joint-return whose-return case (BUG-0899); the rest covered or residual",
@@ -6347,35 +6237,35 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s2.household_help#1": {
-   "reason": "The gate's words match Schedule H's household-employee test ('household work ... in or around your home', employer controls the work); no filer is excluded.",
+   "reason": "Second homes filed (BUG-1436); the rest are readings of 'anyone to work'.",
    "findings": [
     {
      "n": 0,
-     "class": "covered",
-     "evidence": "i1040sh p. 1: 'Household work is work done in or around your home' and the list 'Babysitters ... Nannies ... Health aides ... Housekeepers ... Yard workers'; the gate asks 'pay anyone to work in or around your home, such as a nanny, a carer, a housekeeper or a gardener', with the spouse named.",
-     "kind": "FALSE_NO"
+     "kind": "UNCLEAR",
+     "class": "low defect",
+     "evidence": "Filed as BUG-1436."
     },
     {
      "n": 1,
-     "class": "covered",
-     "evidence": "i1040sh p. 1: 'it doesn't matter whether ... you hired the worker through an agency'; the help says 'Count a worker you choose and direct even if a payroll service or registry handles the pay' and 'pay in 2025 for 2024 work'.",
-     "kind": "UNCLEAR"
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "Pay to a relative other than a parent or a child under 21 is pay for work in plain reading; rare misreading."
     },
     {
      "n": 2,
-     "class": "covered",
-     "evidence": "i1040sh p. 1: workers from an agency that controls the work and self-employed workers are not employees; the help 'Do not count a company that sends and directs its own staff' matches.",
-     "kind": "UNCLEAR"
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "The question asks whether the filer paid 'anyone to work in or around your home'; the examples are not a closed list."
     },
     {
      "n": 3,
-     "class": "covered",
-     "evidence": "i1040sh p. 1, Who Needs To File: Yes to line A ($2,800), B (income tax withheld) or C ($1,000 in a quarter of 2024 or 2025); s2.household_employee asks all three, and 'drivers' are named in the gate help.",
-     "kind": "UNCLEAR"
+     "kind": "UNCLEAR",
+     "class": "accepted residual",
+     "evidence": "The child question's help leaves out 'a student under 18'; a full-time non-student nanny is counted, which is right (i1040sh Line A)."
     }
    ],
-   "subject_sha": "ba39985882241df985873e0fa3167cde6936f7c20109ec66a961496a1ab559d6",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "2afec66f3e7d5120448164b253c3cda8b5c49e5dfa466ee85993be640bcb07c2",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:s2.options_any#1": {
    "reason": "The gate matches an employee's exercise or sale in 2025; the vesting-year ISO case is asked separately and the rest are rare.",
@@ -7001,31 +6891,6 @@
     }
    ],
    "subject_sha": "b6b367ead33c8d58b37782edc2c18b3e39fe7c0f337e538073e80c12f2f9c629",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
-  },
-  "unruled:gate:s1.alimony_any#1": {
-   "reason": "The gate asks about any spousal support paid or received since 2023, before any tax classification, so every listed filer answers Yes.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The gate asks 'In 2023 or later, did you ... pay or receive alimony or other spousal support after divorce or separation?', a fact, not tax treatment, and the gated s1.alimony help handles modifications: 'If an agreement of 2018 or earlier was changed later to say the new rules apply, answer for the payments before the change' (p504 p. 16, Example 2)."
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "The gate does not ask any date; it asks whether support was paid or received. The gated question asks for the agreement date in the words of i1040gi p. 89, Line 2a, 'a divorce or separation agreement entered into on or before December 31, 2018': 'Was that alimony paid under a divorce or separation agreement made in 2018 or earlier?'"
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "model error",
-     "evidence": "Recapture arises in the third post-separation year from payments in the first three years (p504 p. 16, 'If your alimony payments decrease or end during the first 3 calendar years'); the gate reaches back to 2023 ('In 2023 or later'), so payments that ended in 2023 or 2024 make it Yes, and s1.alimony_unsupported then refuses recapture."
-    }
-   ],
-   "subject_sha": "44ff3f6a87c2ca4406f581e621b464432f30a892fa93ab6657b58a3f446ecb2c",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:s1.digital_income_if_assets#1": {
@@ -8255,55 +8120,41 @@
    "adjudication": "lane adlow, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:f4952.has_interest#1": {
-   "reason": "K-1 interest is refused; the carryforward and spouse cases are asked; the rest are wording lows.",
+   "reason": "K-1 interest is refused; the rest are rare readings the help covers.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "scope.k1 refuses every Schedule K-1 ('Income or a loss from a partnership, S corporation, estate or trust'), so K-1 investment interest (f4952 p. 3, Line 1) never reaches the gate.",
-     "bugs": []
+     "evidence": "K-1 investment interest is refused by scope.k1."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "presentation",
-     "evidence": "A seller-financed note is a loan whose money went into the investment; the help says 'Any loan counts if the money went into investments' and 'If you are not sure, answer Yes'. Low.",
-     "bugs": []
+     "class": "accepted residual",
+     "evidence": "Only an accrual-method individual is lost; rare."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "f4952 p. 3, 'paid or accrued': individuals use the cash method; interest capitalized into a balance is not paid. Only an accrual-method individual is lost; rare.",
-     "bugs": []
+     "class": "covered",
+     "evidence": "The help says 'Any loan counts if the money went into investments ... If you are not sure, answer Yes'."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "'Any loan counts if the money went into investments' and 'If you are not sure, answer Yes'; a non-participated working interest is an investment, and business attribution is refused by f4952.unsupported.",
-     "bugs": []
+     "class": "accepted residual",
+     "evidence": "A 2024 carryforward the filer did not claim is rare; f4952.carryover's help covers it once the gate is passed."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "Interest above the year's investment income could not be deducted then whatever the deduction choice; f4952.carryover help: 'counts even if you took the standard deduction and filed no Form 4952'. The gate help could say so; low.",
-     "bugs": []
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The gate names the spouse ('did you (or, on a joint return, your spouse) pay interest') and f4952.carryover asks about 'a 2024 Form 4952 of yours (or ... of your spouse's), on a joint or a separate 2024 return'.",
-     "bugs": []
+     "class": "accepted residual",
+     "evidence": "Interest on a loan for a share of an entity holding investments is rare; a No loses a deduction (tax overstated)."
     }
    ],
-   "bugs": [],
-   "class": "no gate defect; wording lows",
-   "subject_sha": "c1206f05f5bb84a49d3341dc75045bcdc2ace2d6ac999dbca67aaa0635aa6e87",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "0baf901a0967e6df1ea6f255044f060d6692617695c13303d3be0ae170fa9dbe",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:ftc.asked#1": {
    "class": "no gate defect: K-1 and K-3 refused; withholding a known residual",
@@ -8485,54 +8336,47 @@
    "subject_sha": "f1d8753ce9c1f5bcc33579c624f5a5d14612aa3905922e3e6a3986e1d922946c"
   },
   "unruled:gate:sb.foreign_trust_any#1": {
-   "class": "no gate defect: wording widened",
-   "reason": "The control-test case is fixed in the wording; the rest are covered by the help's widening words and 'If unsure, answer Yes'.",
+   "reason": "Loans and free use of trust property are not named: filed; the rest are rare or legal tests.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "class": "defect",
-     "evidence": "cfr-26-301-7701-7 p. 4, Control test. Fixed in the same lane: the gate now names anyone other than a U.S. citizen, resident or company."
+     "class": "accepted residual",
+     "evidence": "A U.S.-administered trust made foreign only by its governing-law or flight clause is a legal test the filer cannot apply; rare."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "A standing tie as the person who set it up or gave to it is asked in the present tense; 'If unsure, answer Yes'."
+     "class": "presentation",
+     "evidence": "The gate asks whether the filer has, or had in 2025, anything to do with the trust 'as the person who set it up'; a grantor of a trust that still exists has."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help counts 'anything it paid for you'; i3520 p. 4 treats a guarantee as a loan from the trust."
+     "class": "low defect",
+     "evidence": "Filed as BUG-1433 (hand-off: sb)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "An inheritance through a foreign testamentary trust is a receipt from a trust the label names ('received or may receive anything from it in any way'); the help ends 'If unsure, answer Yes'."
+     "evidence": "A service provider overpaid by a foreign trust is rare."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted residual",
-     "evidence": "A foreign pension or unit trust is a Form 8938 and PFIC matter asked by sb.asset_any and scope.foreign_shares; as a trust tie the help's 'If unsure, answer Yes' applies."
+     "evidence": "A gift whose trust source the filer does not know cannot be asked of the filer."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "sb.territory_any asks about 'a trust in Puerto Rico, Guam or another U.S. territory', which opens the same questions."
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "A deemed transfer through a domestic trust that moved property abroad; the label names giving 'through another person or company'. Form 3520 duty only (BUG-1406)."
+     "class": "low defect",
+     "evidence": "Filed with finding 2 as BUG-1433 (hand-off: sb)."
     }
    ],
-   "subject_sha": "9126c379e845289466cddf720564d94170563306de48d77c92ff792147267d6c",
-   "adjudication": "lane screens, wave 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "cc9b1ea91dd55ed5d919d5025defd04c5f2eefef0f566c392bdcb757ffd46701",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:sd.sold_other#1": {
    "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
@@ -9216,40 +9060,41 @@
    "bugs": []
   },
   "unruled:gate:retirement.is_ira#1": {
-   "reason": "The IRA box decides the kind; the plan option names pensions, annuities and 401(k)s.",
+   "reason": "The kind of account keys on the Form 1099-R IRA/SEP/SIMPLE box.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
-     "bugs": []
+     "evidence": "retirement.kind asks whether the IRA/SEP/SIMPLE box on the Form 1099-R is checked; a SEP or SIMPLE IRA has it checked."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A designated Roth account in a 401(k) is 'plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; 'roth_ira' is 'a Roth IRA or Roth SIMPLE IRA'.",
-     "bugs": []
+     "evidence": "As finding 0: the box decides, not the filer's name for the arrangement."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "retirement.account: 'traditional_ira (the IRA/SEP/SIMPLE box on Form 1099-R is checked; includes SEP and traditional SIMPLE IRAs), roth_ira (...), or plan (a pension, annuity, 401(k), 403(b) or governmental 457(b) plan)'; the IRA box is checked for an inherited IRA, an individual retirement annuity and a deemed IRA.",
-     "bugs": []
+     "evidence": "A government pension or 403(b) annuity has the box unchecked, so it is a plan; the kind question names the box."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "A civil service annuity is a pension ('plan'); a Form RRB-1099-R has no code and is refused ('no code at all', retirement.bad_code).",
-     "bugs": []
+     "evidence": "Codes 8, P, G, L and M are asked by retirement.code_screen and its refusals, on the same box reading."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "Rule 4: the question is asked per Form 1099-R entry."
     }
    ],
-   "subject_sha": "2ba4458022d42d1305a1375fb3428e69f94dd537252377cb581a6f9437a772b2",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bugs": []
+   "subject_sha": "0e7fc749ba5d9e10be331a0f1fbfea2363df8c963cac59c3ea92ddedcf789e9d",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:retirement.is_trad#1": {
    "reason": "The IRA box decides the kind; per-entry question.",
@@ -10297,48 +10142,202 @@
    "bugs": []
   },
   "unruled:gate:s2.lookback_ask#1": {
-   "subject_sha": "7a42249cab74d9ef1e5a774e4d81601f01cf8f2e727307f8666f0f63fa965a2f",
-   "adjudication": "lane capital, wave 2026-11-24 (claude-opus-5-5, judgment; RUBRIC2)",
-   "class": "one gate gap filed (BUG-1332); the rest refused by scope.k1",
-   "reason": "Every partnership, S corporation, estate or trust case is refused by scope.k1; the income-forecast royalty investor is filed.",
+   "reason": "Beneficiary and pass-through cases are refused by scope.k1; the rest are covered or rare.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "scope.k1, asked of every return ('income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it'), refuses through scope.schedule1."
+     "evidence": "A beneficiary's look-back amounts come on a Schedule K-1 (Form 1041), refused by scope.k1."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "class": "defect (low), filed: BUG-1332",
-     "evidence": "f1040s2 line 17n (Form 8866): an investor with income-forecast royalty rights and no business is not asked. Widening the gate with the royalty roster is left to that entry."
+     "class": "accepted residual",
+     "evidence": "Rights held without 2025 royalties and not read as a business before 2025 are rare; the royalty leg (BUG-1332) catches every royalty listed."
     },
     {
      "n": 2,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "Entity-level contracts reach the owner only through a Schedule K-1: scope.k1 refuses."
+     "evidence": "An entity's contract comes on a Schedule K-1, refused by scope.k1."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "out of scope / accepted residual",
-     "evidence": "K-1 recipients are refused by scope.k1; a contractor is asked in plain words ('a contract over more than one tax year, with its income figured as the work went on'), with the AMT-only case in the help."
+     "class": "covered",
+     "evidence": "The help says 'Count a contract whose income was figured as the work went on for the alternative minimum tax only'; the contractor has a Schedule C, so the gate is true."
+    }
+   ],
+   "subject_sha": "4785eb6b95e7fb8f6d6ed762b384eb1383d84862d6e474132cd30cfab981bb81",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:gate:k1p.ask_sp#1": {
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "A trust or estate beneficiary receives a Schedule K-1; scope.k1 names estates and trusts."
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     },
     {
      "n": 5,
      "kind": "UNCLEAR",
-     "class": "accepted residual",
-     "evidence": "Property disposed of in 2025 was still depreciated in 2025; the prompt's 'do you depreciate' is read so. Rare; recorded."
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
     }
-   ]
+   ],
+   "subject_sha": "daa5b810c2f49f1443f42b6ff72f36599bbe43ae89a96f0197f79fe2869905f1",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:gate:k1p.general#1": {
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    }
+   ],
+   "subject_sha": "085ba70152a2028aa762c64841bc7d8334f7b9ce1540bfc65165ea50e9f0f1e8",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:gate:k1p.prior_any#1": {
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    }
+   ],
+   "subject_sha": "fda36a57eb3df3e67641f12f1a19f44190bcee27b3d3a42bf6bd719726c9f7d2",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:gate:k1s.ask_prior_active#1": {
+   "reason": "K-1 forms unwired; scope.k1 refuses every K-1 return (T-352).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here') refuses every return with a K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of the return depends on this finding. Re-sampled on the merits when the K-1s are wired (T-352)."
+    }
+   ],
+   "subject_sha": "c3b3b3a823a16205342f414554a0666185389fe356d3c7e9476cfef823d75fd3",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:gate:rental.reported#1": {
+   "reason": "The exclusion is computed from the day questions, not answered by the filer.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "rental.excluded is computed from rental.days_fair and rental.days_personal, not from the filer's reading of 'used as a home'."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "As finding 0: the filer answers the day questions; the exclusion is computed."
+    }
+   ],
+   "subject_sha": "d505b4d291af313da283358da2829bf876999cfa768191d0ffe606b864e2d8cc",
+   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
   }
  },
  "baseline": {}

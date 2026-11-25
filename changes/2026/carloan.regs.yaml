@@ -1,0 +1,340 @@
+changes:
+  tax_year: 2026
+  form: carloan
+  entries:
+  - change: C-SCHED-40
+    evidence:
+    - doc: fr-2026-18219
+      page: 22
+      quote: existing indebtedness on a vehicle traded in as part of a purchase transaction for an APV, to the extent such
+        indebtedness exceeds the vehicle’s trade-in value specified by the contract for the purchase of the APV
+    - doc: fr-2026-18219
+      page: 24
+      quote: to purchase collision and liability insurance that is not a credit insurance product, or to purchase any property
+        or services unrelated to an APV (for example, a trailer or a boat) is not incurred by a taxpayer for the purchase
+        of an APV
+    - doc: fr-2026-18219
+      page: 24
+      quote: Only the portion of the indebtedness allocated to the indebtedness described in paragraph (d)(2)(i) of this section
+        is an SPVL
+    - doc: fr-2026-18219
+      page: 24
+      quote: The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan as of
+        the date of the refinancing
+    - doc: fr-2026-18219
+      page: 24
+      quote: A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining
+        portion of the indebtedness on a pro rata basis
+    - doc: fr-2026-18219
+      page: 25
+      quote: 'Example 4: Negative equity and a down payment'
+    - doc: fr-2026-18219
+      page: 25
+      quote: only 90 percent of each interest payment on the loan may be QPVLI
+    - doc: fr-2026-18219
+      page: 27
+      quote: Independently deductible interest is limited to interest that is QPVLI
+    - doc: fr-2026-18219
+      page: 28
+      quote: This section applies to taxable years beginning after December 31, 2024, and before January 1, 2029.
+    verified: final
+    note: 'The car loan citations of the proposed regulations (fr-2025-24154, not in the 2026 archive) moved to the final
+      regulations, T.D. 10054 (fr-2026-18219): each section at its page in the final (paragraph (d) on p. 24, its examples
+      on pp. 24 and 25, (e) on p. 25, (g) on p. 27), the definition of negative equity renumbered (b)(9), Example 4''s heading
+      and the collision and liability insurance passage quoted as the final prints them, and the final''s new Example 5 (the
+      pro rata split of each interest payment) cited for carloan.mixed_prorated. Citations only: the rules the lines compute
+      read the same in the final. What the final changes in substance (credit insurance products qualify; collision and liability
+      insurance that is not a credit insurance product does not) bears on the wording of carloan.nonqualifying, and the final
+      applies to taxable years beginning after December 31, 2024, so to 2025 as well: a bug of the 2025 form (BUG-1441), whose fix the
+      year carries.'
+    operations:
+    - set:
+        line: carloan.kind
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(5); i1040gi p. 109, Schedule 1-A, "Change in obligor by reason
+            of previous obligor's death" and "Refinanced loan"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(4) and (d)(5); i1040gi p. 109, Schedule 1-A, "Change in obligor by reason of previous
+            obligor's death" and "Refinanced loan"
+    - set:
+        line: carloan.requirements
+        field: cite.locator
+        from: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest, requirements 1 to 5 ("2. The loan was originated
+          by you"), and Personal use; Refinanced loan, "so long as the new loan is secured by a first lien on the APV with
+          respect to which the refinanced loan was incurred"; Change in obligor by reason of previous obligor's death, "If
+          a loan met requirements 1 through 5 at the time it was originated by a previous obligor"; fr-2025-24154 proposed
+          § 1.163-16(d)(3) (related party indebtedness)
+        to: p. 109, Schedule 1-A, Qualified passenger vehicle loan interest, requirements 1 to 5 ("2. The loan was originated
+          by you"), and Personal use; Refinanced loan, "so long as the new loan is secured by a first lien on the APV with
+          respect to which the refinanced loan was incurred"; Change in obligor by reason of previous obligor's death, "If
+          a loan met requirements 1 through 5 at the time it was originated by a previous obligor"; fr-2026-18219 p. 24, §
+          1.163-16(d)(3) (related party indebtedness)
+    - set:
+        line: carloan.vehicle
+        field: cite.locator
+        from: p. 109, Schedule 1-A, Applicable passenger vehicle and Final assembly in the United States; Change in obligor
+          by reason of previous obligor's death, "If a loan met requirements 1 through 5 at the time it was originated by
+          a previous obligor"; fr-2025-24154 proposed § 1.163-16(e)(1)
+        to: p. 109, Schedule 1-A, Applicable passenger vehicle and Final assembly in the United States; Change in obligor
+          by reason of previous obligor's death, "If a loan met requirements 1 through 5 at the time it was originated by
+          a previous obligor"; fr-2026-18219 p. 25, Applicable passenger vehicle (APV), § 1.163-16(e)(1)
+    - set:
+        line: carloan.mixed
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(i) and (ii); i1040gi p. 109, Schedule 1-A, Loan amount
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(i) and (ii); i1040gi p. 109, Schedule 1-A, Loan amount
+    - set:
+        line: carloan.financed
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4); (d)(6) Examples 3 and 4
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(A) and (d)(4); p. 25, (d)(6) Examples 3 and 4
+    - set:
+        line: carloan.nonqualifying
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(ii) and (d)(6) Example 4
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(ii); p. 25, (d)(6) Example 4
+    - set:
+        line: carloan.down
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: p. 19, Proposed § 1.163-16(b)(8), "existing indebtedness on a vehicle traded in as part of a purchase transaction
+            for an APV, to the extent such indebtedness exceeds the vehicle's trade-in value specified by the contract for
+            the purchase of the APV"; pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first
+            against any negative equity and any other amounts that are not incurred for the purchase of the APV"
+        to:
+          doc: fr-2026-18219
+          locator: p. 22, § 1.163-16(b)(9), "existing indebtedness on a vehicle traded in as part of a purchase transaction
+            for an APV, to the extent such indebtedness exceeds the vehicle's trade-in value specified by the contract for
+            the purchase of the APV"; p. 24, § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any
+            negative equity and any other amounts that are not incurred for the purchase of the APV"
+    - set:
+        line: carloan.nonqualifying_debt
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B) and (d)(6) Example 4
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(B); p. 25, (d)(6) Example 4
+    - set:
+        line: carloan.mixed_qualifying
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "Only the portion of the indebtedness allocated to the indebtedness
+            described in paragraph (d)(2)(i) of this section is an SPVL"; p. 22, Example 4, "Negative equity and down payment",
+            "the down payment of $4,000 is allocated against the $6,000 of negative equity"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(A), "Only the portion of the indebtedness allocated to the indebtedness described
+            in paragraph (d)(2)(i) of this section is an SPVL"; p. 25, (d)(6) Example 4, "Negative equity and a down payment",
+            "the down payment of $4,000 is allocated against the $6,000 of negative equity"
+    - set:
+        line: carloan.refi_balance
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(4), "The amount of the new loan that is an SPVL is limited to the outstanding
+            balance of the refinanced loan as of the date of the refinancing"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(4), "The amount of the new loan that is an SPVL is limited to the outstanding balance
+            of the refinanced loan as of the date of the refinancing"
+    - set:
+        line: carloan.refi_whole
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"; (d)(2)(i) and (ii), "repayment
+            of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance, or
+            to purchase any property or services unrelated to an APV (for example, a trailer or a boat) is not incurred by
+            a taxpayer for the purchase of an APV"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(4), "If a taxpayer refinances an SPVL"; (d)(2)(i) and (ii), "repayment of negative
+            equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance that is not a credit
+            insurance product, or to purchase any property or services unrelated to an APV (for example, a trailer or a boat)
+            is not incurred by a taxpayer for the purchase of an APV"
+    - set:
+        line: carloan.refi_qualifying
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(4) and (d)(6) Example 3
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(4); p. 25, (d)(6) Example 3
+    - set:
+        line: carloan.refi_qualifying
+        field: refuses
+        from:
+        - when: carloan.refi_nested
+          form: Refinancing of a loan that was itself only partly a qualifying vehicle loan
+          remedy: Allocating a refinancing of a partly qualifying loan is outside this tool.
+          cite:
+            doc: fr-2025-24154
+            locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii) and (d)(4)
+        to:
+        - when: carloan.refi_nested
+          form: Refinancing of a loan that was itself only partly a qualifying vehicle loan
+          remedy: Allocating a refinancing of a partly qualifying loan is outside this tool.
+          cite:
+            doc: fr-2026-18219
+            locator: p. 24, § 1.163-16(d)(2)(iii) and (d)(4)
+    - set:
+        line: carloan.refi_nested
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(4)
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(4)
+    - set:
+        line: carloan.allocated
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4), "payments of interest and principal are allocated
+            ... on a pro rata basis"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(A) and (d)(4), "payments of interest and principal are allocated ... on a
+            pro rata basis"
+    - set:
+        line: carloan.refi_interest
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(4), "A taxpayer allocates principal and interest between the amount of
+            the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(4), "A taxpayer allocates principal and interest between the amount of the new loan
+            that is an SPVL and the remaining portion of the indebtedness on a pro rata basis"
+    - set:
+        line: carloan.mixed_interest
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(6) Examples 1, 2 and 4
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(A); pp. 24–25, (d)(6) Examples 1, 2, 4 and 5
+    - set:
+        line: carloan.mixed_prorated
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated to the
+            portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii)
+            ... on a pro rata basis"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated to the portion of the
+            indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on
+            a pro rata basis"; p. 25, (d)(6) Example 5, "only 90 percent of each interest payment on the loan may be QPVLI"
+    - set:
+        line: carloan.sc_mixed_prorated
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI";
+            pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated to the portion
+            of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii)
+            ... on a pro rata basis"
+        to:
+          doc: fr-2026-18219
+          locator: p. 27, Independently deductible interest, § 1.163-16(g)(1), "Independently deductible interest is limited
+            to interest that is QPVLI"; p. 24, § 1.163-16(d)(2)(iii)(A), "payments of interest and principal are allocated
+            to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph
+            (d)(2)(ii) ... on a pro rata basis"
+    - set:
+        line: carloan.sc_mixed
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"
+        to:
+          doc: fr-2026-18219
+          locator: p. 27, Independently deductible interest, § 1.163-16(g)(1), "Independently deductible interest is limited
+            to interest that is QPVLI"
+    - set:
+        line: carloan.sc_refi
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI";
+            pp. 20–22, Proposed § 1.163-16(d)(4), "A taxpayer allocates principal and interest between the amount of the new
+            loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis"
+        to:
+          doc: fr-2026-18219
+          locator: p. 27, Independently deductible interest, § 1.163-16(g)(1), "Independently deductible interest is limited
+            to interest that is QPVLI"; p. 24, § 1.163-16(d)(4), "A taxpayer allocates principal and interest between the
+            amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis"
+    - set:
+        line: carloan.sc_allocated
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is limited to interest that is QPVLI"
+        to:
+          doc: fr-2026-18219
+          locator: p. 27, Independently deductible interest, § 1.163-16(g)(1), "Independently deductible interest is limited
+            to interest that is QPVLI"
+    - set:
+        line: carloan.col_ii
+        field: cite.locator
+        from: p. 110, Schedule 1-A, line 22, "On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted
+          elsewhere on your return"; fr-2025-24154 p. 23, Proposed § 1.163-16(g)(1), "Independently deductible interest is
+          limited to interest that is QPVLI"
+        to: p. 110, Schedule 1-A, line 22, "On line 22, column (ii), enter the amount of the QPVLI, if any, that was deducted
+          elsewhere on your return"; fr-2026-18219 p. 27, Independently deductible interest, § 1.163-16(g)(1), "Independently
+          deductible interest is limited to interest that is QPVLI"
+    - set_form:
+        field: note
+        from: One entry per loan, named by the vehicle's VIN, which line 22 column (i) needs (a vehicle with a loan refinanced
+          during 2025 has one entry for each loan, the VIN with a suffix). Interest deducted on Schedule C (column (ii)) is
+          asked when the return has a Schedule C; Schedules E and F are refused. Where a loan also financed amounts that do
+          not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under
+          proposed § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
+        to: One entry per loan, named by the vehicle's VIN, which line 22 column (i) needs (a vehicle with a loan refinanced
+          during 2026 has one entry for each loan, the VIN with a suffix). Interest deducted on Schedule C (column (ii)) is
+          asked when the return has a Schedule C; Schedules E and F are refused. Where a loan also financed amounts that do
+          not qualify, or refinanced a qualifying loan for more than its balance, the interest is allocated pro rata under
+          § 1.163-16(d)(2)(iii) and (d)(4); the ratio is rounded to six places (amb.2025.carloan_ratio_places).
+    - set_ambiguity:
+        id: amb.2025.carloan_ratio_places
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(A) and (d)(4)
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(A) and (d)(4)
+    - set_ambiguity:
+        id: amb.2025.carloan_rebate
+        field: cite
+        from:
+          doc: fr-2025-24154
+          locator: pp. 20–22, Proposed § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative
+            equity"
+        to:
+          doc: fr-2026-18219
+          locator: p. 24, § 1.163-16(d)(2)(iii)(B), "any down payment ... is applied first against any negative equity"

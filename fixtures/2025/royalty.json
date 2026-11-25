@@ -264,12 +264,12 @@
         },
         "sche.line26": {
           "kind": "refusal",
-          "gate": "royalty[s].not_at_risk_if_loss",
+          "gate": "royalty[s].not_at_risk",
           "form": "Form 6198 (at-risk limits)",
-          "remedy": "A royalty loss with an amount not at risk is outside this tool.",
+          "remedy": "A royalty with an amount not at risk is outside this tool, in a year with a loss and in a year with income (when the amount at risk falls below zero, losses deducted earlier are recaptured).",
           "cite": {
             "doc": "i1040se",
-            "locator": "p. 3, At-Risk Rules",
+            "locator": "p. 3, At-Risk Rules; p925 p. 19, At-Risk Limits, \"If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero\"",
             "revision": "2025",
             "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
             "tax_year": 2025
@@ -309,6 +309,49 @@
             "locator": "p. 19, At-Risk Limits, \"You treat any loss that is disallowed because of the at-risk limits as a deduction from the same activity in the next tax year\"",
             "revision": "2025",
             "snapshot": "dda751f07a7059488659c18d3e81afaa1463528b0951b0f8351fa16137cda5d3",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "royalty.not_at_risk.income_year",
+      "covers": [
+        "royalty",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the archived sources before evaluating: the same filer as the royalty loss case, but the royalty has $5,000 of payments and no expenses (line 21 income); the money put in was borrowed without personal liability. p925 p. 19: losses allowed earlier are recaptured when the amount at risk falls below zero; the Yes refuses at royalty.loss_abs, so Schedule E line 26 refuses, in a year with income as in a year with a loss. BUG-1341.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$royalty": [
+          "s"
+        ],
+        "royalty[s].line4": 500000,
+        "royalty[s].expenses_any": false,
+        "royalty[s].not_at_risk": true
+      },
+      "expect": {
+        "royalty[s].line21": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "sche.line26": {
+          "kind": "refusal",
+          "gate": "royalty[s].not_at_risk",
+          "form": "Form 6198 (at-risk limits)",
+          "remedy": "A royalty with an amount not at risk is outside this tool, in a year with a loss and in a year with income (when the amount at risk falls below zero, losses deducted earlier are recaptured).",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 3, At-Risk Rules; p925 p. 19, At-Risk Limits, \"If your losses from an at-risk activity are allowed, they’re subject to recapture in later years if your amount at risk is reduced below zero\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
             "tax_year": 2025
           }
         }

@@ -470,6 +470,85 @@
     }
    ]
   },
+  "sa.property_tax_leave_out": {
+   "subject_sha": "0f809fac4d581e81821a7fce902a72ec8d3c07b9c8d3072dfe043ce961d5af58",
+   "samples": [
+    {
+     "verdict": "NARROW",
+     "findings": [
+      {
+       "kind": "NARROW",
+       "situation": "A filer prepays next year's property tax on a bill issued in 2025, but under local law the owner does not become liable for that tax until 2026.",
+       "source_text": "i1040sca p. 6, Line 5b: \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025. State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed.\"",
+       "why": "The help says \"Tax is billed when it is assessed,\" so the filer treats the 2025 bill as assessed before 2026 and does not leave out the prepayment. The lines need it left out, because the tax was not assessed until 2026.",
+       "bound": ""
+      },
+      {
+       "kind": "WIDE",
+       "situation": "A filer pays 2025 real estate tax in 2025 and receives a refund of part of it in early 2026, before filing.",
+       "source_text": "Question help: \"For a refund or rebate of 2025 tax, give what came back\"; i1040sca p. 6: \"If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate.\"",
+       "why": "The wording does not limit the refund to one received in 2025, so the filer leaves out a refund received in 2026. Only a refund received in 2025 reduces the 2025 deduction.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer paid a bill labeled as 2025 tax in late 2024 and received a refund of it in 2025.",
+       "source_text": "Question help: \"a refund or rebate of 2025 tax\"; i1040sca p. 6: \"If you received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don't reduce your deduction by this amount.\"",
+       "why": "\"2025 tax\" can mean tax billed for the 2025 year or tax paid in 2025. Under the first reading the filer leaves out a refund of tax paid in 2024, which the text says must not reduce the deduction.",
+       "bound": ""
+      },
+      {
+       "kind": "UNCLEAR",
+       "situation": "A filer's tax bill includes an assessment to repair an existing public sidewalk.",
+       "source_text": "i1040sca p. 6: \"Charges for improvements that tend to increase the value of your property ... However, a charge is deductible if it is used only to maintain an existing public facility in service (for example, a charge to repair an existing sidewalk ...).\"",
+       "why": "The gate's \"a charge for an improvement\" gives no maintenance exception. A filer may read a sidewalk or street assessment as an improvement charge and leave out an amount that is deductible.",
+       "bound": ""
+      }
+     ],
+     "prompt_sha": "a7a483004f2f2dad53a05c1d2b953e671ec945e24f4494ff7cb4c3c53461e488",
+     "system_sha": "76c19205fc6a0e2999f804720b2b8f5d0c1bfb7d1d33fb997ba06354a66d283e",
+     "model": "claude-opus-5-5",
+     "cost": 0.06906799999999999,
+     "date": "2026-11-24",
+     "response": ".transcription/questions/sa.property_tax_leave_out.0f809fac4d58.1.response.txt"
+    }
+   ],
+   "type": "NonNegDollars",
+   "readers": 1,
+   "brief": false,
+   "used": [
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
+    },
+    {
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 5b, \"Don't include the following amounts on line 5b\", \"Itemized charges for services to specific property or persons\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    }
+   ]
+  },
   "sa.spouse_extra": {
    "subject_sha": "3c96b74638d4c8c22e02b426a3f7a3b91390717fe7a3e618e55352ce4179fe7e",
    "samples": [

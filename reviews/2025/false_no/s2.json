@@ -176,58 +176,58 @@
    ]
   },
   "gate:s2.household_help": {
-   "subject_sha": "ba39985882241df985873e0fa3167cde6936f7c20109ec66a961496a1ab559d6",
+   "subject_sha": "2afec66f3e7d5120448164b253c3cda8b5c49e5dfa466ee85993be640bcb07c2",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer paid a housekeeper total cash wages of $1,200 in October-December 2024 and paid no one for household work in 2025. On the 2025 joint return the filer answers no.",
-       "why_no": "The gate asks only 'In 2025, did you ... pay anyone'; the filer truthfully says no because the payments were in 2024. The help mentions only 2025 pay for 2024 work, not 2024 pay.",
-       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A couple paid a caretaker or housekeeper $4,000 in 2025 to look after their vacation cabin or second home. They paid no one at their main residence.",
+       "why_no": "\"Work in or around your home\" reads as the main residence. The examples (nanny, carer, housekeeper, gardener) and the help never say that a second home, vacation home or other private residence counts.",
+       "line": "s2.household_employee_if_help",
+       "irs_text": "f1040s2 (2025) p.1, line 9: \"Household employment taxes. Attach Schedule H\". Schedule H covers household work done in or around your private home, and that includes any residence you keep.",
        "severity": "medium",
-       "fix": "Broaden the gate to ask whether in 2025 the filer paid anyone, or whether the filer paid total cash wages of $1,000 or more in any quarter of 2024, to work in or around the home."
+       "fix": "Add to the help: \"Count work at any home you or your spouse own or rent, including a vacation home or second home.\""
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer paid $1,200 to a housekeeper in the fourth quarter of 2024 and $500 to the same housekeeper in 2025. The filer answers no because no one 2025 employee reached $2,800 and no 2025 quarter reached $1,000.",
-       "why_no": "The filer reads the gate as a threshold/owe question, not as asking whether anyone was paid in 2025. The help does not mention that the 2024 fourth-quarter $1,000 trigger makes the $500 of 2025 wages taxable.",
-       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
+       "pattern": "8",
+       "who": "A filer paid an adult sister, or a niece aged 22, $300 a week through 2025 to care for the filer's children or an ill spouse in the filer's home.",
+       "why_no": "The filer thinks of money given to a relative for helping out as family support, not as paying \"anyone to work\". The examples are all job titles (nanny, housekeeper), so a relative does not seem to fit.",
+       "line": "s2.household_employee_if_help",
+       "irs_text": "f1040s2 (2025) p.1, line 9: \"Household employment taxes. Attach Schedule H\". Under Schedule H, a relative other than your spouse, your child under 21 or (generally) your parent is a household employee like anyone else.",
        "severity": "medium",
-       "fix": "State in the gate help that if the filer paid $1,000 or more in any quarter of 2024, any 2025 cash wages to household employees can trigger Schedule H even below the usual 2025 thresholds."
+       "fix": "Add to the help: \"Count relatives you paid, such as a sibling, grandchild, niece or adult child. The next question sets aside your spouse, your child under 21, and in most cases your parent.\""
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer hires a cook to work in the home and pays $30,000, but did not hire a nanny, carer, housekeeper, or gardener.",
-       "why_no": "The filer treats the four examples in the question as the complete list and answers no.",
-       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
-       "severity": "medium",
-       "fix": "Say explicitly that the examples are not exhaustive and include a cook, personal assistant, or any other domestic worker the filer chooses and directs."
+       "who": "A filer paid a full-time private chef, personal assistant, tutor, or caretaker of the filer's animals who worked at the filer's home in 2025.",
+       "why_no": "The examples (nanny, carer, housekeeper, gardener, plus a driver in the help) read as the complete list of household roles, so a cook, a tutor or an animal caretaker seems not to count.",
+       "line": "s2.household_employee_if_help",
+       "irs_text": "f1040s2 (2025) p.1, line 9: \"Household employment taxes. Attach Schedule H\". The Schedule H list of household workers includes cooks, caretakers and private nurses, and it is not limited to those roles.",
+       "severity": "low",
+       "fix": "Change \"such as\" to \"anyone who works under your direction in or around your home, for example a nanny, babysitter, carer, cook, housekeeper, gardener, caretaker, tutor or driver\"."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer pays a nanny or gardener $3,000 to work at a vacation home, not at the filer's primary residence.",
-       "why_no": "The filer reads 'your home' as the main home and answers no because the work was at a second home.",
-       "line": "s2.household_employee_if_help (Schedule H; Schedule 2 line 9)",
-       "irs_text": "f1040s2 (2025) p. 1, line 9: 'Household employment taxes. Attach Schedule H'",
-       "severity": "medium",
-       "fix": "Say 'any home you own or rent, including a vacation home,' not just the primary residence."
+       "pattern": "8",
+       "who": "A 17-year-old who is not in school worked full-time as the filer's live-in nanny in 2025 and was paid $15,000.",
+       "why_no": "This is a misreading of the gated question's help, not of the gate. The help's \"leave out a student under 18\" may be read as \"leave out anyone under 18\". The help also omits the rule that a minor whose principal occupation is household work still counts toward the $2,800 test.",
+       "line": "s2.household_employee_if_help",
+       "irs_text": "f1040s2 (2025) p.1, line 9: \"Household employment taxes. Attach Schedule H\". Schedule H leaves out wages paid to an employee under 18 only if household work is not that employee's principal occupation.",
+       "severity": "low",
+       "fix": "Reword: \"For the $2,800 test only, leave out a worker under 18 for whom household work is not their main occupation (for example a student). Count a minor for whom it is.\""
       }
      ],
-     "prompt_sha": "b08bbaf49a796bdcea29992f5a87cf876eaa6ad95022d259e8d1a880926ada95",
+     "prompt_sha": "de9d44222bb4fbb8f7bf6cbeda09addb45fc08519c551aa30c723f857c1553d4",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_s2.household_help.ba3998588224.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.088392,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_s2.household_help.2afec66f3e7d.1.response.txt"
     }
    ],
    "condition": "s2.household_help",
@@ -256,78 +256,58 @@
    ]
   },
   "gate:s2.lookback_ask": {
-   "subject_sha": "7a42249cab74d9ef1e5a774e4d81601f01cf8f2e727307f8666f0f63fa965a2f",
+   "subject_sha": "4785eb6b95e7fb8f6d6ed762b384eb1383d84862d6e474132cd30cfab981bb81",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer with no Schedule C who first bought a partnership or S corporation interest in 2025. The entity finished a long-term contract in 2025 that it began in an earlier year, and its Schedule K-1 passes look-back information to owners.",
-       "why_no": "The scope helper asks whether they owned a share of a partnership or an S corporation 'in any year before 2025'. Their ownership began in 2025, so a truthful answer is no. With no Schedule C, the computed gate is false and the look-back question is never asked.",
-       "line": "s2.lookback_if_business (a missed refusal; Schedule 2 line 17n would be dropped)",
-       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'; i6251 (2025) p. 7, Line 2p: 'you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted'",
-       "severity": "high",
-       "fix": "Widen the gate to cover any ownership in 2025 or earlier: 'In 2025 or any earlier year, did you (or your spouse) own a business, farm, rental, royalty property, or a share of a partnership, S corporation, estate or trust?' Better still, also open the gate whenever a Schedule K-1 is entered."
-      },
-      {
-       "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "An investor with no Schedule C who owns rights in a film, sound recording or book, held for the production of income. They report the royalties on Schedule E and depreciate the rights under the income forecast method, and 2025 is the 3rd or 10th recomputation year.",
-       "why_no": "The gate lists 'a business, a farm, a rental property, or a share of a partnership or an S corporation'. Royalty property held as an investment is none of these, so the investor truthfully answers no.",
-       "line": "s2.lookback_if_business (Form 8866 interest; a missed refusal)",
-       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) ... from Form 8697 or 8866'",
-       "severity": "high",
-       "fix": "Add 'royalty property, or any property you depreciate' to the gate list, or open the gate whenever the return has Schedule E royalties or any depreciation."
+       "who": "A filer who has never had a business, farm, rental, partnership or S corporation interest and files no Schedule C. In 2025 they are a beneficiary of a trust or estate that reports income from a long-term contract completed in 2025, and the entity passes the look-back amounts through to them.",
+       "why_no": "The gate names only a business, farm, rental, or a share of a partnership or S corporation. A trust or estate beneficiary truthfully answers no to that list, so the gated question is never asked.",
+       "line": "s2.lookback_if_business",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'; i6251 (2025) p. 7, Line 2p: 'you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted'",
+       "severity": "medium",
+       "fix": "Add to the scope helper 'or an interest in an estate or trust that reports business income to you', or ask the look-back question whenever any Schedule K-1 (Form 1041, 1065 or 1120-S) is entered."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A partner or S corporation shareholder who passes the gate. The entity, not the filer, had a long-term contract that was completed or adjusted in 2025, or the entity uses the income forecast method. The owner must figure look-back interest at the owner level (Form 8697 Part II or Form 8866).",
-       "why_no": "The gated question asks 'Did you (or ... your spouse) have a contract' and 'do you depreciate a film'. Read literally, the contract and the property belong to the entity, not to the filer, so a truthful answer is no.",
-       "line": "s2.lookback_if_business (a missed refusal)",
+       "pattern": "1",
+       "who": "An individual has owned film rights or book rights since 2017 and depreciates them under the income forecast method on Schedule E. They received no royalties in 2025, or they disposed of the rights in 2025 for a lump sum not reported as royalties. They have no Schedule C and no other business or rental.",
+       "why_no": "The royalty branch requires royalties received in 2025. The before-2025 branch names a 'business, farm, rental', and a holder of royalty-producing intangibles may not read that as covering their book or film rights. The gate is therefore false even though 2025 is a recomputation year or the year of disposition.",
+       "line": "s2.lookback_if_business",
        "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'",
-       "severity": "high",
-       "fix": "Add: '..., directly or through a partnership, S corporation, estate or trust (check your Schedule K-1 for look-back or income forecast information)'."
+       "severity": "medium",
+       "fix": "Broaden the before-2025 helper to 'a business, farm, rental, royalty property (such as a film, book, patent or copyright), or a share of a partnership, S corporation, estate or trust'. Drop the requirement that royalties were received in 2025."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A K-1 recipient or a small contractor who does not recognize the terms 'percentage of completion' or 'income forecast method' but whose K-1 or accountant reports look-back amounts.",
-       "why_no": "The help says 'If neither is familiar, answer No.' This invites a no based on whether the filer knows the term rather than on the facts.",
+       "who": "A partner or S corporation shareholder who has held the interest since before 2025. Their 2025 Schedule K-1 carries the information needed to compute look-back interest on a long-term contract the entity completed in 2025. The filer does not know what percentage of completion or the look-back method is.",
+       "why_no": "The help says 'If neither is familiar, answer No.' The contract is the entity's, not something the filer recognizes as 'a contract you had', so they answer no.",
        "line": "s2.lookback_if_business",
-       "irs_text": "i6251 (2025) p. 7, Line 2p: 'If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe or be entitled to a refund of interest'",
+       "irs_text": "i6251 (2025) p. 7, Line 2p: 'If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted. For details, see Form 8697'",
        "severity": "medium",
-       "fix": "Replace that sentence with checkable facts: 'Answer Yes if a Schedule K-1, Form 8697, or Form 8866 mentions look-back interest, or if your business had a contract that took more than one year to finish.'"
+       "fix": "Add a checkable fact: 'Does any Schedule K-1 you (or your spouse) received mention look-back interest, Form 8697, Form 8866, a long-term contract, or the income forecast method?' Replace 'If neither is familiar, answer No' with 'If unsure, check your Schedule K-1s and business records.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A beneficiary of a trust or estate that carries on a contracting business or holds income-forecast property and passes look-back items through on a Schedule K-1.",
-       "why_no": "The gate names only partnerships and S corporations. A trust beneficiary does not 'own a share' of the trust, so they answer no.",
+       "pattern": "7",
+       "who": "A small contractor whose contracts are exempt from the percentage-of-completion method under section 460(e)(1). They use the completed-contract method for the regular tax but must use percentage of completion for the AMT, and a contract finished in 2025.",
+       "why_no": "The question asks about a contract 'with its income figured as the work went on'. This filer's regular-tax income was not figured that way. The help line 'Count a contract whose income was figured as the work went on for the alternative minimum tax only' is ambiguous: it can be read as 'only count it if this happened for the AMT alone' or as an instruction the filer cannot apply without knowing the AMT rule.",
        "line": "s2.lookback_if_business",
-       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'",
-       "severity": "medium",
-       "fix": "Add 'or were a beneficiary of an estate or trust' to the gate."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "An owner of income-forecast property who disposed of it or stopped depreciating it in 2025, in a year when a look-back recomputation is still due.",
-       "why_no": "The question uses the present tense, 'do you depreciate a film, book or similar property'. The filer no longer depreciates the property and so answers no.",
-       "line": "s2.lookback_if_business",
-       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) ... from Form 8697 or 8866'",
+       "irs_text": "i6251 (2025) p. 7, Line 2p: 'For contracts excepted from the percentage-of-completion method for the regular tax by section 460(e)(1), use the simplified procedures ... to determine the percentage of completion' and 'If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe ...'",
        "severity": "low",
-       "fix": "Change the wording to: 'did you depreciate, in 2025 or an earlier year, a film, book or similar property by the income it was expected to earn?'"
+       "fix": "Reword the help: 'Count a contract that spanned more than one tax year even if you reported its income only when finished, unless it was a home construction contract; the AMT may still require income to be figured as the work went on.'"
       }
      ],
-     "prompt_sha": "8bc2f3a834a89ca32dd5cc2e542cf1d4899062b6e35e67bc46597757fd83abc2",
+     "prompt_sha": "7b9b77ac73a26d726402706840a43bd48db13a75dc7d68bec27831e2104a06ef",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.10948,
+     "cost": 0.11137999999999999,
      "date": "2026-11-24",
-     "response": ".transcription/false_no/gate_s2.lookback_ask.7a42249cab74.1.response.txt"
+     "response": ".transcription/false_no/gate_s2.lookback_ask.4785eb6b95e7.1.response.txt"
     }
    ],
    "condition": "s2.lookback_ask",

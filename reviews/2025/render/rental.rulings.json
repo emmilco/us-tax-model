@@ -197,6 +197,16 @@
    "subject_key": "3e436eeb8f766e57922edbd79a85616f289503e0a633ea6d47ef0dabadc9849e"
   },
   {
+   "printed": "22",
+   "restated": "Subtract helper \"Loss with prior-year unallowed loss, less the Part VII unallowed loss (the loss line 22 reports)\" from helper \"Zero\".",
+   "model": "The restatement reports a loss only when the activity is listed in Part VII, so line 22 is zero whenever the loss is not carried into Part VII. That case covers a loss fully absorbed by the special allowance in Part VI, an 8582 line 3 that is zero or more, and a filer who meets the filing exception. The IRS text says otherwise: 'If ... you meet the exception for certain rental real estate activities ... Enter the (loss) from line 21 on line 22.' Form 8582 line 3 says 'all losses are allowed, including any prior year unallowed losses.' Part VI adds that such losses 'are allowed in full and aren't carried over to Part VII. Report all amounts ... on the proper forms and schedules.'",
+   "ruling": "Ruling: model error; the helper subtracted is the loss with its prior-year unallowed loss less the Part VII unallowed loss, and the Part VII unallowed loss is $0 for an activity not carried into Part VII, so line 22 is then the whole loss, as the model says the IRS text requires (i8582 Part VI, 'allowed in full and aren't carried over to Part VII'). The hand-predicted fixtures with a loss absorbed by the special allowance (for example mrental.f8582.part5_income_and_loss, -$6,000) show it. The line changed only in its refusal gate (rental.not_at_risk_if_reported, BUG-1341). Project stands.",
+   "context": "b5ecf47e218aaf66d7a63229b0ce5868972555f5422273fbbba4d6daa2dad689",
+   "date": "2026-11-24",
+   "run": "4f97781d1d47b2a9f32926882f34d5ae1c4511c8e69ef8e977d4c929a59058f9",
+   "subject_key": "bd79c43b1d4b5756e827cc644cf5e6c0fa2e55e6ae60285bea13ed0369e3137e"
+  },
+  {
    "printed": "5",
    "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Advertising, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Advertising: the rental part (rental days over total days of use)\"]",
    "model": "The rental-day ratio is right, but the amount is still entered when the property is excluded. Line 2 instructions say a home rented fewer than 15 days means 'do not report the rental income and do not deduct any rental expenses'; only lines 3 and 21 are zeroed.",

@@ -25,7 +25,10 @@ transcription review does not compare (helper lines, which only class M reviews)
 for the entries the tree under test adds or changes over HEAD (an inventory entry HEAD lacks, a pending file that is
 new or differs from HEAD's), measured from HEAD; an entry already committed keeps the verdict of the commit that
 added it, so a later change to another form does not make its sibling forms due again. So does an entry that a merge
-being concluded (MERGE_HEAD) assigns from a pending file one of its parents committed.
+being concluded (MERGE_HEAD) assigns from a pending file one of its parents committed. An entry under test is due only
+when the tree changes a form of the year that defines one of its Fix lines: another entry's form change in the same
+commit does not make its sibling forms due. Changes are those of the tree a check-all green record names (the working
+tree, untracked files included: tools/worktree_files.py), so a run before `git add` judges what the commit will hold.
 """
 import argparse
 import json
@@ -40,6 +43,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
 import citations  # noqa: E402
 import check_twins  # noqa: E402
+import worktree_files  # noqa: E402
 
 CANON = ROOT / "canonical" / Y
 BUGS = Path(os.environ.get("SIBLINGS_BUGS", ROOT / "BUG_INVENTORY.md"))
@@ -349,8 +353,7 @@ def under_test(bug, base):
     if not bug.startswith("BUG-NEW-"):
         return False  # the inventory is append-only: a committed entry is unchanged
     rel = str((PENDING / f"{bug[len('BUG-NEW-'):]}.md").relative_to(ROOT))
-    return bool(subprocess.run(["git", "diff", "--name-only", "HEAD", "--", rel],
-                               capture_output=True, text=True, check=False).stdout.strip())
+    return bool(changed_paths("HEAD", rel))
 
 
 def missing_siblings(fix, siblings, checked):
@@ -362,8 +365,9 @@ def missing_siblings(fix, siblings, checked):
 def review_logs_due(siblings, logged_forms, year_forms_changed, ids=None, classm_forms=frozenset(),
                     transcribed=lambda line: True):
     """The sibling forms whose review log is due but did not change since the entry's base. None is due
-    when the change since the base touched no form of the year (it is written, for example, as next year's
-    operations in changes/<year>/): no line subject a review judged has changed. A line's form is the document
+    when the change since the base touched no form of the year that defines one of the entry's Fix lines
+    (`year_forms_changed` false; the fix is written, for example, as next year's operations in changes/<year>/,
+    or another entry of the same commit changed another form): no line the entry's fix names has changed. A line's form is the document
     that defines it (`ids`, from index()), which a line id's prefix need not name (tcw defines mfj.*). A form's
     changed transcription or render log refreshes all its sibling lines; its changed class M log refreshes the
     sibling lines its transcription review does not compare (`transcribed` is false: helper lines, whose only line
@@ -390,13 +394,44 @@ def line_ids_at(rev):
     return {line.split("id: ", 1)[1] for line in out.splitlines() if "id: " in line}
 
 
+_TREE = []
+
+
+def changed_paths(rev, *pathspecs):
+    """The paths under `pathspecs` that differ between `rev` and the tree a green record names (the working tree,
+    untracked files included, ignored files excluded)."""
+    if not _TREE:
+        _TREE.append(worktree_files.tree(cwd=ROOT))
+    out = subprocess.run(["git", "diff-tree", "-r", "--no-renames", "--name-only", rev, _TREE[0], "--", *pathspecs],
+                         cwd=ROOT, capture_output=True, text=True, check=False).stdout
+    return [p for p in out.splitlines() if p]
+
+
+def changed_year_forms(rev, ids):
+    """The documents of the year whose form file (forms/<year>/<doc>.yaml) changed since `rev`, or None when a
+    changed path there names no document now defined (a removed or renamed file): then every entry is due."""
+    out = set()
+    known = {doc["id"] for doc, _ in ids.values()}
+    for path in changed_paths(rev, f"forms/{Y}"):
+        p = Path(path)
+        if p.suffix != ".yaml" or p.parent.as_posix() != f"forms/{Y}" or p.stem not in known:
+            return None
+        out.add(p.stem)
+    return out
+
+
+def entry_touched(fix, changed_forms, ids):
+    """Whether the change touches a form of the year defining one of the entry's Fix lines (`changed_forms` from
+    changed_year_forms; None, an unattributable change, touches every entry)."""
+    if changed_forms is None:
+        return True
+    return any((ids[t][0]["id"] if ids and t in ids else t.split(".")[0]) in changed_forms for t in fix)
+
+
 def changed_logs(base, kinds=("transcription", "render")):
     """The forms with a review log of one of `kinds` changed since `base` (working tree included)."""
-    changed = subprocess.run(["git", "diff", "--name-only", base, "--",
-                              *(f"reviews/{y}{k}" for k in kinds for y in (f"{Y}/", f"ny/{Y}/"))],
-                             capture_output=True, text=True, check=False).stdout
     forms = set()
-    for path in changed.splitlines():
+    for path in changed_paths(base, *(f"reviews/{y}{k}" for k in kinds for y in (f"{Y}/", f"ny/{Y}/"))):
         name = Path(path).name
         if name.endswith(".index.json"):  # a review in the review store (tools/transcription/review_store.py)
             stem = name[:-len(".index.json")]
@@ -504,13 +539,11 @@ def check(docs, ids):
         if base not in logged:
             logged[base] = current_docs(changed_logs(base))
         if base not in year_forms_changed:
-            year_forms_changed[base] = bool(subprocess.run(
-                ["git", "diff", "--name-only", base, "--", f"forms/{Y}"],
-                capture_output=True, text=True, check=False).stdout.strip())
+            year_forms_changed[base] = changed_year_forms(base, ids)
         if base not in classm_logged:
             classm_logged[base] = current_docs(changed_logs(base, ("classm",)))
-        unrefreshed = review_logs_due(siblings, logged[base], year_forms_changed[base], ids, classm_logged[base],
-                                      is_transcribed)
+        unrefreshed = review_logs_due(siblings, logged[base], entry_touched(fix, year_forms_changed[base], ids), ids,
+                                      classm_logged[base], is_transcribed)
         if unrefreshed:
             problems.append(f"{bug}: no review log changed since {base} for sibling form(s): "
                             f"{', '.join(unrefreshed)}")
@@ -531,7 +564,7 @@ def reviews_since(docs, ids, rev):
     forms = set()
     for target in ids:
         forms.add(target.split(".")[0])
-    changed = subprocess.run(["git", "diff", "--name-only", rev], capture_output=True, text=True, check=False).stdout
+    changed = "\n".join(changed_paths(rev))
     refreshed = set(re.findall(r"reviews/\d+/(?:transcription|render)/[^/]*?([a-z0-9_]+)(?:\.deepseek)?(?:\.index\.json|\.md)", changed))
     missing = sorted(f for f in forms if f not in refreshed)
     if missing:
@@ -572,6 +605,11 @@ def self_test(docs, ids):
     assert review_logs_due({"b.helper"}, set(), True, None, set(), helper) == ["b"], "no changed log refreshes nothing"
     assert "person.one" in transcribed_lines("person") and "person.bonus_all" not in transcribed_lines("person"), \
         "person.bonus_all is a helper the transcription review does not compare"
+    assert entry_touched({"a.x"}, {"a"}, None) and not entry_touched({"a.x"}, {"b"}, None), \
+        "an entry is due only when a form defining one of its Fix lines changed, not another entry's form"
+    assert entry_touched({"mfj.result"}, {"tcw"}, tcw), "a Fix line's form is the document that defines it"
+    assert entry_touched({"a.x"}, None, None), "an unattributable form change makes every entry due"
+    assert not entry_touched({"a.x"}, set(), None), "no form changed"
     assert unknown_siblings({"a.x", "a.gone", "a.typo"}, {"a.x"}, {"a.x", "a.gone"}) == ({"a.gone"}, {"a.typo"}), \
         "a sibling line removed since a committed entry was written is reported, not failed; an unknown one fails"
     assert unknown_siblings({"a.gone"}, {"a.x"}, None) == (set(), {"a.gone"}), "a pending entry's unknown line fails"

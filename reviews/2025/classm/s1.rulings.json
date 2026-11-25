@@ -1,0 +1,42 @@
+{
+ "kind": "classm",
+ "form": "s1",
+ "rulings": [
+  {
+   "case": "classm.s1.3",
+   "printed": "10",
+   "project": "$-20,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error; the case has Form W-2 wages of $80,000 (single), so taxable income before the NOL deduction is far above $25,000 and 80% of it exceeds the $20,000 post-2017 NOL: the whole $20,000 is deducted (i172, 80% limitation; f1040s1 line 8a, entered as a negative). The model assumed no other income ('no other income was given'), reading only the Schedule 1 inputs. The case was reworked only by the new s1.state_disability answer (false). Project stands.",
+   "drop": true,
+   "context": "9a91f4e2e931cedade92c33873ae292d503dc7d27d2d3411d21461fe9e97b0e5",
+   "date": "2026-11-24",
+   "run": "7c0608842270c861bfc2967966d021c1dcbaa2f7a7ec74a6dc3cc0580d979630",
+   "subject_key": "6ee47d0ed21d0221393dcfd3c01b9e7a94c654877c89e2cbd1c71976bdf394e0"
+  },
+  {
+   "case": "classm.s1.3",
+   "printed": "8a",
+   "project": "$-20,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error; the case has Form W-2 wages of $80,000 (single), so taxable income before the NOL deduction is far above $25,000 and 80% of it exceeds the $20,000 post-2017 NOL: the whole $20,000 is deducted (i172, 80% limitation; f1040s1 line 8a, entered as a negative). The model assumed no other income ('no other income was given'), reading only the Schedule 1 inputs. The case was reworked only by the new s1.state_disability answer (false). Project stands.",
+   "drop": true,
+   "context": "9a91f4e2e931cedade92c33873ae292d503dc7d27d2d3411d21461fe9e97b0e5",
+   "date": "2026-11-24",
+   "run": "7c0608842270c861bfc2967966d021c1dcbaa2f7a7ec74a6dc3cc0580d979630",
+   "subject_key": "24479bda8582298bbeb01bd03ba7c27b78046e462471c24b84c4ee62b292ea92"
+  },
+  {
+   "case": "classm.s1.3",
+   "printed": "9",
+   "project": "$-20,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error; the case has Form W-2 wages of $80,000 (single), so taxable income before the NOL deduction is far above $25,000 and 80% of it exceeds the $20,000 post-2017 NOL: the whole $20,000 is deducted (i172, 80% limitation; f1040s1 line 8a, entered as a negative). The model assumed no other income ('no other income was given'), reading only the Schedule 1 inputs. The case was reworked only by the new s1.state_disability answer (false). Project stands.",
+   "drop": true,
+   "context": "9a91f4e2e931cedade92c33873ae292d503dc7d27d2d3411d21461fe9e97b0e5",
+   "date": "2026-11-24",
+   "run": "7c0608842270c861bfc2967966d021c1dcbaa2f7a7ec74a6dc3cc0580d979630",
+   "subject_key": "570f4f5a7c16cd32c4e9c23705c9cf7ff57564fb5f44d37f2105bba612dd5a34"
+  }
+ ]
+}

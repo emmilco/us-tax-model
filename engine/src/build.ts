@@ -70,6 +70,21 @@ export function dropNyConflicts(conflicts: Record<string, string>, nyPresent: bo
   return skipped;
 }
 
+// The federal ids among `ids` that the given New York documents (parsed YAML, walked whole) name outside their
+// citations and text. For a year with no New York forms of its own, the build counts a federal line as read when the
+// latest earlier New York year's forms read it, so a federal year builds before New York publishes and keeps the
+// lines New York alone reads.
+export function nyReadIds(ids: Set<string>, nyDocs: unknown[]): Set<string> {
+  const out = new Set<string>();
+  const walk = (n: unknown): void => {
+    if (typeof n === "string") { if (ids.has(n)) out.add(n); return; }
+    if (Array.isArray(n)) { n.forEach(walk); return; }
+    if (n && typeof n === "object") for (const [k, v] of Object.entries(n)) if (!["cite", "source", "label", "op", "ref"].includes(k)) walk(v);
+  };
+  nyDocs.forEach(walk);
+  return out;
+}
+
 // The interview path checks run on BUILD_WORKERS worker threads (default defaultWorkers() of pool.ts); the result is the
 // same for every count, and BUILD_WORKERS=1 checks them in the calling thread.
 export async function runBuild(workers = walkWorkers("BUILD_WORKERS")): Promise<{ data: CanonicalData | null; errors: string[]; stats: string[] }> {
@@ -524,12 +539,24 @@ export async function runBuild(workers = walkWorkers("BUILD_WORKERS")): Promise<
     const targets = new Set(profiles.flatMap((i) => i.targets));
     const asked = new Set(profiles.flatMap((i) => i.questions.map((q) => q.input)));
     for (const d of data.forms) if (d.collection?.implicit && asked.has(`$${d.id}`)) errors.push(`${d.id}: an implicit collection's entry is never asked, but an interview asks $${d.id}`);
+    // A year with no forms/ny/<year>/ counts as read what the latest earlier New York year's forms read (nyReadIds).
+    let nyHeld = new Set<string>();
+    const NY_FORMS_ROOT = join(ROOT, "forms", "ny");
+    const nyPrior = existsSync(NY_FORMS_DIR) || !existsSync(NY_FORMS_ROOT) ? undefined
+      : readdirSync(NY_FORMS_ROOT).filter((n) => /^\d{4}$/.test(n) && Number(n) < YEAR).sort().pop();
+    if (nyPrior) {
+      const dir = join(NY_FORMS_ROOT, nyPrior);
+      nyHeld = nyReadIds(ids, readdirSync(dir).filter((f) => f.endsWith(".yaml")).sort().map((f) => parseYaml(readFileSync(join(dir, f), "utf8"))));
+    }
+    const heldByNy: string[] = [];
     for (const d of data.forms) for (const l of d.lines) {
       if (!isMarkedLine(l)) continue; // numbered lines are the form's own lines; helper, column and worksheet-step lines are checked
       const unread = !read.has(l.id) && !targets.has(l.id);
+      if (unread && nyHeld.has(l.id)) { heldByNy.push(l.id); continue; }
       if (unread && !l.display) errors.push(`${d.id}.${l.id}: no line reads this ${l.expr.op} line and it is not an interview target; remove it or say why it is shown (display)`);
       if (!unread && l.display) errors.push(`${d.id}.${l.id}: marked display but read by another line or an interview target`);
     }
+    if (heldByNy.length > 0) stats.push(`reader check: ${heldByNy.length} line(s) read only by forms/ny/${nyPrior}/ counted as read (${heldByNy.join(", ")}): no forms/ny/${YEAR}/`);
   }
   // The interview path checks walk the year's fixtures; a year being adopted has none until
   // tools/fixtures_year.py carries them over, which needs this build.

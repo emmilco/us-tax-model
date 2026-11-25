@@ -1289,6 +1289,12 @@ params:
       cite:
         doc: ny_it201i
         locator: 'p. 9, Line 26, "If No, go to line 27."'
+    ny.small_business.limit:
+      type: NonNegDollars
+      value: 25000000
+      cite:
+        doc: ny_it225i
+        locator: 'p. 19, S-201, "a sole proprietor who employs one or more persons during the tax year, and has net business income or net farm income of greater than zero but less than $250,000"'
     ny.mctmt.threshold:
       type: NonNegDollars
       value: 5000000

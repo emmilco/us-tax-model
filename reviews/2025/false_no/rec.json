@@ -2,78 +2,78 @@
  "form": "rec",
  "reviews": {
   "gate:rec.has_medical_if_path": {
-   "subject_sha": "7ea2d86f781bb0d47be0eebd538d94acd04f8de7f481287e734e6d350f515433",
+   "subject_sha": "e11f8bc77b26a03f9d4eaf919437debdbd71d093ab4f1301b7caa0597f172f07",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "3",
-       "who": "A couple filing jointly for 2025 who filed separate returns for 2024. Only the spouse itemized and deducted medical expenses, and the spouse's insurer reimbursed part of them in 2025.",
-       "why_no": "The parent condition reads 'you itemized deductions for 2024'. The filer did not itemize; the spouse did. So the Worksheet 2 helper is no, and the medical question is never asked.",
-       "line": "rec.medical_if_has (and rec.medical_deducted_if_has)",
-       "irs_text": "p525 p. 25: 'If you recover any itemized deduction that you claimed in an earlier year, you must generally include the full amount of the recovery in your income in the year you receive it.'",
-       "severity": "high",
-       "fix": "Ask 'Did you or your spouse itemize deductions on any 2024 return, joint or separate?' Use the itemizing spouse's 2024 Schedule A for the deduction and its limits."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose health insurer or HSA/HRA reimbursed in 2025 medical bills that the filer had paid and deducted for 2024.",
-       "why_no": "'Money was paid back for 2024' reads as a refund of something overpaid, such as a tax refund. An insurance reimbursement for a claim does not feel like money 'paid back'.",
-       "line": "rec.medical_if_has",
-       "irs_text": "p525 p. 26, Example 34: 'In 2025, you received a $500 reimbursement from your medical insurance for your 2024 expenses.'",
+       "pattern": "1",
+       "who": "A filer who itemized for 2023 and deducted medical bills that year, and whose insurer or a provider paid part of them back in 2025.",
+       "why_no": "The gate and its parent ask only about money paid back 'for 2024' and '2024 medical or dental expenses'. For a 2023 recovery, no is the truthful answer, and nothing else in the tool picks up the amount.",
+       "line": "rec.medical_if_has (and rec.medical_deducted_if_has; the recovery reaches no line at all)",
+       "irs_text": "p525 p. 27, Worksheet 2: 'If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year.'",
        "severity": "medium",
-       "fix": "Word the parent as 'In 2025, did you or your spouse receive any refund, reimbursement, insurance payment, or settlement for something you deducted on your 2024 Schedule A (taxes, medical bills, mortgage interest, and so on)?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who paid a 2024 doctor or hospital bill. In 2025 the insurer paid the provider directly, and the provider refunded the filer's overpayment.",
-       "why_no": "The filer reads 'reimbursement' as a payment from an insurer to them. The refund came from the provider, and the insurer paid the provider, so they answer no.",
-       "line": "rec.medical_if_has",
-       "irs_text": "p525 p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements.'",
-       "severity": "medium",
-       "fix": "In the help, say that refunds from doctors, hospitals, pharmacies or insurers all count, whoever paid whom."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who deducted 2024 health or long-term-care insurance premiums as medical expenses and received a 2025 premium refund or rebate. Also a filer who received a 2025 lawsuit or accident settlement allocated to 2024 medical costs they deducted.",
-       "why_no": "A premium rebate or a damages settlement is not seen as a 'reimbursement of medical or dental expenses'. The filer thinks only of bills for care.",
-       "line": "rec.medical_if_has",
-       "irs_text": "p525 p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements.'",
-       "severity": "medium",
-       "fix": "List examples in the medical question: insurance claim payments, refunds of insurance premiums you deducted, provider refunds, and the part of a settlement or damages award meant for medical costs."
+       "fix": "Ask whether any medical or dental reimbursement received in 2025 relates to any earlier year deducted on Schedule A. Run one Worksheet 2 for each year, or stop and refer the filer when the year is not 2024."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer reimbursed in 2025 for medical expenses deducted on a 2023 (or earlier) Schedule A, with or without 2024 recoveries.",
-       "why_no": "The gate and the questions ask only about 2024 itemizing and 2024 expenses. An earlier-year recovery gets a truthful no and is dropped.",
+       "who": "A filer who paid a bill in 2024 for care received in late 2023 and deducted it on the 2024 Schedule A, then got an insurance reimbursement for it in 2025.",
+       "why_no": "'2024 medical or dental expenses' reads as care received in 2024. The gated question correctly says 'bills you paid in 2024', but the gate itself does not.",
        "line": "rec.medical_if_has",
-       "irs_text": "p525 p. 27, Worksheet 2: 'If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year.'",
+       "irs_text": "p525 p. 26, Example 34: 'For 2024, you paid $1,700 for medical expenses... In 2025, you received a $500 reimbursement from your medical insurance for your 2024 expenses.'",
        "severity": "medium",
-       "fix": "Ask whether any 2025 recovery relates to a deduction from a year before 2024. If so, run a separate Worksheet 2 per year, or refuse."
+       "fix": "Reword the gate: 'Was any of it a repayment of medical or dental bills you paid in 2024 (whenever the care was given)?'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer whose 2024 itemized deductions exceeded the standard deduction by more than all recoveries, with every one of the five statements true, as in Example 30, and who received a medical reimbursement.",
-       "why_no": "If 'Worksheet 2 is used' is computed false whenever full inclusion applies, the medical question is skipped. The $200 medical recovery is then lost unless another path collects it.",
+       "pattern": "2",
+       "who": "A filer who received a 2025 refund of a 2024 overpayment directly from a hospital or dentist, a settlement or damages award that covers previously deducted medical bills, or a delayed HRA or employer repayment.",
+       "why_no": "'Reimbursement' suggests an insurance claim payment. A provider refund, a legal settlement, or an employer payment does not feel like one, so the filer answers no.",
        "line": "rec.medical_if_has",
-       "irs_text": "p525 p. 25, Example 30: 'so you must include your total recoveries in your income for 2025 ... the balance of your recoveries, $525, on Schedule 1 (Form 1040), line 8z.'",
-       "severity": "low",
-       "fix": "Gate on 'any 2025 recovery of a 2024 itemized deduction', not on whether Worksheet 2 is needed. Let the computation decide full or partial inclusion."
+       "irs_text": "p525 p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you (or your spouse) get back any money for medical or dental costs paid in 2024, from an insurer, employer, doctor, hospital, or a settlement or court award?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who deducted health, Medicare, or long-term care insurance premiums as medical expenses on the 2024 Schedule A and received a premium refund or rebate in 2025.",
+       "why_no": "A premium refund is not seen as a 'reimbursement of medical or dental expenses'; the filer thinks of premiums as insurance costs, not medical bills.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements'",
+       "severity": "medium",
+       "fix": "Add help to the gate: 'Include refunds of insurance premiums you counted as medical expenses on your 2024 Schedule A.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Joint filers whose only 2025 medical reimbursement went to the spouse, or covered a dependent child's 2024 bills.",
+       "why_no": "The gate does not name the spouse or dependents. The help that counts dependents appears only on the gated question, which a no never reaches.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 25, Example 30: 'For 2024, you filed a joint return... In 2025, you received the following recoveries... Medical expenses $200'",
+       "severity": "medium",
+       "fix": "Reword the gate: 'Was any of it a repayment to you or your spouse of 2024 medical or dental bills, including bills paid for a dependent?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer who itemized for 2024 and whose only 2025 recovery was an insurance payment for 2024 medical bills, with no tax refund.",
+       "why_no": "The parent helper's 'money was paid back for 2024' reads as a tax refund or a repayment of money the filer lent or overpaid. An insurer's claim payment does not seem to be 'paid back', so the parent is answered no and the medical gate is never reached.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 25, Total recovery included in income: 'If you recover any itemized deduction that you claimed in an earlier year, you must generally include the full amount of the recovery in your income'",
+       "severity": "medium",
+       "fix": "Reword the parent: 'In 2025, did you or your spouse get back any amount you deducted on your 2024 Schedule A, such as a tax refund, an insurance or other reimbursement of medical bills, or a refund of mortgage interest?'"
       }
      ],
-     "prompt_sha": "cb242e452ce36044755349db2f7a86280253937ec3c6b3f444ebd8d038245b69",
+     "prompt_sha": "fd1094981afae83b4b3d58585d69aedcfc1eed8ae439af981a04af97f455b095",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.114804,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_rec.has_medical_if_path.7ea2d86f781b.1.response.txt"
+     "cost": 0.11968400000000001,
+     "date": "2026-11-24",
+     "response": ".transcription/false_no/gate_rec.has_medical_if_path.e11f8bc77b26.1.response.txt"
     }
    ],
    "condition": "rec.has_medical_if_path",
