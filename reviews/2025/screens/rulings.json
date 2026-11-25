@@ -280,17 +280,35 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:person.sav_able#1": {
-   "reason": "An ABLE distribution after the return's due date is refused unnecessarily; extra refusing only.",
+   "reason": "Every WIDE case only refuses a zero line 4 or line 1; a distribution paid to a provider is still money out of the account.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "f8880 p. 2, Line 4: distributions 'received after 2022 and before the due date of your 2025 return (including extensions)'. A Yes for a later distribution refuses a return line 4 would not touch; no wrong amount."
+     "evidence": "(same claim as an earlier subject, rechecked) f8880 p. 2, Line 4: distributions 'received after 2022 and before the due date of your 2025 return (including extensions)'. A Yes for a later distribution refuses a return line 4 would not touch; no wrong amount."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "f8880 line 1 'Do not include rollover contributions' and p. 2 line 4 excludes rollovers and transfers; a rollover-only Yes refuses where both lines are zero. Coverage only."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "f8880 p. 2, Line 4, 'Don't include ... Distributions of excess contributions'; a Yes for a returned excess refuses a zero line. Coverage only."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "person.sav_able asks whether the filer 'get[s] money out of it'; money paid from the account to a provider has left the account. A No matters only for a beneficiary with other saver's-credit contributions and no ABLE contribution. Wording only; rare."
     }
    ],
-   "subject_sha": "e2b99bdc9578304b29f32a4b58f64321ffa24ce7f4bc740dfd010a5b1a525006",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "7a378c94f62772d28d0e1285ebf406a2713f5e9150ea1b8e540c58e062b5e7f3",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:qbi.unsupported#1": {
    "reason": "No defect, as the earlier rulings: the carryforward and Schedule C QBI are computed elsewhere, the box 5 input asks for the amount after the holding-period test; reviewed again because qbi.eligible reads box 5 through its gate line.",
@@ -1626,60 +1644,66 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f8889.ask_spouse_family#1": {
-   "reason": "The question as landed; the findings repeat the first sample's, ruled the same way.",
+   "reason": "Part-year, changed and last-month filers take the month path; a marriage ended in 2025 is asked by f8889.former_spouse_family (BUG-0677); an ineligible spouse is harmless. (Same claims as an earlier subject, rechecked.)",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "A filer whose year is not one coverage type as an eligible individual is asked the month questions, and f8889.months_family asks in its own words whether the spouse had a high-deductible plan covering more than one person (i8889 p. 4, Line 3, rule 1). The one case not reached, a marriage that ended during 2025, is BUG-0618 (open by the owner's decision)."
+     "evidence": "Not eligible every month gives the month path (f8889.coverage_self = cov_changed, or coverage_year 'Changed'), and f8889.months_family asks whether 'your spouse' had a plan covering more than one person for each eligible month (i8889 p. 4, rule 1 and rule 5)."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "A filer whose year is not one coverage type as an eligible individual is asked the month questions, and f8889.months_family asks in its own words whether the spouse had a high-deductible plan covering more than one person (i8889 p. 4, Line 3, rule 1). The one case not reached, a marriage that ended during 2025, is BUG-0618 (open by the owner's decision)."
+     "evidence": "Mixed coverage answers coverage_year 'Changed'; months_family turns the spouse-family months into family months and dec_coverage's help applies the spouse rule on December 1 (i8889 p. 4, rule 4)."
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "A filer whose year is not one coverage type as an eligible individual is asked the month questions, and f8889.months_family asks in its own words whether the spouse had a high-deductible plan covering more than one person (i8889 p. 4, Line 3, rule 1). The one case not reached, a marriage that ended during 2025, is BUG-0618 (open by the owner's decision)."
+     "evidence": "A person not married at the end of 2025 with self-only coverage all year is asked f8889.former_spouse_family ('Did a marriage of yours end during 2025 ... and in any month of 2025 while you were married did the other person have a high-deductible plan covering more than one person'), and a Yes refuses (BUG-0677, fixed). The remarried case is BUG-0874 part (2), closed won't-fix by BUG-1059."
     },
     {
      "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A filer eligible only from December answers coverage_year 'Changed'; f8889.dec_coverage's help: 'Choose the third if ... you were married, both of you qualified for an HSA that day, and either of you had a plan covering more than one person' (i8889 p. 4, rule 2)."
+    },
+    {
+     "n": 4,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A Yes for a spouse who was not an eligible individual leads to the month counts, which count family months only where the conditions held for both. Harmless."
+     "evidence": "A Yes for a spouse who was not an eligible individual leads to the family limit only where both were eligible; the question costs a step (i8889 p. 4, 'both eligible individuals'). Harmless, as ruled earlier."
     }
    ],
-   "bugs": [],
-   "subject_sha": "aae267dab792d7e81ffc410691bd9489435ff8509b0797857a829e55f170b348"
+   "subject_sha": "2452505108db3caa80cac9100405fd72a8227de6bb1f027cc5e899b8443a666e",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:f8889.medical_all_if_dist#1": {
-   "class": "no gate defect",
-   "reason": "The help names the excluded costs; a deemed distribution and an excess withdrawal are asked and refused elsewhere; as the earlier ruling.",
+   "reason": "An earlier-year excess and a deemed distribution are refused elsewhere; with no distributions the question is not asked.",
    "findings": [
     {
      "n": 0,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i8889 p. 8, Line 15. The f8889.medical_all help says 'Answer No if any of it paid for insurance premiums, for someone else ..., for costs from before you opened the HSA, or for costs that insurance or anyone else paid back to you'."
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "i8889 p. 8, Line 15. An excess withdrawn after the due date is an earlier year's excess still in the account at the start of 2025, refused by person.x_hsa_prior_excess ('A return with this is outside what this tool prepares; a Yes ends the interview here'); a 2025 excess withdrawn by the due date is f8889.excess_withdrawn."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "A deemed distribution is asked at f8889.loan (refused at f8889.line17b) and any withdrawal of an excess at f8889.excess_withdrawn (refused at f8889.line16), each before a Yes here can matter (i8889 p. 3 and p. 8)."
+     "class": "out of scope",
+     "evidence": "i8889 p. 3, 'Any deemed distribution will not be treated as used to pay qualified medical expenses'. f8889.loan asks about a prohibited transaction or a pledge and refuses at f8889.line17b, before a Yes here can matter."
     },
     {
      "n": 2,
      "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "With no distributions f8889.medical_all is not asked; any further question costs only a question."
+     "class": "model error",
+     "evidence": "With no distributions f8889.has_dist is false and f8889.medical_all_if_dist is 'no': the question is not asked (forms/2025/f8889.yaml, medical_all_if_dist). No cost either way."
     }
    ],
-   "subject_sha": "48734f01b25430002de9cce1d52e0d827a58ceaede47e3783e4c7ad8ffb85a68"
+   "subject_sha": "924162566b9bc2c384337ef38a1999cbfe4946e8bef8f5276000cef22b6c0c21",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:f8889.ask_last_month_prior#1": {
    "class": "no gate defect",
@@ -3859,23 +3883,32 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:sche.qbi_business#1": {
-   "reason": "Both findings only widen the refusal (QBI treatment of a rental is outside the tool).",
+   "reason": "Self-rental refused at rental.kind; the 2024 Form 8995 test only widens; work through an agent is not named (filed).",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "The box exists to refuse a rental that is a trade or business for the QBI deduction (i8995 p. 1); line 26 is right, but the QBI deduction would need the rental. Coverage only."
+     "kind": "NARROW",
+     "class": "out of scope",
+     "evidence": "Self-rental is refused before this question: rental.kind 'Rented to a business you or your spouse run' sets rental.self_rental, which refuses at rental.days_fair (i1040se p. 5, Line 1b, Self-Rental)."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "As ruled before: the 2024 Form 8995 test refuses a filer with no 2025 claim; coverage only."
+     "evidence": "As ruled before: the 2024 Form 8995 test refuses a filer with no 2025 claim; a Yes ends the interview, coverage only, no amount wrong."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "low defect: BUG-1464",
+     "evidence": "rp-2019-38 counts rental services performed by employees or independent contractors toward the 250 hours; the help does not say so, so a rental run through a manager may be answered No and lose its QBI share (tax overstated). Filed as BUG-1464, low."
     }
    ],
-   "subject_sha": "1f79cddbcd46a33b4438004f430b9bbad93d3314a5be60c8be4addb217877dde",
-   "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+   "subject_sha": "0f36f55ef462016f85c8012d1ddb3248cf409db656bd7e95794a7611aad14f9b",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)",
+   "bugs": [
+    "BUG-1464"
+   ]
   },
   "unruled:sche.re_pro#1": {
    "reason": "A Yes refuses; extra refusals only.",
@@ -5823,30 +5856,23 @@
    "subject_sha": "c25a86ee05447b2407a85cfd2cd8ba8e231a4c0561d15ddd579ae07814dd43e4"
   },
   "unruled:gate:person.has_hsa#1": {
-   "class": "no gate defect; the narrow case is covered by the HSA listing question; the citation is filed",
-   "reason": "The HSA list question tells the filer to list an HSA 'even if nothing went in or out in 2025', so a dormant HSA with an old excess opens the gate. The gate's citation (Parts II and IX) is wrong and is filed; the line 48 help is consistent with line 42.",
+   "reason": "The HSA listing question asks about any HSA held in 2025; the gate's citation is now Part VII (BUG-0865 fixed).",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "The gate counts Forms 8889 listed through $f8889, whose question is 'Did you have a health savings account (HSA) in 2025, or get money from one?' with help 'Answer Yes even if nothing went in or out in 2025'. A person whose excess from an earlier year is still in the account had an HSA in 2025, lists it, and is asked person.x_hsa_prior_excess ('Before 2025, was more put into your HSA than the limit ..., with some of the extra still in the account at the start of 2025?'), whose Yes refuses through person.x_other (BUG-0313's fix)."
+     "evidence": "(same claim as an earlier subject, rechecked) $f8889: 'Answer Yes even if nothing went in or out in 2025' (questions.yaml:4628), so an idle HSA with an old excess is listed and person.x_hsa_prior_excess ('Before 2025, was more put into your HSA than the limit ...') is asked and refuses."
     },
     {
      "n": 1,
      "kind": "SOURCE",
-     "class": "defect",
-     "evidence": "f5329 p. 2, Part VII, 'or you had an amount on line 49 of your 2024 Form 5329'. person.has_hsa, person.x_hsa_prior_excess and its gate carry the shared x_* locator quoting Parts II and IX, which say nothing about HSAs. Citation only; no value changes.",
-     "bug": "BUG-0865"
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "f5329 line 42, 'Enter the excess contributions from line 48 of your 2024 Form 5329'. The help ('Answer Yes if your 2024 Form 5329 has an amount on line 48, or if you never reported the excess') names the line that carries the excess forward; a line 48 amount without a line 49 tax is the over-refusal BUG-0313 accepted. Errs toward Yes."
+     "class": "covered",
+     "evidence": "The gate now cites f5329 p. 2, Part VII, 'or you had an amount on line 49 of your 2024 Form 5329' (person.yaml:7732; BUG-0865, fixed by BUG-1381). Line 49 is 6% of the smaller of line 48 or the HSA value on December 31, 2025, so a nonzero amount needs an HSA existing in 2025, which the listing question counts."
     }
    ],
-   "subject_sha": "807272bc274066e2b74e7c89bd560e6b3f588bc6327aac213e7238d11416230a"
+   "subject_sha": "c11b271777ee940bdbf21de8cd30d013f8f4398f3b6046cf22f15f5c7a294a1d",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:person.ira_files_8606#1": {
    "class": "no gate defect; prior-year basis with a 2025 distribution or conversion is refused on the Form 1099-R",
@@ -6845,63 +6871,35 @@
      "n": 0,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "A partner's plan rests on K-1 earnings (scope.k1); a Schedule F farmer is refused by scope.farm (i1040gi p. 93).",
-     "bugs": []
+     "evidence": "(same claim as an earlier subject, rechecked) K-1 and farm losses are refused by scope.k1 and scope.farm, a freed loss of a business owned before 2025 by scope.passive, and a 2025 rental's held-back loss by rental.prior_not_active."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "accepted residual",
-     "evidence": "Without a 2025 Schedule C the tool has no QBI (Schedule F and K-1 refused); the unreported carryforward cannot change the 2025 deduction, only Form 8995 line 16. Low.",
-     "bugs": []
+     "evidence": "(same claim as an earlier subject, rechecked) Without a 2025 Schedule C the tool has no QBI (Schedule F, K-1 and Schedule E QBI refused, qbi.yaml:205); the unreported carryforward changes only Form 8995 line 16. Low."
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "K-1 and farm losses are refused by scope.k1 and scope.farm; a freed loss of a business owned before 2025 by scope.passive.",
-     "bugs": []
+     "evidence": "(same claim as an earlier subject, rechecked) IDCs and mining or circulation costs through a K-1 are refused by scope.k1; a working interest on Schedule E by the royalty working-interest refusal (questions.yaml:222)."
     },
     {
      "n": 3,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "IDCs and circulation costs through a K-1 are refused by scope.k1; a working interest held as a royalty is refused by royalty.yaml (its refusal names 'a working interest ... depreciation, depletion').",
-     "bugs": []
+     "evidence": "(same claim as an earlier subject, rechecked) A fishing partnership's income comes on a K-1 (scope.k1); Schedule J is an election that only lowers tax, so a vessel lessor's tax is correct without it."
     },
     {
      "n": 4,
      "kind": "NARROW",
      "class": "out of scope",
-     "evidence": "A partner's look-back interest comes on a K-1 (scope.k1); income-forecast property held as a royalty is refused by royalty.depreciation.",
-     "bugs": []
-    },
-    {
-     "n": 5,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "A fishing partnership's income comes on a K-1, refused by scope.k1.",
-     "bugs": []
-    },
-    {
-     "n": 6,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "carloan.col_ii_input is asked per loan; 'your own business' on a joint return's loan entry takes the spouse's Schedule C (roster frame, RUBRIC2 rule 4).",
-     "bugs": []
-    },
-    {
-     "n": 7,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "'Is your business fishing' when only the spouse fishes: Schedule J is an election that only lowers tax, so a No leaves a correct tax. Low.",
-     "bugs": []
+     "evidence": "(same claim as an earlier subject, rechecked) A partner's plan rests on K-1 earnings (scope.k1); a Schedule F farmer is refused by scope.farm (i1040gi p. 93)."
     }
    ],
-   "bugs": [],
-   "class": "no gate defect",
-   "subject_sha": "8a6e6177a61cbe6b18d0b515aeffd07b8ef42167d9cc19606c28cd236277c834",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "c48e88a7ea571ab737d1cea6c517c840555a8807d724a9a07896ab523658903b",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:s1.hobby_any#1": {
    "reason": "Recreational farms are refused by scope.farm, and other not-for-profit activities reported as businesses are refused by the Schedule C screen.",
@@ -7210,34 +7208,23 @@
    "subject_sha": "63d2a608f113889b8fd8dbea9e06324c16529b612c68ba928ad194f8b49e5fef"
   },
   "unruled:gate:sa.property_tax_other_if_home#1": {
-   "reason": "Special levies, escrow and business real estate are excluded by the leave-out list and the line 5b question and help.",
-   "class": "no gate defect",
+   "reason": "Non-uniform levies are on the leave-out list; the ownership tick's heading names the spouse.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "The leave-out list names 'a special tax charged only on some properties' and 'a charge for a service, such as trash collection or water' (i1040sca p. 6, 'assessed uniformly').",
-     "bugs": []
+     "evidence": "(same claim as an earlier subject, rechecked) The list names 'a special tax charged only on some properties' and 'a charge for a service' (questions.yaml:1676-1686), i1040sca p. 6, 'assessed uniformly at a like rate on all real property throughout the community'."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.line5b help: 'If your lender pays it, count what it paid in 2025 (Form 1098 box 10 or its statement)' (i1040sca p. 6, 'only the amount the mortgage company actually paid').",
-     "bugs": []
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.line5b asks for tax 'on your home and on any other real estate you own that is not used for business', so business-use tax is never in the amount the gate asks about.",
-     "bugs": []
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The ownership tick is asked under 'In 2025, did you (or, on a joint return, your spouse) do any of these?' (questions.yaml:120); the label the reviewer read is the helper's, not the question shown."
     }
    ],
-   "subject_sha": "8d38d4ce12104784f14c83defab29bb7614e4d3dbfa0c16e4fdc4e29a91016ad",
-   "adjudication": "lane L2 itemized sampled-review adjudication, 2026-11-24 (claude-opus-5-5, RUBRIC2)",
-   "bugs": []
+   "subject_sha": "d2eb7fb8afdd66ec4f9a71d7a2273348babc590168d0927069dac199cec12879",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:oi8z.injury#1": {
    "reason": "The amount question already excludes medical-care damages; the pre-September 14, 1995 agreement exclusion is not stated anywhere.",
@@ -7629,49 +7616,35 @@
    "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:sb.foreign_any#1": {
-   "class": "defect (low): the gates miss indirect financial interests",
-   "reason": "Findings 0 and 1 are BUG-0831 item 1; Form 8814 is refused; the help covers 3 and 4.",
+   "reason": "Owned entities and foreign insurance and shares are named in the gate help; Form 8814 is refused; territory accounts only widen.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "fincen114 p. 5. An account of a U.S. entity the filer owns more than half of is named only in sb.line7a's help, after the gate.",
-     "bug": "BUG-0831"
+     "class": "covered",
+     "evidence": "sb.account_any help: 'and one of a company, partnership or trust you own more than half of' (questions.yaml:1884), fincen114 p. 5, 'more than 50 percent'; BUG-0831 is fixed (BUG-1042)."
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i8938 p. 8. Assets of a disregarded entity or grantor trust are not named in sb.asset_any.",
-     "bug": "BUG-0831"
+     "class": "out of scope",
+     "evidence": "(same claim as an earlier subject, rechecked) Form 8814 is refused for every filer: scope.f8814."
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "Form 8814 is refused for every filer: scope.f8814, through scope.other_line16."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "sb.asset_any help: 'shares of a foreign company not held in a U.S. brokerage account, a foreign life insurance policy' and tick 'money owed to you by someone abroad' (questions.yaml:1889-1890); i8938 p. 7."
     },
     {
      "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "sb.asset_any's help: 'shares of a foreign company not held in a U.S. brokerage account'."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "sb.asset_any's help: 'a share of an estate abroad, even if nothing has been paid yet'."
-    },
-    {
-     "n": 5,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Territory accounts open the gate with nothing to report. Extra questions only."
+     "evidence": "(same claim as an earlier subject, rechecked) Territory accounts or a directorship open the gate with nothing to report; extra questions only."
     }
    ],
-   "subject_sha": "db40099bc89329bae4a367f280b15d2633e7c16241cfca235716270c78979454"
+   "subject_sha": "be017bad7cedb6bb4d87bb5e55c9d98c3aa8598acd9b6b6a4b1a5d25fe042eb0",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:sb.foreign_company_any#1": {
    "class": "defect (low): votes and indirect holdings are not named",
@@ -7707,35 +7680,35 @@
    "subject_sha": "f1d8753ce9c1f5bcc33579c624f5a5d14612aa3905922e3e6a3986e1d922946c"
   },
   "unruled:gate:sd.sold_other#1": {
-   "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
-   "adjudication": "lane capital, wave 2026-11-24 (claude-opus-5-5, judgment; RUBRIC2)",
-   "reason": "The gate's NARROW cases are asked by sibling boxes of the same rare-sales screen; the WIDE case costs only questions.",
+   "reason": "The NARROW cases are sibling boxes of the same rare-sales screen; the WIDE cases cost only questions.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "Section 1244 and 1242 losses are asked by sd.small_business_stock, a box of the same screen asked of every return ('Lost money on small-company stock and claim it as an ordinary loss'), which refuses with Form 4797."
+     "evidence": "(same claim as an earlier subject, rechecked) sd.small_business_stock, a box of the same screen asked of every return ('Lost money on small-company stock and claim it as an ordinary loss'), refuses with Form 4797."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "A mark-to-market trader is asked by sd.trader_election, a box of the same screen ('Trade securities as a business under a mark-to-market election'), which refuses."
+     "evidence": "(same claim as an earlier subject, rechecked) sd.trader_election ('Trade securities as a business under a mark-to-market election') refuses."
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "accepted residual",
-     "evidence": "A sale of service receivables outside a business is rare; with a business it is a Schedule C matter. Recorded, not fixed."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A vacation home or land sold outright opens the gate, and the children (business property, home sale, installment, like-kind) are answered No; i1040sd p. 1, Form 8949 takes the sale. Extra questions only."
     },
     {
      "n": 3,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A fully excludable home sale ticked here is asked sd.home_sale and answers No; nothing is refused or computed differently."
+     "evidence": "A deferred payment on publicly traded stock answered Yes is asked sd.installment and answers No (i1040sd p. 6, installment method excludes 'publicly traded stocks or securities'); extra questions only."
     }
-   ]
+   ],
+   "subject_sha": "26a5e0f856204422b352aa3fbfb44eac1d259f98e9fb8843ea6904645371b9df",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:f8853c.nonqualified#1": {
    "reason": "Scope of \"those forms\" is the line-17 forms; any mis-reading over-refuses.",
@@ -7808,33 +7781,23 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:f8889.former_spouse_family#1": {
-   "reason": "Extra refusals only; dependent coverage is covered by the help.",
+   "reason": "Both points are extra refusals that leave every amount right. (Same claims as an earlier subject, rechecked.)",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8889 p. 4: the family rule needs both spouses eligible; an ineligible then-spouse still draws a Yes and a refusal. Safe, as ruled on the earlier subject.",
-     "bugs": []
+     "evidence": "i8889 p. 4: the family rule needs 'you and your spouse are both eligible individuals'; a Yes for an ineligible then-spouse refuses a return the self-only figure would get right. Coverage only."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A family plan never in force on the first day of a month of the marriage draws a Yes and a refusal; coverage only.",
-     "bugs": []
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The help: 'A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you'; the question asks whether the other person 'had' such a plan, which includes coverage as a member, as ruled on the earlier subject.",
-     "bugs": []
+     "evidence": "i8889 p. 6 chart counts the first day of each month; a family plan never in force on such a day of the marriage draws a Yes and a refusal. Coverage only."
     }
    ],
-   "subject_sha": "799c285fabda11a51fbc2be93ad7fe72456bfa8604110ca7f08305f902c9abec",
-   "adjudication": "lane advland sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)",
-   "bugs": []
+   "subject_sha": "2a5cd59f527099d9cc1520194140758652906eade24902e0384fa5c95f01a53d",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:ira.deduct_less#1": {
    "reason": "The Pub. 590-A stop for a joint return with a low line 10 is refused by its own gate, ira.kbh_short.",
@@ -7926,31 +7889,29 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:f8889.ask_former_spouse_family#1": {
-   "class": "defect (wording) recorded; one WIDE",
-   "reason": "The 'while' and divorce-or-death wording is the false-no lane's BUG-0874; the not-eligible spouse refuses, safe.",
+   "reason": "Filers not uniform or not eligible every month take the month path, where months_family names the spouse's plan; an ineligible then-spouse only refuses.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i8889 p. 4, How To Complete Part I (month by month). The prompt 'Did a marriage of yours end ... while the other person had' reads as coverage at the end; a then-spouse whose family plan ended before the divorce is answered No and the line 3 limit is understated. BUG-0874, low.",
-     "bug": "BUG-0874"
+     "class": "covered",
+     "evidence": "A changed-coverage filer answers the month questions; f8889.months_family asks month by month whether 'your spouse' had a plan covering more than one person, with help 'Your spouse's plan counts for a month in which the three conditions held for your spouse as well' (i8889 p. 4, rule 1), as ruled on the earlier subject."
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "The prompt names only divorce or death; a decree of separate maintenance is not named. BUG-0874, low.",
-     "bug": "BUG-0874"
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "Self-only all year but not eligible every month gives f8889.coverage_self = cov_changed, so the same month questions are asked and f8889.months_family counts the then-spouse's family months (i8889 p. 4, How To Complete Part I)."
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8889 p. 4: the rule needs both spouses eligible; a then-spouse not eligible still draws a Yes and a refusal at f8889.line13_figured. Safe."
+     "evidence": "i8889 p. 4, 'both eligible individuals'; a then-spouse not eligible still draws a Yes and the refusal at f8889.line13_figured. Extra refusing only."
     }
    ],
-   "subject_sha": "fc50d1bf90ca7235a48fddb4f041a38e1b9bb934c495936028a7dba0e0295c28"
+   "subject_sha": "55e4c868e0a0237e8bba6d4049e50b40671425bf6e05c2c1dc5e8cb713eb317e",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:f8889.inherited_any#1": {
    "class": "no gate defect",
@@ -8201,31 +8162,23 @@
    "bugs": []
   },
   "unruled:gate:sli.any_if_not_mfs#1": {
-   "reason": "Interest someone else paid on the filer's loan is not named (filed, low).",
+   "reason": "Interest paid by others is now named in the gate's help; the WIDE case costs only questions.",
    "findings": [
     {
      "n": 0,
      "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "p970 p. 33, Interest paid by others (Example 2, a mother's gift). The tick and help do not say such payments count as the borrower's. Low.",
-     "bugs": [
-      "BUG-1286"
-     ]
+     "class": "covered",
+     "evidence": "sli.any help: 'Count interest someone else paid on a loan you owe, such as a parent's gift or an employer's payment added to your W-2 box 1; it counts as paid by you' (questions.yaml:4968), p970 p. 33. BUG-1286 fixed (BUG-1380)."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A dependent or a filer above the phase-out is asked and gets no deduction; extra asking only.",
-     "bugs": []
+     "evidence": "(same claim as an earlier subject, rechecked) A dependent or a filer above the phase-out is asked and gets no deduction (i1040gi p. 98); extra asking only."
     }
    ],
-   "bugs": [
-    "BUG-1286"
-   ],
-   "class": "defect (low): interest paid by others (BUG-1286)",
-   "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "547e4879780c34b3618a9a089bb0f91572857e21b7a8d45d4bcf9751ed9e9f3a",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:ssb.any#1": {
    "reason": "Fixed: the help now names a form showing only repayments.",
@@ -8930,29 +8883,23 @@
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
   },
   "unruled:gate:household.marriage_possible#1": {
-   "reason": "RDPs are refused separately; the ever-married question counts common-law marriage.",
+   "reason": "The ever-married help counts common-law marriage; a long-divorced filer only answers extra questions. (Same claims as an earlier subject, rechecked.)",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "out of scope",
-     "evidence": "RDPs are not married (p555 p. 2); household.rdp is asked regardless of marriage and household.rdp_community_property refuses an RDP living in a community property state (f1040.yaml line 118)."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "household.ever_married's help: 'Count a marriage that has ended, and a common-law marriage. A registered domestic partnership or civil union is not a marriage.' (questions.yaml), matching p501 p. 6, Considered married."
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "The gate's input household.ever_married has help 'Count a marriage that has ended, and a common-law marriage. A registered domestic partnership or civil union is not a marriage.' (interview/2025/questions.yaml 2766), matching p501 p. 6."
-    },
-    {
-     "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "A qualifying surviving spouse is asked the married/died questions needlessly; no amount changes."
+     "evidence": "A long-divorced filer reaches the married, died and community-property questions and answers No to each (p501 p. 6, 'considered unmarried for the whole year'); extra questions only."
     }
    ],
-   "subject_sha": "3b41064169e6c4e32d13cdb1dee6f7ce01292ef008ed15c07c004ec4ff9c10d8",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
+   "subject_sha": "969ff5ce3d5d743a0725bb149ae3185e5fe604bbda6e431b6d6ddaf022d2c051",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:scope.armed_forces#1": {
    "reason": "A 2025 reservist repayment implies service in 2022 or later; the other findings only widen the parent.",
@@ -9848,53 +9795,6 @@
    ],
    "subject_sha": "e1d7e7c0dbbc2529f4e37c7548afbb5d2b70448d4fc8b68a5c72b18ebbf80f4c",
    "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)"
-  },
-  "unruled:gate:f8863.aoc_claimed#1": {
-   "reason": "The gate is true exactly when the computed American opportunity credit is positive, which is when the ban question matters; the one real issue is the gated question's wording, ruled with f8863.ban.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "f8863.ban_refused is true whenever f8863.line1 and line4 are both positive, i.e. whenever the tool would compute an American opportunity credit; a filer barred under i8863 p. 3 (\"Don't claim the American opportunity credit for 2 years ...\") who enters qualifying expenses still gets the ban question, and line 1/4 are computed from the expenses, not from whether the filer chooses to claim.",
-     "bugs": []
-    },
-    {
-     "n": 1,
-     "kind": "SOURCE",
-     "class": "covered",
-     "evidence": "i8863 p. 1 triggers Form 8862 \"for the next tax year for which you claim the credit\"; the gate's condition (a positive computed credit) is that claim, and the denial/ban events are tested by the gated question f8863.ban.",
-     "bugs": []
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "defect",
-     "evidence": "Same wording gap as unruled:f8863.ban#1 n=0: the gated question f8863.ban says \"you\" on a once-per-return question, so a joint filer's spouse is left out (i8863 p. 1, \"If your American opportunity credit was denied or reduced ...\").",
-     "bugs": [
-      {
-       "title": "f8863.ban names only the filer on a joint return (same defect as unruled:f8863.ban#1 n=0)",
-       "source": "i8863 p. 1, Form 8862 may be required, \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error ... you must attach a completed Form 8862\"",
-       "symptom": "Same as the f8863.ban packet: a spouse's earlier denial or ban is not asked about on a joint return.",
-       "where": "interview/2025/questions.yaml:3478; forms/2025/f8863.yaml:249",
-       "fix": "Proposed fix: the same single rewording of the f8863.ban prompt and help with \"(or, on a joint return, your spouse)\"; one fix closes both packets.",
-       "severity": "low"
-      }
-     ]
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "A first-time claimant with a positive credit is asked f8863.ban and answers No; the gate leans to yes by design and the extra question costs nothing in amount.",
-     "bugs": []
-    }
-   ],
-   "subject_sha": "4947ccc54292ed40adcd818dcb1a7574e6e742cf785076f1b04fec1591143d00",
-   "adjudication": "round F sampled-review adjudication, 2026-11-21 (Claude agents, RUBRIC2)",
-   "bugs": [
-    "BUG-0986"
-   ]
   },
   "unruled:rental.held_for_sale#1": {
    "reason": "Wide readings refuse; the business-incidental case has its own screen.",
@@ -10860,6 +10760,40 @@
    ],
    "subject_sha": "b08b06ee8cb00436fe18dba7eec64b6aeabdaef18e16a1f48442501fafed980c",
    "adjudication": "lane fx-lows adjudication, 2026-11-24 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:scope.f8978#1": {
+   "reason": "The question names only a partnership and an audit; i8978 also requires Form 8978 for a Form 8986 from an S corporation, trust or estate and from an AAR (new, low); the timing cases only widen.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "low defect: BUG-1462",
+     "evidence": "i8978 p. 2: 'Every partner (except pass-through partners) that receives a Form 8986 from a pass-through entity must file Form 8978', pass-through entities including 'S corporations, trusts ... and decedents' estates'. A current owner is refused by scope.k1, but a former S corporation shareholder or trust beneficiary answers No to 'a partnership that you ... were in'. New, low."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "low defect: BUG-1462",
+     "evidence": "i8978 p. 1: Form 8978 reports Forms 8986 'because of a BBA examination or a BBA partnership AAR filing', with a separate 'AAR Filing' box. A partner whose Form 8986 comes from an AAR reads 'changes made by an audit' as No. Same new entry, low."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i8978 p. 2, reporting year 'includes the date the audited or AAR partnership furnished the Forms 8986'. An earlier-year Form 8986 answered Yes refuses a return whose line 6l and line 16 amounts are zero; coverage only."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted WIDE",
+     "evidence": "A Form 8986 furnished in early 2026 belongs to the 2026 reporting year (i8978 p. 2); a Yes over-refuses and a No is correct, so no amount is wrong."
+    }
+   ],
+   "subject_sha": "c1197f9249f8829e2db640b8f96b115cb41cb4b6ffe87884a6461e9ae9f67e04",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)",
+   "bugs": [
+    "BUG-1462"
+   ]
   }
  },
  "baseline": {

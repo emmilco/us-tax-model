@@ -16954,3 +16954,135 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix lines:** carloan.mixed, carloan.nonqualifying, carloan.refi_whole
 - **Severity:** low
 - **Tags:** carloan, wording, question review, open
+
+## BUG-1453 — The early-distribution exception question gives no conditions for exceptions 07 (health insurance while unemployed), 20 (terminal illness) and 22 (domestic abuse)
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review retirement#1.2 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** p590b p. 25: 'You received unemployment compensation paid under any federal or state law for 12 consecutive weeks because you lost your job', 'You receive the distributions no later than 60 days after you have been reemployed', and 'it is not sufficient evidence for an IRA owner who is a physician to certify the physician's own terminal illness'; i5329 p. 5: 22 is 'made to an individual during the 1-year period beginning on any date on which the individual is a victim of domestic abuse'.
+- **Symptom:** retirement.exception lists conditions for 01, 02, 03, 04, 08, 09, 11 and 19 only; 07 is not named and 20 is named with no condition, and retirement.exc_amount accepts 07 and 22 amounts. A filer who picks 07 without the 12-week unemployment, year and 60-day tests, or 20 or 22 outside their conditions, excludes the amount from the 10% additional tax (Form 5329 line 2) wrongly.
+- **Where:** forms/2025/retirement.yaml:3075
+- **Proposed fix:** add to the retirement.exception source and prompt the conditions of 07 (unemployment compensation for 12 consecutive weeks, distribution in that year or the next, no later than 60 days after reemployment), 20 (physician's certification on or before the distribution, not by the owner-physician) and 22 (within 1 year of the abuse by a spouse or domestic partner).
+- **Severity:** low
+- **Tags:** retirement, completeness review, release review, open
+
+## BUG-1454 — The exception 08 amount question does not say that elementary and secondary school costs count or state the tutor requirements
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review retirement#1.4 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** p590b p. 27: 'Qualified higher education expenses include the following expenses in connection with the enrollment or attendance at an elementary or secondary public, private, or religious school' and 'Tutors or teachers tutoring or providing educational classes outside of the home must not be related to the student and meet the following requirements.'
+- **Symptom:** retirement.exc_amount for 08 says only 'your adjusted qualified education expenses (Pub. 970, chapter 8)'. The owner's reading (amb.2025.f5329_education_k12) counts K-12 tuition as entered, but the question never says so: a parent paying K-12 tuition leaves it out and pays the 10% additional tax on it; a filer counting a related or unqualified tutor overstates line 2.
+- **Where:** forms/2025/retirement.yaml:3144
+- **Proposed fix:** in the 08 bullet of retirement.exc_amount add 'including tuition, curriculum, books and online materials for an elementary or secondary school, and outside tutoring by a tutor who is not related to the student and is licensed, a former eligible-institution teacher or a subject matter expert'.
+- **Severity:** low
+- **Tags:** retirement, completeness review, release review, open
+
+## BUG-1455 — The royalty other-costs question does not leave out the first home phone line's base rate or spread prepaid interest and points
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review royalty#1.2 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** i1040se p. 7: 'the base rate (including taxes and other charges) for local telephone service for the first telephone line into your residence is a personal expense and is not deductible', 'Do not deduct prepaid interest when you paid it' and 'Points, including loan origination fees, charged only for the use of money must be deducted over the life of the loan.'
+- **Symptom:** royalty.amt19 asks 'Other costs of it (not depletion), paid in 2025' and its help leaves out only own work and lasting items. The royalty form has no interest line, so interest and points on a loan for the royalty property land here whole when paid, and a home phone line's base rate is not excluded; line 19 can be overstated.
+- **Where:** interview/2025/questions.yaml:7839
+- **Proposed fix:** add to the royalty.amt19 help 'Not the basic charge of the first phone line into your home. For interest, only 2025's share: interest paid for a later year and points are spread over the loan.'
+- **Severity:** low
+- **Tags:** royalty, completeness review, release review, open
+
+## BUG-1456 — The line 11 help counts $50 a month for a hosted student without the student's conditions (not a relative or dependent) or the 30% limit
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review sa#1.2 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** p526 p. 6, Expenses Paid for Student Living With You: the student must live with you 'under a written agreement between you and a qualified organization', and 'Isn't your relative ... or dependent'; p526, 'Deductible amounts you spend on behalf of a student living with you are subject to this 30% limit'.
+- **Symptom:** Since BUG-1307 the sa.line11 help counts 'up to $50 a month for a student a charity placed with you', with no condition that the student is not the filer's relative or dependent, and the amount enters line 11 at the cash limit instead of the 30% limit. A host family with a placed relative deducts what is not deductible.
+- **Where:** interview/2025/questions.yaml:1753
+- **Proposed fix:** help reads 'up to $50 a month for each full month a student who is not your relative or dependent lived with you under a written agreement with a charity's program'; refuse or carry hosting amounts where the 30% limit binds.
+- **Severity:** low
+- **Tags:** sa, completeness review, release review, open
+
+## BUG-1457 — The basis question gives inherited property its value at death without the 2010 Form 8939 carryover-basis exception
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review sales#1.1 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** p550 p. 61: 'If you inherited property from a decedent who died in 2010 and the executor made the election to file Form 8939, see Revenue Procedure 2011-41 to figure your basis.'
+- **Symptom:** sales.correct_basis says 'The basis of inherited property is generally its fair market value at the date of death' with no 2010 exception, though sales.box names the case for the holding period. A filer selling property from a 2010 decedent whose executor filed Form 8939 enters the stepped-up value instead of the modified carryover basis and understates the gain.
+- **Where:** forms/2025/sales.yaml:304
+- **Proposed fix:** add the case to sales.special (refuse a sale of property inherited from a 2010 decedent whose executor filed Form 8939), or add the exception to the inherited-property bullet of sales.correct_basis.
+- **Severity:** low
+- **Tags:** sales, completeness review, release review, open
+
+## BUG-1458 — A Schedule C loss disallowed by the at-risk rules in an earlier year (Form 6198 carryover) is neither asked nor refused
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review sc#1.2 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** i1040sc p. 16: 'Any loss from this business that was not allowed last year because of the at-risk rules is treated as a deduction allocable to this business in 2025.'
+- **Symptom:** sc.at_risk asks only whether all of this year's investment is at risk, and only when line 31 is a loss; nothing asks for an earlier Form 6198. A sole proprietor whose 2024 loss was limited and whose investment is now all at risk answers Yes and loses the carried deduction (line 31 too high). Rental and royalty ask this (rental.at_risk_prior, royalty.at_risk_prior, BUG-1333); Schedule C does not. Related open BUG-1426 (recapture, low) is a different case.
+- **Where:** forms/2025/sc.yaml:1424
+- **Proposed fix:** add sc.at_risk_prior ('An earlier return limited this business's loss under the at-risk rules (Form 6198)'), asked of every business, and refuse a Yes, as for rentals.
+- **Severity:** low
+- **Tags:** sc, completeness review, release review, open
+
+## BUG-1459 — A gain on an applicable partnership interest held more than 1 but not more than 3 years is neither asked nor refused
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review sd#1.3 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** i1040sd p. 2: 'beginning in 2018, the long-term holding period for certain gains with respect to “applicable partnership interests” is more than 3 years.'
+- **Symptom:** sd.special_any lists partnership interests only when they hold collectibles or section 1250 property. A filer who sells a carried interest held directly for 1 to 3 years reports it as long-term and gets the capital gain rate on what is short-term gain. K-1 amounts are refused by scope.k1; the direct sale is not.
+- **Where:** forms/2025/sd.yaml:316
+- **Proposed fix:** add to sd.special_any 'an interest in a partnership you received for services to an investment business (a carried interest, applicable partnership interest), held 3 years or less'.
+- **Severity:** low
+- **Tags:** sd, completeness review, release review, open
+
+## BUG-1460 — A conversion transaction that is not a straddle (for example a cash-and-carry sale) is neither asked nor refused
+
+- **Date:** 2026-11-25
+- **Caught by:** completeness review sd#1.4 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** p550 p. 79: 'Generally, all or part of a gain on a conversion transaction is treated as ordinary income', including 'Any transaction in which you acquire property ... at substantially the same time that you contract to sell the same property ... at a price set in the contract'; 'Use Form 6781 to report conversion transactions.'
+- **Symptom:** sd.sec1256 asks section 1256 contracts and straddles only, which takes in conversion type (a). Type (b) and the other non-straddle kinds are not asked; their gain is reported as capital gain on Form 8949 instead of partly ordinary income.
+- **Where:** forms/2025/sd.yaml:163
+- **Proposed fix:** add to sd.sec1256 (or sd.special_any) 'or bought property while agreeing at the same time to sell it at a set price, or another deal whose return is in substance interest (a conversion transaction)', refused with Form 6781.
+- **Severity:** low
+- **Tags:** sd, completeness review, release review, open
+
+## BUG-1461 — The earlier-year HSA excess question does not say that contributions for months a person could not have an HSA (Medicare, other coverage) are all excess
+
+- **Date:** 2026-11-25
+- **Caught by:** false_no review gate:person.has_hsa#1 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** i5329 p. 8, Part VII, 'If you, someone on your behalf, or your employer contributed more to your HSAs for 2025 than is allowable or you had an amount on line 49 of your 2024 Form 5329, you may owe this tax'; i8889 p. 4, 'you cannot deduct any contributions for any month in which you were enrolled in Medicare'
+- **Symptom:** person.x_hsa_prior_excess asks 'Before 2025, was more put into your HSA than the limit for the year ...?' and its help names only a 2024 Form 5329 line 48 amount or an unreported excess. A person who kept contributing after enrolling in Medicare (or while covered by a non-HDHP plan) in 2024 or earlier, stayed under the published dollar limit and never reported the excess, answers No; the 6% Part VII tax on the excess still in the account is missed and the return is prepared instead of refused.
+- **Where:** interview/2025/questions.yaml:3625 (person.x_hsa_prior_excess help); forms/2025/person.yaml:7700
+- **Proposed fix:** add to person.x_hsa_prior_excess's help: 'The limit is zero for any month you could not have an HSA, such as a month you were enrolled in Medicare or had other health coverage, so money put in for such a month counts as extra even if it was under the dollar limit.' Wording only; rerun the false-no review of gate:person.has_hsa at the form's next change.
+- **Severity:** low
+- **Tags:** person, false_no review, release review, open
+
+## BUG-1462 — scope.f8978 asks only about a partnership's audit: a Form 8986 from an S corporation, trust or estate, or one from a partnership's administrative adjustment request, reads as No
+
+- **Date:** 2026-11-25
+- **Caught by:** screen review scope.f8978#1 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** i8978 p. 2, 'Every partner (except pass-through partners) that receives a Form 8986 from a pass-through entity must file Form 8978' and 'Pass-through entities include partnerships ..., S corporations, trusts ..., and decedents' estates'; i8978 p. 1, Forms 8986 'originating from a BBA partnership because of a BBA examination or a BBA partnership AAR filing'
+- **Symptom:** scope.f8978 asks 'Did a partnership that you (or, on a joint return, your spouse) were in send a Form 8986 about changes made by an audit?'. A former S corporation shareholder or trust or estate beneficiary (no 2025 K-1, so scope.k1 does not refuse) who receives a pushed-through Form 8986 from that entity, or a partner whose Form 8986 comes from the partnership's AAR, truthfully answers No; Form 8978 line 14 (Form 1040 line 16 or Schedule 3 line 6l) is left at zero and the return is prepared. The gate scope.business_before also does not name a trust or estate. Rare.
+- **Where:** forms/2025/scope.yaml:1177 (scope.f8978 label and source); forms/2025/scope.yaml:1124 (scope.business_before); interview/2025/questions.yaml:2312
+- **Proposed fix:** reword scope.f8978 to 'Did you (or, on a joint return, your spouse) receive a Form 8986 from a partnership, S corporation, trust or estate, whether from an audit or from an amended partnership return (administrative adjustment request)?' with help 'Count one furnished in 2025 (Form 8986, Part II, item G)'; widen its gate to scope.business_before or a trust or estate interest, or ask it of every return.
+- **Severity:** low
+- **Tags:** scope, screen review, release review, open
+
+## BUG-1463 — Federal alimony gate: help excludes every 'division of property' and the prompt omits a written instrument incident to the decree, so cash property-settlement installments that are alimony may be answered No
+
+- **Date:** 2026-11-25
+- **Caught by:** false_no review gate:s1.alimony_any#1 (claude-opus-5-5), adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** p504 (2025) p. 13, Payments not alimony: 'Alimony doesn't include: Child support, Noncash property settlements, ...'; p504 p. 12, Divorce or separation instrument: 'A decree of divorce or separate maintenance or a written instrument incident to that decree'; ny_it225i p. 10, A-119: an instrument 'as defined in IRC § 71 as it was in effect immediately prior to the enactment of Public Law 115-97'.
+- **Symptom:** s1.alimony_any's help says 'Child support and a division of property are not alimony' and its prompt names only 'a court order or a written separation agreement'. A filer paying or receiving cash installments that the decree calls a property division but that meet the alimony tests (cash, not designated non-alimony, ending at death), or paying under a signed agreement incident to the decree that is neither an order nor a separation agreement, may answer No; the federal pre-2019 alimony questions and ny_it201.ask.alimony_later (A-119 / S-136 refusal) are then not asked.
+- **Where:** interview/2025/questions.yaml:4037 (s1.alimony_any help and prompt); forms/2025/s1.yaml:1071
+- **Proposed fix:** Help: 'Child support and property handed over (not cash) in a property division are not alimony; cash installments under the decree can be, unless the decree says they are not alimony or they continue after the recipient's death.' Prompt: 'under a divorce or separation decree, a court order, or a written agreement (including one signed incident to the divorce)'. The question is a gate, so the wider Yes changes no value.
+- **Severity:** low
+- **Tags:** s1, false_no review, release review, open
+
+## BUG-1464 — sche.qbi_business: the help does not say that work done for the filer by a property manager, employee or contractor counts, so a rental run through an agent may be answered No and lose its QBI share
+
+- **Date:** 2026-11-25
+- **Caught by:** screen review sche.qbi_business#1 (claude-opus-5-5), finding 2, adjudicated in the release of the 2026-11-24 wave (claude-opus-5-5, judgment, RUBRIC2)
+- **Source:** rp-2019-38: the safe harbor counts "rental services performed by" an employee or independent contractor ("250 or more hours of rental services are performed"); i8995 p. 1, "Material participation under section 469 isn't required to qualify for the QBI deduction."
+- **Symptom:** The tick reads "A rental run as a business: for profit, regularly and continuously" and the help speaks of hours without saying whose; a filer whose property manager runs the rental day to day may answer No, and the rental's income is then left out of the QBI deduction (tax overstated).
+- **Where:** interview/2025/questions.yaml sche.qbi_business (tick, help)
+- **Proposed fix:** Help: add "Work a property manager, employee or contractor does for you counts." (a wording change reruns the screen and false-no reviews of sche.qbi_business).
+- **Severity:** low
+- **Tags:** sche, screen review, release review, wording, open

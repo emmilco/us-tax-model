@@ -133,36 +133,6 @@
    "source_phrase": "1. Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099",
    "reason": "The worksheet takes all box 5 benefits and sets no definition of these payments; the question asks the excluded terrorist-attack disability payments in the words of the exclusion, and the line refuses on yes."
   },
-  "consumer:sales.special@i8949:p7": {
-   "verdict": "same",
-   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
-   "source_phrase": "Increase the basis of your property by capital improvements",
-   "reason": "This page of column (f) codes and column (g) adjustments sets no definition of collectibles, section 1202 stock or section 1250 property; the line refuses on yes."
-  },
-  "consumer:sales.special@i8949:p8": {
-   "verdict": "same",
-   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
-   "source_phrase": "You disposed of collectibles (see the Schedule D instructions)",
-   "reason": "Code C's collectibles are those of the Schedule D instructions, which the question lists; the transaction is refused on yes."
-  },
-  "consumer:sales.special@i8949:p9": {
-   "verdict": "same",
-   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
-   "source_phrase": "You sold or exchanged QSB stock and can exclude part of the gain",
-   "reason": "Code Q's QSB stock exclusion is the section 1202 exclusion the question asks; the transaction is refused on yes."
-  },
-  "consumer:sales.special@i8949:p10": {
-   "verdict": "same",
-   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
-   "source_phrase": "You can exclude all or part of your gain under the rules explained in the Schedule D instructions",
-   "reason": "This page of column (f) codes and column (g) adjustments sets no definition of collectibles, section 1202 stock or section 1250 property; the line refuses on yes."
-  },
-  "consumer:sales.special@i8949:p11": {
-   "verdict": "same",
-   "question_phrase": "collectibles (works of art, rugs, antiques, metals ...), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property)",
-   "source_phrase": "You have an adjustment not explained earlier in this column",
-   "reason": "This page of column (f) codes and column (g) adjustments sets no definition of collectibles, section 1202 stock or section 1250 property; the line refuses on yes."
-  },
   "consumer:f2441.employer_care@i2441:p5": {
    "verdict": "same",
    "question_phrase": "Did your employer furnish dependent care to you itself, at your workplace or by hiring a care provider",
@@ -1675,12 +1645,6 @@
    "source_phrase": "you must start receiving distributions from your IRA by April 1 of the year",
    "reason": "person.rmd_age treats a person born in 1952 or earlier as one with a required minimum distribution for 2025 (age 73 reached in 2025 or before), and other persons reach the RMD question only through an inherited account; that is the p. 9 rule read with the year of birth."
   },
-  "consumer:person.birth_year@f5329:p1": {
-   "verdict": "same",
-   "question_phrase": "In what year were you born?",
-   "source_phrase": "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account",
-   "reason": "Part II on p. 1 sets no age test, and person.rmd_age reads the year of birth only for the age-73 required-distribution test of Part IX, in the plain sense the question asks."
-  },
   "consumer:person.birth_year@f8880:p2": {
    "verdict": "same",
    "question_phrase": "In what year were you born?",
@@ -1716,18 +1680,6 @@
    "question_phrase": "In what year were you born?",
    "source_phrase": "Use the following chart to determine whether certain children with January 1 birthdays meet condition 3 under Who Must File",
    "reason": "person.under24 counts a person born after 2002, or in 2002 other than on January 1, as under 24 at the end of 2025, which is p. 1's chart for January 1, 2002 read from the year of birth."
-  },
-  "consumer:person.ira_owner@f5329:p3": {
-   "verdict": "same",
-   "question_phrase": "individual retirement arrangement (IRA) of any kind at any time in 2025, or do you have one now",
-   "source_phrase": "if you did not receive the minimum required distribution from your qualified retirement plan",
-   "reason": "The gate person.x_ira_prior_excess_if_ira_owner decides only the excess-contribution question; Part IX's required-distribution rule on p. 3 is reached through person.rmd_possible, not through this answer."
-  },
-  "consumer:person.ira_owner@i5329:p9": {
-   "verdict": "same",
-   "question_phrase": "individual retirement arrangement (IRA) of any kind at any time in 2025, or do you have one now",
-   "source_phrase": "You owe this tax if you don’t receive the minimum required distribution from your qualified retirement plan",
-   "reason": "The gate person.x_ira_prior_excess_if_ira_owner decides only the excess-contribution question; the p. 9 required-distribution rule is reached through person.rmd_possible, not through this answer."
   },
   "consumer:qbi.prior_form@i8995:p5": {
    "verdict": "same",
@@ -1926,12 +1878,6 @@
    "question_phrase": "In 2025, did you (or, on a joint return, your spouse) pay a state or local tax on personal property",
    "source_phrase": "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.",
    "reason": "The question asks for tax paid in 2025, which includes every tax the page allows, and the assessment limit bears on the amount entered next, not on whether any was paid."
-  },
-  "consumer:sa.medical_any@i1040sca:p1": {
-   "verdict": "same",
-   "question_phrase": "were the medical and dental costs you (or, on a joint return, your spouse) paid yourselves, after anything insurance paid, more than 7.5% of your income",
-   "source_phrase": "Insurance premiums for medical and dental care",
-   "reason": "On a Yes the medical costs, premiums included, are asked anyway through sa.medical_asked, so the premiums question is needed only after a No, which is when the gate asks it."
   },
   "consumer:sa.medical_premiums@i1040sca:p1": {
    "verdict": "same",
@@ -2515,12 +2461,6 @@
    "source_phrase": "Material participation: \"You must determine if you materially participated (a) in each trade or business activity held through the partnership\"; Limited partners: \"you must meet item 1, 5, or 6\"",
    "reason": "The input (a box shows an amount, or the item G box checked) is the K-1 fact the material participation rules are applied to: box 1 is the trade or business activity, item G decides which tests apply."
   },
-  "consumer:k1p.has_b1@i8582:p10": {
-   "verdict": "same",
-   "question_phrase": "Does box 1 (ordinary business income or loss) show an amount?",
-   "source_phrase": "Part IV and Part V: prior-year unallowed losses \"in Part VII, column (c), of your 2024 Form 8582\" for each activity",
-   "reason": "A box 1, 2 or 3 amount is an activity of the K-1; the prior-year loss is asked per activity, as the page enters it per activity."
-  },
   "consumer:k1p.has_b20ab@i1065sk1:p14": {
    "verdict": "same",
    "question_phrase": "Does box 20 show code A (investment income) or code B (investment expenses)?",
@@ -2538,18 +2478,6 @@
    "question_phrase": "Does box 2 (net rental real estate income or loss) show an amount?",
    "source_phrase": "Special allowance for a rental real estate activity: \"Limited partners can't actively participate\"; Special rules: \"Trading personal property for the account of owners of interests in the activity\"",
    "reason": "Box 2 with an amount and the general partner box are exactly the facts the page conditions active participation and the trading rule on."
-  },
-  "consumer:k1p.has_b2@i8582:p10": {
-   "verdict": "same",
-   "question_phrase": "Does box 2 (net rental real estate income or loss) show an amount?",
-   "source_phrase": "Part IV and Part V: prior-year unallowed losses \"in Part VII, column (c), of your 2024 Form 8582\" for each activity",
-   "reason": "A box 1, 2 or 3 amount is an activity of the K-1; the prior-year loss is asked per activity, as the page enters it per activity."
-  },
-  "consumer:k1p.has_b3@i8582:p10": {
-   "verdict": "same",
-   "question_phrase": "Does box 3 (other net rental income or loss) show an amount?",
-   "source_phrase": "Part IV and Part V: prior-year unallowed losses \"in Part VII, column (c), of your 2024 Form 8582\" for each activity",
-   "reason": "A box 1, 2 or 3 amount is an activity of the K-1; the prior-year loss is asked per activity, as the page enters it per activity."
   },
   "consumer:k1p.has_b9a@i1065sk1:p16": {
    "verdict": "same",
@@ -2995,12 +2923,6 @@
    "source_phrase": "If you completed Part III, don't include in column (d) any benefits shown on line 28",
    "reason": "Line 30 reads the input only as its display condition, and Part III is completed exactly when the filer received dependent care benefits, which is what the input asks."
   },
-  "consumer:f2441.spouse_died@i2441:p4": {
-   "verdict": "same",
-   "question_phrase": "Did the husband or wife you are filing this joint return with die in 2025?",
-   "source_phrase": "If your spouse died in 2025, see Pub. 503",
-   "reason": "The gate refuses a joint return whose spouse died in 2025, and the question asks exactly about the spouse on this joint return."
-  },
   "consumer:eic.us_home@i1040gi:p40": {
    "verdict": "same",
    "question_phrase": "Was your main home, and your spouse's if filing a joint return, in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you (or, on a joint return, your spouse) were on extended active military duty outside the United States",
@@ -3409,12 +3331,6 @@
    "question_phrase": "Do you depreciate or amortize anything for it",
    "source_phrase": "Depreciation is the annual deduction you must take to recover the cost or other basis",
    "reason": "royalty.line21 refuses on this answer under its own depreciation citation, and the page's line 18 depreciation text is consistent with the question; line 21 is cited for the at-risk instruction, not for this input."
-  },
-  "consumer:royalty.not_at_risk@i1040se:p7": {
-   "verdict": "same",
-   "question_phrase": "borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it",
-   "source_phrase": "If you have amounts for which you are not at risk, use Form 6198",
-   "reason": "royalty.not_at_risk_if_loss gates the question to a royalty with a loss, and the question lists the standard not-at-risk financing (nonrecourse, guaranteed, interested-lender) that the page's amounts-not-at-risk instruction points to Form 6198 for."
   },
   "consumer:royalty.vehicle@i1040se:p7": {
    "verdict": "same",
@@ -3890,6 +3806,324 @@
    "question_phrase": "did you (or, on a joint return, your spouse) sell or trade real estate or business property?",
    "source_phrase": "Report the sale or exchange of your main home on Form 8949 if: You can't exclude all of your gain from income, or You received a Form 1099-S",
    "reason": "A main home is real estate, so every sale the page describes answers Yes; sd.sold_other only gates the main-home question (sd.home_sale), which applies the page's two conditions."
+  },
+  "consumer:asset.quarter@i4562:p11": {
+   "verdict": "same",
+   "question_phrase": "The quarter of 2025 in which you placed this property in service (property converted from personal use is placed in service on the date of the conversion)",
+   "source_phrase": "The mid-quarter convention treats all property placed in service (or disposed of) during any quarter as placed in service (or disposed of) on the midpoint of that quarter",
+   "reason": "asset.qconv maps the quarter of placing in service to the mid-quarter convention for that quarter, which is the quarter the page's rule keys on; the added conversion clause matches the placed-in-service date the 4562 instructions use (p. 14, column (b), \"treat the property as placed in service on the date of conversion\")."
+  },
+  "consumer:asset.quarter@p946:p34": {
+   "verdict": "same",
+   "question_phrase": "The quarter of 2025 in which you placed this property in service (property converted from personal use is placed in service on the date of the conversion)",
+   "source_phrase": "the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year",
+   "reason": "asset.mqbase_q4 takes the basis only for q4 (October to December), the last 3 months of the calendar tax year the return covers (fiscal years are refused by scope.fiscal_year), and the conversion clause gives the placed-in-service date the 40% test counts."
+  },
+  "consumer:scveh.miles_other@i4562:p14": {
+   "verdict": "same",
+   "question_phrase": "The other (personal) miles you drove this vehicle in 2025, counting miles driven for another business of yours",
+   "source_phrase": "dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles the vehicle is driven for all purposes",
+   "reason": "scveh.om_c enters the denominator only (total = business + commuting + other), and the question with its help (investment, a job, another business) counts every mile not driven for this business, so business, commuting and other miles together are the miles driven for all purposes."
+  },
+  "consumer:carloan.refi_whole@fr-2025-24154:p20": {
+   "verdict": "same",
+   "question_phrase": "Was all of the loan this loan refinanced a qualifying vehicle loan? ... and it must not itself have been a refinancing for more than the balance it replaced",
+   "source_phrase": "indebtedness is an SPVL only to the extent the indebtedness is incurred for the purchase of an APV and ... for any other items or amounts customarily financed in an APV purchase transaction",
+   "reason": "The question asks whether all of the refinanced loan met the (d)(2)(i) purchase-and-customary-items test this page states, and carloan.refi_nested refuses on No, so the page's partial-SPVL case is never computed on a Yes the page would not grant."
+  },
+  "consumer:carloan.refi_whole@fr-2025-24154:p21": {
+   "verdict": "same",
+   "question_phrase": "Was all of the loan this loan refinanced a qualifying vehicle loan? ... and it must not itself have been a refinancing for more than the balance it replaced",
+   "source_phrase": "If a taxpayer refinances an SPVL (refinanced loan) ... The amount of the new loan that is an SPVL is limited to the outstanding balance of the refinanced loan",
+   "reason": "(d)(4) caps the new loan at the balance of a refinanced SPVL, which presumes the refinanced loan was wholly an SPVL; the question asks exactly that, with the (d)(2)(ii) exclusions (negative equity, collision and liability insurance, unrelated property, cash proceeds) and the (d)(2)(iii)(B) down-payment ordering, and a No is refused by carloan.refi_nested."
+  },
+  "consumer:carloan.refi_whole@fr-2025-24154:p22": {
+   "verdict": "same",
+   "question_phrase": "Was all of the loan this loan refinanced a qualifying vehicle loan? ... and it must not itself have been a refinancing for more than the balance it replaced",
+   "source_phrase": "Only $30,000 of the $38,000 balance of Loan 2 is an SPVL per the rule in paragraph (d)(4)",
+   "reason": "Examples 3 and 4 illustrate the cash-out excess and the negative-equity allocation after the down payment, both of which the question names as making the earlier loan not wholly qualifying; a filer whose earlier loan had either answers No and is refused."
+  },
+  "consumer:carloan.mixed@fr-2025-24154:p20": {
+   "verdict": "same",
+   "question_phrase": "Did this loan also finance anything other than the vehicle and items customarily financed with it and directly related to it",
+   "source_phrase": "Items or amounts customarily financed in an APV purchase transaction and that are directly related to the purchased APV include, for example, vehicle service plans, extended warranties, sales taxes, and vehicle-related fees",
+   "reason": "The question's test is the page's (d)(2)(i) definition of indebtedness incurred for the APV and customary related items, and a Yes routes carloan.mixed_interest to the pro rata share; the question's longer list of customary items follows the final rule (fr-2026-18219 p. 24), which this proposed text does not contradict."
+  },
+  "consumer:carloan.mixed@fr-2025-24154:p21": {
+   "verdict": "same",
+   "question_phrase": "Did this loan also finance anything other than the vehicle and items customarily financed with it and directly related to it",
+   "source_phrase": "indebtedness incurred for the repayment of negative equity on a loan secured by a trade-in vehicle, to purchase collision and liability insurance, or to purchase any property or services unrelated to an APV ... cash proceeds",
+   "reason": "Each (d)(2)(ii) exclusion on the page (negative equity, collision and liability insurance, unrelated property such as a trailer, cash proceeds) is named in the question as a Yes, which sends the interest to the (d)(2)(iii)(A) pro rata allocation; the only difference, GAP and credit insurance counted as customary, is the final rule's carve-out (fr-2026-18219 p. 24) that the input cites."
+  },
+  "consumer:carloan.mixed@fr-2025-24154:p22": {
+   "verdict": "same",
+   "question_phrase": "Did this loan also finance anything other than the vehicle and items customarily financed with it and directly related to it",
+   "source_phrase": "the down payment of $4,000 is allocated against the $6,000 of negative equity",
+   "reason": "Example 4's negative equity is a Yes to the question and the prorated interest then uses the qualifying part after the down payment (carloan.qualifying), as the example allocates; Example 3 (cash proceeds on a refinancing) is the refinanced-loan path, not this question."
+  },
+  "consumer:household.rdp@p555:p2": {
+   "verdict": "same",
+   "question_phrase": "Were you a registered domestic partner in Nevada, Washington or California at any time in 2025?",
+   "source_phrase": "RDPs in Nevada, Washington, or California must generally follow state community property laws ... If you and your spouse (or your RDP) have different domiciles, check the laws of each",
+   "reason": "The page's rule reaches RDPs domiciled in those states and sends partners with different domiciles to each state's law; the question asks registration in those states at any time wherever the filer lived, a superset, and household.rdp_community_property only refuses on Yes, so a truthful answer can over-refuse but never gives a wrong value."
+  },
+  "consumer:f1040.status@i8606:p4": {
+   "verdict": "same",
+   "question_phrase": "Married filing separately ... Head of household (HOH). Qualifying surviving spouse (QSS).",
+   "source_phrase": "Enter $246,000 if married filing jointly or qualifying surviving spouse; $10,000 if married filing separately and you lived with your spouse at any time in 2025. All others, enter $165,000",
+   "reason": "ira.roth_reduced groups the Form 1040 statuses exactly as the worksheet does (MFJ or QSS; MFS living together; all others), with the lived-apart condition taken from household.mfs_apart_all_year rather than from the status itself."
+  },
+  "consumer:f1040.status@p590a:p2": {
+   "verdict": "same",
+   "question_phrase": "Married filing separately ... Head of household (HOH). Qualifying surviving spouse (QSS).",
+   "source_phrase": "Your filing status is married filing jointly or qualifying surviving spouse ... single, head of household, or married filing separately and you didn't live with your spouse at any time",
+   "reason": "The phase-out start amounts are keyed on the same Form 1040 filing status boxes the input is, and the MFS lived-apart split is read from household.mfs_apart_all_year."
+  },
+  "consumer:k1p.has_b1@i1065sk1:p2": {
+   "verdict": "same",
+   "question_phrase": "Does box 1 (ordinary business income or loss) show an amount?",
+   "source_phrase": "Some members of other entities, such as ... limited liability companies (LLCs) that are classified as partnerships, may be treated as limited partners for certain purposes",
+   "reason": "k1p.llc_member_active refuses a non-manager LLC member whose K-1 has a trade or business (box 1) or rental real estate (box 2) amount, the activities whose participation tests depend on limited-partner treatment; the box question means the same box of the same K-1."
+  },
+  "consumer:k1p.has_b2@i1065sk1:p2": {
+   "verdict": "same",
+   "question_phrase": "Does box 2 (net rental real estate income or loss) show an amount?",
+   "source_phrase": "Some members of other entities, such as ... limited liability companies (LLCs) that are classified as partnerships, may be treated as limited partners for certain purposes",
+   "reason": "Box 2 with an amount is the rental real estate activity whose active participation depends on limited-partner treatment, and the reading line only refuses on it."
+  },
+  "consumer:k1p.general@i1065sk1:p8": {
+   "verdict": "same",
+   "question_phrase": "In item G, is the first box checked: general partner or LLC member-manager?",
+   "source_phrase": "Working interests in oil or gas wells if you were a general partner",
+   "reason": "k1p.oil_gas_gp_if_gp asks the working-interest question only on a Yes and refuses on a working interest; the input's Yes set (general partner, LLC member-manager, or a general partner's share held all year) contains every general partner the page names, so the wider set can only over-refuse."
+  },
+  "consumer:k1p.fiscal@i1065sk1:p14": {
+   "verdict": "same",
+   "question_phrase": "Is the tax year at the top of this Schedule K-1 something other than the calendar year 2025 (a fiscal year)?",
+   "source_phrase": "report items from each partnership's Schedule K-1 on a separate line 28 of Schedule E",
+   "reason": "The input is one screen of the K-1 and k1p.screened only refuses on it; the page's one-row-per-K-1 rule puts no other meaning on whether the K-1 is for a fiscal year."
+  },
+  "consumer:k1s.box2_any@i8582:p10": {
+   "verdict": "same",
+   "question_phrase": "Does box 2 of this Schedule K-1 (net rental real estate income or loss) show an amount?",
+   "source_phrase": "Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year",
+   "reason": "k1s.b2_prior_blank refuses a held-back box 2 loss when box 2 shows no amount (so active participation is never asked); the question means the same box, and the case it leaves unasked is refused, not computed."
+  },
+  "consumer:person.x_archer_excess@f5329:p1": {
+   "verdict": "same",
+   "question_phrase": "Does an Archer MSA of yours ... still hold money that was put in above its limit in a year before 2025?",
+   "source_phrase": "Complete this part if you included an amount in income ... from a Coverdell education savings account (ESA) or a qualified tuition program (QTP)",
+   "reason": "The input is read on person.x_other only as one Yes among the Form 5329 parts the tool refuses; page 1 (Parts I to IV) states rules for other parts and nothing about this question's meaning."
+  },
+  "consumer:person.x_archer_excess@f5329:p3": {
+   "verdict": "same",
+   "question_phrase": "Does an Archer MSA of yours ... still hold money that was put in above its limit in a year before 2025?",
+   "source_phrase": "Complete this part if you did not receive the minimum required distribution from your qualified retirement plan",
+   "reason": "The input is read on person.x_other only as one Yes among the refused Form 5329 parts; page 3 (Part IX) states the RMD rule and nothing about this question's meaning."
+  },
+  "consumer:person.x_archer_excess@i5329:p9": {
+   "verdict": "same",
+   "question_phrase": "Does an Archer MSA of yours ... still hold money that was put in above its limit in a year before 2025?",
+   "source_phrase": "The additional tax is 25% of the excess accumulation",
+   "reason": "The input is read on person.x_other only as one Yes among the refused Form 5329 parts; the page is cited for the excess accumulation (Part IX) and puts no meaning on the Archer MSA question."
+  },
+  "consumer:retirement.exception@p590b:p24": {
+   "verdict": "same",
+   "question_phrase": "Which exception to the 10% additional tax applies to this distribution? Enter the number from the table in the Form 5329 instructions",
+   "source_phrase": "There are several exceptions to the age 59 1/2 rule ... if you are in one of the following situations",
+   "reason": "retirement.wrong_kind flags on an IRA the i5329 codes 01, 06 and 13 to 18 (separation after 55, QDRO, section 457, pre-1986 elections, 404(k) dividends, pre-1982 annuity investment, phased retirement, 414(w)), none of which is on this page's IRA list, so the code the filer enters means the same exception the page lists or refuses."
+  },
+  "consumer:royalty.at_risk_prior@i1040se:p7": {
+   "verdict": "same",
+   "question_phrase": "Was Form 6198 (at-risk limits) filed for it on any of your ... earlier returns, or was a loss from it held back on one because amounts were not at risk?",
+   "source_phrase": "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss",
+   "reason": "royalty.line21 refuses on a Yes (a carried loss or recapture needs Form 6198); the page's current-year case of amounts not at risk is asked separately by royalty.not_at_risk and refused on royalty.loss_abs, so this input needs to mean only the earlier-year history it asks."
+  },
+  "consumer:scope.business_before@i6251:p7": {
+   "verdict": "same",
+   "question_phrase": "In any year before 2025, did you (or, on a joint return, your spouse) own a business, a farm, a rental property, or a share of a partnership or an S corporation?",
+   "source_phrase": "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted",
+   "reason": "Look-back interest falls on a long-term contract of a business, and a contract completed or adjusted in 2025 was held by a business either reported on 2025's Schedule C (s1.has_sc) or owned before 2025, which the question asks, so s2.lookback_ask is asked of every filer the page reaches."
+  },
+  "consumer:scope.rental@i6251:p7": {
+   "verdict": "same",
+   "question_phrase": "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?",
+   "source_phrase": "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted",
+   "reason": "s2.lookback_royalty reads scope.rental only to decide whether the royalty list was asked (false otherwise); a filer with 2025 royalties answers Yes, and the page's long-term-contract look-back is reached through the business questions of s2.lookback_ask, not through this input."
+  },
+  "consumer:scope.rental@i1040gi:p116": {
+   "verdict": "same",
+   "question_phrase": "In 2025, did you (or, on a joint return, your spouse) rent out, offer for rent, or receive rent for, anything you own or lease, or receive royalties?",
+   "source_phrase": "credits that usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property",
+   "reason": "s3.rental_credit_if_rentals asks about a rental's general business credit only when rentals were reported; a filer with rental property rented or offered in 2025 answers Yes, so every rental the page means is asked."
+  },
+  "consumer:sa.pension_unrecovered@p514:p3": {
+   "verdict": "same",
+   "question_phrase": "Is there an unrecovered investment in a pension to deduct",
+   "source_phrase": "you can deduct any foreign tax that is not allowed as a credit",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.bond_premium@p514:p3": {
+   "verdict": "same",
+   "question_phrase": "have a deduction for amortizable bond premium",
+   "source_phrase": "you can deduct any foreign tax that is not allowed as a credit",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.foreign_tax_noncreditable@i1040sca:p3": {
+   "verdict": "same",
+   "question_phrase": "Was foreign income tax withheld ... that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments",
+   "source_phrase": "You can elect to deduct state and local general sales taxes instead of state and local income taxes",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.foreign_tax_noncreditable@i1040sca:p7": {
+   "verdict": "same",
+   "question_phrase": "Was foreign income tax withheld ... that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments",
+   "source_phrase": "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions",
+   "reason": "Foreign tax not allowed as a credit is deductible on line 6 as a foreign income tax, which is what a Yes reports, and sa.unsupported refuses it; the other grounds on which foreign tax is not creditable (boycott, sanctioned country, oil or gas) are screened on Form 1116 (f1116 question on excluded income, oil, gas or boycott), not by this input."
+  },
+  "consumer:sa.foreign_tax_noncreditable@i1040sca:p8": {
+   "verdict": "same",
+   "question_phrase": "Was foreign income tax withheld ... that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments",
+   "source_phrase": "Your deduction for home mortgage interest is subject to a number of limits",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.foreign_tax_noncreditable@i1040sca:p11": {
+   "verdict": "same",
+   "question_phrase": "Was foreign income tax withheld ... that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments",
+   "source_phrase": "Only the expenses listed next can be deducted on line 16",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.foreign_tax_noncreditable@i1040sca:p12": {
+   "verdict": "same",
+   "question_phrase": "Was foreign income tax withheld ... that is not allowed as a credit because the stock or property was not held for the required period, or to the extent of related payments",
+   "source_phrase": "Only the expenses listed next can be deducted on line 16",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.estate_tax_income@p514:p3": {
+   "verdict": "same",
+   "question_phrase": "have a deduction for federal estate tax on income in respect of a decedent",
+   "source_phrase": "you can deduct any foreign tax that is not allowed as a credit",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.impairment_work@p514:p3": {
+   "verdict": "same",
+   "question_phrase": "have impairment-related work expenses of a disabled person",
+   "source_phrase": "you can deduct any foreign tax that is not allowed as a credit",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.gst_paid@i1040sca:p3": {
+   "verdict": "same",
+   "question_phrase": "pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))",
+   "source_phrase": "You can elect to deduct state and local general sales taxes instead of state and local income taxes",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.gst_paid@i1040sca:p8": {
+   "verdict": "same",
+   "question_phrase": "pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))",
+   "source_phrase": "Your deduction for home mortgage interest is subject to a number of limits",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.gst_paid@i1040sca:p11": {
+   "verdict": "same",
+   "question_phrase": "pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))",
+   "source_phrase": "Only the expenses listed next can be deducted on line 16",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.gst_paid@i1040sca:p12": {
+   "verdict": "same",
+   "question_phrase": "pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))",
+   "source_phrase": "Only the expenses listed next can be deducted on line 16",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.gst_paid@p514:p3": {
+   "verdict": "same",
+   "question_phrase": "pay generation-skipping tax imposed on an income distribution from a trust (Form 706-GS(D))",
+   "source_phrase": "you can deduct any foreign tax that is not allowed as a credit",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.debt_instrument_loss@p514:p3": {
+   "verdict": "same",
+   "question_phrase": "have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument",
+   "source_phrase": "you can deduct any foreign tax that is not allowed as a credit",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:sa.sales_tax_wish@p514:p3": {
+   "verdict": "same",
+   "question_phrase": "elect to deduct state and local general sales taxes instead of state and local income taxes",
+   "source_phrase": "you can deduct any foreign tax that is not allowed as a credit",
+   "reason": "The input is read here only as one Yes among others in the Schedule A refusal (sa.unsupported); the page states the rule for another Schedule A item and nothing about this question's meaning."
+  },
+  "consumer:scope.disaster_distribution@i1040gi:p12": {
+   "verdict": "same",
+   "question_phrase": "take money from a retirement plan in 2023 or 2024 because of a disaster, and spread its tax over three years or pay any of it back in 2025",
+   "source_phrase": "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for fiscal-year filers, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.chapter11@i1040gi:p12": {
+   "verdict": "same",
+   "question_phrase": "in a chapter 11 bankruptcy case",
+   "source_phrase": "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for fiscal-year filers, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.treaty@i1040gi:p12": {
+   "verdict": "same",
+   "question_phrase": "income exempt from U.S. tax under a tax treaty",
+   "source_phrase": "If you are a fiscal-year filer using a tax year other than January 1 through December 31, 2025",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for fiscal-year filers, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i1040gi:p8": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for nonresident aliens, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i1040gi:p23": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for chapter 11 debtors, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i1040gi:p24": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for adoption benefits, dependent care benefits and excess deferrals on lines 1e, 1f and 1h, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i1040gi:p25": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "Even if you don't get a Form W-2, you must still report your earnings",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for wages without a Form W-2, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i1040gi:p95": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "Don't include any repayments of qualified reservist distributions",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for reservist distribution repayments, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i1040s8812:p3": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for treaty-exempt income, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i2441:p5": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for dependent care benefits from your own business and grace-period carryforwards, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i8582:p1": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for passive activity losses, another item, and states no rule about what the question means."
+  },
+  "consumer:scope.fiscal_year@i8915f:p2": {
+   "verdict": "same",
+   "question_phrase": "Is this return for a tax year other than January 1 through December 31, 2025 (a fiscal year)?",
+   "source_phrase": "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report",
+   "reason": "The input is read on scope.other_income only as one Yes among the refusal's screening questions; the page is cited for disaster distributions, another item, and states no rule about what the question means."
   }
  },
  "baseline": {
@@ -3987,7 +4221,6 @@
   "consumer:f1095a.b_counted@i8962:p15": "887c8dc75a294404",
   "consumer:f2441.benefits@i1040gi:p24": "2e06b7a0104b56fd",
   "consumer:f2441.care@i2441:p3": "a46fcf4dfd98f49d",
-  "consumer:f2441.spouse_died@i2441:p4": "3ae35d4f272c7694",
   "consumer:f5695.joint_occupancy@i5695:p7": "ab226f3fcb8aaae3",
   "consumer:f5695.qmid_ac@i5695:p5": "fdd13dba4083b8a4",
   "consumer:f5695.qmid_doors@i5695:p5": "48660a1c477e0fe3",
@@ -4097,11 +4330,6 @@
   "consumer:sales.box@i8949:p8": "b4b5bceda4899455",
   "consumer:sales.box@i8949:p9": "b4b5bceda4899455",
   "consumer:sales.code@i1040sd:p10": "6d68dee610631cc4",
-  "consumer:sales.special@i8949:p10": "0cd7f044968d954b",
-  "consumer:sales.special@i8949:p11": "0cd7f044968d954b",
-  "consumer:sales.special@i8949:p7": "0cd7f044968d954b",
-  "consumer:sales.special@i8949:p8": "0cd7f044968d954b",
-  "consumer:sales.special@i8949:p9": "0cd7f044968d954b",
   "consumer:sc.ho_uses@i1040sc:p11": "cd0929878db4c047",
   "consumer:sc.ho_uses@i1040sc:p12": "cd0929878db4c047",
   "consumer:sc.ho_uses@i1040sc:p13": "cd0929878db4c047",

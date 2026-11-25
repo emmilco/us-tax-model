@@ -1,35 +1,52 @@
-# 2026-11-24: released `r2026.11.24.1`; next release prioritizes process and tool fixes, then open bugs, then 2026
+# 2026-11-25: released `r2026.11.25.1`, the 2026-11-24 wave (the owner's order of 2026-11-23 worked through)
 
-**State (2026-11-24).** Release `r2026.11.24.1` is `main` = `d63d282a`, pushed with its tag; `next` is `main` plus this
-commit. The release holds every lane of the 2026-11-22/23 wave (the entry below lists its integration commits) and the
-release preparation after it: T-353 (`7466debd`, the 67 year-drifting ids and the two s2 add-back helpers renamed),
-`f2377cc2` and `2bbcb319` (year changes apply again, review debt cleared, full-tier findings), `4c8ebd83` (sampled
-reviews ruled, BUG-1202 fixed), `d63d282a` (mutation lanes A to H, the defaults fill of `scope.trade_act_repaid` and
-`scope.remic` into the no-default fixture files, the engine differential repaired). It was tagged on a release-mode
-full run green on tree `4a9ff814`; no open bug was allowed. Every linked worktree is archived; only `main` and `next`
-remain as branches (the others are local `archive/*` tags).
+**State (2026-11-25).** The release `r2026.11.25.1` is the commit that holds this entry, on `main` and `next`. It holds
+the 2026-11-24 wave, integrated on `next` in five commits and released by this one: `29baf383` (batch 1: tool and
+process fixes, light-tier guards, hermetic self-tests, lints), `1944d1b9` (batch 2a: itemized, rentals, capital and
+business bug lanes), `6b3a9a03` (batch 2b: people, HSA, screens, New York and K-1 bug lanes, and the 2026 lane ty26),
+`fb4ab2f7` (batch 3: tool fixes, wording lows and missed refusals, people fixes, 2026 operations), `b236b273` (the final
+lane: fx-final, two interview-order fixes, the 55 year-drifting helper ids), then the release commit (the agent-run fold,
+the release's sampled reviews ruled, full-tier findings fixed, this bookkeeping). Each commit's message lists its lanes,
+merge resolutions and reviews. Open bugs went from 118 at the wave's start to 31, every one with a `TASKS.md` row
+(`reports/bug_status.md`); 12 of the 31 are lows the release's sampled reviews found (BUG-1453 to BUG-1464, T-357).
+No open bug of medium or high severity is confirmed by a ruling, and the release allowed none.
 
-**Autonomy (owner, 2026-11-24).** Through the next release (the one after `r2026.11.24.1`), the owner's grant of
-2026-11-22 stands: operate autonomously and treat any course of action the coordinator would recommend as approved.
-Decisions taken under it are recorded where the work is (briefs, commit messages, bug entries, ambiguity entries) and
-reported to the owner. Still referred to the owner: choices between readings of the tax law that change amounts
-(ambiguity entries marked for the owner), releasing with `--allow-open-bugs`, any `--no-verify`, pushing anything other
-than a release, and any change to this grant. How the work is run: `CLAUDE.md`, "How a wave of lanes runs".
+**The release's reviews.** Due form reviews (render of dependent, f8863, person and ny_it201; transcription of scope;
+class M of f5695) and the sampled reviews the release gate requires (federal and New York completeness, screens,
+false-no) ran on `claude-opus-5-5` and were adjudicated by Opus agents under RUBRIC2; the K-1 forms' claims are out of
+scope while `scope.k1` refuses (T-352). The full-tier source checks needed rulings for the wave's new consumer pairs and
+limit sentences, and six citation locators were corrected (retirement's exception quotes now cite p590b).
 
-**Owner direction (2026-11-23) for the next release.** In order: (1) process and tool fixes, first those that cut
-development time and cost; (2) all open bugs; (3) 2026 and model work. Coverage expansion is frozen until all three are
-done; fixes inside existing coverage count as bugs. The ranked work is at the top of `TASKS.md`; its source is the bug
-characterization in the main checkout, `.claude/scouts-2026-11-23/bug-characterization.md` (untracked): 212 defects
-and 107 closures since `r2026.11.16.1`, 63 defects open at the time, and 25 candidate new instances not yet confirmed.
+**Coordinator decisions under the owner's grant** (recorded in `.claude/wave-2026-11-24/queue.md` in the main
+checkout, untracked, and in the commit messages): BUG-1161 and BUG-1164 as notices, BUG-0932 a notice, BUG-1144 one help
+sentence; BUG-1089 refuses a registered domestic partner of California, Nevada or Washington not filing jointly;
+BUG-0762 refuses rather than adding a spouse-AGI input; BUG-1212 not a defect (the New York itemize answer is the
+filer's election); BUG-0713 and BUG-1149 stay open as frozen coverage (T-356); BUG-0842 and BUG-0885 became the
+preconditions of T-355; refusal reach moved into the light tier (owner to confirm); no release-mode full run per batch.
 
-**Owner decisions of 2026-11-23** are in the entry below (EIC, HSA split, charity band).
+**Readings decided under the owner's delegation of 2026-11-24** (each in the register with its alternative and how to
+reverse it): `amb.2025.asset_business_pct`, `amb.2025.f5695_door_ranking`, `amb.2025.carloan_rebate`,
+`amb.2025.vehicle_two_businesses`, `amb.2025.f1116_carry_no_schedule_b`, `amb.2025.rental_not_qbi`,
+`amb.2025.rental_prerental_costs`, `amb.2025.rental_points_on_1098_loan`, `amb.2025.line4a_several`,
+`amb.2025.aoc_form8862_case`, `amb.2025.pfml_benefits_contributions`, `amb.2025.state_medical_leave_benefits`,
+`amb.2025.ftc_foreign_payee_statement`, `amb.2025.carloan_insurance`, `amb.2025.k1p_llc_member`,
+`amb.2025.k1p_prior_with_activity`, `amb.2025.f7203_prorata_places` (`ambiguities/2025.yaml`); `amb.ny.2025.whole_dollars`,
+`amb.ny.2025.small_business_scope`, `amb.ny.2025.withholding_forms` (`ambiguities/ny/2025.yaml`);
+`amb.2026.carloan_heir_original_use` (`changes/2026/carloan.s1a.yaml`).
 
-**Records to know:** the 68 agent-run rows of 2026-11-22/23 that sat uncommitted in the main checkout's
-`research/costs/agent_runs.jsonl` are in `<git common dir>/agent-runs/pending.jsonl` (copy of the file before the move:
-`.claude/wave-2026-11-22/agent-runs-backup/`); they reach the ledger at the next fold. BUG-1114 is closed by BUG-1225
-(fixed by BUG-1182). Several items the entry below lists as open were done in the release preparation (the year-change
-operations, the pinned mutation arguments, the review debt, BUG-1214's reaches); check each against `reports/bug_status.md`
-before relying on the list.
+**Still blocked on the IRS:** the final 2026 documents (i1040gi, i4562, p946, p463, p970, i8995a, i1040sd, p501, p560
+and the other drafts; T-011, T-322, T-328). The 2026 rehearsal builds cleanly with the unpublished documents stood in
+(T-317).
+
+**For the owner:** T-326 (the 2026 preparation decisions taken on the owner's behalf); whether refusal reach stays in
+the light tier (moved there in batch 1; the owner's commit-guard rule of 2026-11-22 had listed it as release-only); the
+Roth path's change (BUG-1416: a joint-return Roth contributor is now tested against the person's own compensation,
+`person.ira_own_comp_over`, instead of the Kay Bailey Hutchison test, which refused every such contributor with
+compensation under $14,000); T-355 (what must be done before the K-1 forms are wired). The owner's grant of 2026-11-22,
+extended through this release, has now been used; whether it continues is the owner's call.
+
+**Records to know:** the wave's coordinator record and every lane's message and state file are in the main checkout's
+`.claude/wave-2026-11-24/` (untracked). Its worktrees are archived.
 
 ## State
 
@@ -38,8 +55,8 @@ before relying on the list.
 
 - **Last release:** `r2026.11.24.1` (2026-11-24), the newest release tag before this commit; `git describe --tags
   --match 'r*'` gives the commits after it (a file cannot name the commit that holds it).
-- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,452 entries (highest BUG-1452), 19 open, 6 of them covered by
-  a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 73 rows not done; scoreboard 693 of 4,046 computed lines
+- **Figures**, read from this tree: `BUG_INVENTORY.md` 1,464 entries (highest BUG-1464), 31 open, 31 of them covered
+  by a `TASKS.md` row (`reports/bug_status.md`); `TASKS.md` 75 rows not done; scoreboard 693 of 4,046 computed lines
   (17.1%, `reports/2025/evidence.md`); estimated filer coverage 85.9% of returns (`reports/2025/filer_coverage.md`);
   170 ambiguity entries, 165 linked to a line (`ambiguities/2025.yaml`).
 <!-- /figures:handoff-state -->
@@ -85,66 +102,35 @@ instructions, and check any claim in them against the tree before relying on it:
 
 The order of work is at the top of `TASKS.md`. Open owner-facing points and open work are listed in the entry above.
 
-# 2026-11-23: the 2026-11-22/23 wave integrated on `next` (superseded by the entry above where they differ)
+# 2026-11-24: released `r2026.11.24.1`; next release prioritizes process and tool fixes, then open bugs, then 2026 (superseded by the entry above where they differ)
 
-**State (2026-11-23).** `main` = `870cc146` (round F); last release `r2026.11.16.1`; nothing of this wave is released.
-`next` holds every lane of the wave, oldest first: `9a2b3e9c` (release gating: next/main split, light commit tier,
-preflight), `f4d8ea31` (batches 1 and 2: rollover tools T-339 to T-346, 2026 parameters and finals refresh, closures,
-wording and round F fixes; BUG-0998 to BUG-1118), `ed6c46ea` (five lanes: speed, rb, left, wk1, wk2; BUG-1119 to
-BUG-1128), `25e48ec0` (six lanes: ty26-ops, hh, adlow, fx-seqbi, fx-eduhsa, fx-capital; BUG-1129 to BUG-1172),
-`8175c23d` (three lanes: advfix-land with the retirement findings, fx-ny with nyfix, fx-itemized; BUG-1173 to
-BUG-1224), then the commit holding this entry (the `worktree_data.py carry-back --keep-main` option, ledger-fix
-`3bb2046c`, and this entry). Each integration commit's message lists its lanes, merge resolutions and review debt.
-The wave's worktrees are archived (`tools/worktree_gc.py archive`); their review data is carried back to the main
-checkout.
+**State (2026-11-24).** Release `r2026.11.24.1` is `main` = `d63d282a`, pushed with its tag; `next` is `main` plus this
+commit. The release holds every lane of the 2026-11-22/23 wave (the entry below lists its integration commits) and the
+release preparation after it: T-353 (`7466debd`, the 67 year-drifting ids and the two s2 add-back helpers renamed),
+`f2377cc2` and `2bbcb319` (year changes apply again, review debt cleared, full-tier findings), `4c8ebd83` (sampled
+reviews ruled, BUG-1202 fixed), `d63d282a` (mutation lanes A to H, the defaults fill of `scope.trade_act_repaid` and
+`scope.remic` into the no-default fixture files, the engine differential repaired). It was tagged on a release-mode
+full run green on tree `4a9ff814`; no open bug was allowed. Every linked worktree is archived; only `main` and `next`
+remain as branches (the others are local `archive/*` tags).
 
-**Owner decisions (2026-11-23).** EIC self-only age (`amb.2025.eic_self_only_age`): the Pub. 596 reading. EIC head of
-household with a nonresident spouse (`amb.2025.eic_hoh_nonresident_spouse`): the Pub. 596 reading, unchanged. HSA split
-(`amb.2025.hsa_split_spouse_eligible`): only the shared family months are split, as built in fx-eduhsa. Charity band
-(BUG-1204): kept as built; refuse past the 60% and 30% legal limits, below them `sa.charity_limited` decides.
+**Autonomy (owner, 2026-11-24).** Through the next release (the one after `r2026.11.24.1`), the owner's grant of
+2026-11-22 stands: operate autonomously and treat any course of action the coordinator would recommend as approved.
+Decisions taken under it are recorded where the work is (briefs, commit messages, bug entries, ambiguity entries) and
+reported to the owner. Still referred to the owner: choices between readings of the tax law that change amounts
+(ambiguity entries marked for the owner), releasing with `--allow-open-bugs`, any `--no-verify`, pushing anything other
+than a release, and any change to this grant. How the work is run: `CLAUDE.md`, "How a wave of lanes runs".
 
-**Open work from `.claude/wave-2026-11-22/after-int-queue.md`**, each checked against this tree on 2026-11-23:
-- W2 guard (offer `scope.nol` only after a business or disaster route): not built; `scope.nol` has no `gated_by`.
-- W4 guard (re-ask when a non-land rental has an empty building list): no such check found in `forms/2025/rental.yaml`
-  (searched, not walked).
-- BUG-0993 (rental building basis prompt) and its `rprop.credit` help draft (`leftovers-check.md`): open.
-- `samples.confirmed_bugs()` counting an id inside a "no defect" class (queue item 6), and `core.hooksPath` pointing at
-  the main checkout's hooks (item 19; commits use `git -c core.hooksPath=tools/hooks commit`): neither is in
-  `BUG_INVENTORY.md`; not filed.
-- Agent-run rows of the wave (item 11): not in `research/costs/agent_runs.jsonl` on `next`. 53 rows of 2026-11-22/23
-  sit uncommitted in the main checkout's working copy of that file; they reach `next` by a fold or a copy there.
-- BUG-0764 (AMT line 7 over-refusal at $0 taxable income): open. The kill fixture drafted at
-  `/tmp/scout-mutants/fixtures/amt_l7_zero_taxable_income.json` is not in the repository (unverified whether /tmp
-  still holds it).
-- Mutation survivors `s8812.line18a` and `person.f8919_line10` (item 14): both still argued in
-  `reports/2025/mutation.md`; whether they were re-looked at after advfix is unverified.
-- BUG-1124 (f2441 fixture), BUG-1127 (W7, one `sales.special` question per return), BUG-1136 (fx-eduhsa-05, an AOC ban
-  also blocks the LLC): open. BUG-1125 (W5) is recorded fixed by a help change; whether the follow-up question for
-  filers 16 to 23 is still wanted is unverified.
-- adlow mediums BUG-1151 (NY S-201), BUG-1152 (NY railroad S-122), BUG-1154 (Roth-only excess contributions): open.
-- BUG-1212 (New York itemize choice; the fx-ny-04 subject, owner's call; lane recommendation: leave filed as low): open.
-- fx-capital and fx-seqbi leftovers, per their messages (not rechecked): code H not in the `sales.code` list;
-  `qbi.prior_form` asked of filers without QBI; the generate.ts premiums-over-Form-7206 differential at release.
-- T-353 is done on branch `rename-t353` (TASKS-DONE.md): the 67 ids and the two s2 add-back helpers are renamed in the 2025
-  tree. `year_changes.py --check` still fails on 7 operations of `changes/2026/` (BUG-1300), and 46
-  pinned mutation arguments no longer hold (BUG-1301); both were already true on `next` before the rename.
+**Owner direction (2026-11-23) for the next release.** In order: (1) process and tool fixes, first those that cut
+development time and cost; (2) all open bugs; (3) 2026 and model work. Coverage expansion is frozen until all three are
+done; fixes inside existing coverage count as bugs. The ranked work is at the top of `TASKS.md`; its source is the bug
+characterization in the main checkout, `.claude/scouts-2026-11-23/bug-characterization.md` (untracked): 212 defects
+and 107 closures since `r2026.11.16.1`, 63 defects open at the time, and 25 candidate new instances not yet confirmed.
 
-**Review debt the integrations recorded** (run before the release): class M person (BUG-1207's
-`person.tip_employers` and the other person changes since fx-ny's run), sc and sa against the combined form changes,
-and f1040 (no candidate matched the merged computation at `25e48ec0`; rerun on Claude at `8175c23d`, agree 589:
-recheck whether that settles it, unverified); index lines current on neither side (transcription sa 1, sc 3; render sa
-1, 4, 17; render s1 8a); `ny_it201` render 40 and 48 (ruled a finding of BUG-0762) and 1; household transcription
-`hoh_fails`; the sampled screen, false-no and completeness reviews due at release (advland's, adlow's `f4952` gate and
-screens, fx-capital's `sd.sold_other`).
+**Owner decisions of 2026-11-23** are in the entry below (EIC, HSA split, charity band).
 
-**Tool bugs and other open entries:** BUG-1170 (`siblings.py --check` re-tests entries already committed on `next`),
-BUG-1171 (`rule.py --amend` cannot set the drop flag on a ruled class M section), BUG-1214 (unscoped interview-rules
-finds nine problems on `next` itself), BUG-1215 (wording of the three new New York screening questions). Because of
-BUG-1171, integration 5 set the drop flag by hand on fx-ny's 33 New York whole-dollar class M rulings
-(`amb.ny.2025.whole_dollars`; the count is that commit's) and removed those lines from their fixture cases, as every
-earlier ruling of that ambiguity is set. Counted on this tree: every ruling naming the ambiguity has drop set, 76 in
-`reviews/ny/2025/classm/ny_it201.rulings.json` and 172 across the New York class M rulings files.
-
-**Open owner-facing points:** T-312, T-326, T-332 and T-333 (listed in the entry below); the IRS 2026 finals are still
-expected December 2026 to January 2027 (T-011, T-322).
-
+**Records to know:** the 68 agent-run rows of 2026-11-22/23 that sat uncommitted in the main checkout's
+`research/costs/agent_runs.jsonl` are in `<git common dir>/agent-runs/pending.jsonl` (copy of the file before the move:
+`.claude/wave-2026-11-22/agent-runs-backup/`); they reach the ledger at the next fold. BUG-1114 is closed by BUG-1225
+(fixed by BUG-1182). Several items the entry below lists as open were done in the release preparation (the year-change
+operations, the pinned mutation arguments, the review debt, BUG-1214's reaches); check each against `reports/bug_status.md`
+before relying on the list.

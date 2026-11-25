@@ -507,7 +507,7 @@
      "n": 0,
      "kind": "FALSE_NO",
      "class": "covered",
-     "evidence": "With pension_59_known false, ny_it201.ask.pension_exclusion asks 'Did you (or ... your spouse) turn 59\u00bd by December 31, 2025 ...?'; a person born January to June 1966 answers Yes and is refused at line 29."
+     "evidence": "With pension_59_known false, ny_it201.ask.pension_exclusion asks 'Did you (or ... your spouse) turn 59½ by December 31, 2025 ...?'; a person born January to June 1966 answers Yes and is refused at line 29."
     },
     {
      "n": 1,
@@ -767,55 +767,41 @@
    ]
   },
   "unruled:gate:ny_it201.has_depreciable_business#1": {
-   "reason": "Farm, K-1, Form 4797 and Form 2106 cases are refused federally; the 2003 date is a wide reading already filed (BUG-1215).",
+   "reason": "Farm, 2025 disposals of business or rental property, NY itemizers and K-1s are all refused before New York reaches the gate (same claims as an earlier subject, rechecked).",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "Schedule F is refused federally by scope.farm, so New York is never reached.",
-     "bugs": []
+     "evidence": "A Schedule F farmer is refused federally by scope.farm ('did you ... have income or a loss from farming?'), part of scope.schedule1's refusal, so New York is never reached."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "A partnership or S corporation K-1 is refused federally by scope.k1.",
-     "bugs": []
+     "evidence": "S-214 (ny_it225i p. 21) applies on a disposal; a 2025 sale of business equipment answers Yes to sd.sold_other ('sell or trade real estate or business property') and then sd.business_property ('Was any of that property used in a business or rented out ...'), which refuses (Form 4797)."
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
      "class": "out of scope",
-     "evidence": "An estate or trust K-1 is refused federally by scope.k1 ('a partnership, S corporation, estate or trust').",
-     "bugs": []
+     "evidence": "The 2025 sale of a condo once rented is a sale of real estate (sd.sold_other) and the past-tense sd.business_property 'Was any of that property used in a business or rented out' is truthfully Yes, which refuses."
     },
     {
      "n": 3,
-     "kind": "FALSE_NO",
+     "kind": "UNCLEAR",
      "class": "out of scope",
-     "evidence": "A 2025 sale of business or rental property is refused federally: sd.business_property ('Was any of that property used in a business or rented out ...? A Yes ends the interview here').",
-     "bugs": []
+     "evidence": "Unreimbursed employee expenses reach New York only through Form IT-196, and the tool refuses New York itemizing: ny_it201.line34 refuses when ny_it201.gate.itemize ('This tool takes the New York standard deduction only'). Federal Form 2106 cases are refused by scope.reservist_expenses and scope.performer_expenses."
     },
     {
      "n": 4,
-     "kind": "FALSE_NO",
-     "class": "out of scope",
-     "evidence": "Form 2106 expenses of reservists, performing artists and fee-basis officials are refused federally (scope.reservist_expenses; the tick 'Work as a performing artist, or as an official paid from fees').",
-     "bugs": []
-    },
-    {
-     "n": 5,
      "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "'Since 2003' takes in January to May 2003 property, which New York follows: an over-refusal already filed as BUG-1215 (3), low; the help says 'count property deducted in full'.",
-     "bugs": []
+     "class": "out of scope",
+     "evidence": "Entity-provided S-213 amounts ('Enter the amount provided to you by the entity', ny_it225i p. 21) arise only with a K-1, refused federally by scope.k1."
     }
    ],
-   "bugs": [],
-   "class": "no gate defect",
-   "subject_sha": "e21431ac90bb7c6ec0d028978199a9434d6f9d4223bf6a766aa913ca4382d296",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "358863a67614fc32f196d40f6ab8cf45ec8e25576c47d252eaed962440b3386e",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:s1.alimony_if_any#1": {
    "reason": "The New York post-2018 alimony question is skipped whenever any pre-2019 alimony or a recapture is on the return (filed, low); the modified-instrument case is BUG-1215 (low).",
@@ -842,7 +828,7 @@
      "n": 2,
      "kind": "FALSE_NO",
      "class": "defect",
-     "evidence": "ny_it225i p. 10, A-119: a pre-2019 instrument 'modified after December 31, 2018, if the modification ... expressly provides that the ... modifications contained in Tax Law \u00a7 612(w) apply'. Already filed as BUG-1215 (1), low.",
+     "evidence": "ny_it225i p. 10, A-119: a pre-2019 instrument 'modified after December 31, 2018, if the modification ... expressly provides that the ... modifications contained in Tax Law § 612(w) apply'. Already filed as BUG-1215 (1), low.",
      "bugs": [
       "BUG-1215"
      ]
@@ -954,115 +940,82 @@
    "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ny_it201.carryover_179_used#1": {
-   "reason": "Help now resolves an undivided carryover toward Yes and states the weight as gross vehicle weight; trucks and vans are excluded by A-208's own definition.",
+   "reason": "Current-year SUV elections are asked separately, K-1 section 179 is refused, the truck exclusion is A-208's own, and the help's 'year it arose' only breaks a tie for a filer who is unsure.",
    "findings": [
     {
      "n": 0,
-     "kind": "7",
-     "class": "presentation",
-     "evidence": "Help: 'If you are not sure which property the carryover is from, answer Yes when such a vehicle was among the property expensed in the year it arose.' Changed in this lane.",
-     "bugs": []
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The prompt asks about 'expensing an SUV over 6,000 pounds', so a filer who expensed a Tahoe answers Yes. A-208 definition (ny_it225i p. 12) excludes 'any truck, van, or motor home', and 'A truck is any vehicle that has a primary load-carrying device or container attached, or is equipped with an open cargo area or covered box not readily accessible from the passenger compartment'; registration class does not decide it, and a heavy pickup is properly excluded (same claim as an earlier subject, rechecked)."
     },
     {
      "n": 1,
-     "kind": "6",
-     "class": "model error",
-     "evidence": "ny_it225i p. 12, A-208: a sport utility vehicle 'does not include ... any truck, van, or motor home', with a truck defined by its cargo area.",
-     "bugs": []
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Section 179 passed through on a partnership or S corporation K-1 is refused federally by scope.k1 ('income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it'), through scope.schedule1."
     },
     {
      "n": 2,
-     "kind": "8",
+     "kind": "UNCLEAR",
      "class": "presentation",
-     "evidence": "Help now says 'rated over 6,000 pounds gross vehicle weight' (leans to Yes). Changed in this lane.",
-     "bugs": []
+     "evidence": "The prompt asks whether 'any of the section 179 deduction ... carried over from an earlier year' came from an SUV, which covers every origin year; the help's 'answer Yes when such a vehicle was among the property expensed in the year it arose' applies only to a filer who is 'not sure which property the carryover is from'. 'In any year it arose' would be clearer; low."
     },
     {
      "n": 3,
-     "kind": "8",
-     "class": "presentation",
-     "evidence": "Help now says 'even one used only for business'. Changed in this lane.",
-     "bugs": []
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A 2025 SUV election is caught without the carryover gate: ny_it201.gate.suv_179 is any[ny_it201.fed_suv179 > 0, the carryover Yes], fed_suv179 summing person.suv179 from each vehicle's scveh.suv answer; it refuses line 23 (A-208, ny_it225i p. 11)."
     }
    ],
-   "bugs": [],
-   "class": "no gate defect",
-   "subject_sha": "854263ae0e92aabf08e27c4213179bbaa5fd56331137f4e79a522d31fe24c137",
-   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "3a48c25a35ebbe3f52baf4476058fda5d40fdcf894fa76009368008335edf372",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:ny_it201.has_unemployment#1": {
-   "reason": "RUIA sickness benefits paid as wages are not asked where the federal railroad question does not refuse them (filed, low).",
+   "reason": "Sickness benefits are asked by the IT-225 catch-all of every New York return (BUG-1375, low, fixed by BUG-1417); the payer is named in the help.",
    "findings": [
     {
      "n": 0,
-     "kind": "5",
-     "class": "defect",
-     "evidence": "S-122 covers RUIA sickness benefits, which are wages; mostly refused by person.rrta; filed as BUG-1375. Low.",
-     "bugs": [
-      "BUG-1375"
-     ]
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "ny_it225i p. 17, S-122. ny_it201.ask.it225, asked of every New York return, names 'railroad sickness benefits (S-122)'; help: 'sickness benefits paid by the Railroad Retirement Board'; a Yes refuses (ny_it201.gate.it225). BUG-1375 (low) on this point is closed as fixed by BUG-1417."
     },
     {
      "n": 1,
-     "kind": "6",
-     "class": "defect",
-     "evidence": "Same route on a joint return; BUG-1375. Low.",
-     "bugs": [
-      "BUG-1375"
-     ]
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "The joint filer whose spouse had only RRB sickness benefits answers ny_it201.ask.railroad_uc No truthfully but then meets ny_it201.ask.it225 ('apply to you (or, on a joint return, your spouse) ... railroad sickness benefits (S-122)'), which refuses. BUG-1375 (low), fixed."
     },
     {
      "n": 2,
-     "kind": "4",
-     "class": "presentation",
-     "evidence": "Help now says railroad unemployment benefits are paid by the U.S. Railroad Retirement Board, not New York State. Changed in this lane.",
-     "bugs": []
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "The help of ny_it201.ask.railroad_uc already says 'Railroad unemployment benefits are paid by the U.S. Railroad Retirement Board, not by New York State', so a filer who thinks of the railroad or a union as payer is told who pays them."
     }
    ],
-   "bugs": [
-    "BUG-1375"
-   ],
-   "class": "defect (low): BUG-1375",
-   "subject_sha": "121386ca7685c88eaa60a5b9af1c79b5a69c714877bbb3b150de25470b8e79bf",
-   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "eeb4a6015eee262024f5b12ceff431fa39565bf7b0b674cd03022cdeae0321c9",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:gate:s1.alimony_any#1": {
-   "reason": "The federal alimony question does not name temporary orders, unallocated support or 'maintenance' (filed, low; hand-off to the lane holding s1).",
+   "reason": "The help says 'a division of property' is not alimony, where the source excludes only noncash property settlements, and the prompt's instrument list omits a written instrument incident to the decree (new, low).",
    "findings": [
     {
      "n": 0,
-     "kind": "1",
-     "class": "defect",
-     "evidence": "Temporary support orders while a divorce is pending; BUG-1376. Low.",
-     "bugs": [
-      "BUG-1376"
-     ]
+     "kind": "UNCLEAR",
+     "class": "low defect: BUG-1463",
+     "evidence": "p504 p. 13, Payments not alimony: 'Alimony doesn't include: Child support, Noncash property settlements, ...'; A-119 (ny_it225i p. 10) adopts former IRC 71. The s1.alimony_any help says 'Child support and a division of property are not alimony', so a filer receiving cash installments under a post-2018 decree that end at death and are not designated as non-alimony may answer No, and the A-119/S-136 refusal is not reached. No existing BUG entry; low (rare: most property-settlement installments survive death)."
     },
     {
      "n": 1,
-     "kind": "8",
-     "class": "defect",
-     "evidence": "Unallocated family support not fixed as child support; BUG-1376. Low.",
-     "bugs": [
-      "BUG-1376"
-     ]
-    },
-    {
-     "n": 2,
-     "kind": "6",
-     "class": "defect",
-     "evidence": "New York's term 'maintenance'; BUG-1376. Low.",
-     "bugs": [
-      "BUG-1376"
-     ]
+     "kind": "UNCLEAR",
+     "class": "low defect: BUG-1463",
+     "evidence": "p504 p. 12, Divorce or separation instrument: 'A decree of divorce or separate maintenance or a written instrument incident to that decree; A written separation agreement; or A decree or any type of court order'. The prompt names only 'a court order or a written separation agreement'; a signed post-decree modification or stipulation not entered as an order is an instrument incident to the decree that a literal reader may leave out. Same bug as finding 0; low."
     }
    ],
+   "subject_sha": "5852447885a54d7b1dd524d76513e3cb96f8a090bf5e42a79ec2ef927876d480",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)",
    "bugs": [
-    "BUG-1376"
-   ],
-   "class": "defect (low): BUG-1376",
-   "subject_sha": "6d844ad463e4dcaa4830c4a0cfbf58af7fd882023181cfaf6691e350a4f4d0c0",
-   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+    "BUG-1463"
+   ]
   }
  },
  "baseline": {}

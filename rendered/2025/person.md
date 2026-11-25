@@ -962,7 +962,7 @@
 - **Authored helper label:** Number of this person's Schedules C for a business with employees
 - **Encoded (Count):** Add sc.one over every confirmed sc entry for which helper "Did this business have employees in 2025?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"eq":["sc.employees",{"const":true}],"op":"test"}}`
-- Cite: [f1040sc] Schedule C (2025), lines 14, 19 and 26 (2025; created 2025-04-03; sha256 ddf401db)
+- Cite: [f1040sc] Schedule C (2025), line 26, "Wages (less employment credits)" (2025; created 2025-04-03; sha256 ddf401db)
 
 ## (helper) — `person.sc_employer_profit_count`
 

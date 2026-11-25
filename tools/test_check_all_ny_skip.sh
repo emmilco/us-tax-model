@@ -128,7 +128,7 @@ light f8889,sc
 has "$calls" "node engine/dist/main.js interview-rules --year 2025 --forms f8889,sc"
 has "$calls" "node engine/dist/main.js tick-groups --year 2025 --forms f8889,sc"
 has "$calls" "node engine/dist/main.js interview-coverage --year 2025 --forms f8889,sc"
-lacks "$calls" "mutate"; lacks "$calls" "tools/engines/run.sh"; lacks "$calls" "properties"
+lacks "$calls" "main.js mutate --"; has "$calls" "main.js mutate-arguments --year 2025"; lacks "$calls" "tools/engines/run.sh"; lacks "$calls" "properties"
 light none
 lacks "$calls" "interview-rules"; lacks "$calls" "tick-groups"
 has "$tmp/out" "skipped: the change touches no form the interview reads"

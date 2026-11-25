@@ -40,98 +40,98 @@
    ]
   },
   "gate:sd.sold_other": {
-   "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
+   "subject_sha": "26a5e0f856204422b352aa3fbfb44eac1d259f98e9fb8843ea6904645371b9df",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer (or spouse) whose stock in a small closely held corporation became worthless in 2025, or who sold it at a loss, and the stock qualifies as section 1244 (or section 1242 SBIC) stock.",
-       "why_no": "The gate asks only about selling or trading 'real estate or business property'. Stock held as an investment is neither, and worthlessness is not a sale or trade. The help lists only takings, foreclosures and abandonments as counting.",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder whose 2025 Schedule K-1 reports a net section 1231 gain or loss because the entity sold a rental building or business equipment. Neither spouse sold anything personally.",
+       "why_no": "The gate asks whether 'you (or ... your spouse)' sold or traded property. The entity sold it, so the truthful answer is no. The help never mentions sales passed through on a K-1.",
        "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: 'Use Form 4797 to report the following. ... 4. Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock. 5. Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.'",
+       "irs_text": "i1040sd p. 1: 'Use Form 4797 to report the following. 1. The sale or exchange of: a. Real property used in your trade or business; b. Depreciable and amortizable tangible property used in your trade or business'",
        "severity": "high",
-       "fix": "Add a separate ungated question, or broaden the gate: 'Did you (or your spouse) sell, trade, or have become worthless any stock in a small business corporation or small business investment company?' Route a yes to the Form 4797 refusal. The child question's 'not held as an investment' wording would also exclude this stock, so the child needs the same addition."
+       "fix": "Add to the gate: 'or did a Schedule K-1 you (or your spouse) received report a section 1231 gain or loss, or a sale of business or rental property by the partnership, S corporation, estate or trust?' Route a yes to the Form 4797 refusal."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "An inventor who sold a patent, invention, model, design or secret formula they created in 2025. Also a filer who sold a letter, memorandum, manuscript or work of art that a relative who created it gave them, or a U.S. Government publication received free.",
-       "why_no": "The help names only 'a copyright, manuscript or work of art you created yourself'. A patent or formula never used in a business, or a gifted artwork the filer did not create, is neither real estate nor 'business property' as the help defines it.",
+       "who": "A filer who sold or exchanged section 1244 small business stock or section 1242 SBIC stock at a loss in 2025, or whose such stock became worthless.",
+       "why_no": "Stock is neither real estate nor 'business property' as the help defines it. Worthlessness is also not a sale or trade. Even if the filer reached the child question, it says to count only property 'not held as an investment', which excludes this stock.",
        "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd pp. 1-2: a capital asset excludes '5. A patent, invention, model, or design (whether or not patented); a secret formula or process; a copyright; a literary, musical, or artistic composition; a letter or memorandum ... a. Created by your personal efforts; b. Prepared or produced for you ...; or c. Received under circumstances (such as by gift) that entitle you to the basis of the person who created the property'; p. 1: Form 4797 reports '3. The disposition of noncapital assets other than inventory'.",
-       "severity": "high",
-       "fix": "Change the help to: 'This also counts a patent, invention, design, secret formula, copyright, manuscript, letter or work of art that you created, that was made for you, or that you received as a gift from the person who created it, and a U.S. Government publication you got free or at a reduced price.'"
+       "irs_text": "i1040sd p. 1, Form 4797 list: '4. Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock. 5. Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.'",
+       "severity": "medium",
+       "fix": "If no other question already refuses these losses, ask: 'Did you sell stock at a loss, or have stock become worthless, in a small company you bought shares in directly when it was formed or raised money?' Route a yes to the Form 4797 refusal."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A securities trader who made a mark-to-market election and has 2025 gains or losses on securities held in the trading business.",
+       "why_no": "The help's examples of business property are 'equipment, a vehicle or a building'. A trader would not see stocks and options as 'business property', so the trader answers no.",
+       "line": "sd.business_property_if_sold",
+       "irs_text": "i1040sd p. 1, Form 4797 list: '6. Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.'",
+       "severity": "medium",
+       "fix": "Ask separately: 'Have you (or your spouse) made a mark-to-market election as a trader in securities or commodities?' Route a yes to the refusal."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A securities trader who made a mark-to-market election and sold securities held in the trading business in 2025.",
-       "why_no": "The help gives 'equipment, a vehicle or a building' as examples of business property. A trader may read stocks and bonds as investments, not business property, and answer no.",
+       "who": "A farmer or rancher who sold cattle, horses or other livestock held for breeding, dairy, draft or sporting purposes, or sold standing timber or timber cut under a section 631 election.",
+       "why_no": "The help lists 'equipment, a vehicle or a building' as examples, and the filer reads that list as complete. Animals and trees do not look like 'business property' or 'real estate' to them.",
        "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: Form 4797 reports '6. Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.'",
+       "irs_text": "i1040sd p. 1: Form 4797 reports 'b. Depreciable and amortizable tangible property used in your trade or business' and '3. The disposition of noncapital assets other than inventory'",
        "severity": "medium",
-       "fix": "Ask ungated: 'Have you (or your spouse) made a mark-to-market election as a trader in securities or commodities?' Route a yes to the refusal."
+       "fix": "Add to the help: 'Business property also includes livestock kept for breeding, dairy, draft or sport, standing or cut timber, and farmland improvements made with government cost-sharing payments.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "An owner of a single-member LLC or a revocable living trust that holds title to a rental house, business equipment or the main home, where the LLC or trust is the named seller on the 2025 deed or Form 1099-S.",
+       "why_no": "The gate asks whether 'you' sold the property. The LLC or trust is the seller on the paperwork, so the filer believes they did not sell it.",
+       "line": "sd.business_property_if_sold, sd.home_sale_if_sold",
+       "irs_text": "i1040sd p. 1: 'Real property used in your trade or business'; p. 2: 'Report the sale or exchange of your main home on Form 8949 if: ... You received a Form 1099-S for the sale or exchange.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Count property sold by a single-member LLC you own or by a living trust you set up and control, as if you sold it yourself.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A farmer (or farming spouse) who sold cattle, horses or other livestock held for draft, breeding, dairy or sporting purposes in 2025.",
-       "why_no": "The help's examples of business property are equipment, a vehicle or a building. A farmer may think of livestock sales as farm income rather than a sale of business property.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: Form 4797 reports 'b. Depreciable and amortizable tangible property used in your trade or business'.",
+       "who": "A filer who sold a co-op apartment that was their main home and received a Form 1099-S, or whose gain exceeded the exclusion.",
+       "why_no": "A co-op owner holds shares in a housing corporation, not a deed. The filer may think they sold stock, not 'real estate'. The help's 'a home you lived in' may not settle that.",
+       "line": "sd.home_sale_if_sold",
+       "irs_text": "i1040sd p. 2: 'Report the sale or exchange of your main home on Form 8949 if: • You can’t exclude all of your gain from income, or • You received a Form 1099-S for the sale or exchange.'",
        "severity": "medium",
-       "fix": "Add to the help: 'Business property includes livestock held for draft, breeding, dairy or sporting purposes, timber, and crops sold with land.'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer whose business equipment or business vehicle held over a year was destroyed or stolen in 2025, with insurance paid above its adjusted basis.",
-       "why_no": "The help says a government taking, a foreclosure or an abandonment 'counts as a sale' and is silent on casualty and theft. The filer sold nothing and answers no.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "i1040sd p. 1: 'To report a gain or loss from Form 4684'; 'Use Form 4684 to report involuntary conversions of property due to casualty or theft.' (Form 4684 business-property gains carry to Form 4797; the snapshot does not show this step.)",
-       "severity": "medium",
-       "fix": "Add to the help: 'Business or rental property destroyed, damaged or stolen, where insurance or other reimbursement was received, counts too.' Or add a separate casualty and theft gate."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer who inherited a deceased parent's installment note, or received a former spouse's installment note in a divorce, and collected payments on it in 2025.",
-       "why_no": "The gate's second sentence asks about payments for 'anything you (or ... your spouse) sold'. The filer did not make the sale and answers no.",
-       "line": "sd.installment_if_sold",
-       "irs_text": "i1040sd p. 6: 'Also, use Form 6252 to report any payment received in 2025 from a sale made in an earlier year that you reported on the installment method.'",
-       "severity": "medium",
-       "fix": "Change the gate to: 'Answer Yes too if you (or your spouse) received a payment in 2025 on a note or contract from any sale, including one you inherited or received in a divorce, or if any payment for anything you sold comes in a later year.'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A filer who still owns a business vehicle or equipment that was expensed under section 179 or listed-property rules, and whose business use fell to 50% or less in 2025.",
-       "why_no": "Nothing was sold or traded, so the filer truthfully answers no.",
-       "line": "sd.business_property_if_sold",
-       "irs_text": "Form 4797 Part IV recapture (not in the supplied snapshot). i1040sd p. 1: 'To report a gain from ... Part I of Form 4797'.",
-       "severity": "low",
-       "fix": "Ask separately whether business use of property expensed under section 179 or listed property dropped to 50% or less. Route a yes to the refusal."
+       "fix": "Change the help to: 'Real estate includes any home you lived in as your main home, including a co-op apartment (shares in a housing cooperative), a condominium, a mobile home or a houseboat.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer whose main home was transferred by deed in lieu of foreclosure, or sold in a lender-approved short sale, in 2025, with a Form 1099-S.",
-       "why_no": "The help says 'a foreclosure' counts. A filer who gave the deed back voluntarily may think it was not a foreclosure or a sale.",
+       "who": "A filer whose main home was a mobile home, manufactured home or houseboat that is not titled as real property, sold in 2025 with gain beyond the exclusion.",
+       "why_no": "The home is titled like a vehicle, so the filer thinks it is not 'real estate'. It was not used in a business either, so they answer no.",
        "line": "sd.home_sale_if_sold",
-       "irs_text": "i1040sd p. 2: 'Report the sale or exchange of your main home on Form 8949 if: ... You received a Form 1099-S for the sale or exchange.'",
+       "irs_text": "i1040sd p. 2: 'Any gain you can’t exclude is taxable.'",
        "severity": "low",
-       "fix": "Add to the help: 'A deed given to the lender instead of foreclosure, and a short sale, count too.'"
+       "fix": "Use the same broadened help wording as the co-op finding."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An employee who took depreciation in an earlier year on a personally owned car or equipment used for their job, and sold or traded it in during 2025.",
+       "why_no": "The help says business property is 'anything used in a business'. A W-2 employee does not think of their job as 'a business'.",
+       "line": "sd.business_property_if_sold",
+       "irs_text": "i1040sd p. 1, Form 4797: 'Depreciable and amortizable tangible property used in your trade or business'",
+       "severity": "low",
+       "fix": "Add to the help: 'Include anything you ever took depreciation on or deducted for business use, including use in your job as an employee.'"
       }
      ],
-     "prompt_sha": "4080b374a6f658bd944caa0ff5916d23e214166fa8d04da310eb3075564645e9",
+     "prompt_sha": "8f701d84b0965938ab09836e123abffc7c65a96ebb4a99601e8ad8fbe2763ea1",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.173128,
-     "date": "2026-11-24",
-     "response": ".transcription/false_no/gate_sd.sold_other.4b9a3c8b9b97.1.response.txt"
+     "cost": 0.17354399999999998,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_sd.sold_other.26a5e0f85620.1.response.txt"
     }
    ],
    "condition": "sd.sold_other",

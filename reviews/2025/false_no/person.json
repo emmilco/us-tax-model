@@ -534,48 +534,58 @@
    ]
   },
   "gate:person.has_hsa": {
-   "subject_sha": "807272bc274066e2b74e7c89bd560e6b3f588bc6327aac213e7238d11416230a",
+   "subject_sha": "c11b271777ee940bdbf21de8cd30d013f8f4398f3b6046cf22f15f5c7a294a1d",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A person (you, or your spouse on a joint return) who put too much into an HSA in 2024 or earlier and left the excess in. In 2025 the account had no contributions from anyone and no distributions, for example because they enrolled in Medicare or changed to a non-HDHP plan. So no Form 8889 is required or entered for 2025, and none is entered for this person.",
-       "why_no": "The gate is computed as 'Number of Forms 8889 entered for this person' > 0. Form 8889 is driven by 2025 activity: contributions, distributions, or a testing-period inclusion. A filer with a dormant HSA truthfully enters no Form 8889, so the gate is false. The prior-excess question is never asked, and the tool never refuses the return.",
-       "line": "person.x_hsa_prior_excess_if_hsa (and the refusal it leads to; Form 5329 Part VII lines 42, 46, 48, 49)",
-       "irs_text": "f5329 (2025) p. 2, Part VII: 'Complete this part if you, someone on your behalf, or your employer contributed more to your HSAs for 2025 than is allowable or you had an amount on line 49 of your 2024 Form 5329.' Line 42: 'Enter the excess contributions from line 48 of your 2024 Form 5329.' Line 49: 'Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025.'",
+       "pattern": "5",
+       "who": "A filer with an HSA that had no 2025 activity: no contributions by anyone and no distributions. An excess from 2023 or 2024 is still in the account. Nothing required a 2025 Form 8889, and no Form 5498-SA or 1099-SA prompted one, so they listed no Form 8889.",
+       "why_no": "The tool computes the gate as 'Number of Forms 8889 entered for this person > 0'. A filer with no 2025 HSA transactions truthfully enters no Form 8889. The gated question is then never asked.",
+       "line": "person.x_hsa_prior_excess_if_hsa",
+       "irs_text": "f5329 (2025) p. 2, Part VII: 'Complete this part if ... you had an amount on line 49 of your 2024 Form 5329.' Line 42: 'Enter the excess contributions from line 48 of your 2024 Form 5329.' Line 49 imposes 6% of the smaller of line 48 or the HSA value on December 31, 2025.",
        "severity": "high",
-       "fix": "Do not gate on Forms 8889 entered. Ask every person (you, and your spouse on a joint return) whether they have ever had an HSA, whether or not anything went in or came out in 2025. Ask the prior-excess question whenever that answer is yes. Alternatively, ask per person: 'Does your 2024 Form 5329 show an amount on line 48 or 49, or was more ever put into your HSA than the yearly limit and left in the account?'"
+       "fix": "Do not gate on Form 8889 count. Ask every person (you, or your spouse on a joint return) whether they had an HSA at any time in 2025, or a balance at the start of 2025, even if nothing was added or withdrawn. Or ask the prior-excess question directly, keyed to 'any amount on line 48 of your 2024 Form 5329 or an excess you never reported'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A person whose HSA is held at a brokerage or bank they think of as an ordinary investment or savings account. They received no Form 5498-SA or 1099-SA prompt in 2025 and so never 'list' the HSA in the tool. They have an unremoved excess from an earlier year.",
-       "why_no": "The gate is labelled 'This person listed a health savings account'. Listing appears to depend on 2025 documents or activity that lead the filer to enter Form 8889. A filer with no 2025 HSA paperwork reasonably lists nothing.",
+       "pattern": "8",
+       "who": "A filer who contributed to an HSA in an earlier year while not eligible, for example after enrolling in Medicare Part A or while covered by a non-high-deductible plan or a spouse's general-purpose FSA. They never reported this, so all of that year's contributions were excess.",
+       "why_no": "The question asks whether 'more [was] put into your HSA than the limit for the year'. The filer believes they stayed within the published dollar limit and does not see that ineligibility made their limit zero.",
        "line": "person.x_hsa_prior_excess_if_hsa",
-       "irs_text": "f5329 (2025) p. 2, Part VII, line 42: 'Enter the excess contributions from line 48 of your 2024 Form 5329.'",
+       "irs_text": "f5329 (2025) p. 2, Part VII: 'contributed more to your HSAs ... than is allowable'. Line 42 carries prior excess, and line 49 taxes it at 6%.",
        "severity": "medium",
-       "fix": "Ask about the fact, not the form: 'Have you (or your spouse) ever had a health savings account (HSA), even if nothing was added or withdrawn in 2025 and you received no HSA form?'"
+       "fix": "Add to the help: 'Contributions made for any month you were not eligible (for example, enrolled in Medicare, or covered by a health plan that is not a high-deductible plan) count as extra even if they were under the dollar limit.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose 2024 Form 5329 line 48 shows an excess, and who later spent HSA money on medical bills. The account still has a balance.",
+       "why_no": "The words 'with some of the extra still in the account at the start of 2025' lead them to believe the extra money was 'spent'. Ordinary qualified distributions do not remove an excess unless they are corrective distributions, or are absorbed through later-year lines 43 and 44.",
+       "line": "person.x_hsa_prior_excess_if_hsa",
+       "irs_text": "f5329 (2025) p. 2, line 42: 'Enter the excess contributions from line 48 of your 2024 Form 5329.' Only lines 43 and 44 (2025 unused limit and 2025 distributions) reduce it.",
+       "severity": "medium",
+       "fix": "Replace 'with some of the extra still in the account' with 'and the extra was not withdrawn as a corrective (excess-contribution) withdrawal before your tax-return due date'. Keep the 2024 line 48 test as the deciding check."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "other",
-       "who": "Any reviewer or maintainer relying on the gate's citations.",
-       "why_no": "The gate and the input cite Part II (education/ABLE distributions) and Part IX (required minimum distributions). These say nothing about HSAs, so the gate's authority is not shown and its scope cannot be checked against the text.",
-       "line": "person.has_hsa / person.x_hsa_prior_excess_if_hsa",
-       "irs_text": "f5329 (2025) p. 2, Part VII: '... or you had an amount on line 49 of your 2024 Form 5329.'",
+       "who": "A filer comparing their 2024 Form 5329 against the tool's cited condition: line 48 is positive, but line 49 is zero or blank because the HSA value on December 31, 2024 was low or zero.",
+       "why_no": "The citation and the IRS Part VII condition refer to 'line 49 of your 2024 Form 5329', while the help says line 48. A filer seeing no line 49 tax may conclude there is no carryover.",
+       "line": "person.x_hsa_prior_excess_if_hsa",
+       "irs_text": "f5329 (2025) p. 2, line 42: 'Enter the excess contributions from line 48 of your 2024 Form 5329.'",
        "severity": "low",
-       "fix": "Cite f5329 Part VII (the heading condition and lines 42 and 49) for both the gate and the gated question."
+       "fix": "State in the help: 'Answer Yes if line 48 of your 2024 Form 5329 shows any amount, even if line 49 was zero.'"
       }
      ],
-     "prompt_sha": "b155d43d6139a7b1c67c72847cdd66a7d002d14922e74d9573e43cd73f29de71",
+     "prompt_sha": "deaaee1a0f9cb416aa9407939355bac672d896a8647fd9c7e630de3cafdf5c07",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.093004,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.has_hsa.807272bc2740.1.response.txt"
+     "cost": 0.08698,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_person.has_hsa.c11b271777ee.1.response.txt"
     }
    ],
    "condition": "person.has_hsa",
@@ -597,24 +607,10 @@
      ],
      "how": "whole document",
      "locators": [
-      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+      "p. 2, Part VII, \"or you had an amount on line 49 of your 2024 Form 5329\""
      ],
      "cols_pages": [],
      "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
-    },
-    {
-     "doc": "i5329",
-     "revision": "2025",
-     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
-     "pages": [
-      9
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [
-      9
-     ],
-     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
     }
    ]
   },
@@ -774,48 +770,58 @@
    ]
   },
   "gate:person.ira_owner": {
-   "subject_sha": "32dba6de11da073b6a9b71079d1da1cdb13df95a02b5546397ce62134d39ce53",
+   "subject_sha": "e9091747b45e2ee3aa9e0c18ca12d663e3b6c33ab10065f580765eb460eb0760",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "UNCLEAR",
+       "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "An employee auto-enrolled through payroll in a state auto-IRA program (CalSavers, OregonSaves, Illinois Secure Choice, etc.) or an employer payroll-deduction IRA. The default account is a Roth IRA funded by 2025 paycheck deductions. The employee has never opened an account themselves and thinks of it as 'the retirement plan at work'.",
-       "why_no": "The help says 'A 401(k) or a pension at work is not an IRA'. A filer whose only retirement savings came out of a paycheck through the employer reads that as excluding the work program and answers no, without knowing the program is legally a Roth IRA.",
-       "line": "person.sav_roth_if_ira_owner (also person.x_ira_prior_excess_if_ira_owner when the filer's income was above the Roth limit in an earlier year and the excess was never removed)",
-       "irs_text": "f8880 (2025) p. 2, Who Can Take This Credit: 'made (a) contributions (other than rollover contributions) to a traditional or Roth IRA'; f8880 p. 1, line 1, 'Traditional and Roth IRA contributions'",
-       "severity": "medium",
-       "fix": "Add to the help: 'An IRA you pay into through payroll counts, including a state program such as CalSavers, OregonSaves or Illinois Secure Choice, even though your employer set it up. Only a 401(k), 403(b), 457, TSP or pension plan run by your employer is not an IRA.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who bought an individual retirement annuity (an IRA annuity contract) from an insurance company and paid premiums into it for 2025. The filer has no account at a bank or brokerage.",
-       "why_no": "The question defines IRA as 'an individual retirement account', and the help lists only account types. An annuity contract is not an 'account' in ordinary speech, so the filer truthfully reads the question as not covering it. The IRS term is 'arrangement', which includes annuities.",
-       "line": "person.sav_trad_if_ira_owner and person.sav_roth_if_ira_owner",
-       "irs_text": "i1040gi (2025) p. 95, Line 20: 'If you made any nondeductible contributions to a traditional individual retirement arrangement (IRA) for 2025, you must report them on Form 8606.'; f8880 p. 1, line 1",
-       "severity": "medium",
-       "fix": "Use 'individual retirement arrangement', and add to the help: 'An individual retirement annuity bought from an insurance company counts as an IRA.'"
+       "who": "A filer whose only IRA is an individual retirement annuity bought from an insurance company (a traditional or Roth IRA annuity contract, not a custodial account). They paid a 2025 premium into it as a regular contribution.",
+       "why_no": "The question defines an IRA as 'an individual retirement account'. An annuity contract is not an account, so a literal no is truthful. The help lists only account types (Traditional, Roth, SEP, SIMPLE) and never mentions annuities.",
+       "line": "person.sav_roth_if_ira_owner / person.sav_trad_if_ira_owner (and person.x_ira_prior_excess_if_ira_owner)",
+       "irs_text": "f8880 (2025) p. 2, Who Can Take This Credit: '(a) contributions (other than rollover contributions) to a traditional or Roth IRA'; i1040gi p. 95, Line 20: 'individual retirement arrangement (IRA)'",
+       "severity": "high",
+       "fix": "Ask about an 'individual retirement arrangement (IRA): an IRA account, or an IRA annuity bought from an insurance company'. Add 'IRA annuity' to the help list."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose only IRA is a 'rollover IRA' holding money moved from a former employer's 401(k). Part of an earlier rollover failed the rules (for example, a second 60-day rollover within 12 months), so that amount sits in the IRA as an uncorrected excess contribution at the end of 2025.",
-       "why_no": "The help says 'A 401(k) ... is not an IRA'. The filer thinks of the account as their old 401(k) money, and 'rollover' does not appear among the listed IRA types, so the filer answers no.",
-       "line": "person.x_ira_prior_excess_if_ira_owner (a missed refusal)",
-       "irs_text": "f5329 (2025) p. 1, Part III: 'Complete this part if you contributed more to your traditional IRAs ... for 2025 than is allowable or you had an amount on line 17 of your 2024 Form 5329.'",
+       "who": "A low-wage worker auto-enrolled through payroll in a state auto-IRA program (CalSavers, OregonSaves, Illinois Secure Choice and similar), or in an employer payroll-deduction IRA. Payroll deductions went into a Roth or traditional IRA in 2025. This is exactly the saver's-credit population.",
+       "why_no": "They think of it as their 'retirement plan at work'. The help says 'A 401(k) or a pension at work is not an IRA', which invites them to put a work-payroll savings program in the same class and answer no.",
+       "line": "person.sav_roth_if_ira_owner (also person.sav_trad_if_ira_owner, person.x_ira_prior_excess_if_ira_owner)",
+       "irs_text": "f8880 (2025) line 1: 'Traditional and Roth IRA contributions ... for 2025'; p. 2: '(a) contributions (other than rollover contributions) to a traditional or Roth IRA'",
+       "severity": "medium",
+       "fix": "Add to the help: 'A state savings program you joined through work (such as CalSavers or OregonSaves) or a payroll-deduction IRA IS an IRA; answer Yes.' Or ask directly whether any money went into an IRA through payroll."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An employee who made voluntary contributions in 2025 to a deemed IRA (a section 408(q) IRA held inside their employer's 401(k), 403(b) or governmental 457 plan).",
+       "why_no": "The help states flatly 'A 401(k) or a pension at work is not an IRA'. The account sits within the 401(k) plan, so the filer answers no.",
+       "line": "person.sav_roth_if_ira_owner / person.sav_trad_if_ira_owner",
+       "irs_text": "f8880 (2025) p. 2: '(a) contributions (other than rollover contributions) to a traditional or Roth IRA'",
+       "severity": "medium",
+       "fix": "Qualify the help: 'A 401(k) or pension is not an IRA, but a separate IRA (deemed IRA) your employer's plan holds for you is one; answer Yes.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A worker whose employer funds a SIMPLE IRA or SEP for them, who knows it only as 'my retirement plan at work' and never learned the account type. An excess contribution made in an earlier year is still in that account at the end of 2025.",
+       "why_no": "They match their plan to 'a pension at work is not an IRA' and do not recognize it as the 'SEP and SIMPLE IRAs' the help lists.",
+       "line": "person.x_ira_prior_excess_if_ira_owner (missed refusal)",
+       "irs_text": "f5329 (2025) p. 1, Part III: 'traditional IRAs (which include your traditional SEP IRAs and traditional SIMPLE IRAs) ... or you had an amount on line 17 of your 2024 Form 5329'",
        "severity": "low",
-       "fix": "Add to the help: 'A rollover IRA holding money moved from a 401(k) or other work plan counts as an IRA.'"
+       "fix": "Add to the help: 'If your employer's plan statement or Form 5498 says SEP or SIMPLE IRA, answer Yes.'"
       }
      ],
-     "prompt_sha": "cf2f98d8dde5ed8068e4ea41fd2dcbb1fe03c76a95ac474bf0f661946f39ad67",
+     "prompt_sha": "afe42385e20df846777dbe881fa2ffea2c408db26a0f283662b4d1d63c885396",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.165636,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_person.ira_owner.32dba6de11da.1.response.txt"
+     "cost": 0.165876,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_person.ira_owner.e9091747b45e.1.response.txt"
     }
    ],
    "condition": "person.ira_owner",
@@ -860,7 +866,7 @@
      ],
      "how": "whole document",
      "locators": [
-      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+      "p. 1, Part III, \"or you had an amount on line 17 of your 2024 Form 5329\"; p. 1, Part IV, \"Complete this part if you contributed more to your Roth IRAs\", \"or you had an amount on line 25 of your 2024 Form 5329\""
      ],
      "cols_pages": [],
      "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
@@ -904,20 +910,6 @@
       31
      ],
      "cols_sha256": "cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b"
-    },
-    {
-     "doc": "i5329",
-     "revision": "2025",
-     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
-     "pages": [
-      9
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [
-      9
-     ],
-     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
     }
    ]
   },
@@ -1525,17 +1517,68 @@
    ]
   },
   "gate:person.x_edu_account": {
-   "subject_sha": "86686e8083c71bfa6311c3d9ee65e06622b991a2282009fb264b8488599e73b9",
+   "subject_sha": "992b692709c34d61ebab52d3b4f1e13029811076a4b5ccf8c0a6d73d15a281ea",
    "samples": [
     {
-     "verdict": "SOUND",
-     "findings": [],
-     "prompt_sha": "13d3acd8861f8c9c235dd400f337669fafd20b7111354fc8215705b571085517",
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer, or the student beneficiary, holding a state prepaid tuition contract (such as Florida Prepaid) or a Private College 529 / institution prepaid plan. In 2025 they took a refund of the contract that did not go to qualified costs.",
+       "why_no": "The question names a '529 plan'. Holders of prepaid contracts often think of them as tuition contracts, not 529 plans. The question and help never say that prepaid tuition programs count.",
+       "line": "person.x_edu_taxable_if_account",
+       "irs_text": "f5329 p. 1, Part II: 'Complete this part if you included an amount in income ... from a Coverdell education savings account (ESA) or a qualified tuition program (QTP)'",
+       "severity": "medium",
+       "fix": "Ask about 'a 529 plan (college savings or prepaid tuition plan, including state or college prepaid tuition contracts)'. Add to the help: 'A qualified tuition program of any kind counts.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A parent or grandparent who owns a 529 or Coverdell for a child or grandchild. In 2025 they took a non-qualified withdrawal paid to themselves, which is taxable to them.",
+       "why_no": "They read 'did you have ... or was one held for you' and the help 'whether the account is yours or is held for you' as asking whose account it is for. They answer no for themselves because 'it's my child's college account.'",
+       "line": "person.x_edu_taxable_if_account",
+       "irs_text": "f5329 p. 1, Part II: 'Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP)'",
+       "severity": "medium",
+       "fix": "Reword: 'At any time in 2025, did you own, or were you the beneficiary of, a 529 plan, Coverdell ESA or ABLE account (including one you opened for a child or grandchild), or did you receive any money paid out of one?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "Someone who inherited the balance of a Coverdell ESA or 529 after the beneficiary died, and was paid it in 2025. Earnings are included in their income.",
+       "why_no": "The account belonged to the deceased and was never 'held for' the heir. They answer no if no Form 1099-Q reached them, or if it was issued in the estate's name and later passed to them.",
+       "line": "person.x_edu_taxable_if_account",
+       "irs_text": "f5329 p. 1, Part II, line 5: 'Distributions included in income from a Coverdell ESA, a QTP, or an ABLE account'",
+       "severity": "medium",
+       "fix": "Broaden the gate to 'or did you receive any payment from such an account in 2025, including as an heir or after the beneficiary's death or 30th birthday.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A beneficiary whose first Coverdell ESA was opened between January 1 and April 15, 2026, with a contribution designated for 2025 that exceeded the limit (for example, over $2,000 or after the beneficiary turned 18).",
+       "why_no": "The question says 'At any time in 2025, did you have'. No account existed in 2025, so a filer who does not read the help answers no. Only the help mentions contributions made by April 15, 2026.",
+       "line": "person.x_edu_excess_if_account",
+       "irs_text": "f5329 p. 2, Part V: 'Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable'; line 33 '(including 2025 contributions made in 2026)'",
+       "severity": "medium",
+       "fix": "Put the contribution window in the question itself: '... or was money put into a Coverdell for you for 2025, even if the account was opened in 2026 (by April 15, 2026)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An older filer whose account was set up as an 'Education IRA', or an ABLE beneficiary whose state plan is branded STABLE, CalABLE or ABLEnow.",
+       "why_no": "The account's name on statements does not match 'Coverdell education savings account' or 'ABLE account', so the filer does not recognize it.",
+       "line": "person.x_edu_excess_if_account",
+       "irs_text": "f5329 p. 2, Part VIII: 'Complete this part if contributions to your ABLE account for 2025 were more than is allowable'",
+       "severity": "low",
+       "fix": "Add to the help: 'A Coverdell may be called an Education IRA; ABLE accounts often carry state names such as STABLE, CalABLE or ABLEnow.'"
+      }
+     ],
+     "prompt_sha": "b7bc0b5efa65fed6fec61f025371e4ce4089ce90092b830e3dcf697a143f6466",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_person.x_edu_account.86686e8083c7.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.133828,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_person.x_edu_account.992b692709c3.1.response.txt"
     }
    ],
    "condition": "person.x_edu_account",
@@ -1559,24 +1602,12 @@
      ],
      "how": "whole document",
      "locators": [
-      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"",
+      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 2, Part V, \"Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329\"; p. 2, Part VIII, \"Complete this part if contributions to your ABLE account for 2025 were more than is allowable\"",
+      "p. 2, Part V, \"Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329\"; p. 2, Part VIII, \"Complete this part if contributions to your ABLE account for 2025 were more than is allowable\""
      ],
      "cols_pages": [],
      "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
-    },
-    {
-     "doc": "i5329",
-     "revision": "2025",
-     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
-     "pages": [
-      9
-     ],
-     "how": "pages named by another document's citation",
-     "locators": [],
-     "cols_pages": [
-      9
-     ],
-     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
     }
    ]
   }

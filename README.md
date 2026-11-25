@@ -262,7 +262,7 @@ prepared, and the instruction behind it.
 
 **What it earns.** Every number traces to a cited place on an archived IRS page, pinned by content hash,
 usually with the governing sentence quoted. A
-citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,751 anchors and 8,551 quotes<!-- /figures:readme-citations -->,
+citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,902 anchors and 8,757 quotes<!-- /figures:readme-citations -->,
 with no finding left unruled.
 
 **Where it stops.** A citation proves that a line points at a page. It does not prove that the line
@@ -315,7 +315,7 @@ The build fills in each citation's document revision and content hash from the s
 are no user-defined functions, loops, variables, strings or recursion: the data is a list of
 lines like this one, plus year parameters, pinned tables (the Tax Table is stored cell by cell), refusal
 gates and the ambiguity register. The one escape hatch, `opaque`, a host-language function, is counted
-and published: <!-- figures:readme-opaque -->0 of 6,115 lines use it<!-- /figures:readme-opaque -->.
+and published: <!-- figures:readme-opaque -->0 of 6,205 lines use it<!-- /figures:readme-opaque -->.
 
 Two tools work this layer. The **checker** fails the build unless every reference resolves, the line
 graph has no cycles, every expression type-checks (cents, rates, counts and booleans never mix), every
@@ -392,7 +392,7 @@ Around the stack sit tests of whether the tests are any good.
   arithmetic ("Add lines 1 through 3") must match the line's operands, a limit sentence ("can't be more
   than") must be tied to the line that enforces it, and four more of the kind. Findings that predate a
   check are held in a baseline and come due when the line they concern changes.
-- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->1,452 so far<!-- /figures:readme-bugs -->)
+- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->1,464 so far<!-- /figures:readme-bugs -->)
   with how it was caught, its root cause, and *why the existing checks missed it*. It is
   append-only; the suite fails if its committed history changes.
 - **The commit guard.** A git hook, enabled per clone, refuses any commit whose tree is not exactly a

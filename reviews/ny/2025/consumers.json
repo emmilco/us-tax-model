@@ -47,6 +47,12 @@
    "question_phrase": "Is your husband or wife itemizing deductions on their own New York return?",
    "source_phrase": "You may take either the New York standard deduction or the New York itemized deduction.",
    "reason": "Page 10 states only the choice between the two deductions; the married-filing-separately rule the answer serves is on p. 11, which the question cites, and the gate asks it only of a separate return."
+  },
+  "consumer:ny_it201.ask.spouse_resident@ny_it201i:p5": {
+   "verdict": "same",
+   "question_phrase": "On your joint return, was your spouse also a full-year New York State and New York City resident?",
+   "source_phrase": "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown ... – your spouse refuses to sign a joint New York return",
+   "reason": "ny_it201.spouse_cannot_sign_if_resident asks the unable-to-file-jointly question only when both spouses were full-year residents, the joint-resident case in which the page's separate-return exception matters; a spouse who was not a full-year resident is refused under Item A before this question could change anything."
   }
  },
  "baseline": {}

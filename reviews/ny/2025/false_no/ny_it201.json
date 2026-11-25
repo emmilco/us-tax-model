@@ -609,58 +609,58 @@
    ]
   },
   "gate:ny_it201.carryover_179_used": {
-   "subject_sha": "854263ae0e92aabf08e27c4213179bbaa5fd56331137f4e79a522d31fe24c137",
+   "subject_sha": "3a48c25a35ebbe3f52baf4476058fda5d40fdcf894fa76009368008335edf372",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A sole proprietor bought a 6,500-pound SUV and other equipment in 2023 and elected section 179 on both. The business income limit created a carryover, and part of it is deducted on the 2025 Form 4562 line 12.",
-       "why_no": "The question asks whether the carryover 'came from expensing an SUV'. Form 4562 carries the carryover forward as one undivided amount. Under the section 179 regulations, the taxpayer chooses which properties and portions make up the carryover. A filer who never made or recorded that choice cannot trace the carryover to the SUV, so they answer no.",
-       "line": "ny_it201.suv_carryover_if_used",
-       "irs_text": "ny_it225i p. 11, A-208: \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... then enter the amount of that deduction.\"",
-       "severity": "medium",
-       "fix": "Ask a fact the filer can check: 'Was an SUV over 6,000 pounds among the property you (or your spouse) elected to expense under section 179 in the year this carryover arose?' Treat yes as a Yes, or ask how the carryover was allocated among properties."
-      },
-      {
-       "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A contractor expensed a pickup over 6,000 pounds GVWR with a bed under six feet, or a heavy passenger van, in 2024. Part of that section 179 carryover is deducted in 2025.",
-       "why_no": "The help says to count 'any passenger vehicle over 6,000 pounds that is not a truck, van or motor home'. The filer reads 'truck' or 'van' and answers no. A-208 says only 'sport utility vehicle' and gives no blanket exclusion for trucks or vans. Under the federal section 179(b)(5) definition, a short-bed pickup or a van seating nine or fewer behind the driver is treated as an SUV.",
+       "who": "A sole proprietor expensed a large SUV (for example a Tahoe or Suburban) under section 179 in 2023. Part of that deduction was disallowed by the business income limit, and the carryover is deducted on the 2025 Form 4562 line 12. The manufacturer and the registration classify the vehicle as a light truck.",
+       "why_no": "The help says to count a vehicle that is 'not a truck, van or motor home'. Many heavy SUVs are classified as light trucks for registration and fuel-economy purposes, so the filer reads the vehicle as a 'truck' and answers no. The same applies to a heavy pickup used much like an SUV.",
        "line": "ny_it201.suv_carryover_if_used",
-       "irs_text": "ny_it225i p. 11, A-208: \"with respect to a sport utility vehicle that weighs more than 6,000 pounds\"",
+       "irs_text": "ny_it225i p. 11, A-208: 'If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... then enter the amount of that deduction.'",
        "severity": "medium",
-       "fix": "Drop the blanket truck and van exclusion from the help, or state the statutory definition. For example: 'include pickups with a cargo bed under six feet and vans that seat nine or fewer behind the driver'."
+       "fix": "Drop the 'not a truck, van or motor home' exclusion, or replace it with the New York Tax Law definition. Ask the checkable fact instead: 'Was any of the property behind the carryover a car, SUV, pickup or other passenger-type vehicle rated over 6,000 pounds gross vehicle weight? Answer yes even if it is registered or sold as a light truck.' Classify after a broad yes."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer expensed an SUV whose curb weight is about 5,000 pounds but whose gross vehicle weight rating is over 6,000 pounds. A carryover from that deduction is used in 2025.",
-       "why_no": "The question and help say 'over 6,000 pounds'. The filer checks the curb or shipping weight, finds it is under 6,000 pounds, and answers no. The 6,000-pound threshold for SUVs is measured by gross vehicle weight rating.",
+       "pattern": "5",
+       "who": "A partner or S corporation shareholder received a section 179 deduction on a 2024 Schedule K-1. The entity had expensed an SUV over 6,000 pounds. The filer's own business income limit forced a carryover, which is deducted in 2025.",
+       "why_no": "The question asks whether the carryover came 'from expensing an SUV'. The filer did not buy or expense any vehicle; the entity did, and the K-1 shows only a dollar amount. So the filer answers no.",
        "line": "ny_it201.suv_carryover_if_used",
-       "irs_text": "ny_it225i p. 11, A-208: \"a sport utility vehicle that weighs more than 6,000 pounds\"",
+       "irs_text": "ny_it225i p. 11, A-208: 'If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds'",
        "severity": "medium",
-       "fix": "Say 'gross vehicle weight rating (GVWR, shown on the door-jamb label) over 6,000 pounds'."
+       "fix": "Add to the question and help: 'including section 179 passed through to you on a Schedule K-1 from a partnership or S corporation. Answer yes if the K-1 or the entity's statement shows the deduction included an SUV over 6,000 pounds, or if you do not know and the entity owns such vehicles.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A business owner expensed an SUV in an earlier year and uses it only for business.",
-       "why_no": "The help calls it a 'passenger vehicle'. The filer thinks of it as a work vehicle, not a passenger car, and answers no.",
+       "pattern": "1",
+       "who": "A filer whose carryover arose over several earlier years. An SUV was expensed in one of those years, but not in the year the filer thinks of as the carryover's origin.",
+       "why_no": "The help says to answer Yes 'when such a vehicle was among the property expensed in the year it arose'. That implies a single year. The filer checks only the most recent year's property list and answers no.",
        "line": "ny_it201.suv_carryover_if_used",
-       "irs_text": "ny_it225i p. 11, A-208: \"If you claimed an IRC § 179 deduction ... with respect to a sport utility vehicle\"",
+       "irs_text": "ny_it225i p. 11, A-208: 'then enter the amount of that deduction'",
        "severity": "low",
-       "fix": "Add to the help: 'including an SUV used only for business'."
+       "fix": "Change the help to: 'If you are not sure which property the carryover is from, answer Yes when such a vehicle was among the property you (or an entity passing section 179 to you) expensed in any earlier year whose disallowed amount is still being carried forward.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A Schedule C filer expensed an SUV over 6,000 pounds placed in service in 2025, and has no carryover from earlier years. Form 4562 line 12 is not more than line 9.",
+       "why_no": "The gate computes false because there is no carryover, so the SUV question is never asked. A-208 reaches any section 179 deduction on an SUV, not only carryovers.",
+       "line": "ny_it201.suv_carryover_if_used",
+       "irs_text": "ny_it225i p. 11, A-208: 'If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... then enter the amount of that deduction.'",
+       "severity": "low",
+       "fix": "Confirm that a separate, ungated line asks about current-year section 179 expensing of an SUV. If none exists, base the gate on Form 4562 line 12 > 0 and ask about any SUV in the deduction, current-year or carried over."
       }
      ],
-     "prompt_sha": "26f7655590b3ec0fbac83375e921ed4fb1acbe6b253954d53848a3150a6c0e52",
+     "prompt_sha": "44c26b281895ea4cd1d50319fec12c5a19d0816b6c61007c3ca214cd76df6a01",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
      "model": "claude-opus-5-5",
-     "cost": 0.091036,
-     "date": "2026-11-24",
-     "response": ".transcription/ny/false_no/gate_ny_it201.carryover_179_used.854263ae0e92.1.response.txt"
+     "cost": 0.11006799999999999,
+     "date": "2026-11-25",
+     "response": ".transcription/ny/false_no/gate_ny_it201.carryover_179_used.3a48c25a35eb.1.response.txt"
     }
    ],
    "condition": "ny_it201.carryover_179_used",
@@ -1033,7 +1033,7 @@
    ]
   },
   "gate:ny_it201.has_depreciable_business": {
-   "subject_sha": "e21431ac90bb7c6ec0d028978199a9434d6f9d4223bf6a766aa913ca4382d296",
+   "subject_sha": "358863a67614fc32f196d40f6ab8cf45ec8e25576c47d252eaed962440b3386e",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -1041,70 +1041,60 @@
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A farmer who files federal Schedule F, has no Schedule C, and rents out nothing. In 2022 they took bonus depreciation on a tractor still used in 2025.",
-       "why_no": "The gate asks only about a Schedule C or about renting out property or receiving royalties. A Schedule F filer truthfully has neither, so the 168(k) question is never asked.",
+       "who": "A farmer reports a farm on federal Schedule F and has no Schedule C and no rental or royalty income. In 2022 the farmer took bonus depreciation on a tractor or a farm building and still owns it in 2025.",
+       "why_no": "The computed gate asks only for a Schedule C or rent or royalties. A Schedule F farm is neither, so the gate is false and the bonus depreciation question is never asked.",
        "line": "ny_it201.prior_168k_if_business",
-       "irs_text": "ny_it225i pp. 20–21, S-213: \"New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003. If you claimed a depreciation deduction for such property ... then complete Part 1 of Form IT-398\"",
+       "irs_text": "ny_it225i p. 21, S-213: \"New York State does not follow the federal depreciation rules for IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003. If you claimed a depreciation deduction for such property ... complete Part 1 of Form IT-398\"",
        "severity": "high",
-       "fix": "Widen the gate to any depreciation or amortization on the federal return (Form 4562 filed now or in any year since 2003). That includes Schedule F, Form 4835 and Form 2106, and partnership, S corporation and trust K-1s. At minimum, add 'or a Schedule F' to the helper."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "A partner or S corporation shareholder with no Schedule C and nothing rented in their own name. Their K-1 includes depreciation on 168(k) property, and the entity supplies a New York 168(k) amount for S-213.",
-       "why_no": "They do not themselves 'rent out, offer for rent' anything they own or lease, and they have no Schedule C. Pass-through business or rental income on Schedule E, Part II does not match either helper.",
-       "line": "ny_it201.prior_168k_if_business",
-       "irs_text": "ny_it225i p. 21, S-213: \"Partners, shareholders, and beneficiaries: Do not complete Form IT-398 to determine the amount to enter. Enter the amount provided to you by the entity of which you are a partner, shareholder, or beneficiary\"",
-       "severity": "high",
-       "fix": "Add to the gate: 'Did you (or your spouse) receive a federal Schedule K-1 from a partnership, S corporation, estate or trust?' Then ask whether the K-1 or entity statement reports a New York IRC § 168(k) modification (S-213 or S-214)."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "An estate or trust beneficiary whose share of the fiduciary adjustment includes 168(k) depreciation on trust-owned business or rental property. The beneficiary has no Schedule C and rents nothing.",
-       "why_no": "A beneficiary neither owns nor rents the trust's property, so they truthfully answer no to both helpers.",
-       "line": "ny_it201.prior_168k_if_business",
-       "irs_text": "ny_it225i p. 21, S-213: \"Partners, shareholders, and beneficiaries: ... Enter the amount provided to you by the entity of which you are a partner, shareholder, or beneficiary\"",
-       "severity": "medium",
-       "fix": "Include estate and trust K-1s in the gate as above, or route them through the fiduciary adjustment (EA-901/ES-901) with the same refusal."
+       "fix": "Widen the gate to any business, farm or rental activity, current or past: Schedule C, Schedule F, Form 4835, Schedule E rents or royalties, or Form 4797. Or ask the bonus depreciation question of every filer, with Schedule F named in the help text."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer who closed a Schedule C business or stopped renting a property in 2024. In 2025 they sold equipment or the building on which they had taken bonus depreciation, reporting the sale only on Form 4797.",
-       "why_no": "The rental helper asks 'In 2025, did you ... rent out, offer for rent' and the Schedule C helper looks only at the current return. Both are truthfully no for 2025, but the S-214 disposition adjustment applies, and the gated question's Yes would have ended the New York part.",
+       "who": "A sole proprietor closed the business in 2024 and filed no 2025 Schedule C. In 2025 they sold equipment, on which they had taken bonus depreciation in 2021, and reported the sale on Form 4797.",
+       "why_no": "There is no Schedule C in 2025 and nothing was rented or earning royalties in 2025, so the gate is false. Yet the year-of-disposition adjustment for the earlier bonus depreciation is owed.",
        "line": "ny_it201.prior_168k_if_business",
        "irs_text": "ny_it225i p. 21, S-214: \"If you disposed of IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003 ... and your total federal depreciation deduction was more than the New York depreciation deduction for that property, then complete Part 2 of Form IT-398\"",
        "severity": "high",
-       "fix": "Add to the gate: 'In 2025, did you sell, exchange, or otherwise dispose of property you had depreciated for a business, rental or farm (for example, on Form 4797)?'"
+       "fix": "Add to the gate: \"In 2025, did you (or your spouse) sell, exchange, give away, convert to personal use or otherwise dispose of property you once used in a business, farm or rental?\" Or add a Form 4797 trigger."
       },
       {
        "kind": "FALSE_NO",
-       "pattern": "5",
-       "who": "An Armed Forces reservist, qualified performing artist, or fee-basis state or local official. They claim unreimbursed employee expenses on Form 2106, including bonus depreciation on a vehicle in an earlier year, and have no Schedule C or rental.",
-       "why_no": "Their depreciation is on Form 2106, not a Schedule C or rental, so both helpers are a truthful no.",
+       "pattern": "1",
+       "who": "A married couple took bonus depreciation on appliances and improvements while renting out a condo through 2023. They moved into it in 2024 and sold it in 2025, with no rent and no Schedule C in 2025.",
+       "why_no": "The scope question says \"In 2025, did you ... rent out, offer for rent, or receive rent\". Truthfully, they did not, because the rental ended before 2025.",
        "line": "ny_it201.prior_168k_if_business",
-       "irs_text": "ny_it225i pp. 20–21, S-213: \"If you claimed a depreciation deduction for such property ... then complete Part 1 of Form IT-398\"",
-       "severity": "medium",
-       "fix": "Make the gate depend on any depreciation claimed (any Form 4562 or Form 2106 vehicle depreciation since June 1, 2003), not on Schedule C or rental."
+       "irs_text": "ny_it225i p. 21, S-214: \"If you disposed of IRC § 168(k) property ... and your total federal depreciation deduction was more than the New York depreciation deduction for that property, then complete Part 2 of Form IT-398\"",
+       "severity": "high",
+       "fix": "Drop the 2025-only time frame from the gate. Ask whether the filer or spouse ever rented out, or used in a business, any property that they still held at any time in 2025 or disposed of in 2025."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who took bonus depreciation on property placed in service from January to May 2003, or who took it on property fully written off and disposed of before 2025 but still carries an IT-398 schedule.",
-       "why_no": "'Since 2003' does not match the June 1, 2003 cutoff, and 'still had in 2025' can be read to exclude property fully deducted earlier. The help partly covers this ('count property deducted in full'), but not the date.",
+       "pattern": "5",
+       "who": "A New York itemizer is an employee who deducts unreimbursed job expenses on Form IT-196. New York still allows these. The deduction includes depreciation, with bonus depreciation taken in an earlier year, on a vehicle or equipment used for work.",
+       "why_no": "The filer has no Schedule C and no rental, so the gate is false. The filer would not see employee job expenses as a business with depreciable property.",
        "line": "ny_it201.prior_168k_if_business",
-       "irs_text": "ny_it225i p. 21, S-213: \"IRC § 168(k) property placed in service inside or outside New York State on or after June 1, 2003\"",
+       "irs_text": "ny_it225i p. 21, S-213: \"If you claimed a depreciation deduction for such property ... complete Part 1 of Form IT-398\"",
+       "severity": "medium",
+       "fix": "Add an employee business expense trigger (Form 2106 or IT-196 depreciation) to the gate, or state in the instructions that this case is out of scope and refuse it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A partner or S corporation shareholder has no Schedule C and no direct rentals. Their K-1 or the entity's New York statement reports 168(k) modifications.",
+       "why_no": "The gate is false, so nothing is asked. The help text speaks only of the filer's own Form 4562 and Form IT-398, which partners are told not to complete.",
+       "line": "ny_it201.prior_168k_if_business",
+       "irs_text": "ny_it225i p. 21, S-213: \"Partners, shareholders, and beneficiaries: Do not complete Form IT-398 to determine the amount to enter. Enter the amount provided to you by the entity\"",
        "severity": "low",
-       "fix": "Say 'placed in service on or after June 1, 2003' and add 'or that you sold or disposed of in 2025'."
+       "fix": "Confirm that a separate question captures entity-provided S-213 and S-214 amounts. Otherwise add \"or a K-1 or entity statement reporting a New York 168(k) adjustment\" to the gate."
       }
      ],
-     "prompt_sha": "4a70ba5bb22d987df501a1b4a684910cdfbae58d97f40c693976de67e071608a",
+     "prompt_sha": "ce0314a9a9851d9365056de42a37cc3f8ef157d5c97fed1fc7655207ae5c9d35",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
      "model": "claude-opus-5-5",
-     "cost": 0.094096,
-     "date": "2026-11-23",
-     "response": ".transcription/ny/false_no/gate_ny_it201.has_depreciable_business.e21431ac90bb.1.response.txt"
+     "cost": 0.09481200000000001,
+     "date": "2026-11-25",
+     "response": ".transcription/ny/false_no/gate_ny_it201.has_depreciable_business.358863a67614.1.response.txt"
     }
    ],
    "condition": "ny_it201.has_depreciable_business",
@@ -1533,7 +1523,7 @@
    ]
   },
   "gate:ny_it201.has_unemployment": {
-   "subject_sha": "121386ca7685c88eaa60a5b9af1c79b5a69c714877bbb3b150de25470b8e79bf",
+   "subject_sha": "eeb4a6015eee262024f5b12ceff431fa39565bf7b0b674cd03022cdeae0321c9",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -1541,40 +1531,40 @@
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A former railroad worker, or the spouse on a joint return, who drew only sickness benefits from the Railroad Retirement Board under the Railroad Unemployment Insurance Act in 2025 and no unemployment benefits. The Board reports taxable sickness benefits on Form W-2, so they go into federal wages (IT-201 line 1), and line 14 is $0.",
-       "why_no": "The gate is computed as line 14 > $0. Railroad sickness benefits are federal wages, not unemployment compensation, so line 14 is $0 and the question is never asked. The tool treats the line as no and finishes the return without stopping.",
+       "who": "A New York resident, or a spouse on a joint return, who received Railroad Unemployment Insurance Act sickness benefits for a non-work illness and had no unemployment compensation. The Railroad Retirement Board reports sickness benefits on a Form W-2, so they go into federal wages on line 1, not line 14.",
+       "why_no": "The tool computes the gate from line 14 being more than $0. Sickness benefits are not on line 14, so the gate is false and the railroad question is never asked, even though the tool's own helper names 'Railroad unemployment or sickness benefits'.",
        "line": "ny_it201.railroad_uc_if_uc",
-       "irs_text": "ny_it225i (2025) p. 17, S-122: \"benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)\"",
+       "irs_text": "ny_it225i (2025) p. 17, S-122: 'benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)'",
        "severity": "high",
-       "fix": "Ask the railroad question on its own, not only when line 14 > $0: \"Did you (or, on a joint return, your spouse) receive any unemployment or sickness benefits from the Railroad Retirement Board (Form 1099-G or Form W-2 issued by the RRB)?\" Or open the gate when line 14 > $0 OR line 1 > $0."
+       "fix": "Do not gate on line 14 alone. Ask every filer who had wages or unemployment compensation: 'Did you (or your spouse) receive unemployment or sickness benefits from the U.S. Railroad Retirement Board in 2025 (reported on a Form 1099-G or Form W-2 from the RRB)?'"
       },
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A joint filer whose line 14 holds state unemployment for one spouse, while the other spouse received RUIA sickness benefits from the Railroad Retirement Board, reported as wages on an RRB Form W-2.",
-       "why_no": "The question asks only whether \"unemployment benefits\" were \"paid by the Railroad Retirement Board\". The household's unemployment benefits came from the state, and the RRB money was sickness benefits, so the truthful answer is no. The help text mentions sickness benefits only as a statement, not as part of the question.",
+       "who": "A joint filer with New York State unemployment insurance on line 14 whose spouse received RRB sickness benefits (on an RRB-issued Form W-2) but no RRB unemployment benefits.",
+       "why_no": "The gate holds, but the question asks only whether any 'unemployment benefits [were] paid by the Railroad Retirement Board', and the help speaks only of 'Railroad unemployment benefits'. The sickness benefits are not unemployment benefits, so a truthful answer is no.",
        "line": "ny_it201.railroad_uc_if_uc",
-       "irs_text": "ny_it225i (2025) p. 17, S-122: \"Certain railroad retirement income and railroad unemployment insurance benefits ... benefits received under the Railroad Unemployment Insurance Act\"",
+       "irs_text": "ny_it225i (2025) p. 17, S-122: 'benefits received under the Railroad Unemployment Insurance Act'",
        "severity": "high",
-       "fix": "Word the question as: \"Did you (or, on a joint return, your spouse) receive any unemployment or sickness benefits paid by the Railroad Retirement Board under the Railroad Unemployment Insurance Act, whether reported on Form 1099-G or Form W-2?\""
+       "fix": "Ask: 'Did you (or your spouse) receive any unemployment or sickness benefits under the Railroad Unemployment Insurance Act, paid by the U.S. Railroad Retirement Board?' Add help that sickness benefits come on a Form W-2 from the RRB."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "4",
-       "who": "A filer whose railroad unemployment benefits were reported on a Form 1099-G from the Railroad Retirement Board but who thinks of the payer as their railroad employer, a union, or 'the railroad unemployment program', not 'the Railroad Retirement Board'.",
-       "why_no": "\"paid by the Railroad Retirement Board\" names one issuer. A filer who does not recognize the RRB as the payer, or who counts the benefits as ordinary state unemployment, may answer no.",
+       "who": "A filer whose railroad unemployment benefits were reported on a Form 1099-G and entered on line 14 with state unemployment benefits, and who thinks of the payment as coming from the railroad employer or a union program, not the Board.",
+       "why_no": "The question names one issuer, 'paid by the Railroad Retirement Board'. A filer who does not recognize the RRB as the payer may answer no, which skips the refusal.",
        "line": "ny_it201.railroad_uc_if_uc",
-       "irs_text": "ny_it225i (2025) p. 17, S-122: \"benefits received under the Railroad Unemployment Insurance Act ... (but that you included in your federal income)\"",
+       "irs_text": "ny_it225i (2025) p. 17, S-122: 'benefits received under the Railroad Unemployment Insurance Act ... (but that you included in your federal income)'",
        "severity": "medium",
-       "fix": "Add to the help: \"Railroad unemployment and sickness benefits are paid by the U.S. Railroad Retirement Board (RRB), not by New York State. Check whether your Form 1099-G or Form W-2 shows the RRB as the payer.\""
+       "fix": "Point to the document: 'Did any Form 1099-G or Form W-2 you (or your spouse) received show the U.S. Railroad Retirement Board as payer, or did you receive railroad unemployment or sickness benefits?'"
       }
      ],
-     "prompt_sha": "731d457081d2713a82b39fe088132efbb574842f7f074b284ffaf1654e715cba",
+     "prompt_sha": "26d48977d35cbb64d24f5794d75e91156939cc8b63230f5a4b1d491bd232eda6",
      "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
      "model": "claude-opus-5-5",
-     "cost": 0.062308,
-     "date": "2026-11-24",
-     "response": ".transcription/ny/false_no/gate_ny_it201.has_unemployment.121386ca7685.1.response.txt"
+     "cost": 0.064664,
+     "date": "2026-11-25",
+     "response": ".transcription/ny/false_no/gate_ny_it201.has_unemployment.eeb4a6015eee.1.response.txt"
     }
    ],
    "condition": "ny_it201.has_unemployment",

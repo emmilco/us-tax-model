@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "967264f92b4f12f49b8e65c16bb93a24be5c589d17652ae79c3b265ba870c5b8",
  "head_rows": {
-  "printed lines compared": "10",
-  "agree / disagree / missing": "1 / 9 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-24); see Line-scoped reviews"
+  "printed lines compared": "11",
+  "agree / disagree / missing": "1 / 10 / 0",
+  "line-scoped reviews": "5 (latest 2026-11-25); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -58,6 +58,13 @@
    "subject_key": "7c3446c26b74ea5cfe5e3d8ed355c6bf7a5a239acc92685379b425e009b67703"
   },
   {
+   "key": "scope.f8978_if_business_before",
+   "record": "c26ba206d13c5478dd1aaf2488681b9ee10adc165fadd6a0224c7c73a45cc44c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1040gi line 16, \"Tax from Form 8978, line 14\". The reply's conjunction of the two answers is the project's choose: when scope.business_before is false the project gives household.no (false) without asking scope.f8978, and the reply's all is false on the same known first operand; when it is true both give scope.f8978. Same value on every input that answers the gate; held for adjudication as the one-in-ten audit sample.",
+   "subject_key": "bd3267ba0bffe1804bb0e4fc1ee627193b63b5a1c755d76f620b10ea5ce7ed44"
+  },
+  {
    "key": "scope.schedule1",
    "record": "2ffaedd122290c3749d2d04103bff1497715ef3cdb8afde525802300bf46e1e2",
    "status": "DISAGREE",
@@ -87,6 +94,7 @@
   "scope.tips_unreported_if_pay": "00259428488f6304ddf62dca19ec13880901e9f2c5c10623d4f07a2606369326",
   "scope.strike_pay_if_pay": "c33b66de5acc1cdb893e0b32a73da4b75367b865b8495bdf79935e01e81129c6",
   "scope.excess_deferral_if_w2": "f62b1921e36df83067fa2da62cd47f106dfc9fe5cb829ed703143c124679ee03",
+  "scope.f8978_if_business_before": "3abac6197b8018da9452cb132583850ed3062cac981f9c724f900031d1b4d6ae",
   "scope.schedule1": "339e363e2b869ee325e8d858a489c550cfcb0d35b07ef90b433887cac11e18fb",
   "scope.other_income": "1ca968c7c420edaa59c7f649ff812a8039ab0de6a10d02c3bf120ea3b14eb2d3",
   "scope.other_line16": "1b2fe692e217c68a900d353c42f9594839c291a77f532e65a009239b670e2a3f"
@@ -100,6 +108,7 @@
   "scope.tips_unreported_if_pay": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "scope.strike_pay_if_pay": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "scope.excess_deferral_if_w2": "057a207b3671167074c52c60785b543abaf1a4748c6cb99727ac0b1bc2a8da1a",
+  "scope.f8978_if_business_before": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "scope.schedule1": "10b1502db6a36d41a0ffc5423c74e95c279ee954b169a5d8144a9a83af36b692",
   "scope.other_income": "cfc694723d808a9eb9747f8a66507176f04acd9be445f2e01cd588217f2b6c12",
   "scope.other_line16": "bc6466ed6f67ed39a3f0ffe9a5a27a94cf40ccb608929b247239034df02293b4"

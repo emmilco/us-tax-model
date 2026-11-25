@@ -5937,6 +5937,56 @@
   ]
  },
  {
+  "screen": "gate:dependent.own_child_asked",
+  "subject_sha": "61d3db3f9502316a7bd23a548bfdacc163c7000bd75e1e3ee8cd85edba9b8a24",
+  "samples": [
+   {
+    "verdict": "COVERS",
+    "findings": [
+     {
+      "kind": "WIDE",
+      "situation": "A filer filing as qualifying surviving spouse lists several children, and test 2 is already met by one of them, yet the own-child question is asked for each listed child.",
+      "irs_text": "i1040gi p. 15: \"2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent\"",
+      "why": "Test 2 needs only one qualifying child, so the gated line for the other children does not change the filing status. This costs a few extra questions and drops no amount."
+     }
+    ],
+    "prompt_sha": "3f372a74c7aad77a5a557cf9d66588b10a2a1a0103a6917ed8cbb2bef271ea59",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.038732,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_dependent.own_child_asked.61d3db3f9502.1.response.txt"
+   }
+  ],
+  "kind": "gate",
+  "condition": "dependent.own_child_asked",
+  "lines": [
+   "dependent.own_child_if_qss"
+  ],
+  "inputs": [
+   "dependent.own_child"
+  ],
+  "used": [
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     15
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 15, Qualifying Surviving Spouse, \"2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent\"",
+     "p. 15, Qualifying Surviving Spouse, \"2. You have a child or stepchild (not a foster child)\" and \"An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption\""
+    ],
+    "cols_pages": [
+     15
+    ],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   }
+  ]
+ },
+ {
   "screen": "gate:dependent.own_money",
   "subject_sha": "9d3d8ac0aba9e00f4b38c925ad7000e67e677ed321d6dcbf2a1879d29d169077",
   "samples": [
@@ -9644,24 +9694,24 @@
   ]
  },
  {
-  "screen": "gate:f8863.aoc_claimed",
-  "subject_sha": "a6fd0ab52f4d667f74681d70f22c059468e4b98bf19840b8714fe16afd57e982",
+  "screen": "gate:f8863.aoc_possible",
+  "subject_sha": "29db5778735c0b573e84219bfb115a4979d7a9c384e6ad365ac71fa3d37d3017",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [],
-    "prompt_sha": "dfef0483ad605209e5818d5ef97e24af6c92a8dbff502b144f0317db823d9ea0",
+    "prompt_sha": "e9f90b9b387a48caa00e4320d6a129d3bfb33a84cb493c9b0bb5dd5fc4b5f0fe",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.038404,
+    "cost": 0.03852,
     "model": "claude-opus-5-5",
-    "date": "2026-11-22",
-    "response": ".transcription/screens/gate_f8863.aoc_claimed.a6fd0ab52f4d.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_f8863.aoc_possible.29db5778735c.1.response.txt"
    }
   ],
   "kind": "gate",
-  "condition": "f8863.aoc_claimed",
+  "condition": "f8863.aoc_possible",
   "lines": [
-   "f8863.ban_refused"
+   "f8863.ban_if_aoc"
   ],
   "inputs": [
    "f8863.ban"
@@ -9677,8 +9727,6 @@
     ],
     "how": "cited pages",
     "locators": [
-     "p. 1, Form 8862 may be required, \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.\"",
-     "p. 1, Form 8862 may be required, \"to your tax return for the next tax year for which you claim the credit\"",
      "p. 3, American Opportunity Credit, \"Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\"; p. 1, Form 8862 may be required, \"you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit\""
     ],
     "cols_pages": [
@@ -11604,36 +11652,30 @@
  },
  {
   "screen": "gate:household.marriage_possible",
-  "subject_sha": "3b41064169e6c4e32d13cdb1dee6f7ce01292ef008ed15c07c004ec4ff9c10d8",
+  "subject_sha": "969ff5ce3d5d743a0725bb149ae3185e5fe604bbda6e431b6d6ddaf022d2c051",
   "samples": [
    {
-    "verdict": "NARROW",
+    "verdict": "UNCLEAR",
     "findings": [
      {
-      "kind": "NARROW",
-      "situation": "A filer who is single or head of household and has never been married is a registered domestic partner in Nevada, Washington, or California and lived there in 2025.",
-      "irs_text": "i1040gi p. 23: 'Nevada, Washington, and California domestic partners. A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner.'",
-      "why": "The gate is false because the filer has never been married, so the community-property question is not asked and the line is zero, even though the IRS text requires the domestic partner to split community income."
-     },
-     {
       "kind": "UNCLEAR",
-      "situation": "A single or head-of-household filer in a common-law marriage recognized by the state is asked only 'Have you ever been married?'",
-      "irs_text": "p501 p. 6: 'You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.'",
-      "why": "The gate does not say that a recognized common-law marriage counts as married; a filer who had no formal ceremony could reasonably answer no, making the gate false and dropping the marriage-related lines."
+      "situation": "A filer who chose single or head of household lives in a common-law marriage that their state recognizes and may answer No to the bare gate question 'Have you ever been married?'",
+      "irs_text": "p501 p. 6, Considered married: \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\"",
+      "why": "The gate question has no help text saying a recognized common-law marriage counts, so such a filer could read it as asking only about a ceremonial marriage and answer No. That No would skip household.married_dec31, whose help covers this case, and the 2025 community-property and spouse-died questions."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer uses qualifying surviving spouse status for 2025 after a spouse died in 2023 or 2024 and did not remarry.",
-      "irs_text": "p501 p. 6: 'For the next 2 years, you may be entitled to the special benefits described later under Qualifying Surviving Spouse.'",
-      "why": "The gate is true for qualifying surviving spouse status, but the spouse did not die in 2025 and the filer was not married during 2025, so every gated line is zero."
+      "situation": "A single or head-of-household filer whose divorce became final years before 2025, and who has not remarried, answers Yes to 'Have you ever been married?'",
+      "irs_text": "p501 p. 6, Divorced persons: \"If you are divorced under a final decree by the last day of the year, you are considered unmarried for the whole year.\"",
+      "why": "This filer reaches all three gated questions, but each one is no for them: not married at the end of 2025, no spouse who died in 2025, and no marriage during 2025 in a community property state."
      }
     ],
-    "prompt_sha": "608928d062048f7bc673ddf7aad469a9213c3f8ad00ea6e2806f1b4ae491c2ff",
+    "prompt_sha": "e2469e96313e958577cd9d10954b76f1559a71892841ee217234faade52ed1c3",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_household.marriage_possible.3b41064169e6.1.response.txt"
+    "cost": 0.08075199999999999,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_household.marriage_possible.969ff5ce3d5d.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -15681,36 +15723,30 @@
  },
  {
   "screen": "gate:person.has_hsa",
-  "subject_sha": "807272bc274066e2b74e7c89bd560e6b3f588bc6327aac213e7238d11416230a",
+  "subject_sha": "c11b271777ee940bdbf21de8cd30d013f8f4398f3b6046cf22f15f5c7a294a1d",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A person whose HSA got an excess contribution in an earlier year, still in the account, but who had no HSA contributions or distributions in 2025, so no Form 8889 was entered and the gate is false.",
-      "irs_text": "f5329 (2025) p. 2, Part VII: \"Complete this part if you, someone on your behalf, or your employer contributed more to your HSAs for 2025 than is allowable or you had an amount on line 49 of your 2024 Form 5329.\"; line 42: \"Enter the excess contributions from line 48 of your 2024 Form 5329.\"",
-      "why": "Part VII applies whenever a prior-year excess carries forward, even with no 2025 HSA activity. Such a person may have no Form 8889 to enter, so a count of Forms 8889 can be zero while the 6% tax on line 49 still applies to the carried-over excess."
+      "situation": "A person still had an uncorrected HSA excess from an earlier year in the account during 2025, but made no 2025 HSA contributions or distributions, so they enter no Form 8889 and the count is 0.",
+      "irs_text": "f5329 (2025) p. 2, Part VII: \"Complete this part if you ... contributed more to your HSAs for 2025 than is allowable or you had an amount on line 49 of your 2024 Form 5329\"; line 42: \"Enter the excess contributions from line 48 of your 2024 Form 5329\"; line 49: \"Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025\"",
+      "why": "The carried-over excess gives Part VII an amount and a 6% tax whether or not the filer had 2025 HSA activity. A filer with an idle HSA has no reason to enter a Form 8889, so the computed condition is false and the prior-excess question is never asked."
      },
      {
       "kind": "SOURCE",
-      "situation": "The gate cites the Part II (education/ABLE distributions) and Part IX (missed required minimum distributions) conditions, but the gated line is the Part VII HSA carryover, whose stated condition is different.",
-      "irs_text": "f5329 (2025) p. 2, Part VII: \"...or you had an amount on line 49 of your 2024 Form 5329.\" versus cited f5329 p. 1, Part II: \"Complete this part if you included an amount in income... from a Coverdell education savings account (ESA)...\" and p. 3, Part IX: \"Complete this part if you did not receive the minimum required distribution...\"",
-      "why": "Part VII's own condition is a prior-year HSA excess shown on the 2024 Form 5329, not 'a Form 8889 was entered'. The cited Part II and Part IX conditions have nothing to do with HSA excess contributions."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "The help text tells the filer to look for an amount on line 48 of the 2024 Form 5329, while the Part VII heading refers to line 49 of the 2024 Form 5329.",
-      "irs_text": "f5329 (2025) p. 2, Part VII heading: \"you had an amount on line 49 of your 2024 Form 5329\"; line 42: \"Enter the excess contributions from line 48 of your 2024 Form 5329\"",
-      "why": "A filer checking the 2024 form could look at line 49 (the 6% tax line) instead of line 48 (the total excess) and be unsure which line decides the answer."
+      "situation": "The cited text sets the condition as having an amount on the 2024 Form 5329, but the gate tests whether a 2025 Form 8889 was entered.",
+      "irs_text": "f5329 (2025) p. 2, Part VII: \"or you had an amount on line 49 of your 2024 Form 5329\" vs gate: \"Number of Forms 8889 entered for this person > 0\"",
+      "why": "The gate tests a different event (a 2025 Form 8889 being entered) from the one the cited text states (a prior-year Form 5329 HSA excess tax). The two can diverge."
      }
     ],
-    "prompt_sha": "1d5cb537e1f8d8d1bc1e16895c63d0ecb025fee48372ecce8611b4593894f1bc",
+    "prompt_sha": "350bc84093444e89d81e2117c6b967527ed52ab53bee7d43ce448630b1902beb",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.07292399999999999,
+    "cost": 0.056164,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_person.has_hsa.807272bc2740.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_person.has_hsa.c11b271777ee.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -15733,24 +15769,10 @@
     ],
     "how": "whole document",
     "locators": [
-     "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+     "p. 2, Part VII, \"or you had an amount on line 49 of your 2024 Form 5329\""
     ],
     "cols_pages": [],
     "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
-   },
-   {
-    "doc": "i5329",
-    "revision": "2025",
-    "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
-    "pages": [
-     9
-    ],
-    "how": "pages named by another document's citation",
-    "locators": [],
-    "cols_pages": [
-     9
-    ],
-    "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
    }
   ]
  },
@@ -15847,30 +15869,24 @@
  },
  {
   "screen": "gate:person.ira_owner",
-  "subject_sha": "32dba6de11da073b6a9b71079d1da1cdb13df95a02b5546397ce62134d39ce53",
+  "subject_sha": "e9091747b45e2ee3aa9e0c18ca12d663e3b6c33ab10065f580765eb460eb0760",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "A filer who only holds an IRA (for example an inherited IRA or an old traditional IRA) and made no 2025 contributions and has no leftover excess answers yes but gets no amount on any gated line.",
-      "irs_text": "f8880 p. 2: \"You may be able to take this credit if you, or your spouse if filing jointly, made (a) contributions (other than rollover contributions) to a traditional or Roth IRA\"",
-      "why": "Owning an IRA is broader than contributing to one for 2025 or carrying a prior-year excess. This only costs extra questions, which the gate accepts by design."
-     },
-     {
-      "kind": "WIDE",
-      "situation": "A filer with only an employer SEP or SIMPLE IRA answers yes, but the traditional-contribution question tells them not to count SEP or SIMPLE money.",
-      "irs_text": "i8606 p. 4: \"If you make your own contributions to a traditional SEP IRA (excluding employer contributions you make if you are self-employed), they are treated as contributions to a traditional IRA\"",
-      "why": "Counting SEP and SIMPLE IRAs in the gate asks more people than can have an amount on these lines. It drops no amount."
+      "situation": "A person whose only IRA is an inherited IRA, or an old IRA with no 2025 contributions and no earlier excess, answers yes and is asked all three gated questions, though every gated line is zero.",
+      "irs_text": "f8880 p. 2, Who Can Take This Credit: \"made (a) contributions (other than rollover contributions) to a traditional or Roth IRA\"; f5329 p. 1, Part III: \"or you had an amount on line 17 of your 2024 Form 5329\"",
+      "why": "Owning an IRA is broader than contributing to one for 2025 or carrying an earlier excess. This costs only extra questions, which is acceptable because the gate is meant to lean to yes."
      }
     ],
-    "prompt_sha": "23b74c71c18d453dff5780f93fd4935724c8599d1fb051f6fddf6ad3381447ee",
+    "prompt_sha": "a375bfe656c628cae9eb65e3657dc0e6cee3ce3ce2805e06ac35d2ab5a45a347",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.116056,
+    "cost": 0.09314,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_person.ira_owner.32dba6de11da.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_person.ira_owner.e9091747b45e.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -15916,7 +15932,7 @@
     ],
     "how": "whole document",
     "locators": [
-     "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+     "p. 1, Part III, \"or you had an amount on line 17 of your 2024 Form 5329\"; p. 1, Part IV, \"Complete this part if you contributed more to your Roth IRAs\", \"or you had an amount on line 25 of your 2024 Form 5329\""
     ],
     "cols_pages": [],
     "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
@@ -15960,20 +15976,6 @@
      31
     ],
     "cols_sha256": "cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b"
-   },
-   {
-    "doc": "i5329",
-    "revision": "2025",
-    "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
-    "pages": [
-     9
-    ],
-    "how": "pages named by another document's citation",
-    "locators": [],
-    "cols_pages": [
-     9
-    ],
-    "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
    }
   ]
  },
@@ -16499,30 +16501,24 @@
  },
  {
   "screen": "gate:person.x_edu_account",
-  "subject_sha": "86686e8083c71bfa6311c3d9ee65e06622b991a2282009fb264b8488599e73b9",
+  "subject_sha": "992b692709c34d61ebab52d3b4f1e13029811076a4b5ccf8c0a6d73d15a281ea",
   "samples": [
    {
-    "verdict": "SOURCE",
+    "verdict": "COVERS",
     "findings": [
      {
-      "kind": "SOURCE",
-      "situation": "The gate asks about having an education savings or ABLE account, but the cited Part IX condition is failing to receive a required minimum distribution from a qualified retirement plan.",
-      "irs_text": "f5329 (2025) p. 3, Part IX: \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"",
-      "why": "The gate does not ask about required minimum distributions, so it does not implement the condition stated in the cited Part IX text."
-     },
-     {
       "kind": "WIDE",
-      "situation": "A filer merely had a 529 plan, Coverdell ESA, or ABLE account in 2025 with no excess contribution and no taxable distribution.",
-      "irs_text": "f5329 (2025) p. 1, Part II: \"Complete this part if you included an amount in income ... from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or ... from an ABLE account.\"",
-      "why": "Having an account by itself does not create a taxable distribution or an excess contribution; the gate leans to yes."
+      "situation": "A filer whose only account is a 529 plan with no distribution in 2025 answers yes to the gate, yet the IRS text gives no Part II or Part V/VIII amount.",
+      "irs_text": "f5329 p. 2, Part V: \"Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329\"; p. 1, Part II: \"Complete this part if you included an amount in income ... from a Coverdell education savings account (ESA) or a qualified tuition program (QTP) ... or ... from an ABLE account.\"",
+      "why": "Holding an account is broader than having excess contributions or a taxable distribution. A 529 plan never feeds the excess-contribution parts. This only costs extra questions."
      }
     ],
-    "prompt_sha": "a09d5811cf2de409152409292b389ba0dc07c178e70936b579c5d8bb82272482",
+    "prompt_sha": "5a4f6bf8da5ab343941714fd79ef43991abe7afed0e0158dabe63400ca775033",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/gate_person.x_edu_account.86686e8083c7.1.response.txt"
+    "cost": 0.058712,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_person.x_edu_account.992b692709c3.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -16547,24 +16543,12 @@
     ],
     "how": "whole document",
     "locators": [
-     "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+     "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"",
+     "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 2, Part V, \"Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329\"; p. 2, Part VIII, \"Complete this part if contributions to your ABLE account for 2025 were more than is allowable\"",
+     "p. 2, Part V, \"Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329\"; p. 2, Part VIII, \"Complete this part if contributions to your ABLE account for 2025 were more than is allowable\""
     ],
     "cols_pages": [],
     "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
-   },
-   {
-    "doc": "i5329",
-    "revision": "2025",
-    "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
-    "pages": [
-     9
-    ],
-    "how": "pages named by another document's citation",
-    "locators": [],
-    "cols_pages": [
-     9
-    ],
-    "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
    }
   ]
  },
@@ -19890,66 +19874,48 @@
  },
  {
   "screen": "gate:s1.has_sc",
-  "subject_sha": "8a6e6177a61cbe6b18d0b515aeffd07b8ef42167d9cc19606c28cd236277c834",
+  "subject_sha": "c48e88a7ea571ab737d1cea6c517c840555a8807d724a9a07896ab523658903b",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer is a partner or has a Schedule F farm, has no Schedule C, and puts money into a solo 401(k) or other qualified plan for 2025; the computed condition is false, so the plan question is never asked.",
-      "irs_text": "i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduc-[tion]\"",
-      "why": "The cited text extends the line 16 deduction to partners and to self-employed people generally. The gate admits only filers with a Schedule C."
+      "situation": "A filer has no Schedule C, but suspended passive, at-risk or basis-limited losses from a partnership, S corporation, Schedule E rental business or Schedule F farm are allowed in 2025. The QBI question is never reached, so the out-of-scope refusal is skipped.",
+      "irs_text": "i8995 p. 3: 'When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward from a separate trade or business'; p. 3: 'sections 163(j), 179, 461(l), 465, 469, 704(d), and 1366(d)'; p. 4, Line 3: 'even if the loss was from a trade or business that is no longer in existence'",
+      "why": "Sections 469, 704(d) and 1366(d) mainly suspend losses of partnerships, S corporations and rentals, none of which are on Schedule C. The loss can also come from a business that no longer exists, so having a Schedule C on the return does not mark the situation."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer has no Schedule C in 2025 but had a qualified business net loss in 2018–2024 that was never reported, and in 2025 has QBI from Schedule F, Schedule E or a K-1, or needs to carry the loss forward.",
-      "irs_text": "i8995a p. 6: \"This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence\"; i8995 p. 5, Line 16: \"This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence.\"",
-      "why": "The carryforward survives the business and offsets QBI from any trade or business. Gating on a current Schedule C drops it when the loss came from a closed business or the 2025 QBI comes from elsewhere."
+      "situation": "A filer whose 2018–2024 business loss was never reported has no 2025 Schedule C but has QBI from a partnership, S corporation, rental business or farm. The unreported carryforward is never asked about.",
+      "irs_text": "i8995a p. 6: 'This includes prior year loss carryforwards even if the loss was unreported or the trade or business that generated the loss is no longer in existence'; i8995 p. 5, Line 16: 'This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence'",
+      "why": "The carryforward offsets any 2025 QBI, not just Schedule C income, and it survives the end of the business that generated it. Gating on a 2025 Schedule C drops it."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer whose business closed before 2025, or whose business is a partnership, S corporation or farm, has an earlier-year suspended loss (passive, at-risk or section 179) allowed in 2025, and the return has no Schedule C.",
-      "irs_text": "i8995 p. 3: \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income, the qualified portion ... is treated as a qualified net loss carryforward from a separate trade or business\"; i8995 p. 4, Line 3: \"even if the loss was from a trade or business that is no longer in existence\"",
-      "why": "Suspended losses are released, for example on disposition, from businesses that are not on a 2025 Schedule C. The gate never asks about them."
+      "situation": "A filer deducts intangible drilling costs, mining costs or circulation costs passed through on a partnership or S corporation K-1, or reported on Schedule E, and has no Schedule C.",
+      "irs_text": "i6251 p. 7, Line 2t: 'IDCs from oil, gas, and geothermal wells are a preference to the extent that the excess IDCs are more than 65% of the net income from the wells'; Line 2q: 'Mining exploration and development costs deducted in full for the regular tax ... must be capitalized and amortized over 10 years for the AMT'",
+      "why": "The AMT preference applies to these costs however they are deducted. Oil and gas IDCs very commonly reach individuals through partnership K-1s, not Schedule C, so the gate skips the question."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer deducts intangible drilling costs, mining costs or circulation costs through a partnership or S corporation K-1, or through a Schedule E interest, and has no Schedule C.",
-      "irs_text": "i6251 p. 7, Line 2t: \"IDCs from oil, gas, and geothermal wells are a preference\"; Line 2q: \"Mining exploration and development costs deducted in full for the regular tax ... must be capitalized and amortized over 10 years for the AMT\"",
-      "why": "The AMT adjustments apply to these costs however they are deducted, including pass-through shares. The gate limits the question to Schedule C filers."
+      "situation": "A filer has fishing-business income through a partnership K-1, or from leasing a fishing vessel for a share of the catch reported on Schedule E, and has no Schedule C.",
+      "irs_text": "i1040sj p. 1: 'elect to figure your 2025 income tax by averaging ... all or part of your 2025 taxable income from your trade or business of farming or fishing'; fishing business includes '5. Leasing a fishing vessel, but only if the lease payments are (a) based on a share of the catch'",
+      "why": "Schedule J eligibility depends on having fishing-business income, not on filing Schedule C. A fishing partner or a vessel lessor with no Schedule C is never asked and could elect income averaging."
      },
      {
       "kind": "NARROW",
-      "situation": "A filer owes or claims look-back interest on Form 8697 as a partner or shareholder of a pass-through entity with a long-term contract, or on Form 8866 for income-forecast property held outside a Schedule C, and has no Schedule C.",
-      "irs_text": "f1040s2 line 17n: \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\"",
-      "why": "Schedule 2 line 17n is not limited to Schedule C activity. Pass-through owners and non-Schedule C holders of forecast-method property can owe this interest."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer has fishing-business income as a partner in a fishing partnership (K-1) with no Schedule C and wants to elect Schedule J averaging.",
-      "irs_text": "i1040sj p. 1: \"all or part of your 2025 taxable income from your trade or business of farming or fishing\"; i1040gi p. 36: \"If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J\"",
-      "why": "Schedule J eligibility depends on income from a fishing trade or business, not on filing Schedule C. Fishing income from a pass-through misses the gate."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "On a joint return where the spouse's Schedule C deducts the car loan interest, the filer is asked about interest deducted as an expense of \"your own business\" and may answer zero.",
-      "irs_text": "i1040gi p. 110, line 22 column (ii): \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C ...)\"",
-      "why": "Column (ii) covers any amount deducted on the return, including a spouse's Schedule C. The question's \"your own business\" does not clearly include the spouse's business."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "On a joint return where only the spouse runs a fishing business, the question \"Is your business fishing\" may be read as asking only about the filer's own business.",
-      "irs_text": "i1040sj p. 1: \"your 2025 taxable income from your trade or business of farming or fishing\"",
-      "why": "The election part of the question names the spouse, but the business part says only \"your business\". A filer could truthfully answer no when only the spouse fishes."
+      "situation": "A partner with self-employment income from a K-1, or a farmer filing Schedule F, has no Schedule C and contributes to a solo 401(k) or other qualified plan for 2025.",
+      "irs_text": "i1040gi p. 93, Line 16: 'If you were self-employed or a partner, you may be able to take this deduction'",
+      "why": "The IRS text names partners explicitly, and Schedule F filers are also self-employed. The Schedule C count misses both, so the plan contribution and its refusal are silently dropped."
      }
     ],
-    "prompt_sha": "c9bda57c7cd47d4b958465efa1ed639eabf3e3e3535b50b0ad9f7121f66685b4",
+    "prompt_sha": "52c925305e4873c1255bd070ffac3c744dff1511bfc2b7c439f0efe9ba4d90d0",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.22,
+    "cost": 0.184052,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_s1.has_sc.8a6e6177a61c.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_s1.has_sc.c48e88a7ea57.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -19959,7 +19925,6 @@
    "qbi.suspended_if_business",
    "qbi.unreported_loss_if_business",
    "s2.amt_business_if_sc",
-   "s2.lookback_if_business",
    "scope.income_averaging_if_business",
    "scope.se_plan_other_if_business"
   ],
@@ -19968,7 +19933,6 @@
    "qbi.suspended",
    "qbi.unreported_loss",
    "s2.amt_business",
-   "s2.lookback",
    "scope.income_averaging",
    "scope.se_plan_other"
   ],
@@ -20077,21 +20041,6 @@
      7
     ],
     "cols_sha256": "a67c0bf9545d844d38c9381522baf62c51fc59813677029e87af8a01232e6c7f"
-   },
-   {
-    "doc": "f1040s2",
-    "revision": "2025; created 2025-05-08",
-    "text_sha256": "29e3a05ca4dca4b5316833984170cff8815045c2e3957d048cb713ad90cb728f",
-    "pages": [
-     1,
-     2
-    ],
-    "how": "whole document",
-    "locators": [
-     "Schedule 2 (2025), line 17n"
-    ],
-    "cols_pages": [],
-    "cols_sha256": "129b2541cce9743c9bde3a48fdfcc2512767d88b7cbbbe562d7989b117232d62"
    },
    {
     "doc": "f1040",
@@ -21086,36 +21035,24 @@
  },
  {
   "screen": "gate:s2.lookback_ask",
-  "subject_sha": "4785eb6b95e7fb8f6d6ed762b384eb1383d84862d6e474132cd30cfab981bb81",
+  "subject_sha": "1948b0dd4554ce31ba0b16874ac8492a96b4f61439d26ae06a8eef48d544739b",
   "samples": [
    {
-    "verdict": "NARROW",
+    "verdict": "COVERS",
     "findings": [
      {
-      "kind": "NARROW",
-      "situation": "A filer whose only link to a long-term contract or income-forecast property is a 2025 Schedule K-1 from an estate or trust (owner-level look-back) has no Schedule C, no royalties, and owned no business, farm, rental, partnership or S corporation share. So the computed condition is false and look-back interest is never asked.",
-      "irs_text": "f1040s2 Schedule 2 (2025), p. 2, line 17n: \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\"",
-      "why": "Line 17n is not limited to Schedule C filers or to past owners of a business, farm, rental, partnership or S corporation. The look-back rules (outside this text) also flow through to beneficiaries of estates and trusts, and none of the gate's helpers capture a beneficiary interest."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "A partner or S corporation shareholder whose entity, not the filer, holds the long-term contract or income-forecast property could truthfully answer No to \"Did you (or ... your spouse) have a contract ...\" or \"do you depreciate a film, book ...\".",
-      "irs_text": "i6251 (2025) p. 7, Line 2p Note: \"you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted\"",
-      "why": "Owners of pass-through entities can owe or be refunded look-back interest on the entity's contracts. The question's wording reads as the filer's own contract or property and does not mention contracts held through a partnership or S corporation."
-     },
-     {
       "kind": "WIDE",
-      "situation": "Anyone who owned any rental property or business share in any year before 2025, or who has any Schedule C or any royalty property in 2025, reaches the question, even with no long-term contract and no income-forecast property.",
-      "irs_text": "i6251 (2025) p. 7, Line 2p: \"If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe or be entitled to a refund of interest\"",
-      "why": "Look-back interest arises only from percentage-of-completion long-term contracts or income-forecast depreciation, which most of these filers do not have. This costs only an extra question."
+      "situation": "The condition holds for any filer with a Schedule C, any business, farm, rental or partnership/S corporation interest owned before 2025, or any listed royalty source, even when there is no long-term contract and no income-forecast property.",
+      "irs_text": "f1040s2 Schedule 2 (2025), line 17n: \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\"; i6251 (2025) p. 7, Line 2p: \"If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted.\"",
+      "why": "Look-back interest arises only from a long-term contract under section 460(b) or income-forecast depreciation under section 167(g), so most filers who meet the condition have no amount on line 17n. This only costs extra questions, which is the intended lean toward yes."
      }
     ],
-    "prompt_sha": "26911b43648113c67361caccf37e6ea4f12fa4fe724970ae84eea42ef21603af",
+    "prompt_sha": "ed9aa82b817c0ac9f015ade956eb76c755454b21c52478aa0f6738646e2c3c65",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.081484,
+    "cost": 0.067592,
     "model": "claude-opus-5-5",
-    "date": "2026-11-24",
-    "response": ".transcription/screens/gate_s2.lookback_ask.4785eb6b95e7.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_s2.lookback_ask.1948b0dd4554.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -23245,36 +23182,30 @@
  },
  {
   "screen": "gate:sa.property_tax_other_if_home",
-  "subject_sha": "8d38d4ce12104784f14c83defab29bb7614e4d3dbfa0c16e4fdc4e29a91016ad",
+  "subject_sha": "d2eb7fb8afdd66ec4f9a71d7a2273348babc590168d0927069dac199cec12879",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "An owner's real estate tax amount includes a levy that is not assessed uniformly at a like rate on all property in the community, or whose proceeds are not used for general community or governmental purposes (for example, a special-district levy that is not an itemized per-service charge or an improvement assessment).",
-      "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own ... but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes.\"",
-      "why": "The gate question lists the nondeductible amounts after a colon (foreign tax, service charges, improvements, buyer's share, 2025 refund, tax not assessed before 2026). A filer reading that list as complete would truthfully answer no, and the nondeductible part would be dropped from the gated line."
+      "situation": "A homeowner's tax bill includes a charge that is not assessed uniformly at a like rate on all property, or whose proceeds do not go to general community purposes, and that charge is not a service, improvement or foreign charge.",
+      "irs_text": "i1040sca p. 6, Line 5b: \"but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes\"",
+      "why": "The computed question gives a closed list of nondeductible items, and this requirement is not on it. A filer whose only nondeductible part fails this test can truthfully answer no, so the leave-out question is never asked."
      },
      {
-      "kind": "NARROW",
-      "situation": "An owner whose taxes are paid through mortgage escrow entered the amount paid into escrow, and the lender paid less than that to the taxing authority in 2025.",
-      "irs_text": "i1040sca p. 6, Line 5b: \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.\"",
-      "why": "The excess held in escrow is not deductible, but it is not among the items the gate question lists, so the filer could truthfully answer no. The gated line would then not remove that amount."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "An owner's real estate tax amount includes taxes on real estate used for business (other than the rental share the question already addresses).",
-      "irs_text": "i1040sca p. 6, Line 5b: \"state and local taxes you paid on real estate you own that wasn't used for business\"",
-      "why": "Taxes on business-use real estate are excluded from line 5b, but the gate question does not list them, so a filer could answer no and the amount would not be left out."
+      "kind": "UNCLEAR",
+      "situation": "On a joint return, only the spouse owns the real estate or holds the mortgage.",
+      "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own\"",
+      "why": "The ownership helper asks only whether \"You owned a home or other real estate,\" without naming the spouse. The gated question names the spouse, so a filer could read the helper as covering only themselves and answer no."
      }
     ],
-    "prompt_sha": "17c82224fc41816d4756621d1b2b70746cbc83b682f97b026c03b43cceb96087",
+    "prompt_sha": "713872e7d9af80cdc3a1a2e68fa16ec9c199d53959df9c57d7bbad2b99ee6fbc",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.064244,
+    "cost": 0.054732,
     "model": "claude-opus-5-5",
-    "date": "2026-11-24",
-    "response": ".transcription/screens/gate_sa.property_tax_other_if_home.8d38d4ce1210.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_sa.property_tax_other_if_home.d2eb7fb8afdd.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -23547,54 +23478,42 @@
  },
  {
   "screen": "gate:sb.foreign_any",
-  "subject_sha": "db40099bc89329bae4a367f280b15d2633e7c16241cfca235716270c78979454",
+  "subject_sha": "be017bad7cedb6bb4d87bb5e55c9d98c3aa8598acd9b6b6a4b1a5d25fe042eb0",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "The filer owns more than 50% of a U.S. corporation, partnership or LLC, or is the grantor-owner of or a >50% beneficiary of a U.S. trust, and that entity holds a bank account abroad; the filer has no foreign account or asset in their own name and no 10% interest in a foreign company.",
-      "irs_text": "fincen114 p. 5, Financial Interest: 'the owner of record or holder of legal title is ... b. A corporation in which the United States person owns directly or indirectly ... more than 50 percent ... c. A partnership ... d. A trust of which the United States person (i) is the trust grantor and (ii) has an ownership interest ... e. A trust in which the United States person has a greater than 50 percent present beneficial interest'; i1040sb p. 3: 'For definitions of \"financial interest\" ... see the instructions for FinCEN Form 114.'",
-      "why": "The account belongs to the domestic entity, so a filer can truthfully answer no to 'did you ... have an account in another country.' The trust helper covers only foreign trusts, and the company helper covers only companies set up outside the U.S. Yet line 7a, the FBAR count and possibly Form 8938 all reach this account."
+      "situation": "A filer owns more than 50% of a U.S. corporation, partnership or LLC, or is a more-than-50% present beneficiary of a U.S. trust, and that entity holds a foreign bank account the filer cannot sign on.",
+      "irs_text": "fincen114 p. 5, Financial Interest: \"the owner of record or holder of legal title is one of the following: ... b. A corporation in which the United States person owns directly or indirectly ... more than 50 percent ... e. A trust in which the United States person has a greater than 50 percent present beneficial interest\"; i1040sb p. 3: \"For definitions of 'financial interest' ... see the instructions for FinCEN Form 114.\"",
+      "why": "Line 7a and the FBAR line apply here, but a filer can truthfully answer no to every helper. The entity is domestic, so helpers 4 and 3 do not apply. The account is the entity's and the filer has no power to sign, so helper 1 does not apply. The filer owns nothing abroad directly, so helper 2 does not apply. Line 7a's own help counts such a company's account, but the gate never reaches that help."
      },
      {
       "kind": "NARROW",
-      "situation": "The filer owns a U.S. single-member LLC (a disregarded entity) or is treated as owner of a domestic grantor trust, and that LLC or trust holds a foreign account, foreign stock or another specified foreign financial asset.",
-      "irs_text": "i8938 p. 8: 'If you are the owner of a disregarded entity, you have an interest in any specified foreign financial assets owned by the disregarded entity'; 'If you are considered the owner under the grantor trust rules ... of any part of a trust, you have an interest in any specified foreign financial asset held by that part of the trust.'",
-      "why": "All five helpers ask what 'you' had, owned or were connected to. A filer whose foreign asset is titled to a domestic LLC or domestic trust can truthfully answer no to every helper, which drops Form 8938 and line 7a."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "Parents elect on Form 8814 to report their child's interest and dividends, and the child holds a foreign account or other specified foreign financial asset; neither parent has a foreign connection of their own.",
-      "irs_text": "i8938 p. 8, Interests in Assets Generating Certain Unearned Income of Children: 'If you file Form 8814 ... you have an interest in any specified foreign financial asset held by the child.'",
-      "why": "The helpers ask only about the filer and spouse, so the child's foreign asset never makes the computed condition true. The Form 8938 question is then never asked, even though the parent has a reportable interest."
+      "situation": "A parent files Form 8814 to report a child's interest and dividends, and the child holds a foreign account or other specified foreign financial asset.",
+      "irs_text": "i8938 p. 8, Interests in Assets Generating Certain Unearned Income of Children: \"If you file Form 8814 ... you have an interest in any specified foreign financial asset held by the child.\"",
+      "why": "The parent can have to file Form 8938 based on the child's asset. Every helper asks only about the filer or spouse, so the parent truthfully answers no and the 8938 question is never asked."
      },
      {
       "kind": "UNCLEAR",
-      "situation": "The filer directly holds stock or securities of a foreign issuer outside any account (for example, share certificates kept at home), a foreign partnership interest, or a swap or derivative with a foreign counterparty.",
-      "irs_text": "i8938 p. 7: 'Examples of other specified foreign financial assets include ... Stock issued by a foreign corporation ... A capital or profits interest in a foreign partnership ... An option or other derivative instrument ... entered into with a foreign counterparty.'",
-      "why": "'Own anything else of value outside the United States' can be read as asking where the property physically sits, not who issued it. A filer holding foreign-issued stock or a contract in the U.S. could answer no, and the company helper requires a 10% stake or an officer role."
-     },
-     {
-      "kind": "UNCLEAR",
-      "situation": "The filer holds an interest in a foreign estate, such as being an heir to an estate administered abroad.",
-      "irs_text": "i8938 p. 8, Interests in Foreign Estates and Foreign Trusts: 'An interest in a foreign trust or a foreign estate is not a specified foreign financial asset unless you know or have reason to know ... of the interest.'",
-      "why": "The trust helper names trusts and family foundations, not estates. Whether an expected inheritance counts as 'anything else of value' you 'own' outside the U.S. is open to either reading."
+      "situation": "A filer holds a cash-value life insurance or annuity policy from a foreign insurer, foreign mutual fund shares, or directly held stock, bonds or swaps of a foreign issuer or counterparty.",
+      "irs_text": "i1040sb p. 2: \"A financial account also includes ... an insurance policy with a cash value ... an annuity policy with a cash value, and shares in a mutual fund\"; i8938 p. 7: \"Stock issued by a foreign corporation ... A note, bond ... issued by a foreign person ... swap ... with a foreign counterparty.\"",
+      "why": "Helper 1 lists only bank, investment, pension, payment or crypto accounts, which may not suggest an insurance policy. Helper 2 asks about things 'outside the United States'; a filer could reasonably decide that a policy or a contract with a foreign issuer is not located abroad and answer no."
      },
      {
       "kind": "WIDE",
-      "situation": "The filer's only connection is an account at a bank in Puerto Rico or Guam, or an officer role in a foreign company that has no accounts the filer can sign for.",
-      "irs_text": "fincen114 p. 5: 'the United States includes ... all United States territories and possessions'; i1040sb p. 3: 'A financial account is located in a foreign country if the account is physically located outside of the United States.'",
-      "why": "The condition holds, but line 7a and the FBAR give a territory account no amount; only Form 8938 can reach it. The officer role leads to Form 5471, which is not a gated line."
+      "situation": "A filer has only an account, investment or company in Puerto Rico or another U.S. territory that is not held at a possession-organized financial institution, or is merely a director of a foreign company with no foreign account.",
+      "irs_text": "fincen114 p. 5, United States: \"includes ... all United States territories and possessions\"; i1040sb p. 3: \"Puerto Rico and the other U.S. territories count as inside the United States here\" (line 7a help).",
+      "why": "These answers turn the condition on, yet line 7a and the FBAR line can have no amount, and Form 8938 may not apply. The cost is only a few extra questions."
      }
     ],
-    "prompt_sha": "9d146a6f2717f3ea3a099418c5e777f74320b57a214cf1f67aca026ea61c4d90",
+    "prompt_sha": "d322be16041736a890e0602c613252afd27a4930ebecf99e69f82b537e8d1558",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.12148400000000001,
+    "cost": 0.111752,
     "model": "claude-opus-5-5",
-    "date": "2026-11-15",
-    "response": ".transcription/screens/gate_sb.foreign_any.db40099bc893.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_sb.foreign_any.be017bad7ced.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -24287,24 +24206,24 @@
  },
  {
   "screen": "gate:scope.armed_forces",
-  "subject_sha": "2b8e1d704ba9160b49e35a473cd129e4aaf38742dd86568c2051ccb5de7f37f9",
+  "subject_sha": "590303b490e79ebba00434e2d1392062cdb74bca5720b05e1731b6e724906622",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "A filer whose only service was in 2022–2023, with no 2025 move, no 2025 reserve travel and no reservist repayment in 2025, still answers yes and is asked all three gated questions.",
+      "situation": "A filer whose only service was in 2022–2024, with no 2025 military move, no 2025 reserve travel and no 2025 reservist repayment, answers yes and is asked all three gated questions.",
       "irs_text": "i1040gi p. 93, Line 14: \"You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station\"; Line 12: \"National Guard and reserve members who traveled more than 100 miles from home\"",
-      "why": "The moving and reservist-travel lines need service in 2025, so the 2022 start is wider than those lines require. The early start date covers the 2-year look-back for qualified reservist repayments, and the extra questions only cost the filer time."
+      "why": "Moving and reservist travel deductions need 2025 service, so earlier-only service makes the gate wider than needed. The 2022 start does reach every reservist repayment still possible in 2025, so this costs only extra questions."
      }
     ],
-    "prompt_sha": "691a002d232dc509ca96ac15b4f43e5f7cb135cad451f805d3697e9691b7fdab",
+    "prompt_sha": "0888e0b93bc841fd97845b57e47b18bc48f7dd84b5f869222d555297a380a06f",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.073328,
+    "cost": 0.066188,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_scope.armed_forces.2b8e1d704ba9.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_scope.armed_forces.590303b490e7.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -26119,42 +26038,42 @@
  },
  {
   "screen": "gate:sd.sold_other",
-  "subject_sha": "4b9a3c8b9b97cf952b4dd75901b88adef5fb2093f95b3abd9edb39369f4c9138",
+  "subject_sha": "26a5e0f856204422b352aa3fbfb44eac1d259f98e9fb8843ea6904645371b9df",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer sold small business (section 1244) stock, or small business investment company (section 1242) stock, at a loss in 2025, sold no real estate or business property, and was paid in full that year.",
-      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 4. Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1242) stock. 5. Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.\"",
-      "why": "Stock is neither real estate nor business property, and the gate's help does not mention it, so the filer truthfully answers no. The Form 4797 question is never reached, and the gated question's 'held as an investment' wording would also exclude this stock."
+      "situation": "A filer (or spouse) has an ordinary loss on the sale, exchange or worthlessness of section 1244 small business stock or section 1242 SBIC stock, and sold no real estate or business property.",
+      "irs_text": "i1040sd p. 1, Use Form 4797 to report the following: \"4. Ordinary loss on the sale, exchange, or worthlessness of small business investment company (section 1244) stock. 5. Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.\"",
+      "why": "Stock held as an investment is neither real estate nor business property, and worthlessness is not a sale or trade. Neither the question nor its help mentions such stock, so a truthful filer answers no and the Form 4797 line is never reached."
      },
      {
       "kind": "NARROW",
-      "situation": "A securities trader who made a mark-to-market election had ordinary gain or loss on trading-business securities in 2025 and sold no real estate or equipment.",
-      "irs_text": "i1040sd p. 1: \"Use Form 4797 to report the following. ... 6. Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.\"",
-      "why": "The help defines business property as things like 'equipment, a vehicle or a building', so a trader could truthfully read securities as outside 'real estate or business property' and answer no. The Form 4797 question would then be skipped."
-     },
-     {
-      "kind": "NARROW",
-      "situation": "A filer disposed of a noncapital asset that is not inventory, such as accounts or notes receivable from services, with no real estate or business property sale.",
-      "irs_text": "i1040sd p. 1: \"3. The disposition of noncapital assets other than inventory or property held primarily for sale to customers in the ordinary course of your trade or business.\"",
-      "why": "The gate names only real estate, business property and self-created works. A filer selling receivables could reasonably answer no, so this Form 4797 disposition is missed."
+      "situation": "A trader who made a mark-to-market election has ordinary gain or loss on securities or commodities held in the trading business, and sold no real estate or other business property.",
+      "irs_text": "i1040sd p. 1, Use Form 4797 to report the following: \"6. Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.\"",
+      "why": "A filer would not reasonably call securities sold in a trading account \"real estate or business property\" (equipment, a vehicle or a building). The help does not mention them, so the filer answers no and the Form 4797 line is skipped."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer sold a main home with no Form 1099-S and gain fully excludable, and no business, installment or exchange element.",
-      "irs_text": "i1040sd p. 2: \"You may not need to report the sale or exchange of your main home.\"",
-      "why": "The gate's help counts a home you lived in as real estate, so the filer answers yes even though no gated line gets an amount. This only costs extra questions."
+      "situation": "A filer sells a personal vacation home or investment land outright for cash, with no installment payments and no exchange.",
+      "irs_text": "i1040sd p. 1, \"Use Form 8949 to report the sale or exchange of a capital asset (defined later) not reported on another form or schedule\"",
+      "why": "The gate holds because this is a real estate sale, but the sale goes on Form 8949. None of the gated lines (Form 4797, main home, Form 6252, Form 8824) gets an amount."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A filer sold publicly traded stock and receives part of the proceeds in a later year.",
+      "irs_text": "i1040sd p. 6, \"If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method\"",
+      "why": "The gate's \"payment ... comes in a year after the year of the sale\" clause covers any property, but publicly traded securities cannot use the installment method, so no gated line gets an amount."
      }
     ],
-    "prompt_sha": "8e0a14d48c171c412ecca2a0694e7d2713320ceff86d42d16c8db96c10ff226d",
+    "prompt_sha": "c431f43537e98c4a0ffa25c3c46c2e910d8f180cae0cad28a0572c4d8ad8967c",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.086492,
+    "cost": 0.084588,
     "model": "claude-opus-5-5",
-    "date": "2026-11-24",
-    "response": ".transcription/screens/gate_sd.sold_other.4b9a3c8b9b97.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_sd.sold_other.26a5e0f85620.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -26200,30 +26119,30 @@
  },
  {
   "screen": "gate:sli.any_if_not_mfs",
-  "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
+  "subject_sha": "547e4879780c34b3618a9a089bb0f91572857e21b7a8d45d4bcf9751ed9e9f3a",
   "samples": [
    {
     "verdict": "UNCLEAR",
     "findings": [
      {
       "kind": "UNCLEAR",
-      "situation": "A filer who owes the student loan sees that all of the year's interest was paid for them, for example by a parent as a gift or by an employer that added the payment to W-2 box 1, so they may answer no to 'You ... paid interest on a student loan in 2025'.",
-      "irs_text": "p970 p. 33, Interest paid by others: 'If you are the person legally obligated to make interest payments and someone else makes a payment of interest on your behalf, you are treated as receiving the payments from the other person and, in turn, paying the interest.' (Example 2: 'As a gift, your mother made this payment... you can deduct this payment of interest')",
-      "why": "The tax law treats these payments as paid by the filer, but the gate question says only 'paid interest' and gives no help on payments made by others. A reasonable filer could answer no, and sli.interest would then be zero, dropping a deduction the IRS text allows."
+      "situation": "In 2025 a parent, as a gift, or an employer, as taxable wages, made all the interest payments on the filer's qualified student loan, and the filer made none.",
+      "irs_text": "p970 p. 33, Interest paid by others: 'If you are the person legally obligated to make interest payments and someone else makes a payment of interest on your behalf, you are treated as receiving the payments from the other person and, in turn, paying the interest.'",
+      "why": "The gate asks whether 'You (or, on a joint return, your spouse) paid interest on a student loan in 2025.' A filer who made no payments personally could truthfully answer no and skip the interest line, even though the IRS treats the filer as having paid. The 'Include interest someone else paid' help appears only with the gated amount question, not with the gate."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer who is not married filing separately paid student loan interest but is claimed as a dependent by someone else, or has modified AGI at or above the phase-out limit.",
-      "irs_text": "i1040gi p. 98, Line 21: 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return' and 'Your modified adjusted gross income (AGI) is less than $100,000 if single...'",
-      "why": "The gate is true here even though no deduction results. That costs only extra questions."
+      "situation": "The filer is not married filing separately and paid student loan interest, but is claimed as someone else's dependent or has modified AGI at or above the phase-out ceiling.",
+      "irs_text": "i1040gi p. 98, Line 21: 'You can take this deduction only if all of the following apply... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.'",
+      "why": "The gate holds even though the deduction is zero in these cases. The extra questions are harmless."
      }
     ],
-    "prompt_sha": "01e306f8359276fecd4c8198ea71f47fe0df9075dfb712e3e9cd4bd5c8e53c33",
+    "prompt_sha": "6fb913877925970228f0aeac5e508438088e618f6ee0d105f59ab58f81bb9aac",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.06894800000000001,
+    "cost": 0.068188,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/screens/gate_sli.any_if_not_mfs.b1f3af756466.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/gate_sli.any_if_not_mfs.547e4879780c.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -36383,27 +36302,45 @@
  },
  {
   "screen": "person.sav_able",
-  "subject_sha": "e2b99bdc9578304b29f32a4b58f64321ffa24ce7f4bc740dfd010a5b1a525006",
+  "subject_sha": "7a378c94f62772d28d0e1285ebf406a2713f5e9150ea1b8e540c58e062b5e7f3",
   "samples": [
    {
     "verdict": "WIDE",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "A filer receives an ABLE account distribution after the due date (including extensions) of the 2025 return but in 2023 or later, so the screening question is answered YES even though Form 8880 line 4 does not include that distribution.",
-      "irs_text": "f8880 (2025) p. 2, Line 4: \"Enter the total amount of distributions you, and your spouse if filing jointly, received after 2022 and before the due date of your 2025 return (including extensions) ... from ... ABLE accounts.\"",
-      "why": "The screen says \"2023 or later\" with no upper bound, while line 4 stops before the 2025 return due date. If the post-deadline ABLE distribution is the only ABLE event, the tool should compute zero for these lines rather than refuse."
+      "situation": "A filer whose only ABLE distribution came after the due date (including extensions) of the 2025 return answers YES to 'get money out of it in 2023 or later', but that distribution belongs on no line, so the tool's zero is correct.",
+      "irs_text": "f8880 p. 2, Line 4: \"Enter the total amount of distributions you ... received after 2022 and before the due date of your 2025 return (including extensions)\"",
+      "why": "The question has no end date ('2023 or later'), but the IRS window closes at the 2025 return's due date. A later distribution forces a YES and a refusal for an amount that is correctly zero."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A beneficiary whose only ABLE activity was a rollover, such as a 529-to-ABLE rollover in or an ABLE-to-ABLE rollover or transfer out, answers YES to 'put money into it' or 'get money out of it'. These amounts are excluded from lines 1 and 4.",
+      "irs_text": "f8880 p. 1, line 1: \"ABLE account contributions by the designated beneficiary for 2025. Do not include rollover contributions\"; p. 2, Line 4: \"Don't include ... Distributions not taxable as the result of a rollover or a trustee-to-trustee transfer\"",
+      "why": "The question does not carve out rollovers or transfers, so the filer must answer YES and is refused. Yet the correct amount on both lines is zero, which the tool would compute."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "A beneficiary whose only ABLE withdrawal was a return of excess contributions (with allocable income) answers YES to 'get money out of it', although that distribution is excluded from line 4.",
+      "irs_text": "f8880 p. 2, Line 4: \"Don't include ... Distributions of excess contributions or deferrals (and income allocable to such contributions or deferrals)\"",
+      "why": "The question counts any money out, including amounts that line 4 excludes. This refuses a case where zero is correct."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "An ABLE beneficiary whose account paid a provider directly for qualified disability expenses might answer NO to 'did you ... get money out of it', reasoning that the money went to the provider and not to them.",
+      "irs_text": "f8880 p. 2, Line 4: \"distributions you ... received ... from ... Traditional or Roth IRAs, or ABLE accounts\"",
+      "why": "'Get money out of it' can be read as the filer personally receiving cash. A distribution paid to a third party for the beneficiary is still a distribution, and if the filer answers NO it would wrongly be treated as zero on line 4."
      }
     ],
-    "prompt_sha": "c37f28577653b543fab68ba7878956ac6a90995777573efccbc9230a5911478a",
+    "prompt_sha": "32eab8767f86aa4f8873bfcc893eae201e0d72b4915283f5d4a78087d908f762",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0,
-    "model": "deepseek-flash",
-    "date": "2026-11-18",
-    "response": ".transcription/screens/person.sav_able.e2b99bdc9578.1.response.txt"
+    "cost": 0.07864399999999999,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-25",
+    "response": ".transcription/screens/person.sav_able.7a378c94f627.1.response.txt"
    }
   ],
-  "question": "For this person (you, or your spouse on a joint return) — Is an ABLE account held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?",
+  "question": "For this person (you, or your spouse on a joint return) — Has an ABLE account been held for you, and did you put money into it for 2025, or get money out of it in 2023 or later?",
   "lines": [
    "person.sav_line1",
    "person.sav_prior_joint",
@@ -49579,30 +49516,36 @@
  },
  {
   "screen": "sche.qbi_business",
-  "subject_sha": "1f79cddbcd46a33b4438004f430b9bbad93d3314a5be60c8be4addb217877dde",
+  "subject_sha": "0f36f55ef462016f85c8012d1ddb3248cf409db656bd7e95794a7611aad14f9b",
   "samples": [
    {
-    "verdict": "WIDE",
+    "verdict": "NARROW",
     "findings": [
      {
-      "kind": "WIDE",
-      "situation": "A filer who runs a rental for profit regularly and continuously must tick YES, yet line 26 is only the sum of lines 24 and 25, and the tool computes that sum correctly whether or not the rental is a trade or business.",
-      "irs_text": "f1040se (2025) p.1, line 26: \"Total rental real estate and royalty income or (loss). Combine lines 24 and 25.\" Question: \"Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously?\"",
-      "why": "Trade-or-business status matters only for the QBI deduction (i8995 p.1, \"for purposes of the QBI deduction\"). The line 26 text has no condition that depends on it, so a YES refuses a line the tool gets right."
+      "kind": "NARROW",
+      "situation": "The filer or spouse rents a building to a business they commonly control, such as their own S corporation, partnership or Schedule C business. They only collect rent and are not regularly and continuously involved in the rental, so they truthfully answer NO.",
+      "irs_text": "i8995 (2025) p. 2: \"The rental or licensing of property to a commonly controlled trade or business operated by an individual or a pass-through entity is considered a trade or business under section 199A.\"",
+      "why": "This self-rental rule makes the rental a trade or business for QBI no matter how involved the owner is. The question and its help test only profit motive with regular, continuous involvement, or the safe harbor, so a passive self-rental landlord answers NO and the tool treats the rental's QBI as zero."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer whose 2024 Form 8995 or 8995-A listed a rental, but whose rental is no longer run as a business or no longer exists in 2025, is told to answer YES and gets refused.",
-      "irs_text": "Help: \"Yes also if your 2024 Form 8995 or 8995-A listed a rental.\" f1040se (2025) p.1, line 26: \"Combine lines 24 and 25.\"",
-      "why": "Nothing in the 2025 line 26 text depends on what the prior-year QBI form listed, so this extra YES trigger refuses a computation the tool performs correctly."
+      "situation": "The filer's 2024 Form 8995 listed a rental, but in 2025 that rental was sold or is no longer run with continuity and regularity. The help still tells the filer to answer YES.",
+      "irs_text": "i8995 (2025) p. 1: \"an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you're involved in the activity with continuity and regularity.\"",
+      "why": "Trade-or-business status depends on the facts of the current year, not on last year's form. The rule \"Yes also if your 2024 Form 8995 or 8995-A listed a rental\" therefore refuses filers whose 2025 rentals are not trade or business rentals and whose line 26 the tool computes correctly."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "The filer uses a property manager who runs the rental day to day, while the filer only approves major decisions. The filer cannot tell whether they personally are \"involved in it regularly and continuously.\"",
+      "irs_text": "i8995 (2025) p. 1: \"Material participation under section 469 isn't required to qualify for the QBI deduction.\"; \"Rental real estate that doesn't meet the requirements of the safe harbor may still be treated as a trade or business for purposes of the QBI deduction if it's a section 162 trade or business.\"",
+      "why": "The question asks whether \"you (or ... your spouse) run\" the rental and are personally involved. A filer could read that as requiring personal hands-on work and answer NO, even though work done through agents can still make the rental a section 162 trade or business."
      }
     ],
-    "prompt_sha": "caa9d6cff9a430252ab9864cdd9aa1775fe00f96e373dd79fce45a2739c730e9",
+    "prompt_sha": "5d8d88e545ae68a67f32b390b06f094d899dec3f4ca958c9dee7f2d13c00b48f",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
-    "cost": 0.072876,
+    "cost": 0.09914,
     "model": "claude-opus-5-5",
-    "date": "2026-11-24",
-    "response": ".transcription/screens/sche.qbi_business.1f79cddbcd46.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/screens/sche.qbi_business.0f36f55ef462.1.response.txt"
    }
   ],
   "question": "a box on a tick-box screen. The filer ticks it for YES, and leaves it unticked or chooses \"None of these\" for NO.\n  Screen heading: Is any of these true of your (or, on a joint return, your spouse's) rentals?\n  Label beside the box: A rental run as a business: for profit, regularly and continuously\n  Question shown under the box's \"What this asks\": Do you (or, on a joint return, your spouse) run any of your rentals as a business, renting it out to make money and being involved in it regularly and continuously?",
@@ -49615,15 +49558,17 @@
     "revision": "2025; printed date 2026-01-26",
     "text_sha256": "96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2",
     "pages": [
-     1
+     1,
+     2
     ],
     "how": "cited pages",
     "locators": [
-     "p. 1, Trade or business, \"an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you’re involved in the activity with continuity and regularity\", \"Rental real estate that doesn’t meet the requirements of the safe harbor may still be treated as a trade or business for purposes of the QBI deduction if it’s a section 162 trade or business\", and \"provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction\"",
+     "p. 1, Trade or business, \"an activity qualifies as a trade or business if your primary purpose for engaging in the activity is for income or profit and you’re involved in the activity with continuity and regularity\"; p. 2, \"may still be treated as a trade or business for purposes of the QBI deduction if it’s a section 162 trade or business\"; p. 1, \"provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction\"",
      "p. 1, Trade or business, \"provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction\""
     ],
     "cols_pages": [
-     1
+     1,
+     2
     ],
     "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
    },
@@ -49938,6 +49883,279 @@
     "model": "claude-opus-5-5",
     "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
     "response": ".transcription/screens/scope.credits.response.txt"
+   }
+  ]
+ },
+ {
+  "screen": "scope.f8978",
+  "subject_sha": "c1197f9249f8829e2db640b8f96b115cb41cb4b6ffe87884a6461e9ae9f67e04",
+  "samples": [
+   {
+    "verdict": "NARROW",
+    "findings": [
+     {
+      "kind": "NARROW",
+      "situation": "The filer or spouse was a shareholder of an S corporation, or a beneficiary of a trust or estate, that passed audit adjustments through to them on a Form 8986, so they must file Form 8978 and enter its line 14 amount.",
+      "irs_text": "i1040gi (2025) p. 116, Line 6l: \"Enter the amount from Form 8978, line 14 (relating to partner’s audit liability under section 6226).\"",
+      "why": "Under section 6226, S corporations, trusts and estates can pass adjustments through to their owners on Form 8986. The question asks only about \"a partnership that you ... were in\", so such a filer can truthfully answer NO, and the tool zeroes line 6l."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "The filer received a Form 8986 that pushes out adjustments from a partnership's administrative adjustment request (an amended partnership filing) rather than from an IRS examination.",
+      "irs_text": "i1040gi (2025) p. 116, Line 6l: \"Enter the amount from Form 8978, line 14 ...\"",
+      "why": "Form 8978 also reports adjustments pushed out from an administrative adjustment request. A filer whose Form 8986 did not come from an audit can read \"about changes made by an audit\" as not applying and answer NO."
+     },
+     {
+      "kind": "WIDE",
+      "situation": "The filer received a Form 8986 in an earlier year, already reported it on that year's Form 8978, and received none for 2025.",
+      "irs_text": "Question: \"Did a partnership that you ... were in send a Form 8986 about changes made by an audit?\"; i1040gi (2025) p. 116: \"Enter the amount from Form 8978, line 14 (relating to partner’s audit liability under section 6226).\"",
+      "why": "Form 8978 is filed for the reporting year, which is the year that includes the date the Form 8986 was furnished. The question has no time limit, so a filer with only an earlier-year Form 8986 answers YES even though the 2025 line 6l amount is zero, which the tool computes correctly."
+     },
+     {
+      "kind": "UNCLEAR",
+      "situation": "The filer received a Form 8986 in early 2026, before filing the 2025 return, for a partnership audit.",
+      "irs_text": "i1040gi (2025) p. 116, Line 6l: \"Enter the amount from Form 8978, line 14 ...\"",
+      "why": "\"Did ... send\" does not say which year the form was furnished in. A filer could reasonably answer YES or NO for a form that belongs to the 2026 reporting year rather than 2025."
+     }
+    ],
+    "prompt_sha": "f469e46bc4714ddb67f4b809c51c8344145cf36ca63973ae674a750569e42673",
+    "system_sha": "9c1c02e07f3a628cc532400efd48dda846d5b19b95592f51b1886a6416fd79fb",
+    "cost": 0.269736,
+    "model": "claude-opus-5-5",
+    "date": "2026-11-25",
+    "response": ".transcription/screens/scope.f8978.c1197f9249f8.1.response.txt"
+   }
+  ],
+  "question": "Did a partnership that you (or, on a joint return, your spouse) were in send a Form 8986 about changes made by an audit?",
+  "lines": [
+   "s3.line7"
+  ],
+  "used": [
+   {
+    "doc": "f1040",
+    "revision": "2025; created 2025-09-05",
+    "text_sha256": "ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+    ],
+    "cols_pages": [],
+    "cols_sha256": "72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a"
+   },
+   {
+    "doc": "f1040s3",
+    "revision": "2025; created 2025-11-17",
+    "text_sha256": "43c7ba36b506a538179465978807938c64bde632d7e1bff225bb6b13b19f37bd",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule 3 (2025), line 7"
+    ],
+    "cols_pages": [],
+    "cols_sha256": "1ae44325c8d22211a6eadd11b393254317542704e5fed0fb419e41690210fc48"
+   },
+   {
+    "doc": "i8839",
+    "revision": "2025",
+    "text_sha256": "aba1b0860ba08ea9e0953f31580e22421bdb92427957682acc3d79b98cb43626",
+    "pages": [
+     1,
+     3
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 1, Purpose of Form, \"2024 and the adoption wasn’t final at the end of 2024\"; p. 3, Domestic Adoption, \"the year after the year of the payment\"",
+     "p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\""
+    ],
+    "cols_pages": [
+     1,
+     3
+    ],
+    "cols_sha256": "ba3ee91ddad989767d0c8aa84b7b53b7a4a1161c0d0731cbb8eb275febf19d8b"
+   },
+   {
+    "doc": "f8396",
+    "revision": "2025; created 2025-08-28",
+    "text_sha256": "7d27fdfd3ca9b205d00b68cff4f6261540d0ccc556b13edf05ccb0dd11885ec9",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 2, Who Can Claim the Credit, \"You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency\"; p. 2, Line 3, \"you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3\""
+    ],
+    "cols_pages": [
+     2
+    ],
+    "cols_sha256": "71ea89f5ee5d170488cc56526b409eb38c10d65ce5abe72dcaee21064281eca9"
+   },
+   {
+    "doc": "i8936",
+    "revision": "2025",
+    "text_sha256": "c29fb417b3f05e5067c6261e0eecf14e6dc2bb5d099b0179395b9e12bf9f0b0d",
+    "pages": [
+     1
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 1, Purpose of Form, \"You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer\"",
+     "p. 1, Purpose of Form, \"to figure the following credits for clean vehicles you placed in service during your tax year\""
+    ],
+    "cols_pages": [
+     1
+    ],
+    "cols_sha256": "754e3102c5109789dd39499aed7275f3323010ad0736619519d4d96b98c18930"
+   },
+   {
+    "doc": "i8911",
+    "revision": "December 2025 (for tax years beginning in 2025 or later)",
+    "text_sha256": "9258095d5fbe83d1a67ef6ed338f5d0a706823c1b84475f53160171b49e02c29",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 1, Purpose of Form, \"to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year\""
+    ],
+    "cols_pages": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "cols_sha256": "6afc575ca0eeb12440668d8f8df07b23ab9250cf7b9058fc4e9a52294581aea6"
+   },
+   {
+    "doc": "i8912",
+    "revision": "December 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+    "text_sha256": "e23ca6f7fb979757f2f3590fdf4823eba19cc909f724b0d91a61ce02f0300c40",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 1, Who Can Claim the Credits, \"can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date\"; p. 2, Line 1, \"This amount is the total bond credits reported to you on Form(s) 1097-BTC\""
+    ],
+    "cols_pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "cols_sha256": "e9178b04d7fc4e89ac00e77cea2a660b26eeb1c552cd4580a72a79b189f99f1b"
+   },
+   {
+    "doc": "i8801",
+    "revision": "2025",
+    "text_sha256": "0b107826c9e29d2b284a4aba175837438fd8d8e3f405b214909ddf3d39ed0656",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "how": "whole document",
+    "locators": [
+     "p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\""
+    ],
+    "cols_pages": [
+     1,
+     3,
+     4,
+     5
+    ],
+    "cols_sha256": "5505010794a0984c4345b545b2602b3bbc71348cde05091aa76e1a4c99bc6ddb"
+   },
+   {
+    "doc": "i3800",
+    "revision": "2025",
+    "text_sha256": "8f87d7d4652fdd97673c64cf436c3edfb4d31155a90efcb4a11d06a014bfe12d",
+    "pages": [
+     3
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 3, Carryback and Carryforward of Unused Credit, \"unused general business credits may be carried back 1 year and carried forward 20 years\"; , Part II—Mortgage Interest Credit Carryforward to 2026, \"you may have an unused credit to carry forward to the next 3 tax years\"; , Who Should File, \"A credit carryforward to 2025 (on 2024 Form 8801, line 26)\"; , Line 1, \"Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR\"; , Purpose of Form, \"You have a carryforward of an adoption credit from 2024\"; , Purpose of Form, \"to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024\"; , Line 12, \"you may carry the unused portion of the credit to the next tax year\""
+    ],
+    "cols_pages": [
+     3
+    ],
+    "cols_sha256": "f14b444e5dcde07304dc6f5f8c9309bacf8c621eca24a4d9093f9732c39d2b9f"
+   },
+   {
+    "doc": "i1040sr",
+    "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+    "text_sha256": "8e01e7e4db0054efbeac87d4246ad14425e599b9e93a4d73ba6eda964726880c",
+    "pages": [
+     1
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 1, Qualified Individual, \"You are a qualified individual for this credit if you are a U.S. citizen or resident alien\""
+    ],
+    "cols_pages": [
+     1
+    ],
+    "cols_sha256": "9b45d1c5b76440d18a3d1118b274368669e683ced562a0d8b208e92b856a84db"
+   },
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     116
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 116, Line 6l, \"Enter the amount from Form 8978, line 14 (relating to partner’s audit liability under section 6226). If the amount on Form 8978, line 14, is negative, complete the following worksheet\"",
+     "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "f8834",
+    "revision": "October 2024 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+    "text_sha256": "294996953deaa0a29ce39ade08a10ab5de5d41a0eb955117b2543a94b17a0e41",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [],
+    "cols_pages": [
+     2
+    ],
+    "cols_sha256": "15f21877e903e0b003bcb978d98712c7e8913bed71ae5e453700cb8150b9b4d1"
+   },
+   {
+    "doc": "f8859",
+    "revision": "2025; created 2025-08-07",
+    "text_sha256": "718b7d6bc801be84b557f42af42a44cc2dcdbce3ce93d169c0589b2266fb7295",
+    "pages": [
+     1
+    ],
+    "how": "whole document",
+    "locators": [],
+    "cols_pages": [],
+    "cols_sha256": "648bf239b24daf08f051b1da3808a13b9c78d05e7c47d71665cf8a28219e7d8c"
    }
   ]
  },

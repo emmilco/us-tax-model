@@ -76,8 +76,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 17, Step 1, \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund\"; p. 21, Married person, \"If the person is married and files a joint return, you can\u2019t claim that person as your dependent.\"",
-      "p. 21, Married person, \"If the person is married and files a joint return, you can\u2019t claim that person as your dependent.\""
+      "p. 17, Step 1, \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund\"; p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\"",
+      "p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\""
      ],
      "cols_pages": [
       17,
@@ -131,7 +131,7 @@
      "how": "cited pages",
      "locators": [
       "p. 17, Step 1, \"Who lived with you for more than half of 2025\"; p. 21, Exception to time lived with you (\"the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025\"; \"Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025\"); , Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\"",
-      "p. 21, Kidnapped child, \"If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn\u2019t a family member, you may be able to take the child into account\"; , Kidnapped child, \"1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn\u2019t a member of your family or the child\u2019s family.\", \"2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping.\" and \"3. In the year of the child\u2019s return, the child lived with you for more than half the part of the year following the date of the child\u2019s return.\"; , \"This treatment applies for all years until the earlier of\"; , Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped\""
+      "p. 21, Kidnapped child, \"If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account\"; , Kidnapped child, \"1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.\", \"2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping.\" and \"3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return.\"; , \"This treatment applies for all years until the earlier of\"; , Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped\""
      ],
      "cols_pages": [
       17,
@@ -259,6 +259,78 @@
     }
    ]
   },
+  "gate:dependent.own_child_asked": {
+   "subject_sha": "61d3db3f9502316a7bd23a548bfdacc163c7000bd75e1e3ee8cd85edba9b8a24",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A qualifying surviving spouse whose qualifying person is a stepchild, for example the deceased spouse's son, who lived with the filer all year. On the dependent's \"Relationship to you\" question, the filer picks \"stepchild\" (or \"stepson\"), not \"child\".",
+       "why_no": "The gate requires the relationship helper to equal exactly 'child'. A filer who truthfully picks a separate stepchild option makes the gate false, so the tool never asks own_child and sets the line to false. The helper's coding of stepchildren is not shown.",
+       "line": "dependent.own_child_if_qss",
+       "irs_text": "i1040gi p. 15, Qualifying Surviving Spouse: \"2. You have a child or stepchild (not a foster child) whom you can claim as a dependent\"",
+       "severity": "medium",
+       "fix": "Open the gate for every relationship value that can be a son, daughter, stepchild, adopted child or child placed for adoption (for example relationship in {child, son, daughter, stepchild, adopted child, other} when QSS is checked). Or ask own_child for every dependent on a QSS return and let the question itself sort out foster children and grandchildren."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A qualifying surviving spouse with a child lawfully placed for legal adoption in 2025, adoption not yet final. The filer records the relationship as \"other\", \"foster/placed child\" or \"not yet my child\".",
+       "why_no": "Before finalization, the filer does not see the child as their \"child\". The relationship helper never reaches 'child', so the gate is false. The help that would correct this (\"one placed with you for adoption is your son or daughter\") appears only behind the gate.",
+       "line": "dependent.own_child_if_qss",
+       "irs_text": "i1040gi p. 15: \"Adopted child. An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption.\"",
+       "severity": "medium",
+       "fix": "State in the help for the relationship question that a child placed with you for legal adoption counts as your child. Or open the gate on any non-foster relationship when QSS is checked."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A qualifying surviving spouse whose child is not claimed as a dependent: the child had gross income of $5,200 or more, the child filed a joint return, or the filer can be claimed on someone else's return. The child is entered only in the filing-status entry space, not in the Dependents section.",
+       "why_no": "The gate asks for a person \"Listed as your child\" in the dependent document. A child who truthfully is not a listed dependent has no dependent entry, so the gate is never true for that child. Test 2 is then never confirmed through this line, which may lead to a wrong refusal of the filing status, or none.",
+       "line": "dependent.own_child_if_qss",
+       "irs_text": "i1040gi p. 15: \"whom you can claim as a dependent or could claim as a dependent except that, for 2025: a. The child had gross income of $5,200 or more, b. The child filed a joint return, or c. You could be claimed as a dependent on someone else's return. If the child isn't claimed as your dependent, enter the child's name in the entry space.\"",
+       "severity": "medium",
+       "fix": "Ask own_child, and record the child, at the household level for the QSS qualifying child, whether or not the child is listed as a dependent. Or add a non-claimed QSS child record that opens the same question."
+      }
+     ],
+     "prompt_sha": "a70d253e0cb11e01ca576be848ce19f714c4bc88f6fd009bafb4a198cd488a95",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.065808,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_dependent.own_child_asked.61d3db3f9502.1.response.txt"
+    }
+   ],
+   "condition": "dependent.own_child_asked",
+   "lines": [
+    "dependent.own_child_if_qss"
+   ],
+   "inputs": [
+    "dependent.own_child"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Qualifying Surviving Spouse, \"2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent\"",
+      "p. 15, Qualifying Surviving Spouse, \"2. You have a child or stepchild (not a foster child)\" and \"An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
   "gate:dependent.own_money": {
    "subject_sha": "9d3d8ac0aba9e00f4b38c925ad7000e67e677ed321d6dcbf2a1879d29d169077",
    "samples": [
@@ -291,7 +363,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 19, \"A person\u2019s own funds aren\u2019t support unless they are actually spent for support.\"; p. 21, Person living in their own home, \"The total fair rental value of a person\u2019s home that the person owns is considered support contributed by that person.\""
+      "p. 19, \"A person’s own funds aren’t support unless they are actually spent for support.\"; p. 21, Person living in their own home, \"The total fair rental value of a person’s home that the person owns is considered support contributed by that person.\""
      ],
      "cols_pages": [
       19,
@@ -308,8 +380,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\", \"Do not include the modified AGI of dependents who are filing a tax return only to claim a refund of tax withheld or estimated tax.\"; , Chart B\u2014For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Earned income includes salaries, wages, tips, professional fees, and taxable scholarship and fellowship grants.\", \"Were you either age 65 or older or blind?\"",
-      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"; , Chart B\u2014For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Your earned income was over $15,750.\""
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\", \"Do not include the modified AGI of dependents who are filing a tax return only to claim a refund of tax withheld or estimated tax.\"; , Chart B—For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Earned income includes salaries, wages, tips, professional fees, and taxable scholarship and fellowship grants.\", \"Were you either age 65 or older or blind?\"",
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"; , Chart B—For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Your earned income was over $15,750.\""
      ],
      "cols_pages": [
       8
@@ -339,10 +411,10 @@
       {
        "kind": "FALSE_NO",
        "pattern": "other",
-       "who": "A parent filing Form 8814 for a dependent child whose interest/dividends exceed $1,350, so the parent reports the child\u2019s income and the child is not required to file a separate return.",
+       "who": "A parent filing Form 8814 for a dependent child whose interest/dividends exceed $1,350, so the parent reports the child’s income and the child is not required to file a separate return.",
        "why_no": "The gate asks only whether the dependent is required to file because of income. Because the Form 8814 election means the child need not file, the parent truthfully answers no; the gate never asks for the Worksheet 1-2 amount.",
        "line": "dependent.ptc_magi_counted",
-       "irs_text": "i8962 p. 8, Line 2b and Worksheet 1-2: \u201cIf you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.\u201d",
+       "irs_text": "i8962 p. 8, Line 2b and Worksheet 1-2: “If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.”",
        "severity": "high",
        "fix": "Make the gate true when Form 8814 is filed and line 4 exceeds $1,350, and ask for the Worksheet 1-2 amounts from Form 8814 even if the child is not required to file."
       },
@@ -350,9 +422,9 @@
        "kind": "UNCLEAR",
        "pattern": "6",
        "who": "An unmarried dependent under 65 and not blind with $15,000 earned income and $1,000 unearned income. Neither quoted threshold is exceeded, but gross income is $16,000, more than the larger of $1,350 or earned income (up to $15,300) plus $450 ($15,450).",
-       "why_no": "The help/citation quotes only \u201cYour unearned income was over $1,350\u201d and \u201cYour earned income was over $15,750.\u201d Reading that list as complete, the dependent answers no because neither bullet applies.",
+       "why_no": "The help/citation quotes only “Your unearned income was over $1,350” and “Your earned income was over $15,750.” Reading that list as complete, the dependent answers no because neither bullet applies.",
        "line": "dependent.ptc_magi_counted",
-       "irs_text": "i1040gi p. 10, Chart B: \u201cYour gross income was more than the larger of\u2014 $1,350, or Your earned income (up to $15,300) plus $450.\u201d",
+       "irs_text": "i1040gi p. 10, Chart B: “Your gross income was more than the larger of— $1,350, or Your earned income (up to $15,300) plus $450.”",
        "severity": "medium",
        "fix": "Show the full Chart B gross-income test, not just the unearned and earned threshold bullets, or ask directly whether gross income exceeds the larger of $1,350 or earned income (up to $15,300) plus $450."
       }
@@ -383,7 +455,7 @@
      "how": "cited pages",
      "locators": [
       "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"",
-      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"; , Chart B\u2014For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Your earned income was over $15,750.\"",
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"; , Chart B—For Children and Other Dependents, \"Your unearned income was over $1,350.\", \"Your earned income was over $15,750.\"",
       "p. 8, Worksheet 1-2, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\""
      ],
      "cols_pages": [
@@ -480,7 +552,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "pp. 17 and 19, Steps 1 and 4, \"A qualifying child is your...\" and \"A qualifying relative is your...\"; p. 20, Adopted child, \"An adopted child includes a child lawfully placed with you for legal adoption\"; p. 21, Foster child, \"A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction\"; , Relatives who don't have to live with you, \"Your father, mother, grandparent, or other direct ancestor, but not foster parent\"; , Member of Household or Relationship Test, \"If at any time during the year the person was your spouse, that person can\u2019t be your qualifying relative.\"; , \"Any of these relationships that were established by marriage aren\u2019t ended by death or divorce.\""
+      "pp. 17 and 19, Steps 1 and 4, \"A qualifying child is your...\" and \"A qualifying relative is your...\"; p. 20, Adopted child, \"An adopted child includes a child lawfully placed with you for legal adoption\"; p. 21, Foster child, \"A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction\"; , Relatives who don't have to live with you, \"Your father, mother, grandparent, or other direct ancestor, but not foster parent\"; , Member of Household or Relationship Test, \"If at any time during the year the person was your spouse, that person can’t be your qualifying relative.\"; , \"Any of these relationships that were established by marriage aren’t ended by death or divorce.\""
      ],
      "cols_pages": [
       17,
@@ -500,8 +572,8 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term \u201cparent\u201d means a biological or adoptive parent of an individual. It does not include a stepparent or foster parent unless that person has adopted the individual.\"",
-      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term \u201cparent\u201d means a biological or adoptive parent of an individual.\""
+      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual. It does not include a stepparent or foster parent unless that person has adopted the individual.\"",
+      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual.\""
      ],
      "cols_pages": [
       15,

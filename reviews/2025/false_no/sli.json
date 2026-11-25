@@ -2,7 +2,7 @@
  "form": "sli",
  "reviews": {
   "gate:sli.any_if_not_mfs": {
-   "subject_sha": "b1f3af756466008d74b631bdcd30b49d4bb0c28bc8ffe994ea54340a0ba9b879",
+   "subject_sha": "547e4879780c34b3618a9a089bb0f91572857e21b7a8d45d4bcf9751ed9e9f3a",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -10,50 +10,40 @@
       {
        "kind": "FALSE_NO",
        "pattern": "2",
-       "who": "A graduate whose mother paid the 2025 student loan interest as a gift, or whose employer or nonprofit internship paid it and added it to W-2 box 1. The graduate is legally obligated on the loan and no one claims them as a dependent.",
-       "why_no": "The gate asks whether 'you (or your spouse) paid interest'. Someone else made the payments, so the filer truthfully answers no.",
+       "who": "A recent graduate who is legally obligated on a qualified student loan. In 2025 a parent paid the monthly payments as a gift, or an employer paid interest and added it to box 1 of the W-2. No one claims the graduate as a dependent. A joint-return couple whose interest was all paid this way is in the same position.",
+       "why_no": "The gate asks whether 'You (or, on a joint return, your spouse) paid interest on a student loan in 2025'. Literally, the filer paid nothing; the parent or employer did. The help that says 'Include interest someone else paid on your loan for you' appears only with the gated amount question, so the filer never sees it.",
        "line": "sli.interest_if_any",
-       "irs_text": "p970 p. 33, Interest paid by others: 'If you are the person legally obligated to make interest payments and someone else makes a payment of interest on your behalf, you are treated as receiving the payments from the other person and, in turn, paying the interest.' Example 2: 'As a gift, your mother made this payment ... you can deduct this payment of interest.'",
+       "irs_text": "p970 p. 33, Interest paid by others: 'If you are the person legally obligated to make interest payments and someone else makes a payment of interest on your behalf, you are treated as receiving the payments from the other person and, in turn, paying the interest.' Example 2 (mother's gift) and Example 1 (employer payment in W-2 box 1) both allow the deduction.",
        "severity": "high",
-       "fix": "Ask: 'Was interest paid in 2025, by you or by anyone else (a parent, an employer, a program), on a student loan that you (or your spouse) are legally bound to repay?' Then use the existing assisted_any question to remove employer-plan, health-program and 529 payments."
+       "fix": "Reword the gate: 'Was any interest paid in 2025 on a student loan that you (or, on a joint return, your spouse) owe, whether you paid it or someone else, such as a parent or an employer, paid it for you?' Move the 'someone else paid' help to the gate."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A borrower whose 2025 payments the lender applied only to principal, but whose loan carries capitalized interest or a loan origination fee. Form 1098-E box 2 may flag this.",
-       "why_no": "The filer reads the lender statement as principal only, so they believe they 'paid interest' of nothing.",
+       "who": "A borrower whose unpaid interest was capitalized during deferment or forbearance, or whose loan carried an origination fee. In 2025 the servicer applied every payment to principal, so the year-end statement or Form 1098-E box 1 shows little or no interest (box 2 may be checked).",
+       "why_no": "The borrower reads 'paid interest' as what the statement labels interest and answers no. Under the IRS rules, part of the principal payments is treated as interest.",
        "line": "sli.interest_if_any",
-       "irs_text": "p970 p. 33: the remaining capitalized interest is applied 'to the principal payments in the order in which they were made' and 'the remaining amount of principal of both payments is treated as interest for tax purposes'. The example allocates $5 of the loan origination fee to the principal portion of each monthly payment and treats it as interest.",
+       "irs_text": "p970 p. 33: '...determine that the remaining amount of principal of both payments is treated as interest for tax purposes... you can deduct $401.02' and 'You will also apply the remaining amount of capitalized interest... to the principal payments... and treat those amounts as interest for tax purposes.'",
        "severity": "medium",
-       "fix": "Ask whether any payment was made on a student loan in 2025, including principal-only and voluntary payments. Add help: 'Payments of principal can count as interest if interest was added to the loan balance or the loan had an origination fee; see box 2 of Form 1098-E.'"
+       "fix": "Ask the gate as 'Did you (or, on a joint return, your spouse) make any payment on a student loan in 2025, or did anyone make one for you?' Then ask the amount, with help on capitalized interest, origination fees and Form 1098-E box 2."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A parent repaying a federal Parent PLUS loan, or a private loan, taken out for a child who was their dependent. Also a filer with a bank personal loan used only for tuition, fees, room and board.",
-       "why_no": "The filer reads 'student loan' as a loan for their own schooling, or as a loan labeled 'student loan'. A parent thinks 'the student loan is my child's'. A personal-loan borrower thinks 'I have a personal loan, not a student loan'.",
+       "who": "A filer who refinanced or consolidated federal student loans into a private bank loan, or a parent repaying a Parent PLUS or private loan taken out for a dependent child's college costs. Either one paid interest in 2025.",
+       "why_no": "The refinanced borrower now thinks of the debt as an ordinary bank loan. The parent thinks the 'student loan' is the child's, not the parent's.",
        "line": "sli.interest_if_any",
-       "irs_text": "i1040gi pp. 98–99: 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students. 1. Yourself or your spouse. 2. Any person who was your dependent when the loan was taken out.'",
-       "severity": "medium",
-       "fix": "Add to the gate: 'Count any loan you or your spouse took out to pay college or vocational school costs for yourself, your spouse or a dependent. This includes Parent PLUS loans and bank or personal loans used only for those costs.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A borrower who paid less than $600 of interest in 2025, or who made voluntary payments during a forbearance or deferment, and received no Form 1098-E.",
-       "why_no": "The filer associates student loan interest with the 1098-E form, or with required payments, and answers no when no form arrived or no payment was due.",
-       "line": "sli.interest_if_any",
-       "irs_text": "p970 p. 33, When Must Interest Be Paid?: 'You can deduct all interest you paid during the year on your student loan, including voluntary payments, until the loan is paid off.'",
+       "irs_text": "i1040gi p. 98: 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students. 1. Yourself or your spouse.' i1040gi p. 99: '2. Any person who was your dependent when the loan was taken out.'",
        "severity": "low",
-       "fix": "Move the existing help 'A lender may send no form for a small amount of interest' onto the gate. Add: 'Include voluntary payments made while payments were paused.'"
+       "fix": "Add help to the gate: 'Include a loan that refinanced or consolidated a student loan, and a loan you took out for your child's or other dependent's education.'"
       }
      ],
-     "prompt_sha": "b2c8f3c9c02a6969319ff05adaedc4acfecf0f435407f1cbea23e7fd086658b0",
+     "prompt_sha": "d690c56d014d21d22d087fbe1bb2776ec74203dc76868a7c3c3365dc2b183a14",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.10680400000000001,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_sli.any_if_not_mfs.b1f3af756466.1.response.txt"
+     "cost": 0.101964,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_sli.any_if_not_mfs.547e4879780c.1.response.txt"
     }
    ],
    "condition": "sli.any_if_not_mfs",

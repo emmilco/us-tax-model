@@ -256,58 +256,58 @@
    ]
   },
   "gate:s2.lookback_ask": {
-   "subject_sha": "4785eb6b95e7fb8f6d6ed762b384eb1383d84862d6e474132cd30cfab981bb81",
+   "subject_sha": "1948b0dd4554ce31ba0b16874ac8492a96b4f61439d26ae06a8eef48d544739b",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer who has never had a business, farm, rental, partnership or S corporation interest and files no Schedule C. In 2025 they are a beneficiary of a trust or estate that reports income from a long-term contract completed in 2025, and the entity passes the look-back amounts through to them.",
-       "why_no": "The gate names only a business, farm, rental, or a share of a partnership or S corporation. A trust or estate beneficiary truthfully answers no to that list, so the gated question is never asked.",
-       "line": "s2.lookback_if_business",
-       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'; i6251 (2025) p. 7, Line 2p: 'you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted'",
-       "severity": "medium",
-       "fix": "Add to the scope helper 'or an interest in an estate or trust that reports business income to you', or ask the look-back question whenever any Schedule K-1 (Form 1041, 1065 or 1120-S) is entered."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "An individual has owned film rights or book rights since 2017 and depreciates them under the income forecast method on Schedule E. They received no royalties in 2025, or they disposed of the rights in 2025 for a lump sum not reported as royalties. They have no Schedule C and no other business or rental.",
-       "why_no": "The royalty branch requires royalties received in 2025. The before-2025 branch names a 'business, farm, rental', and a holder of royalty-producing intangibles may not read that as covering their book or film rights. The gate is therefore false even though 2025 is a recomputation year or the year of disposition.",
-       "line": "s2.lookback_if_business",
-       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'",
-       "severity": "medium",
-       "fix": "Broaden the before-2025 helper to 'a business, farm, rental, royalty property (such as a film, book, patent or copyright), or a share of a partnership, S corporation, estate or trust'. Drop the requirement that royalties were received in 2025."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A partner or S corporation shareholder who has held the interest since before 2025. Their 2025 Schedule K-1 carries the information needed to compute look-back interest on a long-term contract the entity completed in 2025. The filer does not know what percentage of completion or the look-back method is.",
-       "why_no": "The help says 'If neither is familiar, answer No.' The contract is the entity's, not something the filer recognizes as 'a contract you had', so they answer no.",
-       "line": "s2.lookback_if_business",
-       "irs_text": "i6251 (2025) p. 7, Line 2p: 'If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted. For details, see Form 8697'",
-       "severity": "medium",
-       "fix": "Add a checkable fact: 'Does any Schedule K-1 you (or your spouse) received mention look-back interest, Form 8697, Form 8866, a long-term contract, or the income forecast method?' Replace 'If neither is familiar, answer No' with 'If unsure, check your Schedule K-1s and business records.'"
-      },
-      {
        "kind": "UNCLEAR",
        "pattern": "7",
-       "who": "A small contractor whose contracts are exempt from the percentage-of-completion method under section 460(e)(1). They use the completed-contract method for the regular tax but must use percentage of completion for the AMT, and a contract finished in 2025.",
-       "why_no": "The question asks about a contract 'with its income figured as the work went on'. This filer's regular-tax income was not figured that way. The help line 'Count a contract whose income was figured as the work went on for the alternative minimum tax only' is ambiguous: it can be read as 'only count it if this happened for the AMT alone' or as an instruction the filer cannot apply without knowing the AMT rule.",
-       "line": "s2.lookback_if_business",
-       "irs_text": "i6251 (2025) p. 7, Line 2p: 'For contracts excepted from the percentage-of-completion method for the regular tax by section 460(e)(1), use the simplified procedures ... to determine the percentage of completion' and 'If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe ...'",
+       "who": "A small commercial remodeling contractor on Schedule C uses the completed-contract method for regular tax, as section 460(e)(1)(B) allows. The contractor never files Form 6251 or works out income as the job progresses, and a multi-year contract finished in 2025.",
+       "why_no": "The question asks about a contract 'with its income figured as the work went on'. This filer never figured it that way. The help sentence 'Count a contract whose income was figured as the work went on for the alternative minimum tax only' describes a computation that was never made, so the filer answers No. 'If neither is familiar, answer No' supports that answer.",
+       "line": "s2.lookback_if_business (Schedule 2 line 17n; a Yes should end the interview, so the refusal is missed)",
+       "irs_text": "i6251 (2025) p. 7, Line 2p: 'For the AMT, you must generally use the percentage-of-completion method ... If you are required to use the percentage-of-completion method for either the regular tax or the AMT, you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted.'",
+       "severity": "medium",
+       "fix": "Ask about the fact the filer can check, then classify: 'Did you (or your spouse) have a contract to build, install, make or manufacture something that began in one tax year and was finished, or had its price or costs changed, in 2025? Answer Yes even if you report the income only when the job is done, unless it is a contract to build or improve homes (or other dwellings of 4 or fewer units).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married filer owns 40% of a closely held partnership or S corporation that has a multi-year construction contract finished in 2025. The owner's share of the look-back interest is figured on the owner's own Form 8697 from Schedule K-1 information.",
+       "why_no": "The question reads 'Did you (or, on a joint return, your spouse) have a contract'. The contract belongs to the entity, not the filer personally. The filer also cannot see the entity's accounting method.",
+       "line": "s2.lookback_if_business (Schedule 2 line 17n; missed refusal)",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'",
+       "severity": "medium",
+       "fix": "Add: 'including a contract or property of a partnership, S corporation, estate or trust in which you hold a share; check your Schedule K-1 for look-back (Form 8697 or 8866) information.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer reports no Schedule C and no 2025 royalties. The filer holds film or music rights as an investment and depreciates them under the income forecast method, and 2025 is the third recomputation year. The rights earned nothing in 2025, or were sold in 2025 with the gain reported on Form 8949.",
+       "why_no": "The computed gate is false. No Schedule C is filed and no royalty is listed in 2025. The filer also truthfully says no to having owned 'a business, a farm, a rental property, or a share of a partnership or an S corporation', because investment rights to a film are none of these. The question is never asked.",
+       "line": "s2.lookback_if_business (Schedule 2 line 17n; Form 8866 amount and refusal missed)",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) ... from Form 8697 or 8866'",
+       "severity": "high",
+       "fix": "Broaden the gate's scope question: 'In any year before 2025, did you (or your spouse) own a business, farm, rental, royalty-producing property (such as a film, book, recording or patent), or a share of a partnership or S corporation?' Alternatively, also trigger the gate on any depreciation or amortization reported, or on a 2025 sale of such property."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer first acquired a partnership or S corporation interest in 2025, by purchase or gift, and reports it only on Schedule E with no Schedule C or royalties. The entity's long-term contract or income-forecast property passes a look-back computation through to owners in 2025.",
+       "why_no": "The scope question asks only about ownership 'In any year before 2025'. A 2025-only owner truthfully answers No, so the gate is false and the question is never asked.",
+       "line": "s2.lookback_if_business (Schedule 2 line 17n)",
+       "irs_text": "f1040s2 Schedule 2 (2025) p. 2, line 17n: 'Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866'",
        "severity": "low",
-       "fix": "Reword the help: 'Count a contract that spanned more than one tax year even if you reported its income only when finished, unless it was a home construction contract; the AMT may still require income to be figured as the work went on.'"
+       "fix": "Also open the gate when the return reports any 2025 Schedule E partnership or S corporation income or Schedule F/Form 4835 activity: '... owned ... before or during 2025'."
       }
      ],
-     "prompt_sha": "7b9b77ac73a26d726402706840a43bd48db13a75dc7d68bec27831e2104a06ef",
+     "prompt_sha": "a85b51c55c278c6ed0a70875dcc014d4a86ebcb3a66025dfa90fe46b1c8340c2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.11137999999999999,
-     "date": "2026-11-24",
-     "response": ".transcription/false_no/gate_s2.lookback_ask.4785eb6b95e7.1.response.txt"
+     "cost": 0.12316799999999999,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_s2.lookback_ask.1948b0dd4554.1.response.txt"
     }
    ],
    "condition": "s2.lookback_ask",

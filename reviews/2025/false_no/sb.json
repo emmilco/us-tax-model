@@ -142,7 +142,7 @@
    ]
   },
   "gate:sb.foreign_any": {
-   "subject_sha": "db40099bc89329bae4a367f280b15d2633e7c16241cfca235716270c78979454",
+   "subject_sha": "be017bad7cedb6bb4d87bb5e55c9d98c3aa8598acd9b6b6a4b1a5d25fe042eb0",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -150,120 +150,90 @@
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A filer who owns more than 50% of a U.S. corporation, LLC or partnership that holds a bank or brokerage account abroad. Also covered: a filer who has a greater than 50% present beneficial interest in a U.S. trust that holds such an account.",
-       "why_no": "Helper 1 asks whether 'you' had an account in another country, and the account belongs to the entity. Helper 4 asks only about companies 'set up outside the United States', and helper 3 only about foreign trusts. The 7a help says 'an account of a company you own more than half of' counts, but it appears only after the gate.",
+       "who": "A filer, or their spouse, owns more than 50% of a U.S. corporation, LLC or partnership. That entity holds a bank or brokerage account abroad, and the account is signed for by an employee or manager, not by the filer.",
+       "why_no": "Helper 1 asks whether \"you (or ... your spouse) have an account in another country ... or the power to sign for one\". The account belongs to the company, and the filer cannot sign on it. Helper 4 asks only about companies \"set up outside the United States\", and this company is domestic. Helper 2 asks about things \"outside the United States\", but the shares are in a U.S. company.",
        "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
-       "irs_text": "fincen114 p. 5, Financial Interest 2.b-2.f: 'the owner of record or holder of legal title is ... A corporation in which the United States person owns directly or indirectly ... more than 50 percent'; '... A trust in which the United States person has a greater than 50 percent present beneficial interest'",
+       "irs_text": "fincen114 p. 5, Financial Interest 2.b, \"A corporation in which the United States person owns directly or indirectly: (i) more than 50 percent of the total value of shares\"; c. (partnership); f. \"Any other entity ... more than 50 percent\"; i1040sb p. 3, \"For definitions of 'financial interest' ... see the instructions for FinCEN Form 114.\"",
        "severity": "high",
-       "fix": "Add to the gate: 'Did a company, partnership or LLC you (or your spouse) own more than half of, or a trust you set up or get more than half the income of, have an account outside the United States?'"
+       "fix": "Add to helper 1: \"...or did a company or partnership that you (or your spouse) own more than half of, directly or through others, have such an account?\""
       },
       {
        "kind": "FALSE_NO",
        "pattern": "5",
-       "who": "A filer whose single-member LLC (a disregarded entity), or whose revocable U.S. living trust (a grantor trust), holds foreign stock, a foreign partnership interest or a foreign account.",
-       "why_no": "The LLC or trust is the legal owner, so 'did you own anything else of value outside the United States' is truthfully no. The trust has a U.S. trustee and is not foreign, so helper 3 is no as well.",
-       "line": "sb.form8938_if_foreign; sb.line7a_if_foreign",
-       "irs_text": "i8938 p. 8: 'If you are the owner of a disregarded entity, you have an interest in any specified foreign financial assets owned by the disregarded entity'; 'If you are considered the owner under the grantor trust rules ... you have an interest in any specified foreign financial asset held by that part of the trust'",
+       "who": "A filer is the beneficiary of more than half of the current income of a U.S. (domestic) trust, or is the grantor-owner of a domestic revocable living trust. The trust holds an account at a foreign bank or broker.",
+       "why_no": "Helper 3 covers only trusts that are \"outside the United States, has a trustee abroad, or in which anyone other than a U.S. citizen ... can make or veto a decision\", and this trust is domestic. Helper 1 asks whether \"you\" had the account, but the trust holds it.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
+       "irs_text": "fincen114 p. 5, Financial Interest 2.d, \"A trust of which the United States person: (i) is the trust grantor and (ii) has an ownership interest\"; 2.e, \"A trust in which the United States person has a greater than 50 percent present beneficial interest in the assets or income of the trust\"",
        "severity": "high",
-       "fix": "Ask whether anything held through your own LLC or your own revocable/living trust is a foreign account or foreign investment."
+       "fix": "Add to helper 1: \"...or did a trust you set up and control, or whose current income goes mostly to you, hold such an account?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer has an account abroad that is held in the name of a relative, agent, lawyer or other nominee who manages it for the filer's benefit. A typical case is a parent overseas keeping the filer's savings in the parent's own name.",
+       "why_no": "Helper 1 asks whether \"you ... have an account\", and the account is in someone else's name. Helper 2's \"owed money by someone abroad\" does not read as covering one's own money that someone else holds.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
+       "irs_text": "fincen114 p. 5, Financial Interest 2.a, \"An agent, nominee, attorney, or a person acting in some other capacity on behalf of the United States person with respect to the account\"",
+       "severity": "medium",
+       "fix": "Add to helper 1: \"...including an account in someone else's name that is held for you\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer holds a whole-life insurance policy or annuity with a cash value, issued by an insurer abroad, for example one bought before moving to the U.S. and still paid into.",
+       "why_no": "Helper 1 lists \"a bank, investment, pension, payment or crypto account\". A filer reads that list as complete, and an insurance policy is not on it. Helper 2's \"anything else of value\" seems to be about property, not a policy.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign; sb.form8938_if_foreign",
+       "irs_text": "i1040sb p. 2, \"A financial account also includes ... an insurance policy with a cash value (such as a whole life insurance policy), an annuity policy with a cash value\"; i8938 p. 7, \"any cash value life insurance or annuity contract maintained by an insurance company or other foreign financial institution\"",
+       "severity": "medium",
+       "fix": "Add to helper 1's list: \"an insurance policy or annuity with a cash value, or shares in a fund held directly with the fund\"."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer living in the U.S. directly holds stock certificates or registered shares of a foreign corporation, a small interest in a foreign partnership or fund, a note from a foreign company, or a swap or option with a foreign counterparty. None of these is held through a financial account, and the documents are kept in the U.S.",
+       "why_no": "Helper 2 asks about owning anything of value \"outside the United States\". The filer reads that as where the asset physically is, and the certificate is in a U.S. drawer. Helper 4 applies only to a stake of \"10% or more\" or an officer role.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7, \"Stock issued by a foreign corporation. • A capital or profits interest in a foreign partnership. • A note, bond, debenture, or other form of indebtedness issued by a foreign person ... • ... similar agreement with a foreign counterparty\"",
+       "severity": "high",
+       "fix": "Add a helper: \"Did you (or your spouse) own, outside a U.S. brokerage or bank account, shares, bonds, notes, a partnership interest or a contract issued by or entered into with a foreign company or person, wherever the papers are kept?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer is the beneficiary of a foreign estate that is still being administered after a parent died abroad, and knows of the interest. Alternatively, the filer has an unvested deferred-compensation entitlement with a foreign employer that is not called a pension.",
+       "why_no": "Helper 3 names only a \"trust or family foundation\". Helper 2's \"own\" and \"owed money\" do not match an expected inheritance. Helper 1 names a \"pension\" account, but deferred pay is not called a pension.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7, \"An interest in a foreign trust or foreign estate\"; p. 8, \"Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans ... Report in Part VI your interest\"",
+       "severity": "medium",
+       "fix": "Add \"estate of someone who died\" to helper 3, and \"or deferred pay or bonus plan of an employer abroad\" to helper 1."
       },
       {
        "kind": "FALSE_NO",
        "pattern": "3",
-       "who": "Parents who elect Form 8814 to report their child's interest and dividends, where the child has a foreign savings or investment account, for example one opened by grandparents abroad.",
-       "why_no": "Every helper asks only about 'you (or, on a joint return, your spouse)'. The account is the child's.",
+       "who": "A parent elects Form 8814 to report a child's interest and dividends. The child holds foreign stock or a foreign account.",
+       "why_no": "Every helper asks about \"you (or, on a joint return, your spouse)\". The asset belongs to the child, so a truthful answer is no.",
        "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 8: 'If you file Form 8814 ... you have an interest in any specified foreign financial asset held by the child.'",
+       "irs_text": "i8938 p. 8, \"If you file Form 8814 ... you have an interest in any specified foreign financial asset held by the child.\"",
        "severity": "high",
-       "fix": "Add a gate condition: 'If you are reporting your child's interest or dividends on your return, did the child have an account or investment outside the United States?'"
+       "fix": "When Form 8814 is in the return, ask the foreign-account and foreign-asset helpers about the child as well."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer added as a joint owner of an elderly parent's bank account abroad for convenience. Similar cases: an executor or trustee who holds legal title to a foreign account for someone else, and a filer whose relative or attorney abroad holds an account in the relative's name on the filer's behalf.",
-       "why_no": "The filer considers it 'Mom's account' or the estate's account, not 'an account' that 'you' had. The money is not theirs, so the filer does not perceive it as their account or as a 'power to sign'.",
+       "pattern": "2",
+       "who": "A filer is a corporate treasurer or controller who approves wires or gives online or phone instructions on an employer's foreign account, alone or jointly with another person, but never signs anything.",
+       "why_no": "Helper 1 asks about \"the power to sign for one\". The filer reads \"sign\" literally and gives no signatures. The filer also takes the account to be the employer's, not theirs.",
        "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
-       "irs_text": "fincen114 p. 5: financial interest where 'the United States person is the owner of record or holder of legal title, regardless of whether the account is maintained for the benefit of the United States person or for the benefit of another person'; or where the owner of record is 'An agent, nominee, attorney ... on behalf of the United States person'",
+       "irs_text": "i1040sb p. 3, \"'Signature authority' is the authority of an individual (alone or in conjunction with another individual) to control the disposition of assets ... by direct communication (whether in writing or otherwise)\"; \"Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a.\"",
        "severity": "medium",
-       "fix": "State in helper 1: 'Count an account in your name even if the money belongs to someone else (a parent, an estate you handle), and an account someone abroad holds for you.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer with a cash-value whole life insurance or annuity policy issued by a foreign insurer, for example one bought while living in Hong Kong or Canada.",
-       "why_no": "Helper 1 lists 'a bank, investment, pension, payment or crypto account', and an insurance policy is none of these. The filer does not see the policy as 'anything else of value outside the United States'.",
-       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign; sb.form8938_if_foreign",
-       "irs_text": "i1040sb p. 2: 'A financial account also includes ... an insurance policy with a cash value (such as a whole life insurance policy), an annuity policy with a cash value'",
-       "severity": "medium",
-       "fix": "Add 'life insurance or annuity policy with a cash value' to the list in helper 1."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer with an account at the London or Singapore branch of a U.S. bank, for example Citibank abroad.",
-       "why_no": "The filer regards the bank as a U.S. bank, so 'an account in another country' reads as no. The help explaining that 'a U.S. bank's branch abroad counts' is shown only after the gate.",
-       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
-       "irs_text": "i1040sb p. 3: 'an account maintained with a branch of a U.S. bank that is physically located outside of the United States is a foreign financial account'",
-       "severity": "medium",
-       "fix": "Move the location rule into helper 1: 'an account kept at an office abroad, even of a U.S. bank'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who holds certificated shares of a foreign company, a direct interest in a foreign partnership, or a note from or derivative with a foreign counterparty. The papers are kept at home in the United States, not in any financial account.",
-       "why_no": "'own anything else of value outside the United States' reads as physical location, and the item is in a drawer in the U.S. Helper 4 asks only about a 10% ownership stake or an officer role.",
-       "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 7: 'Stock or securities issued by someone that is not a U.S. person'; 'A capital or profits interest in a foreign partnership'; '... similar agreement with a foreign counterparty'",
-       "severity": "medium",
-       "fix": "Reword helper 2: 'own shares, a partnership interest, a loan or a contract issued by a foreign company or person (not held through a U.S. brokerage), wherever the papers are kept'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A beneficiary who received a final distribution from a foreign trust in 2025 after which the trust wound up. Also covered: a grantor whose foreign trust ended during 2025.",
-       "why_no": "Helper 3 is in the present tense: 'Do you ... have anything to do with a trust', 'may receive from it'. Nothing more can be received now.",
-       "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 8: 'If you receive a distribution from the foreign trust or foreign estate, you are considered to know of the interest.'",
-       "severity": "medium",
-       "fix": "Ask 'At any time in 2025, did you ...' and add 'or received anything from'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A beneficiary of the estate of a parent who died abroad, where the estate was still undistributed in 2025.",
-       "why_no": "Helper 3 names only a 'trust or family foundation'. The filer does not yet 'own' the inheritance and is not 'owed money' in the ordinary sense.",
-       "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 7: 'Examples of other specified foreign financial assets include ... An interest in a foreign trust or foreign estate.'",
-       "severity": "medium",
-       "fix": "Add 'or an estate abroad you may inherit from' to helper 3."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A beneficiary of a trust with a U.S. trustee that is administered in the U.S., where a protector or other person abroad controls substantial decisions, which makes the trust foreign.",
-       "why_no": "Helper 3 asks only 'outside the United States or has a trustee abroad'.",
-       "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 7: 'An interest in a foreign trust or foreign estate.'",
-       "severity": "low",
-       "fix": "Add to helper 3: 'or anyone abroad who can make major decisions for it'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "An employee or officer of a U.S. company who can instruct the company's (or a subsidiary's) bank abroad, alone or jointly.",
-       "why_no": "'did you have an account ... or the power to sign for one' reads as covering personal accounts only.",
-       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
-       "irs_text": "i1040sb p. 3: 'Signature authority ... Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a.'",
-       "severity": "low",
-       "fix": "Add to helper 1: 'including your employer's or a client's account'."
+       "fix": "Replace \"the power to sign for one\" with \"the authority, alone or with others, to move money from one (by signature, online, phone or otherwise), including an employer's or other person's account\"."
       }
      ],
-     "prompt_sha": "043b8d5c5a4b00206f86f7bb168fa9253c0f5b5b5a8e0fba2bb57a2dd8cad255",
+     "prompt_sha": "be733095faae0f885f51f1a9ba463e395aae2ad49ad680f3b2bad97fe97d60c2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.20412399999999997,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_sb.foreign_any.db40099bc893.1.response.txt"
+     "cost": 0.182288,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_sb.foreign_any.be017bad7ced.1.response.txt"
     }
    ],
    "condition": "sb.foreign_any",

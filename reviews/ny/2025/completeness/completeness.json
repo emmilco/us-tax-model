@@ -90,7 +90,7 @@
  },
  {
   "form": "ny_it201",
-  "subject_sha": "2ec59654acb3d6bc26791d46ae8496e29b4e36f683867a9e986a9931bb26e89c",
+  "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592",
   "used": [
    {
     "doc": "ny_it112ri",
@@ -159,6 +159,7 @@
    {
     "doc": "ny_it225i",
     "pages": [
+     17,
      18,
      19,
      20,
@@ -177,130 +178,132 @@
     "system_sha": "12614b3b48e43be67d70ed8eea3f366fc2eb5c9e4ab4c3e0c27f6f18bb0d44e2",
     "claims": [
      {
-      "item": "ny_it201.line34",
+      "item": "ny_it201.line69a",
       "sentences": [
        {
-        "quote": "In most cases, you must use the same filing status you used on your federal return. If you did not have to file a federal return, use the filing status you would have used if you had filed.",
-        "page": "ny_it201i p. 4"
-       },
-       {
-        "quote": "In this case, you may file a separate New York return using filing status .",
-        "page": "ny_it201i p. 5"
-       },
-       {
-        "quote": "You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown, and – you can demonstrate that reasonable efforts have been made to locate your spouse, and – good cause exists for the failure to file a joint New York return.",
-        "page": "ny_it201i p. 5"
-       },
-       {
-        "quote": "You are unable to file a joint New York return because: – your spouse refuses to sign a joint New York return; and – reasonable efforts have been made to have your spouse sign a joint return; and – there exists objective evidence of alienation from your spouse",
-        "page": "ny_it201i p. 5"
+        "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer’s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit.",
+        "page": "ny_it201i p. 20"
        }
       ],
-      "quote": "In most cases, you must use the same filing status you used on your federal return. If you did not have to file a federal return, use the filing status you would have used if you had filed. / In this case, you may file a separate New York return using filing status . / You are unable to file a joint New York return because: – the address or whereabouts of your spouse is unknown, and – you can demonstrate that reasonable efforts have been made to locate your spouse, and – good cause exists for the failure to file a joint New York return. / You are unable to file a joint New York return because: – your spouse refuses to sign a joint New York return; and – reasonable efforts have been made to have your spouse sign a joint return; and – there exists objective evidence of alienation from your spouse",
-      "page": "ny_it201i p. 4; ny_it201i p. 5",
-      "why_uncovered": "The only Item A exception the encoding handles is the resident/nonresident spouse case (ny_it201.gate.spouse_nonresident). Two other exceptions let a couple who filed a joint federal return file married filing separately in New York: a spouse whose whereabouts are unknown, and a spouse who refuses to sign. No question asks about either situation and no refusal covers it. The filing status therefore always follows the federal one, which drives the standard deduction, the tax computation, and the household and school tax credit tables.",
-      "closest_item": "ny_it201.line34",
+      "quote": "If you are a New York City resident or part-year resident and you marked Yes at item C on the front of Form IT-201 indicating that you can be claimed as a dependent on another taxpayer’s federal return, or your income (see below) is more than $500,000, you do not qualify to claim this credit.",
+      "page": "ny_it201i p. 20",
+      "why_uncovered": "The encoding refuses line 69a only above $500,000 (ny_it201.gate.stc_rr_income). The rate-reduction nodes (stc_rr, stc_rr_low, stc_rr_high and stc_rr_low_band) compute the credit from New York City taxable income and filing status alone. No listed gate or helper zeroes line 69a when item C is Yes. The item C exclusion is encoded only for line 69 (stc_fixed_eligible) and lines 40 and 48.",
+      "closest_item": "ny_it201.line69a",
       "effect": "amount"
      },
      {
-      "item": "ny_it201.safe_harbor",
+      "item": "ny_it201.line16",
       "sentences": [
        {
-        "quote": "However, if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025) and you are not a farmer or a fisherman, your 2025 prepayments must equal at least 110% of your 2024 New York income tax based on a 12-month return.",
-        "page": "ny_it201i p. 23"
+        "quote": "Write each type of income and each adjustment and its amount in the Identify areas on lines 16 and 18.",
+        "page": "ny_it201i p. 7"
+       },
+       {
+        "quote": "If you need more room, submit a list on a separate sheet showing each type of income and each adjustment and its amount.",
+        "page": "ny_it201i p. 7"
        }
       ],
-      "quote": "However, if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025) and you are not a farmer or a fisherman, your 2025 prepayments must equal at least 110% of your 2024 New York income tax based on a 12-month return.",
-      "page": "ny_it201i p. 23",
-      "why_uncovered": "ny_it201.ask.prior_agi_high asks only about the 2024 New York AGI threshold. Nothing asks whether the filer is a farmer or fisherman, so the 110% requirement is applied to farmers and fishermen too. Their 100% safe harbor is not recognized, and the estimated-penalty determination can come out wrong (or be refused) for them.",
-      "closest_item": "ny_it201.safe_harbor",
-      "effect": "amount"
+      "quote": "Write each type of income and each adjustment and its amount in the Identify areas on lines 16 and 18. / If you need more room, submit a list on a separate sheet showing each type of income and each adjustment and its amount.",
+      "page": "ny_it201i p. 7",
+      "why_uncovered": "Line 16 is encoded only as an amount. No node produces the required Identify entries (each type of other income and its amount) or the overflow list.",
+      "closest_item": "ny_it201.line16",
+      "effect": "presentation"
      },
      {
-      "item": "ny_it201.ask.special_code",
+      "item": "ny_it201.line18",
       "sentences": [
        {
-        "quote": "Enter this code if you qualify for an extension of time to file and pay your tax due under the combat zone or contingency operation relief provisions.",
-        "page": "ny_it201i p. 6"
+        "quote": "Write each type of income and each adjustment and its amount in the Identify areas on lines 16 and 18.",
+        "page": "ny_it201i p. 7"
        },
        {
-        "quote": "Code M7: You are a civilian spouse of a military servicemember and you are electing to use your own state of legal residence or domicile for state income tax purposes. Code M8: You are a civilian spouse of a military servicemember and you are electing to use the servicemember’s state of legal residence or domicile for state income tax purposes. Code M9: You are a civilian spouse of a military servicemember and you are electing to use the state where the servicemember’s permanent duty station is located for state income tax purposes.",
-        "page": "ny_it201i p. 6"
-       },
-       {
-        "quote": "Servicemembers Civil Relief Act (SCRA): New York State conforms to the SCRA. Therefore, for any tax year of the marriage, a servicemember and their spouse may elect to use, for purposes of taxation, any of the following (regardless of the date they married): • the residence or domicile of the servicemember • the residence or domicile of the spouse • the permanent duty station of the servicemember",
-        "page": "ny_it201i pp. 3–4"
-       },
-       {
-        "quote": "Enter this code if you are a U.S. nonresident noncitizen for federal income tax purposes and you qualify to file your federal income tax return on or before June 15, 2026.",
-        "page": "ny_it201i p. 6"
+        "quote": "If you need more room, submit a list on a separate sheet showing each type of income and each adjustment and its amount.",
+        "page": "ny_it201i p. 7"
        }
       ],
-      "quote": "Enter this code if you qualify for an extension of time to file and pay your tax due under the combat zone or contingency operation relief provisions. / Code M7: You are a civilian spouse of a military servicemember and you are electing to use your own state of legal residence or domicile for state income tax purposes. Code M8: You are a civilian spouse of a military servicemember and you are electing to use the servicemember’s state of legal residence or domicile for state income tax purposes. Code M9: You are a civilian spouse of a military servicemember and you are electing to use the state where the servicemember’s permanent duty station is located for state income tax purposes. / Servicemembers Civil Relief Act (SCRA): New York State conforms to the SCRA. Therefore, for any tax year of the marriage, a servicemember and their spouse may elect to use, for purposes of taxation, any of the following (regardless of the date they married): • the residence or domicile of the servicemember • the residence or domicile of the spouse • the permanent duty station of the servicemember / Enter this code if you are a U.S. nonresident noncitizen for federal income tax purposes and you qualify to file your federal income tax return on or before June 15, 2026.",
-      "page": "ny_it201i p. 6; ny_it201i pp. 3–4",
-      "why_uncovered": "The special-code gate fires only for Build America Bond interest, being abroad, or an installment request. The encoding says the other codes are refused elsewhere, but no listed refusal or question covers them: - Combat zone extension (C7). - SCRA residence elections (M4–M9). ask.active_duty asks only whether you or your spouse were on active duty; it does not ask about a civilian spouse's election or a servicemember's choice of residence. - Nonresident noncitizen deadline (E4).",
-      "closest_item": "ny_it201.ask.special_code",
-      "effect": "eligibility"
+      "quote": "Write each type of income and each adjustment and its amount in the Identify areas on lines 16 and 18. / If you need more room, submit a list on a separate sheet showing each type of income and each adjustment and its amount.",
+      "page": "ny_it201i p. 7",
+      "why_uncovered": "Line 18 is encoded only as a total. No node lists each federal adjustment and its amount in the Identify area, or on an attached sheet.",
+      "closest_item": "ny_it201.line18",
+      "effect": "presentation"
      },
      {
-      "item": "ny_it201.ask.city_resident",
+      "item": "ny_it201.line69",
       "sentences": [
-       {
-        "quote": "If you or your spouse (if married filing jointly) maintained or had use of an apartment or living quarters in New York City during any part of 2025 (whether or not you personally used those living quarters for any part of the year), you must mark an X in the Yes box on line E(1) and enter the number of days you were in New York City, even if on personal business, on line E(2).",
-        "page": "ny_it201i p. 5"
-       },
-       {
-        "quote": "If you are married filing jointly and both spouses spent days in New York City, enter the higher number of days on line E(2).",
-        "page": "ny_it201i p. 5"
-       },
        {
         "quote": "New York City residents and part-year residents only: Enter in the applicable box the number of months you and your spouse (if filing a joint return) lived in New York City during 2025.",
         "page": "ny_it201i p. 5"
        }
       ],
-      "quote": "If you or your spouse (if married filing jointly) maintained or had use of an apartment or living quarters in New York City during any part of 2025 (whether or not you personally used those living quarters for any part of the year), you must mark an X in the Yes box on line E(1) and enter the number of days you were in New York City, even if on personal business, on line E(2). / If you are married filing jointly and both spouses spent days in New York City, enter the higher number of days on line E(2). / New York City residents and part-year residents only: Enter in the applicable box the number of months you and your spouse (if filing a joint return) lived in New York City during 2025.",
+      "quote": "New York City residents and part-year residents only: Enter in the applicable box the number of months you and your spouse (if filing a joint return) lived in New York City during 2025.",
       "page": "ny_it201i p. 5",
-      "why_uncovered": "Items E and F are required entries for non-NYC and NYC filers respectively. The encoding asks only a yes/no full-year city residency question. It neither asks for nor produces the NYC living-quarters answer, the day count, or the months of NYC residence.",
-      "closest_item": "ny_it201.ask.city_resident",
+      "why_uncovered": "Item F (months lived in New York City) is not encoded. Its stated purpose is to verify the New York City school tax credit on line 69. The encoding computes line 69 for full-year city residents but never enters the 12 months in item F.",
+      "closest_item": "ny_it201.line69",
       "effect": "presentation"
      },
      {
-      "item": "ny_it201.ask.itemize",
+      "item": "ny_it201.item_h_count",
       "sentences": [
        {
-        "quote": "If you itemized your deductions on your 2025 federal income tax return, mark an X in the Yes box. If you claimed the standard deduction on your federal return, mark an X in the No box.",
-        "page": "ny_it201i p. 5"
+        "quote": "If you have more than seven dependents and are filing a paper return, attach a separate sheet marked Form IT-201: Item H continued to your return with:",
+        "page": "ny_it201i p. 6"
+       }
+      ],
+      "quote": "If you have more than seven dependents and are filing a paper return, attach a separate sheet marked Form IT-201: Item H continued to your return with:",
+      "page": "ny_it201i p. 6",
+      "why_uncovered": "Only a count of item H dependents is encoded. Nothing produces the per-dependent item H information or the required continuation sheet for more than seven dependents.",
+      "closest_item": "ny_it201.item_h_count",
+      "effect": "presentation"
+     },
+     {
+      "item": "ny_it201.line78b",
+      "sentences": [
+       {
+        "quote": "You can choose either direct deposit to have the funds deposited directly into your bank account, or a paper check mailed to you. Mark an X in one box to indicate your choice.",
+        "page": "ny_it201i p. 23"
        },
        {
-        "quote": "If you marked Yes on federal Schedule B (Form 1040), Interest and Ordinary Dividends, Part III then mark an X in the Yes box.",
-        "page": "ny_it201i p. 5"
+        "quote": "If you choose direct deposit, enter your personal or business account information on line 83 for a fast and secure direct deposit of your refund (see line 83 instructions).",
+        "page": "ny_it201i p. 23"
+       },
+       {
+        "quote": "If your payment (or refund) would come from (or go to) an account within the U.S., supply the information requested for lines 83a, 83b, and 83c.",
+        "page": "ny_it201i p. 24"
        }
       ],
-      "quote": "If you itemized your deductions on your 2025 federal income tax return, mark an X in the Yes box. If you claimed the standard deduction on your federal return, mark an X in the No box. / If you marked Yes on federal Schedule B (Form 1040), Interest and Ordinary Dividends, Part III then mark an X in the Yes box.",
-      "page": "ny_it201i p. 5",
-      "why_uncovered": "Items B (federal itemizing) and D1 (Schedule B Part III foreign accounts) are required entries on the return. No encoded item produces them. The itemize question concerns the New York deduction choice, not the federal Item B entry.",
-      "closest_item": "ny_it201.ask.itemize",
+      "quote": "You can choose either direct deposit to have the funds deposited directly into your bank account, or a paper check mailed to you. Mark an X in one box to indicate your choice. / If you choose direct deposit, enter your personal or business account information on line 83 for a fast and secure direct deposit of your refund (see line 83 instructions). / If your payment (or refund) would come from (or go to) an account within the U.S., supply the information requested for lines 83a, 83b, and 83c.",
+      "page": "ny_it201i p. 23; ny_it201i p. 24",
+      "why_uncovered": "Line 78b is computed as an amount only. No question asks for direct deposit or a paper check, and no node produces line 83 account information (account type, routing number, account number, or the outside-U.S. indicator).",
+      "closest_item": "ny_it201.line78b",
       "effect": "presentation"
      },
      {
-      "item": "ny_it201.line75_amount",
+      "item": "ny_it201.line80",
       "sentences": [
        {
-        "quote": "If you are a beneficiary of an estate or trust and are claiming your portion of any payment of estimated taxes allocated to you by the estate or trust, include your amount on line 75 and submit a copy of the notification issued by the estate or trust with your return.",
-        "page": "ny_it201i p. 22"
+        "quote": "If you choose to have your payment withdrawn directly from your bank account (paying by electronic funds withdrawal), complete the following:",
+        "page": "ny_it201i p. 23"
+       },
+       {
+        "quote": "You must specify a future payment date up to and including April 15, 2026.",
+        "page": "ny_it201i p. 24"
+       },
+       {
+        "quote": "You must submit Form IT-201-V, Payment Voucher for Income Tax Returns, if you are making a payment by check or money order.",
+        "page": "ny_it201i p. 24"
        }
       ],
-      "quote": "If you are a beneficiary of an estate or trust and are claiming your portion of any payment of estimated taxes allocated to you by the estate or trust, include your amount on line 75 and submit a copy of the notification issued by the estate or trust with your return.",
-      "page": "ny_it201i p. 22",
-      "why_uncovered": "The line 75 question includes estimated tax allocated by an estate or trust in the amount. Nothing records or requires the estate or trust notification that must accompany the return.",
-      "closest_item": "ny_it201.line75_amount",
+      "quote": "If you choose to have your payment withdrawn directly from your bank account (paying by electronic funds withdrawal), complete the following: / You must specify a future payment date up to and including April 15, 2026. / You must submit Form IT-201-V, Payment Voucher for Income Tax Returns, if you are making a payment by check or money order.",
+      "page": "ny_it201i p. 23; ny_it201i p. 24",
+      "why_uncovered": "Line 80 is computed as an amount only. No question asks how the balance due will be paid. No node produces the electronic funds withdrawal box, line 83 and 84 information, or the withdrawal date, and none requires Form IT-201-V for a check or money order.",
+      "closest_item": "ny_it201.line80",
       "effect": "presentation"
      }
     ],
-    "cost": 0.622072,
+    "cost": 0.6647080000000001,
     "model": "claude-opus-5-5",
-    "date": "2026-11-23",
-    "response": ".transcription/completeness/ny_it201.2ec59654acb3.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/completeness/ny_it201.c902c934ad77.1.response.txt"
    }
   ]
  },

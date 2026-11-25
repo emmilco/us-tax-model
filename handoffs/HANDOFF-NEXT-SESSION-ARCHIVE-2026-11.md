@@ -2,6 +2,69 @@
 
 Historical; the current entry is the top of `HANDOFF-NEXT-SESSION.md`. Entries are newest first.
 
+# 2026-11-23: the 2026-11-22/23 wave integrated on `next` (superseded by the entry above where they differ)
+
+**State (2026-11-23).** `main` = `870cc146` (round F); last release `r2026.11.16.1`; nothing of this wave is released.
+`next` holds every lane of the wave, oldest first: `9a2b3e9c` (release gating: next/main split, light commit tier,
+preflight), `f4d8ea31` (batches 1 and 2: rollover tools T-339 to T-346, 2026 parameters and finals refresh, closures,
+wording and round F fixes; BUG-0998 to BUG-1118), `ed6c46ea` (five lanes: speed, rb, left, wk1, wk2; BUG-1119 to
+BUG-1128), `25e48ec0` (six lanes: ty26-ops, hh, adlow, fx-seqbi, fx-eduhsa, fx-capital; BUG-1129 to BUG-1172),
+`8175c23d` (three lanes: advfix-land with the retirement findings, fx-ny with nyfix, fx-itemized; BUG-1173 to
+BUG-1224), then the commit holding this entry (the `worktree_data.py carry-back --keep-main` option, ledger-fix
+`3bb2046c`, and this entry). Each integration commit's message lists its lanes, merge resolutions and review debt.
+The wave's worktrees are archived (`tools/worktree_gc.py archive`); their review data is carried back to the main
+checkout.
+
+**Owner decisions (2026-11-23).** EIC self-only age (`amb.2025.eic_self_only_age`): the Pub. 596 reading. EIC head of
+household with a nonresident spouse (`amb.2025.eic_hoh_nonresident_spouse`): the Pub. 596 reading, unchanged. HSA split
+(`amb.2025.hsa_split_spouse_eligible`): only the shared family months are split, as built in fx-eduhsa. Charity band
+(BUG-1204): kept as built; refuse past the 60% and 30% legal limits, below them `sa.charity_limited` decides.
+
+**Open work from `.claude/wave-2026-11-22/after-int-queue.md`**, each checked against this tree on 2026-11-23:
+- W2 guard (offer `scope.nol` only after a business or disaster route): not built; `scope.nol` has no `gated_by`.
+- W4 guard (re-ask when a non-land rental has an empty building list): no such check found in `forms/2025/rental.yaml`
+  (searched, not walked).
+- BUG-0993 (rental building basis prompt) and its `rprop.credit` help draft (`leftovers-check.md`): open.
+- `samples.confirmed_bugs()` counting an id inside a "no defect" class (queue item 6), and `core.hooksPath` pointing at
+  the main checkout's hooks (item 19; commits use `git -c core.hooksPath=tools/hooks commit`): neither is in
+  `BUG_INVENTORY.md`; not filed.
+- Agent-run rows of the wave (item 11): not in `research/costs/agent_runs.jsonl` on `next`. 53 rows of 2026-11-22/23
+  sit uncommitted in the main checkout's working copy of that file; they reach `next` by a fold or a copy there.
+- BUG-0764 (AMT line 7 over-refusal at $0 taxable income): open. The kill fixture drafted at
+  `/tmp/scout-mutants/fixtures/amt_l7_zero_taxable_income.json` is not in the repository (unverified whether /tmp
+  still holds it).
+- Mutation survivors `s8812.line18a` and `person.f8919_line10` (item 14): both still argued in
+  `reports/2025/mutation.md`; whether they were re-looked at after advfix is unverified.
+- BUG-1124 (f2441 fixture), BUG-1127 (W7, one `sales.special` question per return), BUG-1136 (fx-eduhsa-05, an AOC ban
+  also blocks the LLC): open. BUG-1125 (W5) is recorded fixed by a help change; whether the follow-up question for
+  filers 16 to 23 is still wanted is unverified.
+- adlow mediums BUG-1151 (NY S-201), BUG-1152 (NY railroad S-122), BUG-1154 (Roth-only excess contributions): open.
+- BUG-1212 (New York itemize choice; the fx-ny-04 subject, owner's call; lane recommendation: leave filed as low): open.
+- fx-capital and fx-seqbi leftovers, per their messages (not rechecked): code H not in the `sales.code` list;
+  `qbi.prior_form` asked of filers without QBI; the generate.ts premiums-over-Form-7206 differential at release.
+- T-353 is done on branch `rename-t353` (TASKS-DONE.md): the 67 ids and the two s2 add-back helpers are renamed in the 2025
+  tree. `year_changes.py --check` still fails on 7 operations of `changes/2026/` (BUG-1300), and 46
+  pinned mutation arguments no longer hold (BUG-1301); both were already true on `next` before the rename.
+
+**Review debt the integrations recorded** (run before the release): class M person (BUG-1207's
+`person.tip_employers` and the other person changes since fx-ny's run), sc and sa against the combined form changes,
+and f1040 (no candidate matched the merged computation at `25e48ec0`; rerun on Claude at `8175c23d`, agree 589:
+recheck whether that settles it, unverified); index lines current on neither side (transcription sa 1, sc 3; render sa
+1, 4, 17; render s1 8a); `ny_it201` render 40 and 48 (ruled a finding of BUG-0762) and 1; household transcription
+`hoh_fails`; the sampled screen, false-no and completeness reviews due at release (advland's, adlow's `f4952` gate and
+screens, fx-capital's `sd.sold_other`).
+
+**Tool bugs and other open entries:** BUG-1170 (`siblings.py --check` re-tests entries already committed on `next`),
+BUG-1171 (`rule.py --amend` cannot set the drop flag on a ruled class M section), BUG-1214 (unscoped interview-rules
+finds nine problems on `next` itself), BUG-1215 (wording of the three new New York screening questions). Because of
+BUG-1171, integration 5 set the drop flag by hand on fx-ny's 33 New York whole-dollar class M rulings
+(`amb.ny.2025.whole_dollars`; the count is that commit's) and removed those lines from their fixture cases, as every
+earlier ruling of that ambiguity is set. Counted on this tree: every ruling naming the ambiguity has drop set, 76 in
+`reviews/ny/2025/classm/ny_it201.rulings.json` and 172 across the New York class M rulings files.
+
+**Open owner-facing points:** T-312, T-326, T-332 and T-333 (listed in the entry below); the IRS 2026 finals are still
+expected December 2026 to January 2027 (T-011, T-322).
+
 # 2026-11-22 evening: release gating landed on `next`; integration wave in flight (superseded by the entry above where they differ)
 
 **State (2026-11-22).** `main` = `870cc146` (round F, pushed); last release `r2026.11.16.1`. `next` = `9a2b3e9c`: round F

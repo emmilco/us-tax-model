@@ -662,7 +662,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "ny_it201.pension_exclusion_if_young asks ny_it201.ask.pension_exclusion when pension_59_known is false: 'Did you (or, on a joint return, your spouse) turn 59\u00bd by December 31, 2025, or receive any of that pension or IRA money as the beneficiary of someone who died?'. A person born January to June 1966 answers Yes and is refused (ny_it201.pension_exclusion_line, gate.line29)."
+     "evidence": "ny_it201.pension_exclusion_if_young asks ny_it201.ask.pension_exclusion when pension_59_known is false: 'Did you (or, on a joint return, your spouse) turn 59½ by December 31, 2025, or receive any of that pension or IRA money as the beneficiary of someone who died?'. A person born January to June 1966 answers Yes and is refused (ny_it201.pension_exclusion_line, gate.line29)."
     },
     {
      "n": 1,
@@ -680,7 +680,7 @@
      "n": 3,
      "kind": "SOURCE",
      "class": "covered",
-     "evidence": "ny_it201i p. 9, Line 29: \"If you became 59\u00bd during 2025, enter only the amount you received after you became 59\u00bd\". Births in 1965 (59\u00bd before or during 2025) can have a line 29 amount, so treating them as eligible (a refusal) is right; births to June 1966 are asked."
+     "evidence": "ny_it201i p. 9, Line 29: \"If you became 59½ during 2025, enter only the amount you received after you became 59½\". Births in 1965 (59½ before or during 2025) can have a line 29 amount, so treating them as eligible (a refusal) is right; births to June 1966 are asked."
     }
    ],
    "subject_sha": "bc56d1e18c6ee5519f62983571643d2fcfde2eda258b54c235e2fd393e481a2c"
@@ -1019,33 +1019,48 @@
    "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:gate:ny_it201.has_unemployment#1": {
-   "reason": "RUIA sickness benefits paid as wages are not asked about where the federal railroad question does not refuse them (filed, low).",
+   "reason": "RUIA sickness benefits are now asked of every New York return by the IT-225 catch-all (BUG-1375, low, fixed by BUG-1417).",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
-     "class": "defect",
-     "evidence": "ny_it225i p. 17, S-122 covers all Railroad Unemployment Insurance Act benefits; sick pay is wages (p525 p. 19), not line 14. Mostly refused by person.rrta; the rest is filed as BUG-1375. Low.",
-     "bugs": [
-      "BUG-1375"
-     ]
+     "class": "covered",
+     "evidence": "ny_it225i p. 17, S-122. ny_it201.ask.it225, asked of every New York return, names 'railroad sickness benefits (S-122)' and its help says 'sickness benefits paid by the Railroad Retirement Board'; a Yes refuses line 31 (ny_it201.gate.it225). This is the point of BUG-1375 (severity low), closed as fixed by BUG-1417; most recipients are refused earlier by person.rrta."
     },
     {
      "n": 1,
-     "kind": "UNCLEAR",
-     "class": "presentation",
-     "evidence": "The question is reached only with unemployment on line 14 and asks about the Railroad Retirement Board as payer; sick pay goes with BUG-1375. Low.",
-     "bugs": [
-      "BUG-1375"
-     ]
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "ny_it201.ask.railroad_uc covers unemployment benefits only, but sickness benefits are caught by ny_it201.ask.it225 ('railroad sickness benefits (S-122)'), asked of every return whatever the line 14 answer. BUG-1375 (low), fixed (BUG-1417)."
     }
    ],
-   "bugs": [
-    "BUG-1375"
+   "subject_sha": "eeb4a6015eee262024f5b12ceff431fa39565bf7b0b674cd03022cdeae0321c9",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
+  },
+  "unruled:gate:ny_it201.carryover_179_used#1": {
+   "reason": "Return-wide Form 4562 Part I answers the several-forms case and the wide case costs only coverage; whether a carryover can be deducted while line 12 is not above line 9 turns on an ordering rule the archive does not hold.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "open residual",
+     "evidence": "The gate assumes 2025 elections absorb the limit before the carryover. The archived sources do not state the ordering: i4562 Line 12 says only 'Add lines 9 and 10, but don't enter more than line 11', and p946 (Carryover of disallowed deduction) orders only carryovers among themselves ('deduct the costs being carried forward from the earliest year first'). Settled by archiving Treas. Reg. 1.179-3 (believed, unverified here, to let the carryover be deducted only to the extent the limits exceed the current year's elected cost, which would make this a model error); if it orders the carryover first instead, the case is a low defect, reachable only when line 11 caps line 12 at or below line 9, a prior SUV carryover exists, and no 2025 SUV election triggers ny_it201.fed_suv179."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "s179 is one Part I for the whole return: i4562 p. 1, 'complete only one Part I in its entirety when computing your section 179 expense deduction'; forms/2025/s179.yaml note, 'Part I figured once for the return, both spouses together on a joint return'. s179.line9 and s179.line12 therefore already total every business of both spouses."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it225i p. 11, A-208 excludes an 'eligible farmer'; a farmer never reaches New York because scope.farm ('did you ... have income or a loss from farming?') refuses federally, and a non-SUV carryover is answered No at ny_it201.ask.suv_carryover. Extra asking only."
+    }
    ],
-   "class": "defect (low): BUG-1375",
-   "subject_sha": "121386ca7685c88eaa60a5b9af1c79b5a69c714877bbb3b150de25470b8e79bf",
-   "adjudication": "bug-fix lane L8 ny, 2026-11-24 (claude-opus-5-5, RUBRIC2)"
+   "subject_sha": "3a48c25a35ebbe3f52baf4476058fda5d40fdcf894fa76009368008335edf372",
+   "adjudication": "release adjudication of the 2026-11-24 wave, 2026-11-25 (claude-opus-5-5, judgment, RUBRIC2)"
   }
  },
  "baseline": {}

@@ -2,38 +2,38 @@
  "form": "scope",
  "reviews": {
   "gate:scope.armed_forces": {
-   "subject_sha": "2b8e1d704ba9160b49e35a473cd129e4aaf38742dd86568c2051ccb5de7f37f9",
+   "subject_sha": "590303b490e79ebba00434e2d1392062cdb74bca5720b05e1731b6e724906622",
    "samples": [
     {
-     "verdict": "SOUND",
+     "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A member of the Ready Reserve or National Guard who drilled only weekends, or was activated briefly, between 2022 and 2025, and has never been on extended active duty.",
-       "why_no": "They read \"serve in the U.S. armed forces\" as full-time active service. The list names \"reserves or National Guard\", so a careful reader answers yes, but a hasty one may not.",
-       "line": "scope.reservist_expenses_if_armed_forces",
-       "irs_text": "i1040gi p. 93, Line 12: \"Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home\"",
-       "severity": "low",
-       "fix": "Add to the help: \"Count part-time or drill-only service in the reserves or National Guard, even if you were never on active duty.\""
+       "pattern": "3",
+       "who": "A filer whose spouse is an active-duty service member who deserted or was imprisoned in 2025, or who is filing separately. The filer never served, files single, head of household, or married filing separately, and paid the unreimbursed costs of a 2025 move made under the member's permanent-change-of-station orders, for example a move to the member's place of enlistment or home of record.",
+       "why_no": "The gate counts the spouse only 'on a joint return', and its help extends that only to 'a spouse who has died'. A filer on a non-joint return who did not serve answers no truthfully.",
+       "line": "scope.military_move_if_armed_forces",
+       "irs_text": "i1040gi p. 93, Line 14: 'You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station. Use Tax Topic 455 or see Form 3903.' The Form 3903 rules referenced there extend the deduction to the spouse and dependents of a member who deserts, is imprisoned, or dies.",
+       "severity": "medium",
+       "fix": "Ask a separate, ungated question about moves: 'In 2025, did you move under U.S. military orders, your own or a spouse's or parent's (including a spouse who died, deserted, or is imprisoned), or pay storage fees while you or a family member were posted outside the U.S.?' Alternatively, broaden the gate to 'you, your spouse (on any filing status), or a family member whose military orders moved you'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A surviving spouse whose service-member spouse died before 2022 and who, in 2025, paid storage fees or a final government-ordered move that is not plainly \"under military orders\".",
-       "why_no": "The help counts a deceased spouse only if \"you moved in 2025 under military orders after the death\". A survivor who is unsure whether the authorized relocation counts as military orders reads the help narrowly and answers no.",
+       "pattern": "6",
+       "who": "A commissioned officer of the U.S. Public Health Service or NOAA Corps who made a 2025 permanent-change-of-station move under orders, or paid storage while posted abroad.",
+       "why_no": "The gate lists 'armed forces, Coast Guard, reserves or National Guard'. A uniformed-services officer outside that list may read it as complete and answer no.",
        "line": "scope.military_move_if_armed_forces",
-       "irs_text": "i1040gi p. 93, Line 14: \"You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station\"",
+       "irs_text": "i1040gi p. 93, Line 14: 'You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station.'",
        "severity": "low",
-       "fix": "Reword the help as \"Count a spouse who has died if, in 2025, you moved or stored belongings under orders or an authorization issued because of the death.\""
+       "fix": "Add help naming who counts as a member of the Armed Forces for the moving deduction, and saying whether PHS or NOAA Corps officers should answer yes, so the tool can classify them after a broad yes."
       }
      ],
-     "prompt_sha": "f68ae99a81939ca0dd5691275ddcf555c65e6fca867298a6b3b15878957ca64e",
+     "prompt_sha": "1923f2925eeeb5246b60ad3a07ac3097b4ecddbffe7f132897e03a9281760294",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.104448,
-     "date": "2026-11-23",
-     "response": ".transcription/false_no/gate_scope.armed_forces.2b8e1d704ba9.1.response.txt"
+     "cost": 0.112464,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_scope.armed_forces.590303b490e7.1.response.txt"
     }
    ],
    "condition": "scope.armed_forces",

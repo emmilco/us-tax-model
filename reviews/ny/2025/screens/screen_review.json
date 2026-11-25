@@ -401,30 +401,36 @@
  },
  {
   "screen": "gate:ny_it201.carryover_179_used",
-  "subject_sha": "854263ae0e92aabf08e27c4213179bbaa5fd56331137f4e79a522d31fe24c137",
+  "subject_sha": "3a48c25a35ebbe3f52baf4476058fda5d40fdcf894fa76009368008335edf372",
   "samples": [
    {
-    "verdict": "COVERS",
+    "verdict": "NARROW",
     "findings": [
      {
-      "kind": "WIDE",
-      "situation": "An eligible farmer deducts a section 179 carryover from an SUV over 6,000 pounds in 2025. The gate holds and the question is asked, but A-208 gives no addition for an eligible farmer.",
-      "irs_text": "ny_it225i (2025) p. 11, A-208: \"and you are not an eligible farmer as defined for purposes of the farmers' school tax credit ... then enter the amount of that deduction.\"",
-      "why": "Neither the computed condition nor the gated question excludes eligible farmers. A farmer's Yes would end the New York part even though A-208 requires no addition, so the gate is broader than the text."
+      "kind": "NARROW",
+      "situation": "A filer has an SUV section 179 carryover and a current-year section 179 election, and the business income limit makes 2025 line 12 no more than line 9; under carryover-first ordering, part of the 2025 deduction is still the SUV carryover, but the gate (line 12 > line 9) is false and the question is never asked.",
+      "irs_text": "ny_it225i p. 11, A-208: \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds ... then enter the amount of that deduction.\"",
+      "why": "Line 12 > line 9 only shows that some carryover was deducted if current-year cost is deducted first. If the prior-year carryover is applied first, which the Form 4562 arithmetic (line 13 = 9 + 10 − 12) does not rule out, a deducted SUV carryover can exist when line 12 ≤ line 9. The gated line is then silently set to No."
+     },
+     {
+      "kind": "NARROW",
+      "situation": "A filer, or on a joint return the spouse, files more than one Form 4562 (for example, separate Schedule C and Schedule F activities), and the carryover is deducted on a form other than the one whose lines 9 and 12 the tool compares.",
+      "irs_text": "ny_it225i p. 11, A-208: \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle ...\"",
+      "why": "The computed condition compares one pair of line values. Unless the tool tests every Form 4562 for both spouses, a carryover deducted on another form can fail the comparison while the SUV deduction is still claimed on the federal return."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer deducts a section 179 carryover in 2025 (line 12 more than line 9), but none of it came from an SUV.",
-      "irs_text": "ny_it225i (2025) p. 11, A-208: \"If you claimed an IRC § 179 deduction on your federal return with respect to a sport utility vehicle that weighs more than 6,000 pounds\"",
-      "why": "The condition holds whenever any carryover is used, whatever the property. The cost is only one extra question, which is acceptable for a gate that leans to yes."
+      "situation": "A carryover is deducted in 2025, but the filer is an eligible farmer for the farmers' school tax credit, or the carryover is not from an SUV.",
+      "irs_text": "ny_it225i p. 11, A-208: \"and you are not an eligible farmer as defined for purposes of the farmers' school tax credit ... then enter the amount of that deduction.\"",
+      "why": "The gate holds even though A-208 gives no addition. The gated question also does not screen out eligible farmers, so a Yes from an eligible farmer wrongly ends the New York part."
      }
     ],
-    "prompt_sha": "eb2fb1694ee82901a7008145375ea21bfb1cc779684302bb8fbafdcc5a3b0f81",
+    "prompt_sha": "ba5f806541ea3f53959de5f37c2ac802e1541bb028ee276340ff024e17c111b4",
     "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
-    "cost": 0.04566,
+    "cost": 0.068052,
     "model": "claude-opus-5-5",
-    "date": "2026-11-24",
-    "response": ".transcription/ny/screens/gate_ny_it201.carryover_179_used.854263ae0e92.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/ny/screens/gate_ny_it201.carryover_179_used.3a48c25a35eb.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -1133,30 +1139,30 @@
  },
  {
   "screen": "gate:ny_it201.has_unemployment",
-  "subject_sha": "121386ca7685c88eaa60a5b9af1c79b5a69c714877bbb3b150de25470b8e79bf",
+  "subject_sha": "eeb4a6015eee262024f5b12ceff431fa39565bf7b0b674cd03022cdeae0321c9",
   "samples": [
    {
     "verdict": "NARROW",
     "findings": [
      {
       "kind": "NARROW",
-      "situation": "A filer, or a spouse on a joint return, receives sickness benefits under the Railroad Unemployment Insurance Act but no unemployment benefits; the sickness benefits are included in federal income as wages, so line 14 is $0 and the question is never asked.",
-      "irs_text": "ny_it225i (2025) p. 17, S-122: \"Enter ... benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income).\"",
-      "why": "S-122 covers all benefits under the Railroad Unemployment Insurance Act, including sickness benefits. Taxable sickness benefits are reported federally as wages, not as unemployment compensation, so the gate 'line 14 > $0' is false even though the subtraction applies. The tool's own help text names sickness benefits as untaxed."
+      "situation": "A filer, or a spouse on a joint return, received Railroad Unemployment Insurance Act sickness benefits included in federal income but no unemployment compensation. Federally these benefits are reported as wages or sick pay (RRB Form W-2), not unemployment compensation, so line 14 is $0 and the question is never asked.",
+      "irs_text": "ny_it225i (2025) p. 17, S-122: \"benefits received under the Railroad Unemployment Insurance Act that are exempt from state income taxes under federal laws (but that you included in your federal income)\"",
+      "why": "S-122 covers all benefits received under the Railroad Unemployment Insurance Act, which pays sickness benefits as well as unemployment benefits. Sickness benefits do not flow to IT-201 line 14, so the computed condition (line 14 > $0) is false and the subtraction is silently dropped."
      },
      {
-      "kind": "UNCLEAR",
-      "situation": "A filer has unemployment on line 14 and also received Railroad Unemployment Insurance Act sickness benefits, then reads the gated question, which asks only about unemployment benefits.",
-      "irs_text": "ny_it225i (2025) p. 17, S-122: \"benefits received under the Railroad Unemployment Insurance Act\"",
-      "why": "The question asks whether 'unemployment benefits [were] paid by the Railroad Retirement Board'. A filer whose qualifying benefits were sickness benefits could reasonably answer no, although S-122 covers them."
+      "kind": "NARROW",
+      "situation": "A filer with RUIA sickness benefits who also has some other unemployment compensation on line 14 reaches the question, but it asks only about unemployment benefits paid by the Railroad Retirement Board, so they can truthfully answer no.",
+      "irs_text": "ny_it225i (2025) p. 17, S-122: \"Certain railroad retirement income and railroad unemployment insurance benefits ... benefits received under the Railroad Unemployment Insurance Act\"",
+      "why": "The gated question's wording (\"unemployment benefits\") is narrower than the cited text (\"benefits received under the Railroad Unemployment Insurance Act\"), which includes sickness benefits. The helper label mentions sickness benefits, but the question shown to the filer does not."
      }
     ],
-    "prompt_sha": "662b0f588a5338bcaa9a381a45ddaa156a7a3917b2334f87bd51c2055b0c1004",
+    "prompt_sha": "b90e3605274a385cc044e08070fa099e46ff855e761053057a529665ea7cd7a9",
     "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
-    "cost": 0.038532,
+    "cost": 0.038748000000000005,
     "model": "claude-opus-5-5",
-    "date": "2026-11-24",
-    "response": ".transcription/ny/screens/gate_ny_it201.has_unemployment.121386ca7685.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/ny/screens/gate_ny_it201.has_unemployment.eeb4a6015eee.1.response.txt"
    }
   ],
   "kind": "gate",
@@ -1604,30 +1610,30 @@
  },
  {
   "screen": "gate:s1.alimony_any",
-  "subject_sha": "6d844ad463e4dcaa4830c4a0cfbf58af7fd882023181cfaf6691e350a4f4d0c0",
+  "subject_sha": "5852447885a54d7b1dd524d76513e3cb96f8a090bf5e42a79ec2ef927876d480",
   "samples": [
    {
     "verdict": "COVERS",
     "findings": [
      {
       "kind": "WIDE",
-      "situation": "A filer paid or received alimony in 2023-2025 only under a divorce or separation agreement made on or before December 31, 2018 and never changed to adopt Tax Law 612(w), so the gate holds but neither New York line gets an amount.",
-      "irs_text": "ny_it225i p. 10, A-119: \"a payment made under an alimony or separation instrument ... that was executed after December 31, 2018. This also applies to any divorce or separation instrument executed on or before December 31, 2018, and modified after December 31, 2018, if the modification to the instrument expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply.\"",
-      "why": "The gate asks about any alimony since 2023, whatever the agreement date. That includes pre-2019 agreements that A-119 and S-136 exclude, so the gated question is only asked more often than needed."
+      "situation": "A filer whose only alimony in 2023 or later was under a divorce or separation agreement signed on or before December 31, 2018 and never changed to adopt Tax Law § 612(w) answers yes to the gate, but has no applicable alimony for New York.",
+      "irs_text": "ny_it225i p. 10, A-119: \"An applicable alimony or separate maintenance payment is a payment made under an alimony or separation instrument ... that was executed after December 31, 2018. This also applies to any divorce or separation instrument executed on or before December 31, 2018, and modified after December 31, 2018, if the modification to the instrument expressly provides that the addition and subtraction modifications contained in Tax Law § 612(w) apply.\"",
+      "why": "The gate asks about any alimony paid or received since 2023, whatever the agreement date, so it holds in cases where A-119 and S-136 give no amount. This only costs one extra question, which the filer can truthfully answer no."
      },
      {
       "kind": "WIDE",
-      "situation": "A filer paid or received alimony in 2023 or 2024 but none in 2025, so the gate holds but neither line gets an amount for 2025.",
+      "situation": "A filer who paid or received alimony only in 2023 or 2024, and none in 2025, answers yes to the gate but has no 2025 amount.",
       "irs_text": "ny_it225i p. 10, A-119: \"If you received any applicable alimony or separate maintenance payments during the tax year, then enter the amount received.\"; p. 18, S-136: \"If you made any applicable alimony or separate maintenance payments during the tax year, then enter the amount paid.\"",
-      "why": "Both modifications count only payments made in the tax year. The gate's 2023-or-later window is broader, so it asks extra questions but drops nothing."
+      "why": "Both modifications cover only payments in the tax year (2025). The gate's 2023-or-later window is wider than that, but it still includes every 2025 payment."
      }
     ],
-    "prompt_sha": "c99929db4f603967c21697d0f8e05042cba75ed6df51adc5ff1992a9a88da089",
+    "prompt_sha": "9b223022c8bd3a2cb423e8ba32d317ba9f31e77d0b4f6f674143d17d8345a4ee",
     "system_sha": "284afe417baac12b9089ad6adef77bd78e1e91f7560f897fe28e6d7cde69299e",
-    "cost": 0.065748,
+    "cost": 0.066276,
     "model": "claude-opus-5-5",
-    "date": "2026-11-24",
-    "response": ".transcription/ny/screens/gate_s1.alimony_any.6d844ad463e4.1.response.txt"
+    "date": "2026-11-25",
+    "response": ".transcription/ny/screens/gate_s1.alimony_any.5852447885a5.1.response.txt"
    }
   ],
   "kind": "gate",

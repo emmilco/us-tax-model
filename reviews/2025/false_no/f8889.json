@@ -994,68 +994,88 @@
    ]
   },
   "gate:f8889.medical_all_if_dist": {
-   "subject_sha": "48734f01b25430002de9cce1d52e0d827a58ceaede47e3783e4c7ad8ffb85a68",
+   "subject_sha": "924162566b9bc2c384337ef38a1999cbfe4946e8bef8f5276000cef22b6c0c21",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A non-spouse designated beneficiary (for example, an adult child) inherited a parent's HSA when the parent died in 2025. Within a year of the death, the beneficiary paid the parent's final hospital and doctor bills.",
-       "why_no": "The list of 'Whose costs count' names only 'yours, and your spouse's', dependents, would-be dependents, and children of separated parents. A deceased parent who was not the filer's dependent is none of these. Read truthfully, the list makes the filer exclude the decedent's bills and report zero or too little.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 p. 3, Death of Account Beneficiary: 'On Part II, line 15, for a beneficiary other than the estate, enter qualified medical expenses incurred by the account beneficiary before the date of death that the beneficiary paid within 1 year after the date of death.'",
+       "pattern": "8",
+       "who": "A filer who withdrew an excess contribution (and its earnings) after the due date, including extensions, of the return for the year it was contributed, and used the cash to pay a doctor's bill.",
+       "why_no": "The gate asks whether all non-rollover distributions 'were used to pay qualified medical expenses'. The money did pay a qualified expense, so they truthfully answer yes and the partial question is never asked.",
+       "line": "f8889.medical_if_partial (line 15 then takes all of 14c instead of the smaller qualifying amount)",
+       "irs_text": "i8889 p. 8, Line 15: \"Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.\"",
        "severity": "high",
-       "fix": "Ask first whether the HSA was inherited from someone other than a spouse. If yes, ask separately for the decedent's medical expenses incurred before death that the beneficiary paid within 1 year after the death, and put that amount on line 15."
+       "fix": "Before the gate, ask: 'Did any 2025 distribution withdraw an excess contribution after the due date (with extensions) of that year's return?' A yes forces the partial path. Or add this to the gate's wording: 'not counting late withdrawals of excess contributions, which never count even if spent on medical care'."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer who engaged in a prohibited transaction with the HSA, or pledged it as loan security, in 2025. Every dollar they actually withdrew paid medical bills.",
+       "why_no": "They read 'distributions … used to pay' as the withdrawals they made. A deemed distribution is not something they spent, so they answer that all distributions paid medical costs.",
+       "line": "f8889.medical_if_partial",
+       "irs_text": "i8889 p. 3, Deemed Distributions: \"Any deemed distribution will not be treated as used to pay qualified medical expenses.\"",
+       "severity": "high",
+       "fix": "Ask about prohibited transactions and pledging the HSA as loan security as separate facts. Any yes forces the partial path, with the deemed amount excluded from line 15."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "The same non-spouse beneficiary. The parent died in late 2025 and the beneficiary paid the parent's last medical bills in early 2026, within the one-year window, before filing the 2025 return.",
-       "why_no": "The gate is framed as 2025 distributions 'used to pay' expenses, and the question asks how much of 'the money that came out paid for' costs. Payments made in 2026 do not fit that 2025 framing, and the cost-date rule 'after you opened the HSA' does not describe the decedent's case.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 p. 3: 'qualified medical expenses incurred by the account beneficiary before the date of death that the beneficiary paid within 1 year after the date of death.'",
+       "who": "A filer who opened the HSA in mid-2025, or later than the year a medical bill arose (with no earlier HSA or Archer MSA rolled in), and used 2025 distributions to reimburse bills incurred before opening it.",
+       "why_no": "The bills were real, unreimbursed medical costs, so the filer calls them 'qualified medical expenses'. The gate does not say that expenses incurred before the HSA was opened never count.",
+       "line": "f8889.medical_if_partial",
+       "irs_text": "i8889 p. 2: \"Expenses incurred before you establish your HSA are not qualified medical expenses.\"; p. 8, Line 15: \"that you incurred after the HSA was established\"",
        "severity": "medium",
-       "fix": "For an inherited non-spouse HSA, state that payments made up to 1 year after the date of death count, even if they were made after 2025."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "The filer (or the spouse) inherited a parent's HSA in 2025 as a non-spouse beneficiary and withdrew nothing. The account simply passed to them, and a Form 1099-SA reports its value at the date of death.",
-       "why_no": "Asked 'Any HSA distributions in 2025', the filer thinks nothing was taken out and answers no. Part II is then skipped, so line 15 is never asked even though the beneficiary paid the decedent's medical bills.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 p. 3: 'the account ceases to be an HSA as of the date of death... On Part II, line 14a, enter the fair market value of the HSA as of the date of death.'",
-       "severity": "medium",
-       "fix": "Ask the gate as: 'In 2025 did you or your spouse take money out of an HSA, receive a Form 1099-SA, or become the beneficiary of an HSA of someone who died?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer paid medical bills out of pocket in 2023 or 2024, after opening the HSA, and in 2025 withdrew HSA money to reimburse themselves.",
-       "why_no": "The question asks how much of the money that came out 'paid for medical costs'. The bills were already paid from the filer's own funds, so the 2025 withdrawal seems to have paid no medical costs. The filer may then answer zero or exclude these amounts.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 p. 8, Line 15: 'distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established.'",
-       "severity": "medium",
-       "fix": "Reword the question as 'paid for, or reimbursed you for, medical costs that count (including costs from earlier years, if incurred after you opened the HSA)', and use the same wording in the gate."
+       "fix": "Add to the gate: 'Count only costs incurred after the HSA (or an earlier HSA or Archer MSA rolled into it) was opened, that no insurance or anyone else paid back.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose HSA distributions included an excess contribution withdrawn after the return's due date, and who spent that money on doctor bills.",
-       "why_no": "The question counts any money that came out and paid for medical costs that count. Nothing in it excludes a late-withdrawn excess contribution, so the filer includes it. This is an overstatement rather than a dropped amount.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 p. 8, Line 15: 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.'",
-       "severity": "low",
-       "fix": "Add to the help: 'Do not count a withdrawal of an excess contribution made after your return's due date, even if it paid medical costs.'"
+       "who": "A filer who paid ordinary health insurance premiums (employer plan, marketplace plan, Medigap) from the HSA. Or a filer under 65 who paid a 65-or-older spouse's Medicare premiums.",
+       "why_no": "Health insurance premiums feel like medical costs, and the gate does not say premiums are excluded. The premium rules appear only in the gated question's text, which the filer never sees.",
+       "line": "f8889.medical_if_partial",
+       "irs_text": "i8889 p. 2: \"You cannot treat insurance premiums as qualified medical expenses unless the premiums are for: …\"; p. 3: \"other than premiums for a Medicare supplemental policy, such as Medigap\" and \"if you, the account beneficiary, are under age 65, Medicare premiums for your spouse or dependents … are generally not qualified medical expenses\"",
+       "severity": "medium",
+       "fix": "Ask directly in the gate, or just before it: 'Did any HSA money pay insurance premiums?' A yes forces the partial path. Alternatively, show the premium rules and the long-term care limit with the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who paid an adult child's bills from the HSA. The child is covered on the family health plan (for example, age 24 to 26) but is neither a dependent nor someone who would be a dependent except for income or a joint return. Another case is paying a parent or sibling who is not a dependent.",
+       "why_no": "The child is on the family plan and the expenses are medical, so the filer assumes they qualify. The gate does not limit whose expenses count.",
+       "line": "f8889.medical_if_partial",
+       "irs_text": "i8889 p. 8, Line 15: \"include on line 15 distributions … used for the qualified medical expenses of: 1. You and your spouse. 2. All your dependents. 3. Any person who would be a dependent except that: …\"",
+       "severity": "medium",
+       "fix": "Add to the gate: 'only costs of you, your spouse, your dependents, or someone you could claim as a dependent but for their income, their joint return, or your being a dependent.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose HSA reimbursed a bill that insurance later also paid. Or one who reimbursed costs they deducted on Schedule A in an earlier year.",
+       "why_no": "The money did pay a medical bill, so they answer that all distributions paid qualified expenses. The gate does not say that reimbursed costs, or costs already deducted, are excluded.",
+       "line": "f8889.medical_if_partial",
+       "irs_text": "i8889 p. 8, Line 15: \"qualified medical expenses not reimbursed by insurance or other coverage\"; p969 p. 9, Recordkeeping: \"The medical expenses hadn't been taken as an itemized deduction in any year.\"",
+       "severity": "medium",
+       "fix": "Add to the gate: 'that insurance or anyone else did not pay back, and that were not deducted on Schedule A in any year'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, one spouse's HSA debit card was used by the other spouse, or by another person the account holder designated, for non-medical purchases. The filer answering the questions spent everything on medical bills.",
+       "why_no": "The filer answers from their own use of the money. Card swipes and withdrawals by others still count as distributions.",
+       "line": "f8889.medical_if_partial",
+       "irs_text": "p969 p. 8: \"Your total distributions include amounts paid with a debit card and amounts withdrawn from the HSA by other individuals that you have designated.\"",
+       "severity": "medium",
+       "fix": "Word the gate as: 'Was every dollar that left this person's HSAs in 2025 (including debit card charges and withdrawals by anyone you allowed to use the account) spent on medical costs that count?'"
       }
      ],
-     "prompt_sha": "aad8946a02ee7b29c6736fc37cf144f3e3b8cfb1ce6d2b369e8e15b6db97d053",
+     "prompt_sha": "f7a8661ae65fc4247946b16d49e4c9c22e2bbcf56f4f74e5ece0d8b913304af5",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.11896000000000001,
-     "date": "2026-11-15",
-     "response": ".transcription/false_no/gate_f8889.medical_all_if_dist.48734f01b254.1.response.txt"
+     "cost": 0.13541599999999998,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_f8889.medical_all_if_dist.924162566b9b.1.response.txt"
     }
    ],
    "condition": "f8889.medical_all_if_dist",
@@ -1079,7 +1099,7 @@
      "how": "cited pages",
      "locators": [
       "p. 8, Line 15",
-      "p. 8, Line 15, \"Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established\" and \"Any person who would be a dependent except that\"; p. 9, Line 15, TIP, divorced or separated parents; p. 2, Qualified Medical Expenses, \"You cannot treat insurance premiums as qualified medical expenses unless the premiums are for:\", \"Long-term care (LTC) insurance\", \"Health care continuation coverage (such as coverage under COBRA)\" and \"Health care coverage while receiving unemployment compensation under federal or state law\"; p. 3, \"Medicare and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap)\", \"Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement.\" and \"are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical expenses\""
+      "p. 8, Line 15, \"Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established\" and \"Any person who would be a dependent except that\"; p. 9, Line 15, TIP, divorced or separated parents; p. 2, Qualified Medical Expenses, \"You cannot treat insurance premiums as qualified medical expenses unless the premiums are for:\", \"Long-term care (LTC) insurance\", \"Health care continuation coverage (such as coverage under COBRA)\" and \"Health care coverage while receiving unemployment compensation under federal or state law\"; p. 3, \"Medicare and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap)\", \"Coverage under (2) and (3) can be for your spouse or a dependent meeting the requirement.\" and \"are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical expenses\"; , \"An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.\"; , \"The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually.\""
      ],
      "cols_pages": [
       2,
@@ -1088,6 +1108,22 @@
       9
      ],
      "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "p969",
+     "revision": "2025",
+     "text_sha256": "0491c6445304fc8c1b7ae3097b8a3ea30260bb35f706da40900d06416502b9c8",
+     "pages": [
+      8,
+      9
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      8,
+      9
+     ],
+     "cols_sha256": "f643ce7086d88eabd1d8006ab0b5609f775af36b9b8a5b74637e1f366d8c29c3"
     }
    ]
   },

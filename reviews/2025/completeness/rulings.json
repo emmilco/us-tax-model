@@ -20,8 +20,8 @@
   },
   "unruled:carloan#1.1": {
    "class": "presentation",
-   "evidence": "i1040gi pp. 109-110, \"In order to take the QPVLI deduction, you must include the vehicle identification number (VIN) ... on your tax return\", substitute VIN for a lemon-law replacement, \"Enter the VIN(s) of the APV(s) on line 22, column (i)\", attached statement for more than two VINs (quotes checked). The VIN, the substitute VIN and the statement are what is written on or attached to the return; no amount depends on them. The amounts (columns (ii), (iii)) follow carloan.eligible (carloan.requirements, carloan.vehicle). Note: the form note says to name each entry by the VIN, but the interview prompt for $carloan says 'Name each one, for example by its lender', so the tool does not itself collect the VIN for line 22 column (i); a filer copying the return must supply it. Same class as the earlier carloan#1.1 ruling.",
-   "subject_sha": "2baf732abc7ec12f472922245592ca675b33ccdbc88a4e017b597cf96d9ab942"
+   "evidence": "i1040gi pp. 109-110, 'you must include the vehicle identification number (VIN) ... on your tax return', the substitute VIN after a lemon-law replacement, 'Enter the VIN(s) ... on line 22, column (i)', and the statement for more than two VINs. These are entries written on or attached to the return. The carloan note says 'One entry per loan, named by the vehicle's VIN, which line 22 column (i) needs', and no amount depends on the VIN (columns (ii) and (iii) follow carloan.eligible). (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "3f293cbc89573de56e27479485bd4152c4563746b6d77e5f4542d71284cad5f2"
   },
   "unruled:clcw_next_year#1.1": {
    "class": "out of scope",
@@ -95,22 +95,16 @@
    "subject_sha": "3cc90f0c2a6f1c86e29fd64b1586bd5a51ba483580ea5b714b69275c8b39088e"
   },
   "unruled:f1116sb#1.1": {
-   "class": "real gap",
-   "evidence": "i1116 p. 19, Line 10; p514 p. 38, 'you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that year.' f1116sbyr.amount takes line 8 of the 2024 Schedule B; f1116sb.prior_year is asked only when a 2025 carryover is generated (f1116sb.prior_year_if_excess); f1116sb.changed names carrybacks, redeterminations and audits. A carryover through a 2024 deduction or election year is neither reduced nor refused.",
-   "subject_sha": "8dd9e5435048455e0df10733f7a1a7329ce1c9d7647ada645f606f89a0d3327c",
-   "bug": "BUG-0827"
+   "class": "out of scope",
+   "evidence": "p514 p. 38, the 33 1/3-cent reduction of foreign tax carryovers for debt excluded in bankruptcy or insolvency. A 2025 exclusion is refused: s1.cod_bankrupt ('You were bankrupt, or owed more than everything you owned', help 'A Yes ends the interview here') feeds s1.cod_unsupported. A reduction from an earlier year's discharge that changed the carried tax is caught by f1116sb.changed ('has anything changed the foreign tax carried from it', a Schedule B line 2 adjustment), refused at f1116sb.changed_if_carry. The earlier ruling under this key (BUG-0827) was about a different claim.",
+   "subject_sha": "ac26c27cc4efab8e911ed232a1eb2ba5f3f058e521d81bd1acd5816944591cd2",
+   "gate": "s1.cod_unsupported"
   },
   "unruled:f1116sb#1.2": {
    "class": "covered",
-   "evidence": "p514 p. 39. f1116sb.split asks 'Is any of the foreign tax carried into 2025 from a joint return of an earlier year, when this return is not a joint return with the same spouse?' and refuses through f1116sb.split_if_carry. Case (a), a separate 2025 return with tax carried through a joint year: the year before 2025 that held it was a joint return when the joint year is 2024 (a Yes, refused); when a separate year came after the joint year, the allocation was made on that separate return's Schedule B, whose line 8 is what f1116sbyr.amount takes. Case (b), joint origin and joint 2025 through separate years: each spouse's 2024 separate Schedule B already holds the allocated amounts, and f1116sbyr.amount's help says 'On a joint return, add your spouse's amount for the same year', which is the combining rule the claim says is missing.",
-   "subject_sha": "8dd9e5435048455e0df10733f7a1a7329ce1c9d7647ada645f606f89a0d3327c",
+   "evidence": "p514 p. 39. f1116sb.split asks 'Is any foreign tax carried into 2025 from an earlier joint return with someone you are not filing jointly with now?' and refuses on Yes ('A Yes ends the interview here'). A separate-origin carryover through a joint year into a separate 2025 return, when 2024 was that joint year, is a Yes. When a later separate year intervenes, that year's Schedule B line 8 already carries the allocation that f1116sbyr.amount takes. For a joint 2025 return, f1116sbyr.amount's help says to add the spouse's amount for the same year, which is the combining rule. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "ac26c27cc4efab8e911ed232a1eb2ba5f3f058e521d81bd1acd5816944591cd2",
    "line": "f1116sb.split"
-  },
-  "unruled:f1116sb#1.3": {
-   "class": "out of scope",
-   "evidence": "p514 p. 38, reduction of carryovers 'to or from the tax year of the debt cancellation' for debt excluded in bankruptcy or insolvency. A 2025 exclusion is a Yes to s1.cod_unsupported ('canceled in a bankruptcy case or while you ... were insolvent, or is otherwise excluded from income (Form 982 ...)'), which refuses. A reduction made for a 2024 cancellation is made on the 2024 return's Form 982 and reflected in its carryovers.",
-   "subject_sha": "8dd9e5435048455e0df10733f7a1a7329ce1c9d7647ada645f606f89a0d3327c",
-   "gate": "s1.cod_unsupported"
   },
   "unruled:f1116sbyr#1.1": {
    "class": "out of scope",
@@ -120,27 +114,27 @@
   },
   "unruled:f2441#1.1": {
    "class": "covered",
-   "line": "dependent.dc_paid",
-   "subject_sha": "97b57d923b20749306b967ec012f1aadd10ddc36561f7be1a1e8b67c82a94ee3",
-   "evidence": "i2441 p. 2; p503 pp. 3, 8, 10, quoted. Column (d) is not a raw total: it is dependent.dc_paid, asked per qualifying person, and its interview prompt states each rule the claim lists: care 'for the time this person was under 13 or not able to care for themselves' (status day by day; a child turning 13 is also asked dependent.dc_under13 and dependent.dc_over12_care); 'your share of the employment taxes'; the housekeeper's meals; leave out 'school from kindergarten up, summer school, tutoring and overnight camp', 'food, lodging, clothing, schooling and entertainment, unless food or schooling comes with the care and cannot be separated', 'amounts a state social services agency paid back to you, and expenses you claim as medical expenses', 'child support', 'a chauffeur, bartender or gardener', care outside the home for anyone but a dependent child under 13 who does not spend 8 hours a day in the home, 'a care center that does not meet all state and local rules'; days of work only, and 'If a cost was only partly for work, count that part'. f2441.other_care_expenses (line 16 inputs) asks only for 2025 care not in the per-person amounts, i.e. care of the same kind. The reviewer saw the f2441 lines, not the dependent entry's question."
+   "evidence": "i2441 p. 2; p503 pp. 3, 8, 10. Column (d) is dependent.dc_paid, asked per qualifying person. Its prompt states each rule the claim lists: 'for the time this person was under 13', employment taxes and the housekeeper's meals, and leave out 'school from kindergarten up, summer school, tutoring and overnight camp', food and schooling unless inseparable, 'amounts a state social services agency paid back to you, and expenses you claim as medical expenses', 'child support', 'a chauffeur, bartender or gardener', the outside-the-home 8-hour rule, 'a care center that does not meet all state and local rules', 2026 care, days of work only, and 'If a cost was only partly for work, count that part'. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "044fba422102d488c751e543743116d44e29af178d4d618b27e716fca3b69959",
+   "line": "dependent.dc_paid"
   },
   "unruled:f2441#1.2": {
    "class": "out of scope",
-   "gate": "f2441.student_disabled",
-   "subject_sha": "97b57d923b20749306b967ec012f1aadd10ddc36561f7be1a1e8b67c82a94ee3",
-   "evidence": "i2441 p. 1, Qualifying Person(s), 'Your disabled spouse who wasn't physically or mentally able to care for themselves and lived with you for more than half the year'. The tool never counts a spouse as a qualifying person: f2441.unable ('In 2025, was there a time when you (or, on a joint return, your spouse) could not care for yourself ...', help 'Answer Yes too if some of the care you paid for was for your husband or wife. A Yes ends the interview here.') feeds f2441.student_disabled, which refuses on lines 4, 5, 18 and 19 ('... and a disabled spouse as a qualifying person, are outside this tool'). On a separate return the help still names care for the husband or wife. Other qualifying persons are dependents tested by dependent.dc_lived_half (dependent.dc_disabled_qp), so the half-year test is applied where the tool computes."
+   "evidence": "i2441 p. 1. A disabled spouse is never a qualifying person: f2441.unable (help 'Answer Yes too if some of the care you paid for was for your husband or wife. A Yes ends the interview here') feeds f2441.student_disabled, which refuses. A noncustodial parent's child is refused per dependent: dependent.divorced_rule ('Answer yes whether you are the custodial parent who signed the release ... or the noncustodial parent using it') refuses at dependent.divorced_rule_screen ('The rule for children of divorced or separated parents is outside this tool'). Other disabled qualifying persons are tested by dependent.dc_lived_half. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "044fba422102d488c751e543743116d44e29af178d4d618b27e716fca3b69959",
+   "gate": "f2441.student_disabled"
   },
   "unruled:f2441#1.3": {
    "class": "out of scope",
-   "gate": "dependent.claimed_no_tin",
-   "subject_sha": "97b57d923b20749306b967ec012f1aadd10ddc36561f7be1a1e8b67c82a94ee3",
-   "evidence": "i2441 p. 3, Column (b), quoted; p503 p. 3. A qualifying person must be the filer's dependent (dependent.dc_qp requires dependent.claimed; a non-dependent qualifying person is refused at f2441.nondependent_gate). dependent.tin asks for an 'SSN, ITIN or ATIN issued on or before the due date ... or have you applied for an ITIN or ATIN', and dependent.claimed refuses through dependent.claimed_no_tin ('Each dependent must be listed with an SSN (or ITIN or ATIN) ... A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" ... is outside this tool'). The column (c) box is encoded: dependent.dc_line2c from dependent.dc_over12_care and dependent.dc_incapable. dependent.dc_count's cite records the TIN route."
+   "evidence": "i2441 p. 3, Column (b); p503 p. 3. A qualifying person must be a claimed dependent (dependent.dc_qp requires dependent.claimed). dependent.claimed refuses through dependent.claimed_no_tin when there is no SSN, ITIN or ATIN, including a child born and died in 2025 entered as 'Died'. The column (c) box is encoded as dependent.dc_line2c. Ordering the three persons with the highest expenses on an attached statement is presentation only. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "044fba422102d488c751e543743116d44e29af178d4d618b27e716fca3b69959",
+   "gate": "dependent.claimed_no_tin"
   },
   "unruled:f2441#1.4": {
    "class": "covered",
-   "line": "dcprov.tin_kind",
-   "subject_sha": "97b57d923b20749306b967ec012f1aadd10ddc36561f7be1a1e8b67c82a94ee3",
-   "evidence": "i2441 p. 3, Column (c), quoted. dcprov.tin_kind (printed 1(c)) is an enum with tin, tax_exempt ('enter \"Tax-Exempt\"'), lafcp ('enter \"LAFCP\"'), see_statement and employer; the interview offers the same five answers. The 'none' entry on line 1 column (a) for a filer completing only Part III is a name column, which the dcprov note says is written by the filer and not modelled; presentation only, no amount."
+   "evidence": "i2441 pp. 2-3, Line 1. dcprov.tin_kind offers the TIN, 'Tax-Exempt', 'LAFCP', see-statement, and employer answers ('None needed: my employer provided the care itself'), which match the 'See W-2' entries. The 'none' entry in column (a) and ordering the three highest-paid providers are entries written on the printed form, so no amount changes. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "044fba422102d488c751e543743116d44e29af178d4d618b27e716fca3b69959",
+   "line": "dcprov.tin_kind"
   },
   "unruled:f4137#1.1": {
    "class": "out of scope",
@@ -274,38 +268,39 @@
   },
   "unruled:f7203#1.1": {
    "class": "out of scope",
-   "evidence": "i7203 p. 1, Who Must File, quoted. Both triggers are refused on the K-1 itself, not behind f7203.required: k1s.basis_carry is asked on every K-1 (no gate; 'Was a loss or deduction from this corporation held back on an earlier return because your basis in it was too low?') and refuses at k1s.ok (Form 7203 Part III column (b)); a loan repayment is box 16 code E, refused through k1s.box16ef_if_16 ('code E (repayment of loans from you)'). Every K-1 also refuses at scope.k1 until the integration lane wires the totals.",
-   "subject_sha": "e8905ffc3fadf9bebfede620aabf699c23f10b0f05ce6c9343396537794e231f",
-   "gate": "k1s.basis_carry"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "e81eadad994b85a753e5f510b89e726808b8e5d58711e80173ede85df9143206",
+   "gate": "scope.schedule1"
   },
   "unruled:f7203#1.2": {
    "class": "out of scope",
-   "evidence": "i7203 p. 4, Column (b), quoted. Column (b) is refused, not dropped: k1s.basis_carry (asked on every K-1) refuses with 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'; f7203's note says so.",
-   "subject_sha": "e8905ffc3fadf9bebfede620aabf699c23f10b0f05ce6c9343396537794e231f",
-   "gate": "k1s.basis_carry"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "e81eadad994b85a753e5f510b89e726808b8e5d58711e80173ede85df9143206",
+   "gate": "scope.schedule1"
   },
   "unruled:f7203#1.3": {
    "class": "out of scope",
-   "evidence": "i7203 p. 4, column (a), quoted. Lines 39 to 46 take boxes 11 and 12 (section 179, charitable contributions, investment interest, 59(e)(2), other deductions), box 16 code F (foreign taxes) and box 17 code R (oil and gas depletion); each is refused on the K-1: k1s.box11_12, k1s.box16ef_if_16, k1s.box17_other_if_17. The f7203 note states 'Lines 39 to 46 have no amount: the boxes that would fill them are refused on the K-1', so the premise that nothing is noted is wrong.",
-   "subject_sha": "e8905ffc3fadf9bebfede620aabf699c23f10b0f05ce6c9343396537794e231f",
-   "gate": "k1s.box11_12"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "e81eadad994b85a753e5f510b89e726808b8e5d58711e80173ede85df9143206",
+   "gate": "scope.schedule1"
   },
   "unruled:f7203#1.4": {
-   "class": "real gap",
-   "evidence": "i7203 p. 2, Line 2: section 351 'carryover basis of assets transferred ... less the liabilities assumed', section 357(c); 'The basis for stock received as compensation is the FMV on the date the compensation is included in income'. Partly covered: f7203.line2 help gives inherited (value at death) and gifted (giver's basis) shares, and f7203.line1 help covers a first year ('If you first got shares in 2025, enter 0 and give what they cost'). Not covered: property contributed (adjusted basis less liabilities; 357(c)) and stock received for services. Low.",
-   "subject_sha": "e8905ffc3fadf9bebfede620aabf699c23f10b0f05ce6c9343396537794e231f",
-   "bug": "BUG-0848"
+   "class": "out of scope",
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "e81eadad994b85a753e5f510b89e726808b8e5d58711e80173ede85df9143206",
+   "gate": "scope.schedule1"
   },
   "unruled:f7203#1.5": {
-   "class": "real gap",
-   "evidence": "i7203 p. 2, 'aren't part of a shareholder's loan basis except to the extent the shareholder makes a payment on the loan guaranteed or co-signed'. f7203.loans help says 'Loans you guaranteed or co-signed for the corporation are not meant' with no exception for payments made, so such a shareholder answers No, Part II is not refused, and losses are limited by stock basis alone (understated deduction). Low.",
-   "subject_sha": "e8905ffc3fadf9bebfede620aabf699c23f10b0f05ce6c9343396537794e231f",
-   "bug": "BUG-0848"
+   "class": "out of scope",
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "e81eadad994b85a753e5f510b89e726808b8e5d58711e80173ede85df9143206",
+   "gate": "scope.schedule1"
   },
   "unruled:f7203#1.6": {
-   "class": "presentation",
-   "evidence": "i7203 p. 2, Name of Shareholder and Item D, quoted. The per-spouse split is already encoded: f7203 is an implicit entry under each k1s entry (collection parent k1s), and each K-1 is issued to one shareholder, so spouses with their own K-1s get their own Form 7203. Item D (how the stock was acquired) is a checkbox with no amount.",
-   "subject_sha": "e8905ffc3fadf9bebfede620aabf699c23f10b0f05ce6c9343396537794e231f"
+   "class": "out of scope",
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "e81eadad994b85a753e5f510b89e726808b8e5d58711e80173ede85df9143206",
+   "gate": "scope.schedule1"
   },
   "unruled:f8606#1.1": {
    "class": "covered",
@@ -321,15 +316,9 @@
   },
   "unruled:f8863#1.1": {
    "class": "covered",
-   "evidence": "i8863 p. 1, Form 1098-T requirement: every student path requires dependent.edu_1098t or person.edu_1098t (through edu_student_tin), which asks whether a 2025 Form 1098-T was received and states the not-required exception and the request-after-January-31 rule.",
-   "subject_sha": "15fe5c67a176a4c5ecb0fb5fca2b30db09208bc7943b9a6da48cbb9b4e91753c",
-   "line": "dependent.edu_1098t"
-  },
-  "unruled:f8863#1.2": {
-   "class": "real gap",
-   "evidence": "i8863 p. 1: 'If you haven't been issued a TIN by the due date of your 2025 return ... you can't claim the American opportunity credit'; person.edu_aoc_tin uses household.all_tin, which counts an ITIN only applied for, and the student path accepts person.edu_student_itin. The institution's EIN is asked by person.edu_ein.",
-   "subject_sha": "15fe5c67a176a4c5ecb0fb5fca2b30db09208bc7943b9a6da48cbb9b4e91753c",
-   "bug": "BUG-1094"
+   "evidence": "i8863 pp. 1, 3-4. The Form 1098-T requirement is asked for every student: person.edu_1098t and dependent.edu_1098t ('Did the school send this person a Form 1098-T ... for 2025?'). Their help covers the exempt-institution case and the request-after-deadline-with-cooperation case, and every student path reads them (edu_student_tin). A nonresident alien for any part of 2025 is refused for the whole return by scope.nonresident, as the f8863 note says ('nonresident aliens are refused for the whole return').",
+   "subject_sha": "c89481e54fbe5746f1b4b4eca06fa2f749ed66f8d38d4122c33d7a3034110600",
+   "line": "person.edu_1098t"
   },
   "unruled:f8880#1.1": {
    "class": "covered",
@@ -408,9 +397,9 @@
   },
   "unruled:ftc#1.1": {
    "class": "out of scope",
-   "gate": "sa.unsupported",
-   "evidence": "i1116 p. 2. Deduction instead of credit: sa.foreign_tax_deduct ('Do you want to deduct the foreign taxes ... instead of taking a credit for them?') is asked whenever ftc.has_tax and a Yes sets sa.unsupported, refusing the return (eval /tmp/xrr/rinv/deduct.json: ftc.credit refused at sa.unsupported); on a No, Schedule A line 6 is a constant zero, so the same year's tax is never both credited and deducted (as f1116#1.1). Additional treaty credit for a citizen in a treaty country: the foreign tax is paid by the filer to the residence country, not withheld and reported on a U.S. payee statement; ftc.statements (help 'Answer No if you paid any of the tax to another country yourself') then makes ftc.needs1116 true and f1116.not_on_statement refuses f1116.line35 (eval /tmp/xrr/rinv/nostmt.json).",
-   "subject_sha": "96bde07c8c642cc1765cae55a2bef23ac60dcb23b656dc2bfa6c6232e2ec6a26"
+   "evidence": "i1116 p. 2, deduction instead of credit. sa.foreign_tax_deduct ('Do you want to deduct the foreign taxes you ... paid instead of taking a credit ...?', help 'This tool does not figure the deduction; to go on without it, answer No') is asked whenever ftc.has_tax. A Yes sets sa.unsupported. On a No, the taxes are only credited and Schedule A line 6 takes no foreign tax, so the same tax is never both credited and deducted. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "a5b70cc89c3debe8cedea50a2b6fcf8261a7da092a26df7144bb8e3d97eb553b",
+   "gate": "sa.unsupported"
   },
   "unruled:g28#1.1": {
    "class": "out of scope",
@@ -427,26 +416,26 @@
   },
   "unruled:ira#1.1": {
    "class": "covered",
-   "line": "person.ira_trad",
-   "evidence": "i1040gi p. 95. person.ira_trad, the source of worksheet line 11, says 'do not include rollover contributions, ... contributions made in 2025 that you deducted for 2024, ... trustees' fees billed separately'; its interview help: 'Leave out rollovers, ... money you deducted on your 2024 return, ... trustee's fees billed separately'.",
-   "subject_sha": "c0c27b226576ca6175ceedb65dd10fd0dbfe2a5fa6302a91d59995df9e183162"
+   "evidence": "i1040gi p. 95, items 7 and 8. person.ira_trad, the source of the contribution total, has the help 'Leave out rollovers, repayments of a reservist distribution, money you deducted on your 2024 return, ... trustee's fees billed separately, and SEP or SIMPLE contributions'. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "fb75e005e383783291ba0bcf8ff6ee19dcb05744da7c82bb95e4e0c37a57db33",
+   "line": "person.ira_trad"
   },
   "unruled:ira#1.2": {
    "class": "out of scope",
-   "gate": "person.ira_over_limit",
-   "evidence": "i1040gi p. 95; p590a p. 35. The claim misses person.ira_over_limit, which refuses when this person's traditional plus Roth contributions exceed $7,000/$8,000, and person.ira_extra_left ('Did you put more into your IRAs for 2025 than you were allowed, and was the extra still there after the deadline ...?'). Evaluated: fixture stage16.refuse.person.ira_over_limit gives s1.line20 refused at person[taxpayer].ira_over_limit. Earnings on a withdrawn excess are refused through retirement.special (see f5329#1.2).",
-   "subject_sha": "c0c27b226576ca6175ceedb65dd10fd0dbfe2a5fa6302a91d59995df9e183162"
+   "evidence": "i1040gi p. 95; i8606 p. 5; p590a p. 35. person.ira_over_limit ('This person's traditional and Roth IRA contributions for 2025 together are more than the applicable amount') refuses contributions over the $7,000/$8,000 dollar limit, not only over compensation. person.ira_extra_left's help states 'The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older ...)'. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "fb75e005e383783291ba0bcf8ff6ee19dcb05744da7c82bb95e4e0c37a57db33",
+   "gate": "person.ira_over_limit"
   },
   "unruled:ira#1.3": {
-   "class": "out of scope",
-   "gate": "sb.unsupported",
-   "evidence": "i1040gi p. 96. A Form 8815 exclusion is refused by sb.unsupported ('a savings bond interest exclusion'); excluded employer-provided adoption benefits by scope.other_income (scope.adoption_benefits_if_adoption: 'Did an employer pay or repay any of the adoption costs ...? Box 12 of a W-2 shows it with the code T.').",
-   "subject_sha": "c0c27b226576ca6175ceedb65dd10fd0dbfe2a5fa6302a91d59995df9e183162"
+   "class": "covered",
+   "evidence": "i1040gi p. 96, 'You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan.' person.ira_cov is person.ira_work_plan or person.ira_se_plan. person.ira_se_plan is true when the person has a Schedule C and person.plan ('Did you put money into a SEP IRA or a SIMPLE IRA for yourself for 2025, as a self-employed person?') is not none; it is asked per person, so it applies to the spouse on line 1b. A self-employed qualified plan such as a solo 401(k) is refused by scope ('a retirement plan of your own business other than a SEP or a SIMPLE').",
+   "subject_sha": "fb75e005e383783291ba0bcf8ff6ee19dcb05744da7c82bb95e4e0c37a57db33",
+   "line": "person.ira_cov"
   },
   "unruled:ira#1.4": {
    "class": "presentation",
-   "evidence": "i1040gi p. 96, 'If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 20.' Separate returns are now in scope, so the earlier s3.mfs ruling no longer holds. The lived-apart answer is asked and used (deemed coverage and the line 2 amount, as the claim says); no line produces the Schedule 1 line 20 checkbox (only ssb.lived_apart produces the line 6d box). The box changes no amount; it is a mark on the printed form.",
-   "subject_sha": "c0c27b226576ca6175ceedb65dd10fd0dbfe2a5fa6302a91d59995df9e183162"
+   "evidence": "i1040gi p. 96, 'If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 20.' The lived-apart answer is asked and used for the amounts (deemed coverage and the line 2 amount). The Schedule 1 line 20 checkbox is a mark on the printed form and changes no amount. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "fb75e005e383783291ba0bcf8ff6ee19dcb05744da7c82bb95e4e0c37a57db33"
   },
   "unruled:ltc#1.1": {
    "class": "out of scope",
@@ -565,23 +554,21 @@
   },
   "unruled:s1a#1.1": {
    "class": "covered",
-   "evidence": "i1040gi p. 102. tipjob.unlawful asks whether tips were received for an unlawful service, prostitution or pornographic activity and feeds the tipjob.mixed refusal.",
-   "line": "tipjob.unlawful",
-   "subject_sha": "703aaf3b45e4fe6bbae1d0af57b19cdc80f45e00c0d6b6028e5cdd7f839c9906",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi p. 102. tipjob.unlawful asks 'Was any of the work you got these tips for against the law ..., or was any of it prostitution or pornographic activity?' and feeds the tipjob refusal. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "29773a0f7879449ff8f15811dea0b15b0ee0a5ecbc927b0faa15c64cb938d54b",
+   "line": "tipjob.unlawful"
   },
   "unruled:s1a#1.2": {
    "class": "covered",
-   "evidence": "i1040gi p. 109. carloan.requirements asks first lien, origination and the purchase tests; carloan.vehicle the vehicle tests; carloan.mixed and carloan.nonqualifying the negative equity, insurance and trailer amounts; carloan.refi_balance the refinancing limit; carloan.kind a loan taken over at a death.",
-   "line": "carloan.requirements",
-   "subject_sha": "703aaf3b45e4fe6bbae1d0af57b19cdc80f45e00c0d6b6028e5cdd7f839c9906",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi p. 109. carloan.requirements asks 'originated by you after December 31, 2024; ... used to buy the vehicle (lease payments do not qualify); ... secured by a first lien', carloan.vehicle asks public roads, GVWR 'under 14,000 pounds' and 'finally assembled in the United States', and carloan.kind admits a loan taken over at a previous borrower's death. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "29773a0f7879449ff8f15811dea0b15b0ee0a5ecbc927b0faa15c64cb938d54b",
+   "line": "carloan.requirements"
   },
   "unruled:s1a#1.3": {
-   "class": "presentation",
-   "evidence": "i1040gi pp. 109-110. Each carloan entry is named by the vehicle's VIN for line 22 column (i) (carloan.yaml note); writing it is filing information and changes no amount.",
-   "subject_sha": "703aaf3b45e4fe6bbae1d0af57b19cdc80f45e00c0d6b6028e5cdd7f839c9906",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "covered",
+   "evidence": "i1040gi pp. 109-110. Each carloan entry is named by the vehicle's VIN (carloan.yaml note) for column (i); carloan.col_ii_input asks the interest deducted on Schedule C for column (ii) (Schedules E and F are refused by scope.schedule1); carloan.nonqualifying and carloan.mixed take out negative equity, insurance and trailer amounts and carloan.refi_balance limits a refinancing. Open BUG-1450 and BUG-1451 (low) concern the wording of those amounts, not their absence.",
+   "subject_sha": "29773a0f7879449ff8f15811dea0b15b0ee0a5ecbc927b0faa15c64cb938d54b",
+   "line": "carloan.col_ii"
   },
   "unruled:s8812#1.1": {
    "class": "covered",
@@ -605,73 +592,49 @@
    "bug": "BUG-0795"
   },
   "unruled:sales#1.1": {
-   "class": "out of scope",
-   "evidence": "p550 pp. 80-81. sd.small_business_stock ('did you ... lose money on stock that a small company issued to you, a loss you claim as an ordinary loss and not a capital loss (section 1244 or section 1242 stock)?'), asked of every filer, is part of sd.other_forms and refuses ('The ordinary loss is claimed on Form 4797'). A filer who does not claim the ordinary loss reports it as a capital loss, which the help allows ('To enter the loss as a capital loss among your sales, answer No').",
-   "subject_sha": "bd193940e0a6c0687ac8463c0c15978e68ec888afc47825c25c423218f7a75cc",
-   "gate": "sd.small_business_stock"
+   "class": "real gap",
+   "evidence": "p550 p. 61. sales.correct_basis's inherited-property bullet gives fair market value at death without the 2010 Form 8939 exception, which only the holding-period bullet of sales.box names. The i8949 p. 6 explanation of a non-cost basis is an attachment (presentation). No existing entry found.",
+   "subject_sha": "a19a2f7e070f772e6f846c07c2843622953712e51d049acac1873ee6ed8c71aa",
+   "bug": "BUG-1457"
   },
   "unruled:sales#1.2": {
-   "class": "out of scope",
-   "evidence": "i1040sd pp. 4-5. sd.trader_election ('Do you ... trade securities or commodities as a business, under a mark-to-market election made in an earlier year?'), asked of every filer, is part of sd.other_forms and refuses. A securities dealer's sales of inventory are business sales, which sd.business_property counts ('Count any sale of something that was not held as an investment or for personal use') and refuses.",
-   "subject_sha": "bd193940e0a6c0687ac8463c0c15978e68ec888afc47825c25c423218f7a75cc",
-   "gate": "sd.trader_election"
+   "class": "presentation",
+   "evidence": "i1040sd p. 6: the short-sale rules choose box C, F, I or L of Form 8949, a reporting category; proceeds, basis and the short- or long-term class (sales.box's short-sale bullets) are unchanged, so no amount moves.",
+   "subject_sha": "a19a2f7e070f772e6f846c07c2843622953712e51d049acac1873ee6ed8c71aa"
   },
   "unruled:sales#1.3": {
-   "class": "real gap",
-   "evidence": "p550 p. 60, gifted digital asset, 'If you do not have any documentation to substantiate the donor's basis, then your basis is zero'; p550 p. 59, unstated interest. sales.correct_basis's gift and adjustment bullets name neither; the basis entered can be overstated.",
-   "subject_sha": "bd193940e0a6c0687ac8463c0c15978e68ec888afc47825c25c423218f7a75cc",
-   "bug": "BUG-0829"
-  },
-  "unruled:sales#1.4": {
-   "class": "real gap",
-   "evidence": "p550 p. 82, gifted digital asset, 'if you do not have documentation substantiating that person's holding period, then your holding period begins the day after you receive the gift'. sales.box's gift bullet gives the donor's holding period without this exception, so the term can be misclassed (BUG-0829, item 2). Code T (the filer's type differs from box 2 or box 6) changes no amount: sales.box is classified from the filer's records (as the earlier sales#1.4 ruling).",
-   "subject_sha": "bd193940e0a6c0687ac8463c0c15978e68ec888afc47825c25c423218f7a75cc",
-   "bug": "BUG-0829"
+   "class": "presentation",
+   "evidence": "i1040sd p. 6; i8949 p. 6: the description, 'EXPIRED', 'INHERITED', '(NAV)' and short-sale date entries are columns (a) to (c); a NAV fund's net entered through proceeds and basis gives the same column (h). No amount changes.",
+   "subject_sha": "a19a2f7e070f772e6f846c07c2843622953712e51d049acac1873ee6ed8c71aa"
   },
   "unruled:sb#1.1": {
    "class": "presentation",
-   "evidence": "Reg. 301.7701-7(c)(4)(ii) (the migration clause). sb.line8's question decides whether Form 3520 is due, an information return; a Yes refuses. The definition's edge cases change no amount on this return.",
-   "subject_sha": "52336e786a897ec38cc3568b51e7145a8137ca69edd9aa882f24b1d033996188",
-   "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040sb p. 1, Line 1: the payer names and per-payer amounts are listing entries; the line 2 total the tool computes is unchanged.",
+   "subject_sha": "d94c2abc80025f5a9d7af7ca95937220275b7511f8e475e628af5fa826d77e2f"
   },
   "unruled:sc#1.1": {
    "class": "covered",
-   "evidence": "i1040sc p. 16, Line 48, as ruled on the earlier subject: sc.line48 asks costs \"needed to run\" the business that no other question asks, and its help leaves out equipment that lasts more than a year, vehicles, the home, the filer's own health insurance and retirement plan; charitable contributions, fines and personal expenses are not costs of running a business; reforestation is refused by scope.reforestation; barrier removal and the de minimis safe harbor are elections that only allow more; accrual-method bad debts are refused with accounting methods by sc.screened. (Carried from the earlier subject's ruling of the same claim, unruled:sc#1.1; rechecked against the current encoding.)",
-   "subject_sha": "2971fe3247ac93e8266420f5d32e30bb705d4752dbd552208f557200959ec601",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
-   "line": "sc.line48"
+   "evidence": "i1040sc p. 6, Line 9. scveh.smr_always and scveh.smr_first ask whether the rate was used in the first year (or the whole lease), scveh.fleet asks 'One of five or more vehicles used in the business at the same time', and scveh.lease_smr_before refuses actual expenses for a lease after the standard rate; scveh.smr_ok reads them.",
+   "subject_sha": "68874240028d2d24d659a60c64e83d40c058b14cc97ea76f161ea45894e6825a",
+   "line": "scveh.smr_ok"
   },
   "unruled:sc#1.2": {
-   "class": "covered",
-   "evidence": "p587 p. 3. sc.ho_other refuses a business with 'some of the income of this business ... earned at another place of business', so the simplified-method deduction is reached only where the home is the business's place of business; sc.ho_uses limits storage to a home that is 'its only fixed place of business' and to 'its stock or samples'.",
-   "line": "sc.ho_other",
-   "subject_sha": "2971fe3247ac93e8266420f5d32e30bb705d4752dbd552208f557200959ec601",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "real gap",
+   "evidence": "i1040sc p. 16. The rest is covered as on the earlier subject: sc.line48 asks costs 'needed to run' the business and its help leaves out equipment, vehicles, the home, own health insurance and retirement plan; reforestation is refused (scope.reforestation); barrier removal and de minimis are elections. But the prior-year at-risk loss carryover is not asked: sc.at_risk asks only this year's at-risk status, while rental.at_risk_prior and royalty.at_risk_prior ask the earlier Form 6198. No existing entry (BUG-1426 is recapture).",
+   "subject_sha": "68874240028d2d24d659a60c64e83d40c058b14cc97ea76f161ea45894e6825a",
+   "bug": "BUG-1458"
   },
   "unruled:scveh#1.1": {
    "class": "out of scope",
-   "gate": "sc.screened",
-   "bug": "BUG-0780",
-   "evidence": "i1040sc p. 8, Line 20a, 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; p946 p. 59; p463 (2025), Inclusion Amounts, the amount applies if the vehicle's FMV when the lease began was more than $62,000 (2025 leases). The encoding refuses this: sc.special's item 'equipment or a vehicle written off in an earlier year is now used half or less for the business, or leased property has an “inclusion amount”' makes sc.screened true and refuses the business; no inclusion amount is computed. But the interview names the case only by its official term with no plain description (N6), so a filer leasing an expensive car, truck or van who does not know the term answers No and keeps the full lease deduction on line 20a. Filed as a low wording defect of the gate (BUG-0780).",
-   "subject_sha": "cd3e9b4bf208f6b54d0ccc9d59925add5813cfe6bd1bef8ebefb5aff12b15179"
-  },
-  "unruled:scveh#1.2": {
-   "class": "out of scope",
-   "gate": "sc.screened",
-   "evidence": "i1040sc p. 6, Capitalizing costs; 'A small business taxpayer ... is not required to capitalize certain expenses to inventory or other property.' sc.method_other (line F) asks whether the business has 'a tax shelter; or receipts averaging more than $31 million a year', i.e. is not a small business taxpayer; a Yes refuses through sc.screened. Every remaining business is a small business taxpayer exempt from section 263A, so deducting the vehicle costs on lines 9 and 13 is right.",
-   "subject_sha": "cd3e9b4bf208f6b54d0ccc9d59925add5813cfe6bd1bef8ebefb5aff12b15179"
-  },
-  "unruled:scveh#1.3": {
-   "class": "presentation",
-   "evidence": "i4562 p. 16, Part V Section B lines 30-36; i1040sc p. 7. Lines 30-36 (off-duty availability, other vehicle available, written evidence) are reporting entries that change no amount. The facts that change an amount are asked: miles on scveh.miles_business, scveh.miles_commuting and scveh.miles_other; personal use by employees on scveh.employee_use (refused by scveh.employee_bad); use by a 5% owner or related person and records that cannot prove business use in scveh.screen. As the earlier ruling (scveh#1.3 under the previous subject).",
-   "subject_sha": "cd3e9b4bf208f6b54d0ccc9d59925add5813cfe6bd1bef8ebefb5aff12b15179"
+   "evidence": "i1040sc p. 8, Line 20a; p946 p. 59. sc.special now names the case plainly ('you lease a car, truck or van for 30 days or more that was worth more than $62,000 when the lease began ... (an “inclusion amount”)') and refuses through sc.screened. BUG-0780 (low) on this point is fixed (BUG-1314).",
+   "subject_sha": "2aa93d8b7e36636a53bcbedd19b9e891bb004ce6fb85e5fdf4d21c8f19f33cd8",
+   "gate": "sc.screened"
   },
   "unruled:sd#1.1": {
    "class": "out of scope",
-   "evidence": "i1040sd p. 2. sb.nominee is asked whenever capital gain distributions are above zero ('Does any of the interest or dividends ... belong to someone else') and a Yes is refused through sb.unsupported.",
-   "gate": "sb.nominee_if_income",
-   "subject_sha": "891f1db3885def45806e33cfed610c35a502a9dc6598f0dcb1b5c6463902780e",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040sd p. 2. sb.nominee ('Does any of the interest or dividends you ... received in 2025 belong to someone else') is asked whenever capital gain distributions are above zero (sb.nominee_if_income) and a Yes is refused through sb.unsupported. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "74557ba65e67295e78673838c8183490188fac385ab706e621c27e7560a9dfb2",
+   "gate": "sb.nominee_if_income"
   },
   "unruled:sdtw#1.1": {
    "class": "out of scope",
@@ -729,232 +692,157 @@
   },
   "unruled:s1#1.1": {
    "class": "out of scope",
-   "evidence": "Each i1040gi p. 89 exception the reviewer lists is asked and refused on refund.line1: items 3, 6 and 7 (0% rate with no tax, 2024 AMT, unused credits) by refund.exc_tax ('you owed alternative minimum tax', 'your credits came to more than the tax on Form 1040, line 18', 'line 16 shows no tax, because of the 0% rate'), and items 8 and 9 by refund.exc_who ('someone else could claim you as a dependent for 2024', 'the refund came from a state or local return filed jointly with a person you are not filing this 2025 return with'). The p525 p. 27 unused-credit refiguring is the same refund.exc_tax refusal (Pub. 525 Worksheet 2).",
-   "subject_sha": "e9abb4dbc8872feb9fbfba30e9a3ce92dbfae9e2c6de25b3d5803d706f8ee920",
-   "gate": "refund.exc_tax"
+   "evidence": "i1040gi p. 89, items 3, 6 and 7 are asked by refund.exc_tax ('you owed alternative minimum tax', unused credits above line 18, no tax on line 16 because of the 0% rate) and items 8 and 9 by refund.exc_who (claimable as a dependent for 2024; a joint state return 'when you are not filing a joint 2025 Form 1040 ... with the same person'); both refuse on refund.line1 ('figured with Pub. 525 ... outside this tool'). (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "82f75c2c354f7dc4f994fe560a49fce68e92d9bc3bf285665bac8a1fa2bfa9ec",
+   "gate": "refund.line1"
   },
   "unruled:rental#1.3": {
    "class": "covered",
-   "evidence": "i1040se p. 6. rental.amt10 help: 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to its cost'; federal taxes and penalties are not legal or professional fees.",
-   "line": "rental.amt10",
-   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "p527 p. 5: the rental.amt13 help says 'Not loan commissions, abstract or recording fees: they are part of its cost', and its source spreads points and loan fees over the loan. The i1040se p. 7 statement naming the person who received the Form 1098 is an attachment and changes no amount.",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
+   "line": "rental.amt13"
   },
   "unruled:rental#1.4": {
-   "class": "real gap",
-   "evidence": "i1040sca p. 6, Line 5b. rental.tax_personal carries the rental's taxes not taken on Schedule E to line 5b, but sa.property_tax_other_any asks only about 'the real estate tax amount you entered' (sa.line5b), so service charges, foreign tax, refunds and taxes assessed after 2025 inside the rental's share reach line 5b unchecked. Rare; low.",
-   "bug": "BUG-1289",
-   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "covered",
+   "evidence": "i1040se p. 6: the rental.amt10 help reads 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to its cost, not deducted now.' (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
+   "line": "rental.amt10"
   },
   "unruled:k1p#1.1": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ae56654ad927277c50ef4b36eb5a08531e0885d7edeb80316e8df01c9a42e2bc",
-   "gate": "scope.k1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "k1p.fuel_2024": "k1p.fuel_prior_year"
-    },
-    "from": "tree /tmp/prerename",
-    "was": "68f0a40374ecf8fb05748adea664c29116691eed717159a1e9b9456a970f2758"
-   }
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
   },
   "unruled:k1p#1.2": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ae56654ad927277c50ef4b36eb5a08531e0885d7edeb80316e8df01c9a42e2bc",
-   "gate": "scope.k1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "k1p.fuel_2024": "k1p.fuel_prior_year"
-    },
-    "from": "tree /tmp/prerename",
-    "was": "68f0a40374ecf8fb05748adea664c29116691eed717159a1e9b9456a970f2758"
-   }
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
   },
   "unruled:k1p#1.3": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ae56654ad927277c50ef4b36eb5a08531e0885d7edeb80316e8df01c9a42e2bc",
-   "gate": "scope.k1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "k1p.fuel_2024": "k1p.fuel_prior_year"
-    },
-    "from": "tree /tmp/prerename",
-    "was": "68f0a40374ecf8fb05748adea664c29116691eed717159a1e9b9456a970f2758"
-   }
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
   },
   "unruled:k1p#1.4": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ae56654ad927277c50ef4b36eb5a08531e0885d7edeb80316e8df01c9a42e2bc",
-   "gate": "scope.k1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "k1p.fuel_2024": "k1p.fuel_prior_year"
-    },
-    "from": "tree /tmp/prerename",
-    "was": "68f0a40374ecf8fb05748adea664c29116691eed717159a1e9b9456a970f2758"
-   }
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
   },
   "unruled:k1p#1.5": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ae56654ad927277c50ef4b36eb5a08531e0885d7edeb80316e8df01c9a42e2bc",
-   "gate": "scope.k1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "k1p.fuel_2024": "k1p.fuel_prior_year"
-    },
-    "from": "tree /tmp/prerename",
-    "was": "68f0a40374ecf8fb05748adea664c29116691eed717159a1e9b9456a970f2758"
-   }
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
   },
   "unruled:k1p#1.6": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ae56654ad927277c50ef4b36eb5a08531e0885d7edeb80316e8df01c9a42e2bc",
-   "gate": "scope.k1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "k1p.fuel_2024": "k1p.fuel_prior_year"
-    },
-    "from": "tree /tmp/prerename",
-    "was": "68f0a40374ecf8fb05748adea664c29116691eed717159a1e9b9456a970f2758"
-   }
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
   },
   "unruled:k1p#1.7": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ae56654ad927277c50ef4b36eb5a08531e0885d7edeb80316e8df01c9a42e2bc",
-   "gate": "scope.k1",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "k1p.fuel_2024": "k1p.fuel_prior_year"
-    },
-    "from": "tree /tmp/prerename",
-    "was": "68f0a40374ecf8fb05748adea664c29116691eed717159a1e9b9456a970f2758"
-   }
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.1": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.2": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.3": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.4": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.5": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.6": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.7": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:k1s#1.8": {
    "class": "out of scope",
-   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 (tick 'Income or a loss from a partnership, S corporation, estate or trust', help 'A Yes ends the interview here') refuses every return with a K-1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them (checked 2026-11-21 over canonical/2025), so no amount of the return depends on this finding. Re-sampled when the K-1s are wired (T-352).",
-   "subject_sha": "ceb47063c97306406942fd953441bfd238f5b1bc3be62ec41c623dc5f0427754",
-   "gate": "scope.k1"
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
   },
   "unruled:rental#1.1": {
    "class": "out of scope",
-   "evidence": "i1040se p. 3; p925 p. 15. sche.re_pro asks the real estate professional test and sche.line26 refuses ('A real estate professional's rentals are outside this tool'); self-rental is refused (rental.yaml, property types 7 and 8); a rental incidental to development is sold in the year, and a sale of rental property is refused by sd.business_property.",
-   "gate": "sche.line26",
-   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040se p. 3, Real estate professionals. sche.re_pro asks 'Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all your work time?' and sche.line26 refuses it ('A real estate professional's rentals are outside this tool'), so line 43 and the nonpassive treatment are never needed on a completed return. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
+   "gate": "sche.line26"
   },
   "unruled:rental#1.5": {
    "class": "covered",
-   "evidence": "i1040se pp. 6-7; p527 p. 5. rental.amt19 asks for costs 'paid in 2025' (no own labor, no uncollected rent) and its help leaves out 'something that lasts more than a year ... or equipment you lease to own' and loan costs ('mortgage commissions and recording fees are part of its cost'). The barrier-removal and section 179D deductions are elections; not taking them leaves a correct amount.",
-   "line": "rental.amt19",
-   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040se p. 6; p527 p. 5. rental.amt19 asks costs 'paid in 2025' (own labor and uncollected rent are not paid), and its help leaves out 'something that lasts more than a year, such as an appliance, furniture, an improvement, or equipment you lease to own'. The $15,000 barrier-removal deduction is an election ('You can also elect'); not taking it leaves a correct amount. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
+   "line": "rental.amt19"
   },
   "unruled:rental#1.6": {
-   "class": "out of scope",
-   "evidence": "i1040se p. 6, Form 4835. The farming tick (scope.farm) says \"Count a farm you run and a share of crops or livestock from land you let a farmer use. A Yes ends the interview here.\" (Carried from the earlier subject's ruling of the same claim, unruled:rental#1.9; rechecked against the current encoding.)",
-   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
-   "gate": "scope.farm"
+   "class": "covered",
+   "evidence": "i1040sca p. 6, Line 5b: the quoted rules govern line 5b. The rental's personal share reaches line 5b, and since BUG-1309 (fix of BUG-1289) sa.property_tax_other_any asks of 'the share of a rental's taxes for the days you used it yourself' whether it includes 'an itemized charge for services ... a refund or rebate of 2025 tax, or tax not assessed before 2026', and sa.property_tax_leave_out removes it. rental.amt16 asks taxes 'paid in 2025' for Schedule E line 16.",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
+   "line": "sa.property_tax_other_any"
   },
   "unruled:household#1.1": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 13: 'a married couple can't file a joint return if either spouse is a nonresident alien'; scope.nonresident asks 'For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien' and a Yes is refused through scope.other_income, including the election to be treated as residents (p. 14). (Carried from the earlier subject's ruling of the same claim, unruled:household#1.1; rechecked against the current encoding.)",
-   "subject_sha": "4fc55f3b3a592860c75ae93fc04a43b0e774e4f531c9941e47c64b6657b9199f",
-   "gate": "scope.nonresident",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "class": "presentation",
+   "evidence": "i1040gi p. 14 and p501 p. 8, 'enter the child's name in the entry space ... If you don't enter the name, it will take us longer to process your return.' The name is an entry on the printed form; head of household eligibility and every amount are figured without it. The instruction itself names only slower processing as the consequence.",
+   "subject_sha": "20e1040b33f394b2250933292d61bb76a11ee5c10fcc9c7fef13cd773f80b894"
   },
   "unruled:household#1.2": {
-   "class": "covered",
-   "evidence": "i1040gi pp. 41, 44. eic.legally_separated asks 'Are you legally separated according to your state law under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?'",
-   "line": "eic.legally_separated",
-   "subject_sha": "4fc55f3b3a592860c75ae93fc04a43b0e774e4f531c9941e47c64b6657b9199f",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "presentation",
+   "evidence": "i1040gi p. 15 and p501 p. 11, the name of a qualifying surviving spouse's non-dependent child in the entry space. This is a printed-form entry ('it will take us longer to process your return'). household.qss_eligible decides the status and no amount depends on the name.",
+   "subject_sha": "20e1040b33f394b2250933292d61bb76a11ee5c10fcc9c7fef13cd773f80b894"
   },
   "unruled:household#1.3": {
-   "class": "covered",
-   "evidence": "i8889 pp. 4, 7. On a separate return with family coverage f8889.mfs_spouse_hsa asks 'Did your husband or wife have an HSA of their own for 2025', which the family-limit split reads (f8889.mfs_spouse_hsa_if_asked).",
-   "line": "f8889.mfs_spouse_hsa",
-   "subject_sha": "4fc55f3b3a592860c75ae93fc04a43b0e774e4f531c9941e47c64b6657b9199f",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "out of scope",
+   "evidence": "i1040gi pp. 13-14. scope.nonresident asks 'For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien' ('A Yes ends the interview here'). That refuses every joint return with a nonresident or dual-status spouse, including one making the election to be treated as residents with its statement, box and name entry. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "20e1040b33f394b2250933292d61bb76a11ee5c10fcc9c7fef13cd773f80b894",
+   "gate": "scope.nonresident"
   },
   "unruled:scope#1.2": {
-   "class": "covered",
-   "evidence": "i1040gi pp. 23-24, 91-92, 99; p525 pp. 29-36. These are Schedule 1 items asked on Schedule 1 itself, not screens of scope.schedule1: inmate wages (s1.inmate_wages, refused), nonqualified pay (s1.nqdc_pension, refused), gambling and prizes, canceled debt, jury duty pay (s1.line8h), stock options, ABLE and scholarship amounts, disaster relief and other income through the other-income roster ('Something else' refused).",
-   "line": "s1.line10",
-   "subject_sha": "b415205e2dc186e27051a3459d7274aa147c8882f926c82b9b82d17e805e833a",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "out of scope",
+   "evidence": "i1040gi pp. 23, 25, 36; i1040s8812 p. 3. Form 2555 is refused by sa.excluded_income ('file Form 2555 or Form 4563'); a disability pension before minimum retirement age is asked and put on line 1h by retirement.dis_wages; a corrective distribution (box 7 code 8 or P) is 'other' and refused by retirement.bad_code ('a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside'). (Same claims as earlier subjects, rechecked; corrective distributions new.)",
+   "subject_sha": "c0199a619375dab190e1710e6a958278752f93746f93a97ba86b46a4c28013aa",
+   "gate": "sa.excluded_income"
   },
   "unruled:scope#1.3": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 114. s2.other_tax asks about 'the additional tax on deferred compensation that failed section 409A or 457A, the tax on an excess parachute payment, the section 72(m)(5) excess benefits tax, the excise tax on insider stock compensation, or any other tax to be written in on line 1y or line 17z' and refuses; W-2 box 12 codes K and Z by scope.w2_marks; look-back interest by s2.lookback (BUG-1092 for a closed business).",
-   "gate": "s2.other_tax",
-   "subject_sha": "b415205e2dc186e27051a3459d7274aa147c8882f926c82b9b82d17e805e833a",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:scope#1.4": {
-   "class": "out of scope",
-   "evidence": "i1040sse p. 1. person.se_screen asks each person about 'an approved exemption from self-employment tax on religious grounds (Form 4361 or Form 4029)' and refuses.",
-   "gate": "person.se_screen",
-   "subject_sha": "b415205e2dc186e27051a3459d7274aa147c8882f926c82b9b82d17e805e833a",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi p. 36, '965INC'. A section 965(i) deferral is held only by an S corporation shareholder, and every triggering event (the corporation ceasing to be an S corporation, liquidating or selling substantially all its assets, or a transfer of its stock) comes with a 2025 Schedule K-1 from that S corporation, which scope.k1 refuses ('did you ... have income or a loss from a partnership, an S corporation ... A paper called Schedule K-1 reports it').",
+   "subject_sha": "c0199a619375dab190e1710e6a958278752f93746f93a97ba86b46a4c28013aa",
+   "gate": "scope.k1"
   },
   "unruled:f8582#1.1": {
    "class": "covered",
@@ -994,114 +882,51 @@
   },
   "unruled:royalty#1.1": {
    "class": "covered",
-   "evidence": "i1040se p. 6; the royalty.amt10 help excludes title, recovery and development fees.",
-   "subject_sha": "46de4838dd072e7b50baccde6e6b6114d843418b67206cd143ac8d221a935e3e",
+   "evidence": "i1040se p. 6: the royalty.amt10 help reads 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to its cost, not deducted now.' (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "e801e0b48cad0a7947d21e2a214097b1eefddd934db58f4509c94cb71b03a5ca",
    "line": "royalty.amt10"
   },
   "unruled:royalty#1.2": {
-   "class": "presentation",
-   "evidence": "i1040se p. 6-7; the royalty.amt19 help reads \"Not the value of your own work, and not something that lasts more than a year\". The first home phone line is a rare residual.",
-   "subject_sha": "46de4838dd072e7b50baccde6e6b6114d843418b67206cd143ac8d221a935e3e"
+   "class": "real gap",
+   "evidence": "i1040se p. 7. The royalty.amt19 help reads 'Not the value of your own work, and not something that lasts more than a year, such as equipment or an improvement', which settles labor and capital items, but nothing excludes the first home phone line's base rate or spreads prepaid interest and points, and royalty has no interest line of its own. The earlier subject's ruling called the phone line a rare residual; the prepaid-interest and points sentences, new in this claim, change line 19.",
+   "subject_sha": "e801e0b48cad0a7947d21e2a214097b1eefddd934db58f4509c94cb71b03a5ca",
+   "bug": "BUG-1455"
   },
   "unruled:sche#1.1": {
-   "class": "real gap",
-   "evidence": "i8582 p. 8, Recharacterization of Passive Income: 'Rental of property if less than 30% of the unadjusted basis of the property is subject to depreciation'; a land-only rental (rental.kind land) is taken as passive. Self-rental is refused by rental.self_rental, PTPs by scope.k1, and a disposition by sd.business_property.",
-   "subject_sha": "1b11a8c2e2950972745c3abb7aeb488e3e954195dc59cf4e073f255949e7a31e",
-   "bug": "BUG-1093"
+   "class": "out of scope",
+   "evidence": "i1040se p. 5, code 7 self-rental; i8995 p. 2. The property-type question offers 'self_rental: property rented to a business you or your spouse run', and rental.self_rental refuses it ('Property rented to a business you or your spouse run ... are outside this tool', forms/2025/rental.yaml:1667); a rental run as a trade or business (sche.qbi_business Yes) is refused by sche.line26. No completed return has a self-rental.",
+   "subject_sha": "e30c3a4249e6e2dfdede34e37bd11e51605a565e64e24605c9b4d3625937b368",
+   "gate": "rental.self_rental"
   },
   "unruled:dependent#1.1": {
-   "class": "covered",
-   "evidence": "i1040gi p. 15. household.qss_eligible asks whether 'You have a child or stepchild (not a foster child) whom you can claim as a dependent'; dependent.child_all_year feeds only the consistency check that some listed child lived with the filer all year.",
-   "line": "household.qss_eligible",
-   "subject_sha": "26826228e0e0aecccf42c9e10ddd4c140d1d4acc642e1d81c5a75238eaa2e17f",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:dependent#1.2": {
-   "class": "out of scope",
-   "evidence": "i8863 pp. 1, 3. f8863.ban asks 'Has the IRS ever denied or reduced an American opportunity credit you ... claimed, for more than a math or clerical error, or barred you ... from claiming it?' and refuses ('Answer No only if ... you filed Form 8862 for this credit with a later year's return and it was allowed').",
-   "gate": "f8863.ban",
-   "subject_sha": "26826228e0e0aecccf42c9e10ddd4c140d1d4acc642e1d81c5a75238eaa2e17f",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "presentation",
+   "evidence": "i1040gi p. 17, 'If you have more than four dependents, check the box ... and include a statement showing the information requested in the Dependents section.' The box and the statement are what is printed on and attached to Form 1040. Every listed dependent is counted for the credits whatever their number, so no amount changes. The earlier ruling under this key was about a different claim (qualifying surviving spouse).",
+   "subject_sha": "40a4601b195c0df9b16a0d70229ab115be037752913a41b422896078fdf50dee"
   },
   "unruled:f5695#1.1": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the address of the home above line 1 and the statement of additional addresses (i5695 p. 4) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 4, the address of the Part I home and the statement of additional addresses. The f5695 note says 'Addresses and QMIDs are not values (the data model has no strings)'. The address and the statement are filing information that changes no line amount. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f5695#1.2": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the main home address on line 17d (i5695 p. 5) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 5, 'Line 17d. Enter the complete address of your main home during 2025.' The f5695 note says 'Addresses and QMIDs are not values'. f5695.line17a already tests main home in the United States, and the address changes no amount. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f5695#1.3": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the address of each home on line 21c (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 6, 'Line 21c. Enter the full address of each home'. The f5695 note says 'Addresses and QMIDs are not values', and f5695.line21a tests the US home, so the address changes no amount. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f5695#1.4": {
    "class": "presentation",
-   "evidence": "Line 25b (i5695 p. 6, 'Enter the code for the type(s) of enabled property') only labels which enabled item the panel work served; f5695.line25a already requires an enabled item installed in 2025, and the credit does not use the code.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 6, 'Line 25b. Enter the code for the type(s) of enabled property'. The code only labels which enabled item the panel work served. f5695.line25a already requires an enabled item, and the credit does not use the code. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f5695#1.5": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for lines 19b and 19d and the line 19e statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 6, line 19e statement listing each QMID and cost. The f5695 note says 'Addresses and QMIDs are not values'. f5695.qmid_doors ('Do you have the four-character manufacturer identification number (QMID) of each of these doors?') refuses an item without one. The statement is an attachment that changes no amount. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f8853c#1.1": {
    "class": "covered",
@@ -1123,108 +948,87 @@
   },
   "unruled:f1040#1.1": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 23-25. Each case is refused: inmate wages by s1.inmate_wages ('paid for work done while in jail or prison, including work release'), nonqualified deferred compensation or nongovernmental 457 pay by s1.nqdc_pension ('count it even if box 11 is blank'), statutory employee pay by scope.w2_marks ('box 13 Statutory employee ticked'), and a chapter 11 estate by scope.chapter11.",
-   "gate": "s1.inmate_wages",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi pp. 23-24. Each case is refused upstream. s1.inmate_wages asks 'were you ... paid for work done while an inmate of a jail, prison or other correctional facility, including work release?' (help 'A Yes ends the interview here'). Nonqualified deferred compensation or nongovernmental 457 pay in box 1 is refused by s1.nqdc_pension, and a chapter 11 estate by scope.chapter11 ('were you ... in a chapter 11 bankruptcy case?'). (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "gate": "s1.inmate_wages"
   },
   "unruled:f1040#1.2": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 24. Excess elective deferrals are refused by scope.excess_deferral ('More pay put into retirement plans at work than the yearly limit'); a corrective distribution is a Form 1099-R code the code question refuses (retirement.bad_code), and its loss is an other-income kind that ends the interview.",
-   "gate": "scope.excess_deferral",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi pp. 24-25. scope.excess_deferral refuses 'More pay put into retirement plans at work than the yearly limit' (help: 'Count each person's jobs together. With only SIMPLE plans the limit is $16,500 ...; it is higher from age 50 ... A Yes ends the interview here'). A corrective distribution carries a box 7 code (8 or P) that retirement.code's choices omit ('Any other code ...'), and that answer is refused. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "gate": "scope.excess_deferral"
   },
   "unruled:f1040#1.3": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 27. Form 8606 basis, Roth and conversion cases, qualified charitable distributions and HSA funding distributions are each asked per Form 1099-R and refused through retirement.special (retirement.charity_hsa: 'straight from the IRA to a charity, or into a health savings account'); line 4b takes the rollover exception only.",
-   "gate": "retirement.special",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi pp. 27-28, Exceptions 2 to 4. Each case is asked per Form 1099-R and refused through retirement.special. retirement.ira_basis covers 'A traditional IRA of yours holds money already taxed ... A Form 8606 on any earlier return means Yes', retirement.ira_returned covers returned contributions and retirement.roth_moved covers conversions. retirement.charity_hsa ('Some of it went straight to a charity or into an HSA') covers QCDs and HSA funding distributions; Roth codes other than Q are refused by retirement.code. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "gate": "retirement.special"
   },
   "unruled:f1040#1.4": {
-   "class": "covered",
-   "evidence": "i1040gi pp. 28-30. Each case is asked per pension: retirement.pso_exclusion (retired public safety officer premiums), retirement.started_before_simplified_method_date (General Rule), retirement.csrs_alt (civil service alternative annuity) and retirement.death_exclusion (death before August 21, 1996).",
-   "line": "retirement.pso_exclusion",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "out of scope",
+   "evidence": "i1040gi pp. 28-30. Each case is asked per pension, and retirement.special refuses it: retirement.pso_exclusion_if_plan ('A retired public safety officer's exclusion for insurance premiums is wanted'), retirement.general_rule_if_cost and retirement.started_before_simplified_method_date_if_cost (General Rule, Pub. 939), and retirement.csrs_alt_if_cost (Civil Service alternative annuity). The earlier ruling said covered; these questions refuse rather than compute, so the correct class is out of scope. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "gate": "retirement.special"
   },
   "unruled:f1040#1.5": {
    "class": "out of scope",
-   "evidence": "ssb.pub915 includes ssb.repaid_more ('is box 4 (benefits repaid) more than box 3 (benefits paid)?') and refuses, and ssb.terror_disability refuses disability payments 'for injuries incurred as a direct result of a terrorist attack' (i1040gi p. 31). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.7; rechecked against the current encoding.)",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "gate": "ssb.pub915",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "evidence": "i1040gi p. 31. ssb.terror_disability asks 'Are any of these benefits disability payments for injuries from a terrorist attack against the United States or its allies?' (help '... a Yes ends the interview here'), and ssb.pub915 refuses it. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "gate": "ssb.pub915"
   },
   "unruled:f1040#1.6": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 33, nominee capital gain distributions. sb.nominee ('Does any of the interest or dividends you ... received in 2025 belong to someone else') is asked whenever capital gain distributions are above zero (sb.nominee_if_income) and a Yes is refused through sb.unsupported.",
-   "gate": "sb.nominee_if_income",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi pp. 33-34. A dual-status alien was a nonresident alien for part of the year. scope.nonresident asks 'For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien' ('A Yes ends the interview here'), so line 12c never applies. A net qualified disaster loss requires Form 4684: sd.casualty ('A loss to things you own for personal use counts only if it came from a federally declared disaster ... A Yes ends the interview here') refuses through sd.other_forms. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "gate": "scope.nonresident"
   },
   "unruled:f1040#1.7": {
    "class": "covered",
-   "evidence": "i1040gi pp. 33-34. sa.dependent asks 'Can someone claim you or your spouse as a dependent for 2025?' (the dependent worksheet), sa.spouse_extra asks the line 12d boxes on a separate return, person blindness is asked per person, a dual-status alien is refused by scope.nonresident, and a disaster loss needs Form 4684, refused through sd.casualty.",
-   "line": "sa.dependent",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi p. 39, 'If you can't agree, you must divide the payments in proportion to each spouse's individual tax as shown on your separate returns'. The f1040.line26 help reads 'For joint payments with a spouse or former spouse filing separately, enter your share: the split you both agree on, or else in proportion to your separate 2025 taxes'. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "line": "f1040.line26"
   },
   "unruled:f1040#1.8": {
-   "class": "covered",
-   "evidence": "Nonresident-spouse and dual-status election is refused: scope.nonresident asks 'For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien' and scope.other_income refuses a Yes (i1040gi p. 13: 'a married couple can't file a joint return if either spouse is a nonresident alien'). Divorce-for-tax-purposes and annulment are in the household.married_dec31 question text: 'Answer No if ... you had a court decree of annulment' and 'if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years' (Pub. 501 p. 6). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.1; rechecked against the current encoding.)",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "line": "household.married_dec31",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "class": "out of scope",
+   "evidence": "i1040gi pp. 25, 42-43, the nontaxable combat pay election. s8812.combat_pay asks 'In 2025, were you (or, on a joint return, your spouse) paid for military service in a combat zone? ... box 12 of the W-2 generally shows it with the letter Q' (help 'A Yes ends the interview here'). eic.step5_line4 ('Nontaxable combat pay you elect to include in earned income; zero in this tool') refuses on it ('Nontaxable combat pay is outside this tool').",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "gate": "s8812.combat_pay"
   },
   "unruled:f1040#1.9": {
    "class": "covered",
-   "evidence": "The f1040.line26 question's help reads 'For joint payments with a spouse or former spouse filing separately, enter your share: the split you both agree on, or else in proportion to your separate 2025 taxes', which is i1040gi p. 39 and Pub. 504 p. 11 (joint estimated tax divided on separate returns). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.13; rechecked against the current encoding.)",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "line": "f1040.line26",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
-  },
-  "unruled:f1040#1.10": {
-   "class": "covered",
-   "evidence": "f8863.ban asks whether the American opportunity credit 'was denied or reduced ... so that Form 8862 is required' or the filer is 'within 2 years of a final determination ... reckless or intentional disregard ... or within 10 years ... fraud' and refuses (f8863.ban_refused); the Pell grant inclusion choice is a scholarship the filer includes in income (dependent.edu_a_this_year: 'a scholarship the student includes in income (... Schedule 1 line 8r)'). (Carried from the earlier subject's ruling of the same claim, unruled:f1040#1.15; rechecked against the current encoding.)",
-   "subject_sha": "c578cbd55cd596d494f40925df3e248d4bc45e3b2e83c91027dcc84d4e25f15d",
-   "line": "f8863.ban",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "evidence": "i1040gi p. 61, the Form 8862 requirement and the 2- and 10-year bans. f8863.ban asks whether the American opportunity credit was 'denied or reduced, for a reason other than a math or clerical error, for a tax year after 2015, so that Form 8862 is required ... or are you ... within 2 years of a final determination ... reckless or intentional disregard ... or within 10 years of one that it was due to fraud'. On a Yes, f8863.ban_if_aoc claims no American opportunity credit, and f8863.ban_notice says those students' expenses count for the lifetime learning credit. The reviewer read only the 8862 refusal for the EIC and the child credits.",
+   "subject_sha": "8119a0a4b91fdb4de84ef4044c328ce6c0e5aee83723e7edfbefb5a1da3a1992",
+   "line": "f8863.ban_if_aoc"
   },
   "unruled:sa#1.1": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 33-34, dual-status alien: a filer who was a nonresident alien for any part of 2025 answers Yes to scope.nonresident (\"For any part of 2025, were you ... a nonresident alien\"), refused through scope.other_income on every return, not only the EIC path. (Carried from the earlier subject's ruling of the same claim, unruled:sa#1.1; rechecked against the current encoding.)",
-   "subject_sha": "dd052b5349834a61583378e1e8284f288d509a3e76f198bc46223dc6d09711ee",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
-   "gate": "scope.other_income"
-  },
-  "unruled:sa#1.2": {
-   "class": "out of scope",
-   "evidence": "i1040sca p. 8, Form 8396: s3.mcc_if_interest asks about a mortgage credit certificate and scope.ready_credits refuses it (\"A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A\"). (Carried from the earlier subject's ruling of the same claim, unruled:sa#1.3; rechecked against the current encoding.)",
-   "subject_sha": "dd052b5349834a61583378e1e8284f288d509a3e76f198bc46223dc6d09711ee",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
+   "evidence": "i1040sca p. 8, Form 8396: s3.mcc ('a mortgage credit certificate from a state or local housing agency') is refused (scope.ready_credits). Interest already deducted on Schedule E is excluded by the sa.mortgage_interest help: 'Leave out the interest on a property rented out for 15 days or more in 2025, except for the days it was your main home'.",
+   "subject_sha": "2ce0c182e150aed4a360dec9767cf48eb6fc65373eff0c6f9c037ed09ee98969",
    "gate": "scope.ready_credits"
   },
-  "unruled:s2#1.1": {
+  "unruled:sa#1.2": {
    "class": "real gap",
-   "evidence": "i6251 pp. 3-4, Line 2g: exempt-interest dividends 'reported to you in box 13 of Form 1099-DIV' are private activity bond interest. s2.amt_pab asks only Form 1099-INT box 9 and tax-exempt OID, and div.box13 is read by no AMT line, so the screen's line 2g is low. Filed as BUG-1293 (low).",
-   "bug": "BUG-1293",
-   "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "p526 p. 6. The sa.line11 help now counts hosting ('up to $50 a month for a student a charity placed with you', BUG-1307) but not its relative/dependent condition; the 15% state-credit rule is fixed (BUG-1305). The rest is covered: the prompt asks gifts 'to U.S. charities' (not civic leagues, unions or chambers), the source requires the charity's acknowledgment for $250 or more at filing, and a promissory note is not money given.",
+   "subject_sha": "2ce0c182e150aed4a360dec9767cf48eb6fc65373eff0c6f9c037ed09ee98969",
+   "bug": "BUG-1456"
+  },
+  "unruled:s2#1.1": {
+   "class": "out of scope",
+   "evidence": "i6251 pp. 3-4, box 13 of Form 1099-DIV. div.amt (box 13 above $0) refuses ('Review private activity bond interest for the alternative minimum tax; Form 6251 is outside scope', forms/2025/div.yaml:273), so no completed return leaves a box 13 amount out of line 2g. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "f7c55116e93ad2ef8b9531ad3df6cea3a67e376042e3bd4b06c3b169e965b476",
+   "gate": "div.screen"
   },
   "unruled:s2#1.2": {
    "class": "out of scope",
-   "evidence": "i6251 pp. 3, 7, 8. sc.special refuses depletion ('depletion (line 12)'), business interest limited by Form 8990, and research costs elected to be capitalized; long-term contracts are refused by the Schedule C accounting-method question ('long-term contracts'); a pollution control facility's section 169 amortization is an amortization election that sc.special's 'licenses or other costs you must amortize' and the asset questions do not compute.",
-   "gate": "sc.special",
-   "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i6251 p. 3, line 2h (7% of section 1202 excluded gain). A section 1202 exclusion is refused upstream: sd.special_any asks 'qualified small business stock with a section 1202 exclusion' and sales.one refuses sales.special ('Sales of ... section 1202 stock ... are unsupported'); a box 2c distribution is refused by div.section1202 ('Code Q and Form 6251 remain outside scope'); K-1 amounts by scope.k1. No completed return has a line 2h amount.",
+   "subject_sha": "f7c55116e93ad2ef8b9531ad3df6cea3a67e376042e3bd4b06c3b169e965b476",
+   "gate": "sales.one"
   },
   "unruled:s2#1.3": {
    "class": "out of scope",
-   "evidence": "i6251 p. 3, the section 1202 exclusion. sales.special lists 'small business stock on which you exclude part of the gain (section 1202)' and refuses; Form 1099-DIV box 2c (section 1202 gain) is refused with the capital gain distribution boxes (sd.yaml note).",
-   "gate": "sales.special",
-   "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i6251 pp. 7-8. sc.method_other refuses a business that 'does it have long-term contracts (section 460)'; the line 2r adjustment applies only without material participation ('Don't make this adjustment for ... an activity in which you materially participated'), and sc.passive No refuses through sc.screened; section 169 pollution-control amortization reaches the return only as amortization, which sc.special and the asset roster ('amortization', asset.yaml:695) refuse. (Same claim as an earlier subject, rechecked; pollution-control sentence added.)",
+   "subject_sha": "f7c55116e93ad2ef8b9531ad3df6cea3a67e376042e3bd4b06c3b169e965b476",
+   "gate": "sc.screened"
   },
   "unruled:refund#1.1": {
    "class": "covered",
@@ -1234,14 +1038,9 @@
   },
   "unruled:asset#1.1": {
    "class": "out of scope",
-   "evidence": "i4562 p. 3: 'Note: An estate or trust cannot make this election.' The tool prepares only an individual's Form 1040 (with its Schedule C and Form 4562); an estate or trust files Form 1041, which it does not prepare.",
-   "subject_sha": "e00fc0740dbf8d6f2f5da512d4d43fe9d293f3967b3077e27d48fb02f9e79eda"
-  },
-  "unruled:asset#1.2": {
-   "class": "out of scope",
-   "evidence": "i4562 p. 10, 'Appliances, carpets, furniture, etc., used in a rental real estate activity' are 5-year property; rental property is entered on rprop, whose refusal on rprop.personal says 'Appliances, carpet, furniture, fences and other property that is not a building are outside this tool', and the asset roster is for Schedule C businesses.",
-   "subject_sha": "e00fc0740dbf8d6f2f5da512d4d43fe9d293f3967b3077e27d48fb02f9e79eda",
-   "gate": "rprop.personal"
+   "evidence": "p946 p. 35 and i4562 p. 12: personal property used in a farming business takes the 150% declining balance method. A farming business is refused for the whole return: scope.farm asks 'In 2025, did you (or, on a joint return, your spouse) have income or a loss from farming?' (help 'Count a farm you run ... A Yes ends the interview here'), so no depreciable asset of a farming business reaches asset.rate_prior. The earlier ruling under this key was about a different claim (estate or trust election).",
+   "subject_sha": "fb6b3f9b983ba36978f36571ea513afc2a527b58b93cc125c2c7103d5a235545",
+   "gate": "scope.farm"
   },
   "unruled:eic#1.1": {
    "class": "out of scope",
@@ -1264,15 +1063,16 @@
    "gate": "sc.line1"
   },
   "unruled:gift#1.1": {
-   "class": "presentation",
-   "evidence": "i8283 p. 3, 'Attach a statement to your tax return showing how you figured the reduction': a filing attachment; gift.deduction already takes the amount after the reductions, so no amount changes.",
-   "subject_sha": "5ac95d75c5371217810bacc70cb4780757bb7f4937888538fb1e1870404b9e00"
+   "class": "out of scope",
+   "evidence": "p526 p. 19, reduce to basis when 'You choose the 50% limit instead of the 30% limit'. This is an optional election, and the tool never makes it: deductions follow the default 30% limit at fair market value, which is correct for a filer who does not elect. The election only helps when the 30% limit binds, and that case is refused: sa.charity_over_test (line 12 noncash gifts, 'all taken as capital gain property, more than 30%' of AGI) refuses at sa.charity_over_if_itemizing ('Schedule A charitable limitation (Pub. 526)').",
+   "subject_sha": "4e9ee62e862d34356ab2c771aca81f2b5f25d2924000ca182ea9ee15d21039d0",
+   "gate": "sa.charity_over_if_itemizing"
   },
   "unruled:tipjob#1.1": {
    "class": "covered",
    "evidence": "s1a.tip_ssn requires a valid SSN for the filer or, on a joint return, the spouse who received the tips (i1040gi p. 101, \"the spouse who received the qualified tips must have a valid SSN\"), and s1a.line13_claim zeroes line 13 for married filing separately (i1040gi p. 101, \"If you are married, you must file a joint return\"); tipjob is a per-employer entry under a person, so these return-level conditions are not asked per row.",
    "subject_sha": "f5ef6267f563ba941cb051757b615edbf5506d54e46ecbfda69f00dc97fafe3d",
-   "line": "s1a.line13_claim"
+   "line": "s1a.tips_deduction_claim"
   },
   "unruled:tipjob#1.2": {
    "class": "out of scope",
@@ -1288,10 +1088,9 @@
   },
   "unruled:scope#1.1": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 23-36; i1040s8812 p. 3; p525 p. 31. sa.excluded_income refuses income excluded under Form 2555, Puerto Rico or American Samoa; foreign accounts (including a foreign pension account), assets and trusts are asked and refused by sb.account_any, sb.asset_any and sb.trust_any; a lump-sum social security payment for earlier years by ssb.prior_year_pay; a savings bond exclusion through sb.unsupported; Form 3520 and the PPP statement are information filings with no amount.",
-   "gate": "sa.excluded_income",
-   "subject_sha": "b415205e2dc186e27051a3459d7274aa147c8882f926c82b9b82d17e805e833a",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi pp. 23, 24, 92, 95. The reviewer read only the scope form: s1.inmate_wages ('amounts for services performed while an inmate in a penal institution (Schedule 1, line 8u)') and s1.nqdc_pension (asked when a W-2 is listed) refuse through s1.line8_other; digital-asset ordinary income is asked (s1.digital_income) and entered on s1.line8v; a Schedule C loss above the excess business loss threshold is refused (s1.line3, 'Form 461'); Form 7206 is figured (sc.f7206_line1 on), and its Marketplace/premium tax credit, Form 2555 and multi-business long-term care cases are refused by sc.hi_screened.",
+   "subject_sha": "c0199a619375dab190e1710e6a958278752f93746f93a97ba86b46a4c28013aa",
+   "gate": "s1.line8_other"
   },
   "unruled:f8582#1.5": {
    "class": "out of scope",
@@ -1306,42 +1105,24 @@
   },
   "unruled:f5695#1.6": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for lines 20a(i)-(iv) and the line 20b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 6, line 20b statement of QMID and cost. The statement is an attachment. The f5695 note says 'Addresses and QMIDs are not values', and the QMID questions refuse an item without one. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:s2#1.4": {
    "class": "out of scope",
-   "evidence": "i6251 pp. 1-2. A general business credit is refused by the Schedule C credit question ('It claims a business tax credit'); the Form 8911 credit by s3.ev_equipment ('This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911)'); a 2024 AMT liability or Form 8801 carryforward by s3.prior_amt ('Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare') and s3.prior_other_forms; Form 8834 has no 2025 credit outside a carryforward on a 2024 form.",
-   "gate": "s3.prior_amt",
-   "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:asset#1.3": {
-   "class": "wrong",
-   "evidence": "i4562 p. 8, 'Property acquired in certain nonrecognition transactions': the claim's examples (property contributed to a partnership or a controlled corporation) concern the receiving entity, not an individual's Schedule C; for an individual, asset.got_other asks about trade-ins, exchanges, replacements, related-party acquisitions, gifts and inheritances and refuses.",
-   "subject_sha": "e00fc0740dbf8d6f2f5da512d4d43fe9d293f3967b3077e27d48fb02f9e79eda"
+   "evidence": "i6251 p. 1, items 2 and 3. A general business credit is refused (sc.business_credit, 'Business credits (Form 3800) are outside this tool'; rentals likewise in s3); Form 8911 by s3.ev_equipment; Form 8801 and 8834 carryforwards by the earlier-year credit refusal ('Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, ...)', forms/2025/s3.yaml:1521) reached through s3.prior_other_forms and s3.prior_amt. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "f7c55116e93ad2ef8b9531ad3df6cea3a67e376042e3bd4b06c3b169e965b476",
+   "gate": "s3.prior_amt"
   },
   "unruled:gift#1.2": {
    "class": "presentation",
-   "evidence": "cfr-26-1-170a-13 (b)(3): acquisition manner, date and cost basis are information stated on Form 8283 Section A; the data model holds no dates or text, and none of them changes the deduction the tool computes.",
-   "subject_sha": "5ac95d75c5371217810bacc70cb4780757bb7f4937888538fb1e1870404b9e00"
+   "evidence": "i8283 p. 3, 'Attach a statement to your tax return showing how you figured the reduction'. This is a filing attachment. gift.deduction already takes the amount after the reductions (help: 'For things held a year or less, or that would have brought you ordinary income if sold, the deduction is limited to what you paid for them'), so no amount changes. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "4e9ee62e862d34356ab2c771aca81f2b5f25d2924000ca182ea9ee15d21039d0"
   },
   "unruled:rental#1.2": {
    "class": "out of scope",
-   "evidence": "i1040se p. 7, Form 8990: a rental real estate trade or business is refused by sche.qbi_business through sche.line26, as ruled on the earlier subject; i8990 also exempts a small business. (Carried from the earlier subject's ruling of the same claim, unruled:rental#1.3; rechecked against the current encoding.)",
-   "subject_sha": "28c8f704d742b23b7c0e1369a475ff3ec846c2ba2d7b00a898389a3c7b4dd422",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)",
+   "evidence": "i1040se p. 7, Form 8990: Form 8990 applies only to a rental real estate trade or business; sche.qbi_business ('run any of your rentals as a business ... regularly and continuously?') is refused by sche.line26 ('A rental that is a trade or business is outside this tool'). (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
    "gate": "sche.line26"
   },
   "unruled:rprop#1.1": {
@@ -1352,67 +1133,23 @@
   },
   "unruled:f5695#1.7": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for line 22a and the line 22b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 6, line 22b statement of QMID and cost. The statement is an attachment. The f5695 note says 'Addresses and QMIDs are not values', and the QMID questions refuse an item without one. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f5695#1.8": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for line 23a and the line 23b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 6, line 23b statement of QMID and cost. The statement is an attachment. The f5695 note says 'Addresses and QMIDs are not values', and the QMID questions refuse an item without one. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f5695#1.9": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for line 24a and the line 24b statement (i5695 p. 6) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 6, line 24b statement of QMID and cost. The statement is an attachment. The f5695 note says 'Addresses and QMIDs are not values', and the QMID questions refuse an item without one. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f5695#1.10": {
    "class": "presentation",
-   "evidence": "forms/2025/f5695.yaml note: 'Addresses and QMIDs are not values (the data model has no strings)'; the QMID value for lines 29a, 29c and 29e and their statements (i5695 p. 7) is filing information that changes no line amount, and the QMID questions refuse an item without one.",
-   "subject_sha": "e5f3bad2345b79988e71067cb13d55796371fbcb82e757766bd1910e814dbc9d",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f5695.line12": "f5695.carry_in",
-     "f5695.line14": "f5695.rce_limit",
-     "f5695.line15": "f5695.rce_credit",
-     "f5695.line16": "f5695.carry_out"
-    },
-    "from": "b18efa479856c7bdbd0834a2a9c853e160cf5272",
-    "was": "15c5d0d944bf19c19620abf025779cde712b52b365ef7f63b130dafbeb9e1275"
-   }
+   "evidence": "i5695 p. 7, line 29b statement of QMID and cost. The statement is an attachment. The f5695 note says 'Addresses and QMIDs are not values', and the QMID questions refuse an item without one. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
   },
   "unruled:f1116#1.1": {
    "class": "out of scope",
@@ -1460,17 +1197,15 @@
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:retirement#1.1": {
-   "class": "wrong",
-   "evidence": "p590a p. 25. retirement.rollover_second refuses a Yes ('A Yes ends the interview here'), so an FDIC receiver's distribution answered Yes is over-refused; the tool never treats the rollover as taxable.",
-   "subject_sha": "a178918fd5e043e7afeaedef536fc0b14a4536fbf7271ff2aebf023175356474",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "presentation",
+   "evidence": "i1040gi p. 27; p590a p. 25: the statement explaining a rollover to a qualified plan or one made in 2026 is an attachment; the rollover amount on the retirement roster and line 4b/5b are unchanged. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "0b02b48f54e094c937bb33c35602c4d6fc3994a07b7efd667d6d459da2f96298"
   },
   "unruled:retirement#1.2": {
-   "class": "real gap",
-   "evidence": "p590b p. 27. retirement.exception gives no conditions for 08 (whose education) and states 09's no-ownership test for 'you' and the spouse only, not the child, grandchild or ancestor homebuyer. Filed as BUG-1292 (low).",
-   "bug": "BUG-1292",
-   "subject_sha": "a178918fd5e043e7afeaedef536fc0b14a4536fbf7271ff2aebf023175356474",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "out of scope",
+   "evidence": "p590a p. 25: 'An IRA distribution made from a failed financial institution by the Federal Deposit Insurance Corporation as receiver is not treated as a rollover for purposes of the one-rollover-per-year limitation'. The claim's effect is wrong: a Yes to retirement.rollover_second is not taxed but refused (help: 'A Yes ends the interview here'; retirement.special includes retirement.rollover_second_if_ira and refuses), so a filer whose earlier distribution was an FDIC-receiver one is refused, a WIDE cost with no wrong amount.",
+   "subject_sha": "0b02b48f54e094c937bb33c35602c4d6fc3994a07b7efd667d6d459da2f96298",
+   "gate": "retirement.special"
   },
   "unruled:sli#1.1": {
    "class": "covered",
@@ -1480,30 +1215,22 @@
    "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
   },
   "unruled:retirement#1.3": {
-   "class": "covered",
-   "evidence": "p590b p. 27, the $10,000 lifetime limit. person.x_prior09 asks 'Total of your earlier IRA distributions (before 2025) for which the first-home exception was used', which the line 2 cap reads.",
-   "line": "person.x_prior09",
-   "subject_sha": "a178918fd5e043e7afeaedef536fc0b14a4536fbf7271ff2aebf023175356474",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "real gap",
+   "evidence": "p590b p. 25 (07: 12 consecutive weeks of unemployment compensation, distribution that year or the next, within 60 days of reemployment; 20: not certified by the owner-physician). retirement.exception (forms/2025/retirement.yaml:3075) still lists conditions for 01-04, 08, 09, 11 and 19 only, so this is the point of open BUG-1453 (severity low, status open); no new bug. The i5329 p. 5 statement for exception 19 is an attachment and changes no amount; 19's conditions are in the question. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "0b02b48f54e094c937bb33c35602c4d6fc3994a07b7efd667d6d459da2f96298",
+   "bug": "BUG-1453"
   },
   "unruled:retirement#1.4": {
-   "class": "presentation",
-   "evidence": "i5329 p. 5: the statement with the child's name, age and TIN is an attachment; the exception 19 amount is computed.",
-   "subject_sha": "a178918fd5e043e7afeaedef536fc0b14a4536fbf7271ff2aebf023175356474",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "covered",
+   "evidence": "p590b p. 27, the $10,000 lifetime limit. person.x_prior09 asks the total of earlier IRA distributions (before 2025) for which the first-home exception was used, and the line 2 cap reads it (forms/2025/person.yaml:7170). (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "0b02b48f54e094c937bb33c35602c4d6fc3994a07b7efd667d6d459da2f96298",
+   "line": "person.x_prior09"
   },
   "unruled:f8919firm#1.3": {
    "class": "presentation",
    "evidence": "f8919 p. 2, Column (d), 'Complete only if reason code A or C is entered in column (c).' The date of the IRS letter identifies it and changes no amount (f8919firm note).",
    "subject_sha": "8131eac6baa7231d5261002a1501c896a194c362661371836312534956b5d706",
    "adjudication": "lane advfix sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:sa#1.3": {
-   "class": "real gap",
-   "evidence": "p526 p. 5. The sa.line11 help leaves out 'any part earning a state tax credit' with no 15% exception: already filed as BUG-1086 (open, low). Hosting a student is BUG-1090 (open, low); a returned benefit ticket, a state deduction above the gift and a conditional gift are rare.",
-   "bug": "BUG-1086",
-   "subject_sha": "dd052b5349834a61583378e1e8284f288d509a3e76f198bc46223dc6d09711ee",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:ssb#1.1": {
    "class": "out of scope",
@@ -1514,28 +1241,15 @@
   },
   "unruled:sd#1.2": {
    "class": "out of scope",
-   "evidence": "i1040sd p. 10: a 2025 separate return after a 2024 joint return is a Yes to clcw.spouse_screen ('the 2024 return these figures come from was a joint return, and for 2025 you are not filing a joint return with the same spouse'), refused on clcw.line1; an excluded canceled debt (Form 982) is refused by s1.cod_refused. (Carried from the earlier subject's ruling of the same claim, unruled:sd#1.1; rechecked against the current encoding.)",
-   "subject_sha": "891f1db3885def45806e33cfed610c35a502a9dc6598f0dcb1b5c6463902780e",
-   "gate": "clcw.spouse_screen",
-   "adjudication": "release preparation, 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "evidence": "i1040sd p. 10. clcw.spouse_screen asks whether 'the 2024 return these figures come from was a joint return, and for 2025 you are not filing a joint return with the same spouse', refused on clcw.line1; canceled debt excluded on Form 982 is refused by the s1 canceled-debt screen ('Form 982 ... A Yes ends the interview here'). (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "74557ba65e67295e78673838c8183490188fac385ab706e621c27e7560a9dfb2",
+   "gate": "clcw.spouse_screen"
   },
   "unruled:f4952#1.2": {
    "class": "covered",
    "evidence": "f4952 p. 4: 'Once made, the election can be revoked only with IRS consent.' The f4952.line4g help shown with the question: 'Once made, it can be undone only with IRS consent.' The tool prepares a return making the election; it does not compute a revocation.",
    "line": "f4952.line4g",
    "subject_sha": "94fb3996f1653791b7a66972bbf3016fc73f1b15c1233a7b41af31c25c75e71f",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:household#1.4": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 14: the name of a non-dependent qualifying child in the filing-status entry space is filing information; no amount changes.",
-   "subject_sha": "4fc55f3b3a592860c75ae93fc04a43b0e774e4f531c9941e47c64b6657b9199f",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
-  "unruled:household#1.5": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 15: the child's name in the entry space is filing information; no amount changes.",
-   "subject_sha": "4fc55f3b3a592860c75ae93fc04a43b0e774e4f531c9941e47c64b6657b9199f",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
   "unruled:qbi#1.2": {
@@ -1558,59 +1272,172 @@
    "subject_sha": "8e9a8f0aeca0972bb0a6690b4c978072d20e39a2e0a1e39127369b55a6b9978b",
    "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
   },
-  "unruled:retirement#1.5": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 27: the statement explaining a rollover to a qualified plan or one made in 2026 is an attachment; line 4b is unchanged.",
-   "subject_sha": "a178918fd5e043e7afeaedef536fc0b14a4536fbf7271ff2aebf023175356474",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
-  },
   "unruled:s2#1.5": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 112; i1040sse p. 2. person.se_screen refuses 'an approved exemption from self-employment tax on religious grounds (Form 4361 or Form 4029)' and 'earnings exempt under a social security agreement with another country'; notary fees are refused by sc.statutory ('or notary fees'); a chapter 11 debtor by scope.chapter11.",
-   "gate": "person.se_screen",
-   "subject_sha": "e79433bb41641bc1ec4c91cc80c78057a23542f437f2e4ab42f0ba48a8730adf",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "i1040gi p. 112; i1040sse p. 2. person.se_screen lists 'having an approved Form 4361 or Form 4029' and 'self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government' and refuses (person.yaml:2510); notary fees are refused by sc.statutory ('or fees you received as a notary public'). (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "f7c55116e93ad2ef8b9531ad3df6cea3a67e376042e3bd4b06c3b169e965b476",
+   "gate": "person.se_screen"
   },
   "unruled:f8889#1.1": {
    "class": "out of scope",
-   "evidence": "i5329 p. 8; i8889 p. 8; p969 p. 8. Line 13's addition for a prior year's excess still in the HSA arises only for a filer with such an excess. person.x_hsa_prior_excess asks it of every person who listed an HSA ('Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 ...'), and a Yes refuses through the Form 5329 gate person.x_other (any of the parts this tool does not prepare, including person.x_hsa_prior_excess_if_hsa). (Same claim as the earlier subject's f8889#1.1, rechecked against the current encoding.)",
-   "gate": "person.x_other",
-   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
-   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "evidence": "i5329 p. 8; i8889 p. 8; p969 p. 8, deducting a prior year's excess still in the HSA. person.x_hsa_prior_excess asks every person with an HSA 'Before 2025, was more put into your HSA than the limit for the year, with some of the extra still in the account at the start of 2025?' (help 'Answer Yes if your 2024 Form 5329 has an amount on line 48 ... a Yes ends the interview here'). A Yes refuses through person.x_other. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "e708bd13a8743cab14b021dfa209f01a03bb3cb11d1ad41d5ca6c4ca8bed9a9c",
+   "gate": "person.x_other"
   },
   "unruled:f8889#1.2": {
-   "class": "real gap",
-   "evidence": "p969 p. 5: cash only is covered (f8889.line2 help: 'Only money can be put in, not stock or other property.'). p969 pp. 7-8 and p. 8: a partnership's contribution for a partner and an S corporation's for a 2% shareholder-employee are deductible on line 2; f8889.line2's help says to leave out what the employer put in, and BUG-0877 (1) records that a Schedule K-1 (Form 1120-S) filer is in scope (k1s), so the case is reached. Already filed, open, low.",
-   "bug": "BUG-0877",
-   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
-   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "class": "out of scope",
+   "evidence": "i8889 p. 8; p969 p. 9, an excess contribution distributed after the return's due date. Such a distribution in 2025 removes an excess of an earlier year that stayed in the account past that year's due date. That is a prior-year excess, which person.x_hsa_prior_excess asks ('... with some of the extra still in the account at the start of 2025?') and person.x_other refuses. A 2025 excess removed after the 2025 return's due date falls in 2026 and is not on this return.",
+   "subject_sha": "e708bd13a8743cab14b021dfa209f01a03bb3cb11d1ad41d5ca6c4ca8bed9a9c",
+   "gate": "person.x_other"
   },
   "unruled:f8889#1.3": {
    "class": "covered",
-   "line": "f8889.fsa",
-   "evidence": "p969 p. 5, Health FSA grace period. The f8889.fsa help says a 2024 health FSA's 'extra months in early 2025 count only if money was left in it at the end of 2024', so grace-period coverage with a zero prior-year balance is answered No. (Same claim as the earlier subject's f8889#1.5, rechecked.)",
-   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
-   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "evidence": "p969 p. 5. The f8889.fsa help says 'A 2024 health FSA's extra months in early 2025 count only if money was left in it at the end of 2024', which covers a grace period with a zero balance. It also says 'Answer Yes if it was suspended for only part of 2025', which covers coverage after a suspension ends. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "e708bd13a8743cab14b021dfa209f01a03bb3cb11d1ad41d5ca6c4ca8bed9a9c",
+   "line": "f8889.fsa"
   },
   "unruled:f8889#1.4": {
    "class": "covered",
-   "line": "f8889.coverage_year",
-   "evidence": "p969 pp. 4-5. f8889.coverage_year help: 'A plan covering more than one person does not count if its deductible for any one person on it is below $3,300' (the embedded-deductible test) and 'plan papers usually call such a plan “HSA-eligible” or “HDHP”', which a plan of substantially all disregarded coverage is not; the prescription-drug sentence is answered by f8889.clear_all_year's help, 'Other health coverage means a second plan that pays medical bills before the high deductible is met'. (Same claims as the earlier subject's f8889#1.6 and #1.7, rechecked.)",
-   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
-   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "evidence": "i8889 p. 3; p969 pp. 4-5. The f8889.coverage_year help says 'A plan covering more than one person does not count if its deductible for any one person on it is below $3,300' (the embedded-deductible test). It also says 'plan papers usually call such a plan “HSA-eligible” or “HDHP”', which a plan made up of disregarded coverage is not. The f8889.clear_all_year help says 'Other health coverage means a second plan that pays medical bills before the high deductible is met', which reaches a prescription plan paying first. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "e708bd13a8743cab14b021dfa209f01a03bb3cb11d1ad41d5ca6c4ca8bed9a9c",
+   "line": "f8889.coverage_year"
   },
   "unruled:f8889#1.5": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4, Line 1. The self-only/family checkbox is not encoded; the amounts it would select are figured from f8889.coverage_year (month by month when it changed) and the last-month rule's December coverage. The checkbox changes no amount. (Same claim as the earlier subject's f8889#1.8, rechecked.)",
-   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
-   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "class": "out of scope",
+   "evidence": "p969 pp. 5, 7-8. Non-cash contributions are covered by the f8889.line2 help, 'Only money can be put in, not stock or other property.' A partner or a 2% S corporation shareholder-employee has a Schedule K-1, which scope.k1 refuses ('Income or a loss from a partnership, S corporation, estate or trust', 'A Yes ends the interview here'). This is BUG-0877 item 1 (severity low; open, latent): BUG-1347 closed items 2 and 3 and records item 1 as 'not reachable today ... scope.k1 ends the interview'.",
+   "subject_sha": "e708bd13a8743cab14b021dfa209f01a03bb3cb11d1ad41d5ca6c4ca8bed9a9c",
+   "gate": "scope.k1"
   },
   "unruled:f8889#1.6": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4, Line 1 self-only/family checkbox. The box is not encoded, but the amounts it would select are computed from f8889.coverage_year (month by month when coverage changed) and from the December coverage under the last-month rule. The checkbox changes no amount. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "e708bd13a8743cab14b021dfa209f01a03bb3cb11d1ad41d5ca6c4ca8bed9a9c"
+  },
+  "unruled:f2441#1.5": {
+   "class": "out of scope",
+   "evidence": "i2441 pp. 1, 5, line 12, benefits from a sole proprietorship or a partnership (K-1 box 13 code O). f2441.benefits names 'your own business or partnership' and its help names 'box 13 code O of a partnership's K-1'. scope.care_benefits_other then asks 'Were any of those care benefits not shown in box 10 of a W-2 (for example from your own business or a partnership) ...?' ('A Yes ends the interview here'). A partner is also refused at scope.k1.",
+   "subject_sha": "044fba422102d488c751e543743116d44e29af178d4d618b27e716fca3b69959",
+   "gate": "scope.care_benefits_other_if_benefits"
+  },
+  "unruled:f5695#1.11": {
+   "class": "presentation",
+   "evidence": "i5695 p. 7, 'If you enter an amount on line 29d, attach a statement ... listing the QMID and cost of each item'. The statement is an attachment that changes no amount. The f5695 note says 'Addresses and QMIDs are not values (the data model has no strings)', and the QMID questions refuse an item without one.",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
+  },
+  "unruled:f5695#1.12": {
+   "class": "presentation",
+   "evidence": "i5695 p. 7, 'If you enter an amount on line 29f, attach a statement ... listing the QMID and cost of each item'. The statement is an attachment that changes no amount. The f5695 note says 'Addresses and QMIDs are not values (the data model has no strings)', and the QMID questions refuse an item without one.",
+   "subject_sha": "db7f376c9a94d685f309d2bb8d326abf5e7b65d3ebc04d49bd2b5a496287c532"
+  },
+  "unruled:f8960#1.1": {
+   "class": "out of scope",
+   "evidence": "i8960 p. 13, Line 7, 'Casualty and theft losses reported on Schedule A ... line 15'. sa.casualty_loss is zero by design ('a casualty or theft loss is refused by sd.casualty through sd.other_forms'). sd.casualty asks 'was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover ...?' ('A Yes ends the interview here'), so no Schedule A line 15 loss reaches line 7.",
+   "subject_sha": "fde656e13166430dae0ade9d57304c8e780159b03912d48df0646c6a95eb55b4",
+   "gate": "sd.other_forms"
+  },
+  "unruled:gift#1.3": {
+   "class": "presentation",
+   "evidence": "cfr-26-1-170a-13 (b)(3) and i8283 pp. 1-2, Section A entries and the reasonable-cause statement. Donee, description, how and when acquired, cost or basis and method are information entered on Form 8283; the data model holds no dates or text. None of them changes the deduction the tool computes from gift.deduction. Groups over $5,000 are refused by gift.section_b. (Same reasoning as the earlier subject's gift#1.2 ruling on cfr (b)(3), rechecked.)",
+   "subject_sha": "4e9ee62e862d34356ab2c771aca81f2b5f25d2924000ca182ea9ee15d21039d0"
+  },
+  "unruled:rental#1.7": {
+   "class": "covered",
+   "evidence": "p527 p. 26, Donation of use: the charity's 'purchaser' pays the charity, not the owner. rental.personal_any asks whether 'anyone stay[ed] free, below a fair rent or under a home swap', and rental.days_personal counts days 'by anyone staying free', which takes in a purchaser who paid the owner nothing.",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
+   "line": "rental.days_personal"
+  },
+  "unruled:rental#1.8": {
+   "class": "out of scope",
+   "evidence": "i1040se p. 6, Form 4835: the scope.farm help reads 'Count a farm you run and a share of crops or livestock from land you let a farmer use. A Yes ends the interview here.' The QJV election (i1040se p. 2) splits a property between spouses on a joint return and ticks a box; the totals on line 26 are unchanged, so that part is presentation.",
+   "subject_sha": "f4bb4490d6d4b9b3daa5e7554172d301ede239fdae5064f9402fd9466080f589",
+   "gate": "scope.farm"
+  },
+  "unruled:s1#1.2": {
+   "class": "covered",
+   "evidence": "i1040gi p. 93. person.eligible_educator asks 'a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year'; person.educator_expenses leaves out 'home schooling or nonathletic supplies for courses in health or physical education' and is 'reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings ..., and reimbursements not reported in box 1'.",
+   "subject_sha": "82f75c2c354f7dc4f994fe560a49fce68e92d9bc3bf285665bac8a1fa2bfa9ec",
+   "line": "person.educator_expenses"
+  },
+  "unruled:s1#1.3": {
+   "class": "covered",
+   "evidence": "i1040gi pp. 98-99; p4681 p. 5. sli.any_if_not_mfs is false on a separate return; sli.claimed_count reads the claimed-as-dependent bar; sli.unqualified_any asks a related-person or employer-plan lender and 'a loan used partly for something other than school costs'; sli asks interest paid 'by a loan repayment program for health workers, or with tax-free earnings of a 529 plan'; sli.line1 refuses sa.excluded_income ('Use Pub. 970 instead of the worksheet').",
+   "subject_sha": "82f75c2c354f7dc4f994fe560a49fce68e92d9bc3bf285665bac8a1fa2bfa9ec",
+   "line": "sli.line1"
+  },
+  "unruled:s3#1.1": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 116, Line 6g. The claim's own condition fails: sa.home_owner is asked of every filer (not gated on itemizing), and sa.line8a takes sa.mortgage_interest whenever sa.home_asked, so s3.has_mortgage_interest is reached by a standard-deduction filer with mortgage interest; s3.mcc is then asked and a Yes is refused ('this tool does not prepare it').",
+   "subject_sha": "8f9f3113b4071b73e0c018c3bcc3183778463190a26de279e0bc347f3744954a",
+   "gate": "scope.ready_credits"
+  },
+  "unruled:sb#1.2": {
+   "class": "presentation",
+   "evidence": "i1040sb p. 1, Line 5: the payer names and per-payer amounts are listing entries; the line 6 total is unchanged.",
+   "subject_sha": "d94c2abc80025f5a9d7af7ca95937220275b7511f8e475e628af5fa826d77e2f"
+  },
+  "unruled:sc#1.3": {
+   "class": "covered",
+   "evidence": "i1040sc p. 9, Line 23. The prompt asks 'business taxes and licenses' this business paid, and the help leaves out 'income tax, self-employment tax ..., property tax on your home, charges for improvements such as paving or sewers'; estate and gift taxes and taxes on personal-use or unrelated property are not business taxes the prompt asks.",
+   "subject_sha": "68874240028d2d24d659a60c64e83d40c058b14cc97ea76f161ea45894e6825a",
+   "line": "sc.line23"
+  },
+  "unruled:sc#1.4": {
+   "class": "covered",
+   "evidence": "p587 p. 3. sc.ho_other refuses a business where 'some of the income of this business was earned at another place of business', so the simplified method is reached only where the home is the business's place of business; sc.ho_uses limits storage to a home that is 'its only fixed place of business'. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "68874240028d2d24d659a60c64e83d40c058b14cc97ea76f161ea45894e6825a",
+   "line": "sc.ho_other"
+  },
+  "unruled:sc#1.5": {
+   "class": "out of scope",
+   "evidence": "i1040sc p. 13. The home cannot reach line 13 through the asset roster: asset.kind_excluded asks 'Is this a building or part of one, land, ...' and refuses through asset.screened ('real property'); the business-use part of a home is part of a building.",
+   "subject_sha": "68874240028d2d24d659a60c64e83d40c058b14cc97ea76f161ea45894e6825a",
+   "gate": "asset.screened"
+  },
+  "unruled:sd#1.3": {
    "class": "real gap",
-   "evidence": "p969 p. 9 (long-term care premiums limited by age) and p969 p. 8 (a rollover-funded HSA is established on the prior account's date): f8889.medical's help counts long-term care premiums with no age limit and says costs must 'date from after you opened the HSA' without the rollover rule; both are BUG-0877 (2) and (3), open, low. i8889 p. 8 (a prior year's excess withdrawn after the due date): a prior-year excess is refused at person.x_other. (Same claim as the earlier subject's f8889#1.4, rechecked.)",
-   "bug": "BUG-0877",
-   "subject_sha": "0d732d08708914c3495375929d90eea24978ea82d38ac7bfb7898fee7abfcd51",
-   "adjudication": "release preparation 5 (release-prep-4), 2026-11-23 (claude-opus-5-5, judgment, RUBRIC2)"
+   "evidence": "i1040sd p. 2. sd.special_any names partnership interests that hold collectibles or section 1250 property and constructive ownership transactions, but not an applicable partnership interest; a direct sale held 1 to 3 years is reported long-term. No existing entry found.",
+   "subject_sha": "74557ba65e67295e78673838c8183490188fac385ab706e621c27e7560a9dfb2",
+   "bug": "BUG-1459"
+  },
+  "unruled:sd#1.4": {
+   "class": "real gap",
+   "evidence": "p550 p. 79. sd.sec1256 asks 'section 1256 contracts ... or hold offsetting positions taxed as a straddle', which covers straddle conversions; a buy-and-contract-to-sell conversion is not asked anywhere. No existing entry found.",
+   "subject_sha": "74557ba65e67295e78673838c8183490188fac385ab706e621c27e7560a9dfb2",
+   "bug": "BUG-1460"
+  },
+  "unruled:k1p#1.8": {
+   "class": "out of scope",
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
+  },
+  "unruled:k1p#1.9": {
+   "class": "out of scope",
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "6f22c36e57b595bbe850e181603ab6b3613dbd2a9a762db48714667076555e0f",
+   "gate": "scope.schedule1"
+  },
+  "unruled:k1s#1.9": {
+   "class": "out of scope",
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
+  },
+  "unruled:k1s#1.10": {
+   "class": "out of scope",
+   "evidence": "Out of scope while the K-1 forms are unwired: scope.k1 ('In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust?') refuses every return with a Schedule K-1 through scope.schedule1, and no line outside k1p, k1s, f7203 and the person.k1p_/k1s_ sums reads them, so no amount of any return depends on this claim. Re-sampled on the merits when the K-1s are wired (T-352, T-355).",
+   "subject_sha": "8c7378c4becc838384966d9fa0df19cf6952b193413ecec644dac555c72b048d",
+   "gate": "scope.schedule1"
+  },
+  "unruled:sche#1.2": {
+   "class": "presentation",
+   "evidence": "i1040se p. 4, Lines A and B: the Form 1099 Yes/No boxes are filing information; no amount on Schedule E changes. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "e30c3a4249e6e2dfdede34e37bd11e51605a565e64e24605c9b4d3625937b368"
+  },
+  "unruled:sche#1.3": {
+   "class": "presentation",
+   "evidence": "i1040se p. 2, QJV: the election lists each spouse's interest as a separate property and ticks the QJV box; on the joint return line 26 and the passive-loss totals are unchanged. (Same claim as an earlier subject, rechecked.)",
+   "subject_sha": "e30c3a4249e6e2dfdede34e37bd11e51605a565e64e24605c9b4d3625937b368"
   }
  },
  "baseline": {}

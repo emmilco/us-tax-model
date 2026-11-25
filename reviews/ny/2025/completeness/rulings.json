@@ -13,31 +13,24 @@
    "subject_sha": "c9d8750c329d3459bf28a7aed9754844cd5c17bc7949e7dc23f64dbeefe34b7d"
   },
   "unruled:ny_it201#1.1": {
-   "class": "real gap",
-   "bug": "BUG-1095",
-   "evidence": "ny_it201i p. 5: a federal joint filer whose spouse's 'address or whereabouts ... is unknown', or who 'refuses to sign a joint New York return' with evidence of alienation, may file a separate New York return; only ny_it201.gate.spouse_nonresident is encoded. Already filed as BUG-1095 (open, low).",
-   "subject_sha": "2ec59654acb3d6bc26791d46ae8496e29b4e36f683867a9e986a9931bb26e89c",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "wrong",
+   "evidence": "ny_it201i p. 20, Line 69a: a City resident who 'marked Yes at item C ... do[es] not qualify to claim this credit'. The encoding does zero it: ny_it201.line69a chooses ny_it201.zero_stc when ny_it201.item_c is true and ny_it201.stc_rr only when item_c is false (forms/ny/2025/ny_it201.yaml:2643-2653); the reviewer missed the choose on line 69a itself.",
+   "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592"
   },
   "unruled:ny_it201#1.2": {
-   "class": "covered",
-   "line": "ny_it201.safe_harbor",
-   "evidence": "ny_it201i p. 23, the 110% rule 'and you are not a farmer or a fisherman'. ny_it201.safe_harbor's note: the exception is not asked, so a fisherman is held to 110%, which can only refuse more often; a farmer is refused federally by scope.farm. No wrong amount.",
-   "subject_sha": "2ec59654acb3d6bc26791d46ae8496e29b4e36f683867a9e986a9931bb26e89c",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "presentation",
+   "evidence": "ny_it201i p. 7: 'Write each type of income and each adjustment and its amount in the Identify areas on lines 16 and 18' and the overflow sheet. These are descriptive entries beside the amount of ny_it201.line16; no amount changes.",
+   "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592"
   },
   "unruled:ny_it201#1.3": {
-   "class": "out of scope",
-   "gate": "ny_it201.active_duty_if_armed_forces",
-   "evidence": "ny_it201i p. 6, codes C7 and M4 to M9 concern servicemembers and their spouses; ny_it201.ask.active_duty ('were you (or, on a joint return, your spouse) on active duty in the U.S. armed forces?') refuses the New York part. Code E4 is for a U.S. nonresident noncitizen, refused federally by scope.nonresident.",
-   "subject_sha": "2ec59654acb3d6bc26791d46ae8496e29b4e36f683867a9e986a9931bb26e89c",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "class": "presentation",
+   "evidence": "ny_it201i p. 7, the same Identify-area sentences for line 18: a list of each federal adjustment beside the total in ny_it201.line18; no amount changes.",
+   "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592"
   },
   "unruled:ny_it201#1.4": {
    "class": "presentation",
-   "evidence": "ny_it201i p. 5, Items E and F: the New York City living-quarters mark, the day count and the months of City residence are entries on the return that change no amount; a part-year City resident is refused (ny_it201.gate.part_year_city).",
-   "subject_sha": "2ec59654acb3d6bc26791d46ae8496e29b4e36f683867a9e986a9931bb26e89c",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "ny_it201i p. 5, Item F: 'Enter in the applicable box the number of months you and your spouse ... lived in New York City during 2025.' An entry on the return that changes no amount; a part-year City resident is refused by ny_it201.gate.part_year_city (same claim as an earlier subject, rechecked).",
+   "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592"
   },
   "unruled:ny_it2#1.1": {
    "class": "out of scope",
@@ -46,15 +39,18 @@
   },
   "unruled:ny_it201#1.5": {
    "class": "presentation",
-   "evidence": "ny_it201i p. 5, Items B and D1: marks copying the federal itemizing choice and Schedule B Part III; they change no amount.",
-   "subject_sha": "2ec59654acb3d6bc26791d46ae8496e29b4e36f683867a9e986a9931bb26e89c",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "ny_it201i p. 6, Item H: 'If you have more than seven dependents and are filing a paper return, attach a separate sheet marked Form IT-201: Item H continued'. The only amount item H drives is the line 36 exemption (p. 9, 'Multiply the number of your dependents listed on ... item H ... by 1,000'), which reads ny_it201.item_h_count; the continuation sheet is an attachment.",
+   "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592"
   },
   "unruled:ny_it201#1.6": {
    "class": "presentation",
-   "evidence": "ny_it201i p. 22: the copy of an estate's or trust's notification is an attachment; estate and trust K-1s are refused federally by scope.k1, and the line 75 amount is unchanged.",
-   "subject_sha": "2ec59654acb3d6bc26791d46ae8496e29b4e36f683867a9e986a9931bb26e89c",
-   "adjudication": "release-prep-2 sampled-review adjudication, 2026-11-23 (claude-opus-5-5, RUBRIC2)"
+   "evidence": "ny_it201i pp. 23-24: 'Mark an X in one box to indicate your choice' (direct deposit or paper check) and the line 83 account information. Refund-delivery entries; the refund amount in ny_it201.line78b is unchanged.",
+   "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592"
+  },
+  "unruled:ny_it201#1.7": {
+   "class": "presentation",
+   "evidence": "ny_it201i pp. 23-24: electronic funds withdrawal details, 'You must specify a future payment date up to and including April 15, 2026', and Form IT-201-V for a check. Payment-method entries and a voucher; the balance due in ny_it201.line80 is unchanged.",
+   "subject_sha": "c902c934ad77b2b8da8bc644c064a8a0c79b8fed6aa2f4d80200793047258592"
   }
  },
  "baseline": {}

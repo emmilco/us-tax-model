@@ -486,6 +486,28 @@
     "f8889.line7"
    ],
    "reason": "Both spouses 55 or older under family coverage: the family limit is divided between the spouses (f8889.line6_split, Form 8889 line 6), and each spouse's $1,000 additional contribution is figured on that spouse's own Form 8889 line 7 (f8889.line7), so the total cannot pass the family limit plus $2,000 ($10,550)."
+  },
+  "limit:fr-2026-18219:p24:d97563a2": {
+   "enforced_by": [
+    "carloan.refi_qualifying",
+    "carloan.refi_interest"
+   ],
+   "reason": "carloan.refi_qualifying is the smaller of carloan.refi_balance (\"The outstanding balance of the loan this loan refinanced, on the date of the refinancing\") and the new loan's amount financed, and carloan.refi_interest prorates the interest by that part over the whole loan; a refinanced loan that was itself only partly qualifying is refused by carloan.refi_nested."
+  },
+  "limit:p590a:p10:4aea03a4": {
+   "enforced_by": [
+    "ira.over_comp",
+    "person.ira_over_limit",
+    "person.ira_excess_gate"
+   ],
+   "reason": "The example applies the limit of the smaller of $7,000 ($8,000 at 50 or older) or taxable compensation: ira.over_comp refuses when the return's traditional and Roth contributions exceed the compensation on worksheet line 10, person.ira_over_limit refuses above the dollar limit, and person.ira_excess_gate refuses on the filer's Yes to contributions above their taxable compensation not withdrawn, so no excess over compensation is computed."
+  },
+  "limit:p590a:p10:e17d282d": {
+   "enforced_by": [
+    "person.ira_over_limit",
+    "person.ira_excess_gate"
+   ],
+   "reason": "The cap on contributions toward an annuity or endowment contract under an individual retirement annuity is the same $7,000 ($8,000 at 50 or older) per-year limit; person.ira_over_limit refuses a person's traditional and Roth contributions above it and person.ira_excess_gate refuses an unwithdrawn excess, so the disqualifying contribution the sentence describes is never computed."
   }
  },
  "baseline": {

@@ -1,54 +1,64 @@
 {
  "form": "f8863",
  "reviews": {
-  "gate:f8863.aoc_claimed": {
-   "subject_sha": "a6fd0ab52f4d667f74681d70f22c059468e4b98bf19840b8714fe16afd57e982",
+  "gate:f8863.aoc_possible": {
+   "subject_sha": "29db5778735c0b573e84219bfb115a4979d7a9c384e6ad365ac71fa3d37d3017",
    "samples": [
     {
      "verdict": "UNCLEAR",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose prior-year AOC was questioned in an IRS letter or exam. The filer agreed to the change, didn't respond so the credit was removed by default, or filed an amended return taking the credit off after the IRS asked for documents.",
-       "why_no": "They read 'Has the IRS ever denied or reduced' as a contested IRS decision. They see an agreed adjustment, a default for not responding, or their own withdrawal as something they did, not a denial by the IRS.",
-       "line": "f8863.ban_refused",
-       "irs_text": "i8863 p. 1: \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862\"",
+       "pattern": "7",
+       "who": "A filer whose 2022 American opportunity credit was removed by an automated IRS notice, for example a CP-series letter saying the student was not eligible or the four-year limit was reached. The notice adjusted the return without a formal audit.",
+       "why_no": "The question excludes a denial 'for a math or clerical error'. A filer cannot tell how the IRS classified an automated notice, so they may read any computer-generated notice as a math or clerical correction and answer No.",
+       "line": "f8863.ban_if_aoc",
+       "irs_text": "i8863 p. 1, Form 8862 may be required: \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862\"",
        "severity": "medium",
-       "fix": "Add to the help: 'Count it as denied or reduced even if you agreed to the change, didn't answer an IRS letter, or removed the credit on an amended return after IRS contact.'"
+       "fix": "Ask about facts the filer can check: 'Since 2016, has the IRS sent you (or your spouse) a notice or audit report that removed or lowered an American opportunity credit?' After a Yes, explain that a pure arithmetic or copying correction does not count, and that a change because the student, expenses or credit did not qualify does count. Tell the filer to answer Yes when unsure."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose AOC was cut by an IRS notice after a missing or mismatched Form 1098-T, an EIN problem, or a 4-year limit problem. The filer can't tell whether this counts as a 'math or clerical error'.",
-       "why_no": "The exclusion 'for more than a math or clerical error' asks for a legal classification. A filer who thinks any automated notice was a math or clerical fix answers No.",
-       "line": "f8863.ban_refused",
-       "irs_text": "i8863 p. 1: \"denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015\"",
+       "pattern": "8",
+       "who": "A filer who got an audit letter about their American opportunity credit and agreed to the change by signing an examination report, or who sent an amended return giving up the credit in response to the IRS.",
+       "why_no": "They read 'Has the IRS ever denied or reduced' as an IRS decision imposed on them. Because they conceded or withdrew the credit themselves, they do not see it as a denial.",
+       "line": "f8863.ban_if_aoc",
+       "irs_text": "i8863 p. 1, Form 8862 may be required: \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error ... you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\"",
        "severity": "medium",
-       "fix": "First ask whether the IRS ever removed or lowered an AOC claimed by you or your spouse for 2016 or later, for any reason. On Yes, ask whether the notice said the change was a math or clerical error, and treat any other or unknown reason as needing Form 8862."
+       "fix": "Add to the question or help: 'Count it even if you agreed to the change, did not respond, or gave up the credit on an amended return after IRS contact.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer whose final determination of reckless disregard or fraud came recently, after an older claim. A 2-year or 10-year ban may still be running.",
-       "why_no": "The help says 'Count only a denial or reduction for 2016 or a later year.' A filer may apply that limit to the bar too, look at the year of the determination or the original claim, and decide it falls outside the window.",
-       "line": "f8863.ban_refused",
-       "irs_text": "i8863 p. 3: \"Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\"",
+       "who": "A filer whose 2024 American opportunity credit was disallowed in an IRS notice of deficiency or examination, and who has an appeal or Tax Court case still pending when they file the 2025 return.",
+       "why_no": "They treat the disallowance as not yet final ('the IRS hasn't decided') and answer No while the dispute is open.",
+       "line": "f8863.ban_if_aoc",
+       "irs_text": "i8863 p. 1, Form 8862 may be required: \"If your American opportunity credit was denied or reduced ... you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'Count a denial or reduction even if you are appealing it or it is still under review.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A filer whose American opportunity credit for an ex-spouse, or claimed on a joint return with an ex-spouse, was denied in 2019. They now file jointly with a new spouse.",
+       "why_no": "'An American opportunity credit you ... claimed' reads to them as the ex-spouse's credit, since the student or the paperwork was the ex's. 'Your spouse' points to the current spouse, so they answer No.",
+       "line": "f8863.ban_if_aoc",
+       "irs_text": "i8863 p. 1, Form 8862 may be required: \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862\"",
        "severity": "low",
-       "fix": "Make clear that the 2016 limit refers to the tax year of the claim, and that a bar counts as long as its 2-year or 10-year period, measured from the final determination, hasn't ended."
+       "fix": "Add: 'Include a credit claimed on any earlier return you signed, including a joint return with a former spouse, and any earlier return your current spouse signed.'"
       }
      ],
-     "prompt_sha": "9c2b37d7c1d67dcf37e3bf8aba2cbe0aec406f1b238a007432f7aae3e7887934",
+     "prompt_sha": "8a9557db99029ab351ee8e02d1288a27093b4545765657cef274e4fdfadb2782",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.09092399999999999,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_f8863.aoc_claimed.a6fd0ab52f4d.1.response.txt"
+     "cost": 0.10077599999999999,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_f8863.aoc_possible.29db5778735c.1.response.txt"
     }
    ],
-   "condition": "f8863.aoc_claimed",
+   "condition": "f8863.aoc_possible",
    "lines": [
-    "f8863.ban_refused"
+    "f8863.ban_if_aoc"
    ],
    "inputs": [
     "f8863.ban"
@@ -64,8 +74,6 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 1, Form 8862 may be required, \"If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.\"",
-      "p. 1, Form 8862 may be required, \"to your tax return for the next tax year for which you claim the credit\"",
       "p. 3, American Opportunity Credit, \"Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.\"; p. 1, Form 8862 may be required, \"you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit\""
      ],
      "cols_pages": [

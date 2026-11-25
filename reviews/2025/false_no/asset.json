@@ -279,7 +279,7 @@
    ]
   },
   "gate:asset.listed": {
-   "subject_sha": "f63520391a58a4d20d669e805bf0ad333d1f6d672c957d5416027af0ffeafb1a",
+   "subject_sha": "5041402562fc4fcd25e192ac8ee39dec4f82335a9f3df08402fa1e9363e1fa19",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -287,80 +287,50 @@
       {
        "kind": "FALSE_NO",
        "pattern": "6",
-       "who": "A filer uses a passenger automobile weighing 6,000 pounds or less 40% in a trade or business and 60% personally.",
-       "why_no": "The gate asks only about entertainment/recreational property or a pre-2018 computer, so a filer with a car reads the gate as not applying and answers no.",
+       "who": "A sole proprietor or partner who depreciates a passenger car, pickup truck, SUV, motorcycle or aircraft used 40% for business and 60% for personal use. It could also be a vehicle the spouse uses in the spouse's business on a joint return.",
+       "why_no": "The question lists only photographic, sound, communication or video equipment, entertainment or recreation property, and pre-2018 computers. A vehicle is none of these, so 'no' is the truthful answer, and the help text never mentions transportation property.",
        "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3: 'Listed Property generally includes ... Passenger automobiles weighing 6,000 pounds or less'; p. 13: 'Listed property used 50% or less in a qualified business use ... does not qualify for the section 179 expense deduction or special depreciation allowance.'",
+       "irs_text": "i4562 p. 3, Listed Property: 'Passenger automobiles weighing 6,000 pounds or less' and 'Any other property used for transportation if the nature of the property lends itself to personal use, such as motorcycles, pickup trucks, SUVs, aircraft, etc.'; p. 7: qualified property does not include 'Listed property used 50% or less in a qualified business use'; p. 14, Listed property recapture",
        "severity": "high",
-       "fix": "Broaden the gate to all listed property and expressly include passenger automobiles; do not rely on the entertainment/recreation and computer clauses."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer uses a motorcycle, pickup, SUV, or aircraft 30% in business and 70% personally; it is not an ambulance, hearse, compensation/hire vehicle, or qualified nonpersonal use vehicle.",
-       "why_no": "The gate names entertainment/recreational equipment and pre-2018 computers only; other transportation property that lends itself to personal use is omitted, so the filer answers no.",
-       "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3: 'Any other property used for transportation if the nature of the property lends itself to personal use, such as motorcycles, pickup trucks, SUVs, aircraft, etc.'",
-       "severity": "high",
-       "fix": "Include other transportation property in the listed-property gate, with the statutory exceptions stated."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A filer leases a party bouncy castle only in their leasing business to a 5% owner and does not report the lease value as income to that owner; qualified business use is 0%.",
-       "why_no": "The gate asks whether entertainment/recreation property is 'not used only in your business'; because the bouncy castle is used only in the filer's leasing business, the filer answers no.",
-       "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3: 'Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment).' The exception is narrower: 'Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer’s trade or business...' p. 14: qualified business use does not include 'Leasing the property to a 5% owner or related person if the value ... is not reported as income to the individual.'",
-       "severity": "high",
-       "fix": "Limit the business/regular-establishment exception to the four equipment types; for other entertainment/recreation property, ask listed-property status without that exception."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "6",
-       "who": "A filer has a pre-2018 printer/scanner (peripheral equipment) used 40% for business and 60% personally, not used exclusively at a regular business establishment.",
-       "why_no": "The gate asks about a 'computer'; the filer does not think a peripheral is a computer and answers no.",
-       "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3: exception 2 speaks of 'Any computer or peripheral equipment used exclusively at a regular business establishment...'; p. 14: 'Other listed property (computers and peripheral equipment placed in service before 2018, etc.).'",
-       "severity": "high",
-       "fix": "Say 'computer or peripheral equipment first placed in service before 2018'."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "An employee owns a pre-2018 laptop and keeps it only at the employer’s office; she uses it 40% for employer work and 60% for personal browsing there.",
-       "why_no": "The gate asks only whether the computer is 'not used only at your regular place of business'; she reads the employer’s office as her regular place and answers no.",
-       "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3: the computer exception requires 'Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment.' Because she owns it, the exception does not apply; p. 14 line 27 covers listed property used 50% or less.",
-       "severity": "high",
-       "fix": "For computers/peripherals, include the ownership/lease-by-operator condition, or ask broadly whether the item is listed property."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer bought a computer for business in 2017 and made it ready for use, but first actually used it in 2019; in 2025 it is used 40% in business and 60% personally.",
-       "why_no": "The gate says 'computer first used before 2018'; the filer first used it in 2019, so answers no.",
-       "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 14: 'Other listed property (computers and peripheral equipment placed in service before 2018, etc.)'; the test is placed in service, not first actual use.",
-       "severity": "high",
-       "fix": "Use 'placed in service before 2018' rather than 'first used before 2018'."
+       "fix": "Add vehicles as the first category: 'a passenger automobile, or any other property used for transportation that lends itself to personal use (motorcycle, pickup, SUV, van, aircraft, boat), unless it is an ambulance, hearse, vehicle used to carry persons or property for hire, or a qualified nonpersonal-use truck or van'. Alternatively, ask the vehicle questions on a separate path that sets the same flag."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer uses a video camera exclusively to manage a stock portfolio, which the filer calls their investment business, and has no trade or business use.",
-       "why_no": "The gate asks 'not used only in your business'; the filer calls the investing activity a business and answers no.",
+       "pattern": "8",
+       "who": "A filer who uses a camera, video equipment, or a pre-2018 computer only to manage rental real estate or other investments, or partly for that and partly for a trade or business. The rental or investment activity is not a trade or business.",
+       "why_no": "The filer thinks of the rental or investment activity as 'my business' and answers that the item is used only in the business. But the exception requires use exclusively in a trade or business. Investment use is also not qualified business use, so qualified business use may be 50% or less.",
        "line": "asset.qbu_low_if_listed",
-       "irs_text": "i4562 p. 3 exception 1 requires use 'exclusively in a taxpayer’s trade or business or at the taxpayer’s regular business establishment'; p. 14 says qualified business use generally is 'any use in your trade or business' and excludes investment use.",
+       "irs_text": "i4562 p. 3, Exceptions: 'used exclusively in a taxpayer’s trade or business'; p. 14: qualified business use 'does not include ... Investment use'",
        "severity": "medium",
-       "fix": "Say 'trade or business' and state that investment or hobby use is not a trade or business for this test."
+       "fix": "Write 'not used only in your trade or business (use for rentals that are not a business, or to manage investments, does not count as business use)'. Add a help line saying that production-of-income use makes the item listed property."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose camera or pre-2018 computer was used only in the business or at the business premises in earlier years. In 2025 it was also used personally or taken home for part of the year. The reverse case also applies: personal use earlier in the year, business-only use now.",
+       "why_no": "The present tense 'Is it ... not used only in your business' leads the filer to describe current or original use. The exclusive-use exception depends on use during the whole tax year, and a later year's drop to 50% or less triggers recapture.",
+       "line": "asset.qbu_low_if_listed",
+       "irs_text": "i4562 p. 14, Listed property recapture: 'If you used listed property more than 50% in a qualified business use in the year you placed the property in service, and used it 50% or less in a later year, you may have to include as income part of the depreciation'",
+       "severity": "medium",
+       "fix": "Write 'At any time during 2025, was it used other than only in your trade or business or at your regular business establishment?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "An employee, or a joint filer whose spouse is an employee, who uses employer-related photographic or communication equipment at home or at another site, and not at the employer's premises.",
+       "why_no": "The help explains only when a home is a regular business establishment. It omits that, for photographic, phonographic, communication or video equipment, an employee's regular business establishment is the employer's. The employee may treat a home workspace as 'your regular place of business' and answer no.",
+       "line": "asset.qbu_low_if_listed",
+       "irs_text": "i4562 p. 3: 'for any property listed in (1) above, the regular business establishment of an employee is their employer’s regular business establishment'",
+       "severity": "low",
+       "fix": "Add to the help: 'If you (or your spouse) are an employee, your regular place of business is your employer's regular business establishment.'"
       }
      ],
-     "prompt_sha": "5eb30b0b62811ef423d3dc65de9477b451ac1555de83940f96fe0588b6958118",
+     "prompt_sha": "77421a0495ea54434d5ceed6899845da641852ee7758749e3c91996b9dc09bc8",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_asset.listed.f63520391a58.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.179368,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_asset.listed.5041402562fc.1.response.txt"
     }
    ],
    "condition": "asset.listed",
@@ -389,7 +359,7 @@
      ],
      "how": "cited pages",
      "locators": [
-      "p. 3, Listed Property and its Exceptions, \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
+      "p. 3, Listed Property, \"Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment)\", and its Exceptions, \"Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer’s trade or business or at the taxpayer’s regular business establishment\", \"Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment\", \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
       "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
      ],
      "cols_pages": [

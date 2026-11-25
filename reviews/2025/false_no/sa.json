@@ -1169,78 +1169,98 @@
    ]
   },
   "gate:sa.property_tax_other_if_home": {
-   "subject_sha": "8d38d4ce12104784f14c83defab29bb7614e4d3dbfa0c16e4fdc4e29a91016ad",
+   "subject_sha": "d2eb7fb8afdd66ec4f9a71d7a2273348babc590168d0927069dac199cec12879",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married couple filing jointly where only the spouse holds title to real estate, for example a foreign condo or a house with a sidewalk-construction assessment on its bill, and that property's tax is in the real estate tax amount the return carries (for example from Form 1098 box 10 or the spouse's entry).",
-       "why_no": "The parent helper says \"You owned a home or other real estate, or paid interest on a loan secured by a home\". The filer owns nothing and pays no mortgage, so they truthfully answer no, and the nondeductible-amount question is never asked.",
+       "who": "A married couple filing jointly where only the spouse holds title to the home or other real estate. The bill they enter includes a trash-collection fee or a sidewalk-construction assessment.",
+       "why_no": "The parent helper says 'You owned a home or other real estate', with no 'or your spouse'. The answering filer owns nothing in their own name and answers no, so the nondeductible-items question is never asked.",
        "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Don't include the following amounts on line 5b. • Foreign taxes you paid on real estate. • ... Charges for improvements that tend to increase the value of your property\"",
-       "severity": "high",
-       "fix": "Word the parent gate as \"You or your spouse owned a home or other real estate (now or at any time in 2025), or paid interest on a loan secured by a home\". Also make every source of the real estate tax amount open the leave-out question, not ownership alone."
+       "irs_text": "i1040sca p. 6, Line 5b: \"Don't include the following amounts on line 5b. ... Itemized charges for services to specific property or persons ... Charges for improvements\"",
+       "severity": "medium",
+       "fix": "Word the parent 'You (or, on a joint return, your spouse) owned a home or other real estate, or paid interest on a loan secured by a home, at any time in 2025'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A homeowner who paid a $6,000 2025 tax bill and later in 2025 received a $400 rebate or abatement of that 2025 tax. They entered the $6,000 they paid.",
-       "why_no": "The question asks whether the amount entered \"include[s] ... a refund or rebate of 2025 tax\". The $6,000 is money paid out and contains no refund, so the filer answers no. The refund is a separate receipt that IRS text subtracts, not a part of the entered amount.",
+       "pattern": "3",
+       "who": "A joint filer whose spouse alone used a vacation rental for personal days. The household's share of the rental's taxes includes a nondeductible charge.",
+       "why_no": "The child helper says 'the share of a rental's taxes for the days you used it yourself'. Only the gated input mentions the spouse, so a filer who did not personally use the rental answers no.",
        "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Refunds and rebates: \"If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate.\"",
-       "severity": "medium",
-       "fix": "Ask separately: \"Did you or your spouse get back any 2025 real estate tax in 2025 (a refund, rebate, abatement credit, or an amount the buyer paid you for taxes at a sale)?\" Then subtract that amount whatever the entered amount contains."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who sold a home in 2025 after paying that year's full tax bill. At closing the buyer was charged the post-sale share, shown on the settlement statement and in box 6 of Form 1099-S. The filer entered the bills they paid from bank records.",
-       "why_no": "\"Tax charged to the buyer on a sale\" reads as tax the buyer paid, which is not in the seller's figure, so the seller answers no. IRS text treats that amount as a refund that reduces the seller's deduction even though the seller's entered amount is wholly their own payments.",
-       "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"If you sold your home in 2025, any real estate tax charged to the buyer should be shown on your settlement statement and in box 6 of any Form 1099-S you received. This amount is considered a refund of real estate taxes.\"",
-       "severity": "medium",
-       "fix": "Ask directly: \"Did you or your spouse sell real estate in 2025? Enter any real estate tax charged to the buyer (settlement statement, Form 1099-S box 6).\" Subtract it without regard to whether the filer thinks the entered amount 'includes' it."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A homeowner who entered the amount on their 2025 tax bill, which they actually paid in January or February 2026, or who entered escrow deposits rather than what the lender disbursed to the taxing authority in 2025.",
-       "why_no": "The list names only \"tax not assessed before 2026\". This tax was assessed in 2025, so none of the listed items applies and the filer answers no, though it was not paid in 2025.",
-       "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6: \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.\" and \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.\"",
-       "severity": "medium",
-       "fix": "Add to the list: \"tax not actually paid in 2025 (a 2025 bill paid in 2026, or escrow deposits the lender did not pay to the taxing authority in 2025)\". Or state at entry that only amounts paid to the taxing authority during 2025 count."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose entered real estate tax includes tax on property used in a business (a home office share or a separate shop), tax on property they do not own (paying a parent's or child's bill), or a levy not assessed uniformly or not used for general purposes (a special district or HOA-type charge billed with the tax).",
-       "why_no": "The question lists six kinds of nondeductible amount after a colon. The filer reads the list as complete and answers no because none of these situations appears on it.",
-       "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes.\"",
-       "severity": "medium",
-       "fix": "Extend the list with \"tax on real estate used in a business, tax on real estate you and your spouse don't own, or a charge not assessed at a like rate on all property in the community\", and say \"for example\" before the list so it is not read as complete."
+       "irs_text": "i1040sca p. 6, Line 5b: \"Don't include the following amounts on line 5b. • Foreign taxes you paid on real estate. • Itemized charges for services...\"",
+       "severity": "low",
+       "fix": "Say 'the days you or your spouse used it' in the gate question, matching the input."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "5",
-       "who": "A tenant-stockholder in a cooperative, or a buyer under a land contract or a life tenant, who pays real estate tax but does not hold title.",
-       "why_no": "The parent asks whether they \"owned a home or other real estate\". A co-op holder owns stock and a contract buyer has no deed, so either may answer no. The leave-out question is then skipped for any amount entered elsewhere (for example a co-op's share of taxes).",
+       "who": "A filer who paid the property tax bill on a house owned by a parent or other relative, or on land titled to someone else, and entered that payment as real estate tax.",
+       "why_no": "They truthfully answer no to 'You owned a home or other real estate'. The question about amounts to leave out is then never asked, even though tax on property the filer doesn't own is not deductible. This matters only if the real estate tax amount can be entered without the owner gate.",
        "line": "sa.property_tax_leave_out_if_any",
-       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own ... Pub. 530 explains the deductions homeowners can take.\"",
+       "irs_text": "i1040sca p. 6, Line 5b: \"Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business\"",
+       "severity": "medium",
+       "fix": "Gate any real estate tax entry on the same ownership question, or ask 'Did any tax you entered relate to property you (or your spouse) did not own?' and leave that amount out."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A homeowner who uses part of the home for a business, such as a home office claimed on Schedule C or Form 8829, or who owns land used in a business. The full tax bill was entered as real estate tax.",
+       "why_no": "The list (foreign tax, service charges, improvements, tax charged to buyer, 2025 refund, tax not assessed before 2026) reads as complete. Business-use property is not on it, so the filer truthfully answers no.",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6, Line 5b: \"state and local taxes you paid on real estate you own that wasn't used for business\"",
+       "severity": "high",
+       "fix": "Add 'the part for property or a part of your home used in a business' to the list, or ask for the business-use share separately."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A homeowner whose bill includes a charge that is not assessed uniformly at a like rate on all property, or whose proceeds do not go to general governmental purposes. Examples are a special-district levy on some parcels or a fee for a private purpose.",
+       "why_no": "The charge is neither an itemized service fee nor an improvement assessment as they understand those terms. Nothing in the list describes it, so they answer no.",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6, Line 5b: \"but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes\"",
+       "severity": "medium",
+       "fix": "Add 'a charge not levied at a uniform rate on all property in the community, or not used for general government purposes' to the list."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A homeowner with an escrow account who entered the real estate tax paid through mortgage payments, or the escrow deposits, rather than what the lender actually paid to the taxing authority in 2025.",
+       "why_no": "The escrow excess is not foreign tax, a service charge, an improvement, a buyer charge, a refund, or an unassessed tax, so they answer no. The difference is never removed.",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6, Line 5b: \"If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.\"",
+       "severity": "medium",
+       "fix": "Have the entry of the real estate tax amount state 'the amount your lender actually paid to the taxing authority in 2025 (Form 1098 or escrow statement)', or add escrow amounts not paid out in 2025 to the list."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A homeowner who entered the amount of their 2025 property tax bill, but paid part or all of it in January 2026, for example a second installment due in early 2026.",
+       "why_no": "The list excludes only 'tax not assessed before 2026'. This tax was assessed in 2025, so they answer no, though it was not paid in 2025.",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6, Line 5b caution: \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.\"",
+       "severity": "medium",
+       "fix": "Change the list item to 'tax not paid in 2025, or not assessed before 2026', or state the paid-in-2025 condition when the amount is entered."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A tenant-stockholder in a housing cooperative who pays a share of the building's real estate taxes through maintenance charges and owns shares rather than real estate.",
+       "why_no": "They read 'owned a home or other real estate' as excluding co-op shares and answer no. Any nondeductible charge in the tax share they entered is then never asked about. This matters only if the co-op tax share is entered outside this gate.",
+       "line": "sa.property_tax_leave_out_if_any",
+       "irs_text": "i1040sca p. 6, Line 5b: \"Don't include the following amounts on line 5b.\" (Pub. 530, cited there, covers cooperative housing)",
        "severity": "low",
-       "fix": "Add help to the parent: \"Count a co-op apartment, a home bought under a land contract, and a life estate.\""
+       "fix": "Add 'including shares in a housing cooperative' to the ownership question."
       }
      ],
-     "prompt_sha": "e53e657876f309ea4f123ef3cdde5c79c131a82d55d9845c4501ea119225ddf2",
+     "prompt_sha": "2e5eff467eea362ccc2b4224f4ad2fc569f837d9b0bb493c786413baefbb5fa1",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.12625999999999998,
-     "date": "2026-11-24",
-     "response": ".transcription/false_no/gate_sa.property_tax_other_if_home.8d38d4ce1210.1.response.txt"
+     "cost": 0.11380800000000002,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_sa.property_tax_other_if_home.d2eb7fb8afdd.1.response.txt"
     }
    ],
    "condition": "sa.property_tax_other_if_home",

@@ -2262,7 +2262,7 @@ form:
           - const: true
       cite:
         doc: f1040sc
-        locator: Schedule C (2025), lines 14, 19 and 26
+        locator: Schedule C (2025), line 26, "Wages (less employment credits)"
     - id: person.sc_employer_profit_count
       printed: (helper)
       label: Number of this person's Schedules C for a business with employees and a net profit (line 31 more than zero)

@@ -2,7 +2,7 @@
  "form": "f5695",
  "reviews": {
   "gate:f5695.any": {
-   "subject_sha": "7eb031f221b76f74d2e23374a02b964786acc060d6564905b46778730c653257",
+   "subject_sha": "a4417a6a3f9005fb551f6477dd0d6bc55632751fcc04e20fe428c37cd97051b1",
    "samples": [
     {
      "verdict": "UNCLEAR",
@@ -10,100 +10,60 @@
       {
        "kind": "UNCLEAR",
        "pattern": "2",
-       "who": "A filer whose only 2025 energy cost was a home energy audit by a certified auditor. Nothing was installed.",
-       "why_no": "The question asks only whether anything was 'installed'. An audit is not installed. Only the help says 'energy audit counts', and the filer may never read it.",
+       "who": "A homeowner, or a spouse on a joint return, who paid a certified home energy auditor in 2025 for an inspection and written report, and had no equipment or materials installed that year.",
+       "why_no": "The question asks only whether they 'have anything installed at home'. An audit installs nothing, so a filer who reads the question and not the help ('energy audit counts') answers No.",
        "line": "f5695.audit_if_any",
-       "irs_text": "i5695 p. 2: credit of 30% of the sum of ... '3. The amount paid or incurred for home energy audits during 2025'; p. 3: '$150 for home energy audits'",
+       "irs_text": "i5695 p. 2: 'You may be able to take a credit equal to 30% of the sum of: ... 3. The amount paid or incurred for home energy audits during 2025'; p. 3: 'A credit limit of $150 for home energy audits.'",
        "severity": "medium",
-       "fix": "Put the audit in the question itself: 'In 2025, did you (or your spouse) have anything installed at a home to save or make energy, or pay for a home energy audit?'"
+       "fix": "Put the audit in the question itself: 'In 2025, did you (or your spouse) have anything installed at a home that saves or makes energy ..., or pay for a home energy audit?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "6",
-       "who": "A filer who put up a small wind turbine at a rural home in 2025.",
-       "why_no": "The question lists 'solar panels, a battery, insulation, windows, doors, or heating, cooling or hot-water equipment'. The filer reads this list as complete, and a turbine is not on it.",
+       "who": "A filer, or spouse, who in 2025 put solar panels, a solar water heater, a small wind turbine or a geothermal heat pump on a vacation home or second home they used as a residence, with nothing done at their main home.",
+       "why_no": "'Installed at home' reads naturally as the filer's own (main) home. The help never says that a second home counts for these items.",
+       "line": "f5695.solar_if_any, f5695.solar_water_if_any, f5695.wind_if_any, f5695.geothermal_if_any",
+       "irs_text": "i5695 p. 2, Qualified solar electric property costs: 'The home doesn't have to be your main home.' The same sentence appears for solar water heating, small wind and geothermal property.",
+       "severity": "medium",
+       "fix": "Say 'at any home you lived in during 2025, including a second or vacation home', and add help: 'Solar, wind, geothermal and battery equipment at a second home counts.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who in 2025 had a wind turbine, or ground loops for a geothermal system, put on their land away from the house, serving the home.",
+       "why_no": "'Wind' is not in the list of examples (solar panels, battery, insulation, windows, doors, heating/cooling/hot-water equipment), and 'at home' may be read as on or in the house. The filer takes the list as complete.",
        "line": "f5695.wind_if_any",
-       "irs_text": "i5695 p. 2: 'credit of 30% of your costs of ... small wind energy property'",
-       "severity": "medium",
-       "fix": "Add 'a wind turbine' to the list in the question, and say in the help that the list gives examples only."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who paid for air sealing in 2025, such as caulking, weatherstripping or duct and attic sealing, but added no insulation.",
-       "why_no": "'Insulation' is the nearest listed item. The filer does not think of sealing gaps as insulation or as 'installing' anything.",
-       "line": "f5695.insulation_if_any",
-       "irs_text": "i5695 p. 3: 'Any insulation material or system and air sealing material or system that is specifically and primarily designed to reduce heat loss or gain'",
-       "severity": "medium",
-       "fix": "Change 'insulation' to 'insulation or air sealing (weatherstripping, caulking, duct sealing)'."
+       "irs_text": "i5695 p. 2: 'Qualified small wind energy property costs are costs for property that uses a wind turbine to generate electricity for use in connection with your home located in the United States.'",
+       "severity": "low",
+       "fix": "Add 'a wind turbine' to the examples and say 'at or for a home'."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose old gas furnace, water heater, central air conditioner or exterior door failed and was replaced in 2025 with a new unit that meets the efficiency standards.",
-       "why_no": "The question frames the items as things that 'save or make energy'. The filer sees the work as a repair or replacement, not an energy improvement, so the listed equipment does not seem to fit.",
-       "line": "f5695.furnace_if_any, f5695.water_heater_if_any, f5695.central_ac_if_any, f5695.heat_pump_if_any, f5695.doors_if_any, f5695.windows_if_any",
-       "irs_text": "i5695 p. 3: 'Natural gas, propane, or oil furnaces and hot water boilers'; 'central air conditioners; and natural gas, propane, or oil water heaters'",
-       "severity": "medium",
-       "fix": "Drop 'that saves or makes energy' from the question, or add to the help: 'Count any new or replacement unit, even one replacing broken equipment; we check whether it qualifies later.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who installed solar panels, a solar water heater, a wind turbine or a battery at a vacation home or second home in 2025.",
-       "why_no": "'Installed at home' reads as the filer's own main home, so the second home does not seem to count.",
-       "line": "f5695.solar_if_any, f5695.solar_water_if_any, f5695.wind_if_any, f5695.line5a_if_any, f5695.geothermal_if_any",
-       "irs_text": "i5695 p. 2: 'The home doesn't have to be your main home.'; p. 3: 'installed on or in connection with a home that you used during 2025'",
-       "severity": "medium",
-       "fix": "Say 'at any home you lived in or used in 2025, including a second or vacation home'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose battery, geothermal ground loop or solar array was placed in the yard, a detached garage or an outbuilding, not on the house itself.",
-       "why_no": "The filer reads 'at home' as on or inside the house.",
-       "line": "f5695.line5a_if_any, f5695.geothermal_if_any, f5695.solar_if_any",
-       "irs_text": "i5695 p. 2: 'installed on or in connection with your home'; battery 'installed in connection with your home'",
+       "who": "A condominium owner or co-op tenant-stockholder whose association replaced the building's windows, added insulation or installed rooftop solar in 2025, billed through dues or a special assessment.",
+       "why_no": "The filer did not 'have anything installed' personally; the association did. Only the help mentions 'your share of condo or co-op work'.",
+       "line": "f5695.windows_if_any, f5695.insulation_if_any, f5695.solar_if_any",
+       "irs_text": "i5695 p. 2, Association or cooperative costs: 'you are treated as having paid your proportionate share of any costs of such association or corporation.'",
        "severity": "low",
-       "fix": "Say 'on or for your home, including in the yard or on a garage or outbuilding'."
+       "fix": "Put the condo/co-op case in the question: '..., including work your condo association or co-op did on your building?'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who in 2025 moved into a newly built home that came from the builder with solar panels or a battery already installed.",
-       "why_no": "The filer did not 'have anything installed'; they bought a house. The help mentions 'work on a new or rebuilt home you moved into', but a buyer does not think of themselves as having had work done.",
-       "line": "f5695.solar_if_any, f5695.line5a_if_any, f5695.geothermal_if_any",
-       "irs_text": "i5695 p. 1: 'costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins'; 'The residential clean energy credit (Part I) is available for both existing homes and homes being constructed.'",
-       "severity": "medium",
-       "fix": "Add to the question: 'or did you move into a newly built home in 2025 that came with any of these?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who bought insulation or other qualifying materials in 2025 and installed them personally.",
-       "why_no": "'Did you have anything installed' suggests hiring someone to do it, so do-it-yourself work does not seem to count.",
-       "line": "f5695.insulation_if_any",
-       "irs_text": "i5695 p. 3: for building envelope components, 'don't include amounts paid for the onsite preparation, assembly, or original installation' (the materials alone qualify)",
+       "pattern": "8",
+       "who": "A filer who in 2025 only replaced a broken gas furnace or water heater, installed a wood or pellet stove, did weatherstripping or caulking, or upgraded an electrical panel.",
+       "why_no": "They see the work as a repair or a replacement, or as an upgrade, not as something that 'saves or makes energy'. Air sealing is not perceived as 'insulation'.",
+       "line": "f5695.furnace_if_any, f5695.water_heater_if_any, f5695.biomass_if_any, f5695.insulation_if_any, f5695.panel_if_any",
+       "irs_text": "i5695 p. 3, Section B: 'Natural gas, propane, or oil furnaces and hot water boilers. Certain biomass stoves and biomass boilers. Certain improvements or replacements of panelboards ...'; Section A: 'air sealing material or system'.",
        "severity": "low",
-       "fix": "Use 'did you install or have installed', and add to the help that do-it-yourself work counts."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer who moved or sold a home during 2025 after energy work there was finished in 2025.",
-       "why_no": "The present-tense 'at home' reads as the home where the filer lives now.",
-       "line": "f5695.windows_if_any, f5695.doors_if_any, f5695.insulation_if_any, f5695.heat_pump_if_any, f5695.solar_if_any",
-       "irs_text": "i5695 p. 1: 'A home is where you lived in 2025'; p. 2: 'more than one home that you used as a residence during 2025'",
-       "severity": "low",
-       "fix": "Say 'at any home you lived in during 2025, including one you have since left'."
+       "fix": "Ask about the things done rather than their purpose: 'did you install or replace any of: ... furnace, boiler, water heater, wood or pellet stove, air conditioner, heat pump, insulation or air sealing/weatherstripping, electrical panel or wiring ...'"
       }
      ],
-     "prompt_sha": "faa366fd71e1416bd6db1f0c8459b0581cc6e6bbd08fbb0057456870b87342d5",
+     "prompt_sha": "186c6ba8505a197506d5a0129d0a19411eb972d0d74468582fd0ecfa5f97298b",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
      "model": "claude-opus-5-5",
-     "cost": 0.197336,
-     "date": "2026-11-22",
-     "response": ".transcription/false_no/gate_f5695.any.7eb031f221b7.1.response.txt"
+     "cost": 0.186384,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_f5695.any.a4417a6a3f90.1.response.txt"
     }
    ],
    "condition": "f5695.any",
@@ -610,78 +570,58 @@
    ]
   },
   "gate:f5695.doors_if_any": {
-   "subject_sha": "026b55169cffdd410f86d27c1ddc31a120a6c21daafda7e11045ebdb0b7baeb3",
+   "subject_sha": "2caffa1297cc72d8ef97808290d749f3bc8e5b841933044d80db2f76e93ff840",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A homeowner replaced a worn or damaged front door in 2025 for security, looks or a remodel. The new door happens to meet Energy Star requirements and has a QMID.",
+       "why_no": "The parent gate asks whether anything was installed 'to save or make energy'. The door was installed for another reason, so 'no' is true as worded, and the doors question is never reached.",
+       "line": "f5695.line19a_if_doors (and line19d_i, line19d_ii, line19e)",
+       "irs_text": "i5695 p. 6: 'Line 19a. Enter the amount you paid for the most expensive exterior door that meets the Energy Star program requirements' (no purpose test); p. 1 Reminders: 'A 30% credit ... may be allowed for: ... Exterior doors'",
+       "severity": "high",
+       "fix": "Drop the purpose wording. Ask: 'In 2025, did you or your spouse have any of these installed at a home, for any reason: insulation or air sealing, exterior doors, windows or skylights, a central air conditioner, a water heater, a furnace or boiler, a heat pump, a biomass stove or boiler, an electric panel or circuit upgrade, solar, wind, geothermal, battery or fuel cell equipment? Or did you pay for a home energy audit?' Then ask about doors whenever the answer includes doors."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A condominium owner, or a tenant-stockholder in a housing cooperative, whose association or cooperative replaced exterior doors in 2025 with Energy Star doors and passed the cost through by assessment or maintenance charges. The filer arranged no installation personally.",
+       "why_no": "'Anything was installed ... at a home' reads as work the filer had done. The building's doors were the association's project, so the filer answers no at the parent gate and the doors question is never asked.",
+       "line": "f5695.line19a_if_doors (and line19d_i, line19d_ii, line19e)",
+       "irs_text": "i5695 p. 2, Association or cooperative costs: 'you are treated as having paid your proportionate share of any costs of such association or corporation'; p. 1 What's New: 'A new checkbox was added to show you live in a condominium or cooperative and have a fractional share of the qualified energy efficiency improvements'",
+       "severity": "medium",
+       "fix": "Add to the parent gate: 'Count work your condominium association or housing cooperative had done on your building if you paid a share through assessments or maintenance charges.' In the door help, explain how to enter the proportionate share."
+      },
+      {
+       "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married filer filing jointly whose spouse owned and lived in a separate main home and installed qualifying Energy Star exterior doors there in 2025, while the filer personally installed none.",
-       "why_no": "The helper asks only 'Exterior doors were installed,' not 'you or your spouse'; the filer answers for their own home/person, so the joint return drops the spouse's door costs.",
-       "line": "f5695.line19a_if_doors; also 19d_i, 19d_ii, and 19e if the spouse had multiple qualifying doors",
-       "irs_text": "i5695 p. 3: 'If you are filing a joint return... Complete lines 17a through 30 of a separate Form 5695 for each main home'; combine the amount on line 30.",
-       "severity": "high",
-       "fix": "Ask 'Did you or your spouse install exterior doors...' and include either spouse's separate main-home doors."
+       "who": "A married couple filing jointly who lived apart in separate main homes in 2025. Only the spouse's home got Energy Star exterior doors.",
+       "why_no": "The gate says 'at a home' without naming the spouse. The filer answering may describe only their own home, where nothing was installed.",
+       "line": "f5695.line19a_if_doors (and line19d_i, line19d_ii, line19e)",
+       "irs_text": "i5695 p. 3, Married taxpayers with more than one home: 'If you are filing a joint return, figure your energy efficient home improvement credit as follows. 1. Complete lines 17a through 30 of a separate Form 5695 for each main home.'",
+       "severity": "medium",
+       "fix": "Word both the parent and child gates as 'you or your spouse', at 'any home either of you lived in'. When spouses had separate main homes, ask the door questions once per home."
       },
       {
-       "kind": "FALSE_NO",
-       "pattern": "8",
-       "who": "A filer who installed an Energy Star exterior door at their main home in 2025 but replaced it for security, appearance, or because it broke, not with the purpose of saving or making energy, and paid for no audit.",
-       "why_no": "The parent gate is worded 'Anything was installed ... to save or make energy'; the filer truthfully says no because their reason was not energy savings.",
-       "line": "f5695.line19a_if_doors; also 19d_i, 19d_ii, and 19e",
-       "irs_text": "i5695 p. 6: 'Line 19a. Enter the amount you paid for the most expensive exterior door that meets the Energy Star program requirements.'",
-       "severity": "high",
-       "fix": "Ask first whether any listed qualifying item, including exterior doors, was installed; do not require the filer's subjective energy-saving purpose."
-      },
-      {
-       "kind": "FALSE_NO",
+       "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who reconstructed an existing main home; the exterior doors were physically installed in 2024 but the reconstructed home was first used in 2025.",
-       "why_no": "The gate says 'installed in 2025'; the filer knows the doors went in during 2024 and answers no, although the cost is treated as paid in 2025.",
-       "line": "f5695.line19a_if_doors; also 19d_i, 19d_ii, and 19e",
-       "irs_text": "i5695 p. 1, Costs: 'costs are treated as being paid when the original installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins.'",
-       "severity": "medium",
-       "fix": "Gate on 'installed, or treated as paid, in 2025, including reconstruction first used in 2025.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A condominium owner or cooperative tenant-stockholder whose association or cooperative installed qualifying exterior doors and whose proportionate share is treated as paid by the member; the member did not hire the installer.",
-       "why_no": "They read 'Exterior doors were installed' and the line's 'you paid' as requiring personal installation or direct payment and answer no.",
-       "line": "f5695.line19a_if_doors; also 19d_i, 19d_ii, and 19e",
-       "irs_text": "i5695 p. 2: 'If you are a member of a condominium management association for a condominium you own or a tenant-stockholder in a cooperative housing corporation, you are treated as having paid your proportionate share of any costs of such association or corporation.'",
-       "severity": "medium",
-       "fix": "Ask 'Did you or your condominium/cooperative association install exterior doors for which you are treated as paying a share?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "other",
-       "who": "A filer who installed exactly one qualifying Energy Star exterior door.",
-       "why_no": "The helper says 'Exterior doors were installed' in the plural; a literal filer with one door answers no.",
-       "line": "f5695.line19a_if_doors",
-       "irs_text": "i5695 p. 6: 'Line 19a. Enter the amount you paid for the most expensive exterior door that meets the Energy Star program requirements.'",
-       "severity": "medium",
-       "fix": "Ask 'Was an exterior door installed?' or expressly state that a single door counts."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "2",
-       "who": "A filer who replaced an existing exterior door with a qualifying Energy Star door, rather than installing a door in new construction.",
-       "why_no": "They read 'installed' as new installation, not replacement, and answer no.",
-       "line": "f5695.line19a_if_doors; also 19d_i, 19d_ii, and 19e",
-       "irs_text": "i5695 p. 1: 'The energy efficient home improvement credit (Part II) is only available for existing homes'; p. 6: 'most expensive exterior door that meets the Energy Star program requirements.'",
-       "severity": "medium",
-       "fix": "Say 'installed or replaced' and clarify that replacement exterior doors count."
+       "who": "A filer whose existing home was being reconstructed, for example after a fire. The new Energy Star exterior doors went in during late 2024, and the filer moved back in during 2025.",
+       "why_no": "The gate asks what was 'installed in 2025'. The doors physically went in during 2024, so the filer answers no. But reconstruction costs are treated as paid when the filer's original use of the reconstructed home begins.",
+       "line": "f5695.line19a_if_doors (and line19d_i, line19d_ii, line19e)",
+       "irs_text": "i5695 p. 1, Costs: 'costs are treated as being paid when the original installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins'",
+       "severity": "low",
+       "fix": "Add to the parent gate's help: 'If your home was rebuilt and you began living in it again in 2025, count items installed during the rebuilding even if they went in earlier.'"
       }
      ],
-     "prompt_sha": "7facb6f03bb647633aa7db5c50227c42fe005929149d01d0cc048348055d04ec",
+     "prompt_sha": "8c59d8db15043fe8c3581cae74bfc4fac9272ac7485afa2729b01ce51ad12948",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_f5695.doors_if_any.026b55169cff.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.12059199999999999,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_f5695.doors_if_any.2caffa1297cc.1.response.txt"
     }
    ],
    "condition": "f5695.doors_if_any",

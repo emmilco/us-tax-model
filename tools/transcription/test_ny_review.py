@@ -120,16 +120,18 @@ class NewYorkMode(unittest.TestCase):
         self.assertIn("f1040", got["ny_it201"]["federal"])
         self.assertIn("s1", got["ny_it201"]["federal"])
         # Federal helper lines the encoding reads, which no source text can name: review evidence.
-        self.assertEqual(got["ny_it201"]["missing"], ["dependent:dependent.claimed", "dependent:dependent.one",
-                                                      "dependent:dependent.under_ctc_age", "eic:eic.limit",
-                                                      "f1040:f1040.line4a", "f1040:f1040.line5a", "f1040:f1040.tax_exempt_any",
-                                                      "f2441:f2441.benefits", "f2441:f2441.care", "f8863:f8863.paid",
-                                                      "person:person.birth_year", "person:person.bonus_all", "person:person.dis_wages", "person:person.ira_taxable", "person:person.one",
-                                                      "person:person.plan_taxable", "person:person.prior_bonus_assets", "person:person.sc_count",
-                                                      "person:person.sc_total", "person:person.suv179", "person:person.x_edu_account", "s1:s1.alimony_any",
-                                                      "s1:s1.alimony_if_any", "s1:s1.has_sc", "sa:sa.dependent",
-                                                      "sche:sche.line41", "sche:sche.roy_income", "sche:sche.roy_loss",
-                                                      "scope:scope.armed_forces", "scope:scope.has_w2", "scope:scope.rental"])
+        self.assertEqual(got["ny_it201"]["missing"], ["dependent:dependent.claimed", "dependent:dependent.one", "dependent:dependent.under_ctc_age",
+                                                  "eic:eic.limit", "f1040:f1040.line4a", "f1040:f1040.line5a", "f1040:f1040.tax_exempt_any",
+                                                  "f2441:f2441.benefits", "f2441:f2441.care", "f8863:f8863.paid",
+                                                  "household:household.married", "person:person.birth_year", "person:person.bonus_all",
+                                                  "person:person.dis_wages", "person:person.ira_taxable", "person:person.one",
+                                                  "person:person.plan_taxable", "person:person.prior_bonus_assets",
+                                                  "person:person.sc_count", "person:person.sc_employer_count", "person:person.sc_employer_profit",
+                                                  "person:person.sc_employer_profit_count", "person:person.sc_total",
+                                                  "person:person.suv179", "person:person.x_edu_account", "s1:s1.alimony_any",
+                                                  "s1:s1.has_sc", "s179:s179.line12", "s179:s179.line9", "sa:sa.dependent",
+                                                  "sche:sche.line41", "sche:sche.roy_income", "sche:sche.roy_loss",
+                                                  "scope:scope.armed_forces", "scope:scope.has_w2", "scope:scope.rental"])
 
     def test_render_prompt_reads_the_new_york_rendering(self):
         got = run_ny("import json, render_compare as R\n"

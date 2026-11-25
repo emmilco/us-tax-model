@@ -44,6 +44,31 @@
    }
   },
   {
+   "printed": "scope.f8978_if_business_before",
+   "project_expr_sha256": "2212bf06db4588052e5cdba9871deef941cd754b4de94aa18c2671c4a246542a",
+   "second_expr_sha256": "fe5f0d97413213e4655355445519dca4671785f5d724ad9df9472e72d6f25c03",
+   "ruling": "Ruling: representation; i1040gi line 16, \"Tax from Form 8978, line 14\". The reply's conjunction of the two answers is the project's choose: when scope.business_before is false the project gives household.no (false) without asking scope.f8978, and the reply's all is false on the same known first operand; when it is true both give scope.f8978. Same value on every input that answers the gate; held for adjudication as the one-in-ten audit sample.",
+   "context": "39d2ffc482db78185a5ccb2453380df5efcb43fb9ecaa4ff818f46a89e6a2003",
+   "date": "2026-11-25",
+   "run": "7db3598f537f31d0fef345853f6b057ad8f0823acc97a245a515d5025a89046f",
+   "subject_key": "2754c450dd3f811cc208eb997907d1c1ded38a91194af331030fb89fe31298ba",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-scope.business_before@scope",
+     "partial:stage14.asset.bonus_100-scope.business_before@scope",
+     "partial:stage14.asset.s179-scope.business_before@scope",
+     "partial:stage14.asset.prior_mq-scope.business_before@scope",
+     "partial:stage14.asset.qip_elected-scope.business_before@scope",
+     "partial:stage14.asset.listed_prior-scope.business_before@scope"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "scope.household_pay_if_pay",
    "project_expr_sha256": "771f794ea8348de3523f21a9a6cc7d6e6753ed95d3b430ee756c1b13e1bf37fe",
    "second_expr_sha256": "1d0faf3f99e20c6dfe6d524fe18331edff29fdd483dbdbcb4aa2ec5b3537e66b",

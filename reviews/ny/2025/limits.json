@@ -72,6 +72,9 @@
   },
   "limit:ny_it225i:p18:217374f6": {
    "not_applicable": "The formula is for Form IT-203 filers (the New York State allocated amount column); this tool prepares Form IT-201 for full-year residents only and refuses a nonresident or part-year resident (ny_it201.gate.part_year_state, Form IT-203). IT-225-I p. 18 is cited for the alimony subtraction of IT-201 filers (S-136)."
+  },
+  "limit:ny_it225i:p19:b93d735d": {
+   "not_applicable": "The $500,000 cap is on the S-140 subtraction for an MTA COVID-19 lump sum death benefit, a Form IT-225 modification this tool does not compute: ny_it201.ask.it225 asks whether any other IT-225 addition or subtraction applies and ny_it201.gate.it225 refuses on Yes. IT-225-I p. 19 is cited for the S-201 small business modification."
   }
  },
  "baseline": {}

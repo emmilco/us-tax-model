@@ -253,38 +253,58 @@
    ]
   },
   "gate:household.marriage_possible": {
-   "subject_sha": "3b41064169e6c4e32d13cdb1dee6f7ce01292ef008ed15c07c004ec4ff9c10d8",
+   "subject_sha": "969ff5ce3d5d743a0725bb149ae3185e5fe604bbda6e431b6d6ddaf022d2c051",
    "samples": [
     {
-     "verdict": "FALSE_NO",
+     "verdict": "UNCLEAR",
      "findings": [
       {
-       "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A never-married filer who is a registered domestic partner in California, Nevada, or Washington and files as single or head of household.",
-       "why_no": "The gate asks 'Have you ever been married?' and the filer truthfully answers no because a registered domestic partnership or civil union is not a marriage for federal tax; Pub. 501 says such relationships are not lawfully married.",
-       "line": "household.cp_married_if_ever_married (and the Form 8958/community-income inquiry it gates)",
-       "irs_text": "i1040gi p. 23: 'Nevada, Washington, and California domestic partners. A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner.'",
-       "severity": "high",
-       "fix": "Broaden the gate/line to cover registered domestic partners in community property states, or ask a separate community-property/RDP question regardless of marriage; do not condition Form 8958 on 'ever married' alone."
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A Texas resident who has lived for years with a partner, held themselves out as married and never had a ceremony or licence, so Texas recognizes a common-law marriage. They file as single or head of household.",
+       "why_no": "\"Have you ever been married?\" has no help text. People in informal marriages usually think of \"married\" as a licence and a ceremony, so they answer No. The help explaining that a common-law marriage counts appears only with the gated question, which they never see.",
+       "line": "household.married (married at the end of 2025), and also household.cp_married_if_ever_married. The filer is in a community property state, so the CP Yes that ends the interview is also missed.",
+       "irs_text": "p501 p. 6, Considered married: \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\" i1040gi p. 23: \"If you and your spouse lived in a community property state, you must usually follow state law...\"",
+       "severity": "medium",
+       "fix": "Add help to the gate question: \"Count any marriage, including a common-law marriage a state recognizes, a marriage entered into abroad or under tribal law, and a marriage that ended in divorce or your spouse's death. A registered domestic partnership or civil union does not count.\" Or ask the gate as \"Have you ever been married, including by common-law marriage?\""
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer in a state-recognized common-law marriage who files as single or head of household and has no marriage license or ceremony.",
-       "why_no": "They read 'Have you ever been married?' as requiring a formal marriage and answer no; the rule that a recognized common-law marriage counts appears only in the gated help for household.married, which is never shown.",
-       "line": "household.married (and any status or HSA/refusal it gates)",
-       "irs_text": "p501 p. 6: 'You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.'",
-       "severity": "medium",
-       "fix": "Put the common-law rule in the gate/help or replace the gate with a fact question: 'Did you and a partner live together in a state-recognized common-law marriage?'"
+       "pattern": "8",
+       "who": "A filer whose marriage was entered under a foreign country's or tribe's law, possibly religious-only. A state would recognize it, but the filer doubts it counts in the U.S. and files as single or head of household.",
+       "why_no": "They read \"married\" as a U.S. state marriage and answer No to \"Have you ever been married?\"",
+       "line": "household.married (and household.cp_married_if_ever_married if the filer lived in a community property state)",
+       "irs_text": "p501 p. 6, Definition of marriage: \"Two individuals who enter into a relationship that is denominated as marriage under the laws of a foreign jurisdiction or an American Indian tribe are recognized as married for federal tax purposes if the relationship would be recognized as marriage under the laws of at least one state...\"",
+       "severity": "low",
+       "fix": "Use the same gate help text as above, naming foreign and tribal marriages explicitly."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A Californian whose 2025 marriage was annulled during 2025 and who files as single. Under state putative-spouse rules, income earned during the void marriage may still be treated as quasi-community property.",
+       "why_no": "The annulment decree holds that no valid marriage ever existed, and p501 calls such a filer \"considered unmarried\". They truthfully read \"Have you ever been married?\" as No.",
+       "line": "household.cp_married_if_ever_married (state-law division of income for the months together; the refusal is missed)",
+       "irs_text": "p501 p. 6, Annulled marriages: \"you are considered unmarried even if you filed joint returns for earlier years.\" i1040gi p. 23: \"you must usually follow state law to determine what is community income and what is separate income.\"",
+       "severity": "low",
+       "fix": "Have the gate help say \"Answer Yes if a marriage was annulled\", or ask separately about an annulment in 2025 while living in a community property state and refuse on Yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A registered domestic partner in California, Nevada or Washington who files as single. They must report half of the partners' combined community income.",
+       "why_no": "They have never been married, so they answer No to the gate truthfully. The CP question would not catch them either, because it lists only marriage.",
+       "line": "household.cp_married_if_ever_married (the Form 8958 split, and the refusal its Yes produces, are not reached)",
+       "irs_text": "i1040gi p. 23: \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555.\"",
+       "severity": "low",
+       "fix": "Outside this gate, add a question asked of everyone: \"Were you a registered domestic partner in California, Nevada or Washington at any time in 2025?\" Refuse on Yes, as the CP question does."
       }
      ],
-     "prompt_sha": "a4bda985076b625b3e05dc0d017ab93f26c4306c954818639c25d28f89661186",
+     "prompt_sha": "4494d83a9f3be58f8ae2a406ae813711ac38e42d78df98fd428d092885e91893",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "deepseek-flash",
-     "cost": 0,
-     "date": "2026-11-18",
-     "response": ".transcription/false_no/gate_household.marriage_possible.3b41064169e6.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.12664799999999998,
+     "date": "2026-11-25",
+     "response": ".transcription/false_no/gate_household.marriage_possible.969ff5ce3d5d.1.response.txt"
     }
    ],
    "condition": "household.marriage_possible",
